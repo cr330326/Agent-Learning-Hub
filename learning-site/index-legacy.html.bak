@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Agent Learning Hub</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="Agent Learning Hub 首页">
+        <span class="brand-mark">A</span>
+        <span>
+          <strong>Agent Learning Hub</strong>
+          <small>AI Agent 进阶学习工作台</small>
+        </span>
+      </a>
+      <nav class="topnav" aria-label="主要导航">
+        <a href="#roadmap">路线</a>
+        <a href="#courses">课程</a>
+        <a href="#projects">项目</a>
+        <a href="#resources">资源</a>
+        <a href="#reader">阅读器</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="home" class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">README-first roadmap, rebuilt as a local learning site</p>
+          <h1>从会调用模型，到能构建可靠 Agent。</h1>
+          <p>
+            这份本地化学习网站基于仓库 README 和已下载的重点课程整理，把 AI Agent 的核心概念、
+            工程实践、开源系统和项目练习收束成一条可执行路线。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#roadmap">开始路线</a>
+            <a class="button" href="#courses">看重点课程</a>
+          </div>
+        </div>
+        <aside class="hero-panel" aria-label="学习重点">
+          <h2>现在最值得学</h2>
+          <ol>
+            <li>Coding agents: shell、文件编辑、测试、权限和上下文压缩。</li>
+            <li>Agent harness: 工具协议、状态、反馈、回放、CI 和评测。</li>
+            <li>Personal agents: 长运行、本地优先、记忆、skills 和消息入口。</li>
+            <li>Skills / MCP / A2A / ACP: 能力复用、工具连接和宿主集成。</li>
+            <li>Evaluation & safety: trace、权限边界和回归测试。</li>
+          </ol>
+        </aside>
+      </section>
+
+      <section class="toolbar" aria-label="学习筛选">
+        <div class="search-wrap">
+          <label for="search">搜索主题、项目或资源</label>
+          <input id="search" type="search" placeholder="例如：MCP、RAG、Claude Code、评测" />
+        </div>
+        <div class="stats" aria-label="学习统计">
+          <span><strong id="stageCount">0</strong> 个阶段</span>
+          <span><strong id="courseCount">0</strong> 个重点课程</span>
+          <span><strong id="doneCount">0</strong> 项已完成</span>
+        </div>
+      </section>
+
+      <section id="roadmap" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Progressive guide</p>
+          <h2>学习进阶路线</h2>
+          <p>按阶段推进：先做最小 loop，再补工具、记忆、harness、多 agent、skills、browser agent、评测和交付。</p>
+        </div>
+        <div id="roadmapGrid" class="roadmap-grid"></div>
+      </section>
+
+      <section id="courses" class="section band">
+        <div class="section-heading">
+          <p class="eyebrow">High-signal courses</p>
+          <h2>重点课程与仓库</h2>
+          <p>绝大多数课程已下载到本地，可在站内阅读器中直接阅读；每张卡片同时保留 GitHub 入口和学习建议。</p>
+        </div>
+        <div id="courseGrid" class="course-grid"></div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Build ladder</p>
+          <h2>项目阶梯</h2>
+          <p>每一档都应该产出一个可运行作品。不要只收藏链接，让代码和 trace 说话。</p>
+        </div>
+        <div id="projectList" class="project-list"></div>
+      </section>
+
+      <section id="resources" class="section band">
+        <div class="section-heading">
+          <p class="eyebrow">Core ideas</p>
+          <h2>核心内容速记</h2>
+          <p>把 README 里最关键的知识块压缩成复习卡片，适合学习前预热和学习后回顾。</p>
+        </div>
+        <div id="resourceGrid" class="resource-grid"></div>
+      </section>
+
+      <section id="reader" class="section reader-section">
+        <div class="section-heading">
+          <p class="eyebrow">Local reader</p>
+          <h2>本地课程阅读器</h2>
+          <p>选择章节后会从本地仓库读取 Markdown。建议通过本地服务访问，文件链接和阅读器都会更稳定。</p>
+        </div>
+        <div class="reader-layout">
+          <aside class="reader-menu" id="readerMenu" aria-label="本地课程章节"></aside>
+          <div class="reader-main">
+            <div class="reader-toolbar">
+              <button id="markDone" class="button" title="标记当前章节为已学完">✓ 标记完成</button>
+              <button id="prevDoc" class="button" title="上一章">← 上一章</button>
+              <button id="nextDoc" class="button" title="下一章">下一章 →</button>
+            </div>
+            <article id="docView" class="doc-view" aria-live="polite"></article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Built from local README and GitHub course material.</span>
+      <a href="../README.md">打开原始 README</a>
+      <a href="../local-courses/hello-agents/README.md">打开本地 Hello-Agents</a>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

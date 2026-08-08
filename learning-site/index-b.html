@@ -1,0 +1,151 @@
+<!doctype html>
+<!--
+  方向 B · 暖色出版物 × 目录页
+  逻辑来源：🏆 现实参照 → Anthropic / Claude 的产品与文档设计语言
+  （奶油纸底 + 赤陶橙 + 衬线标题×无衬线正文混排，Penguin/Pelican 平装书排印谱系）
+
+  为什么是这个参照而不是随便挑一个获奖站：这个学习库的重心本来就是 Claude Code
+  harness engineering——三本理论书、20 章复刻课、13 篇源码分析全部围绕它。借出版方
+  自己的设计语言，是从内容长出来的选择，不是贴风格标签。
+
+  母题：**目录页**。整站按一本书来组织——左边是恒定的目录栏，右边是正文流。课程不做
+  成卡片墙而做成「书目索引」，阶段不做成方块而做成带编号的章节条目。这是三版里唯一
+  一个把「读」放在结构中心的方案，也最贴合每天打开半小时的真实用法。
+-->
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Agent Learning Hub · 方向 B</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles-b.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="rail">
+        <a class="brand" href="#home">
+          <span class="brand-title">Agent<br />Learning Hub</span>
+          <span class="brand-sub">本地学习工作台</span>
+        </a>
+
+        <input id="search" type="search" placeholder="搜索…  /" />
+
+        <nav class="contents">
+          <span class="contents-label">目录</span>
+          <a href="#tracks"><em>Ⅰ</em>三条轨道</a>
+          <a href="#roadmap"><em>Ⅱ</em>九阶段路线</a>
+          <a href="#courses"><em>Ⅲ</em>课程与仓库</a>
+          <a href="#projects"><em>Ⅳ</em>项目阶梯</a>
+          <a href="#notes"><em>Ⅴ</em>核心速记</a>
+          <a href="#reader"><em>Ⅵ</em>本地阅读器</a>
+        </nav>
+
+        <div class="rail-progress">
+          <div class="rail-figure">
+            <strong id="docPercent">0%</strong>
+            <span>已读章节</span>
+          </div>
+          <div id="progressBar" class="progress-bar"><i></i></div>
+          <p class="rail-note">
+            <span id="docDoneCount">0</span> / <span id="docCount">0</span> 篇 ·
+            任务 <span id="doneCount">0</span> / <span id="taskTotal">0</span>
+          </p>
+        </div>
+
+        <p class="rail-foot">按 <kbd>/</kbd> 搜索 ｜ <kbd>[</kbd> <kbd>]</kbd> 翻章</p>
+      </aside>
+
+      <main class="page">
+        <section id="home" class="opening">
+          <p class="eyebrow">README-first roadmap，整理成一本可以读的书</p>
+          <h1>从会调用模型，<br />到能交付可靠 Agent。</h1>
+          <p class="lede">
+            三条轨道、九个阶段、<span id="localCourseCount">0</span> 门可在线阅读的课程。
+            这里不收藏链接——每一条都指向本地某个具体章节，读完可以打勾。
+          </p>
+          <div id="spectrum" class="spectrum"></div>
+          <p class="spectrum-caption">九个阶段的完成度。点击柱子跳到对应阶段。</p>
+        </section>
+
+        <section id="tracks" class="chapter">
+          <header class="chapter-head">
+            <span class="chapter-num">Ⅰ</span>
+            <h2>三条轨道</h2>
+            <p>和 <code>local-courses/</code> 的一级目录一一对应。</p>
+          </header>
+          <div id="trackBoard" class="track-board"></div>
+        </section>
+
+        <section id="roadmap" class="chapter">
+          <header class="chapter-head">
+            <span class="chapter-num">Ⅱ</span>
+            <h2>九阶段路线</h2>
+            <p>先做最小 loop，再补工具、记忆、harness、多 agent、skills、评测和交付。</p>
+          </header>
+          <div id="roadmapGrid" class="stage-list"></div>
+        </section>
+
+        <section id="courses" class="chapter">
+          <header class="chapter-head">
+            <span class="chapter-num">Ⅲ</span>
+            <h2>课程与仓库<em id="courseCount">0</em></h2>
+            <p>按轨道筛选。带「可在线阅读」的条目点进去直接进阅读器。</p>
+          </header>
+          <div id="trackFilter" class="chips"></div>
+          <div id="courseGrid" class="course-index"></div>
+          <p id="emptyState" class="empty" hidden>没有匹配的课程，换个关键词或切换轨道。</p>
+        </section>
+
+        <section id="projects" class="chapter">
+          <header class="chapter-head">
+            <span class="chapter-num">Ⅳ</span>
+            <h2>项目阶梯</h2>
+            <p>每一档都应该产出一个可运行作品。让代码和 trace 说话。</p>
+          </header>
+          <div id="projectList" class="project-list"></div>
+        </section>
+
+        <section id="notes" class="chapter">
+          <header class="chapter-head">
+            <span class="chapter-num">Ⅴ</span>
+            <h2>核心速记</h2>
+            <p>学习前预热、学习后回顾。</p>
+          </header>
+          <div id="resourceGrid" class="resource-grid"></div>
+        </section>
+
+        <section id="reader" class="chapter reader-chapter">
+          <header class="chapter-head">
+            <span class="chapter-num">Ⅵ</span>
+            <h2>本地阅读器</h2>
+            <p>直接读 <code>local-courses/</code> 下的 Markdown，进度存在本地。</p>
+          </header>
+          <div class="reader-layout">
+            <aside class="reader-side">
+              <input id="readerFilter" type="search" placeholder="过滤章节…" />
+              <div id="readerMenu" class="reader-menu"></div>
+            </aside>
+            <div class="reader-main">
+              <div class="reader-toolbar">
+                <span id="docTitle" class="doc-title"></span>
+                <div class="reader-actions">
+                  <button id="markDone" class="btn">标记完成</button>
+                  <button id="prevDoc" class="btn icon" title="上一章 [">←</button>
+                  <button id="nextDoc" class="btn icon" title="下一章 ]">→</button>
+                </div>
+              </div>
+              <article id="docView" class="doc-view"></article>
+            </div>
+          </div>
+        </section>
+
+        <footer class="colophon">Agent Learning Hub · 本地构建 · 内容来自 local-courses/</footer>
+      </main>
+    </div>
+
+    <script src="./data.js?v=3"></script>
+    <script src="./app.js?v=3"></script>
+  </body>
+</html>

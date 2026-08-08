@@ -1,0 +1,5 @@
+<!-- OpenCode 官方标记，已移除整幅背景 rect 与浅灰内块：
+     站点用 CSS mask 取 alpha 通道上色，留着背景块会 mask 成一个实心方块。 -->
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M384 416H128V96H384V416ZM320 160H192V352H320V160Z" fill="#000"/>
+</svg>

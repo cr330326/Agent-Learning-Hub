@@ -1,0 +1,157 @@
+<!doctype html>
+<!--
+  Agent Learning Hub · 本地学习网站
+
+  设计方向：C 的骨架 + B 的暖色（2026-08-06 定稿）
+
+  骨架来自 Vignelli / Unimark 的交通图系统：每条轨道 = 一条线路，九个阶段 = 沿线站点，
+  完成度 = 站点是否点亮。左侧线路图由 data.js 的真实进度驱动，点站点直达该阶段。
+  模块化网格、粗规则线、等宽字标签——解决的是「在一张复杂网络里定位自己」。
+
+  配色来自 Anthropic / Claude 的出版物语言：奶油纸底 + 赤陶橙 + 暖近黑。
+  线路色一并转入暖色印刷谱系（赤陶 / 靛蓝 / 橄榄 / 紫褐），不用屏幕原色。
+  新增轨道时只需在 styles.css 加一个 --line-* 变量和四处 data-track 选择器。
+
+  字体分工：标识与标签用 Archivo（网格的严谨来自它），标题与正文用 Newsreader 衬线
+  （每天读半小时的地方需要温度）。CJK 一律走系统字，离线时版式不塌。
+
+  内容全部来自 data.js。加课程只改 data.js，改完跑 scripts/audit_paths.py。
+-->
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Agent Learning Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css?v=5" />
+  </head>
+  <body>
+    <header class="masthead">
+      <span class="mast-mark">ALH</span>
+      <h1 class="mast-title">Agent Learning Hub</h1>
+      <span class="mast-sub">本地学习工作台 · 四线路 · 九站点</span>
+      <input id="search" type="search" placeholder="SEARCH  /" />
+    </header>
+
+    <div class="shell">
+      <aside class="map">
+        <div class="map-head">
+          <span class="label">Route map</span>
+          <span class="label-zh">线路图</span>
+        </div>
+
+        <div id="spectrum" class="spectrum"></div>
+
+        <div class="map-legend">
+          <span class="label">Lines / 线路</span>
+          <ul>
+            <li data-track="learning"><i></i>Learning · 系统课程</li>
+            <li data-track="ai-coding"><i></i>AICoding · Harness</li>
+            <li data-track="agentic"><i></i>Agentic · 框架理论</li>
+            <li data-track="application"><i></i>Application · 落地应用</li>
+          </ul>
+        </div>
+
+        <div class="map-figures">
+          <div><span class="label">Read</span><strong id="docPercent">0%</strong></div>
+          <div><span class="label">Docs</span><strong><span id="docDoneCount">0</span>/<span id="docCount">0</span></strong></div>
+          <div><span class="label">Tasks</span><strong><span id="doneCount">0</span>/<span id="taskTotal">0</span></strong></div>
+        </div>
+        <div id="progressBar" class="progress-bar"><i></i></div>
+
+        <nav class="map-nav">
+          <a href="#tracks">01 轨道</a>
+          <a href="#roadmap">02 路线</a>
+          <a href="#courses">03 课程</a>
+          <a href="#projects">04 项目</a>
+          <a href="#notes">05 速记</a>
+          <a href="#reader">06 阅读器</a>
+        </nav>
+      </aside>
+
+      <main class="board">
+        <section id="tracks" class="block">
+          <div class="block-head">
+            <span class="block-num">01</span>
+            <h2>四条轨道</h2>
+            <p>与 <code>local-courses/</code> 一级目录一一对应</p>
+          </div>
+          <div id="trackBoard" class="track-board"></div>
+        </section>
+
+        <section id="roadmap" class="block">
+          <div class="block-head">
+            <span class="block-num">02</span>
+            <h2>九阶段路线</h2>
+            <p>Stage 0 理解 Agent → Stage 8 交付真实 Agent</p>
+          </div>
+          <div id="roadmapGrid" class="stage-grid"></div>
+        </section>
+
+        <section id="courses" class="block">
+          <div class="block-head">
+            <span class="block-num">03</span>
+            <h2>课程与仓库<em id="courseCount">0</em></h2>
+            <p>其中 <span id="localCourseCount">0</span> 门可在站内阅读器打开</p>
+          </div>
+          <div id="trackFilter" class="chips"></div>
+          <div id="courseGrid" class="course-grid"></div>
+          <p id="emptyState" class="empty" hidden>没有匹配的课程，换个关键词或切换线路。</p>
+        </section>
+
+        <section id="projects" class="block">
+          <div class="block-head">
+            <span class="block-num">04</span>
+            <h2>项目阶梯</h2>
+            <p>每一档产出一个可运行作品</p>
+          </div>
+          <div id="projectList" class="project-list"></div>
+        </section>
+
+        <section id="notes" class="block">
+          <div class="block-head">
+            <span class="block-num">05</span>
+            <h2>核心速记</h2>
+            <p>学习前预热、学习后回顾</p>
+          </div>
+          <div id="resourceGrid" class="resource-grid"></div>
+        </section>
+
+        <section id="reader" class="block">
+          <div class="block-head">
+            <span class="block-num">06</span>
+            <h2>本地阅读器</h2>
+            <p>直读 local-courses/ 下的 Markdown，进度存本地</p>
+          </div>
+          <div class="reader-layout">
+            <aside class="reader-side">
+              <input id="readerFilter" type="search" placeholder="FILTER 章节…" />
+              <div id="readerMenu" class="reader-menu"></div>
+            </aside>
+            <div class="reader-main">
+              <div class="reader-toolbar">
+                <span id="docTitle" class="doc-title"></span>
+                <div class="reader-actions">
+                  <button id="markDone" class="btn">标记完成</button>
+                  <button id="prevDoc" class="btn icon" title="上一章 [">←</button>
+                  <button id="nextDoc" class="btn icon" title="下一章 ]">→</button>
+                </div>
+              </div>
+              <article id="docView" class="doc-view"></article>
+            </div>
+          </div>
+        </section>
+
+        <footer class="board-foot">
+          <span>Agent Learning Hub · 本地构建 · 内容来自 local-courses/</span>
+          <span>／ 搜索　[ ] 翻章</span>
+        </footer>
+      </main>
+    </div>
+
+    <script src="./data.js?v=5"></script>
+    <script src="./app.js?v=5"></script>
+  </body>
+</html>

@@ -1,0 +1,147 @@
+<!doctype html>
+<!--
+  方向 A · 电影感暗场 × 进度频谱
+  逻辑来源：🎲 秒数轮盘 → 08 → Cinematic Sound-Viz Dark
+
+  轮盘抽到的原风格母题是「声波频谱」，但这份内容里没有任何声音——照搬就是硬套。
+  保留它的结构 DNA（全幅暗场、片头式巨标题、一条贯穿全站的可视化带），把频谱换成
+  这份内容真正有的东西：**九个阶段的完成度柱阵**。柱子等高递增代表阶段递进，填充
+  高度是真实勾选进度，点击直达该阶段。母题因此承载真实数据，而不是装饰。
+
+  暗色刻意避开「#0D1117 深蓝底 + 青紫霓虹」那个 SaaS 偷懒解：纯黑幕布 + 暖白字 +
+  单一余烬橙，色温是放映厅不是仪表盘。
+-->
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Agent Learning Hub · 方向 A</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles-a.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#home">
+        <span class="brand-mark"></span>
+        <span class="brand-text">Agent Learning Hub</span>
+      </a>
+      <nav class="topnav">
+        <a href="#tracks">轨道</a>
+        <a href="#roadmap">路线</a>
+        <a href="#courses">课程</a>
+        <a href="#projects">项目</a>
+        <a href="#reader">阅读器</a>
+      </nav>
+      <div class="topbar-search">
+        <input id="search" type="search" placeholder="搜索课程、阶段、项目    /" />
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero">
+        <p class="eyebrow">本地学习工作台 · <span id="docCount">0</span> 篇章节已接入阅读器</p>
+        <h1>从会调用模型<br />到能交付可靠 Agent</h1>
+        <p class="hero-lead">
+          三条轨道、九个阶段、三百多篇本地文档。这里不收藏链接，只推进进度。
+        </p>
+
+        <div class="spectrum-block">
+          <div class="spectrum-head">
+            <span class="spectrum-title">学习进度频谱</span>
+            <span class="spectrum-meta">
+              Stage 0 → 8 ｜ 已完成 <strong id="doneCount">0</strong> / <span id="taskTotal">0</span> 项任务
+            </span>
+          </div>
+          <div id="spectrum" class="spectrum"></div>
+          <div class="spectrum-foot">
+            <span>阅读完成度</span>
+            <div id="progressBar" class="progress-bar"><i></i></div>
+            <strong id="docPercent">0%</strong>
+            <span class="dim"><span id="docDoneCount">0</span> / <span class="dim-total"></span> 篇</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="tracks" class="section">
+        <div class="section-heading">
+          <h2>三条轨道</h2>
+          <p>和 <code>local-courses/</code> 的一级目录一一对应，站点结构不另起一套。</p>
+        </div>
+        <div id="trackBoard" class="track-board"></div>
+      </section>
+
+      <section id="roadmap" class="section">
+        <div class="section-heading">
+          <h2>九阶段路线</h2>
+          <p>横向推进：先做最小 loop，再补工具、记忆、harness、多 agent、skills、评测和交付。</p>
+        </div>
+        <div id="roadmapGrid" class="stage-rail"></div>
+      </section>
+
+      <section id="courses" class="section">
+        <div class="section-heading">
+          <h2>课程与仓库<em id="courseCount">0</em></h2>
+          <p>其中 <strong id="localCourseCount">0</strong> 门可直接在站内阅读器打开。</p>
+        </div>
+        <div id="trackFilter" class="chips"></div>
+        <div id="courseGrid" class="course-grid"></div>
+        <p id="emptyState" class="empty" hidden>没有匹配的课程，换个关键词或切换轨道。</p>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="section-heading">
+          <h2>项目阶梯</h2>
+          <p>每一档都应该产出一个可运行作品。不要只收藏链接，让代码和 trace 说话。</p>
+        </div>
+        <div id="projectList" class="project-list"></div>
+      </section>
+
+      <section id="notes" class="section">
+        <div class="section-heading">
+          <h2>核心速记</h2>
+          <p>学习前预热、学习后回顾。</p>
+        </div>
+        <div id="resourceGrid" class="resource-grid"></div>
+      </section>
+
+      <section id="reader" class="section reader-section">
+        <div class="section-heading">
+          <h2>本地阅读器</h2>
+          <p>直接读 <code>local-courses/</code> 下的 Markdown。进度、折叠状态和阅读位置都存在本地。</p>
+        </div>
+        <div class="reader-layout">
+          <aside class="reader-side">
+            <input id="readerFilter" type="search" placeholder="过滤章节…" />
+            <div id="readerMenu" class="reader-menu"></div>
+          </aside>
+          <div class="reader-main">
+            <div class="reader-toolbar">
+              <span id="docTitle" class="doc-title"></span>
+              <div class="reader-actions">
+                <button id="markDone" class="btn">标记完成</button>
+                <button id="prevDoc" class="btn icon" title="上一章 [">←</button>
+                <button id="nextDoc" class="btn icon" title="下一章 ]">→</button>
+              </div>
+            </div>
+            <article id="docView" class="doc-view"></article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Agent Learning Hub · 本地构建</span>
+      <span class="dim">按 <kbd>/</kbd> 搜索 ｜ <kbd>[</kbd> <kbd>]</kbd> 翻章</span>
+    </footer>
+
+    <script src="./data.js?v=3"></script>
+    <script src="./app.js?v=3"></script>
+    <script>
+      document.querySelectorAll(".dim-total").forEach((n) => {
+        n.textContent = document.querySelector("#docCount").textContent;
+      });
+    </script>
+  </body>
+</html>
