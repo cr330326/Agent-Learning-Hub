@@ -3,10 +3,7 @@ import { randomUUID } from "node:crypto";
 import type { LearningDatabase } from "./database";
 
 export type LearningUserMode = "cloud" | "local";
-export type ItemProgressStatus =
-  | "not_started"
-  | "in_progress"
-  | "completed";
+export type ItemProgressStatus = "not_started" | "in_progress" | "completed";
 export type NoteScopeType = "item" | "stage";
 export type StageOutcomeKind = "repository" | "demo" | "reflection";
 
@@ -174,7 +171,9 @@ function assertNonEmpty(value: string, fieldName: string): void {
 function assertLength(value: string, fieldName: string, maximum: number): void {
   assertNonEmpty(value, fieldName);
   if (value.length > maximum) {
-    throw new StateValidationError(`${fieldName} exceeds ${maximum} characters.`);
+    throw new StateValidationError(
+      `${fieldName} exceeds ${maximum} characters.`,
+    );
   }
 }
 
@@ -362,12 +361,16 @@ function mapStageOutcome(row: unknown): StageOutcomeRecord {
 }
 
 function isSqliteConstraint(error: unknown, constraint: string): boolean {
-  return error instanceof Error && error.message.toUpperCase().includes(constraint);
+  return (
+    error instanceof Error && error.message.toUpperCase().includes(constraint)
+  );
 }
 
 export type LearningStateRepository = {
   createUser(input: CreateUserInput): UserRecord;
   getUser(userId: string): UserRecord | null;
+  getUserByGithubId(githubId: string): UserRecord | null;
+  updateUserProfile(userId: string, input: { displayName: string }): UserRecord;
   deleteUser(userId: string): boolean;
   createAccount(input: CreateAccountInput): AccountRecord;
   listAccounts(userId: string): AccountRecord[];
@@ -428,7 +431,7 @@ export function createLearningStateRepository(
               WHERE user_id = @userId AND stage_id = @stageId AND confirmed_at IS NOT NULL
            ) AS completed`,
       )
-      .get({ userId, stageId, taskPrefix: `${stageId}:%` }) as {
+      .get({ userId, stageId, taskPrefix: `${stageId}-%` }) as {
       outcome_count: number;
       completed_task_count: number;
       completed: number;
@@ -481,10 +484,35 @@ export function createLearningStateRepository(
 
     getUser,
 
+    getUserByGithubId(githubId) {
+      assertLength(githubId, "githubId", 240);
+      const row = handle
+        .prepare("SELECT * FROM users WHERE github_id = ?")
+        .get(githubId);
+      return row ? mapUser(row) : null;
+    },
+
+    updateUserProfile(userId, input) {
+      assertNonEmpty(userId, "userId");
+      assertLength(input.displayName, "displayName", 160);
+      const result = handle
+        .prepare(
+          "UPDATE users SET display_name = ?, updated_at = ? WHERE id = ?",
+        )
+        .run(input.displayName, now(), userId);
+      if (result.changes === 0) {
+        throw new StateValidationError(`User ${userId} does not exist.`);
+      }
+      const user = getUser(userId);
+      if (!user) throw new Error("Updated user could not be read back.");
+      return user;
+    },
+
     deleteUser(userId) {
       assertNonEmpty(userId, "userId");
-      return handle.prepare("DELETE FROM users WHERE id = ?").run(userId)
-        .changes > 0;
+      return (
+        handle.prepare("DELETE FROM users WHERE id = ?").run(userId).changes > 0
+      );
     },
 
     createAccount(input) {
@@ -509,10 +537,14 @@ export function createLearningStateRepository(
           });
       } catch (error) {
         if (isSqliteConstraint(error, "UNIQUE")) {
-          throw new StateConflictError("This provider account is linked already.");
+          throw new StateConflictError(
+            "This provider account is linked already.",
+          );
         }
         if (isSqliteConstraint(error, "FOREIGN KEY")) {
-          throw new StateValidationError(`User ${input.userId} does not exist.`);
+          throw new StateValidationError(
+            `User ${input.userId} does not exist.`,
+          );
         }
         throw error;
       }
@@ -553,7 +585,9 @@ export function createLearningStateRepository(
           throw new StateConflictError("This session token is already stored.");
         }
         if (isSqliteConstraint(error, "FOREIGN KEY")) {
-          throw new StateValidationError(`User ${input.userId} does not exist.`);
+          throw new StateValidationError(
+            `User ${input.userId} does not exist.`,
+          );
         }
         throw error;
       }
@@ -572,9 +606,11 @@ export function createLearningStateRepository(
     deleteSession(userId, sessionId) {
       assertNonEmpty(userId, "userId");
       assertNonEmpty(sessionId, "sessionId");
-      return handle
-        .prepare("DELETE FROM sessions WHERE user_id = ? AND id = ?")
-        .run(userId, sessionId).changes > 0;
+      return (
+        handle
+          .prepare("DELETE FROM sessions WHERE user_id = ? AND id = ?")
+          .run(userId, sessionId).changes > 0
+      );
     },
 
     saveItemProgress(input) {
@@ -583,7 +619,9 @@ export function createLearningStateRepository(
       assertItemStatus(input.status);
       const position = input.position ?? 0;
       if (!Number.isInteger(position) || position < 0) {
-        throw new StateValidationError("position must be a non-negative integer.");
+        throw new StateValidationError(
+          "position must be a non-negative integer.",
+        );
       }
       const timestamp = now();
       try {
@@ -606,7 +644,9 @@ export function createLearningStateRepository(
           });
       } catch (error) {
         if (isSqliteConstraint(error, "FOREIGN KEY")) {
-          throw new StateValidationError(`User ${input.userId} does not exist.`);
+          throw new StateValidationError(
+            `User ${input.userId} does not exist.`,
+          );
         }
         throw error;
       }
@@ -627,7 +667,9 @@ export function createLearningStateRepository(
     listItemProgress(userId) {
       assertNonEmpty(userId, "userId");
       return handle
-        .prepare("SELECT * FROM item_progress WHERE user_id = ? ORDER BY updated_at DESC")
+        .prepare(
+          "SELECT * FROM item_progress WHERE user_id = ? ORDER BY updated_at DESC",
+        )
         .all(userId)
         .map(mapItemProgress);
     },
@@ -654,7 +696,9 @@ export function createLearningStateRepository(
           });
       } catch (error) {
         if (isSqliteConstraint(error, "FOREIGN KEY")) {
-          throw new StateValidationError(`User ${input.userId} does not exist.`);
+          throw new StateValidationError(
+            `User ${input.userId} does not exist.`,
+          );
         }
         throw error;
       }
@@ -705,7 +749,9 @@ export function createLearningStateRepository(
           });
       } catch (error) {
         if (isSqliteConstraint(error, "FOREIGN KEY")) {
-          throw new StateValidationError(`User ${input.userId} does not exist.`);
+          throw new StateValidationError(
+            `User ${input.userId} does not exist.`,
+          );
         }
         throw error;
       }
@@ -727,7 +773,9 @@ export function createLearningStateRepository(
     listNotes(userId) {
       assertNonEmpty(userId, "userId");
       return handle
-        .prepare("SELECT * FROM notes WHERE user_id = ? ORDER BY updated_at DESC")
+        .prepare(
+          "SELECT * FROM notes WHERE user_id = ? ORDER BY updated_at DESC",
+        )
         .all(userId)
         .map(mapNote);
     },
@@ -735,9 +783,11 @@ export function createLearningStateRepository(
     deleteNote(userId, noteId) {
       assertNonEmpty(userId, "userId");
       assertNonEmpty(noteId, "noteId");
-      return handle
-        .prepare("DELETE FROM notes WHERE user_id = ? AND id = ?")
-        .run(userId, noteId).changes > 0;
+      return (
+        handle
+          .prepare("DELETE FROM notes WHERE user_id = ? AND id = ?")
+          .run(userId, noteId).changes > 0
+      );
     },
 
     setBookmark(input) {
@@ -754,7 +804,9 @@ export function createLearningStateRepository(
           .run({ userId: input.userId, itemId: input.itemId, timestamp });
       } catch (error) {
         if (isSqliteConstraint(error, "FOREIGN KEY")) {
-          throw new StateValidationError(`User ${input.userId} does not exist.`);
+          throw new StateValidationError(
+            `User ${input.userId} does not exist.`,
+          );
         }
         throw error;
       }
@@ -767,7 +819,9 @@ export function createLearningStateRepository(
     listBookmarks(userId) {
       assertNonEmpty(userId, "userId");
       return handle
-        .prepare("SELECT * FROM bookmarks WHERE user_id = ? ORDER BY created_at DESC")
+        .prepare(
+          "SELECT * FROM bookmarks WHERE user_id = ? ORDER BY created_at DESC",
+        )
         .all(userId)
         .map(mapBookmark);
     },
@@ -775,9 +829,11 @@ export function createLearningStateRepository(
     removeBookmark(userId, itemId) {
       assertNonEmpty(userId, "userId");
       assertLength(itemId, "itemId", 200);
-      return handle
-        .prepare("DELETE FROM bookmarks WHERE user_id = ? AND item_id = ?")
-        .run(userId, itemId).changes > 0;
+      return (
+        handle
+          .prepare("DELETE FROM bookmarks WHERE user_id = ? AND item_id = ?")
+          .run(userId, itemId).changes > 0
+      );
     },
 
     createStageOutcome(input) {
@@ -797,7 +853,9 @@ export function createLearningStateRepository(
         throw new StateValidationError(`${input.kind} outcomes require a URL.`);
       }
       if (input.kind === "reflection" && !summary?.trim()) {
-        throw new StateValidationError("reflection outcomes require a summary.");
+        throw new StateValidationError(
+          "reflection outcomes require a summary.",
+        );
       }
       const id = input.id ?? randomUUID();
       const timestamp = now();
@@ -819,7 +877,9 @@ export function createLearningStateRepository(
           });
       } catch (error) {
         if (isSqliteConstraint(error, "FOREIGN KEY")) {
-          throw new StateValidationError(`User ${input.userId} does not exist.`);
+          throw new StateValidationError(
+            `User ${input.userId} does not exist.`,
+          );
         }
         throw error;
       }
@@ -849,9 +909,11 @@ export function createLearningStateRepository(
     deleteStageOutcome(userId, outcomeId) {
       assertNonEmpty(userId, "userId");
       assertNonEmpty(outcomeId, "outcomeId");
-      return handle
-        .prepare("DELETE FROM stage_outcomes WHERE user_id = ? AND id = ?")
-        .run(userId, outcomeId).changes > 0;
+      return (
+        handle
+          .prepare("DELETE FROM stage_outcomes WHERE user_id = ? AND id = ?")
+          .run(userId, outcomeId).changes > 0
+      );
     },
 
     confirmStageCompletion(userId, stageId) {

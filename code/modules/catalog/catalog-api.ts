@@ -227,7 +227,9 @@ export async function loadCatalogApiFromDirectory(
   return createCatalogApi(await loadContentCatalogFromDirectory(contentRoot));
 }
 
-export function getDefaultContentRoot(environment = process.env): string {
+export function getDefaultContentRoot(
+  environment: Readonly<Record<string, string | undefined>> = process.env,
+): string {
   return resolve(
     environment.CONTENT_ROOT ?? resolve(process.cwd(), "..", "content"),
   );

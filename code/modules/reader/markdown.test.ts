@@ -38,4 +38,18 @@ describe("safe Markdown reader", () => {
     expect(result.html).not.toContain("javascript:");
     expect(result.html).toContain("&lt;script&gt;");
   });
+
+  it("renders only safe images and lets the caller resolve allowlisted relative paths", () => {
+    const result = renderMarkdownDocument(
+      "![diagram](images/loop.png) ![remote](https://example.com/loop.png) ![bad](javascript:alert(1))",
+      {
+        resolveImageSrc: (source) =>
+          `/api/image?path=${encodeURIComponent(source)}`,
+      },
+    );
+
+    expect(result.html).toContain('src="/api/image?path=images%2Floop.png"');
+    expect(result.html).toContain('src="https://example.com/loop.png"');
+    expect(result.html).not.toContain("javascript:");
+  });
 });

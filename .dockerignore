@@ -1,32 +1,21 @@
-# Source-control and local development state
-.git/
+.git
 .gitignore
 .DS_Store
-
-# The local material library is mounted read-only only in local mode. It is
-# never sent to the cloud build context or copied into an image.
-local-courses/
-
-# Runtime state, backups, secrets, and developer outputs.
-data/
-backups/
-.env*
+node_modules
+**/node_modules
+code/.next
+code/.data
+code/coverage
+code/tsconfig.tsbuildinfo
+local-courses
+learning-site
+reports
+backups
+data
 *.sqlite
 *.sqlite-*
 *.db
 *.db-*
-*.pem
-*.key
-reports/
-
-# Build and test outputs are recreated inside the multi-stage image.
-code/node_modules/
-code/.next/
-code/coverage/
-coverage/
-
-# Migration-only site and visual reference material do not belong in the new
-# application image.
-learning-site/
-design-shots/
-index.html
+.env
+.env.*
+!.env.example

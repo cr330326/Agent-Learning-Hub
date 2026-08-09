@@ -12,9 +12,7 @@ export function parseRuntimeConfig(
   const mode = environment.DEPLOYMENT_MODE ?? "cloud";
   if (mode === "cloud" || mode === "local") {
     if (mode === "local") {
-      assertLocalAuthBinding(
-        environment.LOCAL_BIND_HOST ?? environment.HOST,
-      );
+      assertLocalAuthBinding(environment.LOCAL_BIND_HOST ?? environment.HOST);
     }
     return { mode };
   }

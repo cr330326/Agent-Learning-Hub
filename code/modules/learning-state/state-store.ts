@@ -1,10 +1,7 @@
 import { mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 
-import {
-  openLearningDatabase,
-  type LearningDatabase,
-} from "./database";
+import { openLearningDatabase, type LearningDatabase } from "./database";
 import {
   createLearningStateRepository,
   type LearningStateRepository,

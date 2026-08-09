@@ -29,10 +29,7 @@ describe("learning-state repository", () => {
     });
 
     expect(
-      repository.getItemProgress(
-        firstUser.id,
-        "agent-loop-maintainer-guide",
-      ),
+      repository.getItemProgress(firstUser.id, "agent-loop-maintainer-guide"),
     ).toMatchObject({
       userId: firstUser.id,
       itemId: "agent-loop-maintainer-guide",
@@ -40,10 +37,7 @@ describe("learning-state repository", () => {
       position: 240,
     });
     expect(
-      repository.getItemProgress(
-        secondUser.id,
-        "agent-loop-maintainer-guide",
-      ),
+      repository.getItemProgress(secondUser.id, "agent-loop-maintainer-guide"),
     ).toBeNull();
 
     database.close();
@@ -151,12 +145,18 @@ describe("learning-state repository", () => {
       url: "https://github.com/example/agent-loop",
     });
     expect(outcome).toMatchObject({ kind: "repository", confirmedAt: null });
+    repository.saveStageTaskProgress({
+      userId: user.id,
+      taskId: "stage-01-task-1",
+      completed: true,
+    });
     expect(
       repository.confirmStageCompletion(user.id, "stage-01"),
     ).toMatchObject({ stageId: "stage-01", completed: true });
     expect(repository.getStageStatus(user.id, "stage-01")).toMatchObject({
       completed: true,
       outcomeCount: 1,
+      completedTaskCount: 1,
     });
     expect(repository.deleteStageOutcome(user.id, outcome.id)).toBe(true);
     expect(repository.getStageStatus(user.id, "stage-01")).toMatchObject({
@@ -203,6 +203,33 @@ describe("learning-state repository", () => {
     expect(repository.listNotes(user.id)).toEqual([]);
     expect(repository.getSessionByTokenHash("hash-a")).toBeNull();
 
+    database.close();
+  });
+
+  it("looks up cloud users by stable GitHub ID and updates only the display name", () => {
+    const database = openLearningDatabase({
+      filename: ":memory:",
+      enableWal: false,
+    });
+    const repository = createLearningStateRepository(database);
+    const user = repository.createUser({
+      id: "github-42",
+      mode: "cloud",
+      githubId: "42",
+      displayName: "Old handle",
+    });
+
+    expect(repository.getUserByGithubId("42")).toMatchObject({ id: user.id });
+    expect(
+      repository.updateUserProfile(user.id, {
+        displayName: "New display name",
+      }),
+    ).toMatchObject({
+      id: user.id,
+      githubId: "42",
+      displayName: "New display name",
+    });
+    expect(repository.getUserByGithubId("new-display-name")).toBeNull();
     database.close();
   });
 });

@@ -123,17 +123,44 @@ export function LearningDashboard({
     [csrfToken, loadState],
   );
 
+  const deleteAccount = useCallback(async () => {
+    if (
+      !csrfToken ||
+      !window.confirm("确定删除全部个人学习数据吗？此操作不可撤销。")
+    ) {
+      return;
+    }
+    const response = await fetch("/api/data", {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+        "x-csrf-token": csrfToken,
+      },
+      body: JSON.stringify({ confirmation: "DELETE MY ACCOUNT" }),
+    });
+    if (response.ok) {
+      setAuthenticated(false);
+      setState(null);
+      setMessage("账户和个人学习数据已删除。");
+    } else {
+      setMessage("删除失败，请稍后再试。");
+    }
+  }, [csrfToken]);
+
   useEffect(() => {
-    void loadState();
+    void Promise.resolve().then(() => loadState());
   }, [loadState]);
 
-  if (loading) return <div className="dashboard-panel">正在读取你的学习状态…</div>;
+  if (loading)
+    return <div className="dashboard-panel">正在读取你的学习状态…</div>;
 
   if (!authenticated || !state) {
     return (
       <div className="dashboard-panel dashboard-empty">
         <h2>先建立你的学习状态</h2>
-        <p>本地模式会自动使用固定单用户；云端模式登录后，这里会显示你的进度和成果。</p>
+        <p>
+          本地模式会自动使用固定单用户；云端模式登录后，这里会显示你的进度和成果。
+        </p>
         <div className="dashboard-empty-actions">
           <Link className="button button-primary" href="/roadmap">
             从路线开始
@@ -184,6 +211,17 @@ export function LearningDashboard({
             <dd>{state.notes.length}</dd>
           </div>
         </dl>
+        <div className="dashboard-export-actions">
+          <a href="/api/data" download>
+            导出 JSON
+          </a>
+          <a href="/api/data?format=notes" download>
+            导出笔记 Markdown
+          </a>
+          <button type="button" onClick={() => void deleteAccount()}>
+            删除账户
+          </button>
+        </div>
       </section>
 
       <section className="dashboard-panel" aria-labelledby="continue-title">
@@ -197,16 +235,23 @@ export function LearningDashboard({
           </Link>
         </div>
         {inProgress.length === 0 ? (
-          <p className="empty-state">还没有进行中的条目，去路线或课程目录选一个今天能打开的资料。</p>
+          <p className="empty-state">
+            还没有进行中的条目，去路线或课程目录选一个今天能打开的资料。
+          </p>
         ) : (
           <div className="dashboard-list">
             {inProgress.slice(0, 3).map((progress) => (
               <div className="dashboard-list-row" key={progress.itemId}>
                 <div>
-                  <strong>{itemTitles.get(progress.itemId) ?? progress.itemId}</strong>
+                  <strong>
+                    {itemTitles.get(progress.itemId) ?? progress.itemId}
+                  </strong>
                   <small>已保存位置 {progress.position}px</small>
                 </div>
-                <Link className="button button-small" href={`/read/${progress.itemId}`}>
+                <Link
+                  className="button button-small"
+                  href={`/read/${progress.itemId}`}
+                >
                   继续阅读
                 </Link>
               </div>
@@ -228,6 +273,8 @@ export function LearningDashboard({
             stage.taskIds.map((taskId) => (
               <label className="dashboard-task" key={taskId}>
                 <input
+                  id={taskId}
+                  name={taskId}
                   type="checkbox"
                   checked={completedTasks.has(taskId)}
                   onChange={(event) =>
@@ -304,11 +351,17 @@ export function LearningDashboard({
               <label>
                 <span>范围</span>
                 <select
+                  id="note-scope-type"
+                  name="note-scope-type"
                   value={noteScopeType}
                   onChange={(event) => {
                     const next = event.target.value as "item" | "stage";
                     setNoteScopeType(next);
-                    setNoteScopeId(next === "item" ? items[0]?.id ?? "" : stages[0]?.id ?? "");
+                    setNoteScopeId(
+                      next === "item"
+                        ? (items[0]?.id ?? "")
+                        : (stages[0]?.id ?? ""),
+                    );
                   }}
                 >
                   <option value="item">课程</option>
@@ -317,7 +370,12 @@ export function LearningDashboard({
               </label>
               <label>
                 <span>对象</span>
-                <select value={noteScopeId} onChange={(event) => setNoteScopeId(event.target.value)}>
+                <select
+                  id="note-scope-id"
+                  name="note-scope-id"
+                  value={noteScopeId}
+                  onChange={(event) => setNoteScopeId(event.target.value)}
+                >
                   {(noteScopeType === "item" ? items : stages).map((entry) => (
                     <option value={entry.id} key={entry.id}>
                       {entry.title}
@@ -329,6 +387,8 @@ export function LearningDashboard({
             <label>
               <span>Markdown 笔记</span>
               <textarea
+                id="note-body"
+                name="note-body"
                 value={noteBody}
                 maxLength={20_000}
                 onChange={(event) => setNoteBody(event.target.value)}
@@ -347,8 +407,8 @@ export function LearningDashboard({
                   <div>
                     <strong>
                       {note.scopeType === "item"
-                        ? itemTitles.get(note.scopeId) ?? note.scopeId
-                        : stageTitles.get(note.scopeId) ?? note.scopeId}
+                        ? (itemTitles.get(note.scopeId) ?? note.scopeId)
+                        : (stageTitles.get(note.scopeId) ?? note.scopeId)}
                     </strong>
                     <p>{note.body}</p>
                   </div>
@@ -366,7 +426,9 @@ export function LearningDashboard({
                     </button>
                     <button
                       type="button"
-                      onClick={() => void send({ action: "note-delete", noteId: note.id })}
+                      onClick={() =>
+                        void send({ action: "note-delete", noteId: note.id })
+                      }
                     >
                       删除
                     </button>
@@ -408,7 +470,12 @@ export function LearningDashboard({
         >
           <label>
             <span>阶段</span>
-            <select value={outcomeStageId} onChange={(event) => setOutcomeStageId(event.target.value)}>
+            <select
+              id="outcome-stage-id"
+              name="outcome-stage-id"
+              value={outcomeStageId}
+              onChange={(event) => setOutcomeStageId(event.target.value)}
+            >
               {stages.map((stage) => (
                 <option value={stage.id} key={stage.id}>
                   {stage.title}
@@ -419,9 +486,13 @@ export function LearningDashboard({
           <label>
             <span>类型</span>
             <select
+              id="outcome-kind"
+              name="outcome-kind"
               value={outcomeKind}
               onChange={(event) =>
-                setOutcomeKind(event.target.value as "repository" | "demo" | "reflection")
+                setOutcomeKind(
+                  event.target.value as "repository" | "demo" | "reflection",
+                )
               }
             >
               <option value="repository">GitHub 仓库</option>
@@ -433,6 +504,8 @@ export function LearningDashboard({
             <label className="form-wide">
               <span>总结</span>
               <textarea
+                id="outcome-summary"
+                name="outcome-summary"
                 value={outcomeSummary}
                 maxLength={20_000}
                 onChange={(event) => setOutcomeSummary(event.target.value)}
@@ -443,6 +516,8 @@ export function LearningDashboard({
             <label className="form-wide">
               <span>URL</span>
               <input
+                id="outcome-url"
+                name="outcome-url"
                 value={outcomeUrl}
                 onChange={(event) => setOutcomeUrl(event.target.value)}
                 placeholder="https://github.com/…"
@@ -456,13 +531,19 @@ export function LearningDashboard({
         </form>
         <div className="dashboard-outcomes">
           {state.stageOutcomes.length === 0 ? (
-            <p className="empty-state">提交一条仓库、演示或总结，阶段才可以主动确认完成。</p>
+            <p className="empty-state">
+              提交一条仓库、演示或总结，阶段才可以主动确认完成。
+            </p>
           ) : (
             state.stageOutcomes.map((outcome) => (
               <article className="dashboard-outcome" key={outcome.id}>
                 <div>
-                  <strong>{stageTitles.get(outcome.stageId) ?? outcome.stageId}</strong>
-                  <span>{outcome.kind} · {outcome.confirmedAt ? "已确认" : "待确认"}</span>
+                  <strong>
+                    {stageTitles.get(outcome.stageId) ?? outcome.stageId}
+                  </strong>
+                  <span>
+                    {outcome.kind} · {outcome.confirmedAt ? "已确认" : "待确认"}
+                  </span>
                   {outcome.url ? <a href={outcome.url}>{outcome.url}</a> : null}
                   {outcome.summary ? <p>{outcome.summary}</p> : null}
                 </div>
@@ -471,7 +552,10 @@ export function LearningDashboard({
                     <button
                       type="button"
                       onClick={() =>
-                        void send({ action: "confirm-stage", stageId: outcome.stageId })
+                        void send({
+                          action: "confirm-stage",
+                          stageId: outcome.stageId,
+                        })
                       }
                     >
                       确认阶段完成
@@ -479,7 +563,12 @@ export function LearningDashboard({
                   ) : null}
                   <button
                     type="button"
-                    onClick={() => void send({ action: "outcome-delete", outcomeId: outcome.id })}
+                    onClick={() =>
+                      void send({
+                        action: "outcome-delete",
+                        outcomeId: outcome.id,
+                      })
+                    }
                   >
                     删除
                   </button>
@@ -488,7 +577,9 @@ export function LearningDashboard({
             ))
           )}
         </div>
-        <span className="learning-state-message" role="status">{message}</span>
+        <span className="learning-state-message" role="status">
+          {message}
+        </span>
       </section>
     </div>
   );

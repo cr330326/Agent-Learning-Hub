@@ -9,7 +9,10 @@ import {
 } from "../../../lib/catalog";
 import {
   readLocalDocument,
+  listLocalChapters,
+  LocalChapterNotAllowlistedError,
   readOwnedDocument,
+  readLocalDocumentSource,
   OwnedDocumentNotFoundError,
   UnsupportedLocalDocumentError,
 } from "../../../modules/reader/document-source";
@@ -23,10 +26,13 @@ export const dynamic = "force-dynamic";
 
 export default async function ReaderPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ itemId: string }>;
+  searchParams: Promise<{ chapter?: string }>;
 }) {
   const { itemId } = await params;
+  const { chapter: requestedChapter } = await searchParams;
   const catalog = await loadPublicCatalog();
   const item = catalog.items.find(({ id }) => id === itemId);
   if (!item) notFound();
@@ -61,15 +67,26 @@ export default async function ReaderPage({
   try {
     document =
       resolved.kind === "local-document"
-        ? await readLocalDocument(item, { localRoot: getLocalMaterialRoot() })
+        ? await readLocalDocument(item, {
+            localRoot: getLocalMaterialRoot(),
+            relativePath: requestedChapter,
+          })
         : await readOwnedDocument(item);
   } catch (error) {
     if (
       error instanceof OwnedDocumentNotFoundError ||
       error instanceof LocalFileNotFoundError ||
       error instanceof UnsupportedLocalDocumentError ||
-      error instanceof UnsafeLocalPathError
+      error instanceof UnsafeLocalPathError ||
+      error instanceof LocalChapterNotAllowlistedError
     ) {
+      const sourceView =
+        error instanceof UnsupportedLocalDocumentError
+          ? await readLocalDocumentSource(item, {
+              localRoot: getLocalMaterialRoot(),
+              relativePath: requestedChapter,
+            }).catch(() => null)
+          : null;
       return (
         <main className="page page-width reader-fallback">
           <p className="eyebrow">
@@ -83,10 +100,28 @@ export default async function ReaderPage({
               ? "这个本地文件格式暂不支持安全的站内渲染。"
               : error instanceof UnsafeLocalPathError
                 ? "本地素材路径没有通过安全校验。"
-                : resolved.kind === "local-document"
-                  ? "本地素材暂时不可用。请返回课程导览查看上游回退入口。"
-                  : "目录中登记了站内文章，但正文文件暂时不可用。请返回课程导览查看最新访问入口."}
+                : error instanceof LocalChapterNotAllowlistedError
+                  ? "这个章节不在课程清单允许的本地路径中。"
+                  : resolved.kind === "local-document"
+                    ? "本地素材暂时不可用。请返回课程导览查看上游回退入口。"
+                    : "目录中登记了站内文章，但正文文件暂时不可用。请返回课程导览查看最新访问入口."}
           </p>
+          {sourceView ? (
+            <section
+              className="reader-source-view"
+              aria-labelledby="reader-source-view-title"
+            >
+              <p className="eyebrow" id="reader-source-view-title">
+                PURE SOURCE VIEW
+              </p>
+              <p>
+                该本地文件不适合安全渲染，以下仅显示原始文本，不执行其中的脚本或标记。
+              </p>
+              <pre>
+                <code>{sourceView.markdown}</code>
+              </pre>
+            </section>
+          ) : null}
           {item.sourceUrl ? (
             <a
               className="button button-primary"
@@ -106,7 +141,17 @@ export default async function ReaderPage({
     throw error;
   }
 
-  const rendered = renderMarkdownDocument(document.markdown);
+  const rendered = renderMarkdownDocument(document.markdown, {
+    resolveImageSrc:
+      resolved.kind === "local-document"
+        ? (source) =>
+            `/api/local-image?itemId=${encodeURIComponent(item.id)}&path=${encodeURIComponent(source)}`
+        : undefined,
+  });
+  const localChapters =
+    resolved.kind === "local-document"
+      ? await listLocalChapters(item, { localRoot: getLocalMaterialRoot() })
+      : [];
 
   return (
     <main className="page page-width reader-page">
@@ -130,6 +175,24 @@ export default async function ReaderPage({
           </nav>
         ) : null}
       </div>
+      {localChapters.length > 0 ? (
+        <nav className="reader-chapters" aria-label="本地章节导航">
+          <span className="eyebrow">LOCAL CHAPTERS</span>
+          {localChapters.map((localChapter) => (
+            <Link
+              href={`/read/${item.id}?chapter=${encodeURIComponent(localChapter.relativePath)}`}
+              key={localChapter.relativePath}
+              aria-current={
+                document.sourcePath === localChapter.relativePath
+                  ? "page"
+                  : undefined
+              }
+            >
+              {localChapter.label}
+            </Link>
+          ))}
+        </nav>
+      ) : null}
       <div
         className="reader-body"
         dangerouslySetInnerHTML={{ __html: rendered.html }}

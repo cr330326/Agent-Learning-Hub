@@ -39,38 +39,41 @@ export function LearningStateControls({ itemId, autoStart = false }: Props) {
   const [message, setMessage] = useState("");
   const saveTimer = useRef<number | null>(null);
 
-  const saveProgress = useCallback(async (
-    nextStatus: ItemProgressStatus,
-    nextPosition = window.scrollY,
-    tokenOverride = csrfToken,
-  ) => {
-    if (!tokenOverride) return;
-    const response = await fetch("/api/state", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        "x-csrf-token": tokenOverride,
-      },
-      body: JSON.stringify({
-        action: "item-progress",
-        itemId,
-        status: nextStatus,
-        position: Math.max(0, Math.round(nextPosition)),
-      }),
-    });
-    if (!response.ok) {
-      setMessage("状态保存失败，请稍后再试。");
-      return;
-    }
-    const payload = (await response.json()) as {
-      itemProgress?: { status: ItemProgressStatus; position: number };
-    };
-    if (payload.itemProgress) {
-      setStatus(payload.itemProgress.status);
-      setPosition(payload.itemProgress.position);
-    }
-    setMessage("已保存");
-  }, [csrfToken, itemId]);
+  const saveProgress = useCallback(
+    async (
+      nextStatus: ItemProgressStatus,
+      nextPosition = window.scrollY,
+      tokenOverride = csrfToken,
+    ) => {
+      if (!tokenOverride) return;
+      const response = await fetch("/api/state", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          "x-csrf-token": tokenOverride,
+        },
+        body: JSON.stringify({
+          action: "item-progress",
+          itemId,
+          status: nextStatus,
+          position: Math.max(0, Math.round(nextPosition)),
+        }),
+      });
+      if (!response.ok) {
+        setMessage("状态保存失败，请稍后再试。");
+        return;
+      }
+      const payload = (await response.json()) as {
+        itemProgress?: { status: ItemProgressStatus; position: number };
+      };
+      if (payload.itemProgress) {
+        setStatus(payload.itemProgress.status);
+        setPosition(payload.itemProgress.position);
+      }
+      setMessage("已保存");
+    },
+    [csrfToken, itemId],
+  );
 
   const toggleBookmark = useCallback(async () => {
     if (!csrfToken) return;
@@ -117,8 +120,9 @@ export function LearningStateControls({ itemId, autoStart = false }: Props) {
         setPosition(itemProgress.position);
       }
       setBookmarked(
-        payload.state?.bookmarks.some((bookmark) => bookmark.itemId === itemId) ??
-          false,
+        payload.state?.bookmarks.some(
+          (bookmark) => bookmark.itemId === itemId,
+        ) ?? false,
       );
       setReady(true);
       if (autoStart && itemProgress?.status !== "completed") {
@@ -155,7 +159,9 @@ export function LearningStateControls({ itemId, autoStart = false }: Props) {
   }, [authenticated, autoStart, csrfToken, ready, saveProgress, status]);
 
   if (!ready) {
-    return <section className="learning-state-panel">正在读取学习状态…</section>;
+    return (
+      <section className="learning-state-panel">正在读取学习状态…</section>
+    );
   }
 
   if (!authenticated) {

@@ -19,7 +19,9 @@ export function ensureLocalUser(repository: LearningStateRepository) {
   const existing = repository.getUser(LOCAL_USER_ID);
   if (existing) {
     if (existing.mode !== "local") {
-      throw new Error("The fixed local identity is already owned by another mode.");
+      throw new Error(
+        "The fixed local identity is already owned by another mode.",
+      );
     }
     return existing;
   }

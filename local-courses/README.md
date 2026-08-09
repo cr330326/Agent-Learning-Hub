@@ -1,133 +1,85 @@
-# Local Courses
+# Local Material
 
-从 GitHub 下载到本地的 AI Agent 课程 / 教程 / 源码素材。约 11 GB，8800+ 篇 Markdown。
+`local-courses/` 是开发者本机保存的第三方 AI Agent 课程、教程和源码素材目录。它是 Local Mode 的只读素材库，不是本项目的公开内容仓库。
 
-目录按**四条学习轨道**组织，`learning-site/` 的站点结构与之一一对应——改这里的目录名，
-就必须同步改 `learning-site/data.js`（校验办法见文末）。
+## 归属与交付边界
 
-| 轨道 | 定位 | 体积 | Markdown |
-| --- | --- | --- | --- |
-| `Learning/` | 系统课程与教材：从零建立 Agent 认知 | 697 MB | 472 |
-| `Agentic/` | 框架、记忆层与 Harness 理论 | 3.7 GB | 2548 |
-| `AICoding/` | Coding agent 的源码、文档与插件生态 | 5.6 GB | 5630 |
-| `Application/` | 落地应用与工具：agent 装进产品之后长什么样 | 1.4 GB | 213 |
+- 素材正文、附件、构建产物和嵌套 Git 仓库不进入本项目 Git。
+- Cloud Mode 不复制、不打包、不挂载也不代理此目录。
+- Local Mode 仅通过 `LOCAL_MATERIAL_ROOT` 读取，并要求目录白名单、只读挂载和路径穿越保护。
+- 课程目录中的第三方条目必须保留作者、许可证状态和上游地址；本地拥有一份副本不等于获得公开发布许可。
+- 本文件是 `local-courses/` 下唯一允许进入 Git 的文件，用于记录元数据和操作约定。
 
-> `AI-Coding/` 已改名为 `AICoding/`。站点侧只需改 `data.js` 里 `tracks[].dir`
-> 和引用字符串，轨道 id（`ai-coding`）保持不变，用户已存的进度不受影响。
+机器可读事实源是 [`docs/content-boundaries.json`](../docs/content-boundaries.json)，规则说明见 [`docs/content-boundaries.md`](../docs/content-boundaries.md)。
 
----
+## 目录和清单
 
-## Learning · 系统课程与教材
-
-| 项目 | 路径 | 说明 | 站点状态 |
-| --- | --- | --- | --- |
-| Hello-Agents | `Learning/hello-agents/` | Datawhale 中文系统教程：16 章正文 + 12 扩展章节 + 2 附加章 + 35 个共创项目 + 逐章 code | ✅ 阅读器 5 组 |
-| claw0 | `Learning/claw0/` | 从 agent loop 到 OpenClaw-like gateway。`sessions/zh/` 下 10 章中文讲义 + 配套 Python | ✅ 阅读器 2 组 |
-| Easy Agent | `Learning/easy-agent/` | ConardLi 从零复刻 Claude Code 的终端 Agent，`step/` 下 step1–18 渐进源码 | ✅ README |
-| easy-learn-ai | `Learning/easy-learn-ai/` | ConardLi 的 AI 学习知识网站源码，`ai-sites/` 下 50+ 概念可视化 | ✅ README |
-| Hello-Agents PDF | `Learning/Book/Hello-Agents-V1.0.0-20251103.pdf` | 正式版电子书（74 MB） | 📄 浏览器直开 |
-| LLM Book | `Learning/Book/LLMBook.pdf` | 大语言模型基础教材（10 MB） | 📄 浏览器直开 |
-| Palantir 本体论 | `Learning/Book/Palantir-Ontology/本体论.pdf` | 企业本体建模中文资料（18 MB） | 📄 浏览器直开 |
-
-## Agentic · 框架、记忆与理论
-
-| 项目 | 路径 | 说明 | 站点状态 |
-| --- | --- | --- | --- |
-| Learn Harness Engineering | `Agentic/Document/learn-harness-engineering/` | 12 讲中文理论课 + 6 个实战项目 + 技能与资料库 | ✅ 阅读器 1 组（16 篇） |
-| Harness Books | `Agentic/Document/harness-books/` | 双册短书：Book 1 拆 Claude Code，Book 2 对比 CC 与 Codex | ✅ 阅读器 2 组 |
-| 驾驭工程：从 CC 到 AI Coding | `Agentic/Document/harness-engineering-from-cc-to-ai-coding/` | 基于 Claude Code v2.1.88 逆向源码的 30+ 章技术书 | ✅ 阅读器 3 组 |
-| mem0 | `Agentic/Memory/mem0/` | 生产级 agent 记忆层：抽取 / 存储 / 检索三段式管道 | ✅ README + LLM.md |
-| LangChain | `Agentic/Langchain-ai/langchain/` | 链式调用框架本体 | ✅ README |
-| LangGraph | `Agentic/Langchain-ai/langgraph/` | 有状态图式 agent 编排 | ✅ README |
-| DeepAgents | `Agentic/Langchain-ai/deepagents/` | 长任务深度 agent：子 agent + 计划文件 | ✅ README + AGENTS.md |
-| CrewAI | `Agentic/crewAI/` | 团队 + 角色 + 任务模型的多 agent 框架 | ✅ README |
-| MetaGPT | `Agentic/MetaGPT/` | 把软件公司 SOP 编码成多 agent 协作 | ✅ README |
-| AutoGPT | `Agentic/AutoGPT/` | 第一代自主 agent，现已演进为带可视化编排的 Platform | ✅ README |
-| OpenHands | `Agentic/OpenHands/` | 面向真实软件工程任务的 agent 平台（含完整前端与运行时） | ✅ README |
-| PI | `Agentic/PI/pi-mono/` | PI agent toolkit monorepo | ✅ README + AGENTS.md |
-| openworker | `Agentic/openworker/` | 「数字同事」形态：personas / connectors / memory / TUI + GUI | ✅ README |
-| AI Agent Deep Dive | `Agentic/ai-agent-deep-dive/` | 现代 coding agent 逐项拆解：17 篇短文 + 2 版 PDF 报告 | ✅ 阅读器 1 组（18 篇） |
-| Multica | `Agentic/multica/` | 人机协作平台：CLI + daemon + Web，含自托管与架构交接审计 | ✅ 阅读器 7 篇 |
-| Open Agent SDK | `Agentic/open-agent-sdk-typescript/` | 进程内跑完整 agent loop 的 TS SDK，兼容 Anthropic / OpenAI | ✅ README |
-
-## AICoding · Coding Agent 与 Harness
-
-### Claude 生态（`AICoding/claude/`）
-
-| 项目 | 路径 | 说明 | 站点状态 |
-| --- | --- | --- | --- |
-| learn-claude-code | `claude/document/learn-claude-code/` | 从零复刻 Claude Code-like nano agent，s01–s20 共 20 章，每章可运行 | ✅ 阅读器 1 组（21 篇） |
-| Claude Code Guide | `claude/document/claude-code-guide/` | 官方用法指南整理 | ✅ README |
-| ClaudeMD 范例 | `claude/document/ClaudeMD/` | CLAUDE.md 工程范例 + Karpathy Skills 中文版 | ✅ 3 篇 |
-| 源码逆向分析 | `claude/code/claude-code-analysis/` | 20 篇专题分析：架构 / 安全 / 记忆 / 工具 / Skills / MCP / 沙箱 / 上下文 | ✅ 阅读器 1 组（13 篇） |
-| 源码合集 | `claude/code/collection-claude-code-source-code/` | 原始源码 + claw-code + nano-claude-code + 深度解读 | ✅ 中文 README |
-| 源码解读 | `claude/code/claude-code-source-code/` | 多语言 README（中/英/日/韩）+ `docs/zh/` 5 篇专题 | ✅ 中文 README |
-| Claude Code Lens | `claude/code/claude-code-lens/` | 本地可观测代理：记录 system prompt / tool calls / token | ✅ README |
-| awesome-claude-code | `claude/code/awesome-claude-code/` | 生态精选清单（72 KB README，当检索表用） | ✅ README |
-| claude-init / templates | `claude/code/claude-init/`、`claude-code-templates/` | 项目初始化脚手架与组件模板市场 | ✅ 3 篇 |
-| claude-code-haha / rev | `claude/code/claude-code-haha/`、`claude-code-rev/` | 第三方重实现与逆向实验，适合和原版对照 | ✅ 3 篇 |
-| 插件 ×5 | `claude/plugins/` | claude-mem（记忆压缩）、claudian、claude-mermaid、claude-stt、auto-mode-unlock（含 26 KB 逆向方法论） | ✅ 阅读器 8 篇 |
-
-### 其他 Coding Agent
-
-| 项目 | 路径 | 说明 | 站点状态 |
-| --- | --- | --- | --- |
-| OpenClaw | `AICoding/openclaw/` | 本地优先个人 agent。`doc/openclaw_guide/` 16 章官方指南 + 附录；`openclaw-code/` 本体源码；`channels/openclaw-lark/` 飞书通道 | ✅ 阅读器 1 组（23 篇） |
-| OpenAI Codex | `AICoding/codex/codex-code/` | 官方 coding agent CLI（Rust + TS），沙箱与 approval 流程 | ✅ README |
-| OpenCode 中文实战课 | `AICoding/opencode/learn-opencode/` | 零基础中文教程：安装、模型、界面、Agent、MCP | ✅ 阅读器 11 篇 |
-| OpenCode 生态 | `AICoding/opencode/` | `code/opencode/` 本体 + `awesome-opencode/` 索引 + openchamber / openwork / supermemory + `plugins/wakatime` | ✅ 7 篇 |
-| Hermes Agent | `AICoding/hermes/` | 自进化 agent：learning loop、skill 自创建、跨会话记忆。含 2 篇中文深度调研 | ✅ 阅读器 4 篇 |
-| CyberClaw | `AICoding/CyberClaw/` | 企业级透明可控智能体：白盒决策、两段式安全调用、双水位记忆 | ✅ 阅读器 4 篇 |
-| MiMo-Code | `AICoding/MiMo-Code/` | 小米开源终端 coding assistant，monorepo 组织 | ✅ README + AGENTS.md |
-
-## Application · 落地应用与工具
-
-学到最后，东西得能装进产品。这条轨道收的是成品应用和开发框架，不是教程——
-读法是「看它怎么做的」，不是「跟着做一遍」。
-
-| 项目 | 路径 | 说明 | 站点状态 |
-| --- | --- | --- | --- |
-| cc-switch | `Application/cc-switch/` | Claude Code / Codex 供应商切换器（Tauri）。中文用户手册 5 部分 + 6 篇中文路由指南 | ✅ 阅读器 1 组（19 篇） |
-| CodexSwitch | `Application/CodexSwitch/` | 多个 Codex / OpenAI OAuth 账号管理（Tauri 2），含 38 KB 完整 SPEC | ✅ 阅读器 5 篇 |
-| WorkAny | `Application/workany/` | 自然语言驱动的桌面 AI agent：实时代码生成、工具执行、工作区管理 | ✅ 阅读器 2 篇 |
-| Solon-AI | `Application/solon-ai/` | Java 全场景 AI 应用开发框架：core / MCP / A2A / ANP / Flow / RAG 模块化拆分 | ✅ 阅读器 4 篇 |
-
----
-
-## 未下载
-
-| 项目 | 原因 |
-| --- | --- |
-| microsoft/ai-agents-for-beginners | 12 课系统化入门，但仓库约 3.7 GB 含视频素材。站点保留外链卡片，建议只 clone 文档部分 |
-
----
-
-## 怎么用
-
-在仓库根目录：
+目录结构应与 `content/` 课程目录中声明的 `localPath` 一致；不要依据旧站 `learning-site/data.js` 手工维护第二套清单。当前阶段、课程、路径和异常数量由脚本生成：
 
 ```bash
-./start-site.sh
+node scripts/baseline-report.mjs --output-dir reports/baseline
+node scripts/audit-content-boundaries.mjs --output-dir reports/content-boundaries
 ```
 
-它会先校验课程路径，再起本地服务并打开 <http://localhost:8765/learning-site/>。
-阅读器会自动把 GitHub raw 图片地址转成本地路径、记录阅读位置、标记已完成章节。
+基线统计见 [`reports/baseline/baseline.md`](../reports/baseline/baseline.md)，内容边界审计见 [`reports/content-boundaries/content-boundaries.md`](../reports/content-boundaries/content-boundaries.md)。不要把目录大小、Markdown 数量或阅读器条目数量写死在此文件；这些数字会随素材仓库变化。
 
-## 动过这个目录之后必须做的事
+## Local Mode 启动
 
-站点的 314 条阅读器条目和 40 张课程卡片，路径全部硬编码在 `learning-site/data.js`。
-这里的任何改动都会以两种方式之一悄悄破坏站点：
-
-- **改名或移动** → `data.js` 的引用指向空气。页面照常渲染，只有点开某一章才 404。
-  （`AI-Coding/` → `AICoding/` 那次一口气废掉 119 条。）
-- **新下载课程** → 目录躺在磁盘上，`data.js` 里没人提，站点上压根不存在。这一类
-  连 404 都没有，只会一直没人发现。
-
-一条命令同时查两个方向：
+从仓库根目录执行：
 
 ```bash
-cd learning-site && python3 scripts/audit_paths.py
+docker compose -f docker-compose.yml -f docker-compose.local.yml up --build
 ```
 
-失效路径会列清单并以非 0 退出码结束；未收录的项目只提示，提醒你去 `data.js` 补
-`courses` / `menuData`。`start-site.sh` 每次启动都会自动跑它。
+Compose 会将本目录只读挂载到容器的 `/data/local-courses`。如不使用 Docker，可在 `code/` 启动开发服务并显式指定：
+
+```bash
+DEPLOYMENT_MODE=local \
+LOCAL_MATERIAL_ROOT="$PWD/local-courses" \
+npm run dev --prefix code
+```
+
+素材缺失、正文格式不支持或上游仍可用时，页面应给出安全回退；不可把本地文件路径直接暴露到云端响应。
+
+## 检查、审计和索引
+
+在仓库根目录运行：
+
+```bash
+npm run materials --prefix code check
+npm run materials --prefix code audit
+npm run materials --prefix code reindex
+```
+
+- `check` 检查目录白名单引用的 Git 仓库 freshness，只读执行，不会 fetch、pull 或修改工作区。
+- `audit` 校验 schema、路径、访问策略和本地文件边界，生成 `reports/materials/audit/`。
+- `reindex` 先审计，再仅索引允许访问的站内正文和本地白名单章节，生成 `reports/materials/search-index.json`。
+
+如需检查某个非默认根目录：
+
+```bash
+npm run materials --prefix code check \
+  --local-material-root /path/to/local-courses \
+  --output-dir /path/to/material-reports
+```
+
+## 单课程更新
+
+更新是显式、单课程、fast-forward-only 操作：
+
+```bash
+npm run materials --prefix code update <course-id> --yes
+```
+
+命令会拒绝未知课程、没有 `localPath` 的课程、非 Git 目录、dirty working tree、分叉历史和无法确认的仓库状态；成功后自动运行本地内容审计并重建搜索索引。更新前后请保留报告，便于定位素材变化。
+
+## 存储建议
+
+素材可能很大，建议：
+
+- 将本目录放在独立磁盘或按需挂载的路径，并通过 `--local-material-root` 或 `LOCAL_MATERIAL_ROOT` 指向它。
+- 保留每个素材仓库自己的 `.git`，不要把多个仓库合并成一个不可追踪的目录。
+- 定期清理仓库自身的构建缓存、虚拟环境和下载产物；先确认它们不是课程正文或复现实验依赖。
+- 不要把 SQLite、备份、`.env`、Token、凭据或私人笔记复制到这里并提交。
+
+旧站启动脚本 `./start-site.sh` 只用于迁移基线；它不会替代新应用的目录、审计、索引和双模式规则。

@@ -10,10 +10,11 @@ import {
 } from "../../../modules/learning-state/repository";
 import {
   CSRF_COOKIE,
-  getRequestUser,
+  getRequestUserAsync,
   readCookie,
 } from "../../../modules/auth/request-auth";
 import { LOCAL_SESSION_VALUE } from "../../../modules/auth/local-auth";
+import { stateWriteRateLimiter } from "../../../modules/auth/rate-limit";
 
 export const dynamic = "force-dynamic";
 
@@ -96,15 +97,29 @@ export async function handleStateRequest(
   mode: DeploymentMode,
 ): Promise<Response> {
   try {
-    const user = getRequestUser(request, repository, mode);
+    const user = await getRequestUserAsync(request, repository, mode);
     if (!user) return Response.json({ error: "需要登录。" }, { status: 401 });
 
     if (request.method === "GET") {
       return stateResponse(repository, user.id);
     }
 
+    const rateLimit = stateWriteRateLimiter.consume(`state:${user.id}`);
+    if (!rateLimit.allowed) {
+      return Response.json(
+        { error: "请求过于频繁，请稍后再试。" },
+        {
+          status: 429,
+          headers: { "retry-after": String(rateLimit.retryAfterSeconds) },
+        },
+      );
+    }
+
     if (!hasValidCsrfToken(request, mode)) {
-      return Response.json({ error: "缺少或无效的 CSRF token。" }, { status: 403 });
+      return Response.json(
+        { error: "缺少或无效的 CSRF token。" },
+        { status: 403 },
+      );
     }
 
     const payload = await readPayload(request);
@@ -115,12 +130,13 @@ export async function handleStateRequest(
         userId: user.id,
         itemId: asString(payload, "itemId"),
         status: asString(payload, "status") as
-          | "not_started"
-          | "in_progress"
-          | "completed",
+          "not_started" | "in_progress" | "completed",
         position: asOptionalInteger(payload, "position"),
       });
-      return Response.json({ itemProgress, state: repository.getStateSnapshot(user.id) });
+      return Response.json({
+        itemProgress,
+        state: repository.getStateSnapshot(user.id),
+      });
     }
 
     if (action === "task-progress") {
@@ -129,7 +145,10 @@ export async function handleStateRequest(
         taskId: asString(payload, "taskId"),
         completed: asBoolean(payload, "completed"),
       });
-      return Response.json({ taskProgress, state: repository.getStateSnapshot(user.id) });
+      return Response.json({
+        taskProgress,
+        state: repository.getStateSnapshot(user.id),
+      });
     }
 
     if (action === "bookmark") {

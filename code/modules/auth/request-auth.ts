@@ -5,13 +5,11 @@ import type {
   LearningStateRepository,
   UserRecord,
 } from "../learning-state/repository";
-import {
-  ensureLocalUser,
-  LOCAL_SESSION_COOKIE,
-} from "./local-auth";
+import { getBetterAuth } from "./better-auth";
+import { ensureLocalUser, LOCAL_SESSION_COOKIE } from "./local-auth";
+import { CLOUD_SESSION_COOKIE } from "./auth-constants";
 
-export const CLOUD_SESSION_COOKIE = "agent-learning-session";
-export const CSRF_COOKIE = "agent-learning-csrf";
+export { CLOUD_SESSION_COOKIE, CSRF_COOKIE } from "./auth-constants";
 
 export function createSessionToken(): string {
   return randomBytes(32).toString("base64url");
@@ -52,6 +50,27 @@ export function getRequestUser(
     return null;
   }
   return repository.getUser(session.userId);
+}
+
+export async function getRequestUserAsync(
+  request: Request,
+  repository: LearningStateRepository,
+  mode: DeploymentMode,
+): Promise<UserRecord | null> {
+  if (mode === "local") {
+    return ensureLocalUser(repository);
+  }
+
+  try {
+    const session = await getBetterAuth().api.getSession({
+      headers: request.headers,
+    });
+    if (!session) return null;
+    return repository.getUser(session.user.id);
+  } catch {
+    // Auth configuration and cookie verification failures fail closed.
+    return null;
+  }
 }
 
 export function localSessionCookieName(): string {

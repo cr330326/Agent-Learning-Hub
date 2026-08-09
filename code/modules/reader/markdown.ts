@@ -9,6 +9,10 @@ export type MarkdownDocument = {
   headings: MarkdownHeading[];
 };
 
+export type MarkdownRenderOptions = {
+  resolveImageSrc?: (source: string) => string | null;
+};
+
 function escapeHtml(value: string) {
   return value
     .replaceAll("&", "&amp;")
@@ -35,9 +39,30 @@ function removeEventAttributes(value: string) {
   return value.replace(/\bon[a-z]+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, "");
 }
 
-function renderInline(value: string) {
+function safeImageHref(
+  value: string,
+  resolveImageSrc?: (source: string) => string | null,
+) {
+  const href = value.trim();
+  const directHref = safeHref(href);
+  if (directHref !== null) return directHref;
+  if (
+    resolveImageSrc &&
+    !href.startsWith("/") &&
+    !href.includes("\\") &&
+    !href.includes("\u0000") &&
+    href
+      .split("/")
+      .every((segment) => segment !== "" && segment !== "." && segment !== "..")
+  ) {
+    return resolveImageSrc(href);
+  }
+  return null;
+}
+
+function renderInline(value: string, options: MarkdownRenderOptions = {}) {
   const tokenPattern =
-    /`([^`]+)`|\[([^\]]+)\]\(([^)\s]+)\)|\*\*([^*]+)\*\*|__([^_]+)__|\*([^*]+)\*|_([^_]+)_/g;
+    /!\[([^\]]*)\]\(([^)\s]+)\)|`([^`]+)`|\[([^\]]+)\]\(([^)\s]+)\)|\*\*([^*]+)\*\*|__([^_]+)__|\*([^*]+)\*|_([^_]+)_/g;
   let output = "";
   let cursor = 0;
 
@@ -45,19 +70,26 @@ function renderInline(value: string) {
     const index = match.index ?? 0;
     output += escapeHtml(value.slice(cursor, index));
 
-    if (match[1] !== undefined) {
-      output += `<code>${escapeHtml(match[1])}</code>`;
-    } else if (match[2] !== undefined && match[3] !== undefined) {
-      const href = safeHref(match[3]);
-      if (href === null) {
-        output += escapeHtml(match[2]);
+    if (match[1] !== undefined && match[2] !== undefined) {
+      const src = safeImageHref(match[2], options.resolveImageSrc);
+      if (src === null) {
+        output += escapeHtml(match[1]);
       } else {
-        output += `<a href="${escapeHtml(href)}" target="_blank" rel="noreferrer">${renderInline(match[2])}</a>`;
+        output += `<img src="${escapeHtml(src)}" alt="${escapeHtml(match[1])}" loading="lazy" />`;
       }
-    } else if (match[4] !== undefined || match[5] !== undefined) {
-      output += `<strong>${renderInline(match[4] ?? match[5] ?? "")}</strong>`;
+    } else if (match[3] !== undefined) {
+      output += `<code>${escapeHtml(match[3])}</code>`;
+    } else if (match[4] !== undefined && match[5] !== undefined) {
+      const href = safeHref(match[5]);
+      if (href === null) {
+        output += escapeHtml(match[4]);
+      } else {
+        output += `<a href="${escapeHtml(href)}" target="_blank" rel="noreferrer">${renderInline(match[4], options)}</a>`;
+      }
+    } else if (match[6] !== undefined || match[7] !== undefined) {
+      output += `<strong>${renderInline(match[6] ?? match[7] ?? "", options)}</strong>`;
     } else {
-      output += `<em>${renderInline(match[6] ?? match[7] ?? "")}</em>`;
+      output += `<em>${renderInline(match[8] ?? match[9] ?? "", options)}</em>`;
     }
 
     cursor = index + match[0].length;
@@ -109,7 +141,10 @@ function withoutFrontmatter(markdown: string) {
   return end === -1 ? normalized : normalized.slice(end + 4).replace(/^\n/, "");
 }
 
-export function renderMarkdownDocument(markdown: string): MarkdownDocument {
+export function renderMarkdownDocument(
+  markdown: string,
+  options: MarkdownRenderOptions = {},
+): MarkdownDocument {
   const lines = withoutFrontmatter(markdown).split("\n");
   const headings: MarkdownHeading[] = [];
   const usedIds = new Set<string>();
@@ -148,7 +183,7 @@ export function renderMarkdownDocument(markdown: string): MarkdownDocument {
       const id = slugify(text, usedIds);
       headings.push({ id, text, level });
       blocks.push(
-        `<h${level} id="${id}">${renderInline(heading[2])}</h${level}>`,
+        `<h${level} id="${id}">${renderInline(heading[2], options)}</h${level}>`,
       );
       index += 1;
       continue;
@@ -159,7 +194,7 @@ export function renderMarkdownDocument(markdown: string): MarkdownDocument {
       while (index < lines.length) {
         const item = lines[index].match(/^\s*[-*+]\s+(.+)$/);
         if (!item) break;
-        items.push(`<li>${renderInline(item[1])}</li>`);
+        items.push(`<li>${renderInline(item[1], options)}</li>`);
         index += 1;
       }
       blocks.push(`<ul>${items.join("")}</ul>`);
@@ -171,7 +206,7 @@ export function renderMarkdownDocument(markdown: string): MarkdownDocument {
       while (index < lines.length) {
         const item = lines[index].match(/^\s*\d+[.)]\s+(.+)$/);
         if (!item) break;
-        items.push(`<li>${renderInline(item[1])}</li>`);
+        items.push(`<li>${renderInline(item[1], options)}</li>`);
         index += 1;
       }
       blocks.push(`<ol>${items.join("")}</ol>`);
@@ -187,7 +222,7 @@ export function renderMarkdownDocument(markdown: string): MarkdownDocument {
         index += 1;
       }
       blocks.push(
-        `<blockquote>${renderInline(quoteLines.join("\n"))}</blockquote>`,
+        `<blockquote>${renderInline(quoteLines.join("\n"), options)}</blockquote>`,
       );
       continue;
     }
@@ -205,7 +240,7 @@ export function renderMarkdownDocument(markdown: string): MarkdownDocument {
     const paragraphText = paragraph.some((part) => /<[^>]+>/.test(part))
       ? removeEventAttributes(paragraph.join("\n"))
       : paragraph.join("\n");
-    blocks.push(`<p>${renderInline(paragraphText)}</p>`);
+    blocks.push(`<p>${renderInline(paragraphText, options)}</p>`);
   }
 
   return { html: blocks.join("\n"), headings };

@@ -6,6 +6,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Agent Learning Hub",
   description: "A practical learning environment for Agent engineering.",
+  icons: { icon: "/icon.svg" },
 };
 
 export default function RootLayout({

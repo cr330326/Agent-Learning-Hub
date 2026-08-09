@@ -26,8 +26,10 @@ export function SiteHeader({ mode }: { mode: DeploymentMode }) {
         <nav className="primary-nav" aria-label="主导航">
           <Link href="/roadmap">九阶段路线</Link>
           <Link href="/courses">课程目录</Link>
+          <Link href="/search">搜索</Link>
           <Link href="/projects">项目阶梯</Link>
           <Link href="/learning">我的学习</Link>
+          <Link href="/login">登录</Link>
         </nav>
         <span className={`mode-badge mode-${mode}`}>
           <i aria-hidden="true" />

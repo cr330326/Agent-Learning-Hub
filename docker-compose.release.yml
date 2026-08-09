@@ -1,0 +1,7 @@
+services:
+  app:
+    # Release deployments must pin a version or digest. The base Compose file
+    # is intentionally build-oriented for local development; this override
+    # removes its build section so production cannot silently rebuild source.
+    image: ${APP_IMAGE:?APP_IMAGE must reference a versioned image or digest}
+    build: !reset null

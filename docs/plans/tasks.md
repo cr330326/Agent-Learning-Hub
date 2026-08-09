@@ -1,8 +1,8 @@
 # Agent Learning Hub 实施任务清单
 
-**状态**：实施中（已完成内容基础、公开浏览、云端解析和本地解析安全切片）
+**状态**：实施中（已完成公开浏览、双模式内容解析、个人学习状态、本地 Docker、搜索、素材状态检查、管理员健康摘要和 Better Auth 云端登录；完整运维尚待完成）
 **版本**：1.0  
-**日期**：2026-08-08  
+**日期**：2026-08-09
 **产品规格**：[spec.md](./spec.md)  
 **总体方案**：[Agent Learning Hub 产品与技术方案](./plan.md)
 
@@ -146,7 +146,7 @@
 
 ## 5. Phase 2：公开网站与视觉迁移
 
-### - [ ] T2.1 建立全局布局与视觉系统
+### - [x] T2.1 建立全局布局与视觉系统
 
 **依赖**：T1.1  
 **规格**：PAGE-001、PAGE-007、PAGE-008、NFR-001—NFR-005
@@ -157,6 +157,8 @@
 - 验证键盘导航、焦点样式、语义标题和颜色对比。
 
 **完成证据**：桌面和常见手机视口的视觉/无障碍基础检查通过。
+
+**实施证据（2026-08-09）**：[全局站点外壳](../../code/app/components/site-chrome.tsx) 与 [视觉系统](../../code/app/globals.css) 已覆盖导航、页脚、模式标识、空/错误状态和移动端布局；Chrome 390×844 走查确认搜索、学习面板和阅读器无横向溢出，Lighthouse 移动端搜索页 Accessibility/Best Practices/SEO/Agentic Browsing 均为 100，控制台无错误。
 
 ### - [x] T2.2 实现首页与九阶段路线页
 
@@ -196,7 +198,7 @@
 
 **实施证据（2026-08-09）**：[项目阶梯页](../../code/app/projects/page.tsx) 和阶段详情页展示九阶段任务、成果与验收提示；公开 HTTP 冒烟覆盖项目页。
 
-### - [ ] T2.5 实现自有内容阅读器
+### - [x] T2.5 实现自有内容阅读器
 
 **依赖**：T1.3、T2.1  
 **规格**：READ-001、READ-004—READ-006、NFR-002—NFR-005
@@ -207,11 +209,13 @@
 
 **完成证据**：正常文档、恶意 Markdown、超长文档和移动端阅读测试通过。
 
+**实施证据（2026-08-09）**：[Markdown 渲染器](../../code/modules/reader/markdown.ts) 仅输出安全白名单 HTML，测试覆盖标题、GFM/代码块、相对图片和危险协议；[阅读器](../../code/app/read/[itemId]/page.tsx) 已接入目录、章节导航、源码/上游安全退化和阅读状态。浏览器实际打开 33,133px 长本地章节并在 390px 视口通过目录、正文和位置恢复走查。
+
 **Phase 2 退出条件**：匿名用户能浏览路线、筛选课程、查看导览、阅读自有内容和项目要求。
 
 ## 6. Phase 3：云端内容模式
 
-### - [ ] T3.1 定义 Content Resolver interface
+### - [x] T3.1 定义 Content Resolver interface
 
 **依赖**：T1.2  
 **规格**：RES-001—RES-010、DEPLOY-001
@@ -221,6 +225,8 @@
 - 为所有访问策略建立表驱动测试。
 
 **完成证据**：调用方不包含 cloud/local 的文件路径分支判断。
+
+**实施证据（2026-08-09）**：[Content Resolver interface](../../code/modules/content-resolver/content-resolver.ts) 以 `ResolvedContent` 判别联合统一站内、Local、上游和不可用结果；[Cloud/Local adapter 测试](../../code/modules/content-resolver/content-resolver.test.ts) 与 [Local adapter 测试](../../code/modules/content-resolver/local-content-resolver.test.ts) 以访问策略表驱动验证，课程导览只消费 resolver 结果，不拼接素材路径。
 
 ### - [x] T3.2 实现 Cloud Adapter
 
@@ -236,7 +242,7 @@
 
 **实施证据（2026-08-09）**：[Cloud Adapter](../../code/modules/content-resolver/content-resolver.ts) 通过 `content-resolver.test.ts` 表驱动覆盖四种访问策略；云端完整检查在不读取本地正文的情况下通过，第三方导览返回校验后的 HTTP(S) URL。
 
-### - [ ] T3.3 建立“无 local-courses”云端验证
+### - [x] T3.3 建立“无 local-courses”云端验证
 
 **依赖**：T3.2  
 **规格**：RES-003、DEPLOY-002、DEPLOY-008、AC-01
@@ -246,6 +252,8 @@
 - 执行公开页面和第三方导览冒烟测试。
 
 **完成证据**：CI 中 cloud-clean-room 作业稳定通过。
+
+**实施证据（2026-08-09）**：[`.dockerignore`](../../.dockerignore) 排除 `local-courses/`、SQLite、备份和环境文件；[cloud-clean-room CI 作业](../../.github/workflows/quality.yml) 构建无素材镜像并扫描边界，再冒烟健康检查、云端搜索和上游课程。Docker 实测镜像内无 `local-courses`/SQLite，云端搜索无 `LOCAL-CHAPTER`，本地素材课程显示“打开上游”。
 
 ### - [x] T3.4 增加内容政策与贡献页面
 
@@ -264,7 +272,7 @@
 
 ## 7. Phase 4：身份与学习状态
 
-### - [ ] T4.1 建立 SQLite、迁移与数据访问层
+### - [x] T4.1 建立 SQLite、迁移与数据访问层
 
 **依赖**：T1.1、T0.3  
 **规格**：STATE-010、STATE-011、OPS-001、OPS-002、DEPLOY-007、DEPLOY-012
@@ -276,7 +284,9 @@
 
 **完成证据**：全新数据库可迁移到最新版本；迁移和级联删除集成测试通过。
 
-### - [ ] T4.2 实现云端 GitHub 登录
+**实施证据（2026-08-09）**：[SQLite schema/migration](../../code/modules/learning-state/database.ts) 创建身份、会话、进度、任务、笔记、收藏和成果表，启用外键并在 WAL 前校验 SQLite 版本；[repository tests](../../code/modules/learning-state/repository.test.ts) 覆盖隔离、唯一性、重开持久化和级联删号，[数据库操作说明](../database-operations.md) 记录事务迁移与恢复边界。
+
+### - [x] T4.2 实现云端 GitHub 登录
 
 **依赖**：T4.1  
 **规格**：AUTH-001—AUTH-003、SEC-003、SEC-004、PRIV-001、PRIV-002
@@ -288,7 +298,9 @@
 
 **完成证据**：登录、退出、拒绝错误回调、会话过期和管理员判定测试通过。
 
-### - [ ] T4.3 实现本地单用户身份
+**实施证据（2026-08-09）**：使用 Better Auth 1.6.26 和 Next catch-all route；[Better Auth 配置](../../code/modules/auth/better-auth.ts) 关闭账户自动关联，只申请 `read:user`，以 `github-${githubId}` 作为稳定用户 ID，并通过自定义 adapter 复用既有 `users/accounts/sessions` 表。adapter 丢弃 GitHub provider token，只写 SHA-256 session token hash；OAuth state 使用签名 cookie，云端 `/api/session` 为已认证用户签发双提交 CSRF cookie。[Better Auth 集成测试](../../code/modules/auth/better-auth.test.ts) 已覆盖 mock 登录、最低权限、身份/Token 最小化、有效会话、过期会话和登出；[adapter 测试](../../code/modules/auth/better-auth-adapter.test.ts) 覆盖数据库边界，[callback boundary 测试](../../code/modules/auth/better-auth-route.test.ts) 确认旧回调入口停用；登录入口仍受客户端地址限频。生产只需在 GitHub 应用中注册 `${BETTER_AUTH_URL}/api/auth/callback/github` 并提供部署密钥。
+
+### - [x] T4.3 实现本地单用户身份
 
 **依赖**：T4.1  
 **规格**：AUTH-004、AUTH-005、DEPLOY-010、DEPLOY-013
@@ -299,7 +311,9 @@
 
 **完成证据**：本地免登录可用；不安全监听配置的负向测试通过。
 
-### - [ ] T4.4 实现进度与阅读位置
+**实施证据（2026-08-09）**：[Local auth](../../code/modules/auth/local-auth.ts) 固定映射 `local-user`，默认只接受回环绑定；[runtime tests](../../code/modules/runtime/runtime-config.test.ts) 覆盖非回环监听拒绝，Docker Local Mode 实测免登录健康、搜索、阅读和状态持久化。
+
+### - [x] T4.4 实现进度与阅读位置
 
 **依赖**：T4.1、T4.2、T4.3  
 **规格**：STATE-001—STATE-004、STATE-009—STATE-011、READ-002、READ-003、AC-04
@@ -311,7 +325,9 @@
 
 **完成证据**：cloud/local 数据隔离、重启恢复和状态转换测试通过。
 
-### - [ ] T4.5 实现收藏与私人笔记
+**实施证据（2026-08-09）**：[state repository](../../code/modules/learning-state/repository.ts)、[状态 API](../../code/app/api/state/route.ts) 和阅读控件支持开始、进行中、完成/撤销、任务勾选与阅读位置；数据库重开测试和 Docker 两容器同卷重启实测恢复位置 4321px，外部/打开动作不会自动完成条目。
+
+### - [x] T4.5 实现收藏与私人笔记
 
 **依赖**：T4.1、T4.2、T4.3  
 **规格**：STATE-007、STATE-008、AUTH-006、AUTH-007、PRIV-004、SEC-002
@@ -323,7 +339,9 @@
 
 **完成证据**：越权访问、恶意 Markdown、大小限制和并发更新测试通过。
 
-### - [ ] T4.6 实现阶段成果与完成约束
+**实施证据（2026-08-09）**：[笔记/收藏 repository](../../code/modules/learning-state/repository.ts) 以用户 ID 隔离并限制笔记 20,000 字符；[状态 API](../../code/app/api/state/route.ts) 统一 CSRF 校验，前端以 textarea 保存纯 Markdown、不执行 HTML；[rate limiter](../../code/modules/auth/rate-limit.ts) 对写请求按用户限流，repository/data route 测试覆盖隔离、大小和删除边界。
+
+### - [x] T4.6 实现阶段成果与完成约束
 
 **依赖**：T4.1、T4.4  
 **规格**：STATE-005、STATE-006、AC-05
@@ -334,7 +352,9 @@
 
 **完成证据**：有/无成果、无效链接、撤销完成和删除成果后的状态测试通过。
 
-### - [ ] T4.7 实现学习面板
+**实施证据（2026-08-09）**：阶段成果支持 repository/demo/reflection、HTTP(S) URL 和 20,000 字符总结；[stage outcome tests](../../code/modules/learning-state/repository.test.ts) 验证无成果不能确认、显式确认、删除后未完成，[状态 API](../../code/app/api/state/route.ts) 已接入面板。
+
+### - [x] T4.7 实现学习面板
 
 **依赖**：T4.4、T4.5、T4.6  
 **规格**：PAGE-006、STATE-009、NFR-001
@@ -345,7 +365,9 @@
 
 **完成证据**：新用户、部分学习和多阶段学习三类状态页面验收通过。
 
-### - [ ] T4.8 实现数据导出与删除账户
+**实施证据（2026-08-09）**：[学习面板](../../code/app/components/learning-dashboard.tsx) 汇总继续阅读、任务、收藏、笔记和成果并提供空状态入口；Chrome 移动端走查验证任务勾选后统计从 0 变 1，阅读条目显示已保存位置，390px 页面无横向溢出。
+
+### - [x] T4.8 实现数据导出与删除账户
 
 **依赖**：T4.1、T4.2、T4.5、T4.6  
 **规格**：DATA-001—DATA-006、AC-06
@@ -356,6 +378,8 @@
 - 删除后使现有会话失效。
 
 **完成证据**：导出内容快照、跨用户隔离和完整删号集成测试通过。
+
+**实施证据（2026-08-09）**：[data export](../../code/modules/learning-state/data-export.ts) 输出个人 JSON/笔记 Markdown 且排除 token、session/account secret；[data route](../../code/app/api/data/route.ts) 要求 CSRF 与 `DELETE MY ACCOUNT` 二次确认并级联删号；HTTP E2E 已验证导出内容和删除后状态为空。
 
 **Phase 4 退出条件**：云端用户跨会话、本地用户跨重启均可恢复完整学习状态，并可导出或删除个人数据。
 
@@ -388,7 +412,7 @@
 
 **实施证据（2026-08-09）**：[Local Adapter](../../code/modules/content-resolver/content-resolver.ts) 已由运行模式选择；[测试](../../code/modules/content-resolver/local-content-resolver.test.ts) 覆盖本地命中、缺失回退上游、无上游、owned/upstream-only 和非法路径。local 模式浏览器走查验证 `Hello-Agents` 导览显示“在站内阅读（本地）”并成功读取本地正文。
 
-### - [ ] T5.3 扩展本地阅读器
+### - [x] T5.3 扩展本地阅读器
 
 **依赖**：T2.5、T5.1、T5.2  
 **规格**：READ-001—READ-008、AC-02、AC-03
@@ -400,7 +424,9 @@
 
 **完成证据**：选取不同本地课程格式建立兼容性测试样本并通过验收。
 
-### - [ ] T5.4 创建 Docker 与 Compose 配置
+**实施证据（2026-08-09）**：[local document source](../../code/modules/reader/document-source.ts) 读取白名单 Markdown/MDX/Markdown、图片和章节导航，拒绝 PDF/非白名单章节；[local image route](../../code/app/api/local-image/route.ts) 只服务允许引用的图片。无法安全渲染的 allowlisted 文本文件提供纯文本源码视图和上游链接，二进制/过大文件不会被转成 HTML；真实本地章节浏览、移动端目录和位置恢复均已通过；MDX 作为 Markdown 安全渲染，不执行 JavaScript。
+
+### - [x] T5.4 创建 Docker 与 Compose 配置
 
 **依赖**：T3.3、T4.3、T5.2  
 **规格**：DEPLOY-001—DEPLOY-005、DEPLOY-010—DEPLOY-014
@@ -412,7 +438,9 @@
 
 **完成证据**：新机器按照文档可一条命令启动 local 模式；容器重建后状态保留。
 
-### - [ ] T5.5 建立本地离线验收
+**实施证据（2026-08-09）**：[Dockerfile](../../Dockerfile)、[基础 Compose](../../docker-compose.yml)、[Cloud override](../../docker-compose.cloud.yml)、[Local override](../../docker-compose.local.yml) 和 [部署说明](../deployment.md) 已加入；Docker 实测 build、Compose config、Local/Cloud 容器健康检查、只读素材挂载，以及同一 SQLite volume 重启后状态恢复 4321px。
+
+### - [x] T5.5 建立本地离线验收
 
 **依赖**：T5.3、T5.4  
 **规格**：DEPLOY-014、AC-02
@@ -423,11 +451,13 @@
 
 **完成证据**：离线端到端测试记录及已知不支持格式清单。
 
+**实施证据（2026-08-09）**：Docker `--network none` 实测 Local Mode 仍可启动并完成 `/api/health`、本地白名单搜索和本地章节阅读；不支持格式由 reader fallback 明确提示，需上游的条目保留回退状态。
+
 **Phase 5 退出条件**：本地 Docker 覆盖现有阅读器核心能力，无需 GitHub 登录且素材目录保持只读。
 
 ## 9. Phase 6：搜索与素材新鲜度
 
-### - [ ] T6.1 实现统一搜索索引模型
+### - [x] T6.1 实现统一搜索索引模型
 
 **依赖**：T1.3、T3.1  
 **规格**：SEARCH-001、SEARCH-004、SEARCH-005、SEARCH-007
@@ -438,7 +468,9 @@
 
 **完成证据**：索引内容快照和隐私负向测试通过。
 
-### - [ ] T6.2 实现云端搜索
+**实施证据（2026-08-09）**：[search index](../../code/modules/search/search-index.ts) 统一阶段、条目、项目和本地章节文档，并由 resolver 标注访问方式；[search tests](../../code/modules/search/search-index.test.ts) 验证自有正文可搜且私人笔记正文永不进入索引。
+
+### - [x] T6.2 实现云端搜索
 
 **依赖**：T6.1、T3.2  
 **规格**：SEARCH-001、SEARCH-004—SEARCH-006
@@ -449,7 +481,9 @@
 
 **完成证据**：相关性样例、筛选组合和公开页面端到端测试通过。
 
-### - [ ] T6.3 实现本地白名单章节索引
+**实施证据（2026-08-09）**：[搜索页](../../code/app/search/page.tsx) 支持标题/摘要/目标/标签/自有正文、阶段/轨道/访问方式过滤和空结果；Cloud HTTP smoke 与 Docker clean-room 实测无本地章节，Chrome 搜索 `agent` 返回公开索引且移动 Lighthouse 四项 100。
+
+### - [x] T6.3 实现本地白名单章节索引
 
 **依赖**：T5.1、T6.1  
 **规格**：SEARCH-002、SEARCH-003、SEARCH-006、DEPLOY-014
@@ -460,7 +494,9 @@
 
 **完成证据**：索引边界测试证明未收录白名单外文件；断网搜索可用。
 
-### - [ ] T6.4 实现 `materials check`
+**实施证据（2026-08-09）**：`buildRuntimeSearchIndex` 只通过 catalog `localPath`/`references` 调用 [白名单章节读取](../../code/modules/reader/document-source.ts)，不递归扫描素材根；本地浏览器搜索 `agent` 返回 619 项、431 个章节链接，`--network none` Docker 搜索仍可用。
+
+### - [x] T6.4 实现 `materials check`
 
 **依赖**：T0.1  
 **规格**：MAT-001—MAT-003、MAT-008、MAT-009
@@ -471,7 +507,9 @@
 
 **完成证据**：使用干净、落后、分叉和 dirty fixtures 验证分类准确。
 
-### - [ ] T6.5 实现单课程安全更新
+**实施证据（2026-08-09）**：[freshness checker](../../code/modules/freshness/materials-check.ts) 与 [materials CLI](../../code/scripts/materials.ts) 只调用 `git status`、分支和 `rev-list`，绝不 pull/修改工作区；测试覆盖 latest/behind/ahead/diverged/dirty/check-failed、嵌套仓库发现和非 Git 引用跳过。真实运行扫描 56 个仓库：latest 44、behind 3、diverged 2、dirty 7，另有 5 组非 Git 文档引用明确跳过。
+
+### - [x] T6.5 实现单课程安全更新
 
 **依赖**：T6.4  
 **规格**：MAT-004—MAT-009、AC-07
@@ -483,7 +521,9 @@
 
 **完成证据**：三个位于基线 dirty 清单中的仓库会被明确拒绝；所有负向测试不改变工作区。
 
-### - [ ] T6.6 实现路径审计与重新索引编排
+**实施证据（2026-08-09）**：[safe update](../../code/modules/freshness/materials-check.ts) 只允许 clean、behind 且可 fast-forward 的单仓库执行 `git pull --ff-only`；CLI 要求一个已知 catalog ID 和显式 `--yes`，拒绝 dirty/diverged/no-Git。测试覆盖拒绝时不调用 pull；真实运行 `legacy-course-029`（AutoGPT dirty）返回非零并明确拒绝，工作区未改变。
+
+### - [x] T6.6 实现路径审计与重新索引编排
 
 **依赖**：T1.5、T6.3、T6.5  
 **规格**：MAT-002、MAT-007、SEARCH-006
@@ -494,7 +534,9 @@
 
 **完成证据**：成功、审计失败和索引失败三种流程均有可恢复结果。
 
-### - [ ] T6.7 实现管理员健康页面
+**实施证据（2026-08-09）**：`materials update` 成功后自动执行 Local 内容/路径审计，审计通过才构建索引；[materials CLI](../../code/scripts/materials.ts) 另提供 `materials audit` 与 `materials reindex`，重新索引写入不含正文的机器快照，正文索引仍由应用按当前 catalog/白名单在请求边界构建。真实 `materials reindex` 生成 1091 项（stage 9、item 515、project 20、local-chapter 547），快照确认不含 `text` 字段；审计失败或构建失败发生在写入前，旧快照保持不变。
+
+### - [x] T6.7 实现管理员健康页面
 
 **依赖**：T4.2、T1.5、T6.4、T6.6  
 **规格**：ADMIN-001—ADMIN-006、AUTH-007
@@ -504,6 +546,8 @@
 - 隐藏绝对路径、秘密和私人笔记正文。
 
 **完成证据**：管理员/普通用户权限测试及敏感信息快照检查通过。
+
+**实施证据（2026-08-09）**：[admin health boundary](../../code/modules/admin/admin-health.ts) 通过 GitHub 稳定 ID 白名单区分管理员，匿名/普通用户返回 401/403，健康摘要只返回内容审计、素材状态、数据库、备份和部署的聚合字段，不包含绝对路径、Token 或笔记正文；[管理员页面](../../code/app/admin/page.tsx) 和 `/api/admin/health` 只读展示。Cloud Mode 已用临时管理员会话完成 API、页面和 POST 405 端到端走查，未挂载本地素材时明确显示 not-mounted。
 
 **Phase 6 退出条件**：搜索覆盖策展内容；素材变化可发现、选择性更新、审计并重建索引，且不会覆盖本地改动。
 
@@ -520,6 +564,8 @@
 
 **完成证据**：受保护分支所需检查全部稳定通过。
 
+**当前进展（2026-08-09）**：[quality workflow](../../.github/workflows/quality.yml) 已加入 cloud/local 生产构建后的 HTTP 冒烟、cloud clean-room 镜像边界、依赖审计和明显凭据模式检查；本地已完成对应命令验证，但尚未在受保护分支上运行并确认全部 GitHub Actions 检查稳定通过，因此保留未勾选。
+
 ### - [ ] T7.2 建立版本化镜像发布
 
 **依赖**：T5.4、T7.1  
@@ -531,6 +577,8 @@
 
 **完成证据**：指定版本可拉取、启动，并可回退到上一个版本。
 
+**当前进展（2026-08-09）**：[release workflow](../../.github/workflows/release.yml) 已按 `vX.Y.Z` 标签发布 GHCR 镜像、长 SHA 标签、SBOM 和构建来源证明；[release Compose override](../../docker-compose.release.yml) 清除本地 build 配置并强制要求版本或 digest。尚未从实际 GHCR 拉取镜像并完成回退演练，因此保留未勾选。
+
 ### - [ ] T7.3 编写云端部署和回滚流程
 
 **依赖**：T7.2  
@@ -541,6 +589,8 @@
 - 定义失败时应用版本和数据库的恢复步骤。
 
 **完成证据**：从空服务器部署指定版本并完成一次受控回滚演练。
+
+**当前进展（2026-08-09）**：[deployment runbook](../deployment.md) 已补充版本镜像、配置解析、备份前置、健康/冒烟检查、OAuth callback、迁移和回滚边界；本地 `docker compose config` 已验证 release override 不再保留 build。尚未在空服务器、反向代理和 HTTPS 环境完成受控部署/回滚，因此保留未勾选。
 
 ### - [ ] T7.4 实现 SQLite 备份与保留策略
 
@@ -554,6 +604,8 @@
 
 **完成证据**：备份任务、失败告警和保留清理测试通过。
 
+**当前进展（2026-08-09）**：[backup module](../../code/modules/learning-state/backup.ts) 已提供 SQLite 一致性快照、AES-256-GCM 加密、SHA-256 manifest、7 个 daily/3 个 weekly 保留和 `quick_check` 恢复验证；`npm run db:backup` / `db:restore` CLI 已用临时数据库完成正向走查。定时调度、异地复制、失败告警和正式恢复演练仍未完成，因此保留未勾选。
+
 ### - [ ] T7.5 执行干净环境恢复演练
 
 **依赖**：T7.4、T7.3  
@@ -564,6 +616,8 @@
 - 验证用户关联、进度、笔记、收藏和成果。
 
 **完成证据**：保存带日期、版本、耗时和结果的恢复演练记录。
+
+**当前进展（2026-08-09）**：自动化恢复命令和单元测试已验证解密、目标文件防覆盖及 SQLite 完整性检查；尚未在部署环境执行并提交带版本、耗时和结果的正式演练记录。
 
 ### - [ ] T7.6 建立隐私优先监控
 
@@ -588,11 +642,13 @@
 
 **完成证据**：新用户仅依据 README 可完成 cloud/local 启动；归属抽查通过。
 
+**当前进展（2026-08-09）**：已重写根 [README](../../README.md) 和 [local-courses README](../../local-courses/README.md)，改为指向 `code/`、Docker 双模式、Better Auth、内容归属、素材 check/audit/reindex/update、数据库操作和生成式报告；删除旧维护者身份与手工素材数量。文档命令已通过 Prettier 检查，Docker release Compose 已通过 `docker compose config`；T7.3 的真实部署演练尚未完成，故保留未勾选。
+
 **Phase 7 退出条件**：指定版本可从空服务器部署、监控、备份、恢复和回滚；本地用户也有完整启动文档。
 
 ## 11. Phase 8：功能对等与正式切换
 
-### - [ ] T8.1 执行新旧站功能对照
+### - [x] T8.1 执行新旧站功能对照
 
 **依赖**：T2.5、T4.7、T5.5、T6.3  
 **规格**：AC-10
@@ -602,6 +658,8 @@
 - 所有首版必需项必须在切换前关闭。
 
 **完成证据**：评审通过的功能对照表，无未决定的阻断项。
+
+**实施证据（2026-08-09）**：[legacy parity review](../acceptance/legacy-parity-2026-08-09.md) 对照 T0.1 基线报告的七项旧站能力，逐项映射到新站路由、模块测试、HTTP 冒烟和移动端浏览器证据；首版范围内无静默删除项。旧站仍按 T8.5 作为只读迁移基线保留，生产切换不在本任务中提前完成。
 
 ### - [ ] T8.2 执行双模式端到端验收
 
@@ -614,7 +672,9 @@
 
 **完成证据**：双模式验收报告覆盖全部十个 AC 场景。
 
-### - [ ] T8.3 执行移动端与无障碍验收
+**当前进展（2026-08-09）**：[dual-mode E2E acceptance](../acceptance/dual-mode-e2e-2026-08-09.md) 已覆盖全部十个 AC，并区分了本地应用级验证与仍需部署环境的证据；Local/Cloud 生产 HTTP 冒烟、Local 学习状态生命周期和移动端流程已通过。真实 GitHub 登录跨会话恢复、干净镜像运行、生产备份恢复与版本回滚尚未完成，故保留未勾选。
+
+### - [x] T8.3 执行移动端与无障碍验收
 
 **依赖**：T2.1、T4.7、T5.3、T6.2  
 **规格**：PAGE-008、NFR-001—NFR-005、AC-08
@@ -623,6 +683,8 @@
 - 检查键盘导航、焦点、控件标签、标题结构、颜色对比和错误提示。
 
 **完成证据**：移动端截图/录屏和无障碍问题清单；阻断级问题为零。
+
+**实施证据（2026-08-09）**：[mobile/accessibility acceptance](../acceptance/mobile-accessibility-2026-08-09.md) 在 Chrome 390×844 视口完成路线、搜索、长文阅读、笔记、阶段成果和键盘焦点走查；初次发现的表单标识、对比度和触控尺寸问题已修复。最终搜索/学习面板 Lighthouse 四类均为 100，控制台无错误，横向溢出为零。
 
 ### - [ ] T8.4 执行安全与隐私发布审查
 
@@ -664,22 +726,22 @@
 
 ## 13. 需求到任务追踪
 
-| 规格域 | 主要任务 |
-| --- | --- |
-| IA / PAGE | T1.2—T1.4、T2.1—T2.4、T4.7、T8.3 |
-| CAT | T0.2、T1.2—T1.5、T3.4 |
-| RES | T3.1—T3.3、T5.1—T5.3 |
-| READ | T2.5、T4.4、T5.1、T5.3 |
-| AUTH | T4.2、T4.3、T4.5、T6.7、T8.4 |
-| STATE | T4.1、T4.4—T4.8 |
-| SEARCH | T6.1—T6.3、T6.6 |
-| MAT | T6.4—T6.7 |
-| DATA | T4.8 |
-| ADMIN | T6.7、T7.6 |
-| DEPLOY | T0.2、T3.3、T4.3、T5.4、T7.1—T7.3 |
-| SEC / PRIV | T4.2、T4.5、T4.8、T5.1、T7.6、T8.4 |
-| OPS | T4.1、T7.3—T7.5 |
-| NFR | T0.3、T2.1、T2.5、T7.1、T7.6、T8.3 |
+| 规格域      | 主要任务                                                        |
+| ----------- | --------------------------------------------------------------- |
+| IA / PAGE   | T1.2—T1.4、T2.1—T2.4、T4.7、T8.3                                |
+| CAT         | T0.2、T1.2—T1.5、T3.4                                           |
+| RES         | T3.1—T3.3、T5.1—T5.3                                            |
+| READ        | T2.5、T4.4、T5.1、T5.3                                          |
+| AUTH        | T4.2、T4.3、T4.5、T6.7、T8.4                                    |
+| STATE       | T4.1、T4.4—T4.8                                                 |
+| SEARCH      | T6.1—T6.3、T6.6                                                 |
+| MAT         | T6.4—T6.7                                                       |
+| DATA        | T4.8                                                            |
+| ADMIN       | T6.7、T7.6                                                      |
+| DEPLOY      | T0.2、T3.3、T4.3、T5.4、T7.1—T7.3                               |
+| SEC / PRIV  | T4.2、T4.5、T4.8、T5.1、T7.6、T8.4                              |
+| OPS         | T4.1、T7.3—T7.5                                                 |
+| NFR         | T0.3、T2.1、T2.5、T7.1、T7.6、T8.3                              |
 | AC-01—AC-10 | T3.3、T5.2、T5.1、T4.4、T4.6、T4.8、T6.5、T8.3、T7.5、T8.1—T8.2 |
 
 ## 14. 推荐首个实施批次

@@ -4,13 +4,14 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=20.9.0"
+    "node": ">=22.0.0"
   },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test:e2e": "node tests/e2e/home-page-http-smoke.mjs && node tests/e2e/public-pages-http-smoke.mjs",
+    "test:e2e": "node tests/e2e/home-page-http-smoke.mjs && node tests/e2e/public-pages-http-smoke.mjs && node tests/e2e/health-http-smoke.mjs",
+    "test:e2e:local": "EXPECTED_RUNTIME_MODE=local npm run test:e2e && node tests/e2e/learning-state-http.mjs",
     "lint": "eslint . --max-warnings=0",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -21,6 +22,9 @@
     "test:cloud": "DEPLOYMENT_MODE=cloud npm run test",
     "test:local": "DEPLOYMENT_MODE=local npm run test",
     "audit:content": "tsx scripts/audit-content.ts",
+    "materials": "tsx scripts/materials.ts",
+    "db:backup": "tsx scripts/database.ts backup",
+    "db:restore": "tsx scripts/database.ts restore",
     "check": "npm run format:check && npm run lint && npm run typecheck && npm run audit:content && npm run test && npm run build",
     "check:cloud": "DEPLOYMENT_MODE=cloud npm run check",
     "check:local": "DEPLOYMENT_MODE=local npm run check",
@@ -29,6 +33,7 @@
     "convert:legacy": "node ../scripts/convert-legacy-content.mjs --root .."
   },
   "dependencies": {
+    "better-auth": "^1.6.26",
     "better-sqlite3": "^13.0.3",
     "next": "16.3.0",
     "react": "19.2.8",

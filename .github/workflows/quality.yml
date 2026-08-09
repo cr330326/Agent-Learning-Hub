@@ -38,3 +38,95 @@ jobs:
           cache-dependency-path: code/package-lock.json
       - run: npm ci --prefix code
       - run: npm run check:${{ matrix.mode }} --prefix code
+      - name: Run built HTTP smoke
+        env:
+          DEPLOYMENT_MODE: ${{ matrix.mode }}
+          HOST: 127.0.0.1
+          LOCAL_BIND_HOST: 127.0.0.1
+          STATE_DATABASE_PATH: /tmp/agent-learning-${{ matrix.mode }}.sqlite
+          BETTER_AUTH_SECRET: ci-only-secret-that-is-long-enough
+          BETTER_AUTH_URL: http://127.0.0.1:3100
+          GITHUB_CLIENT_ID: ci-client-id
+          GITHUB_CLIENT_SECRET: ci-client-secret
+          APP_VERSION: ci-${{ github.sha }}
+        run: |
+          npm run start --prefix code -- --hostname 127.0.0.1 --port 3100 > /tmp/agent-learning-${{ matrix.mode }}.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          ready=false
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:3100/api/health > /tmp/agent-learning-${{ matrix.mode }}-health.json; then
+              ready=true
+              break
+            fi
+            sleep 1
+          done
+          if [ "$ready" != "true" ]; then
+            cat /tmp/agent-learning-${{ matrix.mode }}.log
+            exit 1
+          fi
+          APP_URL=http://127.0.0.1:3100 EXPECTED_RUNTIME_MODE=${{ matrix.mode }} npm run test:e2e --prefix code
+          if [ "${{ matrix.mode }}" = "local" ]; then
+            APP_URL=http://127.0.0.1:3100 node code/tests/e2e/learning-state-http.mjs
+          fi
+
+  dependency-and-secret-guards:
+    name: dependency and secret guards
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: code/package-lock.json
+      - run: npm ci --prefix code
+      - run: npm audit --prefix code --omit=dev --audit-level=high
+      - name: Reject obvious credential patterns
+        run: |
+          if git grep -n -E 'gh[pousr]_[A-Za-z0-9]{20,}|sk-[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}' -- ':!code/package-lock.json'; then
+            echo 'Potential credential pattern found in tracked files.'
+            exit 1
+          fi
+
+  cloud-clean-room:
+    name: cloud clean-room image
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build --target runner -t agent-learning-hub:cloud-clean-room .
+      - name: Inspect image boundary
+        run: |
+          test "$(docker run --rm --entrypoint sh agent-learning-hub:cloud-clean-room -c 'find /app /data -iname "*local-courses*" -print')" = ""
+          test "$(docker run --rm --entrypoint sh agent-learning-hub:cloud-clean-room -c 'find /app /data -iname "*.sqlite" -print')" = ""
+      - name: Run cloud public smoke
+        run: |
+          container_id=$(docker run -d -p 127.0.0.1:3210:3000 \
+            -e DEPLOYMENT_MODE=cloud \
+            -e STATE_DATABASE_PATH=/data/state/learning-state.sqlite \
+            -e BETTER_AUTH_SECRET=ci-only-secret-that-is-long-enough \
+            -e BETTER_AUTH_URL=http://127.0.0.1:3210 \
+            -e GITHUB_CLIENT_ID=ci-client-id \
+            -e GITHUB_CLIENT_SECRET=ci-client-secret \
+            agent-learning-hub:cloud-clean-room)
+          trap 'docker rm -f "$container_id"' EXIT
+          ready=false
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:3210/api/health; then
+              ready=true
+              break
+            fi
+            sleep 1
+          done
+          if [ "$ready" != "true" ]; then
+            docker logs "$container_id"
+            exit 1
+          fi
+          curl --fail --silent 'http://127.0.0.1:3210/search?q=agent' -o /tmp/cloud-search.html
+          grep -q '云端公开索引' /tmp/cloud-search.html
+          if grep -Eq 'LOCAL-CHAPTER|本地白名单已纳入' /tmp/cloud-search.html; then
+            echo 'Cloud image exposed local material content.'
+            exit 1
+          fi
+          curl --fail --silent http://127.0.0.1:3210/courses/legacy-course-001 -o /tmp/cloud-course.html
+          grep -q '打开上游' /tmp/cloud-course.html

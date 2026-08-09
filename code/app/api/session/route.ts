@@ -1,8 +1,13 @@
 import { getLearningStateStore } from "../../../lib/learning-state";
-import { parseRuntimeConfig, type DeploymentMode } from "../../../modules/runtime/runtime-config";
+import {
+  parseRuntimeConfig,
+  type DeploymentMode,
+} from "../../../modules/runtime/runtime-config";
 import {
   CSRF_COOKIE,
-  getRequestUser,
+  createSessionToken,
+  getRequestUserAsync,
+  readCookie,
 } from "../../../modules/auth/request-auth";
 import {
   LOCAL_SESSION_COOKIE,
@@ -33,12 +38,19 @@ export async function handleSessionRequest(
   repository: LearningStateRepository,
   mode: DeploymentMode,
 ): Promise<Response> {
-  const user = getRequestUser(request, repository, mode);
+  const user = await getRequestUserAsync(request, repository, mode);
+  const existingCsrfToken = readCookie(request, CSRF_COOKIE);
+  const csrfToken =
+    mode === "local"
+      ? LOCAL_SESSION_VALUE
+      : user
+        ? (existingCsrfToken ?? createSessionToken())
+        : null;
   const response = Response.json({
     authenticated: user !== null,
     mode,
     user,
-    csrfToken: mode === "local" ? LOCAL_SESSION_VALUE : null,
+    csrfToken,
   });
 
   if (mode === "local") {
@@ -53,6 +65,15 @@ export async function handleSessionRequest(
     response.headers.append(
       "set-cookie",
       serializeCookie(CSRF_COOKIE, LOCAL_SESSION_VALUE, { secure }),
+    );
+  } else if (csrfToken && !existingCsrfToken) {
+    response.headers.append(
+      "set-cookie",
+      serializeCookie(CSRF_COOKIE, csrfToken, {
+        secure:
+          process.env.NODE_ENV === "production" ||
+          process.env.BETTER_AUTH_URL?.startsWith("https://") === true,
+      }),
     );
   }
 

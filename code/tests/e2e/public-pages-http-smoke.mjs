@@ -5,6 +5,7 @@ const cases = [
   ["/courses", "课程目录"],
   ["/courses/agent-loop-maintainer-guide", "Agent loop maintainer guide"],
   ["/projects", "项目阶梯"],
+  ["/search?q=agent", "在路线、资料和实践成果里找下一步"],
   ["/read/agent-loop-maintainer-guide", "Agent loop：从观察到行动"],
   ["/content-policy", "资料来自哪里"],
   ["/contribute", "把修正送进 Git"],
