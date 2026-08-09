@@ -1,0 +1,2591 @@
+{
+  "formatVersion": 1,
+  "generatedAt": "2026-08-09T01:24:31.096Z",
+  "source": {
+    "legacyData": "learning-site/data.js"
+  },
+  "counts": {
+    "tracks": 4,
+    "stages": 9,
+    "courses": 42,
+    "readingGroups": 38,
+    "readingChapters": 472,
+    "localReferences": 552
+  },
+  "localMaterials": {
+    "summary": {
+      "available": true,
+      "nestedGitRepositories": 57,
+      "visibleFiles": 106520
+    },
+    "nestedRepositories": [
+      "Agentic/ai-agent-deep-dive",
+      "Agentic/AutoGPT",
+      "Agentic/crewAI",
+      "Agentic/Document/harness-books",
+      "Agentic/Document/harness-engineering-from-cc-to-ai-coding",
+      "Agentic/Document/learn-harness-engineering",
+      "Agentic/Langchain-ai/deepagents",
+      "Agentic/Langchain-ai/langchain",
+      "Agentic/Langchain-ai/langgraph",
+      "Agentic/Memory/mem0",
+      "Agentic/MetaGPT",
+      "Agentic/multica",
+      "Agentic/open-agent-sdk-typescript",
+      "Agentic/openchamber",
+      "Agentic/OpenHands",
+      "Agentic/openworker",
+      "Agentic/PI/pi-mono",
+      "Agentic/smolagents",
+      "AICoding/claude/code/awesome-claude-code",
+      "AICoding/claude/code/claude-code-analysis",
+      "AICoding/claude/code/claude-code-haha",
+      "AICoding/claude/code/claude-code-lens",
+      "AICoding/claude/code/claude-code-rev",
+      "AICoding/claude/code/claude-code-source-code",
+      "AICoding/claude/code/claude-code-templates",
+      "AICoding/claude/code/claude-init",
+      "AICoding/claude/code/collection-claude-code-source-code",
+      "AICoding/claude/document/claude-code-guide",
+      "AICoding/claude/document/ClaudeMD/andrej-karpathy-skills",
+      "AICoding/claude/document/learn-claude-code",
+      "AICoding/claude/plugins/claude-auto-mode-unlock",
+      "AICoding/claude/plugins/claude-mem",
+      "AICoding/claude/plugins/claude-mermaid",
+      "AICoding/claude/plugins/claude-stt",
+      "AICoding/claude/plugins/claudian",
+      "AICoding/codex/codex-code",
+      "AICoding/CyberClaw",
+      "AICoding/hermes/hermes-agent",
+      "AICoding/MiMo-Code",
+      "AICoding/openclaw/channels/openclaw-lark",
+      "AICoding/openclaw/doc/openclaw_guide",
+      "AICoding/openclaw/openclaw-code",
+      "AICoding/opencode/awesome-opencode",
+      "AICoding/opencode/code/openchamber",
+      "AICoding/opencode/code/opencode",
+      "AICoding/opencode/code/opencode-supermemory",
+      "AICoding/opencode/code/openwork",
+      "AICoding/opencode/learn-opencode",
+      "AICoding/opencode/plugins/opencode-wakatime",
+      "Application/cc-switch",
+      "Application/CodexSwitch",
+      "Application/solon-ai",
+      "Application/workany",
+      "Learning/claw0",
+      "Learning/easy-agent",
+      "Learning/easy-learn-ai",
+      "Learning/hello-agents"
+    ]
+  },
+  "legacyCapabilities": [
+    {
+      "id": "learning-route",
+      "label": "Learning route",
+      "available": true,
+      "evidence": [
+        "learning-site/data.js"
+      ]
+    },
+    {
+      "id": "course-catalog",
+      "label": "Course catalog",
+      "available": true,
+      "evidence": [
+        "learning-site/data.js"
+      ]
+    },
+    {
+      "id": "track-filtering",
+      "label": "Track filtering",
+      "available": true,
+      "evidence": [
+        "learning-site/data.js",
+        "learning-site/app.js"
+      ]
+    },
+    {
+      "id": "local-document-reader",
+      "label": "Local Markdown reader",
+      "available": true,
+      "evidence": [
+        "learning-site/app.js"
+      ]
+    },
+    {
+      "id": "reading-progress",
+      "label": "Reading progress",
+      "available": true,
+      "evidence": [
+        "learning-site/app.js"
+      ]
+    },
+    {
+      "id": "path-audit",
+      "label": "Local path audit",
+      "available": true,
+      "evidence": [
+        "learning-site/scripts/audit_paths.py"
+      ]
+    },
+    {
+      "id": "responsive-layout",
+      "label": "Responsive layout",
+      "available": true,
+      "evidence": [
+        "learning-site/styles.css"
+      ]
+    }
+  ],
+  "referenceAudit": {
+    "missing": [],
+    "resolved": 552,
+    "total": 552
+  },
+  "coverage": {
+    "projectDirectories": 56,
+    "unlistedProjects": [
+      "AICoding/opencode/code/openchamber"
+    ]
+  },
+  "repositories": [
+    {
+      "path": "Agentic/ai-agent-deep-dive",
+      "workingTree": "clean"
+    },
+    {
+      "path": "Agentic/AutoGPT",
+      "workingTree": "dirty"
+    },
+    {
+      "path": "Agentic/crewAI",
+      "workingTree": "clean"
+    },
+    {
+      "path": "Agentic/Document/harness-books",
+      "workingTree": "clean"
+    },
+    {
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding",
+      "workingTree": "clean"
+    },
+    {
+      "path": "Agentic/Document/learn-harness-engineering",
+      "workingTree": "clean"
+    },
+    {
+      "path": "Agentic/Langchain-ai/deepagents",
+      "workingTree": "clean"
+    },
+    {
+      "path": "Agentic/Langchain-ai/langchain",
+      "workingTree": "clean"
+    },
+    {
+      "path": "Agentic/Langchain-ai/langgraph",
+      "workingTree": "clean"
+    },
+    {
+      "path": "Agentic/Memory/mem0",
+      "workingTree": "clean"
+    },
+    {
+      "path": "Agentic/MetaGPT",
+      "workingTree": "clean"
+    },
+    {
+      "path": "Agentic/multica",
+      "workingTree": "clean"
+    },
+    {
+      "path": "Agentic/open-agent-sdk-typescript",
+      "workingTree": "clean"
+    },
+    {
+      "path": "Agentic/openchamber",
+      "workingTree": "clean"
+    },
+    {
+      "path": "Agentic/OpenHands",
+      "workingTree": "clean"
+    },
+    {
+      "path": "Agentic/openworker",
+      "workingTree": "clean"
+    },
+    {
+      "path": "Agentic/PI/pi-mono",
+      "workingTree": "clean"
+    },
+    {
+      "path": "Agentic/smolagents",
+      "workingTree": "clean"
+    },
+    {
+      "path": "AICoding/claude/code/awesome-claude-code",
+      "workingTree": "clean"
+    },
+    {
+      "path": "AICoding/claude/code/claude-code-analysis",
+      "workingTree": "clean"
+    },
+    {
+      "path": "AICoding/claude/code/claude-code-haha",
+      "workingTree": "clean"
+    },
+    {
+      "path": "AICoding/claude/code/claude-code-lens",
+      "workingTree": "clean"
+    },
+    {
+      "path": "AICoding/claude/code/claude-code-rev",
+      "workingTree": "clean"
+    },
+    {
+      "path": "AICoding/claude/code/claude-code-source-code",
+      "workingTree": "clean"
+    },
+    {
+      "path": "AICoding/claude/code/claude-code-templates",
+      "workingTree": "clean"
+    },
+    {
+      "path": "AICoding/claude/code/claude-init",
+      "workingTree": "clean"
+    },
+    {
+      "path": "AICoding/claude/code/collection-claude-code-source-code",
+      "workingTree": "clean"
+    },
+    {
+      "path": "AICoding/claude/document/claude-code-guide",
+      "workingTree": "clean"
+    },
+    {
+      "path": "AICoding/claude/document/ClaudeMD/andrej-karpathy-skills",
+      "workingTree": "clean"
+    },
+    {
+      "path": "AICoding/claude/document/learn-claude-code",
+      "workingTree": "dirty"
+    },
+    {
+      "path": "AICoding/claude/plugins/claude-auto-mode-unlock",
+      "workingTree": "clean"
+    },
+    {
+      "path": "AICoding/claude/plugins/claude-mem",
+      "workingTree": "dirty"
+    },
+    {
+      "path": "AICoding/claude/plugins/claude-mermaid",
+      "workingTree": "clean"
+    },
+    {
+      "path": "AICoding/claude/plugins/claude-stt",
+      "workingTree": "clean"
+    },
+    {
+      "path": "AICoding/claude/plugins/claudian",
+      "workingTree": "clean"
+    },
+    {
+      "path": "AICoding/codex/codex-code",
+      "workingTree": "clean"
+    },
+    {
+      "path": "AICoding/CyberClaw",
+      "workingTree": "clean"
+    },
+    {
+      "path": "AICoding/hermes/hermes-agent",
+      "workingTree": "clean"
+    },
+    {
+      "path": "AICoding/MiMo-Code",
+      "workingTree": "clean"
+    },
+    {
+      "path": "AICoding/openclaw/channels/openclaw-lark",
+      "workingTree": "clean"
+    },
+    {
+      "path": "AICoding/openclaw/doc/openclaw_guide",
+      "workingTree": "clean"
+    },
+    {
+      "path": "AICoding/openclaw/openclaw-code",
+      "workingTree": "dirty"
+    },
+    {
+      "path": "AICoding/opencode/awesome-opencode",
+      "workingTree": "clean"
+    },
+    {
+      "path": "AICoding/opencode/code/openchamber",
+      "workingTree": "clean"
+    },
+    {
+      "path": "AICoding/opencode/code/opencode",
+      "workingTree": "clean"
+    },
+    {
+      "path": "AICoding/opencode/code/opencode-supermemory",
+      "workingTree": "dirty"
+    },
+    {
+      "path": "AICoding/opencode/code/openwork",
+      "workingTree": "clean"
+    },
+    {
+      "path": "AICoding/opencode/learn-opencode",
+      "workingTree": "clean"
+    },
+    {
+      "path": "AICoding/opencode/plugins/opencode-wakatime",
+      "workingTree": "dirty"
+    },
+    {
+      "path": "Application/cc-switch",
+      "workingTree": "clean"
+    },
+    {
+      "path": "Application/CodexSwitch",
+      "workingTree": "clean"
+    },
+    {
+      "path": "Application/solon-ai",
+      "workingTree": "clean"
+    },
+    {
+      "path": "Application/workany",
+      "workingTree": "clean"
+    },
+    {
+      "path": "Learning/claw0",
+      "workingTree": "clean"
+    },
+    {
+      "path": "Learning/easy-agent",
+      "workingTree": "clean"
+    },
+    {
+      "path": "Learning/easy-learn-ai",
+      "workingTree": "clean"
+    },
+    {
+      "path": "Learning/hello-agents",
+      "workingTree": "dirty"
+    }
+  ],
+  "references": [
+    {
+      "kind": "doc",
+      "path": "@root/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/ai-agent-deep-dive/docs/00-product-overview.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/ai-agent-deep-dive/docs/01-system-prompt-and-orchestration.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/ai-agent-deep-dive/docs/02-tools-permissions-and-execution.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/ai-agent-deep-dive/docs/03-skills-plugins-mcp.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/ai-agent-deep-dive/docs/04-memory-and-session.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/ai-agent-deep-dive/docs/05-commands-ui-and-operator-experience.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/ai-agent-deep-dive/docs/06-verification-and-quality.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/ai-agent-deep-dive/docs/07-architecture-map.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/ai-agent-deep-dive/docs/08-agent-runtime-loop.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/ai-agent-deep-dive/docs/09-message-model-and-state.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/ai-agent-deep-dive/docs/10-context-management.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/ai-agent-deep-dive/docs/11-task-model.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/ai-agent-deep-dive/docs/12-workspace-and-isolation.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/ai-agent-deep-dive/docs/13-failure-recovery.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/ai-agent-deep-dive/docs/14-configuration-system.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/ai-agent-deep-dive/docs/15-mvp-scope.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/ai-agent-deep-dive/docs/16-python-implementation-notes.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/ai-agent-deep-dive/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/AutoGPT/AGENTS.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/AutoGPT/docs/content/challenges/building_challenges.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/AutoGPT/docs/content/challenges/introduction.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/AutoGPT/docs/content/classic/configuration/options.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/AutoGPT/docs/content/classic/index.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/AutoGPT/docs/content/classic/setup/docker.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/AutoGPT/docs/content/classic/setup/index.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/AutoGPT/docs/content/classic/usage.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/AutoGPT/docs/content/forge/components/built-in-components.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/AutoGPT/docs/content/forge/components/commands.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/AutoGPT/docs/content/forge/components/creating-components.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/AutoGPT/docs/content/forge/components/introduction.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/AutoGPT/docs/content/forge/components/protocols.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/AutoGPT/docs/content/forge/get-started.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/AutoGPT/docs/content/index.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/AutoGPT/docs/platform/advanced_setup.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/AutoGPT/docs/platform/agent-blocks.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/AutoGPT/docs/platform/block-sdk-guide.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/AutoGPT/docs/platform/copilot-local-llm.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/AutoGPT/docs/platform/create-basic-agent.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/AutoGPT/docs/platform/getting-started.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/AutoGPT/docs/platform/new_blocks.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/AutoGPT/docs/platform/ollama.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/AutoGPT/docs/platform/org-feature-map.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/AutoGPT/docs/platform/what-is-autogpt-platform.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/AutoGPT/docs/platform/workspace-media-architecture.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/AutoGPT/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/concepts/agent-capabilities.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/concepts/agents.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/concepts/checkpointing.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/concepts/cli.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/concepts/collaboration.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/concepts/crews.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/concepts/event-listener.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/concepts/files.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/concepts/flows.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/concepts/knowledge.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/concepts/llms.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/concepts/memory.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/concepts/planning.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/concepts/processes.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/concepts/production-architecture.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/concepts/reasoning.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/concepts/skills.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/concepts/streaming.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/concepts/tasks.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/concepts/testing.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/concepts/tools.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/concepts/training.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/installation.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/introduction.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/learn/bring-your-own-agent.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/learn/coding-agents.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/learn/create-custom-tools.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/learn/custom-manager-agent.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/learn/hierarchical-process.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/learn/human-in-the-loop.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/learn/llm-selection-guide.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/learn/multimodal-agents.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/learn/overview.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/learn/sequential-process.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/docs/edge/en/quickstart.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/crewAI/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-books/book1-claude-code/appendix-a-checklists.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-books/book1-claude-code/appendix-c-source-map.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-books/book1-claude-code/chapter-01-why-harness-engineering.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-books/book1-claude-code/chapter-02-prompt-is-control-plane.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-books/book1-claude-code/chapter-03-query-loop-heartbeat.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-books/book1-claude-code/chapter-04-tools-permissions-interrupts.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-books/book1-claude-code/chapter-05-context-memory-compact.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-books/book1-claude-code/chapter-06-errors-and-recovery.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-books/book1-claude-code/chapter-07-multi-agent-and-verification.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-books/book1-claude-code/chapter-08-team-landing-practices.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-books/book1-claude-code/chapter-09-ten-principles.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-books/book1-claude-code/index.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-books/book1-claude-code/preface.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-books/book2-comparing/appendix-b-checklists.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-books/book2-comparing/chapter-00-reading-map.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-books/book2-comparing/chapter-01-why-this-comparison.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-books/book2-comparing/chapter-02-two-control-planes.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-books/book2-comparing/chapter-03-loop-thread-and-rollout.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-books/book2-comparing/chapter-04-tools-sandbox-and-exec-policy.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-books/book2-comparing/chapter-05-skills-hooks-and-local-governance.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-books/book2-comparing/chapter-06-delegation-verification-and-state.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-books/book2-comparing/chapter-07-convergence-and-divergence.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-books/book2-comparing/chapter-08-how-to-choose-or-build.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-books/book2-comparing/preface.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/appendix/b-env-vars.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/appendix/e-version-evolution.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/appendix/f-e2e-traces.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch01.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch02.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch03.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch04.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch04b.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch05.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch06.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch06b.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch07.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch08.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch09.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch10.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch11.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch12.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part4/ch13.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part4/ch14.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part4/ch15.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch16.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch17.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch17b.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch18.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch18b.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch19.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch20.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch20b.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch20c.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch21.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch22.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch22b.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch23.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch24.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch25.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch26.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch27.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch28.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch29.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch30.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/preface.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/learn-harness-engineering/docs/zh/index.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-01-why-capable-agents-still-fail/index.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-02-what-a-harness-actually-is/index.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-03-why-the-repository-must-become-the-system-of-record/index.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-04-why-one-giant-instruction-file-fails/index.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-05-why-long-running-tasks-lose-continuity/index.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-06-why-initialization-needs-its-own-phase/index.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-07-why-agents-overreach-and-under-finish/index.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-08-why-feature-lists-are-harness-primitives/index.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-09-why-agents-declare-victory-too-early/index.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-10-why-end-to-end-testing-changes-results/index.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-11-why-observability-belongs-inside-the-harness/index.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-12-why-every-session-must-leave-a-clean-state/index.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/learn-harness-engineering/docs/zh/projects/index.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/learn-harness-engineering/docs/zh/resources/index.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Document/learn-harness-engineering/docs/zh/skills/index.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Langchain-ai/deepagents/AGENTS.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Langchain-ai/deepagents/openwiki/architecture/overview.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Langchain-ai/deepagents/openwiki/engineering/operations-and-testing.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Langchain-ai/deepagents/openwiki/index.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Langchain-ai/deepagents/openwiki/quickstart.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Langchain-ai/deepagents/openwiki/workflows/deep-agents-code.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Langchain-ai/deepagents/openwiki/workflows/evaluation-and-release.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Langchain-ai/deepagents/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Langchain-ai/langchain/AGENTS.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Langchain-ai/langchain/libs/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Langchain-ai/langchain/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Langchain-ai/langgraph/AGENTS.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Langchain-ai/langgraph/examples/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Langchain-ai/langgraph/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Memory/mem0/LLM.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/Memory/mem0/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/MetaGPT/docs/ACADEMIC_WORK.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/MetaGPT/docs/FAQ-EN.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/MetaGPT/docs/install/cli_install_cn.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/MetaGPT/docs/install/docker_install_cn.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/MetaGPT/docs/README_CN.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/MetaGPT/docs/ROADMAP.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/MetaGPT/docs/tutorial/usage_cn.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/MetaGPT/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/multica/CLAUDE.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/multica/CLI_AND_DAEMON.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/multica/docs/design.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/multica/docs/product-overview.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/multica/HANDOFF_ARCHITECTURE_AUDIT.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/multica/README.zh-CN.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/multica/SELF_HOSTING.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/open-agent-sdk-typescript/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/agent-control-tool.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/commands-snippets.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/connect-devices.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/context.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/desktop-browser.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/desktop-tunnels.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/environment.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/git-identities.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/git.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/github.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/index.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/install.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/magic-prompts.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/mcp.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/mobile.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/multi-run.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/notes-todos-plans.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/notifications.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/opencode-server.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/preview.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/private-relay.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/project-actions.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/project-icons.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/projects.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/providers.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/quickstart.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/remote-instances.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/reverse-proxy.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/scheduled-tasks.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/security.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/session-goals.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/skills-catalog.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/skills.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/ssh-hosts-proxying.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/themes.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/troubleshooting.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/troubleshooting/opencode-connection.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/troubleshooting/remote-access.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/troubleshooting/worktrees-git.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/tunnels.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/updates.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/usage.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/voice.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/walkthrough.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/worktrees.mdx"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openchamber/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/OpenHands/docs/ACP_AGENTS.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/OpenHands/docs/architecture.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/OpenHands/docs/DEVELOPMENT.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/OpenHands/docs/SELF_HOSTING.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/OpenHands/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openworker/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/openworker/surfaces/gui/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/PI/pi-mono/AGENTS.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/PI/pi-mono/CONTRIBUTING.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/PI/pi-mono/packages/agent/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/PI/pi-mono/packages/ai/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/PI/pi-mono/packages/client/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/PI/pi-mono/packages/coding-agent/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/PI/pi-mono/packages/evals/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/PI/pi-mono/packages/protocol/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/PI/pi-mono/packages/server/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/PI/pi-mono/packages/tui/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/PI/pi-mono/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/PI/pi-mono/tui-plan.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/smolagents/docs/source/zh/conceptual_guides/intro_agents.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/smolagents/docs/source/zh/conceptual_guides/react.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/smolagents/docs/source/zh/guided_tour.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/smolagents/docs/source/zh/index.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/smolagents/docs/source/zh/tutorials/building_good_agents.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/smolagents/docs/source/zh/tutorials/inspect_runs.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/smolagents/docs/source/zh/tutorials/memory.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/smolagents/docs/source/zh/tutorials/secure_code_execution.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/smolagents/docs/source/zh/tutorials/tools.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Agentic/smolagents/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/code/awesome-claude-code/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/code/claude-code-analysis/analysis/01-architecture-overview.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/code/claude-code-analysis/analysis/02-security-analysis.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/code/claude-code-analysis/analysis/04-agent-memory.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/code/claude-code-analysis/analysis/04b-tool-call-implementation.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/code/claude-code-analysis/analysis/04c-skills-implementation.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/code/claude-code-analysis/analysis/04d-mcp-implementation.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/code/claude-code-analysis/analysis/04e-sandbox-implementation.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/code/claude-code-analysis/analysis/04f-context-management.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/code/claude-code-analysis/analysis/04g-prompt-management.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/code/claude-code-analysis/analysis/04h-multi-agent.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/code/claude-code-analysis/analysis/04i-session-storage-resume.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/code/claude-code-analysis/analysis/07-code-evidence-index.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/code/claude-code-analysis/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/code/claude-code-haha/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/code/claude-code-lens/README.zh-CN.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/code/claude-code-rev/AGENTS.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/code/claude-code-rev/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/code/claude-code-source-code/README_CN.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/code/claude-code-templates/CLAUDE.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/code/claude-code-templates/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/code/claude-init/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/code/collection-claude-code-source-code/README-CN.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/document/claude-code-guide/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/document/ClaudeMD/andrej-karpathy-skills/README.zh.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/document/ClaudeMD/App/claude.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/document/ClaudeMD/App/constitution.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/document/learn-claude-code/README-zh.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/document/learn-claude-code/s01_agent_loop/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/document/learn-claude-code/s02_tool_use/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/document/learn-claude-code/s03_permission/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/document/learn-claude-code/s04_hooks/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/document/learn-claude-code/s05_todo_write/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/document/learn-claude-code/s06_subagent/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/document/learn-claude-code/s07_skill_loading/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/document/learn-claude-code/s08_context_compact/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/document/learn-claude-code/s09_memory/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/document/learn-claude-code/s10_system_prompt/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/document/learn-claude-code/s11_error_recovery/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/document/learn-claude-code/s12_task_system/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/document/learn-claude-code/s13_background_tasks/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/document/learn-claude-code/s14_cron_scheduler/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/document/learn-claude-code/s15_agent_teams/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/document/learn-claude-code/s16_team_protocols/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/document/learn-claude-code/s17_autonomous_agents/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/document/learn-claude-code/s18_worktree_isolation/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/document/learn-claude-code/s19_mcp_plugin/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/document/learn-claude-code/s20_comprehensive/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/plugins/claude-auto-mode-unlock/METHODOLOGY.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/plugins/claude-auto-mode-unlock/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/plugins/claude-mem/cursor-hooks/CONTEXT-INJECTION.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/plugins/claude-mem/cursor-hooks/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/plugins/claude-mem/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/plugins/claude-mermaid/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/plugins/claude-stt/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/claude/plugins/claudian/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/codex/codex-code/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/CyberClaw/docs/LAZY_LOADING_GUIDE.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/CyberClaw/docs/LAZY_LOADING_QUICKSTART.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/CyberClaw/docs/LAZY_LOADING_SUMMARY.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/CyberClaw/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/hermes/docs/Kimi_Agent_Hermes 记忆机制/Hermes_LearningLoop_深度调研报告.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/hermes/docs/Kimi_Agent_Hermes 记忆机制/hermes-memory-deep-dive.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/hermes/hermes-agent/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/MiMo-Code/AGENTS.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/MiMo-Code/README.zh.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/openclaw/channels/openclaw-lark/README.zh.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/openclaw/doc/openclaw_guide/01_overview/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/openclaw/doc/openclaw_guide/02_setup/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/openclaw/doc/openclaw_guide/03_minimal_loop/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/openclaw/doc/openclaw_guide/04_config_models/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/openclaw/doc/openclaw_guide/05_tools_skills/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/openclaw/doc/openclaw_guide/06_context_memory/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/openclaw/doc/openclaw_guide/07_multi_agent/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/openclaw/doc/openclaw_guide/08_automation_ops/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/openclaw/doc/openclaw_guide/09_gateway_protocol/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/openclaw/doc/openclaw_guide/10_agent_loop/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/openclaw/doc/openclaw_guide/11_reliability_security/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/openclaw/doc/openclaw_guide/12_extension_engineering/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/openclaw/doc/openclaw_guide/13_practical_cases/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/openclaw/doc/openclaw_guide/14_performance_cost/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/openclaw/doc/openclaw_guide/15_troubleshooting_trees/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/openclaw/doc/openclaw_guide/16_claude_ecosystem/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/openclaw/doc/openclaw_guide/appendix/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/openclaw/doc/openclaw_guide/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/openclaw/openclaw-code/AGENTS.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/openclaw/openclaw-code/docs.acp.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/openclaw/openclaw-code/SECURITY.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/openclaw/openclaw-code/VISION.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/opencode/awesome-opencode/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/opencode/code/opencode-supermemory/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/opencode/code/opencode-supermemory/工程解读报告.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/opencode/code/opencode/AGENTS.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/opencode/code/opencode/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/opencode/code/openwork/README_ZH.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/opencode/learn-opencode/docs/1-start/01-intro.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/opencode/learn-opencode/docs/1-start/02-install.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/opencode/learn-opencode/docs/1-start/04-connect.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/opencode/learn-opencode/docs/2-daily/01-interface.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/opencode/learn-opencode/docs/3-workflow/02-agents.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/opencode/learn-opencode/docs/4-scenarios/coder-daily.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/opencode/learn-opencode/docs/5-advanced/02a-agent-quickstart.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/opencode/learn-opencode/docs/5-advanced/07a-mcp-basics.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/opencode/learn-opencode/docs/appendix/faq.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/opencode/learn-opencode/docs/index.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/opencode/learn-opencode/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "AICoding/opencode/plugins/opencode-wakatime/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/cc-switch/docs/guides/codex-claude-routing-guide-zh.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/cc-switch/docs/guides/codex-deepseek-routing-guide-zh.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/cc-switch/docs/guides/codex-kimi-routing-guide-zh.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/cc-switch/docs/guides/proxy-guide-zh.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/cc-switch/docs/user-manual/zh/1-getting-started/1.1-introduction.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/cc-switch/docs/user-manual/zh/1-getting-started/1.2-installation.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/cc-switch/docs/user-manual/zh/1-getting-started/1.3-interface.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/cc-switch/docs/user-manual/zh/1-getting-started/1.4-quickstart.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/cc-switch/docs/user-manual/zh/1-getting-started/1.5-settings.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/cc-switch/docs/user-manual/zh/2-providers/2.1-add.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/cc-switch/docs/user-manual/zh/2-providers/2.2-switch.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/cc-switch/docs/user-manual/zh/2-providers/2.5-usage-query.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/cc-switch/docs/user-manual/zh/2-providers/2.6-claude-desktop.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/cc-switch/docs/user-manual/zh/5-faq/5.1-config-files.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/cc-switch/docs/user-manual/zh/5-faq/5.2-questions.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/cc-switch/docs/user-manual/zh/5-faq/5.4-env-conflict.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/cc-switch/docs/user-manual/zh/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/cc-switch/README_ZH.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/cc-switch/session-manager.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/CodexSwitch/AGENTS.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/CodexSwitch/DESIGN.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/CodexSwitch/docs/codex-upstream-api-inventory.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/CodexSwitch/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/CodexSwitch/SPEC.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/solon-ai/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/solon-ai/solon-ai-a2a/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/solon-ai/solon-ai-anp/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/solon-ai/solon-ai-flow/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/solon-ai/UPDATE_LOG.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/workany/CONTRIBUTING.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Application/workany/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/claw0/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/claw0/sessions/zh/s01_agent_loop.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/claw0/sessions/zh/s02_tool_use.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/claw0/sessions/zh/s03_sessions.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/claw0/sessions/zh/s04_channels.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/claw0/sessions/zh/s05_gateway_routing.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/claw0/sessions/zh/s06_intelligence.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/claw0/sessions/zh/s07_heartbeat_cron.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/claw0/sessions/zh/s08_delivery.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/claw0/sessions/zh/s09_resilience.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/claw0/sessions/zh/s10_concurrency.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/claw0/workspace/AGENTS.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/claw0/workspace/BOOTSTRAP.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/claw0/workspace/HEARTBEAT.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/claw0/workspace/IDENTITY.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/claw0/workspace/MEMORY.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/claw0/workspace/SOUL.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/claw0/workspace/TOOLS.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/claw0/workspace/USER.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/easy-agent/README.zh-CN.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/easy-learn-ai/readme.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/Additional-Chapter/N8N_INSTALL_GUIDE.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/Additional-Chapter/NODEJS_INSTALL_GUIDE.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/docs/chapter1/第一章 初识智能体.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/docs/chapter10/第十章 智能体通信协议.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/docs/chapter11/第十一章 Agentic-RL.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/docs/chapter12/第十二章 智能体性能评估.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/docs/chapter13/第十三章 智能旅行助手.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/docs/chapter14/第十四章 自动化深度研究智能体.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/docs/chapter15/第十五章 构建赛博小镇.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/docs/chapter16/第十六章 毕业设计.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/docs/chapter2/第二章 智能体发展史.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/docs/chapter3/第三章 大语言模型基础.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/docs/chapter4/第四章 智能体经典范式构建.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/docs/chapter5/第五章 基于低代码平台的智能体搭建.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/docs/chapter6/第六章 框架开发实践.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/docs/chapter7/第七章 构建你的Agent框架.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/docs/chapter8/第八章 记忆与检索.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/docs/chapter9/第九章 上下文工程.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/docs/前言.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/Extra-Chapter/Extra01-面试问题总结.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/Extra-Chapter/Extra02-上下文工程补充知识.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/Extra-Chapter/Extra03-Dify智能体创建保姆级操作流程.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/Extra-Chapter/Extra04-DatawhaleFAQ.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/Extra-Chapter/Extra05-AgentSkills解读.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/Extra-Chapter/Extra06-GUIAgent科普与实战.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/Extra-Chapter/Extra07-环境配置.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/Extra-Chapter/Extra08-如何写出好的Skill.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/Extra-Chapter/Extra09-Agent应用开发实践踩坑与经验分享.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/Extra-Chapter/Extra10-Agent自进化.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/Extra-Chapter/Extra11-WebAgent科普与实战.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/Extra-Chapter/Extra12-旅行助手后训练实战.md"
+    },
+    {
+      "kind": "doc",
+      "path": "Learning/hello-agents/README.md"
+    },
+    {
+      "kind": "doc",
+      "path": "README.md"
+    },
+    {
+      "kind": "image-rewrite",
+      "path": "AICoding/claude/document/learn-claude-code/"
+    },
+    {
+      "kind": "image-rewrite",
+      "path": "AICoding/openclaw/"
+    },
+    {
+      "kind": "image-rewrite",
+      "path": "Learning/claw0/workspace/"
+    },
+    {
+      "kind": "image-rewrite",
+      "path": "Learning/hello-agents/docs/images/"
+    },
+    {
+      "kind": "link",
+      "path": "Agentic/ai-agent-deep-dive/ai-agent-deep-dive-v2.pdf"
+    },
+    {
+      "kind": "link",
+      "path": "Agentic/ai-agent-deep-dive/docs/00-product-overview.md"
+    },
+    {
+      "kind": "link",
+      "path": "Agentic/ai-agent-deep-dive/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "Agentic/AutoGPT/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "Agentic/crewAI/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "Agentic/Document/harness-books/book1-claude-code/index.md"
+    },
+    {
+      "kind": "link",
+      "path": "Agentic/Document/harness-books/book2-comparing/preface.md"
+    },
+    {
+      "kind": "link",
+      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/preface.md"
+    },
+    {
+      "kind": "link",
+      "path": "Agentic/Document/learn-harness-engineering/docs/zh/index.md"
+    },
+    {
+      "kind": "link",
+      "path": "Agentic/Langchain-ai/deepagents/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "Agentic/Langchain-ai/langchain/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "Agentic/Langchain-ai/langgraph/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "Agentic/Memory/mem0/LLM.md"
+    },
+    {
+      "kind": "link",
+      "path": "Agentic/Memory/mem0/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "Agentic/MetaGPT/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "Agentic/multica/CLI_AND_DAEMON.md"
+    },
+    {
+      "kind": "link",
+      "path": "Agentic/multica/docs/design.md"
+    },
+    {
+      "kind": "link",
+      "path": "Agentic/multica/README.zh-CN.md"
+    },
+    {
+      "kind": "link",
+      "path": "Agentic/open-agent-sdk-typescript/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "Agentic/openchamber/packages/docs/content/docs/zh-cn/index.mdx"
+    },
+    {
+      "kind": "link",
+      "path": "Agentic/openchamber/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "Agentic/OpenHands/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "Agentic/openworker/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "Agentic/PI/pi-mono/AGENTS.md"
+    },
+    {
+      "kind": "link",
+      "path": "Agentic/PI/pi-mono/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "Agentic/smolagents/docs/source/zh/guided_tour.md"
+    },
+    {
+      "kind": "link",
+      "path": "Agentic/smolagents/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/claude/code/awesome-claude-code/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/claude/code/claude-code-analysis/analysis/01-architecture-overview.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/claude/code/claude-code-analysis/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/claude/code/claude-code-haha/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/claude/code/claude-code-lens/README.zh-CN.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/claude/code/claude-code-rev/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/claude/code/claude-code-source-code/README_CN.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/claude/code/claude-code-templates/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/claude/code/claude-init/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/claude/code/collection-claude-code-source-code/README-CN.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/claude/document/claude-code-guide/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/claude/document/ClaudeMD/andrej-karpathy-skills/README.zh.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/claude/document/ClaudeMD/App/claude.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/claude/document/learn-claude-code/README-zh.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/claude/plugins/claude-auto-mode-unlock/METHODOLOGY.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/claude/plugins/claude-mem/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/claude/plugins/claude-mermaid/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/claude/plugins/claudian/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/codex/codex-code/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/CyberClaw/docs/LAZY_LOADING_GUIDE.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/CyberClaw/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/hermes/docs/Kimi_Agent_Hermes 记忆机制/hermes-memory-deep-dive.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/hermes/hermes-agent/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/MiMo-Code/AGENTS.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/MiMo-Code/README.zh.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/openclaw/channels/openclaw-lark/README.zh.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/openclaw/doc/openclaw_guide/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/openclaw/openclaw-code/VISION.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/opencode/awesome-opencode/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/opencode/code/opencode-supermemory/工程解读报告.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/opencode/code/opencode/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/opencode/code/openwork/README_ZH.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/opencode/learn-opencode/docs/index.md"
+    },
+    {
+      "kind": "link",
+      "path": "AICoding/opencode/learn-opencode/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "Application/cc-switch/docs/user-manual/zh/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "Application/cc-switch/README_ZH.md"
+    },
+    {
+      "kind": "link",
+      "path": "Application/CodexSwitch/DESIGN.md"
+    },
+    {
+      "kind": "link",
+      "path": "Application/CodexSwitch/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "Application/CodexSwitch/SPEC.md"
+    },
+    {
+      "kind": "link",
+      "path": "Application/solon-ai/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "Application/solon-ai/solon-ai-a2a/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "Application/solon-ai/solon-ai-flow/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "Application/workany/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "Learning/Book/Hello-Agents-V1.0.0-20251103.pdf"
+    },
+    {
+      "kind": "link",
+      "path": "Learning/Book/LLMBook.pdf"
+    },
+    {
+      "kind": "link",
+      "path": "Learning/Book/Palantir-Ontology/本体论.pdf"
+    },
+    {
+      "kind": "link",
+      "path": "Learning/claw0/README.md"
+    },
+    {
+      "kind": "link",
+      "path": "Learning/claw0/sessions/zh/s01_agent_loop.md"
+    },
+    {
+      "kind": "link",
+      "path": "Learning/easy-agent/README.zh-CN.md"
+    },
+    {
+      "kind": "link",
+      "path": "Learning/easy-learn-ai/readme.md"
+    },
+    {
+      "kind": "link",
+      "path": "Learning/hello-agents/docs/前言.md"
+    },
+    {
+      "kind": "link",
+      "path": "Learning/hello-agents/README.md"
+    },
+    {
+      "kind": "mark",
+      "path": "@mark/claude"
+    },
+    {
+      "kind": "mark",
+      "path": "@mark/crewai"
+    },
+    {
+      "kind": "mark",
+      "path": "@mark/langchain"
+    },
+    {
+      "kind": "mark",
+      "path": "@mark/openai"
+    },
+    {
+      "kind": "mark",
+      "path": "@mark/openchamber"
+    },
+    {
+      "kind": "mark",
+      "path": "@mark/opencode"
+    },
+    {
+      "kind": "mark",
+      "path": "@mark/xiaomi"
+    }
+  ]
+}

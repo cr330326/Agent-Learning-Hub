@@ -1,0 +1,22 @@
+[
+  {
+    "id": "learning",
+    "title": "Learning",
+    "summary": "从零建立 Agent 认知的主线教材：概念、范式、记忆、协议、评估，配套可运行代码。"
+  },
+  {
+    "id": "aicoding",
+    "title": "AICoding",
+    "summary": "Claude Code / Codex / OpenClaw / OpenCode 等真实 coding agent 的源码、文档与插件生态。"
+  },
+  {
+    "id": "agentic",
+    "title": "Agentic",
+    "summary": "多 Agent 框架、记忆层，以及 Harness Engineering 的理论书与讲义。"
+  },
+  {
+    "id": "application",
+    "title": "Application",
+    "summary": "把 agent 装进产品：桌面客户端、供应商切换器、企业级开发框架——学完之后东西长什么样。"
+  }
+]

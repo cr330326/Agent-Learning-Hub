@@ -37,7 +37,7 @@ Agent Learning Hub 是一个以实践成果为主线的 Agent 工程学习网站
 
 当前可运行的是迁移基线：在仓库根目录执行 `./start-site.sh`，默认访问 `http://localhost:8765/learning-site/`；脚本会先运行本地路径审计。不要直接用 `file://` 打开页面。
 
-`code/` 尚未完成 T1.1 脚手架，当前没有可验证的新应用启动命令。脚手架建立后，以 `code/package.json` 的 scripts 和部署文档为唯一命令来源，并在此处同步最短启动命令。
+新应用位于 `code/`，以 `code/package.json` 的 scripts 和部署文档为唯一命令来源。首次安装并启动开发服务器：`cd code && npm ci && npm run dev`，默认访问 `http://localhost:3000`。提交前运行 `npm run check:cloud` 与 `npm run check:local`；它们分别验证两种运行模式的格式、lint、类型、测试和生产构建。
 
 ## 禁区
 

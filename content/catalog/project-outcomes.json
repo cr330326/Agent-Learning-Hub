@@ -1,0 +1,200 @@
+[
+  {
+    "id": "legacy-project-01",
+    "stageId": null,
+    "title": "Calculator Agent",
+    "summary": "最小 tool call loop",
+    "evidenceTypes": [],
+    "level": 1,
+    "legacyImport": {
+      "source": "learning-site/data.js",
+      "kind": "project",
+      "order": 0,
+      "raw": {
+        "level": "Level 1",
+        "title": "Calculator Agent",
+        "summary": "最小 tool call loop"
+      }
+    }
+  },
+  {
+    "id": "legacy-project-02",
+    "stageId": null,
+    "title": "Web Research Agent",
+    "summary": "搜索、筛选、引用、总结",
+    "evidenceTypes": [],
+    "level": 2,
+    "legacyImport": {
+      "source": "learning-site/data.js",
+      "kind": "project",
+      "order": 1,
+      "raw": {
+        "level": "Level 2",
+        "title": "Web Research Agent",
+        "summary": "搜索、筛选、引用、总结"
+      }
+    }
+  },
+  {
+    "id": "legacy-project-03",
+    "stageId": null,
+    "title": "PDF QA Agent",
+    "summary": "RAG、chunk、retrieval、citation",
+    "evidenceTypes": [],
+    "level": 3,
+    "legacyImport": {
+      "source": "learning-site/data.js",
+      "kind": "project",
+      "order": 2,
+      "raw": {
+        "level": "Level 3",
+        "title": "PDF QA Agent",
+        "summary": "RAG、chunk、retrieval、citation"
+      }
+    }
+  },
+  {
+    "id": "legacy-project-04",
+    "stageId": null,
+    "title": "Coding Review Agent",
+    "summary": "读取 diff、风险排序、测试建议",
+    "evidenceTypes": [],
+    "level": 4,
+    "legacyImport": {
+      "source": "learning-site/data.js",
+      "kind": "project",
+      "order": 3,
+      "raw": {
+        "level": "Level 4",
+        "title": "Coding Review Agent",
+        "summary": "读取 diff、风险排序、测试建议"
+      }
+    }
+  },
+  {
+    "id": "legacy-project-05",
+    "stageId": null,
+    "title": "Browser Agent",
+    "summary": "页面观察、点击、提取、失败恢复",
+    "evidenceTypes": [],
+    "level": 5,
+    "legacyImport": {
+      "source": "learning-site/data.js",
+      "kind": "project",
+      "order": 4,
+      "raw": {
+        "level": "Level 5",
+        "title": "Browser Agent",
+        "summary": "页面观察、点击、提取、失败恢复"
+      }
+    }
+  },
+  {
+    "id": "legacy-project-06",
+    "stageId": null,
+    "title": "Claude Code-like Nano Agent",
+    "summary": "shell、文件编辑、权限、session、compact",
+    "evidenceTypes": [],
+    "level": 6,
+    "legacyImport": {
+      "source": "learning-site/data.js",
+      "kind": "project",
+      "order": 5,
+      "raw": {
+        "level": "Level 6",
+        "title": "Claude Code-like Nano Agent",
+        "summary": "shell、文件编辑、权限、session、compact"
+      }
+    }
+  },
+  {
+    "id": "legacy-project-07",
+    "stageId": null,
+    "title": "OpenClaw-like Gateway",
+    "summary": "channel、routing、session、memory、heartbeat、delivery",
+    "evidenceTypes": [],
+    "level": 7,
+    "legacyImport": {
+      "source": "learning-site/data.js",
+      "kind": "project",
+      "order": 6,
+      "raw": {
+        "level": "Level 7",
+        "title": "OpenClaw-like Gateway",
+        "summary": "channel、routing、session、memory、heartbeat、delivery"
+      }
+    }
+  },
+  {
+    "id": "legacy-project-08",
+    "stageId": null,
+    "title": "Reusable Skill Pack",
+    "summary": "SKILL.md、脚本、模板、触发条件、smoke test",
+    "evidenceTypes": [],
+    "level": 8,
+    "legacyImport": {
+      "source": "learning-site/data.js",
+      "kind": "project",
+      "order": 7,
+      "raw": {
+        "level": "Level 8",
+        "title": "Reusable Skill Pack",
+        "summary": "SKILL.md、脚本、模板、触发条件、smoke test"
+      }
+    }
+  },
+  {
+    "id": "legacy-project-09",
+    "stageId": null,
+    "title": "Multi-Agent Writer",
+    "summary": "planner、writer、reviewer 协作",
+    "evidenceTypes": [],
+    "level": 9,
+    "legacyImport": {
+      "source": "learning-site/data.js",
+      "kind": "project",
+      "order": 8,
+      "raw": {
+        "level": "Level 9",
+        "title": "Multi-Agent Writer",
+        "summary": "planner、writer、reviewer 协作"
+      }
+    }
+  },
+  {
+    "id": "legacy-project-10",
+    "stageId": null,
+    "title": "Personal Agent",
+    "summary": "记忆、skills、消息入口和长运行任务",
+    "evidenceTypes": [],
+    "level": 10,
+    "legacyImport": {
+      "source": "learning-site/data.js",
+      "kind": "project",
+      "order": 9,
+      "raw": {
+        "level": "Level 10",
+        "title": "Personal Agent",
+        "summary": "记忆、skills、消息入口和长运行任务"
+      }
+    }
+  },
+  {
+    "id": "legacy-project-11",
+    "stageId": null,
+    "title": "Production Harness",
+    "summary": "evals、trace、权限、CI、runner、回放",
+    "evidenceTypes": [],
+    "level": 11,
+    "legacyImport": {
+      "source": "learning-site/data.js",
+      "kind": "project",
+      "order": 10,
+      "raw": {
+        "level": "Level 11",
+        "title": "Production Harness",
+        "summary": "evals、trace、权限、CI、runner、回放"
+      }
+    }
+  }
+]

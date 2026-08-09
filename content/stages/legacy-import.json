@@ -1,0 +1,1154 @@
+[
+  {
+    "stage": {
+      "id": "stage-0",
+      "order": 0,
+      "title": "理解 Agent 是什么",
+      "summary": "区分 chatbot、workflow、agent 和 multi-agent，建立 observe → think → act → observe 的基本模型。",
+      "learningGoals": [
+        "画出 agent loop",
+        "读 Anthropic effective agents",
+        "读 OpenAI agent guide"
+      ],
+      "maintainerGuide": "区分 chatbot、workflow、agent 和 multi-agent，建立 observe → think → act → observe 的基本模型。",
+      "trackIds": [
+        "learning",
+        "aicoding",
+        "agentic",
+        "application"
+      ],
+      "taskIds": [
+        "stage-0-task-1",
+        "stage-0-task-2",
+        "stage-0-task-3"
+      ],
+      "projectOutcomeIds": [
+        "stage-0-outcome"
+      ],
+      "learningItemIds": [
+        "legacy-reading-02-003"
+      ],
+      "legacyImport": {
+        "source": "learning-site/data.js",
+        "kind": "stage",
+        "order": 0,
+        "raw": {
+          "id": "stage-0",
+          "badge": "Stage 0",
+          "title": "理解 Agent 是什么",
+          "summary": "区分 chatbot、workflow、agent 和 multi-agent，建立 observe → think → act → observe 的基本模型。",
+          "tasks": [
+            "画出 agent loop",
+            "读 Anthropic effective agents",
+            "读 OpenAI agent guide"
+          ],
+          "output": "产出：一页短笔记，解释你的场景为什么需要 Agent。",
+          "reading": [
+            {
+              "label": "Hello-Agents 第 1 章",
+              "doc": "Learning/hello-agents/docs/chapter1/第一章 初识智能体.md"
+            }
+          ]
+        }
+      }
+    },
+    "stageTasks": [
+      {
+        "id": "stage-0-task-1",
+        "stageId": "stage-0",
+        "title": "画出 agent loop",
+        "summary": "画出 agent loop",
+        "acceptanceCriteria": [],
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 0,
+          "raw": {
+            "task": "画出 agent loop",
+            "taskIndex": 0
+          }
+        }
+      },
+      {
+        "id": "stage-0-task-2",
+        "stageId": "stage-0",
+        "title": "读 Anthropic effective agents",
+        "summary": "读 Anthropic effective agents",
+        "acceptanceCriteria": [],
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 0,
+          "raw": {
+            "task": "读 Anthropic effective agents",
+            "taskIndex": 1
+          }
+        }
+      },
+      {
+        "id": "stage-0-task-3",
+        "stageId": "stage-0",
+        "title": "读 OpenAI agent guide",
+        "summary": "读 OpenAI agent guide",
+        "acceptanceCriteria": [],
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 0,
+          "raw": {
+            "task": "读 OpenAI agent guide",
+            "taskIndex": 2
+          }
+        }
+      }
+    ],
+    "projectOutcomes": [
+      {
+        "id": "stage-0-outcome",
+        "stageId": "stage-0",
+        "title": "Stage 0",
+        "summary": "产出：一页短笔记，解释你的场景为什么需要 Agent。",
+        "evidenceTypes": [],
+        "level": null,
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 0,
+          "raw": {
+            "output": "产出：一页短笔记，解释你的场景为什么需要 Agent。",
+            "badge": "Stage 0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "stage": {
+      "id": "stage-1",
+      "order": 1,
+      "title": "构建最小 Agent Loop",
+      "summary": "用 LLM API、结构化 JSON、工具函数和错误边界做出 50-150 行的最小 agent。",
+      "learningGoals": [
+        "实现工具选择",
+        "执行 calculator/search/read_file",
+        "加入最大步数、超时和错误处理"
+      ],
+      "maintainerGuide": "用 LLM API、结构化 JSON、工具函数和错误边界做出 50-150 行的最小 agent。",
+      "trackIds": [
+        "learning",
+        "aicoding",
+        "agentic",
+        "application"
+      ],
+      "taskIds": [
+        "stage-1-task-1",
+        "stage-1-task-2",
+        "stage-1-task-3"
+      ],
+      "projectOutcomeIds": [
+        "stage-1-outcome"
+      ],
+      "learningItemIds": [
+        "legacy-reading-10-002",
+        "legacy-reading-07-002"
+      ],
+      "legacyImport": {
+        "source": "learning-site/data.js",
+        "kind": "stage",
+        "order": 1,
+        "raw": {
+          "id": "stage-1",
+          "badge": "Stage 1",
+          "title": "构建最小 Agent Loop",
+          "summary": "用 LLM API、结构化 JSON、工具函数和错误边界做出 50-150 行的最小 agent。",
+          "tasks": [
+            "实现工具选择",
+            "执行 calculator/search/read_file",
+            "加入最大步数、超时和错误处理"
+          ],
+          "output": "产出：一个能选择工具并返回最终答案的最小 agent。",
+          "reading": [
+            {
+              "label": "learn-claude-code s01",
+              "doc": "AICoding/claude/document/learn-claude-code/s01_agent_loop/README.md"
+            },
+            {
+              "label": "claw0 s01 Agent Loop",
+              "doc": "Learning/claw0/sessions/zh/s01_agent_loop.md"
+            }
+          ]
+        }
+      }
+    },
+    "stageTasks": [
+      {
+        "id": "stage-1-task-1",
+        "stageId": "stage-1",
+        "title": "实现工具选择",
+        "summary": "实现工具选择",
+        "acceptanceCriteria": [],
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 1,
+          "raw": {
+            "task": "实现工具选择",
+            "taskIndex": 0
+          }
+        }
+      },
+      {
+        "id": "stage-1-task-2",
+        "stageId": "stage-1",
+        "title": "执行 calculator/search/read_file",
+        "summary": "执行 calculator/search/read_file",
+        "acceptanceCriteria": [],
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 1,
+          "raw": {
+            "task": "执行 calculator/search/read_file",
+            "taskIndex": 1
+          }
+        }
+      },
+      {
+        "id": "stage-1-task-3",
+        "stageId": "stage-1",
+        "title": "加入最大步数、超时和错误处理",
+        "summary": "加入最大步数、超时和错误处理",
+        "acceptanceCriteria": [],
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 1,
+          "raw": {
+            "task": "加入最大步数、超时和错误处理",
+            "taskIndex": 2
+          }
+        }
+      }
+    ],
+    "projectOutcomes": [
+      {
+        "id": "stage-1-outcome",
+        "stageId": "stage-1",
+        "title": "Stage 1",
+        "summary": "产出：一个能选择工具并返回最终答案的最小 agent。",
+        "evidenceTypes": [],
+        "level": null,
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 1,
+          "raw": {
+            "output": "产出：一个能选择工具并返回最终答案的最小 agent。",
+            "badge": "Stage 1"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "stage": {
+      "id": "stage-2",
+      "order": 2,
+      "title": "工具、RAG 与记忆",
+      "summary": "把搜索、文件、数据库、浏览器和代码执行接成工具，理解短期上下文、会话记忆和长期记忆。",
+      "learningGoals": [
+        "实现 chunk/embed/retrieve",
+        "回答附带引用",
+        "处理空结果、失败和重复调用"
+      ],
+      "maintainerGuide": "把搜索、文件、数据库、浏览器和代码执行接成工具，理解短期上下文、会话记忆和长期记忆。",
+      "trackIds": [
+        "learning",
+        "aicoding",
+        "agentic",
+        "application"
+      ],
+      "taskIds": [
+        "stage-2-task-1",
+        "stage-2-task-2",
+        "stage-2-task-3"
+      ],
+      "projectOutcomeIds": [
+        "stage-2-outcome"
+      ],
+      "learningItemIds": [
+        "legacy-reading-04-001",
+        "legacy-reading-22-002"
+      ],
+      "legacyImport": {
+        "source": "learning-site/data.js",
+        "kind": "stage",
+        "order": 2,
+        "raw": {
+          "id": "stage-2",
+          "badge": "Stage 2",
+          "title": "工具、RAG 与记忆",
+          "summary": "把搜索、文件、数据库、浏览器和代码执行接成工具，理解短期上下文、会话记忆和长期记忆。",
+          "tasks": [
+            "实现 chunk/embed/retrieve",
+            "回答附带引用",
+            "处理空结果、失败和重复调用"
+          ],
+          "output": "产出：一个资料研究助手。",
+          "reading": [
+            {
+              "label": "Hello-Agents 第 8 章 记忆与检索",
+              "doc": "Learning/hello-agents/docs/chapter8/第八章 记忆与检索.md"
+            },
+            {
+              "label": "mem0 架构总览",
+              "doc": "Agentic/Memory/mem0/LLM.md"
+            }
+          ]
+        }
+      }
+    },
+    "stageTasks": [
+      {
+        "id": "stage-2-task-1",
+        "stageId": "stage-2",
+        "title": "实现 chunk/embed/retrieve",
+        "summary": "实现 chunk/embed/retrieve",
+        "acceptanceCriteria": [],
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 2,
+          "raw": {
+            "task": "实现 chunk/embed/retrieve",
+            "taskIndex": 0
+          }
+        }
+      },
+      {
+        "id": "stage-2-task-2",
+        "stageId": "stage-2",
+        "title": "回答附带引用",
+        "summary": "回答附带引用",
+        "acceptanceCriteria": [],
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 2,
+          "raw": {
+            "task": "回答附带引用",
+            "taskIndex": 1
+          }
+        }
+      },
+      {
+        "id": "stage-2-task-3",
+        "stageId": "stage-2",
+        "title": "处理空结果、失败和重复调用",
+        "summary": "处理空结果、失败和重复调用",
+        "acceptanceCriteria": [],
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 2,
+          "raw": {
+            "task": "处理空结果、失败和重复调用",
+            "taskIndex": 2
+          }
+        }
+      }
+    ],
+    "projectOutcomes": [
+      {
+        "id": "stage-2-outcome",
+        "stageId": "stage-2",
+        "title": "Stage 2",
+        "summary": "产出：一个资料研究助手。",
+        "evidenceTypes": [],
+        "level": null,
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 2,
+          "raw": {
+            "output": "产出：一个资料研究助手。",
+            "badge": "Stage 2"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "stage": {
+      "id": "stage-3",
+      "order": 3,
+      "title": "研究现代 Agent Harness",
+      "summary": "深入一个系统，拆 agent loop、tool registry、permission gate、session store、context compaction。",
+      "learningGoals": [
+        "跑通最小示例",
+        "加一个自定义工具",
+        "观察一次完整 trace"
+      ],
+      "maintainerGuide": "深入一个系统，拆 agent loop、tool registry、permission gate、session store、context compaction。",
+      "trackIds": [
+        "learning",
+        "aicoding",
+        "agentic",
+        "application"
+      ],
+      "taskIds": [
+        "stage-3-task-1",
+        "stage-3-task-2",
+        "stage-3-task-3"
+      ],
+      "projectOutcomeIds": [
+        "stage-3-outcome"
+      ],
+      "learningItemIds": [
+        "legacy-reading-16-003",
+        "legacy-reading-19-004"
+      ],
+      "legacyImport": {
+        "source": "learning-site/data.js",
+        "kind": "stage",
+        "order": 3,
+        "raw": {
+          "id": "stage-3",
+          "badge": "Stage 3",
+          "title": "研究现代 Agent Harness",
+          "summary": "深入一个系统，拆 agent loop、tool registry、permission gate、session store、context compaction。",
+          "tasks": [
+            "跑通最小示例",
+            "加一个自定义工具",
+            "观察一次完整 trace"
+          ],
+          "output": "产出：可调试的 harness demo。",
+          "reading": [
+            {
+              "label": "Harness Engineering 第 2 讲",
+              "doc": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-02-what-a-harness-actually-is/index.md"
+            },
+            {
+              "label": "驾驭工程书 第 3 章 Agent Loop",
+              "doc": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch03.md"
+            }
+          ]
+        }
+      }
+    },
+    "stageTasks": [
+      {
+        "id": "stage-3-task-1",
+        "stageId": "stage-3",
+        "title": "跑通最小示例",
+        "summary": "跑通最小示例",
+        "acceptanceCriteria": [],
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 3,
+          "raw": {
+            "task": "跑通最小示例",
+            "taskIndex": 0
+          }
+        }
+      },
+      {
+        "id": "stage-3-task-2",
+        "stageId": "stage-3",
+        "title": "加一个自定义工具",
+        "summary": "加一个自定义工具",
+        "acceptanceCriteria": [],
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 3,
+          "raw": {
+            "task": "加一个自定义工具",
+            "taskIndex": 1
+          }
+        }
+      },
+      {
+        "id": "stage-3-task-3",
+        "stageId": "stage-3",
+        "title": "观察一次完整 trace",
+        "summary": "观察一次完整 trace",
+        "acceptanceCriteria": [],
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 3,
+          "raw": {
+            "task": "观察一次完整 trace",
+            "taskIndex": 2
+          }
+        }
+      }
+    ],
+    "projectOutcomes": [
+      {
+        "id": "stage-3-outcome",
+        "stageId": "stage-3",
+        "title": "Stage 3",
+        "summary": "产出：可调试的 harness demo。",
+        "evidenceTypes": [],
+        "level": null,
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 3,
+          "raw": {
+            "output": "产出：可调试的 harness demo。",
+            "badge": "Stage 3"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "stage": {
+      "id": "stage-4",
+      "order": 4,
+      "title": "多 Agent 协调",
+      "summary": "把 multi-agent 当作可控协作问题，而不是让角色随意聊天。",
+      "learningGoals": [
+        "定义 planner/executor/reviewer 边界",
+        "设计 schema 和停止条件",
+        "防止循环和上下文膨胀"
+      ],
+      "maintainerGuide": "把 multi-agent 当作可控协作问题，而不是让角色随意聊天。",
+      "trackIds": [
+        "learning",
+        "aicoding",
+        "agentic",
+        "application"
+      ],
+      "taskIds": [
+        "stage-4-task-1",
+        "stage-4-task-2",
+        "stage-4-task-3"
+      ],
+      "projectOutcomeIds": [
+        "stage-4-outcome"
+      ],
+      "learningItemIds": [
+        "legacy-reading-10-016",
+        "legacy-reading-21-001"
+      ],
+      "legacyImport": {
+        "source": "learning-site/data.js",
+        "kind": "stage",
+        "order": 4,
+        "raw": {
+          "id": "stage-4",
+          "badge": "Stage 4",
+          "title": "多 Agent 协调",
+          "summary": "把 multi-agent 当作可控协作问题，而不是让角色随意聊天。",
+          "tasks": [
+            "定义 planner/executor/reviewer 边界",
+            "设计 schema 和停止条件",
+            "防止循环和上下文膨胀"
+          ],
+          "output": "产出：research → write → review → revise 小系统。",
+          "reading": [
+            {
+              "label": "learn-claude-code s15 Agent Teams",
+              "doc": "AICoding/claude/document/learn-claude-code/s15_agent_teams/README.md"
+            },
+            {
+              "label": "驾驭工程书 第 20 章 派生与编排",
+              "doc": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch20.md"
+            }
+          ]
+        }
+      }
+    },
+    "stageTasks": [
+      {
+        "id": "stage-4-task-1",
+        "stageId": "stage-4",
+        "title": "定义 planner/executor/reviewer 边界",
+        "summary": "定义 planner/executor/reviewer 边界",
+        "acceptanceCriteria": [],
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 4,
+          "raw": {
+            "task": "定义 planner/executor/reviewer 边界",
+            "taskIndex": 0
+          }
+        }
+      },
+      {
+        "id": "stage-4-task-2",
+        "stageId": "stage-4",
+        "title": "设计 schema 和停止条件",
+        "summary": "设计 schema 和停止条件",
+        "acceptanceCriteria": [],
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 4,
+          "raw": {
+            "task": "设计 schema 和停止条件",
+            "taskIndex": 1
+          }
+        }
+      },
+      {
+        "id": "stage-4-task-3",
+        "stageId": "stage-4",
+        "title": "防止循环和上下文膨胀",
+        "summary": "防止循环和上下文膨胀",
+        "acceptanceCriteria": [],
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 4,
+          "raw": {
+            "task": "防止循环和上下文膨胀",
+            "taskIndex": 2
+          }
+        }
+      }
+    ],
+    "projectOutcomes": [
+      {
+        "id": "stage-4-outcome",
+        "stageId": "stage-4",
+        "title": "Stage 4",
+        "summary": "产出：research → write → review → revise 小系统。",
+        "evidenceTypes": [],
+        "level": null,
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 4,
+          "raw": {
+            "output": "产出：research → write → review → revise 小系统。",
+            "badge": "Stage 4"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "stage": {
+      "id": "stage-5",
+      "order": 5,
+      "title": "Skills 与协议",
+      "summary": "理解 Skill、Tool、Prompt、MCP、A2A、ACP 的边界，把流程知识打包为可复用能力。",
+      "learningGoals": [
+        "写最小 SKILL.md",
+        "加入脚本或模板",
+        "写 smoke test"
+      ],
+      "maintainerGuide": "理解 Skill、Tool、Prompt、MCP、A2A、ACP 的边界，把流程知识打包为可复用能力。",
+      "trackIds": [
+        "learning",
+        "aicoding",
+        "agentic",
+        "application"
+      ],
+      "taskIds": [
+        "stage-5-task-1",
+        "stage-5-task-2",
+        "stage-5-task-3"
+      ],
+      "projectOutcomeIds": [
+        "stage-5-outcome"
+      ],
+      "learningItemIds": [
+        "legacy-reading-04-003",
+        "legacy-reading-06-008"
+      ],
+      "legacyImport": {
+        "source": "learning-site/data.js",
+        "kind": "stage",
+        "order": 5,
+        "raw": {
+          "id": "stage-5",
+          "badge": "Stage 5",
+          "title": "Skills 与协议",
+          "summary": "理解 Skill、Tool、Prompt、MCP、A2A、ACP 的边界，把流程知识打包为可复用能力。",
+          "tasks": [
+            "写最小 SKILL.md",
+            "加入脚本或模板",
+            "写 smoke test"
+          ],
+          "output": "产出：一个可复用 skill pack。",
+          "reading": [
+            {
+              "label": "Hello-Agents 第 10 章 通信协议",
+              "doc": "Learning/hello-agents/docs/chapter10/第十章 智能体通信协议.md"
+            },
+            {
+              "label": "扩展 08：如何写出好的 Skill",
+              "doc": "Learning/hello-agents/Extra-Chapter/Extra08-如何写出好的Skill.md"
+            }
+          ]
+        }
+      }
+    },
+    "stageTasks": [
+      {
+        "id": "stage-5-task-1",
+        "stageId": "stage-5",
+        "title": "写最小 SKILL.md",
+        "summary": "写最小 SKILL.md",
+        "acceptanceCriteria": [],
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 5,
+          "raw": {
+            "task": "写最小 SKILL.md",
+            "taskIndex": 0
+          }
+        }
+      },
+      {
+        "id": "stage-5-task-2",
+        "stageId": "stage-5",
+        "title": "加入脚本或模板",
+        "summary": "加入脚本或模板",
+        "acceptanceCriteria": [],
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 5,
+          "raw": {
+            "task": "加入脚本或模板",
+            "taskIndex": 1
+          }
+        }
+      },
+      {
+        "id": "stage-5-task-3",
+        "stageId": "stage-5",
+        "title": "写 smoke test",
+        "summary": "写 smoke test",
+        "acceptanceCriteria": [],
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 5,
+          "raw": {
+            "task": "写 smoke test",
+            "taskIndex": 2
+          }
+        }
+      }
+    ],
+    "projectOutcomes": [
+      {
+        "id": "stage-5-outcome",
+        "stageId": "stage-5",
+        "title": "Stage 5",
+        "summary": "产出：一个可复用 skill pack。",
+        "evidenceTypes": [],
+        "level": null,
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 5,
+          "raw": {
+            "output": "产出：一个可复用 skill pack。",
+            "badge": "Stage 5"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "stage": {
+      "id": "stage-6",
+      "order": 6,
+      "title": "Browser / Computer-Use Agent",
+      "summary": "学习网页和桌面操作 agent，记录截图、DOM、动作日志，并处理页面变化和失败恢复。",
+      "learningGoals": [
+        "用 Playwright 或 browser-use 操作公开网页",
+        "设置安全限制",
+        "保存动作日志"
+      ],
+      "maintainerGuide": "学习网页和桌面操作 agent，记录截图、DOM、动作日志，并处理页面变化和失败恢复。",
+      "trackIds": [
+        "learning",
+        "aicoding",
+        "agentic",
+        "application"
+      ],
+      "taskIds": [
+        "stage-6-task-1",
+        "stage-6-task-2",
+        "stage-6-task-3"
+      ],
+      "projectOutcomeIds": [
+        "stage-6-outcome"
+      ],
+      "learningItemIds": [
+        "legacy-reading-06-011",
+        "legacy-reading-06-006"
+      ],
+      "legacyImport": {
+        "source": "learning-site/data.js",
+        "kind": "stage",
+        "order": 6,
+        "raw": {
+          "id": "stage-6",
+          "badge": "Stage 6",
+          "title": "Browser / Computer-Use Agent",
+          "summary": "学习网页和桌面操作 agent，记录截图、DOM、动作日志，并处理页面变化和失败恢复。",
+          "tasks": [
+            "用 Playwright 或 browser-use 操作公开网页",
+            "设置安全限制",
+            "保存动作日志"
+          ],
+          "output": "产出：一个公开网页信息提取 agent。",
+          "reading": [
+            {
+              "label": "扩展 11：Web Agent 科普与实战",
+              "doc": "Learning/hello-agents/Extra-Chapter/Extra11-WebAgent科普与实战.md"
+            },
+            {
+              "label": "扩展 06：GUI Agent 科普与实战",
+              "doc": "Learning/hello-agents/Extra-Chapter/Extra06-GUIAgent科普与实战.md"
+            }
+          ]
+        }
+      }
+    },
+    "stageTasks": [
+      {
+        "id": "stage-6-task-1",
+        "stageId": "stage-6",
+        "title": "用 Playwright 或 browser-use 操作公开网页",
+        "summary": "用 Playwright 或 browser-use 操作公开网页",
+        "acceptanceCriteria": [],
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 6,
+          "raw": {
+            "task": "用 Playwright 或 browser-use 操作公开网页",
+            "taskIndex": 0
+          }
+        }
+      },
+      {
+        "id": "stage-6-task-2",
+        "stageId": "stage-6",
+        "title": "设置安全限制",
+        "summary": "设置安全限制",
+        "acceptanceCriteria": [],
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 6,
+          "raw": {
+            "task": "设置安全限制",
+            "taskIndex": 1
+          }
+        }
+      },
+      {
+        "id": "stage-6-task-3",
+        "stageId": "stage-6",
+        "title": "保存动作日志",
+        "summary": "保存动作日志",
+        "acceptanceCriteria": [],
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 6,
+          "raw": {
+            "task": "保存动作日志",
+            "taskIndex": 2
+          }
+        }
+      }
+    ],
+    "projectOutcomes": [
+      {
+        "id": "stage-6-outcome",
+        "stageId": "stage-6",
+        "title": "Stage 6",
+        "summary": "产出：一个公开网页信息提取 agent。",
+        "evidenceTypes": [],
+        "level": null,
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 6,
+          "raw": {
+            "output": "产出：一个公开网页信息提取 agent。",
+            "badge": "Stage 6"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "stage": {
+      "id": "stage-7",
+      "order": 7,
+      "title": "评测、可观测性与安全",
+      "summary": "用固定测试集、trace、失败分类、成本和延迟指标来迭代 agent。",
+      "learningGoals": [
+        "准备 20 个测试任务",
+        "记录成功率和失败原因",
+        "给危险工具加人工确认"
+      ],
+      "maintainerGuide": "用固定测试集、trace、失败分类、成本和延迟指标来迭代 agent。",
+      "trackIds": [
+        "learning",
+        "aicoding",
+        "agentic",
+        "application"
+      ],
+      "taskIds": [
+        "stage-7-task-1",
+        "stage-7-task-2",
+        "stage-7-task-3"
+      ],
+      "projectOutcomeIds": [
+        "stage-7-outcome"
+      ],
+      "learningItemIds": [
+        "legacy-reading-04-005",
+        "legacy-reading-16-012"
+      ],
+      "legacyImport": {
+        "source": "learning-site/data.js",
+        "kind": "stage",
+        "order": 7,
+        "raw": {
+          "id": "stage-7",
+          "badge": "Stage 7",
+          "title": "评测、可观测性与安全",
+          "summary": "用固定测试集、trace、失败分类、成本和延迟指标来迭代 agent。",
+          "tasks": [
+            "准备 20 个测试任务",
+            "记录成功率和失败原因",
+            "给危险工具加人工确认"
+          ],
+          "output": "产出：agent eval 表格和回归测试。",
+          "reading": [
+            {
+              "label": "Hello-Agents 第 12 章 性能评估",
+              "doc": "Learning/hello-agents/docs/chapter12/第十二章 智能体性能评估.md"
+            },
+            {
+              "label": "Harness Engineering 第 11 讲 可观测性",
+              "doc": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-11-why-observability-belongs-inside-the-harness/index.md"
+            }
+          ]
+        }
+      }
+    },
+    "stageTasks": [
+      {
+        "id": "stage-7-task-1",
+        "stageId": "stage-7",
+        "title": "准备 20 个测试任务",
+        "summary": "准备 20 个测试任务",
+        "acceptanceCriteria": [],
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 7,
+          "raw": {
+            "task": "准备 20 个测试任务",
+            "taskIndex": 0
+          }
+        }
+      },
+      {
+        "id": "stage-7-task-2",
+        "stageId": "stage-7",
+        "title": "记录成功率和失败原因",
+        "summary": "记录成功率和失败原因",
+        "acceptanceCriteria": [],
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 7,
+          "raw": {
+            "task": "记录成功率和失败原因",
+            "taskIndex": 1
+          }
+        }
+      },
+      {
+        "id": "stage-7-task-3",
+        "stageId": "stage-7",
+        "title": "给危险工具加人工确认",
+        "summary": "给危险工具加人工确认",
+        "acceptanceCriteria": [],
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 7,
+          "raw": {
+            "task": "给危险工具加人工确认",
+            "taskIndex": 2
+          }
+        }
+      }
+    ],
+    "projectOutcomes": [
+      {
+        "id": "stage-7-outcome",
+        "stageId": "stage-7",
+        "title": "Stage 7",
+        "summary": "产出：agent eval 表格和回归测试。",
+        "evidenceTypes": [],
+        "level": null,
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 7,
+          "raw": {
+            "output": "产出：agent eval 表格和回归测试。",
+            "badge": "Stage 7"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "stage": {
+      "id": "stage-8",
+      "order": 8,
+      "title": "交付真实 Agent",
+      "summary": "明确用户、任务、成功标准、日志、权限边界、部署方式和 README。",
+      "learningGoals": [
+        "设置成本上限和超时",
+        "加入 trace 和错误重试",
+        "选择 CLI/Web/Slack/GitHub Action 部署"
+      ],
+      "maintainerGuide": "明确用户、任务、成功标准、日志、权限边界、部署方式和 README。",
+      "trackIds": [
+        "learning",
+        "aicoding",
+        "agentic",
+        "application"
+      ],
+      "taskIds": [
+        "stage-8-task-1",
+        "stage-8-task-2",
+        "stage-8-task-3"
+      ],
+      "projectOutcomeIds": [
+        "stage-8-outcome"
+      ],
+      "learningItemIds": [
+        "legacy-reading-16-013",
+        "legacy-reading-21-014",
+        "legacy-reading-35-012"
+      ],
+      "legacyImport": {
+        "source": "learning-site/data.js",
+        "kind": "stage",
+        "order": 8,
+        "raw": {
+          "id": "stage-8",
+          "badge": "Stage 8",
+          "title": "交付真实 Agent",
+          "summary": "明确用户、任务、成功标准、日志、权限边界、部署方式和 README。",
+          "tasks": [
+            "设置成本上限和超时",
+            "加入 trace 和错误重试",
+            "选择 CLI/Web/Slack/GitHub Action 部署"
+          ],
+          "output": "产出：别人能 clone 后运行的 agent 项目。",
+          "reading": [
+            {
+              "label": "Harness Engineering 第 12 讲 干净交接",
+              "doc": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-12-why-every-session-must-leave-a-clean-state/index.md"
+            },
+            {
+              "label": "驾驭工程书 第 30 章 构建你自己的 Agent",
+              "doc": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch30.md"
+            },
+            {
+              "label": "OpenChamber 安全与权限边界",
+              "doc": "Agentic/openchamber/packages/docs/content/docs/zh-cn/security.mdx"
+            }
+          ]
+        }
+      }
+    },
+    "stageTasks": [
+      {
+        "id": "stage-8-task-1",
+        "stageId": "stage-8",
+        "title": "设置成本上限和超时",
+        "summary": "设置成本上限和超时",
+        "acceptanceCriteria": [],
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 8,
+          "raw": {
+            "task": "设置成本上限和超时",
+            "taskIndex": 0
+          }
+        }
+      },
+      {
+        "id": "stage-8-task-2",
+        "stageId": "stage-8",
+        "title": "加入 trace 和错误重试",
+        "summary": "加入 trace 和错误重试",
+        "acceptanceCriteria": [],
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 8,
+          "raw": {
+            "task": "加入 trace 和错误重试",
+            "taskIndex": 1
+          }
+        }
+      },
+      {
+        "id": "stage-8-task-3",
+        "stageId": "stage-8",
+        "title": "选择 CLI/Web/Slack/GitHub Action 部署",
+        "summary": "选择 CLI/Web/Slack/GitHub Action 部署",
+        "acceptanceCriteria": [],
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 8,
+          "raw": {
+            "task": "选择 CLI/Web/Slack/GitHub Action 部署",
+            "taskIndex": 2
+          }
+        }
+      }
+    ],
+    "projectOutcomes": [
+      {
+        "id": "stage-8-outcome",
+        "stageId": "stage-8",
+        "title": "Stage 8",
+        "summary": "产出：别人能 clone 后运行的 agent 项目。",
+        "evidenceTypes": [],
+        "level": null,
+        "legacyImport": {
+          "source": "learning-site/data.js",
+          "kind": "stage",
+          "order": 8,
+          "raw": {
+            "output": "产出：别人能 clone 后运行的 agent 项目。",
+            "badge": "Stage 8"
+          }
+        }
+      }
+    ]
+  }
+]

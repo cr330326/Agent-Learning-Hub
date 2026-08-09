@@ -16,6 +16,14 @@ _Avoid_: Stage, category tree
 九阶段路线中的一个有序学习里程碑，包含目标、任务、资料和验收产物。
 _Avoid_: Track, chapter
 
+**Stage Task**:
+由维护者定义、属于一个 Learning Stage 的可执行实践任务，并附带明确的验收条件。
+_Avoid_: Personal to-do, automatic completion
+
+**Project Outcome**:
+由维护者预先定义的公开成果描述，例如代码仓库、演示或学习总结；它可以用于验收一个 Learning Stage，也可以保留尚未可靠关联阶段的项目阶梯条目。它不等同于学习者实际提交的 Stage Outcome。
+_Avoid_: Stage Outcome, completion checkbox
+
 **Learning Item**:
 被课程清单收录、可以纳入路线或搜索的一项学习资料。
 _Avoid_: File, repository, link

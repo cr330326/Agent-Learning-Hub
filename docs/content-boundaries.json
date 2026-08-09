@@ -1,0 +1,108 @@
+{
+  "version": 1,
+  "ownership": [
+    {
+      "path": "code/",
+      "classification": "application-source",
+      "git": "included",
+      "image": "included",
+      "deployment": "included"
+    },
+    {
+      "path": "content/",
+      "classification": "curated-content",
+      "git": "included",
+      "image": "included",
+      "deployment": "included"
+    },
+    {
+      "path": "docs/",
+      "classification": "project-documentation",
+      "git": "included",
+      "image": "excluded",
+      "deployment": "excluded"
+    },
+    {
+      "path": "learning-site/",
+      "classification": "migration-baseline",
+      "git": "included",
+      "image": "excluded",
+      "deployment": "excluded"
+    },
+    {
+      "path": "local-courses/",
+      "classification": "local-material",
+      "git": "excluded",
+      "image": "excluded",
+      "deployment": "local-only"
+    },
+    {
+      "path": "data/",
+      "classification": "runtime-user-state",
+      "git": "excluded",
+      "image": "excluded",
+      "deployment": "persistent-volume"
+    },
+    {
+      "path": "backups/",
+      "classification": "encrypted-backup-output",
+      "git": "excluded",
+      "image": "excluded",
+      "deployment": "external-storage"
+    },
+    {
+      "path": "reports/",
+      "classification": "development-audit-evidence",
+      "git": "included",
+      "image": "excluded",
+      "deployment": "excluded"
+    },
+    {
+      "path": ".env*",
+      "classification": "secret-configuration",
+      "git": "excluded",
+      "image": "excluded",
+      "deployment": "runtime-secret"
+    }
+  ],
+  "gitIgnoreRules": [
+    "/local-courses/**",
+    "/data/**",
+    "/backups/**",
+    ".env*",
+    "*.sqlite",
+    "*.sqlite-*",
+    "*.db",
+    "*.db-*",
+    "*.pem",
+    "*.key"
+  ],
+  "dockerIgnoreRules": [
+    "local-courses/",
+    "data/",
+    "backups/",
+    ".env*",
+    "*.sqlite",
+    "*.sqlite-*",
+    "*.db",
+    "*.db-*",
+    "*.pem",
+    "*.key",
+    "reports/"
+  ],
+  "forbiddenArtifactPrefixes": [
+    "local-courses/",
+    "data/",
+    "backups/"
+  ],
+  "forbiddenArtifactPatterns": [
+    ".env",
+    ".sqlite",
+    ".db",
+    ".pem",
+    ".key"
+  ],
+  "trackedLocalMaterialAllowlist": [
+    "local-courses/README.md"
+  ]
+}

@@ -216,3 +216,29 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Agent Learning Hub runtime boundaries
+# Keep the local material library on the developer machine.  Its README is
+# metadata for the library and remains versioned; all third-party bodies stay
+# out of Git and cloud build contexts.
+/local-courses/**
+!/local-courses/
+!/local-courses/README.md
+
+# Persistent user state, backups, and application build artifacts.
+/data/**
+/backups/**
+/code/node_modules/
+/code/.next/
+/code/coverage/
+/code/tsconfig.tsbuildinfo
+
+# Secrets and SQLite state must never enter Git.
+.env*
+!.env.example
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+*.pem
+*.key

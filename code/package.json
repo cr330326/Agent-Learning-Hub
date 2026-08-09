@@ -1,0 +1,47 @@
+{
+  "name": "agent-learning-hub",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint . --max-warnings=0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit",
+    "test:tools": "node --test ../tests/baseline-report.test.mjs ../tests/content-boundaries.test.mjs ../tests/legacy-content-converter.test.mjs",
+    "test:unit": "vitest run",
+    "test": "npm run test:tools && npm run test:unit",
+    "test:cloud": "DEPLOYMENT_MODE=cloud npm run test",
+    "test:local": "DEPLOYMENT_MODE=local npm run test",
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build",
+    "check:cloud": "DEPLOYMENT_MODE=cloud npm run check",
+    "check:local": "DEPLOYMENT_MODE=local npm run check",
+    "audit:baseline": "node ../scripts/baseline-report.mjs --root .. --output-dir ../reports/baseline",
+    "audit:boundaries": "node ../scripts/audit-content-boundaries.mjs --root .. --output-dir ../reports/content-boundaries",
+    "convert:legacy": "node ../scripts/convert-legacy-content.mjs --root .."
+  },
+  "dependencies": {
+    "next": "16.3.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "zod": "4.1.12"
+  },
+  "devDependencies": {
+    "@types/node": "26.2.0",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.2.12",
+    "eslint-config-prettier": "10.1.8",
+    "prettier": "3.9.6",
+    "tsx": "4.20.6",
+    "typescript": "5.9.3",
+    "vitest": "4.1.10"
+  }
+}

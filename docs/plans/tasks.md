@@ -29,7 +29,7 @@
 
 ## 3. Phase 0：基线与实施护栏
 
-### - [ ] T0.1 固化仓库基线报告
+### - [x] T0.1 固化仓库基线报告
 
 **依赖**：—  
 **规格**：IA-005、CAT-004、AC-10
@@ -41,7 +41,9 @@
 
 **完成证据**：脚本在当前仓库可重复运行；输出与现有快照差异有解释。
 
-### - [ ] T0.2 建立内容归属与忽略规则
+**实施证据（2026-08-09）**：`node scripts/baseline-report.mjs --output-dir reports/baseline` 生成 [JSON 基线报告](../../reports/baseline/baseline.json) 与 [Markdown 摘要](../../reports/baseline/baseline.md)。`node --test tests/baseline-report.test.mjs` 覆盖报告输出、引用/覆盖率异常、嵌套仓库脏状态和旧站能力清单；报告说明了与旧手工统计的口径差异。
+
+### - [x] T0.2 建立内容归属与忽略规则
 
 **依赖**：T0.1  
 **规格**：CAT-001、CAT-002、CAT-005、DEPLOY-002、PRIV-001
@@ -52,7 +54,9 @@
 
 **完成证据**：提供一次镜像/构建上下文清单审计结果。
 
-### - [ ] T0.3 建立需求追踪和质量门禁
+**实施证据（2026-08-09）**：[content-boundaries.json](../content-boundaries.json) 定义可审计的目录归属和交付边界；[content-boundaries.md](../content-boundaries.md) 说明执行规则。`node scripts/audit-content-boundaries.mjs --output-dir reports/content-boundaries` 生成 [JSON 审计](../../reports/content-boundaries/content-boundaries.json) 和 [Markdown 摘要](../../reports/content-boundaries/content-boundaries.md)，验证 Git、Docker 和 CI artifact 边界。14 个历史追踪的第三方 Local Material 文件已仅从 Git 索引移除，文件仍保留在本机；`local-courses/README.md` 是唯一允许追踪的素材库元数据。
+
+### - [x] T0.3 建立需求追踪和质量门禁
 
 **依赖**：—  
 **规格**：NFR-006、NFR-007
@@ -63,11 +67,13 @@
 
 **完成证据**：最小 CI 流程可运行，并包含空骨架的类型、格式、测试和构建步骤。
 
+**实施证据（2026-08-09）**：[testing-strategy.md](../testing-strategy.md) 约定测试分层、位置、命名和覆盖范围；[requirements-traceability.md](../requirements-traceability.md) 记录需求到任务和可执行证据的关联；[quality.yml](../../.github/workflows/quality.yml) 在 Cloud/Local Mode 矩阵中执行质量门禁，并先运行内容边界审计。`npm run check:cloud --prefix code` 与 `npm run check:local --prefix code` 已在本地通过。
+
 **Phase 0 退出条件**：基线可重复生成；内容边界明确；质量门禁可执行。
 
 ## 4. Phase 1：应用骨架与内容模型
 
-### - [ ] T1.1 创建 Next.js TypeScript 应用骨架
+### - [x] T1.1 创建 Next.js TypeScript 应用骨架
 
 **依赖**：T0.2、T0.3  
 **规格**：DEPLOY-001、NFR-004、NFR-006
@@ -79,7 +85,9 @@
 
 **完成证据**：开发服务与生产构建成功；无内容的首页可访问；CI 通过。
 
-### - [ ] T1.2 定义阶段、课程和学习条目 schema
+**实施证据（2026-08-09）**：`code/` 已建立 Next.js App Router、TypeScript、ESLint、Prettier、Vitest 和生产构建脚本；[modules/README.md](../../code/modules/README.md) 固化七个领域模块与 runtime 边界。运行模式解析由 [runtime-config.test.ts](../../code/modules/runtime/runtime-config.test.ts) 覆盖 Cloud、Local 和非法配置；同一生产构建分别以 Cloud/Local Mode 启动并通过 [首页 HTTP 冒烟测试](../../code/tests/e2e/home-page-http-smoke.mjs)。
+
+### - [x] T1.2 定义阶段、课程和学习条目 schema
 
 **依赖**：T1.1  
 **规格**：IA-001—IA-005、CAT-001—CAT-007
@@ -91,7 +99,9 @@
 
 **完成证据**：内容 schema 测试通过，错误内容在构建前被拒绝并给出可定位信息。
 
-### - [ ] T1.3 创建内容目录和 Catalog API
+**实施证据（2026-08-09）**：[content-schema.ts](../../code/modules/catalog/content-schema.ts) 以 Zod 定义 Track、Stage、Stage Task、Project Outcome 和 Learning Item，并从同一 schema 推导 TypeScript 类型；`validateContentCatalog` 返回字段路径，`parseContentCatalog` 用于拒绝非法目录。[content-schema.test.ts](../../code/modules/catalog/content-schema.test.ts) 覆盖合法目录、缺字段、重复 ID、无效阶段、无效 URL/日期、来源/作者/许可证和访问策略边界。维护契约见 [content-model.md](../content-model.md)。
+
+### - [x] T1.3 创建内容目录和 Catalog API
 
 **依赖**：T1.2  
 **规格**：CAT-001—CAT-007、PAGE-003、PAGE-004
@@ -103,7 +113,9 @@
 
 **完成证据**：Catalog API 单元测试覆盖查询、排序、缺失 ID 和非法内容。
 
-### - [ ] T1.4 实现旧数据转换器
+**实施证据（2026-08-09）**：已建立 Git 管理的 [content/](../../content/) 目录，包括 `stages`、`courses`、`articles`、`catalog` 和 `schemas`。 [catalog-api.ts](../../code/modules/catalog/catalog-api.ts) 仅从该目录读取 JSON 清单，逐文件验证并在交叉引用验证后提供 `listItems`、`getItem`、`getStage`；不读取 SQLite 或 `local-courses/`。[catalog-api.test.ts](../../code/modules/catalog/catalog-api.test.ts) 覆盖默认目录、稳定排序、阶段/轨道/标签/访问策略查询、缺失 ID 和带文件路径的非法内容错误。
+
+### - [x] T1.4 实现旧数据转换器
 
 **依赖**：T0.1、T1.2、T1.3  
 **规格**：CAT-004、IA-005、AC-10
@@ -114,6 +126,8 @@
 - 对照基线报告验证数量、ID、顺序和路径。
 
 **完成证据**：转换前后差异报告经人工确认；所有已策展条目均有确定去向。
+
+**实施证据（2026-08-09）**：[convert-legacy-content.mjs](../../scripts/convert-legacy-content.mjs) 可重复把 `learning-site/data.js` 转为 [结构化阶段](../../content/stages/legacy-import.json)、[课程与章节条目](../../content/courses/legacy-import.json)、[项目阶梯](../../content/catalog/project-outcomes.json) 与完整旧数据快照；各条转换记录保留 `legacyImport.raw`，完整源数据保留在快照中。 [legacy-conversion.json](../../reports/legacy-conversion/legacy-conversion.json) 对照基线确认 4 轨、9 阶段、42 课程卡、38 分组、472 章节和路径引用；[待补全报告](../../reports/legacy-conversion/legacy-conversion.md) 明确列出 488 个缺失上游地址及 514 个未知作者/许可证，未猜测值。`tests/legacy-content-converter.test.mjs` 断言转换可重复、数量与基线一致。
 
 ### - [ ] T1.5 建立内容审计命令
 
