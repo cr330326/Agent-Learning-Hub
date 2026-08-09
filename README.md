@@ -6,7 +6,7 @@ A curated AI Agent learning roadmap for people who want to build useful, reliabl
 
 ## Maintainer
 
-Curated by [陈思州](https://github.com/jjyaoao) (Datawhale 成员) <a href="https://www.xiaohongshu.com/user/profile/67b9cc34000000000e013517" target="_blank"><img alt="Static Badge" src="https://img.shields.io/badge/Rednote-小红书-e93c49"></a>
+Curated by Allen
 
 ## How To Use
 
