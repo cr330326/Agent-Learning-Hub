@@ -89,15 +89,12 @@ test("legacy converter creates a lossless, deterministic catalog import and pend
       (item) => item.author === "Unknown" && item.license === "Unknown",
     ),
   );
-  assert.deepEqual(
-    items.find((item) => item.id === "legacy-reading-01-001"),
-    assert.partialDeepStrictEqual(
-      {
-        accessPolicy: "unavailable",
-        localPath: null,
-        references: [],
-      },
-    ),
+  const repositoryReadme = items.find(
+    (item) => item.id === "legacy-reading-01-001",
   );
+  assert.ok(repositoryReadme);
+  assert.equal(repositoryReadme.accessPolicy, "unavailable");
+  assert.equal(repositoryReadme.localPath, null);
+  assert.deepEqual(repositoryReadme.references, []);
   assert.equal(firstItemsText, secondItemsText);
 });
