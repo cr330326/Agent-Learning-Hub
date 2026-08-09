@@ -9,14 +9,14 @@ import { loadContentCatalogFromDirectory } from "../catalog/catalog-api";
 import type { LearningItem } from "../catalog/content-schema";
 import { createLocalContentResolver } from "./content-resolver";
 
-const repositoryRoot = fileURLToPath(new URL("../../../", import.meta.url));
+const applicationRoot = fileURLToPath(new URL("../../", import.meta.url));
 
 let items: LearningItem[];
 let localRoot: string;
 
 beforeAll(async () => {
   const catalog = await loadContentCatalogFromDirectory(
-    join(repositoryRoot, "content"),
+    join(applicationRoot, "content"),
   );
   items = catalog.items;
 });

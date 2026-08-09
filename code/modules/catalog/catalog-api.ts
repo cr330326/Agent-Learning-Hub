@@ -230,9 +230,7 @@ export async function loadCatalogApiFromDirectory(
 export function getDefaultContentRoot(
   environment: Readonly<Record<string, string | undefined>> = process.env,
 ): string {
-  return resolve(
-    environment.CONTENT_ROOT ?? resolve(process.cwd(), "..", "content"),
-  );
+  return resolve(environment.CONTENT_ROOT ?? resolve(process.cwd(), "content"));
 }
 
 export async function loadCatalogApi(): Promise<CatalogApi> {

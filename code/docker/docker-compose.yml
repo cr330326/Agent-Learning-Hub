@@ -1,0 +1,25 @@
+services:
+  app:
+    build:
+      context: ../..
+      dockerfile: code/docker/Dockerfile
+    image: ${APP_IMAGE:-agent-learning-hub:local}
+    restart: unless-stopped
+    init: true
+    environment:
+      NODE_ENV: production
+      DEPLOYMENT_MODE: cloud
+      STATE_DATABASE_PATH: /data/state/learning-state.sqlite
+    ports:
+      - "${APP_BIND_HOST:-127.0.0.1}:${APP_PORT:-3000}:3000"
+    volumes:
+      - learning-state:/data/state
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://127.0.0.1:3000/api/health').then((response) => process.exit(response.ok ? 0 : 1)).catch(() => process.exit(1))"
+
+volumes:
+  learning-state:

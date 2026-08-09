@@ -1,5 +1,7 @@
 {
-  "version": 1,
+  "formatVersion": 1,
+  "generatedAt": "2026-08-09T15:05:32.962Z",
+  "status": "pass",
   "ownership": [
     {
       "path": "code/",
@@ -65,45 +67,19 @@
       "deployment": "runtime-secret"
     }
   ],
-  "gitIgnoreRules": [
-    "/local-courses/**",
-    "/data/**",
-    "/backups/**",
-    "/code/.data/**",
-    ".env*",
-    "*.sqlite",
-    "*.sqlite-*",
-    "*.db",
-    "*.db-*",
-    "*.pem",
-    "*.key"
-  ],
-  "dockerIgnoreRules": [
-    "local-courses/",
-    "data/",
-    "backups/",
-    ".env*",
-    "*.sqlite",
-    "*.sqlite-*",
-    "*.db",
-    "*.db-*",
-    "*.pem",
-    "*.key",
-    "code/reports/"
-  ],
-  "forbiddenArtifactPrefixes": [
-    "local-courses/",
-    "data/",
-    "backups/"
-  ],
-  "forbiddenArtifactPatterns": [
-    ".env",
-    ".sqlite",
-    ".db",
-    ".pem",
-    ".key"
-  ],
-  "trackedLocalMaterialAllowlist": [
-    "local-courses/README.md"
-  ]
+  "checks": {
+    "gitIgnore": {
+      "missing": []
+    },
+    "dockerIgnore": {
+      "missing": []
+    },
+    "ciArtifacts": {
+      "unsafe": []
+    },
+    "trackedLocalMaterials": {
+      "unapproved": []
+    }
+  },
+  "violations": []
 }

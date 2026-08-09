@@ -4,6 +4,10 @@ Agent Learning Hub 将公开的 Agent 工程学习路线、经过策展的资料
 
 ## Language
 
+**Application Root**:
+新应用的唯一现役工程目录，即 `code/`；其中包含应用代码、公开内容、Docker 配置、维护脚本和可再生成报告。
+_Avoid_: Root-level app, second web app
+
 **Learning Hub**:
 由学习路线、策展资料和个人学习状态组成的完整学习环境。
 _Avoid_: Link collection, resource dump
@@ -45,7 +49,7 @@ _Avoid_: Curated Content, owned content
 _Avoid_: Course catalog, cloud content
 
 **Content Catalog**:
-决定哪些学习资料被收录，并记录其轨道、阶段、来源、归属和访问方式的权威清单。
+决定哪些学习资料被收录，并记录其轨道、阶段、来源、归属和访问方式的权威清单；运行时目录为 `code/content/`。
 _Avoid_: Directory scan, local-courses tree
 
 **Resolved Content**:
@@ -71,3 +75,7 @@ _Avoid_: Completion checkbox, automatic score
 **Freshness Status**:
 描述 Local Material 与 Upstream Source 之间是否同步、落后、分叉或存在本地修改的状态。
 _Avoid_: Automatic update
+
+**Deployment Helper**:
+`code/scripts/docker-deploy.sh` 提供的 Docker Compose 入口，用于构建、启动、配置检查、健康验证和运行已发布镜像。
+_Avoid_: Production release approval, automatic rollback

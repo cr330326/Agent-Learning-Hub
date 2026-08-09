@@ -1,7 +1,7 @@
 # Agent Learning Hub 产品与技术方案
 
-**状态**：已确认，作为首版实施基线  
-**确认日期**：2026-08-08  
+**状态**：首版实施基线；已与 `code/` 当前实现同步
+**最近同步**：2026-08-09
 **产品名称**：Agent Learning Hub / Agent 学习中心
 
 ## 1. 方案摘要
@@ -34,6 +34,12 @@ Agent Learning Hub 是一个以实践产出为主线的 Agent 工程学习平台
 - [`learning-site/data.js`](../../learning-site/data.js)
 - [`learning-site/app.js`](../../learning-site/app.js)
 - [`learning-site/direction-approved.md`](../../learning-site/direction-approved.md)
+
+当前实现和可再生成快照位于 `code/`：公开目录为
+[`code/content/`](../../code/content/)，维护脚本为
+[`code/scripts/`](../../code/scripts/)，审计报告为
+[`code/reports/`](../../code/reports/)。历史统计只以生成的
+[基线报告](../../code/reports/baseline/baseline.md) 为准。
 
 ## 3. 产品定位
 
@@ -188,6 +194,30 @@ lastReviewedAt:
 - 缺少来源或许可证状态的第三方条目不能被标记为可重新发布。
 - 数量统计必须从目录生成，不写入 README 常量。
 
+当前实现以 `code/modules/catalog/content-schema.ts` 中的 Zod schema 为
+可执行契约；`code/content/` 下的 `catalog/`、`stages/`、`courses/` 和
+`articles/` 文件在读取时先逐文件校验，再校验跨记录引用。调用方只能通过
+Catalog API 获取内容，不能从 SQLite 或 `local-courses/` 反推公开目录。
+
+Catalog 同时承载四条 Track、Stage、Stage Task、Project Outcome 和 Learning
+Item：Stage 按顺序引用任务和成果；Stage Task 必须属于一个 Stage 并写明验收条件；
+Project Outcome 可以暂时没有明确阶段映射；Learning Item 可暂时没有阶段，但其 ID
+必须是全局唯一的小写 kebab-case。`listItems()` 按 `stageId`、`track`、全部标签和
+`accessPolicy` 筛选，并按稳定 ID 排序；不存在的 `getItem()`/`getStage()` 返回
+`undefined`。
+
+发布归属也由 schema 强制表达：`project-owned` 或
+`republication-authorized` 只有在许可证已知时才可使用 `owned`；`third-party`
+必须有上游 URL，不能使用 `owned`；`upstream-only` 没有 `localPath`；
+`local-preferred` 同时需要相对、POSIX 风格且无路径穿越的本地路径与上游回退 URL；
+`unavailable` 不得伪造可访问地址。schema 只验证元数据，实际文件是否可读仍由
+Content Resolver 在当前运行模式下判断。
+
+`npm run convert:legacy --prefix code` 可重复把 `learning-site/data.js` 转为
+`code/content/` 的结构化清单、保留 `legacyImport.raw` 和无损源快照，并写入
+`code/reports/legacy-conversion/`。转换器不会猜测第三方归属：未知作者/许可证以
+`Unknown` 显式保留，缺少上游地址保留为 `null`，所有待补项目写入报告。
+
 ### 6.2 Content Resolver Module
 
 建议 Interface：
@@ -297,12 +327,28 @@ materials reindex
 
 ### 7.1 Git 管内容，数据库管状态
 
-- 课程正文、路线、项目任务和公开文章位于仓库内的 Markdown/MDX 文件。
+- 课程正文、路线、项目任务和公开文章位于 `code/content/` 的 Git 管理文件。
 - frontmatter 记录阶段、轨道、来源、作者、许可证和更新时间。
 - 内容通过 Git 提交、审查和发布。
 - SQLite 只保存身份、会话和用户个人学习状态。
 - 用户笔记默认私有，可以导出为 Markdown。
 - 公开学习总结必须经过整理并提交到仓库，不允许直接公开私人笔记。
+
+交付边界由 [`docs/content-boundaries.json`](../content-boundaries.json) 机器校验：
+
+| 区域                                     | Git 与运行时归属                                                        |
+| ---------------------------------------- | ----------------------------------------------------------------------- |
+| `code/`（含 `code/content/`）            | 版本化应用源和可公开的策展内容，可进入运行镜像                          |
+| `docs/`、`learning-site/`                | 版本化文档和迁移基线，不进入运行镜像                                    |
+| `local-courses/`                         | 第三方 Local Material；仅允许跟踪其 `README.md`，仅 Local Mode 只读挂载 |
+| `code/.data/`、`backups/`、`.env*`、密钥 | 运行状态或秘密，不进入 Git、构建上下文或镜像                            |
+| `code/reports/`                          | 可再生成审计证据，不进入运行镜像                                        |
+
+`npm run audit:boundaries --prefix code` 在 CI 上传 artifact 前检查 `.gitignore`、
+`.dockerignore`、CI artifact 配置和 Git 索引；缺少规定忽略项、跟踪未批准的
+Local Material 或可能上传受保护数据时必须失败。云端构建上下文还必须排除
+`local-courses/`、状态、备份、秘密、报告和旧站；Local Mode 只能借由 Compose
+的只读挂载获得素材。
 
 ### 7.2 第三方内容策略
 
@@ -311,6 +357,7 @@ materials reindex
 - 云端课程页提供维护者摘要、学习目标、来源和上游链接。
 - 只有许可证明确且确实需要站内发布的内容，才可进入单独白名单。
 - 所有第三方条目保留原作者、上游地址和许可证信息。
+- [`docs/content-boundaries.json`](../content-boundaries.json) 是目录归属的机器可读事实源；`npm run audit:boundaries --prefix code` 核对 `.gitignore`、`.dockerignore` 与 CI artifact 规则。
 
 ### 7.3 社区贡献
 
@@ -323,14 +370,14 @@ materials reindex
 
 公开课程不存入 SQLite。建议用户数据表如下：
 
-| 表 | 用途 |
-| --- | --- |
-| `user` / `account` / `session` | GitHub 身份和会话 |
-| `item_progress` | 学习资料状态与阅读位置 |
-| `stage_task_progress` | 阶段任务勾选 |
-| `notes` | 私人 Markdown 笔记 |
-| `bookmarks` | 收藏 |
-| `stage_outcomes` | 阶段成果链接、总结和完成时间 |
+| 表                                | 用途                         |
+| --------------------------------- | ---------------------------- |
+| `users` / `accounts` / `sessions` | GitHub 身份和会话            |
+| `item_progress`                   | 学习资料状态与阅读位置       |
+| `stage_task_progress`             | 阶段任务勾选                 |
+| `notes`                           | 私人 Markdown 笔记           |
+| `bookmarks`                       | 收藏                         |
+| `stage_outcomes`                  | 阶段成果链接、总结和完成时间 |
 
 数据约束：
 
@@ -375,11 +422,23 @@ materials reindex
 
 运行 SQLite WAL 模式前，必须确认所使用的 SQLite 版本已经包含 2026 年 WAL-reset 问题修复。SQLite 文件、WAL 文件和共享内存文件必须位于同一台主机的持久化磁盘上。
 
-## 11. 建议目录结构
+## 11. 当前目录结构
 
 ```text
 code/
   app/
+  content/
+    articles/
+    catalog/
+    courses/
+    stages/
+    schemas/
+  docker/
+    Dockerfile
+    docker-compose.yml
+    docker-compose.cloud.yml
+    docker-compose.local.yml
+    docker-compose.release.yml
   modules/
     auth/
     catalog/
@@ -388,19 +447,13 @@ code/
     reader/
     search/
     freshness/
-  db/
-content/
-  stages/
-  courses/
-  articles/
-  catalog/
-  schemas/
-deploy/
-  compose.yaml
-  compose.cloud.yaml
-  compose.local.yaml
-scripts/
-  materials/
+  reports/
+  scripts/
+    docker-deploy.sh
+    audit-content.ts
+    materials.ts
+    database.ts
+  tests/
 learning-site/
   ...迁移期间保持可运行
 local-courses/
@@ -419,7 +472,7 @@ local-courses/
 - 手机端阅读器使用目录抽屉和正文布局。
 - 素材更新与部署管理只面向桌面或命令行。
 
-## 13. 隐私、备份与监控
+## 13. 运行、隐私、备份与监控
 
 ### 13.1 用户数据
 
@@ -429,13 +482,34 @@ local-courses/
 - 用户可以彻底删除账户及相关数据。
 - 不接入广告型或跨站追踪。
 
-### 13.2 SQLite 备份
+### 13.2 SQLite 备份与恢复
 
-- 每日生成一次一致性备份。
-- 备份加密后复制到服务器之外。
-- 保留最近 7 个每日备份和最近 3 个每周备份。
-- 每次生产升级前额外生成快照。
-- 定期在干净环境执行恢复演练。
+- `code/modules/learning-state/database.ts` 创建 `schema_migrations`，以事务应用每个 schema version；失败事务由 SQLite 回滚，再次启动会重试同一版本。每个连接启用外键，个人表从 `users` 级联删除。
+- WAL 仅在 SQLite `3.51.3` 或以上启用。数据库、`-wal` 和 `-shm` 是一个状态单元，不得在运行中只复制主文件。
+- `code/scripts/database.ts` 使用 SQLite backup API 创建一致性快照，AES-256-GCM 加密、写入 SHA-256 manifest，并保留 7 个 daily 与 3 个 weekly 槽位；异地复制、调度和告警仍由部署方负责。
+- 备份示例：
+
+  ```bash
+  STATE_DATABASE_PATH=/data/state/learning-state.sqlite \
+  BACKUP_OUTPUT_DIR=/secure/backups/agent-learning-hub \
+  BACKUP_PASSPHRASE='provided-by-secret-manager' \
+  npm run db:backup --prefix code
+  ```
+
+- 恢复必须写入新的空目标，并显式确认：
+
+  ```bash
+  BACKUP_PASSPHRASE='provided-by-secret-manager' \
+  npm run db:restore --prefix code -- \
+    --input /secure/backups/agent-learning-hub/<backup>.sqlite.enc \
+    --target /data/restore/learning-state.sqlite \
+    --yes
+  ```
+
+恢复命令会拒绝覆盖已有目标，解密后先执行 SQLite `quick_check`，再原子安装数据库。
+生产恢复时先停止写入，将完整状态单元恢复到可写目录，让应用重新打开数据库并执行
+迁移和外键检查。调度、异地存储、告警和带日期的干净环境恢复演练在完成任务证据前
+仍属于部署方工作。
 
 ### 13.3 监控
 
@@ -447,35 +521,69 @@ local-courses/
 - 内容审计和素材更新结果。
 - 不关联个人身份的页面访问汇总。
 
-## 14. README 改写方案
+### 13.4 部署、容器与数据库运维
 
-### 14.1 根 README
+`code/docker/Dockerfile` 是 Cloud/Local 共用的多阶段镜像定义；构建上下文
+始终是仓库根目录，因此 `.dockerignore` 能排除 Local Material、SQLite、备份、
+秘密和 `code/reports/`。`code/docker/` 中的 Compose 基础文件与 Cloud、Local、
+Release 覆盖文件共同定义运行模式。
 
-根 README 应改为：
+从仓库根目录使用 `code/scripts/docker-deploy.sh`，而不是手工拼接旧根目录
+Compose 文件：
 
-1. 项目名称和维护者身份。
-2. 产品定位。
-3. 云端与本地双运行模式。
-4. 九阶段路线和功能截图。
-5. Docker 快速启动。
-6. 技术架构与内容策略。
-7. 数据、隐私和备份说明。
-8. 路线图与贡献指南。
-9. 第三方内容归属声明。
+```bash
+code/scripts/docker-deploy.sh local up
+code/scripts/docker-deploy.sh local verify
+code/scripts/docker-deploy.sh local down
+```
 
-必须删除原维护者信息。课程数量和章节数量由脚本生成，避免再次过时。
+Local Mode 仅允许回环 `APP_BIND_HOST`，只读挂载 `local-courses/`，并保留命名
+SQLite 卷。Cloud Mode 从根 `.env` 读取 Better Auth 与 GitHub OAuth 配置；先运行
+`cloud config` 检查展开结果。GitHub 应用只注册
+`${BETTER_AUTH_URL}/api/auth/callback/github`，只申请 `read:user`；旧的
+`/api/auth/github/callback` 已停用。Release Mode 强制使用 `APP_IMAGE` 的固定版本或
+digest，先 `pull` 再启动，绝不在生产主机重新构建源码。
 
-### 14.2 `local-courses/README.md`
+生产实例先复制 `.env.example` 并由密钥管理系统注入 Better Auth、GitHub OAuth 和
+数据库备份密钥；不要把它们写进 Compose、命令历史或镜像。典型发布顺序为：
 
-该文件应改为“本地学习素材库说明”，包括：
+```bash
+APP_IMAGE=ghcr.io/cr330326/agent-learning-hub:v0.1.0 \
+code/scripts/docker-deploy.sh release config
+APP_IMAGE=ghcr.io/cr330326/agent-learning-hub:v0.1.0 \
+code/scripts/docker-deploy.sh release up
+```
 
-1. 素材库用途和本地专属属性。
-2. 明确“收录不等于原创或重新授权”。
-3. 四条轨道及课程清单。
-4. 每项资料的作者、许可证和上游链接。
-5. 自动检查、选择性更新、路径审计和重新索引方法。
-6. 云端不携带此目录的说明。
-7. 存储占用和备份建议。
+`/api/health` 同时检查内容目录与 SQLite `quick_check`，不返回绝对路径、秘密或
+用户状态。部署后除了健康接口，还应验证公开浏览、登录重定向、上游链接和管理员边界。
+
+2026-08-09 的隔离 Docker 验证已使用 `agent-learning-hub:docs-verify` 完成：Local
+Mode 的只读素材挂载、健康接口、公开路由、学习状态 HTTP 流程和重启后状态持久化均
+通过；同一镜像的 Cloud Mode 仅挂载状态卷，且公开路由和云端搜索不暴露本地章节。
+这不是已发布 GHCR 镜像、真实 OAuth 或生产回滚演练的替代证据。
+
+升级前先完成加密备份，启动后等待 `/api/health` 并验证公开浏览、OAuth 重定向、
+上游链接和管理员边界。镜像故障时仅切回前一不可变镜像；若数据库不兼容，停止写入，
+将升级前快照恢复至干净状态卷，再启动上一镜像。TLS、DNS、反向代理、密钥管理、
+异地备份复制、告警和正式恢复演练仍是部署方责任。
+
+## 14. 文档职责
+
+为避免多个派生文档互相漂移，文档按主题分工：
+
+- 根 `README.md`：快速启动、目录导航、常用维护命令和安全边界。
+- 根 `AGENTS.md`：工程协作约束、现役目录、命令事实源和不可突破的安全边界。
+- 根 `CONTEXT.md`：项目通用语言，避免把 Track、Stage、Curated Content 与 Local Material 混用。
+- 本文：架构、内容模型、归属、Docker、备份、恢复和运维边界。
+- `tasks.md`：实施状态、可执行证据和需求到任务追踪。
+- `spec.md`：产品需求和验收场景；`docs/adr/` 保存已接受的决策。
+- `local-courses/README.md`：本地素材库的归属与维护约定。
+
+原先分散的 `content-boundaries.md`、`content-model.md`、
+`database-operations.md`、`deployment.md` 和 `requirements-traceability.md`
+不再作为独立事实源；其中机器可读的 `content-boundaries.json` 仍保留。
+每个需求 ID 的权威映射位于 `spec.md` 的需求定义和 `tasks.md` 相应任务的“规格”
+与“实施证据”；修改需求或验收时必须同时更新这两处及相关测试。
 
 ## 15. 实施阶段
 
@@ -568,7 +676,10 @@ local-courses/
 
 ## 18. 下一步
 
-实施从 Phase 1 开始：创建独立应用骨架、定义内容 schema，并编写 `learning-site/data.js` 转换器。现有 `learning-site/` 在功能对等验收前保持不变。
+当前实现已经覆盖 Phase 0—6 与部分 Phase 7/8 证据。下一步以
+`tasks.md` 中仍未勾选的交付工作为准：受保护分支 CI、已发布镜像拉取与回滚、
+空服务器 HTTPS 部署、异地备份与干净环境恢复演练、安全/隐私发布审查，以及最终
+仓库入口切换。现有 `learning-site/` 在这些门槛完成前保持为只读迁移基线。
 
 实施时使用以下拆解文档：
 

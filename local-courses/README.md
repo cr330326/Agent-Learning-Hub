@@ -10,25 +10,25 @@
 - 课程目录中的第三方条目必须保留作者、许可证状态和上游地址；本地拥有一份副本不等于获得公开发布许可。
 - 本文件是 `local-courses/` 下唯一允许进入 Git 的文件，用于记录元数据和操作约定。
 
-机器可读事实源是 [`docs/content-boundaries.json`](../docs/content-boundaries.json)，规则说明见 [`docs/content-boundaries.md`](../docs/content-boundaries.md)。
+机器可读事实源是 [`docs/content-boundaries.json`](../docs/content-boundaries.json)；架构、内容归属和运行规则汇总在 [`docs/plans/plan.md`](../docs/plans/plan.md)。
 
 ## 目录和清单
 
-目录结构应与 `content/` 课程目录中声明的 `localPath` 一致；不要依据旧站 `learning-site/data.js` 手工维护第二套清单。当前阶段、课程、路径和异常数量由脚本生成：
+目录结构应与 `code/content/` 课程目录中声明的 `localPath` 一致；不要依据旧站 `learning-site/data.js` 手工维护第二套清单。当前阶段、课程、路径和异常数量由脚本生成：
 
 ```bash
-node scripts/baseline-report.mjs --output-dir reports/baseline
-node scripts/audit-content-boundaries.mjs --output-dir reports/content-boundaries
+npm run audit:baseline --prefix code
+npm run audit:boundaries --prefix code
 ```
 
-基线统计见 [`reports/baseline/baseline.md`](../reports/baseline/baseline.md)，内容边界审计见 [`reports/content-boundaries/content-boundaries.md`](../reports/content-boundaries/content-boundaries.md)。不要把目录大小、Markdown 数量或阅读器条目数量写死在此文件；这些数字会随素材仓库变化。
+基线统计见 [`code/reports/baseline/baseline.md`](../code/reports/baseline/baseline.md)，内容边界审计见 [`code/reports/content-boundaries/content-boundaries.md`](../code/reports/content-boundaries/content-boundaries.md)。不要把目录大小、Markdown 数量或阅读器条目数量写死在此文件；这些数字会随素材仓库变化。
 
 ## Local Mode 启动
 
 从仓库根目录执行：
 
 ```bash
-docker compose -f docker-compose.yml -f docker-compose.local.yml up --build
+code/scripts/docker-deploy.sh local up
 ```
 
 Compose 会将本目录只读挂载到容器的 `/data/local-courses`。如不使用 Docker，可在 `code/` 启动开发服务并显式指定：
@@ -46,19 +46,19 @@ npm run dev --prefix code
 在仓库根目录运行：
 
 ```bash
-npm run materials --prefix code check
-npm run materials --prefix code audit
-npm run materials --prefix code reindex
+npm run materials --prefix code -- check
+npm run materials --prefix code -- audit
+npm run materials --prefix code -- reindex
 ```
 
 - `check` 检查目录白名单引用的 Git 仓库 freshness，只读执行，不会 fetch、pull 或修改工作区。
-- `audit` 校验 schema、路径、访问策略和本地文件边界，生成 `reports/materials/audit/`。
-- `reindex` 先审计，再仅索引允许访问的站内正文和本地白名单章节，生成 `reports/materials/search-index.json`。
+- `audit` 校验 schema、路径、访问策略和本地文件边界，生成 `code/reports/materials/audit/`。
+- `reindex` 先审计，再仅索引允许访问的站内正文和本地白名单章节，生成 `code/reports/materials/search-index.json`。
 
 如需检查某个非默认根目录：
 
 ```bash
-npm run materials --prefix code check \
+npm run materials --prefix code -- check \
   --local-material-root /path/to/local-courses \
   --output-dir /path/to/material-reports
 ```
@@ -68,7 +68,7 @@ npm run materials --prefix code check \
 更新是显式、单课程、fast-forward-only 操作：
 
 ```bash
-npm run materials --prefix code update <course-id> --yes
+npm run materials --prefix code -- update <course-id> --yes
 ```
 
 命令会拒绝未知课程、没有 `localPath` 的课程、非 Git 目录、dirty working tree、分叉历史和无法确认的仓库状态；成功后自动运行本地内容审计并重建搜索索引。更新前后请保留报告，便于定位素材变化。

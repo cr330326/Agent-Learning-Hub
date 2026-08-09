@@ -292,7 +292,44 @@ export async function auditContentDirectory(
   }
 }
 
+function renderMarkdownTable(
+  headers: string[],
+  alignments: Array<"left" | "right">,
+  rows: string[][],
+) {
+  const widths = headers.map((header, index) =>
+    Math.max(3, header.length, ...rows.map((row) => row[index]?.length ?? 0)),
+  );
+  const renderRow = (row: string[], header = false) =>
+    `| ${row
+      .map((cell, index) => {
+        const width = widths[index];
+        return alignments[index] === "right" && !header
+          ? cell.padStart(width)
+          : cell.padEnd(width);
+      })
+      .join(" | ")} |`;
+  const separator = `| ${widths
+    .map((width, index) =>
+      alignments[index] === "right"
+        ? `${"-".repeat(Math.max(3, width - 1))}:`
+        : "-".repeat(width),
+    )
+    .join(" | ")} |`;
+
+  return [
+    renderRow(headers, true),
+    separator,
+    ...rows.map((row) => renderRow(row)),
+  ];
+}
+
 export function renderContentAuditMarkdown(report: ContentAuditReport): string {
+  const warningRows = report.warningGroups.map((warning) => [
+    warning.code,
+    String(warning.count),
+    warning.message,
+  ]);
   const lines = [
     "# Content audit report",
     "",
@@ -306,11 +343,10 @@ export function renderContentAuditMarkdown(report: ContentAuditReport): string {
     "",
     "## Warnings",
     "",
-    "| Code | Count | Message |",
-    "| --- | ---: | --- |",
-    ...report.warningGroups.map(
-      (warning) =>
-        `| ${warning.code} | ${warning.count} | ${warning.message} |`,
+    ...renderMarkdownTable(
+      ["Code", "Count", "Message"],
+      ["left", "right", "left"],
+      warningRows,
     ),
     "",
     "## Errors",
@@ -320,16 +356,17 @@ export function renderContentAuditMarkdown(report: ContentAuditReport): string {
   if (report.errors.length === 0) {
     lines.push("None.");
   } else {
+    const errorRows = report.errors.map((error) => {
+      const target = error.itemId ?? error.filePath ?? "—";
+      const path = error.path?.join(".") ?? error.localPath ?? "—";
+      return [error.code, target, path, error.message];
+    });
     lines.push(
-      "| Code | Item / file | Path | Message |",
-      "| --- | --- | --- | --- |",
-    );
-    lines.push(
-      ...report.errors.map((error) => {
-        const target = error.itemId ?? error.filePath ?? "—";
-        const path = error.path?.join(".") ?? error.localPath ?? "—";
-        return `| ${error.code} | ${target} | ${path} | ${error.message} |`;
-      }),
+      ...renderMarkdownTable(
+        ["Code", "Item / file", "Path", "Message"],
+        ["left", "left", "left", "left"],
+        errorRows,
+      ),
     );
   }
 

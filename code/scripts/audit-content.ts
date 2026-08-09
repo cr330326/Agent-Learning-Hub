@@ -13,9 +13,9 @@ function usage() {
     "Usage: tsx scripts/audit-content.ts [options]",
     "",
     "Options:",
-    "  --root <path>                  Repository root (default: parent of code/)",
+    "  --root <path>                  Application root (default: code/)",
     "  --content-dir <path>           Content directory (default: <root>/content)",
-    "  --local-material-root <path>   Local Material directory (default: <root>/local-courses)",
+    "  --local-material-root <path>   Local Material directory (default: ../local-courses)",
     "  --mode <cloud|local>           Audit mode (default: cloud)",
     "  --output-dir <path>            Report directory (default: <root>/reports/content-audit)",
     "  -h, --help                     Show this help message",
@@ -30,7 +30,7 @@ function parseArguments(args: string[]) {
     mode: ContentAuditMode;
     outputDirectory?: string;
   } = {
-    root: resolve(process.cwd(), ".."),
+    root: resolve(import.meta.dirname, ".."),
     mode:
       process.env.DEPLOYMENT_MODE === "local"
         ? "local"
@@ -86,7 +86,7 @@ function parseArguments(args: string[]) {
       options.contentDirectory ?? join(root, "content"),
     ),
     localMaterialRoot: resolve(
-      options.localMaterialRoot ?? join(root, "local-courses"),
+      options.localMaterialRoot ?? resolve(root, "..", "local-courses"),
     ),
     mode: options.mode,
     outputDirectory: resolve(

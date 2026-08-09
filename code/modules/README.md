@@ -15,6 +15,6 @@ and route handlers must not reimplement module policy.
 | `runtime/`          | Deployment-mode configuration                      | T1.1            |
 | `search/`           | Public and allowed Local Material search indexes   | T6.1–T6.3       |
 
-The Catalog API reads only the Git-managed `content/` directory. It does not
+The Catalog API reads only the Git-managed `code/content/` directory. It does not
 read SQLite or `local-courses/`; Content Resolver owns later access to Local
 Material.

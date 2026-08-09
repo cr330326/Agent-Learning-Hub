@@ -69,21 +69,18 @@ function usage(): string {
     "The update command requires one catalog course ID and --yes.",
     "",
     "Options:",
-    "  --root <path>                  Repository root (default: parent of code/)",
+    "  --root <path>                  Application root (default: code/)",
     "  --content-dir <path>           Content directory (default: <root>/content)",
-    "  --local-material-root <path>   Local Material directory (default: <root>/local-courses)",
+    "  --local-material-root <path>   Local Material directory (default: ../local-courses)",
     "  --output-dir <path>            Report directory (default: <root>/reports/materials)",
     "  --yes                          Confirm one explicit fast-forward update",
     "  -h, --help                     Show this help message",
   ].join("\n");
 }
 
-function defaultProjectRoot(): string {
+function defaultApplicationRoot(): string {
   return resolve(
-    process.env.PROJECT_ROOT ??
-      (process.cwd().endsWith("/code")
-        ? resolve(process.cwd(), "..")
-        : process.cwd()),
+    process.env.PROJECT_ROOT ?? resolve(import.meta.dirname, ".."),
   );
 }
 
@@ -93,7 +90,7 @@ function parseArguments(args: string[]): MaterialsArguments {
     return {
       command: "check",
       help: true,
-      root: defaultProjectRoot(),
+      root: defaultApplicationRoot(),
       confirmed: false,
     };
   }
@@ -107,7 +104,7 @@ function parseArguments(args: string[]): MaterialsArguments {
   }
 
   const options: MaterialsOptions = {
-    root: defaultProjectRoot(),
+    root: defaultApplicationRoot(),
   };
   const courseId = command === "update" ? args[1] : undefined;
   if (command === "update" && (!courseId || courseId.startsWith("--"))) {
@@ -155,7 +152,7 @@ function parseArguments(args: string[]): MaterialsArguments {
       options.contentDirectory ?? join(root, "content"),
     ),
     localMaterialRoot: resolve(
-      options.localMaterialRoot ?? join(root, "local-courses"),
+      options.localMaterialRoot ?? resolve(root, "..", "local-courses"),
     ),
     outputDirectory: resolve(
       options.outputDirectory ?? join(root, "reports", "materials"),

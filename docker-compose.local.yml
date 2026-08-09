@@ -1,9 +1,0 @@
-services:
-  app:
-    environment:
-      DEPLOYMENT_MODE: local
-      LOCAL_BIND_HOST: 127.0.0.1
-      LOCAL_MATERIAL_ROOT: /data/local-courses
-    volumes:
-      - learning-state:/data/state
-      - ./local-courses:/data/local-courses:ro

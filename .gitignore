@@ -230,7 +230,7 @@ __marimo__/
 /backups/**
 /code/node_modules/
 /code/.next/
-/code/.data/
+/code/.data/**
 /code/coverage/
 /code/tsconfig.tsbuildinfo
 

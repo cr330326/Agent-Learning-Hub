@@ -13,7 +13,7 @@ import {
 } from "./catalog-api";
 
 const sourceContentRoot = fileURLToPath(
-  new URL("../../../content", import.meta.url),
+  new URL("../../content", import.meta.url),
 );
 const temporaryRoots: string[] = [];
 

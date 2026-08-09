@@ -41,7 +41,7 @@
 
 **完成证据**：脚本在当前仓库可重复运行；输出与现有快照差异有解释。
 
-**实施证据（2026-08-09）**：`node scripts/baseline-report.mjs --output-dir reports/baseline` 生成 [JSON 基线报告](../../reports/baseline/baseline.json) 与 [Markdown 摘要](../../reports/baseline/baseline.md)。`node --test tests/baseline-report.test.mjs` 覆盖报告输出、引用/覆盖率异常、嵌套仓库脏状态和旧站能力清单；报告说明了与旧手工统计的口径差异。
+**实施证据（2026-08-09）**：`npm run audit:baseline --prefix code` 生成 [JSON 基线报告](../../code/reports/baseline/baseline.json) 与 [Markdown 摘要](../../code/reports/baseline/baseline.md)。[baseline-report.test.mjs](../../code/tests/baseline-report.test.mjs) 覆盖报告输出、引用/覆盖率异常、嵌套仓库脏状态和旧站能力清单；报告说明了与旧手工统计的口径差异。
 
 ### - [x] T0.2 建立内容归属与忽略规则
 
@@ -54,7 +54,7 @@
 
 **完成证据**：提供一次镜像/构建上下文清单审计结果。
 
-**实施证据（2026-08-09）**：[content-boundaries.json](../content-boundaries.json) 定义可审计的目录归属和交付边界；[content-boundaries.md](../content-boundaries.md) 说明执行规则。`node scripts/audit-content-boundaries.mjs --output-dir reports/content-boundaries` 生成 [JSON 审计](../../reports/content-boundaries/content-boundaries.json) 和 [Markdown 摘要](../../reports/content-boundaries/content-boundaries.md)，验证 Git、Docker 和 CI artifact 边界。14 个历史追踪的第三方 Local Material 文件已仅从 Git 索引移除，文件仍保留在本机；`local-courses/README.md` 是唯一允许追踪的素材库元数据。
+**实施证据（2026-08-09）**：[content-boundaries.json](../content-boundaries.json) 定义可审计的目录归属和交付边界；执行规则收敛在 [plan.md 第 7 节](./plan.md#7-内容维护与归属)。`npm run audit:boundaries --prefix code` 生成 [JSON 审计](../../code/reports/content-boundaries/content-boundaries.json) 和 [Markdown 摘要](../../code/reports/content-boundaries/content-boundaries.md)，验证 Git、Docker 和 CI artifact 边界。14 个历史追踪的第三方 Local Material 文件已仅从 Git 索引移除，文件仍保留在本机；`local-courses/README.md` 是唯一允许追踪的素材库元数据。
 
 ### - [x] T0.3 建立需求追踪和质量门禁
 
@@ -67,7 +67,7 @@
 
 **完成证据**：最小 CI 流程可运行，并包含空骨架的类型、格式、测试和构建步骤。
 
-**实施证据（2026-08-09）**：[testing-strategy.md](../testing-strategy.md) 约定测试分层、位置、命名和覆盖范围；[requirements-traceability.md](../requirements-traceability.md) 记录需求到任务和可执行证据的关联；[quality.yml](../../.github/workflows/quality.yml) 在 Cloud/Local Mode 矩阵中执行质量门禁，并先运行内容边界审计。`npm run check:cloud --prefix code` 与 `npm run check:local --prefix code` 已在本地通过。
+**实施证据（2026-08-09）**：[testing-strategy.md](../testing-strategy.md) 约定测试分层、位置、命名和覆盖范围；本文的任务 ID、`spec.md` 需求 ID 与每项实施证据共同构成追踪矩阵（见 [plan.md 第 14 节](./plan.md#14-文档职责)）。[quality.yml](../../.github/workflows/quality.yml) 在 Cloud/Local Mode 矩阵中执行质量门禁，并先运行内容边界审计。`npm run check:cloud --prefix code` 与 `npm run check:local --prefix code` 已在本地通过。
 
 **Phase 0 退出条件**：基线可重复生成；内容边界明确；质量门禁可执行。
 
@@ -99,21 +99,21 @@
 
 **完成证据**：内容 schema 测试通过，错误内容在构建前被拒绝并给出可定位信息。
 
-**实施证据（2026-08-09）**：[content-schema.ts](../../code/modules/catalog/content-schema.ts) 以 Zod 定义 Track、Stage、Stage Task、Project Outcome 和 Learning Item，并从同一 schema 推导 TypeScript 类型；`validateContentCatalog` 返回字段路径，`parseContentCatalog` 用于拒绝非法目录。[content-schema.test.ts](../../code/modules/catalog/content-schema.test.ts) 覆盖合法目录、缺字段、重复 ID、无效阶段、无效 URL/日期、来源/作者/许可证和访问策略边界。维护契约见 [content-model.md](../content-model.md)。
+**实施证据（2026-08-09）**：[content-schema.ts](../../code/modules/catalog/content-schema.ts) 以 Zod 定义 Track、Stage、Stage Task、Project Outcome 和 Learning Item，并从同一 schema 推导 TypeScript 类型；`validateContentCatalog` 返回字段路径，`parseContentCatalog` 用于拒绝非法目录。[content-schema.test.ts](../../code/modules/catalog/content-schema.test.ts) 覆盖合法目录、缺字段、重复 ID、无效阶段、无效 URL/日期、来源/作者/许可证和访问策略边界。维护契约见 [plan.md 第 6.1 节](./plan.md#61-content-catalog-module)。
 
 ### - [x] T1.3 创建内容目录和 Catalog API
 
 **依赖**：T1.2  
 **规格**：CAT-001—CAT-007、PAGE-003、PAGE-004
 
-- 建立 `content/stages`、`content/courses`、`content/articles`、`content/catalog` 和 `content/schemas`。
+- 建立 `code/content/stages`、`code/content/courses`、`code/content/articles`、`code/content/catalog` 和 `code/content/schemas`。
 - 实现 `listItems`、`getItem` 和 `getStage`。
 - 支持按阶段、轨道、标签和访问策略查询。
 - 确保构建输出不依赖 SQLite 才能读取公开内容。
 
 **完成证据**：Catalog API 单元测试覆盖查询、排序、缺失 ID 和非法内容。
 
-**实施证据（2026-08-09）**：已建立 Git 管理的 [content/](../../content/) 目录，包括 `stages`、`courses`、`articles`、`catalog` 和 `schemas`。 [catalog-api.ts](../../code/modules/catalog/catalog-api.ts) 仅从该目录读取 JSON 清单，逐文件验证并在交叉引用验证后提供 `listItems`、`getItem`、`getStage`；不读取 SQLite 或 `local-courses/`。[catalog-api.test.ts](../../code/modules/catalog/catalog-api.test.ts) 覆盖默认目录、稳定排序、阶段/轨道/标签/访问策略查询、缺失 ID 和带文件路径的非法内容错误。
+**实施证据（2026-08-09）**：已建立 Git 管理的 [code/content/](../../code/content/) 目录，包括 `stages`、`courses`、`articles`、`catalog` 和 `schemas`。[catalog-api.ts](../../code/modules/catalog/catalog-api.ts) 仅从该目录读取 JSON 清单，逐文件验证并在交叉引用验证后提供 `listItems`、`getItem`、`getStage`；不读取 SQLite 或 `local-courses/`。[catalog-api.test.ts](../../code/modules/catalog/catalog-api.test.ts) 覆盖默认目录、稳定排序、阶段/轨道/标签/访问策略查询、缺失 ID 和带文件路径的非法内容错误。
 
 ### - [x] T1.4 实现旧数据转换器
 
@@ -127,7 +127,7 @@
 
 **完成证据**：转换前后差异报告经人工确认；所有已策展条目均有确定去向。
 
-**实施证据（2026-08-09）**：[convert-legacy-content.mjs](../../scripts/convert-legacy-content.mjs) 可重复把 `learning-site/data.js` 转为 [结构化阶段](../../content/stages/legacy-import.json)、[课程与章节条目](../../content/courses/legacy-import.json)、[项目阶梯](../../content/catalog/project-outcomes.json) 与完整旧数据快照；各条转换记录保留 `legacyImport.raw`，完整源数据保留在快照中。 [legacy-conversion.json](../../reports/legacy-conversion/legacy-conversion.json) 对照基线确认 4 轨、9 阶段、42 课程卡、38 分组、472 章节和路径引用；[待补全报告](../../reports/legacy-conversion/legacy-conversion.md) 明确列出 488 个缺失上游地址及 514 个未知作者/许可证，未猜测值。`tests/legacy-content-converter.test.mjs` 断言转换可重复、数量与基线一致。
+**实施证据（2026-08-09）**：[convert-legacy-content.mjs](../../code/scripts/convert-legacy-content.mjs) 可重复把 `learning-site/data.js` 转为 [结构化阶段](../../code/content/stages/legacy-import.json)、[课程与章节条目](../../code/content/courses/legacy-import.json)、[项目阶梯](../../code/content/catalog/project-outcomes.json) 与完整旧数据快照；各条转换记录保留 `legacyImport.raw`，完整源数据保留在快照中。[legacy-conversion.json](../../code/reports/legacy-conversion/legacy-conversion.json) 对照基线确认 4 轨、9 阶段、42 课程卡、38 分组、472 章节和路径引用；[待补全报告](../../code/reports/legacy-conversion/legacy-conversion.md) 明确列出 488 个缺失上游地址及 514 个未知作者/许可证，未猜测值。[legacy-content-converter.test.mjs](../../code/tests/legacy-content-converter.test.mjs) 断言转换可重复、数量与基线一致。
 
 ### - [x] T1.5 建立内容审计命令
 
@@ -140,7 +140,7 @@
 
 **完成证据**：当前目录可生成完整审计报告，故障测试能触发 CI 失败。
 
-**实施证据（2026-08-09）**：`npm run check:cloud` 与 `npm run check:local` 均执行内容审计并报告 0 个确定性错误；[content-audit-cli.test.mjs](../../tests/content-audit-cli.test.mjs) 覆盖通过与故障退出路径，命令同时写出 JSON/Markdown 报告。
+**实施证据（2026-08-09）**：`npm run audit:content --prefix code` 报告 0 个确定性错误；[content-audit-cli.test.mjs](../../code/tests/content-audit-cli.test.mjs) 覆盖通过与故障退出路径，命令同时写出 JSON/Markdown 报告。
 
 **Phase 1 退出条件**：现有阶段和课程可无损转换，新目录通过 schema 与引用审计。
 
@@ -253,7 +253,7 @@
 
 **完成证据**：CI 中 cloud-clean-room 作业稳定通过。
 
-**实施证据（2026-08-09）**：[`.dockerignore`](../../.dockerignore) 排除 `local-courses/`、SQLite、备份和环境文件；[cloud-clean-room CI 作业](../../.github/workflows/quality.yml) 构建无素材镜像并扫描边界，再冒烟健康检查、云端搜索和上游课程。Docker 实测镜像内无 `local-courses`/SQLite，云端搜索无 `LOCAL-CHAPTER`，本地素材课程显示“打开上游”。
+**实施证据（2026-08-09）**：[`.dockerignore`](../../.dockerignore) 排除 `local-courses/`、SQLite、备份和环境文件；[cloud-clean-room CI 作业](../../.github/workflows/quality.yml) 构建无素材镜像并扫描边界，再冒烟健康检查、云端搜索和上游课程。本地 Docker 实测使用 `code/docker/Dockerfile` 构建 `agent-learning-hub:docs-verify`，镜像内无 `local-courses`、SQLite、`.data` 或报告目录；以隔离 Cloud Compose 项目启动后只挂载状态卷，健康接口与九条公开路由通过，云端搜索无 `LOCAL-CHAPTER`/本地阅读路由。
 
 ### - [x] T3.4 增加内容政策与贡献页面
 
@@ -284,7 +284,7 @@
 
 **完成证据**：全新数据库可迁移到最新版本；迁移和级联删除集成测试通过。
 
-**实施证据（2026-08-09）**：[SQLite schema/migration](../../code/modules/learning-state/database.ts) 创建身份、会话、进度、任务、笔记、收藏和成果表，启用外键并在 WAL 前校验 SQLite 版本；[repository tests](../../code/modules/learning-state/repository.test.ts) 覆盖隔离、唯一性、重开持久化和级联删号，[数据库操作说明](../database-operations.md) 记录事务迁移与恢复边界。
+**实施证据（2026-08-09）**：[SQLite schema/migration](../../code/modules/learning-state/database.ts) 创建身份、会话、进度、任务、笔记、收藏和成果表，启用外键并在 WAL 前校验 SQLite 版本；[repository tests](../../code/modules/learning-state/repository.test.ts) 覆盖隔离、唯一性、重开持久化和级联删号；事务迁移、备份和恢复边界见 [plan.md 第 13.2 节](./plan.md#132-sqlite-备份与恢复)。
 
 ### - [x] T4.2 实现云端 GitHub 登录
 
@@ -429,7 +429,7 @@
 ### - [x] T5.4 创建 Docker 与 Compose 配置
 
 **依赖**：T3.3、T4.3、T5.2  
-**规格**：DEPLOY-001—DEPLOY-005、DEPLOY-010—DEPLOY-014
+**规格**：DEPLOY-001—DEPLOY-005、DEPLOY-010—DEPLOY-015
 
 - 建立多阶段 Dockerfile。
 - 创建基础、cloud 和 local Compose 配置。
@@ -438,7 +438,7 @@
 
 **完成证据**：新机器按照文档可一条命令启动 local 模式；容器重建后状态保留。
 
-**实施证据（2026-08-09）**：[Dockerfile](../../Dockerfile)、[基础 Compose](../../docker-compose.yml)、[Cloud override](../../docker-compose.cloud.yml)、[Local override](../../docker-compose.local.yml) 和 [部署说明](../deployment.md) 已加入；Docker 实测 build、Compose config、Local/Cloud 容器健康检查、只读素材挂载，以及同一 SQLite volume 重启后状态恢复 4321px。
+**实施证据（2026-08-09）**：[Dockerfile](../../code/docker/Dockerfile)、[基础 Compose](../../code/docker/docker-compose.yml)、[Cloud override](../../code/docker/docker-compose.cloud.yml)、[Local override](../../code/docker/docker-compose.local.yml) 和 [部署辅助脚本](../../code/scripts/docker-deploy.sh) 已加入；脚本统一构造 Docker Compose 配置、Local/Cloud/Release 模式和健康检查。隔离 Local Compose 实测构建、健康接口、九路由 HTTP 冒烟和学习状态 HTTP E2E 均通过；`local-courses` bind mount 为 `rw=false`，写入位置 `778` 在容器重启后仍可读取，SQLite 位于命名卷。隔离 Cloud Compose 同样健康且不挂载 Local Material。镜像边界、卷、备份与升级/回滚约定见 [plan.md 第 13.4 节](./plan.md#134-部署容器与数据库运维)。
 
 ### - [x] T5.5 建立本地离线验收
 
@@ -577,7 +577,7 @@
 
 **完成证据**：指定版本可拉取、启动，并可回退到上一个版本。
 
-**当前进展（2026-08-09）**：[release workflow](../../.github/workflows/release.yml) 已按 `vX.Y.Z` 标签发布 GHCR 镜像、长 SHA 标签、SBOM 和构建来源证明；[release Compose override](../../docker-compose.release.yml) 清除本地 build 配置并强制要求版本或 digest。尚未从实际 GHCR 拉取镜像并完成回退演练，因此保留未勾选。
+**当前进展（2026-08-09）**：[release workflow](../../.github/workflows/release.yml) 已按 `vX.Y.Z` 标签发布 GHCR 镜像、长 SHA 标签、SBOM 和构建来源证明；[release Compose override](../../code/docker/docker-compose.release.yml) 清除本地 build 配置并强制要求版本或 digest。尚未从实际 GHCR 拉取镜像并完成回退演练，因此保留未勾选。
 
 ### - [ ] T7.3 编写云端部署和回滚流程
 
@@ -590,7 +590,7 @@
 
 **完成证据**：从空服务器部署指定版本并完成一次受控回滚演练。
 
-**当前进展（2026-08-09）**：[deployment runbook](../deployment.md) 已补充版本镜像、配置解析、备份前置、健康/冒烟检查、OAuth callback、迁移和回滚边界；本地 `docker compose config` 已验证 release override 不再保留 build。尚未在空服务器、反向代理和 HTTPS 环境完成受控部署/回滚，因此保留未勾选。
+**当前进展（2026-08-09）**：[plan.md 第 13.4 节](./plan.md#134-部署容器与数据库运维) 已补充版本镜像、配置解析、备份前置、健康/冒烟检查、OAuth callback、迁移和回滚边界；本地 `docker compose config` 已验证 release override 不再保留 build。尚未在空服务器、反向代理和 HTTPS 环境完成受控部署/回滚，因此保留未勾选。
 
 ### - [ ] T7.4 实现 SQLite 备份与保留策略
 
@@ -604,7 +604,7 @@
 
 **完成证据**：备份任务、失败告警和保留清理测试通过。
 
-**当前进展（2026-08-09）**：[backup module](../../code/modules/learning-state/backup.ts) 已提供 SQLite 一致性快照、AES-256-GCM 加密、SHA-256 manifest、7 个 daily/3 个 weekly 保留和 `quick_check` 恢复验证；`npm run db:backup` / `db:restore` CLI 已用临时数据库完成正向走查。定时调度、异地复制、失败告警和正式恢复演练仍未完成，因此保留未勾选。
+**当前进展（2026-08-09）**：[backup module](../../code/modules/learning-state/backup.ts) 已提供 SQLite 一致性快照、AES-256-GCM 加密、SHA-256 manifest、7 个 daily/3 个 weekly 保留和 `quick_check` 恢复验证；`npm run db:backup --prefix code` 与 `npm run db:restore --prefix code` CLI 已用临时数据库完成正向走查。定时调度、异地复制、失败告警和正式恢复演练仍未完成，因此保留未勾选。
 
 ### - [ ] T7.5 执行干净环境恢复演练
 
@@ -630,19 +630,21 @@
 
 **完成证据**：故障注入可触发预期告警，日志抽查不含秘密和笔记正文。
 
-### - [ ] T7.7 重写项目文档
+### - [ ] T7.7 同步项目文档与运行手册
 
 **依赖**：T5.4、T6.6、T7.3  
 **规格**：IA-005、DEPLOY-001、MAT-002
 
 - 重写根 `README.md`：定位、双模式、九阶段、快速启动、架构、隐私和贡献。
+- 同步根 `AGENTS.md`、`CONTEXT.md` 以及 `docs/plans/`，使目录、脚本、运行模式和实现证据指向 `code/`。
 - 重写 `local-courses/README.md`：本地属性、归属、清单、检查/更新/审计/索引和存储建议。
 - 删除原维护者身份信息；保留第三方作者、许可证和上游地址。
 - 数量引用改为脚本生成片段或报告链接。
+- 合并不再独立维护的专题说明，保留机器可读边界和唯一事实源。
 
 **完成证据**：新用户仅依据 README 可完成 cloud/local 启动；归属抽查通过。
 
-**当前进展（2026-08-09）**：已重写根 [README](../../README.md) 和 [local-courses README](../../local-courses/README.md)，改为指向 `code/`、Docker 双模式、Better Auth、内容归属、素材 check/audit/reindex/update、数据库操作和生成式报告；删除旧维护者身份与手工素材数量。文档命令已通过 Prettier 检查，Docker release Compose 已通过 `docker compose config`；T7.3 的真实部署演练尚未完成，故保留未勾选。
+**当前进展（2026-08-09）**：已同步根 [README](../../README.md)、[AGENTS](../../AGENTS.md)、[CONTEXT](../../CONTEXT.md)、[产品方案](./plan.md)、[产品规格](./spec.md)、本任务清单和 [local-courses README](../../local-courses/README.md)，统一指向 `code/`、Docker 双模式、Better Auth、内容归属、素材 check/audit/reindex/update、数据库操作和生成式报告；删除旧维护者身份与手工素材数量。`content-boundaries.md`、`content-model.md`、`database-operations.md`、`deployment.md` 和 `requirements-traceability.md` 已合并到方案/任务事实源，机器可读 `content-boundaries.json` 保留。文档命令已通过 Prettier 检查，Docker release Compose 已通过 `docker compose config`；T7.3 的真实部署演练尚未完成，故保留未勾选。
 
 **Phase 7 退出条件**：指定版本可从空服务器部署、监控、备份、恢复和回滚；本地用户也有完整启动文档。
 

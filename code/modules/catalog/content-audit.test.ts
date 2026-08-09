@@ -5,11 +5,14 @@ import { fileURLToPath } from "node:url";
 
 import { afterEach, describe, expect, it } from "vitest";
 
-import { auditContentDirectory } from "./content-audit";
+import {
+  auditContentDirectory,
+  renderContentAuditMarkdown,
+} from "./content-audit";
 
-const repositoryRoot = fileURLToPath(new URL("../../../", import.meta.url));
-const sourceContentRoot = join(repositoryRoot, "content");
-const localMaterialRoot = join(repositoryRoot, "local-courses");
+const applicationRoot = fileURLToPath(new URL("../../", import.meta.url));
+const sourceContentRoot = join(applicationRoot, "content");
+const localMaterialRoot = join(applicationRoot, "..", "local-courses");
 const temporaryRoots: string[] = [];
 
 afterEach(async () => {
@@ -94,5 +97,46 @@ describe("content audit", () => {
         itemId: localItem.id,
       }),
     );
+  });
+
+  it("renders Prettier-stable Markdown tables for generated audit reports", () => {
+    const markdown = renderContentAuditMarkdown({
+      formatVersion: 1,
+      mode: "cloud",
+      errors: [],
+      warningGroups: [
+        {
+          code: "unknown-author",
+          count: 1,
+          itemIds: [],
+          message: "Brief warning.",
+        },
+        {
+          code: "local-material-root-unavailable",
+          count: 42,
+          itemIds: [],
+          message: "A warning with a longer explanation.",
+        },
+      ],
+      summary: { errorCount: 0, warningCount: 43 },
+      network: { status: "not-run", reason: "Not part of this report." },
+    });
+
+    const tableLines = markdown
+      .split("\n")
+      .filter((line) => line.startsWith("|"));
+
+    expect(tableLines).toHaveLength(4);
+    expect(new Set(tableLines.map((line) => line.length))).toEqual(
+      new Set([tableLines[0].length]),
+    );
+    expect(tableLines.some((line) => line.includes("| unknown-author"))).toBe(
+      true,
+    );
+    expect(
+      tableLines.some((line) =>
+        line.includes("| local-material-root-unavailable"),
+      ),
+    ).toBe(true);
   });
 });

@@ -18,7 +18,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-      - run: node scripts/audit-content-boundaries.mjs --output-dir reports/content-boundaries
+      - run: node code/scripts/audit-content-boundaries.mjs --output-dir code/reports/content-boundaries
 
   quality:
     name: ${{ matrix.mode }} quality
@@ -94,7 +94,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: docker build --target runner -t agent-learning-hub:cloud-clean-room .
+      - run: docker build --file code/docker/Dockerfile --target runner -t agent-learning-hub:cloud-clean-room .
       - name: Inspect image boundary
         run: |
           test "$(docker run --rm --entrypoint sh agent-learning-hub:cloud-clean-room -c 'find /app /data -iname "*local-courses*" -print')" = ""

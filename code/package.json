@@ -16,7 +16,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "typecheck": "tsc --noEmit",
-    "test:tools": "node --test ../tests/baseline-report.test.mjs ../tests/content-boundaries.test.mjs ../tests/legacy-content-converter.test.mjs ../tests/content-audit-cli.test.mjs",
+    "test:tools": "node --test tests/baseline-report.test.mjs tests/content-boundaries.test.mjs tests/legacy-content-converter.test.mjs tests/content-audit-cli.test.mjs",
     "test:unit": "vitest run",
     "test": "npm run test:tools && npm run test:unit",
     "test:cloud": "DEPLOYMENT_MODE=cloud npm run test",
@@ -28,9 +28,9 @@
     "check": "npm run format:check && npm run lint && npm run typecheck && npm run audit:content && npm run test && npm run build",
     "check:cloud": "DEPLOYMENT_MODE=cloud npm run check",
     "check:local": "DEPLOYMENT_MODE=local npm run check",
-    "audit:baseline": "node ../scripts/baseline-report.mjs --root .. --output-dir ../reports/baseline",
-    "audit:boundaries": "node ../scripts/audit-content-boundaries.mjs --root .. --output-dir ../reports/content-boundaries",
-    "convert:legacy": "node ../scripts/convert-legacy-content.mjs --root .."
+    "audit:baseline": "node scripts/baseline-report.mjs --root .. --output-dir reports/baseline",
+    "audit:boundaries": "node scripts/audit-content-boundaries.mjs --root .. --output-dir reports/content-boundaries",
+    "convert:legacy": "node scripts/convert-legacy-content.mjs --root .. --content-dir content --report-dir reports/legacy-conversion --baseline reports/baseline/baseline.json"
   },
   "dependencies": {
     "better-auth": "^1.6.26",

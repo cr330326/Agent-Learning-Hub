@@ -2,43 +2,55 @@
 
 ## 项目定位
 
-Agent Learning Hub 是一个以实践成果为主线的 Agent 工程学习网站。它用九阶段路线组织四类学习轨道，同时支持云端公开学习和本地素材库深度阅读。
+Agent Learning Hub 是一个以实践成果为主线的 Agent 工程学习网站。它以九阶段路线组织 Learning、AICoding、Agentic 与 Application 四条学习轨道，并支持 Cloud Mode 公开学习和 Local Mode 本地素材深读。
 
-当前处于新全栈应用实施前期。产品范围和验收以 [spec.md](docs/plans/spec.md) 为准，实施顺序以 [tasks.md](docs/plans/tasks.md) 为准。
+产品范围和验收以 [spec.md](docs/plans/spec.md) 为准，实施顺序、完成状态与需求追踪以 [tasks.md](docs/plans/tasks.md) 为准；架构、内容模型、部署和运维以 [plan.md](docs/plans/plan.md) 为准。
 
-## 核心架构
+## 现役工程与边界
 
-- 新应用统一规划在 `code/`，采用 Next.js App Router + TypeScript 全栈工程。
-- 同一代码库支持 `cloud` 和 `local` 两种运行模式，差异收敛在 Content Resolver 的 Cloud/Local Adapter。
-- Git 管公开课程与自有内容；SQLite 只管身份、会话和个人学习状态。
-- 云端不依赖、不打包、不代理 `local-courses/`；本地模式将其只读挂载，缺失内容回退到上游网页。
-- 架构图、接口和数据模型详见 [plan.md](docs/plans/plan.md) 与 [spec.md](docs/plans/spec.md)；关键取舍见 [ADR](docs/adr/)；领域术语见 [CONTEXT.md](CONTEXT.md)。
+- `code/` 是唯一现役的全栈工程，使用 Next.js App Router + TypeScript。不要新建 `apps/web/`、第二套应用或根目录的运行入口。
+- `code/content/` 是公开课程和自有内容的唯一运行时目录；`code/reports/` 存放可再生成的审计证据；`code/scripts/` 存放受 `code/package.json` 和 CI 调用的维护命令。
+- `learning-site/` 是迁移基线，Phase 8 对等验收前保持不动，不新增产品功能。
+- `local-courses/` 是第三方 Local Material，只能在 Local Mode 以只读方式访问；云端不得打包、代理、索引或假设它存在。
+- Git 管公开目录和自有内容；SQLite 只管身份、会话和个人学习状态。公开课程绝不写入 SQLite。
+- `.dockerignore`、`.gitignore` 和 [content-boundaries.json](docs/content-boundaries.json) 共同定义内容、状态、报告和秘密的交付边界。
 
-## 关键模块
+## 领域与安全约定
 
-- `catalog`：公开课程、阶段和资料的读取、校验与查询。
-- `content-resolver`：统一解析站内正文、本地文件、上游链接和不可用状态。
-- `reader`、`search`：安全阅读策展内容，并只索引允许访问的内容。
-- `auth`、`learning-state`：GitHub/本地身份，以及进度、笔记、收藏和阶段成果。
-- `freshness`：读取素材状态；Git 检查和更新由宿主机命令执行。
+- Cloud/Local 的 Learning Item ID 必须一致。打开或点击仅表示开始；完成必须由用户主动确认。
+- 第三方条目必须保留作者、许可证状态和上游地址；本地副本不代表获得云端发布许可。
+- 本地文件必须来自 allowlist 并限制在只读挂载根内；拒绝路径穿越、符号链接逃逸和可执行 MDX。
+- 网站进程不得更新嵌套素材仓库；`materials update` 仅允许在指定单课程、clean working tree 上 fast-forward。
+- 运行模式、内容归属、身份或数据库边界有变化时，先更新 ADR、规格和任务清单。
 
-## 关键约定
+## 如何运行与验证
 
-- `code/` 是新前端和后端的唯一现役工程目录；不要再创建 `apps/web/` 或第二套应用。
-- `learning-site/` 与根 `index.html` 是迁移基线，暂不移动进 `code/`，也不新增产品功能；Phase 8 对等验收后再归档。
-- 公开内容不存 SQLite；第三方条目必须保留作者、许可证状态和上游地址。
-- 学习条目 ID 在云端、本地保持一致；阅读或点击只表示开始，完成必须由用户主动确认。
-- 本地文件必须来自目录白名单并限制在只读挂载根内；禁止路径穿越和可执行 MDX。
-- 网站进程不得直接更新嵌套素材仓库；单课程更新只允许 clean working tree 上的 fast-forward。
-- 按 [tasks.md](docs/plans/tasks.md) 的 Phase 和依赖实施；改变运行模式、内容归属或数据库边界时先更新 ADR/spec/tasks。
-- 架构图、接口清单和数据模型只维护在 `docs/`，本文件不复制详细定义。
+```bash
+npm ci --prefix code
+npm run dev --prefix code
+npm run check:cloud --prefix code
+npm run check:local --prefix code
+```
 
-## 怎么跑
+Docker Compose 位于 `code/docker/`；从仓库根目录使用：
 
-当前可运行的是迁移基线：在仓库根目录执行 `./start-site.sh`，默认访问 `http://localhost:8765/learning-site/`；脚本会先运行本地路径审计。不要直接用 `file://` 打开页面。
+```bash
+code/scripts/docker-deploy.sh local up
+code/scripts/docker-deploy.sh local down
+```
 
-新应用位于 `code/`，以 `code/package.json` 的 scripts 和部署文档为唯一命令来源。首次安装并启动开发服务器：`cd code && npm ci && npm run dev`，默认访问 `http://localhost:3000`。提交前运行 `npm run check:cloud` 与 `npm run check:local`；它们分别验证两种运行模式的格式、lint、类型、测试和生产构建。
+Cloud/Release 模式通过根目录 `.env` 提供秘密与镜像变量。发布模式必须指定固定版本或 digest，不能使用 `latest`。`down` 默认保留 SQLite 命名卷；不要在未确认目标的情况下删除卷。
 
-## 禁区
+## 脚本约定
 
-## 历史包袱
+- `code/scripts/docker-deploy.sh` 是容器构建、启动、健康验证与已发布镜像运行的入口。
+- `audit-content.ts`、`materials.ts`、`database.ts` 以及三个 `.mjs` 审计/转换脚本都是质量门禁或运维命令，不应因扩展名不是 `.sh` 而删除。
+- 以 `code/package.json` scripts 作为命令事实源；不要在 README、任务文档或 CI 中复制已经失效的根目录 `scripts/`、`content/`、`reports/`、Dockerfile 或 Compose 路径。
+
+## 文档职责
+
+- `docs/plans/spec.md`：产品规格和验收场景。
+- `docs/plans/plan.md`：架构、内容模型、边界、Docker、备份和运行手册。
+- `docs/plans/tasks.md`：任务、实施证据和需求到任务追踪。
+- `docs/testing-strategy.md`：测试层次与质量门禁。
+- `docs/adr/`：已接受的架构决策；不要用当前实现静默改写历史决定。

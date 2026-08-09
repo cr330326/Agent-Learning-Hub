@@ -9,11 +9,11 @@ import {
   type ResolvedContent,
 } from "./content-resolver";
 
-const repositoryRoot = fileURLToPath(new URL("../../../", import.meta.url));
+const applicationRoot = fileURLToPath(new URL("../../", import.meta.url));
 
 async function loadItems() {
   const catalog = await loadContentCatalogFromDirectory(
-    join(repositoryRoot, "content"),
+    join(applicationRoot, "content"),
   );
   return catalog.items;
 }

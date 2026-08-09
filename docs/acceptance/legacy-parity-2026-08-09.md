@@ -1,7 +1,7 @@
 # Legacy parity review
 
 Date: 2026-08-09  
-Baseline: [`reports/baseline/baseline.md`](../../reports/baseline/baseline.md)  
+Baseline: [`code/reports/baseline/baseline.md`](../../code/reports/baseline/baseline.md)
 Scope: `learning-site/` migration baseline versus the `code/` application
 
 ## Decision
@@ -30,7 +30,7 @@ closed; this report does not claim that cutover has happened.
 - The old local file convention is replaced by the catalog `localPath` allowlist
   and the Local Content Resolver. A missing local file falls back to its
   validated upstream URL when one exists.
-- Public catalog content stays in Git-managed `content/`; SQLite is reserved for
+- Public catalog content stays in Git-managed `code/content/`; SQLite is reserved for
   identity, sessions and private learning state.
 - The old root README and `local-courses/README.md` inventory were replaced by
   current dual-mode documentation. Counts now come from generated reports.
