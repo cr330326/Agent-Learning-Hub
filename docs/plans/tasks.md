@@ -1,6 +1,6 @@
 # Agent Learning Hub 实施任务清单
 
-**状态**：待实施  
+**状态**：实施中（已完成内容基础、公开浏览、云端解析和本地解析安全切片）
 **版本**：1.0  
 **日期**：2026-08-08  
 **产品规格**：[spec.md](./spec.md)  
@@ -129,7 +129,7 @@
 
 **实施证据（2026-08-09）**：[convert-legacy-content.mjs](../../scripts/convert-legacy-content.mjs) 可重复把 `learning-site/data.js` 转为 [结构化阶段](../../content/stages/legacy-import.json)、[课程与章节条目](../../content/courses/legacy-import.json)、[项目阶梯](../../content/catalog/project-outcomes.json) 与完整旧数据快照；各条转换记录保留 `legacyImport.raw`，完整源数据保留在快照中。 [legacy-conversion.json](../../reports/legacy-conversion/legacy-conversion.json) 对照基线确认 4 轨、9 阶段、42 课程卡、38 分组、472 章节和路径引用；[待补全报告](../../reports/legacy-conversion/legacy-conversion.md) 明确列出 488 个缺失上游地址及 514 个未知作者/许可证，未猜测值。`tests/legacy-content-converter.test.mjs` 断言转换可重复、数量与基线一致。
 
-### - [ ] T1.5 建立内容审计命令
+### - [x] T1.5 建立内容审计命令
 
 **依赖**：T1.3、T1.4  
 **规格**：CAT-007、ADMIN-001、IA-005
@@ -139,6 +139,8 @@
 - 在 CI 中将确定性错误设为失败，将网络类检查作为独立结果处理。
 
 **完成证据**：当前目录可生成完整审计报告，故障测试能触发 CI 失败。
+
+**实施证据（2026-08-09）**：`npm run check:cloud` 与 `npm run check:local` 均执行内容审计并报告 0 个确定性错误；[content-audit-cli.test.mjs](../../tests/content-audit-cli.test.mjs) 覆盖通过与故障退出路径，命令同时写出 JSON/Markdown 报告。
 
 **Phase 1 退出条件**：现有阶段和课程可无损转换，新目录通过 schema 与引用审计。
 
@@ -156,7 +158,7 @@
 
 **完成证据**：桌面和常见手机视口的视觉/无障碍基础检查通过。
 
-### - [ ] T2.2 实现首页与九阶段路线页
+### - [x] T2.2 实现首页与九阶段路线页
 
 **依赖**：T1.3、T2.1  
 **规格**：IA-001—IA-003、PAGE-001、PAGE-002
@@ -167,7 +169,9 @@
 
 **完成证据**：匿名用户可从首页进入任一阶段并理解下一步行动。
 
-### - [ ] T2.3 实现课程目录与导览页
+**实施证据（2026-08-09）**：[首页](../../code/app/page.tsx)、[路线页](../../code/app/roadmap/page.tsx) 和 [阶段详情页](../../code/app/roadmap/[stageId]/page.tsx) 已接入真实 catalog；HTTP 端到端冒烟覆盖首页、路线和阶段详情，匿名页面不显示持久化进度。
+
+### - [x] T2.3 实现课程目录与导览页
 
 **依赖**：T1.3、T2.1  
 **规格**：PAGE-003、PAGE-004、PAGE-007、CAT-005
@@ -178,7 +182,9 @@
 
 **完成证据**：筛选组合、空结果、未知课程和不同访问类型测试通过。
 
-### - [ ] T2.4 实现项目阶梯
+**实施证据（2026-08-09）**：[课程目录](../../code/app/courses/page.tsx) 支持阶段、轨道、标签和访问方式查询，[课程导览](../../code/app/courses/[itemId]/page.tsx) 统一调用 resolver；浏览器 E2E 验证了 `learning + owned + tag` 组合、空结果、未知条目和本地/上游/站内访问动作。
+
+### - [x] T2.4 实现项目阶梯
 
 **依赖**：T1.3、T2.1  
 **规格**：IA-003、PAGE-005、STATE-005、STATE-006
@@ -187,6 +193,8 @@
 - 匿名用户可查看要求，但不能产生持久化成果记录。
 
 **完成证据**：九阶段均有明确产出定义，不存在无成果要求的阶段。
+
+**实施证据（2026-08-09）**：[项目阶梯页](../../code/app/projects/page.tsx) 和阶段详情页展示九阶段任务、成果与验收提示；公开 HTTP 冒烟覆盖项目页。
 
 ### - [ ] T2.5 实现自有内容阅读器
 
@@ -214,7 +222,7 @@
 
 **完成证据**：调用方不包含 cloud/local 的文件路径分支判断。
 
-### - [ ] T3.2 实现 Cloud Adapter
+### - [x] T3.2 实现 Cloud Adapter
 
 **依赖**：T3.1  
 **规格**：RES-001—RES-004、AC-01
@@ -225,6 +233,8 @@
 - 禁止从 cloud adapter 读取本地素材路径。
 
 **完成证据**：Cloud Adapter 单元测试覆盖 owned、upstream-only、local-preferred 和 unavailable。
+
+**实施证据（2026-08-09）**：[Cloud Adapter](../../code/modules/content-resolver/content-resolver.ts) 通过 `content-resolver.test.ts` 表驱动覆盖四种访问策略；云端完整检查在不读取本地正文的情况下通过，第三方导览返回校验后的 HTTP(S) URL。
 
 ### - [ ] T3.3 建立“无 local-courses”云端验证
 
@@ -237,7 +247,7 @@
 
 **完成证据**：CI 中 cloud-clean-room 作业稳定通过。
 
-### - [ ] T3.4 增加内容政策与贡献页面
+### - [x] T3.4 增加内容政策与贡献页面
 
 **依赖**：T2.3、T3.2  
 **规格**：CAT-005、CAT-006、RES-002、PRIV-003
@@ -247,6 +257,8 @@
 - 不提供在线 CMS 或投稿表单。
 
 **完成证据**：每个第三方导览页可到达统一内容政策。
+
+**实施证据（2026-08-09）**：[内容政策页](../../code/app/content-policy/page.tsx) 与 [贡献指南页](../../code/app/contribute/page.tsx) 已加入全局页脚；课程导览、HTTP 冒烟和浏览器走查均可到达统一政策入口。
 
 **Phase 3 退出条件**：删除本地素材库后，云端仍可构建并完成全部公开流程。
 
@@ -349,7 +361,7 @@
 
 ## 8. Phase 5：本地 Docker 与阅读器
 
-### - [ ] T5.1 实现安全本地文件访问层
+### - [x] T5.1 实现安全本地文件访问层
 
 **依赖**：T3.1  
 **规格**：RES-008、RES-009、READ-007、READ-008、SEC-001、AC-03
@@ -361,7 +373,9 @@
 
 **完成证据**：路径安全测试集覆盖正常、编码变体和符号链接攻击。
 
-### - [ ] T5.2 实现 Local Adapter
+**实施证据（2026-08-09）**：[Local File Access](../../code/modules/content-resolver/local-file-access.ts) 只提供解析与只读文本读取；[测试](../../code/modules/content-resolver/local-file-access.test.ts) 覆盖相对路径、缺失文件、单/双重编码、绝对路径、反斜杠、空字节、`.`/`..` 和逃逸符号链接，13 项全部通过。
+
+### - [x] T5.2 实现 Local Adapter
 
 **依赖**：T3.1、T5.1  
 **规格**：RES-005—RES-010、AC-02
@@ -371,6 +385,8 @@
 - 不让调用方感知具体挂载路径。
 
 **完成证据**：存在、缺失、无上游、非法路径和断网场景测试通过。
+
+**实施证据（2026-08-09）**：[Local Adapter](../../code/modules/content-resolver/content-resolver.ts) 已由运行模式选择；[测试](../../code/modules/content-resolver/local-content-resolver.test.ts) 覆盖本地命中、缺失回退上游、无上游、owned/upstream-only 和非法路径。local 模式浏览器走查验证 `Hello-Agents` 导览显示“在站内阅读（本地）”并成功读取本地正文。
 
 ### - [ ] T5.3 扩展本地阅读器
 

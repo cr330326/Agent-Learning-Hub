@@ -31,7 +31,12 @@ function parseArguments(args: string[]) {
     outputDirectory?: string;
   } = {
     root: resolve(process.cwd(), ".."),
-    mode: "cloud",
+    mode:
+      process.env.DEPLOYMENT_MODE === "local"
+        ? "local"
+        : process.env.DEPLOYMENT_MODE === "cloud"
+          ? "cloud"
+          : "cloud",
   };
 
   for (let index = 0; index < args.length; index += 1) {
@@ -77,7 +82,9 @@ function parseArguments(args: string[]) {
   return {
     help: false as const,
     root,
-    contentDirectory: resolve(options.contentDirectory ?? join(root, "content")),
+    contentDirectory: resolve(
+      options.contentDirectory ?? join(root, "content"),
+    ),
     localMaterialRoot: resolve(
       options.localMaterialRoot ?? join(root, "local-courses"),
     ),

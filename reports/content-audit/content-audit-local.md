@@ -4,7 +4,7 @@ Mode: local
 
 ## Summary
 
-- Errors: 1
+- Errors: 0
 - Warnings: 2012
 - Network checks: not-run
 
@@ -19,6 +19,4 @@ Mode: local
 
 ## Errors
 
-| Code | Item / file | Path | Message |
-| --- | --- | --- | --- |
-| local-path-missing | legacy-reading-01-001 | @root/README.md | The local path does not exist in Local Material. |
+None.

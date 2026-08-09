@@ -14,12 +14,16 @@ const temporaryRoots: string[] = [];
 
 afterEach(async () => {
   await Promise.all(
-    temporaryRoots.splice(0).map((directory) => rm(directory, { force: true, recursive: true })),
+    temporaryRoots
+      .splice(0)
+      .map((directory) => rm(directory, { force: true, recursive: true })),
   );
 });
 
 async function createTemporaryContentRoot() {
-  const root = await mkdtemp(join(tmpdir(), "agent-learning-hub-content-audit-"));
+  const root = await mkdtemp(
+    join(tmpdir(), "agent-learning-hub-content-audit-"),
+  );
   temporaryRoots.push(root);
   const contentRoot = join(root, "content");
   await cp(sourceContentRoot, contentRoot, { recursive: true });

@@ -2697,8 +2697,8 @@
     "summary": "项目导览",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "@root/README.md",
-    "accessPolicy": "local-preferred",
+    "localPath": null,
+    "accessPolicy": "unavailable",
     "publicationRights": "third-party",
     "author": "Unknown",
     "license": "Unknown",
@@ -2708,14 +2708,8 @@
       "legacy-reading"
     ],
     "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "Agent Learning Hub README",
-        "sourceUrl": null,
-        "localPath": "@root/README.md"
-      }
-    ],
-    "unavailableReason": null,
+    "references": [],
+    "unavailableReason": "The legacy reference targets a repository file outside Local Material.",
     "legacyImport": {
       "source": "learning-site/data.js",
       "kind": "reading-chapter",

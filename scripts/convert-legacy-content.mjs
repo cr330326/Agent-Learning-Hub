@@ -93,6 +93,10 @@ function isExternalReference(value) {
   return /^[a-z][a-z\d+.-]*:/i.test(value);
 }
 
+function isRepositoryReference(value) {
+  return value.startsWith("@root/");
+}
+
 function unique(values) {
   return [...new Set(values.filter((value) => value.length > 0))];
 }
@@ -274,14 +278,25 @@ function createReadingItems(legacyGroups, stageIdsByPath) {
   legacyGroups.forEach((group, groupIndex) => {
     const track = mapTrackId(group.track);
     (group.items ?? []).forEach((reading, readingIndex) => {
-      const references = [
-        {
-          label: reading.label,
-          sourceUrl: isExternalReference(reading.doc) ? reading.doc : null,
-          localPath: isExternalReference(reading.doc) ? null : reading.doc,
-        },
-      ];
-      const access = accessPolicyFor(references);
+      const repositoryReference = isRepositoryReference(reading.doc);
+      const references = repositoryReference
+        ? []
+        : [
+            {
+              label: reading.label,
+              sourceUrl: isExternalReference(reading.doc) ? reading.doc : null,
+              localPath: isExternalReference(reading.doc) ? null : reading.doc,
+            },
+          ];
+      const access = repositoryReference
+        ? {
+            accessPolicy: "unavailable",
+            localPath: null,
+            sourceUrl: null,
+            unavailableReason:
+              "The legacy reference targets a repository file outside Local Material.",
+          }
+        : accessPolicyFor(references);
       const id = `legacy-reading-${padded(groupIndex + 1, 2)}-${padded(readingIndex + 1, 3)}`;
 
       if (!itemIdsByPath.has(reading.doc)) {

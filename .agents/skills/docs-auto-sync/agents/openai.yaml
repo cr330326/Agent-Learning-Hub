@@ -1,0 +1,4 @@
+interface:
+  display_name: "Docs Auto Sync"
+  short_description: "Audit and synchronize repository documentation"
+  default_prompt: "Use $docs-auto-sync to audit this repository and minimally synchronize stale documentation with its authoritative sources."

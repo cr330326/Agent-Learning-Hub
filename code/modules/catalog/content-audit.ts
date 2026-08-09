@@ -123,11 +123,15 @@ function finaliseReport(
     warningGroups,
     summary: {
       errorCount: errors.length,
-      warningCount: warningGroups.reduce((total, warning) => total + warning.count, 0),
+      warningCount: warningGroups.reduce(
+        (total, warning) => total + warning.count,
+        0,
+      ),
     },
     network: {
       status: "not-run",
-      reason: "Network link checks are intentionally separate from deterministic content validation.",
+      reason:
+        "Network link checks are intentionally separate from deterministic content validation.",
     },
   };
 }
@@ -250,13 +254,21 @@ export async function auditContentDirectory(
 
     const errors =
       options.mode === "local"
-        ? await auditLocalPaths(options.localMaterialRoot, catalog.items, warnings)
+        ? await auditLocalPaths(
+            options.localMaterialRoot,
+            catalog.items,
+            warnings,
+          )
         : [];
     return finaliseReport(options.mode, errors, warnings.values());
   } catch (error) {
     let errors: ContentAuditError[];
     if (error instanceof ContentDocumentValidationError) {
-      errors = formatSchemaIssues(error.issues, "schema-validation", error.filePath);
+      errors = formatSchemaIssues(
+        error.issues,
+        "schema-validation",
+        error.filePath,
+      );
     } else if (error instanceof ContentCatalogValidationError) {
       errors = formatSchemaIssues(error.issues, "catalog-validation");
     } else if (error instanceof ContentDocumentParseError) {
@@ -297,7 +309,8 @@ export function renderContentAuditMarkdown(report: ContentAuditReport): string {
     "| Code | Count | Message |",
     "| --- | ---: | --- |",
     ...report.warningGroups.map(
-      (warning) => `| ${warning.code} | ${warning.count} | ${warning.message} |`,
+      (warning) =>
+        `| ${warning.code} | ${warning.count} | ${warning.message} |`,
     ),
     "",
     "## Errors",
@@ -307,7 +320,10 @@ export function renderContentAuditMarkdown(report: ContentAuditReport): string {
   if (report.errors.length === 0) {
     lines.push("None.");
   } else {
-    lines.push("| Code | Item / file | Path | Message |", "| --- | --- | --- | --- |");
+    lines.push(
+      "| Code | Item / file | Path | Message |",
+      "| --- | --- | --- | --- |",
+    );
     lines.push(
       ...report.errors.map((error) => {
         const target = error.itemId ?? error.filePath ?? "—";

@@ -1,14 +1,7 @@
 {
   "formatVersion": 1,
   "mode": "local",
-  "errors": [
-    {
-      "code": "local-path-missing",
-      "message": "The local path does not exist in Local Material.",
-      "itemId": "legacy-reading-01-001",
-      "localPath": "@root/README.md"
-    }
-  ],
+  "errors": [],
   "warningGroups": [
     {
       "code": "missing-source-url",
@@ -2052,7 +2045,7 @@
     }
   ],
   "summary": {
-    "errorCount": 1,
+    "errorCount": 0,
     "warningCount": 2012
   },
   "network": {

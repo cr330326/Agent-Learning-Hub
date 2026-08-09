@@ -1,3 +1,5 @@
+import { assertLocalAuthBinding } from "../auth/local-auth";
+
 export type DeploymentMode = "cloud" | "local";
 
 export type RuntimeConfig = Readonly<{
@@ -9,6 +11,11 @@ export function parseRuntimeConfig(
 ): RuntimeConfig {
   const mode = environment.DEPLOYMENT_MODE ?? "cloud";
   if (mode === "cloud" || mode === "local") {
+    if (mode === "local") {
+      assertLocalAuthBinding(
+        environment.LOCAL_BIND_HOST ?? environment.HOST,
+      );
+    }
     return { mode };
   }
 

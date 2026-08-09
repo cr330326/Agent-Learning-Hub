@@ -18,4 +18,13 @@ describe("runtime mode configuration", () => {
       'DEPLOYMENT_MODE must be either "cloud" or "local".',
     );
   });
+
+  it("rejects local no-login mode when an explicit non-loopback host is configured", () => {
+    expect(() =>
+      parseRuntimeConfig({
+        DEPLOYMENT_MODE: "local",
+        HOST: "0.0.0.0",
+      }),
+    ).toThrow(/loopback/i);
+  });
 });

@@ -479,7 +479,7 @@
         "id": "legacy-reading-01-001",
         "title": "Agent Learning Hub README",
         "kind": "reading-chapter",
-        "localPath": "@root/README.md",
+        "localPath": null,
         "missing": [
           "sourceUrl",
           "author",

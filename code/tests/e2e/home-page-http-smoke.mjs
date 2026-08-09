@@ -1,5 +1,6 @@
 const expectedMode = process.env.EXPECTED_RUNTIME_MODE ?? "cloud";
-const response = await fetch("http://127.0.0.1:3100");
+const baseUrl = process.env.APP_URL ?? "http://127.0.0.1:3100";
+const response = await fetch(baseUrl);
 const page = await response.text();
 const visibleText = page
   .replace(/<!--[\s\S]*?-->/g, "")
@@ -13,13 +14,19 @@ if (response.status !== 200) {
   );
 }
 
-if (!visibleText.includes("The new learning environment is being prepared.")) {
-  throw new Error("Home page did not include the expected startup message.");
+if (
+  !visibleText.includes("agent loop") ||
+  !visibleText.includes("真正能运行的系统")
+) {
+  throw new Error(
+    "Home page did not include the expected learning-hub headline.",
+  );
 }
 
-if (!visibleText.includes(`Current runtime: ${expectedMode}`)) {
+const expectedModeLabel = expectedMode === "local" ? "本地模式" : "云端模式";
+if (!visibleText.includes(expectedModeLabel)) {
   throw new Error(
-    `Home page did not expose the expected ${expectedMode} runtime mode.`,
+    `Home page did not expose the expected ${expectedModeLabel} runtime mode.`,
   );
 }
 
