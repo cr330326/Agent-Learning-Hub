@@ -601,6 +601,8 @@ Cloud `full` 均通过。远端受保护分支结果仍未取得，故 T7.1 保�
 
 **当前进展（2026-08-09）**：[plan.md 第 13.4 节](./plan.md#134-部署容器与数据库运维) 已补充版本镜像、配置解析、备份前置、健康/冒烟检查、OAuth callback、迁移和回滚边界；本地 `docker compose config` 已验证 release override 不再保留 build。尚未在空服务器、反向代理和 HTTPS 环境完成受控部署/回滚，因此保留未勾选。
 
+**文档与自动化进展（2026-08-11）**：新增[部署与运维入口](../deploy/README.md)、[完全手工生产部署 Runbook](../deploy/production-manual.md) 和 [Lighthouse 自动化 Runbook](../deploy/lighthouse-automation.md)；[Lighthouse 本地脚本](../../code/scripts/lighthouse-deploy.sh) 通过 `ssh tencent-lighthouse` 提供只读预检、Ubuntu 初始化、root-only 秘密上传、升级前原生加密 SQLite 备份、固定镜像部署、Caddy HTTPS、健康验证与应用回滚，并明确把腾讯云防火墙、DNS、快照、异地副本和数据库恢复保留为独立控制面/运维动作。真实 Lighthouse 尚未执行，故 T7.3 仍不勾选。
+
 ### - [ ] T7.4 实现 SQLite 备份与保留策略
 
 **依赖**：T4.1  
@@ -671,6 +673,8 @@ Cloud `full` 均通过。远端受保护分支结果仍未取得，故 T7.1 保�
 
 **本机补充验证（2026-08-11）**：新增根 [Prompt.md](../../Prompt.md) 作为可复用端到端
 验收提示词，并更新方案目录、隐私监控和本次验收证据链接；仍等待真实部署/回滚证据，故不勾选。
+
+**生产 Runbook 补充（2026-08-11）**：[`docs/deploy/`](../deploy/README.md) 已补充手工和 Lighthouse 自动化入口，并将命令映射到现有 Compose、固定发布镜像、OAuth、稳定 SQLite 卷、原生备份与恢复工具；文档和脚本静态验证不能替代空服务器 HTTPS、真实 OAuth、异地备份、恢复与回滚演练，因此 T7.7 仍不勾选。
 
 **Phase 7 退出条件**：指定版本可从空服务器部署、监控、备份、恢复和回滚；本地用户也有完整启动文档。
 

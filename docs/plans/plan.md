@@ -419,7 +419,7 @@ Local Material 或可能上传受保护数据时必须失败。云端构建上�
 - Better Auth + GitHub 登录。
 - SQLite + Node.js 稳定驱动。
 - Docker 多阶段构建。
-- Docker Compose 提供基础、云端和本地配置。
+- Docker Compose 提供基础、云端、本地、发布和生产运维覆盖配置。
 - GitHub Actions 执行校验、测试、镜像构建和版本发布。
 - 云端部署固定版本标签，不直接跟随 `latest`。
 
@@ -443,6 +443,7 @@ code/
     docker-compose.cloud.yml
     docker-compose.local.yml
     docker-compose.release.yml
+    docker-compose.production.yml
   modules/
     auth/
     catalog/
@@ -455,6 +456,7 @@ code/
   reports/
   scripts/
     docker-deploy.sh
+    lighthouse-deploy.sh
     audit-content.ts
     materials.ts
     database.ts
@@ -543,7 +545,8 @@ GitHub 登录失败，以及备份、恢复、内容审计和素材更新的命�
 `code/docker/Dockerfile` 是 Cloud/Local 共用的多阶段镜像定义；构建上下文
 始终是仓库根目录，因此 `.dockerignore` 能排除 Local Material、SQLite、备份、
 秘密和 `code/reports/`。`code/docker/` 中的 Compose 基础文件与 Cloud、Local、
-Release 覆盖文件共同定义运行模式。
+Release 覆盖文件共同定义运行模式；`docker-compose.production.yml` 仅由生产 Runbook
+追加，用稳定命名卷保存 SQLite，并把主机加密备份目录只读暴露给管理员健康摘要。
 
 从仓库根目录使用 `code/scripts/docker-deploy.sh`，而不是手工拼接旧根目录
 Compose 文件：
@@ -556,17 +559,16 @@ code/scripts/docker-deploy.sh local down
 
 Local Mode 仅允许回环 `APP_BIND_HOST`，只读挂载 `local-courses/`，并保留命名
 SQLite 卷。Cloud Mode 从根 `.env` 读取 Better Auth 与 GitHub OAuth 配置；先运行
-`cloud config` 检查展开结果。GitHub 应用只注册
+`cloud config` 静态校验合并配置且不输出展开后的秘密。GitHub 应用只注册
 `${BETTER_AUTH_URL}/api/auth/callback/github`，只申请 `read:user`；旧的
 `/api/auth/github/callback` 已停用。Release Mode 强制使用 `APP_IMAGE` 的固定版本或
 digest，先 `pull` 再启动，绝不在生产主机重新构建源码。
 
-生产实例先复制 `.env.example` 并由密钥管理系统注入 Better Auth、GitHub OAuth 和
-数据库备份密钥；不要把它们写进 Compose、命令历史或镜像。典型发布顺序为：
+生产实例先复制 `.env.example` 并由密钥管理系统注入 Better Auth 与 GitHub OAuth；
+数据库备份口令保存在应用环境之外的 root-only 文件。不要把任何秘密写进 Compose、
+命令历史或镜像。典型固定镜像发布入口为：
 
 ```bash
-APP_IMAGE=ghcr.io/cr330326/agent-learning-hub:v0.1.0 \
-code/scripts/docker-deploy.sh release config
 APP_IMAGE=ghcr.io/cr330326/agent-learning-hub:v0.1.0 \
 code/scripts/docker-deploy.sh release up
 ```
@@ -584,6 +586,12 @@ Mode 的只读素材挂载、健康接口、公开路由、学习状态 HTTP 流
 将升级前快照恢复至干净状态卷，再启动上一镜像。TLS、DNS、反向代理、密钥管理、
 异地备份复制、告警和正式恢复演练仍是部署方责任。
 
+可执行步骤集中在 [`docs/deploy/`](../deploy/README.md)：手工 Runbook 从空白 Ubuntu
+服务器开始；Lighthouse Runbook 通过 `code/scripts/lighthouse-deploy.sh` 在本机经
+`ssh tencent-lighthouse` 执行预检、初始化、秘密上传、升级前备份、固定镜像部署、
+验证与应用回滚。该脚本不会修改腾讯云防火墙、DNS、快照或异地存储，也不会把应用回滚
+误当成数据库恢复。
+
 ## 14. 文档职责
 
 为避免多个派生文档互相漂移，文档按主题分工：
@@ -592,6 +600,7 @@ Mode 的只读素材挂载、健康接口、公开路由、学习状态 HTTP 流
 - 根 `AGENTS.md`：工程协作约束、现役目录、命令事实源和不可突破的安全边界。
 - 根 `CONTEXT.md`：项目通用语言，避免把 Track、Stage、Curated Content 与 Local Material 混用。
 - 本文：架构、内容模型、归属、Docker、备份、恢复和运维边界。
+- `docs/deploy/`：从上述边界派生的手工与 Lighthouse 自动化执行 Runbook；不改变规格或任务状态。
 - `tasks.md`：实施状态、可执行证据和需求到任务追踪。
 - `spec.md`：产品需求和验收场景；`docs/adr/` 保存已接受的决策。
 - `local-courses/README.md`：本地素材库的归属与维护约定。

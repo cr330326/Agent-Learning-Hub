@@ -24,7 +24,7 @@ Actions:
   down     Stop the app and remove its containers and network; preserves the state volume.
   logs     Follow the app logs.
   status   Show the Compose service status.
-  config   Render the resolved Compose configuration without changing containers.
+  config   Validate the resolved Compose configuration without printing secrets.
   verify   Call /api/health on the configured host port.
 
 Environment:
@@ -32,6 +32,8 @@ Environment:
   APP_BIND_HOST         Host binding (defaults to 127.0.0.1; local mode rejects non-loopback values).
   APP_PORT              Host port (defaults to 3000).
   COMPOSE_PROJECT_NAME  Isolated Compose project name (default: agent-learning-hub-<mode>).
+  COMPOSE_EXTRA_FILES   Colon-separated Compose overrides appended after the mode files.
+                        Relative paths resolve from the repository root; local mode rejects them.
   WAIT_TIMEOUT          Compose health wait in seconds (default: 120).
 
 When the repository-root .env file exists, it supplies Compose variables. Cloud
@@ -108,6 +110,28 @@ case "$mode" in
     ;;
 esac
 
+if [[ -n ${COMPOSE_EXTRA_FILES:-} ]]; then
+  if [[ $mode == "local" ]]; then
+    printf '%s\n' 'COMPOSE_EXTRA_FILES is not supported in local mode.' >&2
+    exit 2
+  fi
+  IFS=':' read -r -a extra_files <<< "$COMPOSE_EXTRA_FILES"
+  for extra_file in "${extra_files[@]}"; do
+    if [[ -z $extra_file ]]; then
+      printf '%s\n' 'COMPOSE_EXTRA_FILES contains an empty path.' >&2
+      exit 2
+    fi
+    if [[ $extra_file != /* ]]; then
+      extra_file="$repository_root/$extra_file"
+    fi
+    if [[ ! -f $extra_file ]]; then
+      printf 'Compose override does not exist: %s\n' "$extra_file" >&2
+      exit 2
+    fi
+    compose_files+=( -f "$extra_file" )
+  done
+fi
+
 project_name=${COMPOSE_PROJECT_NAME:-"agent-learning-hub-$mode"}
 compose=(docker compose)
 if [[ -f "$repository_root/.env" ]]; then
@@ -159,7 +183,7 @@ case "$action" in
     run_compose ps
     ;;
   config)
-    run_compose config
+    run_compose config --quiet
     ;;
   verify)
     verify_health

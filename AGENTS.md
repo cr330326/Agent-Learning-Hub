@@ -4,7 +4,7 @@
 
 Agent Learning Hub 是一个以实践成果为主线的 Agent 工程学习网站。它以九阶段路线组织 Learning、AICoding、Agentic 与 Application 四条学习轨道，并支持 Cloud Mode 公开学习和 Local Mode 本地素材深读。
 
-产品范围和验收以 [spec.md](docs/plans/spec.md) 为准，实施顺序、完成状态与需求追踪以 [tasks.md](docs/plans/tasks.md) 为准；架构、内容模型、部署和运维以 [plan.md](docs/plans/plan.md) 为准。
+产品范围和验收以 [spec.md](docs/plans/spec.md) 为准，实施顺序、完成状态与需求追踪以 [tasks.md](docs/plans/tasks.md) 为准；架构、内容模型、部署和运维边界以 [plan.md](docs/plans/plan.md) 为准，可执行的生产步骤位于 [docs/deploy/](docs/deploy/README.md)。
 
 ## 现役工程与边界
 
@@ -44,13 +44,15 @@ Cloud/Release 模式通过根目录 `.env` 提供秘密与镜像变量。发布�
 ## 脚本约定
 
 - `code/scripts/docker-deploy.sh` 是容器构建、启动、健康验证与已发布镜像运行的入口。
+- `code/scripts/lighthouse-deploy.sh` 是专用腾讯云 Lighthouse 主机的 SSH 部署入口；它不替代云端防火墙、DNS、快照、异地备份或真实恢复演练。
 - `audit-content.ts`、`materials.ts`、`database.ts` 以及三个 `.mjs` 审计/转换脚本都是质量门禁或运维命令，不应因扩展名不是 `.sh` 而删除。
 - 以 `code/package.json` scripts 作为命令事实源；不要在 README、任务文档或 CI 中复制已经失效的根目录 `scripts/`、`content/`、`reports/`、Dockerfile 或 Compose 路径。
 
 ## 文档职责
 
 - `docs/plans/spec.md`：产品规格和验收场景。
-- `docs/plans/plan.md`：架构、内容模型、边界、Docker、备份和运行手册。
+- `docs/plans/plan.md`：架构、内容模型、边界、Docker、备份与运维约束。
+- `docs/deploy/`：完全手工生产 Runbook 和 Lighthouse 自动化执行手册。
 - `docs/plans/tasks.md`：任务、实施证据和需求到任务追踪。
 - `docs/testing-strategy.md`：测试层次与质量门禁。
 - `docs/adr/`：已接受的架构决策；不要用当前实现静默改写历史决定。

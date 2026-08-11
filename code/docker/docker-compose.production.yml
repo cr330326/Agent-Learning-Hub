@@ -1,0 +1,10 @@
+services:
+  app:
+    environment:
+      BACKUP_OUTPUT_DIR: /data/backups
+    volumes:
+      - ${BACKUP_HOST_PATH:?BACKUP_HOST_PATH is required}:/data/backups:ro
+
+volumes:
+  learning-state:
+    name: ${STATE_VOLUME_NAME:?STATE_VOLUME_NAME is required}

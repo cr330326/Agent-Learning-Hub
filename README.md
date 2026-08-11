@@ -48,7 +48,7 @@ code/scripts/docker-deploy.sh local down
 
 Local Mode 默认只绑定 `127.0.0.1:3000`，以只读方式挂载 `local-courses/`，并将 SQLite 放入命名卷。`down` 不删除该卷。
 
-Cloud Mode 先从模板创建根目录 `.env`，填写 `BETTER_AUTH_SECRET`、`BETTER_AUTH_URL` 和 GitHub OAuth 凭据；先检查展开配置，再启动：
+Cloud Mode 先从模板创建根目录 `.env`，填写 `BETTER_AUTH_SECRET`、`BETTER_AUTH_URL` 和 GitHub OAuth 凭据；先静态检查配置（不会输出展开后的秘密），再启动：
 
 ```bash
 cp .env.example .env
@@ -63,7 +63,7 @@ APP_IMAGE=ghcr.io/cr330326/agent-learning-hub:v0.1.0 \
 code/scripts/docker-deploy.sh release up
 ```
 
-完整的镜像、持久化、备份、升级和回滚边界见 [技术方案的部署与运维章节](./docs/plans/plan.md#134-部署容器与数据库运维)。
+生产部署从 [部署与运维入口](./docs/deploy/README.md) 开始：其中分别提供空白服务器的完全手工 Runbook，以及通过 `ssh tencent-lighthouse` 执行的 Lighthouse 自动化流程。架构和安全边界仍以 [技术方案第 13.4 节](./docs/plans/plan.md#134-部署容器与数据库运维) 为准。
 
 ## 内容、数据与隐私
 
@@ -81,6 +81,7 @@ code/scripts/docker-deploy.sh release up
 | 命令                                                         | 用途                                                                                     |
 | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
 | `code/scripts/docker-deploy.sh`                              | 本地构建、启动、配置检查、健康验证和已发布镜像运行                                       |
+| `code/scripts/lighthouse-deploy.sh`                          | 通过 SSH 预检、初始化、备份、部署、验证和回滚专用 Lighthouse 生产主机                    |
 | `npm run audit:content --prefix code`                        | 校验内容 schema、来源、许可证和本地路径                                                  |
 | `npm run materials --prefix code -- <check\|audit\|reindex>` | 查看素材新鲜度、审计路径和重建索引；`update <course-id> --yes` 只允许单仓库 fast-forward |
 | `npm run db:backup --prefix code` / `db:restore`             | 创建加密 SQLite 备份或在明确确认后恢复                                                   |
@@ -92,6 +93,7 @@ code/scripts/docker-deploy.sh release up
 
 - [产品规格与验收场景](./docs/plans/spec.md)
 - [架构、内容模型、部署和数据库运维](./docs/plans/plan.md)
+- [生产部署与运维 Runbook](./docs/deploy/README.md)
 - [实施任务、证据与需求追踪](./docs/plans/tasks.md)
 - [测试策略](./docs/testing-strategy.md)
 - [架构决策记录](./docs/adr/)
