@@ -13,6 +13,134 @@ export type MarkdownRenderOptions = {
   resolveImageSrc?: (source: string) => string | null;
 };
 
+/**
+ * Third-party material is written for GitHub, so it mixes Markdown with
+ * presentational HTML. The reader keeps that HTML instead of escaping it, but
+ * only through the allowlists below: anything not named here is dropped.
+ */
+const ALLOWED_TAGS = new Set([
+  "a",
+  "b",
+  "blockquote",
+  "br",
+  "caption",
+  "center",
+  "code",
+  "dd",
+  "del",
+  "details",
+  "div",
+  "dl",
+  "dt",
+  "em",
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "hr",
+  "i",
+  "img",
+  "ins",
+  "kbd",
+  "li",
+  "mark",
+  "ol",
+  "p",
+  "picture",
+  "pre",
+  "s",
+  "samp",
+  "small",
+  "span",
+  "strong",
+  "sub",
+  "summary",
+  "sup",
+  "table",
+  "tbody",
+  "td",
+  "tfoot",
+  "th",
+  "thead",
+  "tr",
+  "u",
+  "ul",
+]);
+
+/** Dropped together with everything they contain. */
+const DISCARDED_SUBTREES = new Set([
+  "base",
+  "button",
+  "embed",
+  "form",
+  "iframe",
+  "input",
+  "link",
+  "math",
+  "meta",
+  "noscript",
+  "object",
+  "script",
+  "select",
+  "style",
+  "svg",
+  "template",
+  "textarea",
+]);
+
+const VOID_TAGS = new Set(["br", "hr", "img"]);
+
+const GLOBAL_ATTRIBUTES = new Set(["align", "title"]);
+
+const TAG_ATTRIBUTES: Record<string, ReadonlySet<string>> = {
+  a: new Set(["href"]),
+  img: new Set(["src", "alt", "width", "height"]),
+  td: new Set(["colspan", "rowspan"]),
+  th: new Set(["colspan", "rowspan", "scope"]),
+  details: new Set(["open"]),
+};
+
+const BLOCK_LEVEL_HTML =
+  /^<(?:div|table|figure|picture|details|section|header|footer|nav|aside|main|blockquote|center|dl|ol|ul|pre|hr|h[1-6]|p|img|br)\b/i;
+
+const VALID_ENTITY =
+  /^&(?:#\d{1,7}|#[xX][0-9a-fA-F]{1,6}|[a-zA-Z][a-zA-Z0-9]{1,31});/;
+
+/**
+ * Escapes text for HTML output while leaving already-valid character entities
+ * intact — upstream READMEs lean on `&emsp;` and friends for layout.
+ */
+function escapeText(value: string) {
+  let output = "";
+  for (let index = 0; index < value.length; index += 1) {
+    const character = value[index];
+    if (character === "&") {
+      const rest = value.slice(index);
+      const entity = rest.match(VALID_ENTITY);
+      if (entity) {
+        output += entity[0];
+        index += entity[0].length - 1;
+        continue;
+      }
+      output += "&amp;";
+      continue;
+    }
+    if (character === "<") {
+      output += "&lt;";
+      continue;
+    }
+    if (character === ">") {
+      output += "&gt;";
+      continue;
+    }
+    output += character;
+  }
+  return output;
+}
+
+/** Full escaping, used for code spans and for values we place inside attributes. */
 function escapeHtml(value: string) {
   return value
     .replaceAll("&", "&amp;")
@@ -32,32 +160,163 @@ function safeHref(value: string) {
     return href;
   }
 
+  if (/^#[^\s<>"']*$/.test(href)) {
+    return href;
+  }
+
   return null;
 }
 
-function removeEventAttributes(value: string) {
-  return value.replace(/\bon[a-z]+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, "");
-}
-
+/**
+ * Remote images are used as-is; every other source must go through the
+ * caller's resolver, which decides whether the path is an allowlisted local
+ * file. Other schemes, absolute paths and traversal segments are rejected.
+ */
 function safeImageHref(
   value: string,
   resolveImageSrc?: (source: string) => string | null,
 ) {
   const href = value.trim();
-  const directHref = safeHref(href);
-  if (directHref !== null) return directHref;
+  if (/^https?:\/\//i.test(href)) return href;
   if (
-    resolveImageSrc &&
-    !href.startsWith("/") &&
-    !href.includes("\\") &&
-    !href.includes("\u0000") &&
-    href
-      .split("/")
-      .every((segment) => segment !== "" && segment !== "." && segment !== "..")
+    !resolveImageSrc ||
+    href === "" ||
+    href.startsWith("/") ||
+    href.includes("\\") ||
+    /\s/.test(href) ||
+    /^[a-z][a-z0-9+.-]*:/i.test(href)
   ) {
-    return resolveImageSrc(href);
+    return null;
   }
-  return null;
+
+  const normalized = href.replace(/^\.\//, "").split(/[?#]/)[0];
+  if (
+    normalized === "" ||
+    normalized
+      .split("/")
+      .some((segment) => segment === "" || segment === "." || segment === "..")
+  ) {
+    return null;
+  }
+
+  return resolveImageSrc(normalized);
+}
+
+const ATTRIBUTE_PATTERN =
+  /([a-zA-Z_:][-a-zA-Z0-9_:.]*)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+)))?/g;
+
+function sanitizeAttributes(
+  tag: string,
+  rawAttributes: string,
+  options: MarkdownRenderOptions,
+) {
+  const allowed = TAG_ATTRIBUTES[tag];
+  let output = "";
+
+  for (const match of rawAttributes.matchAll(ATTRIBUTE_PATTERN)) {
+    const name = match[1].toLowerCase();
+    const value = match[2] ?? match[3] ?? match[4] ?? "";
+    if (!GLOBAL_ATTRIBUTES.has(name) && !allowed?.has(name)) continue;
+
+    if (name === "href") {
+      const href = safeHref(value);
+      if (href === null) continue;
+      output += ` href="${escapeHtml(href)}"`;
+      continue;
+    }
+
+    if (name === "src") {
+      const src = safeImageHref(value, options.resolveImageSrc);
+      if (src === null) continue;
+      output += ` src="${escapeHtml(src)}"`;
+      continue;
+    }
+
+    if (name === "open") {
+      output += " open";
+      continue;
+    }
+
+    output += ` ${name}="${escapeHtml(value)}"`;
+  }
+
+  return output;
+}
+
+const TAG_PATTERN =
+  /<!--[\s\S]*?-->|<\/?([a-zA-Z][a-zA-Z0-9-]*)((?:"[^"]*"|'[^']*'|[^>"'])*)>/g;
+
+/**
+ * Rewrites a raw fragment so only allowlisted tags and attributes survive.
+ * Unknown tags lose their markup but keep their text; discarded subtrees lose
+ * both. Unclosed allowlisted tags are closed so one upstream typo cannot break
+ * the page layout.
+ */
+function sanitizeHtml(value: string, options: MarkdownRenderOptions) {
+  let output = "";
+  let cursor = 0;
+  let discardDepth = 0;
+  let discardTag = "";
+  const openTags: string[] = [];
+
+  for (const match of value.matchAll(TAG_PATTERN)) {
+    const index = match.index ?? 0;
+    if (discardDepth === 0) {
+      output += escapeText(value.slice(cursor, index));
+    }
+    cursor = index + match[0].length;
+
+    const tag = match[1]?.toLowerCase();
+    if (tag === undefined) continue; // HTML comment
+
+    const closing = match[0].startsWith("</");
+
+    if (discardDepth > 0) {
+      if (tag === discardTag) {
+        discardDepth += closing ? -1 : 1;
+      }
+      continue;
+    }
+
+    if (DISCARDED_SUBTREES.has(tag)) {
+      if (!closing && !match[0].endsWith("/>")) {
+        discardDepth = 1;
+        discardTag = tag;
+      }
+      continue;
+    }
+
+    if (!ALLOWED_TAGS.has(tag)) continue;
+
+    if (closing) {
+      const position = openTags.lastIndexOf(tag);
+      if (position === -1) continue;
+      while (openTags.length > position) {
+        output += `</${openTags.pop()}>`;
+      }
+      continue;
+    }
+
+    const attributes = sanitizeAttributes(tag, match[2] ?? "", options);
+    if (tag === "img" && !attributes.includes(" src=")) continue;
+
+    if (VOID_TAGS.has(tag)) {
+      output += `<${tag}${attributes} />`;
+      continue;
+    }
+
+    output += `<${tag}${attributes}>`;
+    openTags.push(tag);
+  }
+
+  if (discardDepth === 0) {
+    output += escapeText(value.slice(cursor));
+  }
+  while (openTags.length > 0) {
+    output += `</${openTags.pop()}>`;
+  }
+
+  return output;
 }
 
 function renderInline(value: string, options: MarkdownRenderOptions = {}) {
@@ -68,12 +327,12 @@ function renderInline(value: string, options: MarkdownRenderOptions = {}) {
 
   for (const match of value.matchAll(tokenPattern)) {
     const index = match.index ?? 0;
-    output += escapeHtml(value.slice(cursor, index));
+    output += sanitizeHtml(value.slice(cursor, index), options);
 
     if (match[1] !== undefined && match[2] !== undefined) {
       const src = safeImageHref(match[2], options.resolveImageSrc);
       if (src === null) {
-        output += escapeHtml(match[1]);
+        output += escapeText(match[1]);
       } else {
         output += `<img src="${escapeHtml(src)}" alt="${escapeHtml(match[1])}" loading="lazy" />`;
       }
@@ -82,9 +341,10 @@ function renderInline(value: string, options: MarkdownRenderOptions = {}) {
     } else if (match[4] !== undefined && match[5] !== undefined) {
       const href = safeHref(match[5]);
       if (href === null) {
-        output += escapeHtml(match[4]);
+        output += escapeText(match[4]);
       } else {
-        output += `<a href="${escapeHtml(href)}" target="_blank" rel="noreferrer">${renderInline(match[4], options)}</a>`;
+        const external = /^(?:https?:)?\/\//i.test(href);
+        output += `<a href="${escapeHtml(href)}"${external ? ' target="_blank" rel="noreferrer"' : ""}>${renderInline(match[4], options)}</a>`;
       }
     } else if (match[6] !== undefined || match[7] !== undefined) {
       output += `<strong>${renderInline(match[6] ?? match[7] ?? "", options)}</strong>`;
@@ -95,11 +355,12 @@ function renderInline(value: string, options: MarkdownRenderOptions = {}) {
     cursor = index + match[0].length;
   }
 
-  return output + escapeHtml(value.slice(cursor));
+  return output + sanitizeHtml(value.slice(cursor), options);
 }
 
 function plainText(value: string) {
   return value
+    .replace(/<[^>]*>/g, "")
     .replace(/[`*_]/g, "")
     .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
     .trim();
@@ -121,24 +382,96 @@ function slugify(value: string, usedIds: Set<string>) {
   return id;
 }
 
+const BULLET_ITEM = /^(\s*)[-*+]\s+(.*)$/;
+const ORDERED_ITEM = /^(\s*)\d+[.)]\s+(.*)$/;
+const TABLE_DIVIDER = /^\s*\|?\s*:?-{2,}:?\s*(\|\s*:?-{2,}:?\s*)*\|?\s*$/;
+const THEMATIC_BREAK = /^\s{0,3}(?:-{3,}|\*{3,}|_{3,})\s*$/;
+
+function isTableRow(line: string) {
+  return line.includes("|") && /\S/.test(line);
+}
+
 function isBlockStart(line: string) {
   return (
     /^#{1,6}\s+/.test(line) ||
-    /^```/.test(line) ||
-    /^\s*[-*+]\s+/.test(line) ||
-    /^\s*\d+[.)]\s+/.test(line) ||
-    /^>\s?/.test(line)
+    /^\s*```/.test(line) ||
+    BULLET_ITEM.test(line) ||
+    ORDERED_ITEM.test(line) ||
+    /^>\s?/.test(line) ||
+    THEMATIC_BREAK.test(line) ||
+    BLOCK_LEVEL_HTML.test(line.trim())
   );
 }
 
-function withoutFrontmatter(markdown: string) {
-  const normalized = markdown.replace(/\r\n/g, "\n");
-  if (!normalized.startsWith("---\n")) {
-    return normalized;
+function splitTableRow(line: string) {
+  return line
+    .trim()
+    .replace(/^\|/, "")
+    .replace(/\|$/, "")
+    .split("|")
+    .map((cell) => cell.trim());
+}
+
+type ListItem = { content: string[]; children: string | null };
+
+/**
+ * Collects one list at the current indent level, recursing for anything
+ * indented further so nested bullets keep their structure.
+ */
+function parseList(
+  lines: string[],
+  start: number,
+  indent: number,
+  options: MarkdownRenderOptions,
+): { html: string; next: number } {
+  const ordered = ORDERED_ITEM.test(lines[start]);
+  const pattern = ordered ? ORDERED_ITEM : BULLET_ITEM;
+  const items: ListItem[] = [];
+  let index = start;
+
+  while (index < lines.length) {
+    const match = lines[index].match(pattern);
+    if (!match || match[1].length < indent) break;
+    if (match[1].length > indent) {
+      const nested = parseList(lines, index, match[1].length, options);
+      const previous = items[items.length - 1];
+      if (previous) previous.children = (previous.children ?? "") + nested.html;
+      index = nested.next;
+      continue;
+    }
+
+    const item: ListItem = { content: [match[2]], children: null };
+    items.push(item);
+    index += 1;
+
+    // Continuation lines belong to the item until a blank line or a new block.
+    while (
+      index < lines.length &&
+      lines[index].trim() !== "" &&
+      !BULLET_ITEM.test(lines[index]) &&
+      !ORDERED_ITEM.test(lines[index]) &&
+      !isBlockStart(lines[index])
+    ) {
+      item.content.push(lines[index].trim());
+      index += 1;
+    }
   }
 
-  const end = normalized.indexOf("\n---", 4);
-  return end === -1 ? normalized : normalized.slice(end + 4).replace(/^\n/, "");
+  const rendered = items
+    .map(({ content, children }) => {
+      const text = content.join(" ");
+      const task = text.match(/^\[([ xX])\]\s+(.*)$/);
+      const body = task
+        ? `<span class="task-mark" aria-hidden="true">${task[1] === " " ? "☐" : "☑"}</span> ${renderInline(task[2], options)}`
+        : renderInline(text, options);
+      return `<li${task ? ' class="task-item"' : ""}>${body}${children ?? ""}</li>`;
+    })
+    .join("");
+
+  return {
+    html: `<${ordered ? "ol" : "ul"}>${rendered}</${ordered ? "ol" : "ul"}>`,
+    next: index,
+  };
 }
 
 export function renderMarkdownDocument(
@@ -176,6 +509,12 @@ export function renderMarkdownDocument(
       continue;
     }
 
+    if (THEMATIC_BREAK.test(line)) {
+      blocks.push("<hr />");
+      index += 1;
+      continue;
+    }
+
     const heading = line.match(/^(#{1,6})\s+(.+?)\s*#*$/);
     if (heading) {
       const text = plainText(heading[2]);
@@ -189,27 +528,41 @@ export function renderMarkdownDocument(
       continue;
     }
 
-    if (/^\s*[-*+]\s+/.test(line)) {
-      const items: string[] = [];
-      while (index < lines.length) {
-        const item = lines[index].match(/^\s*[-*+]\s+(.+)$/);
-        if (!item) break;
-        items.push(`<li>${renderInline(item[1], options)}</li>`);
+    // GFM pipe table: a header row immediately followed by a divider row.
+    if (
+      isTableRow(line) &&
+      index + 1 < lines.length &&
+      TABLE_DIVIDER.test(lines[index + 1])
+    ) {
+      const header = splitTableRow(line);
+      index += 2;
+      const bodyRows: string[][] = [];
+      while (index < lines.length && isTableRow(lines[index])) {
+        bodyRows.push(splitTableRow(lines[index]));
         index += 1;
       }
-      blocks.push(`<ul>${items.join("")}</ul>`);
+      const head = header
+        .map((cell) => `<th>${renderInline(cell, options)}</th>`)
+        .join("");
+      const body = bodyRows
+        .map(
+          (row) =>
+            `<tr>${row
+              .map((cell) => `<td>${renderInline(cell, options)}</td>`)
+              .join("")}</tr>`,
+        )
+        .join("");
+      blocks.push(
+        `<div class="table-scroll"><table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>`,
+      );
       continue;
     }
 
-    if (/^\s*\d+[.)]\s+/.test(line)) {
-      const items: string[] = [];
-      while (index < lines.length) {
-        const item = lines[index].match(/^\s*\d+[.)]\s+(.+)$/);
-        if (!item) break;
-        items.push(`<li>${renderInline(item[1], options)}</li>`);
-        index += 1;
-      }
-      blocks.push(`<ol>${items.join("")}</ol>`);
+    if (BULLET_ITEM.test(line) || ORDERED_ITEM.test(line)) {
+      const match = (line.match(BULLET_ITEM) ?? line.match(ORDERED_ITEM))!;
+      const list = parseList(lines, index, match[1].length, options);
+      blocks.push(list.html);
+      index = list.next;
       continue;
     }
 
@@ -237,11 +590,25 @@ export function renderMarkdownDocument(
       paragraph.push(lines[index]);
       index += 1;
     }
-    const paragraphText = paragraph.some((part) => /<[^>]+>/.test(part))
-      ? removeEventAttributes(paragraph.join("\n"))
-      : paragraph.join("\n");
-    blocks.push(`<p>${renderInline(paragraphText, options)}</p>`);
+
+    const text = paragraph.join("\n");
+    // Block-level HTML must not be wrapped in <p>; browsers would split it.
+    blocks.push(
+      BLOCK_LEVEL_HTML.test(line.trim())
+        ? sanitizeHtml(text, options)
+        : `<p>${renderInline(text, options)}</p>`,
+    );
   }
 
   return { html: blocks.join("\n"), headings };
+}
+
+function withoutFrontmatter(markdown: string) {
+  const normalized = markdown.replace(/\r\n/g, "\n");
+  if (!normalized.startsWith("---\n")) {
+    return normalized;
+  }
+
+  const end = normalized.indexOf("\n---", 4);
+  return end === -1 ? normalized : normalized.slice(end + 4).replace(/^\n/, "");
 }

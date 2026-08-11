@@ -27,13 +27,18 @@ export default async function RoadmapPage() {
             </div>
             <div className="roadmap-main">
               <div className="roadmap-meta">
-                <span>STAGE {stage.order}</span>
-                {stage.trackIds.map((trackId) => {
-                  const track = tracksById.get(trackId);
-                  return track ? (
-                    <TrackTag key={track.id} track={track} />
-                  ) : null;
-                })}
+                <span>STAGE {String(stage.order).padStart(2, "0")}</span>
+                {/* Every stage currently spans all four tracks, so repeating
+                    the full set nine times says nothing. Only list them when a
+                    stage is actually narrower than the whole roadmap. */}
+                {stage.trackIds.length < catalog.tracks.length
+                  ? stage.trackIds.map((trackId) => {
+                      const track = tracksById.get(trackId);
+                      return track ? (
+                        <TrackTag key={track.id} track={track} />
+                      ) : null;
+                    })
+                  : null}
               </div>
               <h2>
                 <Link href={`/roadmap/${stage.id}`}>{stage.title}</Link>

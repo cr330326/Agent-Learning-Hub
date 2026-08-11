@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { authorLabel, licenseLabel } from "../../components/content-card";
 import { LearningStateControls } from "../../components/learning-state-controls";
 import {
   getContentResolver,
@@ -141,11 +142,22 @@ export default async function ReaderPage({
     throw error;
   }
 
+  // /api/local-image only serves paths the course entry declares. Resolving
+  // against the same allowlist here means undeclared assets are dropped from
+  // the document instead of rendering as broken images.
+  const allowlistedImagePaths = new Set(
+    [
+      item.localPath,
+      ...item.references.map((reference) => reference.localPath),
+    ].filter((path): path is string => path !== null),
+  );
   const rendered = renderMarkdownDocument(document.markdown, {
     resolveImageSrc:
       resolved.kind === "local-document"
         ? (source) =>
-            `/api/local-image?itemId=${encodeURIComponent(item.id)}&path=${encodeURIComponent(source)}`
+            allowlistedImagePaths.has(source)
+              ? `/api/local-image?itemId=${encodeURIComponent(item.id)}&path=${encodeURIComponent(source)}`
+              : null
         : undefined,
   });
   const localChapters =
@@ -155,26 +167,48 @@ export default async function ReaderPage({
 
   return (
     <main className="page page-width reader-page">
+      <Link className="back-link" href={`/courses/${item.id}`}>
+        ← 返回课程导览
+      </Link>
       <div className="reader-header">
         <div>
-          <Link className="back-link" href={`/courses/${item.id}`}>
-            ← 返回课程导览
-          </Link>
-          <p className="eyebrow">OWNED CONTENT / READER</p>
+          <p className="eyebrow">
+            {resolved.kind === "local-document"
+              ? "LOCAL MATERIAL / READER"
+              : "OWNED CONTENT / READER"}
+          </p>
           <h1>{item.title}</h1>
           <p>{item.summary}</p>
+          {resolved.kind === "local-document" ? (
+            <p className="reader-attribution">
+              第三方素材，仅在本地模式只读渲染。作者：{authorLabel(item.author)}
+              ；许可证：{licenseLabel(item.license, item.licenseStatus)}。
+              {item.sourceUrl ? (
+                <>
+                  {" "}
+                  <a href={item.sourceUrl} target="_blank" rel="noreferrer">
+                    查看上游 ↗
+                  </a>
+                </>
+              ) : null}
+            </p>
+          ) : null}
         </div>
-        {rendered.headings.length > 0 ? (
-          <nav className="reader-toc" aria-label="文章目录">
-            <span className="eyebrow">ON THIS PAGE</span>
-            {rendered.headings.map((heading) => (
-              <a href={`#${heading.id}`} key={heading.id}>
-                {heading.text}
-              </a>
-            ))}
-          </nav>
-        ) : null}
       </div>
+      {rendered.headings.length > 0 ? (
+        <nav className="reader-toc" aria-label="文章目录">
+          <span className="eyebrow">ON THIS PAGE</span>
+          {rendered.headings.map((heading) => (
+            <a
+              href={`#${heading.id}`}
+              key={heading.id}
+              data-level={heading.level}
+            >
+              {heading.text}
+            </a>
+          ))}
+        </nav>
+      ) : null}
       {localChapters.length > 0 ? (
         <nav className="reader-chapters" aria-label="本地章节导航">
           <span className="eyebrow">LOCAL CHAPTERS</span>

@@ -124,7 +124,18 @@ Agent Learning Hub 是一个以实践产出为主线的 Agent 工程学习平台
 - 数据库、备份与部署健康。
 - 不关联个人身份的访问汇总。
 
-管理员不得浏览其他用户的私人笔记正文。
+管理员不得浏览其他用户的私人笔记正文。管理员健康页要求 `mode === "cloud"` 且 GitHub ID 在 `ADMIN_GITHUB_IDS` 中；Local Mode 的固定单用户不满足该条件，因此 `/admin` 在本地模式返回 404。本地运维改用 `/api/health` 与 `code/reports/` 下的审计产物。
+
+### 4.3 展示层约定
+
+目录规模决定了展示层的两条硬约束：
+
+- **分页**：课程目录与搜索结果按每页 24 条分页（`app/components/pagination.tsx`），且只对当前页调用 Content Resolver。目录有 500+ 条，全量解析会在 Local Mode 逐条命中文件系统，页面高度也会失控。分页写进 URL 查询参数。
+- **标签映射**：`accessPolicy`、`publicationRights`、`licenseStatus` 和搜索 `kind` 都是 schema 枚举，必须经 `app/components/content-card.tsx` 的标签函数转成中文再渲染。
+
+旧站导入的遗留形态同样在展示层收敛，而不是回写数据：缺失字段的字面量 `Unknown` 显示为“作者待补 / 许可证待确认”，`legacy-reading` 等内部标签不出现在卡片上，与 summary 完全重复的标签不重复渲染。数据层保留原样，以便后续人工复核时能看出哪些条目还没有元数据。
+
+响应式方面，主导航在 860px 以下让位给可横向滚动的 `.compact-nav`；替代导航必须留在 DOM 中，不允许出现没有站内导航的视口。
 
 ## 5. 总体架构
 
@@ -277,12 +288,27 @@ Local Adapter：
 - 阅读位置恢复。
 - Markdown/MDX 的安全白名单渲染。
 
+渲染策略（`modules/reader/markdown.ts`）：
+
+第三方素材是为 GitHub 写的，正文里普遍混着排版 HTML——居中容器、shields 徽章、`<br>`、`<details>` 和表格。把这些标签整体转义会让 README 变成一屏尖括号，因此阅读器采用**允许通过 + 白名单收敛**，而不是全量转义：
+
+- **标签白名单**：保留 `a`、`img`、`div`、`span`、`table` 系列、`details`/`summary`、标题、列表等展示性标签。
+- **整棵丢弃**：`script`、`style`、`iframe`、`object`、`embed`、表单控件等连同内容一起移除。
+- **未知标签**：丢标记、留文本，不让未识别的元素影响版式。
+- **属性白名单**：逐标签限定；`on*` 事件属性一律丢弃；`href` 只接受 `http(s)`/`mailto`/站内路径/锚点；`src` 只接受远程 `http(s)` 或调用方解析出的本地允许路径。
+- **未闭合标签**：结束时补齐，避免上游一个笔误破坏整页布局。
+- **字符实体**：`&emsp;` 等有效实体原样输出，不做二次转义（中文 README 依赖它做段首缩进）。
+- **扩展语法**：GFM 管道表格（外层 `overflow-x` 容器）、`---` 分隔线、缩进嵌套列表、`- [ ]` 任务项。
+
+图片额外受课程条目约束：只有条目声明过的 `localPath`（`localPath` 与 `references[].localPath`）会被解析成 `/api/local-image`；README 内部未声明的图片直接丢弃，不渲染成损坏图。这与 `/api/local-image` 自身的 allowlist 是同一份规则，两处必须一起改。
+
 安全规则：
 
 - 禁止脚本、事件属性、任意 iframe 和可执行 MDX JavaScript。
-- 只允许经过定义的展示组件。
+- 只允许经过定义的展示组件与上述标签白名单。
 - 无法安全渲染的内容提供源码视图和上游网页链接。
 - 云端不提供任意 URL 的服务器端抓取或代理。
+- 扩大标签、属性或图片 allowlist 属于安全边界变更，需先更新 ADR 与规格。
 
 ### 6.6 Search Module
 
@@ -411,6 +437,12 @@ Local Material 或可能上传受保护数据时必须失败。云端构建上�
 - 可以离线使用已经存在的本地资料。
 
 两种模式使用同一镜像、同一课程 ID、同一内容 schema 和同一学习状态模型。
+
+### 9.3 开发服务的回环约束
+
+本地模式的免登录身份由 `assertLocalAuthBinding` 强制：绑定到非回环地址时进程直接拒绝启动。这条约束向上传导到开发服务本身——`next dev` 会按 `allowedDevOrigins` 校验静态资源请求的来源，未列入的来源返回 403，客户端 bundle 加载失败，页面停在服务端渲染的初始状态（表现为“我的学习”永远显示加载中、勾选与收藏无响应）。
+
+因此 `next.config.ts` 必须把运行手册给出的全部回环写法（`127.0.0.1`、`localhost`、`[::1]`）列入 `allowedDevOrigins`。`local-preview.sh` 打印的预览地址是 `http://127.0.0.1:<port>`，两者必须保持一致。生产的 `next start` 不做这项校验，所以这类缺陷只会在开发与本地预览中出现——`npm run check` 也发现不了，需要靠 UI 走查覆盖（见 NFR-009、NFR-010）。
 
 ## 10. 技术选择
 

@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { ContentCard } from "../components/content-card";
+import { Pagination, paginate } from "../components/pagination";
 import { SectionIntro } from "../components/site-chrome";
 import { getContentResolver, loadPublicCatalog } from "../../lib/catalog";
 import type { LearningItem } from "../../modules/catalog/content-schema";
@@ -12,6 +13,7 @@ type CourseSearchParams = {
   access?: string;
   stage?: string;
   tag?: string;
+  page?: string;
 };
 
 export default async function CoursesPage({
@@ -47,8 +49,11 @@ export default async function CoursesPage({
     .sort((left, right) => left.title.localeCompare(right.title, "zh-CN"));
   const resolver = getContentResolver();
   const tracksById = new Map(catalog.tracks.map((item) => [item.id, item]));
+  // Only the visible page is resolved — resolving 500+ entries per request
+  // touched the filesystem once per item in local mode.
+  const pageWindow = paginate(items, params.page);
   const resolvedItems = await Promise.all(
-    items.map(async (item) => ({
+    pageWindow.items.map(async (item) => ({
       item,
       resolved: await resolver.resolve(item),
     })),
@@ -106,7 +111,13 @@ export default async function CoursesPage({
       </form>
       <div className="directory-heading">
         <p>
-          <strong>{items.length}</strong> 项结果
+          <strong>{pageWindow.total}</strong> 项结果
+          {pageWindow.total > 0 ? (
+            <span>
+              {" "}
+              · 第 {pageWindow.from}–{pageWindow.to} 项
+            </span>
+          ) : null}
         </p>
         {tag ? <span>标签：{tag}</span> : null}
       </div>
@@ -133,6 +144,17 @@ export default async function CoursesPage({
           })
         )}
       </div>
+      <Pagination
+        basePath="/courses"
+        params={{
+          track: params.track,
+          access: params.access,
+          stage: params.stage,
+          tag: params.tag,
+        }}
+        page={pageWindow.page}
+        pageCount={pageWindow.pageCount}
+      />
     </main>
   );
 }

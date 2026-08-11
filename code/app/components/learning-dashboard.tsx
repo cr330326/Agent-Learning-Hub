@@ -4,7 +4,12 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 type Item = { id: string; title: string };
-type Stage = { id: string; title: string; taskIds: string[] };
+type Stage = {
+  id: string;
+  title: string;
+  order: number;
+  tasks: Array<{ id: string; title: string }>;
+};
 
 type DashboardState = {
   user: { id: string; displayName: string };
@@ -35,6 +40,27 @@ type DashboardState = {
     confirmedAt: string | null;
   }>;
 };
+
+/**
+ * `position` is the stored scroll offset. Users care about "where was I", not
+ * the pixel value, so report the saved time and only hint that a position exists.
+ */
+function readingPositionLabel(progress: {
+  position: number;
+  updatedAt: string;
+}) {
+  const savedAt = new Date(progress.updatedAt);
+  const when = Number.isNaN(savedAt.getTime())
+    ? null
+    : savedAt.toLocaleString("zh-CN", {
+        month: "numeric",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+  const place = progress.position > 0 ? "可回到上次位置" : "尚未记录位置";
+  return when ? `${when} · ${place}` : place;
+}
 
 export function LearningDashboard({
   items,
@@ -251,7 +277,7 @@ export function LearningDashboard({
                   <strong>
                     {itemTitles.get(progress.itemId) ?? progress.itemId}
                   </strong>
-                  <small>已保存位置 {progress.position}px</small>
+                  <small>{readingPositionLabel(progress)}</small>
                 </div>
                 <Link
                   className="button button-small"
@@ -273,31 +299,36 @@ export function LearningDashboard({
           </div>
           <span className="section-aside">{completedTasks.size} 项已勾选</span>
         </div>
-        <div className="dashboard-task-grid">
-          {stages.flatMap((stage) =>
-            stage.taskIds.map((taskId) => (
-              <label className="dashboard-task" key={taskId}>
-                <input
-                  id={taskId}
-                  name={taskId}
-                  type="checkbox"
-                  checked={completedTasks.has(taskId)}
-                  onChange={(event) =>
-                    void send({
-                      action: "task-progress",
-                      taskId,
-                      completed: event.target.checked,
-                    })
-                  }
-                />
-                <span>
-                  <strong>{taskId}</strong>
-                  <small>{stage.title}</small>
-                </span>
-              </label>
-            )),
-          )}
-        </div>
+        {stages.map((stage) => (
+          <div className="dashboard-task-stage" key={stage.id}>
+            <h3>
+              <span>Stage {String(stage.order).padStart(2, "0")}</span>
+              {stage.title}
+            </h3>
+            <div className="dashboard-task-grid">
+              {stage.tasks.map((task) => (
+                <label className="dashboard-task" key={task.id}>
+                  <input
+                    id={task.id}
+                    name={task.id}
+                    type="checkbox"
+                    checked={completedTasks.has(task.id)}
+                    onChange={(event) =>
+                      void send({
+                        action: "task-progress",
+                        taskId: task.id,
+                        completed: event.target.checked,
+                      })
+                    }
+                  />
+                  <span>
+                    <strong>{task.title}</strong>
+                  </span>
+                </label>
+              ))}
+            </div>
+          </div>
+        ))}
       </section>
 
       <div className="dashboard-two-column">

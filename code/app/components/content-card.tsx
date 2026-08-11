@@ -35,23 +35,33 @@ export function ContentCard({
   track: Track;
   resolved: ResolvedContent;
 }) {
+  // The legacy import copied the collection name into both the summary and a
+  // tag, so a tag identical to the summary would just repeat the line above it.
+  const tags = displayTags(item.tags)
+    .filter((tag) => tag.trim() !== item.summary.trim())
+    .slice(0, 3);
+
   return (
     <article className="content-card">
       <div className="content-card-topline">
         <TrackTag track={track} />
-        <span className="item-policy">{policyLabel(item.accessPolicy)}</span>
+        <span className={`item-policy policy-${item.accessPolicy}`}>
+          {policyLabel(item.accessPolicy)}
+        </span>
       </div>
       <h2>
         <Link href={`/courses/${item.id}`}>{item.title}</Link>
       </h2>
       <p>{item.summary}</p>
-      <div className="tag-list" aria-label="标签">
-        {item.tags.slice(0, 4).map((tag) => (
-          <span key={tag}>#{tag}</span>
-        ))}
-      </div>
+      {tags.length > 0 ? (
+        <div className="tag-list" aria-label="标签">
+          {tags.map((tag) => (
+            <span key={tag}>#{tag}</span>
+          ))}
+        </div>
+      ) : null}
       <div className="content-card-footer">
-        <span>{item.author}</span>
+        <span>{authorLabel(item.author)}</span>
         <ResolverAction resolved={resolved} />
       </div>
     </article>
@@ -65,4 +75,40 @@ export function policyLabel(policy: LearningItem["accessPolicy"]) {
     "local-preferred": "本地优先",
     unavailable: "待处理",
   }[policy];
+}
+
+export function publicationRightsLabel(
+  rights: LearningItem["publicationRights"],
+) {
+  return {
+    "project-owned": "本站自有",
+    "republication-authorized": "已授权转载",
+    "third-party": "第三方素材",
+  }[rights];
+}
+
+/** The legacy import left every unknown field as the literal string "Unknown". */
+export function authorLabel(author: string) {
+  return author.trim() === "" || author === "Unknown" ? "作者待补" : author;
+}
+
+export function licenseLabel(
+  license: string,
+  status: LearningItem["licenseStatus"],
+) {
+  if (status === "known" && license && license !== "Unknown") return license;
+  return "许可证待确认";
+}
+
+/** Bookkeeping tags from the legacy import that carry no reader value. */
+const INTERNAL_TAGS = new Set([
+  "legacy-reading",
+  "legacy-course",
+  "legacy",
+  "local",
+  "featured",
+]);
+
+export function displayTags(tags: readonly string[]) {
+  return tags.filter((tag) => !INTERNAL_TAGS.has(tag));
 }

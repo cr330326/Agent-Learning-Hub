@@ -4,6 +4,8 @@ Agent Learning Hub 是一个以实践成果为主线的 Agent 工程学习网站
 
 新应用唯一的现役工程是 [`code/`](./code/)。[`learning-site/`](./learning-site/) 仅保留为迁移与 Phase 8 对等验收基线，不再接收新功能。
 
+想直接开始使用站点，请看 [使用指南](./GUIDE.md)。本文档面向搭建与维护。
+
 ## 当前能力
 
 - 路线、课程目录、项目阶梯、搜索和安全阅读器；Cloud/Local 共享稳定课程 ID。
@@ -18,22 +20,28 @@ Agent Learning Hub 是一个以实践成果为主线的 Agent 工程学习网站
 
 ```bash
 npm ci --prefix code
-npm run dev --prefix code
+npm run dev:cloud --prefix code
 ```
 
-打开 <http://127.0.0.1:3000>。开发服务默认是 Cloud Mode；本地阅读素材时：
+打开 <http://127.0.0.1:3000>。要在站内阅读 `local-courses/` 的素材正文，改用 Local Mode：
 
 ```bash
-DEPLOYMENT_MODE=local \
-LOCAL_MATERIAL_ROOT="$PWD/local-courses" \
-npm run dev --prefix code
+npm run dev:local --prefix code
 ```
+
+`dev:local` 会设置 `DEPLOYMENT_MODE=local` 和 `LOCAL_BIND_HOST=127.0.0.1`；素材目录默认取仓库根的 `local-courses/`，需要改路径时设置 `LOCAL_MATERIAL_ROOT`。开发服务只能通过 `127.0.0.1` 或 `localhost` 访问：免登录的本地身份仅对回环地址成立，非回环来源的静态资源会被开发服务器拒绝，页面无法完成 hydration。
 
 提交前运行双模式质量门禁：
 
 ```bash
 npm run check:cloud --prefix code
 npm run check:local --prefix code
+```
+
+改动界面后，另外运行 UI 走查（需要运行中的服务与 Playwright，不属于 `check` 门禁）：
+
+```bash
+node code/scripts/ui-review.mjs --base-url http://127.0.0.1:3000 --item-id legacy-course-001
 ```
 
 ## Docker
@@ -87,9 +95,11 @@ code/scripts/docker-deploy.sh release up
 | `npm run audit:baseline --prefix code`                       | 重新生成旧站能力基线                                                                     |
 | `npm run audit:boundaries --prefix code`                     | 审计 Git、Docker 与 CI 的内容边界                                                        |
 | `npm run convert:legacy --prefix code`                       | 从 `learning-site/data.js` 可重复生成结构化内容与报告                                    |
+| `node code/scripts/ui-review.mjs --base-url <url>`           | 在 desktop/tablet/mobile 三档抓全页截图，报告 HTTP 错误、横向溢出、超长页面与控制台报错  |
 
 ## 文档入口
 
+- [使用指南（面向学习者与本机维护者）](./GUIDE.md)
 - [产品规格与验收场景](./docs/plans/spec.md)
 - [架构、内容模型、部署和数据库运维](./docs/plans/plan.md)
 - [生产部署与运维 Runbook](./docs/deploy/README.md)

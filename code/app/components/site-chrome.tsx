@@ -10,6 +10,15 @@ const trackColors: Record<Track["id"], string> = {
   application: "#8a5d10",
 };
 
+const navigationLinks = [
+  { href: "/roadmap", label: "九阶段路线" },
+  { href: "/courses", label: "课程目录" },
+  { href: "/search", label: "搜索" },
+  { href: "/projects", label: "项目阶梯" },
+  { href: "/learning", label: "我的学习" },
+  { href: "/login", label: "登录" },
+];
+
 export function SiteHeader({ mode }: { mode: DeploymentMode }) {
   return (
     <header className="site-header">
@@ -24,18 +33,26 @@ export function SiteHeader({ mode }: { mode: DeploymentMode }) {
           </span>
         </Link>
         <nav className="primary-nav" aria-label="主导航">
-          <Link href="/roadmap">九阶段路线</Link>
-          <Link href="/courses">课程目录</Link>
-          <Link href="/search">搜索</Link>
-          <Link href="/projects">项目阶梯</Link>
-          <Link href="/learning">我的学习</Link>
-          <Link href="/login">登录</Link>
+          {navigationLinks.map(({ href, label }) => (
+            <Link href={href} key={href}>
+              {label}
+            </Link>
+          ))}
         </nav>
         <span className={`mode-badge mode-${mode}`}>
           <i aria-hidden="true" />
           {mode === "local" ? "本地模式" : "云端模式"}
         </span>
       </div>
+      {/* Below the primary-nav breakpoint this scrolling rail is the only
+          navigation, so it must stay in the markup rather than be hidden. */}
+      <nav className="compact-nav" aria-label="主导航（窄屏）">
+        {navigationLinks.map(({ href, label }) => (
+          <Link href={href} key={href}>
+            {label}
+          </Link>
+        ))}
+      </nav>
     </header>
   );
 }

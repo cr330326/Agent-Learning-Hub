@@ -1,7 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { ResolverAction } from "../../components/content-card";
+import {
+  ResolverAction,
+  authorLabel,
+  displayTags,
+  licenseLabel,
+  policyLabel,
+  publicationRightsLabel,
+} from "../../components/content-card";
 import { LearningStateControls } from "../../components/learning-state-controls";
 import { SectionIntro, TrackTag } from "../../components/site-chrome";
 import { getContentResolver, loadPublicCatalog } from "../../../lib/catalog";
@@ -21,6 +28,7 @@ export default async function CourseDetailPage({
   if (!track) notFound();
   const stages = catalog.stages.filter(({ id }) => item.stageIds.includes(id));
   const resolved = await getContentResolver().resolve(item);
+  const localReadable = resolved.kind === "local-document";
 
   return (
     <main className="page page-width detail-page">
@@ -36,14 +44,20 @@ export default async function CourseDetailPage({
         <article className="detail-main">
           <div className="detail-topline">
             <TrackTag track={track} />
-            <span className="item-policy">{item.accessPolicy}</span>
+            <span className={`item-policy policy-${item.accessPolicy}`}>
+              {policyLabel(item.accessPolicy)}
+            </span>
           </div>
-          <h2>为什么收录</h2>
-          <ul className="check-list">
-            {item.learningGoals.map((goal) => (
-              <li key={goal}>{goal}</li>
-            ))}
-          </ul>
+          {item.learningGoals.length > 0 ? (
+            <>
+              <h2>为什么收录</h2>
+              <ul className="check-list">
+                {item.learningGoals.map((goal) => (
+                  <li key={goal}>{goal}</li>
+                ))}
+              </ul>
+            </>
+          ) : null}
           <div className="detail-action-box">
             <div>
               <p className="eyebrow">ACCESS THROUGH RESOLVER</p>
@@ -60,17 +74,55 @@ export default async function CourseDetailPage({
             </div>
             <ResolverAction resolved={resolved} />
           </div>
+          {item.references.length > 0 ? (
+            <section className="detail-references" aria-labelledby="refs-title">
+              <p className="eyebrow">REFERENCES / 相关入口</p>
+              <h2 id="refs-title">这个条目还包含</h2>
+              <ul>
+                {item.references.map((reference) => (
+                  <li
+                    key={`${reference.label}-${reference.localPath ?? reference.sourceUrl}`}
+                  >
+                    {reference.sourceUrl ? (
+                      <a
+                        href={reference.sourceUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {reference.label} ↗
+                      </a>
+                    ) : localReadable && reference.localPath ? (
+                      <Link
+                        href={`/read/${item.id}?chapter=${encodeURIComponent(reference.localPath)}`}
+                      >
+                        {reference.label}
+                      </Link>
+                    ) : (
+                      <span>{reference.label}</span>
+                    )}
+                    {reference.localPath ? (
+                      <small>
+                        {localReadable
+                          ? "本地素材"
+                          : "本地素材 · 需在本地模式打开"}
+                      </small>
+                    ) : null}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
           <LearningStateControls itemId={item.id} />
         </article>
         <aside className="detail-meta">
           <dl>
             <div>
               <dt>作者</dt>
-              <dd>{item.author}</dd>
+              <dd>{authorLabel(item.author)}</dd>
             </div>
             <div>
               <dt>许可证</dt>
-              <dd>{item.license}</dd>
+              <dd>{licenseLabel(item.license, item.licenseStatus)}</dd>
             </div>
             <div>
               <dt>最近复核</dt>
@@ -78,17 +130,22 @@ export default async function CourseDetailPage({
             </div>
             <div>
               <dt>发布归属</dt>
-              <dd>{item.publicationRights}</dd>
+              <dd>{publicationRightsLabel(item.publicationRights)}</dd>
             </div>
           </dl>
-          <div className="detail-tags">
-            <span className="eyebrow">TAGS</span>
-            {item.tags.map((tag) => (
-              <Link href={`/courses?tag=${encodeURIComponent(tag)}`} key={tag}>
-                #{tag}
-              </Link>
-            ))}
-          </div>
+          {displayTags(item.tags).length > 0 ? (
+            <div className="detail-tags">
+              <span className="eyebrow">TAGS</span>
+              {displayTags(item.tags).map((tag) => (
+                <Link
+                  href={`/courses?tag=${encodeURIComponent(tag)}`}
+                  key={tag}
+                >
+                  #{tag}
+                </Link>
+              ))}
+            </div>
+          ) : null}
           <div className="detail-stages">
             <span className="eyebrow">RELATED STAGES</span>
             {stages.length === 0 ? (

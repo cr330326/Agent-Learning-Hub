@@ -31,6 +31,21 @@ export default async function StagePage({
       resolved: await resolver.resolve(item),
     })),
   );
+  const lastOrder = Math.max(...catalog.stages.map(({ order }) => order));
+  const railFill = `${lastOrder === 0 ? 100 : Math.round((stage.order / lastOrder) * 100)}%`;
+  // The legacy import seeded learningGoals from the task list and
+  // maintainerGuide from the summary; show each string once.
+  const taskTitles = new Set(
+    stage.taskIds
+      .map((taskId) => tasksById.get(taskId)?.title)
+      .filter((title): title is string => title !== undefined),
+  );
+  const distinctGoals = stage.learningGoals.filter(
+    (goal) => !taskTitles.has(goal),
+  );
+  const showMaintainerGuide =
+    stage.maintainerGuide.trim() !== "" &&
+    stage.maintainerGuide.trim() !== stage.summary.trim();
 
   return (
     <main className="page page-width stage-page">
@@ -47,8 +62,8 @@ export default async function StagePage({
         </div>
         <div className="stage-rail" aria-hidden="true">
           <span>{String(stage.order).padStart(2, "0")}</span>
-          <i />
-          <span>09</span>
+          <i style={{ "--rail-fill": railFill } as React.CSSProperties} />
+          <span>{String(lastOrder).padStart(2, "0")}</span>
         </div>
       </div>
 
@@ -56,15 +71,23 @@ export default async function StagePage({
         <section className="stage-column" aria-labelledby="goals-title">
           <p className="eyebrow">01 / LEARNING GOALS</p>
           <h2 id="goals-title">这一站要能说清楚</h2>
-          <ul className="check-list">
-            {stage.learningGoals.map((goal) => (
-              <li key={goal}>{goal}</li>
-            ))}
-          </ul>
-          <div className="maintainer-note">
-            <span>维护者提示</span>
-            <p>{stage.maintainerGuide}</p>
-          </div>
+          {distinctGoals.length > 0 ? (
+            <ul className="check-list">
+              {distinctGoals.map((goal) => (
+                <li key={goal}>{goal}</li>
+              ))}
+            </ul>
+          ) : (
+            <p className="empty-state">
+              这一站的目标就在右侧的实践任务里：把每一条做出来，就说明你说得清楚了。
+            </p>
+          )}
+          {showMaintainerGuide ? (
+            <div className="maintainer-note">
+              <span>维护者提示</span>
+              <p>{stage.maintainerGuide}</p>
+            </div>
+          ) : null}
         </section>
 
         <section className="stage-column" aria-labelledby="tasks-title">
@@ -79,7 +102,17 @@ export default async function StagePage({
                   <span>{String(index + 1).padStart(2, "0")}</span>
                   <div>
                     <strong>{task.title}</strong>
-                    <p>{task.summary}</p>
+                    {task.summary.trim() !== "" &&
+                    task.summary.trim() !== task.title.trim() ? (
+                      <p>{task.summary}</p>
+                    ) : null}
+                    {task.acceptanceCriteria.length > 0 ? (
+                      <ul className="task-criteria">
+                        {task.acceptanceCriteria.map((criterion) => (
+                          <li key={criterion}>{criterion}</li>
+                        ))}
+                      </ul>
+                    ) : null}
                   </div>
                 </li>
               );
@@ -96,9 +129,11 @@ export default async function StagePage({
           {outcomes.map((outcome) => (
             <div className="outcome-card" key={outcome.id}>
               <span>STAGE OUTCOME</span>
-              <h3>{outcome.title}</h3>
-              <p>{outcome.summary}</p>
+              <h3>{outcome.summary.replace(/^产出[：:]\s*/, "")}</h3>
               <small>完成前至少提交一条成果，并主动确认阶段完成。</small>
+              <Link className="outcome-card-link" href="/learning">
+                去“我的学习”登记成果 →
+              </Link>
             </div>
           ))}
         </section>

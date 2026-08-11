@@ -8,6 +8,8 @@
   },
   "scripts": {
     "dev": "next dev",
+    "dev:cloud": "DEPLOYMENT_MODE=cloud next dev",
+    "dev:local": "DEPLOYMENT_MODE=local LOCAL_BIND_HOST=127.0.0.1 next dev",
     "build": "next build",
     "start": "next start",
     "test:e2e": "node tests/e2e/home-page-http-smoke.mjs && node tests/e2e/public-pages-http-smoke.mjs && node tests/e2e/health-http-smoke.mjs",
@@ -30,7 +32,8 @@
     "check:local": "DEPLOYMENT_MODE=local npm run check",
     "audit:baseline": "node scripts/baseline-report.mjs --root .. --output-dir reports/baseline",
     "audit:boundaries": "node scripts/audit-content-boundaries.mjs --root .. --output-dir reports/content-boundaries",
-    "convert:legacy": "node scripts/convert-legacy-content.mjs --root .. --content-dir content --report-dir reports/legacy-conversion --baseline reports/baseline/baseline.json"
+    "convert:legacy": "node scripts/convert-legacy-content.mjs --root .. --content-dir content --report-dir reports/legacy-conversion --baseline reports/baseline/baseline.json",
+    "audit:ui": "node scripts/ui-review.mjs --output-dir reports/ui-review"
   },
   "dependencies": {
     "better-auth": "^1.6.26",

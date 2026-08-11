@@ -6,6 +6,9 @@ export const dynamic = "force-dynamic";
 
 export default async function LearningPage() {
   const catalog = await loadPublicCatalog();
+  const taskTitles = new Map(
+    catalog.stageTasks.map((task) => [task.id, task.title]),
+  );
   return (
     <main className="page page-width learning-page">
       <SectionIntro
@@ -15,11 +18,18 @@ export default async function LearningPage() {
       />
       <LearningDashboard
         items={catalog.items.map(({ id, title }) => ({ id, title }))}
-        stages={catalog.stages.map(({ id, title, taskIds }) => ({
-          id,
-          title,
-          taskIds,
-        }))}
+        stages={catalog.stages
+          .slice()
+          .sort((left, right) => left.order - right.order)
+          .map(({ id, title, order, taskIds }) => ({
+            id,
+            title,
+            order,
+            tasks: taskIds.map((taskId) => ({
+              id: taskId,
+              title: taskTitles.get(taskId) ?? taskId,
+            })),
+          }))}
       />
     </main>
   );

@@ -93,21 +93,26 @@ h1,
 h2,
 h3 {
   font-family:
-    "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia,
+    "Songti SC", "Source Han Serif SC", "Noto Serif CJK SC", serif;
   font-weight: 500;
   letter-spacing: -0.025em;
 }
+/* CJK glyphs fill their em box, so the tight Latin leading below 1.15 makes
+   stacked lines collide. text-wrap: balance keeps orphans off the last line. */
 h1 {
-  font-size: clamp(42px, 6vw, 76px);
-  line-height: 0.98;
+  font-size: clamp(40px, 5.4vw, 68px);
+  line-height: 1.16;
+  text-wrap: balance;
 }
 h2 {
-  font-size: clamp(27px, 3vw, 40px);
-  line-height: 1.08;
+  font-size: clamp(26px, 2.8vw, 38px);
+  line-height: 1.22;
+  text-wrap: balance;
 }
 h3 {
-  font-size: 25px;
-  line-height: 1.16;
+  font-size: 24px;
+  line-height: 1.3;
 }
 
 .site-header {
@@ -729,9 +734,9 @@ h3 {
   gap: 15px;
 }
 .content-card {
-  min-height: 300px;
   display: flex;
   flex-direction: column;
+  gap: 12px;
   padding: 21px;
   background: var(--paper-light);
   border: 1px solid var(--line);
@@ -759,8 +764,9 @@ h3 {
   text-transform: uppercase;
 }
 .content-card h2 {
-  margin: 34px 0 10px;
-  font-size: 26px;
+  margin: 6px 0 0;
+  font-size: 22px;
+  line-height: 1.28;
 }
 .content-card h2 a {
   text-decoration: none;
@@ -769,16 +775,21 @@ h3 {
   color: var(--coral);
 }
 .content-card p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
   color: var(--muted);
   font-size: 13px;
   line-height: 1.7;
-  margin-bottom: 15px;
+  margin: 0;
 }
 .tag-list {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
   margin-top: auto;
+  padding-top: 6px;
 }
 .tag-list span {
   color: var(--muted);
@@ -791,11 +802,20 @@ h3 {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding-top: 18px;
-  margin-top: 18px;
+  padding-top: 14px;
+  margin-top: auto;
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-size: 10px;
+}
+.item-policy.policy-owned {
+  color: var(--forest);
+}
+.item-policy.policy-local-preferred {
+  color: var(--violet);
+}
+.item-policy.policy-unavailable {
+  color: var(--coral);
 }
 .resolver-action {
   color: var(--forest);
@@ -1019,6 +1039,7 @@ h3 {
 .dashboard-two-column {
   display: grid;
   grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  align-items: start;
   gap: 18px;
 }
 .dashboard-panel > .eyebrow + h2 {
@@ -1616,13 +1637,30 @@ h3 {
   color: var(--muted);
   font-size: 13px;
 }
-.reader-header {
+/* The reader is a two-column layout: prose at a readable measure, with the
+   table of contents parked in the column that used to sit empty. */
+.reader-page {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 260px;
-  gap: 50px;
-  align-items: end;
-  padding-bottom: 40px;
+  grid-template-columns: minmax(0, 1fr) 268px;
+  column-gap: 56px;
+  align-items: start;
+}
+.reader-page > .back-link,
+.reader-header,
+.reader-chapters,
+.reader-body,
+.reader-page > .learning-state-panel {
+  grid-column: 1;
+}
+.reader-header {
+  padding-bottom: 34px;
   border-bottom: 1px solid var(--line);
+}
+.reader-toc {
+  grid-column: 2;
+  grid-row: 1 / span 4;
+  position: sticky;
+  top: 96px;
 }
 .reader-header .back-link {
   margin-bottom: 30px;
@@ -1637,8 +1675,12 @@ h3 {
 }
 .reader-toc {
   display: grid;
+  align-content: start;
   gap: 10px;
+  max-height: min(66vh, 560px);
   padding: 17px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   background: var(--paper-deep);
 }
 .reader-toc .eyebrow {
@@ -1649,6 +1691,17 @@ h3 {
   font-size: 12px;
   text-decoration: none;
   line-height: 1.4;
+}
+.reader-toc a[data-level="3"] {
+  padding-left: 11px;
+  color: var(--muted);
+}
+.reader-toc a[data-level="4"] {
+  padding-left: 22px;
+  color: var(--muted);
+}
+.reader-toc a:hover {
+  color: var(--coral);
 }
 .reader-chapters {
   display: flex;
@@ -1746,6 +1799,52 @@ h3 {
   font-size: 13px;
   line-height: 1.65;
 }
+/* Upstream READMEs ship raw HTML with fixed widths and wide tables; contain
+   both so a third-party document can never blow out the page. */
+.reader-body img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+.reader-body hr {
+  height: 1px;
+  border: 0;
+  margin: 34px 0;
+  background: var(--line);
+}
+.reader-body .task-item {
+  list-style: none;
+  margin-left: -20px;
+}
+.reader-body .task-mark {
+  color: var(--forest);
+}
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 25px 0;
+}
+.reader-body table {
+  min-width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.reader-body th,
+.reader-body td {
+  padding: 9px 13px;
+  border: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+.reader-body th {
+  background: var(--paper-deep);
+  font-weight: 700;
+  white-space: nowrap;
+}
+.reader-body div[align="center"],
+.reader-body p[align="center"] {
+  text-align: center;
+}
 
 .prose-page {
   max-width: 880px;
@@ -1809,10 +1908,208 @@ h3 {
   line-height: 1.6;
 }
 
+/* Narrow-screen navigation rail. The primary nav collapses below 860px, and
+   this replaces it rather than leaving the header without any links. */
+.compact-nav {
+  display: none;
+  gap: 18px;
+  width: min(100% - 30px, 1240px);
+  margin-inline: auto;
+  padding-bottom: 11px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.compact-nav::-webkit-scrollbar {
+  display: none;
+}
+.compact-nav a {
+  color: var(--muted);
+  font-size: 13px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.compact-nav a:hover {
+  color: var(--forest-deep);
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  padding-top: 26px;
+  margin-top: 34px;
+  border-top: 1px solid var(--line);
+}
+.pagination-step {
+  color: var(--forest);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.pagination-step:hover {
+  color: var(--coral);
+}
+.pagination-step.is-disabled {
+  color: var(--line);
+  cursor: default;
+}
+.pagination-pages {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.pagination-pages li {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.pagination-page {
+  display: grid;
+  place-items: center;
+  min-width: 32px;
+  min-height: 32px;
+  padding-inline: 7px;
+  color: var(--muted);
+  font:
+    12px ui-monospace,
+    monospace;
+  text-decoration: none;
+}
+.pagination-page:hover {
+  background: var(--paper-deep);
+  color: var(--forest-deep);
+}
+.pagination-page.is-current {
+  background: var(--forest);
+  color: var(--paper-light);
+}
+.pagination-gap {
+  color: var(--line);
+  padding-inline: 2px;
+}
+
+.detail-references {
+  margin-top: 44px;
+}
+.detail-references h2 {
+  margin: 0 0 16px;
+  font-size: 24px;
+}
+.detail-references ul {
+  display: grid;
+  gap: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--line);
+}
+.detail-references li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+.detail-references a {
+  color: var(--forest);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.detail-references a:hover {
+  color: var(--coral);
+}
+.detail-references small {
+  color: var(--muted);
+  font:
+    10px ui-monospace,
+    monospace;
+  white-space: nowrap;
+}
+
+.task-criteria {
+  display: grid;
+  gap: 4px;
+  padding-left: 16px;
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.outcome-card-link {
+  display: inline-block;
+  margin-top: 14px;
+  color: #f4c06e;
+  font-size: 12px;
+  font-weight: 700;
+}
+.stage-outcome-section {
+  margin-top: 82px;
+}
+.dashboard-task-stage + .dashboard-task-stage {
+  margin-top: 20px;
+}
+.dashboard-task-stage h3 {
+  display: flex;
+  align-items: baseline;
+  gap: 11px;
+  margin: 0 0 9px;
+  font-size: 17px;
+}
+.dashboard-task-stage h3 span {
+  color: var(--coral);
+  font:
+    700 10px ui-monospace,
+    monospace;
+  letter-spacing: 0.08em;
+}
+.reader-attribution {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+.reader-attribution a {
+  color: var(--forest);
+}
+
+/* The header runs out of room for six links plus the brand well before the
+   640px content breakpoint, so the nav swap gets its own threshold. */
+@media (max-width: 860px) {
+  .primary-nav {
+    display: none;
+  }
+  .compact-nav {
+    display: flex;
+  }
+  .site-header-inner {
+    min-height: 66px;
+  }
+  .mode-badge {
+    margin-left: auto;
+  }
+}
+
 @media (max-width: 900px) {
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 45px;
+  }
+  .reader-page {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .reader-toc {
+    position: static;
+    grid-column: 1;
+    grid-row: auto;
+    max-height: 260px;
+    margin-top: 24px;
   }
   .hero-note {
     max-width: 420px;
@@ -1877,13 +2174,15 @@ h3 {
   .brand strong {
     font-size: 12px;
   }
-  .brand small,
-  .primary-nav {
+  .brand small {
     display: none;
   }
   .mode-badge {
     margin-left: auto;
     font-size: 9px;
+  }
+  .compact-nav {
+    gap: 15px;
   }
   .site-footer {
     display: grid;
@@ -1977,10 +2276,6 @@ h3 {
   }
   .project-content h2 {
     font-size: 26px;
-  }
-  .reader-header {
-    grid-template-columns: 1fr;
-    gap: 27px;
   }
   .reader-body {
     padding-top: 38px;

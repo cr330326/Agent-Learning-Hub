@@ -22,15 +22,30 @@ Agent Learning Hub 是一个以实践成果为主线的 Agent 工程学习网站
 - 本地文件必须来自 allowlist 并限制在只读挂载根内；拒绝路径穿越、符号链接逃逸和可执行 MDX。
 - 网站进程不得更新嵌套素材仓库；`materials update` 仅允许在指定单课程、clean working tree 上 fast-forward。
 - 运行模式、内容归属、身份或数据库边界有变化时，先更新 ADR、规格和任务清单。
+- 阅读器保留第三方 Markdown 中的排版 HTML，但只经 `modules/reader/markdown.ts` 的标签与属性 allowlist；`script`/`style`/`iframe`/表单等连同内容一起丢弃，`on*` 事件属性和非 `http(s)`/`mailto` 协议一律拒绝。扩大 allowlist 属于安全边界变更。
+- 阅读器内的图片只解析课程条目已声明的 `localPath`（`localPath` 与 `references[].localPath`）。README 内部未声明的图片会被丢弃而不是渲染成损坏图；要放开必须先改 `/api/local-image` 的 allowlist 并记录决定。
+
+## 界面约定
+
+- 所有面向用户的文本使用中文；不要把 `accessPolicy`、`publicationRights`、`licenseStatus`、搜索 `kind` 等 schema 枚举值直接渲染到页面上，统一走 `app/components/content-card.tsx` 的标签函数。
+- 旧站导入把缺失字段写成了字面量 `Unknown`，并把合集名同时写进 summary 和 tag。展示层要把它们收敛为“作者待补 / 许可证待确认”，并过滤 `legacy-reading` 等内部标签，不要在数据层改写导入结果。
+- 任何列出目录条目的页面都必须分页（`app/components/pagination.tsx`，每页 24 条），并且只解析当前页的条目——目录有 500+ 条，全量解析会在 Local Mode 逐条读文件系统。
+- 窄屏下 `.primary-nav` 会隐藏，`.compact-nav` 必须留在 DOM 里作为替代导航；不要把导航整体 `display: none`。
+- 标题使用衬线族，中日韩字形会撑满 em box，`line-height` 不要低于 1.15。
 
 ## 如何运行与验证
 
 ```bash
 npm ci --prefix code
-npm run dev --prefix code
+npm run dev:cloud --prefix code   # 公开视角
+npm run dev:local --prefix code   # 可读 local-courses 素材正文
 npm run check:cloud --prefix code
 npm run check:local --prefix code
 ```
+
+开发服务只能通过 `127.0.0.1` 或 `localhost` 访问。Local Mode 的免登录身份仅对回环地址成立，`next.config.ts` 的 `allowedDevOrigins` 也据此限定；改动这里会直接影响本地模式能否 hydration。
+
+`code/AGENTS.md` 和 `code/CLAUDE.md` 由 `next dev` 自动生成，不是本仓库手写的规则文件；不要在其中记录项目约定，项目约定只写在根目录这一份。
 
 Docker Compose 位于 `code/docker/`；从仓库根目录使用：
 
@@ -45,11 +60,14 @@ Cloud/Release 模式通过根目录 `.env` 提供秘密与镜像变量。发布�
 
 - `code/scripts/docker-deploy.sh` 是容器构建、启动、健康验证与已发布镜像运行的入口。
 - `code/scripts/lighthouse-deploy.sh` 是专用腾讯云 Lighthouse 主机的 SSH 部署入口；它不替代云端防火墙、DNS、快照、异地备份或真实恢复演练。
-- `audit-content.ts`、`materials.ts`、`database.ts` 以及三个 `.mjs` 审计/转换脚本都是质量门禁或运维命令，不应因扩展名不是 `.sh` 而删除。
+- `code/scripts/local-preview.sh` 是本机 Docker 预览入口，委托给 `docker-deploy.sh`，只绑定回环地址。
+- `audit-content.ts`、`materials.ts`、`database.ts` 以及四个 `.mjs` 审计/走查脚本都是质量门禁或运维命令，不应因扩展名不是 `.sh` 而删除。
+- `ui-review.mjs` 是界面走查命令，需要运行中的服务和 Playwright，因此**不进** `npm run check`；改动界面后手动运行，产物写入 `code/reports/ui-review/`。
 - 以 `code/package.json` scripts 作为命令事实源；不要在 README、任务文档或 CI 中复制已经失效的根目录 `scripts/`、`content/`、`reports/`、Dockerfile 或 Compose 路径。
 
 ## 文档职责
 
+- `GUIDE.md`：面向学习者和本机维护者的使用指南（模式差异、页面用法、走查命令）。
 - `docs/plans/spec.md`：产品规格和验收场景。
 - `docs/plans/plan.md`：架构、内容模型、边界、Docker、备份与运维约束。
 - `docs/deploy/`：完全手工生产 Runbook 和 Lighthouse 自动化执行手册。

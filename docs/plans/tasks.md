@@ -211,6 +211,8 @@
 
 **实施证据（2026-08-09）**：[Markdown 渲染器](../../code/modules/reader/markdown.ts) 仅输出安全白名单 HTML，测试覆盖标题、GFM/代码块、相对图片和危险协议；[阅读器](../../code/app/read/[itemId]/page.tsx) 已接入目录、章节导航、源码/上游安全退化和阅读状态。浏览器实际打开 33,133px 长本地章节并在 390px 视口通过目录、正文和位置恢复走查。
 
+**修订（2026-08-11，见 T8.6）**：上述"白名单"当时只覆盖 Markdown 语法，混在正文里的 HTML 会被整体转义成可见文本，GFM 表格也尚未实现。渲染策略已改为标签/属性 allowlist 通过（详见 [plan.md](plan.md) 6.5），并补齐表格、分隔线、嵌套列表与任务项；注入负向测试保留。
+
 **Phase 2 退出条件**：匿名用户能浏览路线、筛选课程、查看导览、阅读自有内容和项目要求。
 
 ## 6. Phase 3：云端内容模式
@@ -754,6 +756,52 @@ Cloud clean-room 当前镜像的边界、健康、HTTP 和 Chrome `full` 已补�
 
 **完成证据**：生产冒烟测试通过；回滚路径已验证；旧站归档说明清晰。
 
+### - [x] T8.6 执行全站 UI 走查并修复缺陷
+
+**依赖**：T2.1—T2.5、T4.7、T6.2
+**规格**：PAGE-007、PAGE-009—PAGE-012、READ-009—READ-011、NFR-009、NFR-010
+
+- 在 Cloud 与 Local 两种模式、desktop/tablet/mobile 三档视口遍历全部公开路由并抓取全页截图。
+- 记录布局缺陷、数据泄漏到界面的问题和功能缺口，逐条修复。
+- 把一次性走查沉淀为可重复执行的脚本，并写出面向使用者的使用指南。
+
+**完成证据**：两种模式三档视口零 finding；双模式质量门禁通过；`GUIDE.md` 覆盖模式差异、页面用法和走查命令。
+
+**实施证据（2026-08-11）**：走查覆盖 20 条路由，修复分为四类。
+
+_功能缺陷_
+
+1. **开发服务在 `127.0.0.1` 无法 hydration**——`next dev` 对未列入 `allowedDevOrigins` 的来源返回 403，客户端 bundle 加载失败，"我的学习"永远停在加载态、勾选与收藏无响应；而运行手册和 `local-preview.sh` 给出的正是这个地址。修复：[next.config.ts](../../code/next.config.ts) 列入三种回环写法。（NFR-009）
+2. **阅读器把第三方 HTML 转义成可见文本**——原实现检测到 HTML 后调用 `removeEventAttributes`，但随即被 `renderInline` 全量转义，清理逻辑实际未生效；Hello-Agents README 首屏是一整屏尖括号，`&emsp;` 显示为字面量。改为标签/属性 allowlist 通过，并补齐 GFM 表格、分隔线、嵌套列表和任务项。见 [markdown.ts](../../code/modules/reader/markdown.ts)、[markdown.test.ts](../../code/modules/reader/markdown.test.ts)（7 个用例，含注入负向测试）。（READ-009）
+3. **目录与搜索不分页**——`/courses` 单页渲染 515 条、高 55,012px，且对每条都调用一次 resolver。新增 [pagination.tsx](../../code/app/components/pagination.tsx)，每页 24 条且只解析当前页；页面高度降到 2,753px。（PAGE-009）
+4. **学习面板显示任务 ID**——27 行显示 `stage-0-task-1` 而非任务标题。改为按阶段分组并传入真实标题。（见 [learning/page.tsx](../../code/app/learning/page.tsx)）
+5. **课程详情丢失 `references`**——条目声明的本地 README、章节和 GitHub 地址一条都没渲染，现补充"相关入口"区块。
+
+_数据泄漏到界面_
+
+6. schema 枚举（`local-preferred`、`third-party`）、导入占位值 `Unknown` 和内部标签 `legacy-reading` 直接显示给用户；统一收敛到 [content-card.tsx](../../code/app/components/content-card.tsx) 的标签函数。（PAGE-011）
+7. 首页概览显示"课程条目 515 / 站内文章 1 / 上游导览 1"，占比 99% 的本地素材没有分项，读起来像算错；补上"本地素材"一项后四数自洽。（PAGE-012）
+8. 阅读位置显示"已保存位置 0px"，改为保存时间加可读描述。
+
+_版式与冗余_
+
+9. 窄屏下主导航整体 `display: none` 且无替代，移动端没有任何站内导航；新增 `.compact-nav` 横向滚动条并把断点提前到 860px。（PAGE-010）
+10. 标题 `line-height: 0.98` 使中文字形上下相碰；提高到 1.16/1.22 并补 CJK 衬线回退。
+11. 阅读器右侧整列留空、目录不跟随；改为两栏并让目录 sticky。（READ-011）
+12. 阶段页三栏中 LEARNING GOALS、PRACTICE TASKS 和"维护者提示"渲染同一批字符串，任务标题与摘要也完全相同；改为去重后渲染，阶段进度条 `00 — 09` 的越界上限改为按实际阶段数计算。
+13. 项目阶梯把 11 个练习项目和 9 个阶段成果混在一条 20 行列表里，后者标题是占位符 "Stage 0"；拆成 OPEN LADDER 与 STAGE GATES 两段，阶段项改用阶段标题。
+14. 卡片 `min-height: 300px` 在正文与标签间留出大片空洞；改为内容驱动高度加三行截断。
+
+_沉淀_
+
+新增 [ui-review.mjs](../../code/scripts/ui-review.mjs)（`npm run audit:ui`）：三档视口全页截图，对 HTTP 错误、横向溢出、页面高度超 12,000px 和控制台报错非零退出。修复后 Cloud 与 Local 各 51 次抓取、0 finding，产物见 `code/reports/ui-review/` 与 `code/reports/ui-review-cloud/`。`npm run check:cloud` 与 `npm run check:local` 均通过（127 单元测试）。使用指南见 [GUIDE.md](../../GUIDE.md)。（NFR-010）
+
+**已知遗留（不在本任务范围）**：
+
+- `/admin` 在 Local Mode 返回 404——`isAdminUser` 要求 `mode === "cloud"`，本地固定单用户不满足。这是既有身份边界，改动需先立 ADR；已在 [plan.md](plan.md) 4.2 记录现状与本地替代手段。
+- 514 条导入条目中 496 条没有 `stageIds`，全部 `author`/`license` 为 `Unknown`，阶段任务的 `summary` 与标题重复。界面已如实呈现"待补"，但内容侧补齐属于内容维护任务。
+- 项目成果的 `evidenceTypes` 全为空，"建议证据"改为仅在有值时渲染。
+
 **Phase 8 退出条件**：所有上线门槛通过，新站成为仓库唯一推荐入口。
 
 ## 12. 上线门槛核对表
@@ -773,10 +821,10 @@ Cloud clean-room 当前镜像的边界、健康、HTTP 和 Chrome `full` 已补�
 
 | 规格域      | 主要任务                                                        |
 | ----------- | --------------------------------------------------------------- |
-| IA / PAGE   | T1.2—T1.4、T2.1—T2.4、T4.7、T8.3                                |
+| IA / PAGE   | T1.2—T1.4、T2.1—T2.4、T4.7、T8.3、T8.6                          |
 | CAT         | T0.2、T1.2—T1.5、T3.4                                           |
 | RES         | T3.1—T3.3、T5.1—T5.3                                            |
-| READ        | T2.5、T4.4、T5.1、T5.3                                          |
+| READ        | T2.5、T4.4、T5.1、T5.3、T8.6                                    |
 | AUTH        | T4.2、T4.3、T4.5、T6.7、T8.4                                    |
 | STATE       | T4.1、T4.4—T4.8                                                 |
 | SEARCH      | T6.1—T6.3、T6.6                                                 |
@@ -786,7 +834,7 @@ Cloud clean-room 当前镜像的边界、健康、HTTP 和 Chrome `full` 已补�
 | DEPLOY      | T0.2、T3.3、T4.3、T5.4、T7.1—T7.3                               |
 | SEC / PRIV  | T4.2、T4.5、T4.8、T5.1、T7.6、T8.4                              |
 | OPS         | T4.1、T7.3—T7.5                                                 |
-| NFR         | T0.3、T2.1、T2.5、T7.1、T7.6、T8.3                              |
+| NFR         | T0.3、T2.1、T2.5、T7.1、T7.6、T8.3、T8.6                        |
 | AC-01—AC-10 | T3.3、T5.2、T5.1、T4.4、T4.6、T4.8、T6.5、T8.3、T7.5、T8.1—T8.2 |
 
 ## 14. 推荐首个实施批次

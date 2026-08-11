@@ -1,0 +1,313 @@
+{
+  "generatedAt": "2026-08-11T15:06:16.616Z",
+  "baseUrl": "http://127.0.0.1:3210",
+  "pages": [
+    {
+      "path": "/",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 2032
+    },
+    {
+      "path": "/roadmap",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 2448
+    },
+    {
+      "path": "/roadmap/stage-0",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 1492
+    },
+    {
+      "path": "/roadmap/stage-8",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 1461
+    },
+    {
+      "path": "/courses",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 2497
+    },
+    {
+      "path": "/courses?page=2",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 2497
+    },
+    {
+      "path": "/courses?track=agentic",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 2497
+    },
+    {
+      "path": "/courses?track=learning&access=owned&tag=none",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 1033
+    },
+    {
+      "path": "/search",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 3924
+    },
+    {
+      "path": "/search?q=agent",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 3924
+    },
+    {
+      "path": "/projects",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 4182
+    },
+    {
+      "path": "/learning",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 988
+    },
+    {
+      "path": "/login",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 903
+    },
+    {
+      "path": "/content-policy",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 1083
+    },
+    {
+      "path": "/contribute",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 985
+    },
+    {
+      "path": "/courses/legacy-course-001",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 1343
+    },
+    {
+      "path": "/read/legacy-course-001",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 903
+    },
+    {
+      "path": "/",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 2557
+    },
+    {
+      "path": "/roadmap",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 2493
+    },
+    {
+      "path": "/roadmap/stage-0",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 1851
+    },
+    {
+      "path": "/roadmap/stage-8",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 2017
+    },
+    {
+      "path": "/courses",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 3248
+    },
+    {
+      "path": "/courses?page=2",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 3248
+    },
+    {
+      "path": "/courses?track=agentic",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 3248
+    },
+    {
+      "path": "/courses?track=learning&access=owned&tag=none",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 1134
+    },
+    {
+      "path": "/search",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 3837
+    },
+    {
+      "path": "/search?q=agent",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 3837
+    },
+    {
+      "path": "/projects",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 5339
+    },
+    {
+      "path": "/learning",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 1134
+    },
+    {
+      "path": "/login",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 1134
+    },
+    {
+      "path": "/content-policy",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 1134
+    },
+    {
+      "path": "/contribute",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 1134
+    },
+    {
+      "path": "/courses/legacy-course-001",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 1808
+    },
+    {
+      "path": "/read/legacy-course-001",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 1134
+    },
+    {
+      "path": "/",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 3208
+    },
+    {
+      "path": "/roadmap",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 2556
+    },
+    {
+      "path": "/roadmap/stage-0",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 2001
+    },
+    {
+      "path": "/roadmap/stage-8",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 2382
+    },
+    {
+      "path": "/courses",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 5866
+    },
+    {
+      "path": "/courses?page=2",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 5866
+    },
+    {
+      "path": "/courses?track=agentic",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 5866
+    },
+    {
+      "path": "/courses?track=learning&access=owned&tag=none",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 1288
+    },
+    {
+      "path": "/search",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 4684
+    },
+    {
+      "path": "/search?q=agent",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 4855
+    },
+    {
+      "path": "/projects",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 5416
+    },
+    {
+      "path": "/learning",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 900
+    },
+    {
+      "path": "/login",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 900
+    },
+    {
+      "path": "/content-policy",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 1478
+    },
+    {
+      "path": "/contribute",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 1216
+    },
+    {
+      "path": "/courses/legacy-course-001",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 1893
+    },
+    {
+      "path": "/read/legacy-course-001",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 900
+    }
+  ],
+  "findings": []
+}

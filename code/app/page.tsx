@@ -10,12 +10,13 @@ export default async function HomePage() {
   const stages = catalog.stages
     .slice()
     .sort((left, right) => left.order - right.order);
-  const ownedCount = catalog.items.filter(
-    ({ accessPolicy }) => accessPolicy === "owned",
-  ).length;
-  const upstreamCount = catalog.items.filter(
-    ({ accessPolicy }) => accessPolicy === "upstream-only",
-  ).length;
+  // The four counts must account for every entry — otherwise the panel reads
+  // like broken arithmetic (the catalog is overwhelmingly local material).
+  const countByPolicy = (policy: string) =>
+    catalog.items.filter(({ accessPolicy }) => accessPolicy === policy).length;
+  const ownedCount = countByPolicy("owned");
+  const upstreamCount = countByPolicy("upstream-only");
+  const localCount = countByPolicy("local-preferred");
 
   return (
     <main className="page home-page">
@@ -46,6 +47,10 @@ export default async function HomePage() {
             <div>
               <dt>课程条目</dt>
               <dd>{catalog.items.length}</dd>
+            </div>
+            <div>
+              <dt>本地素材</dt>
+              <dd>{localCount}</dd>
             </div>
             <div>
               <dt>站内文章</dt>
