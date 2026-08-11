@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import { handleStateRequest } from "../../app/api/state/route";
 import { openLearningDatabase } from "./database";
@@ -11,6 +11,7 @@ describe("state route", () => {
       enableWal: false,
     });
     const repository = createLearningStateRepository(database);
+    const monitor = { record: vi.fn() };
 
     const denied = await handleStateRequest(
       new Request("http://127.0.0.1/api/state", {
@@ -25,8 +26,14 @@ describe("state route", () => {
       }),
       repository,
       "local",
+      monitor,
     );
     expect(denied.status).toBe(403);
+    expect(monitor.record).toHaveBeenCalledWith({
+      event: "request_error",
+      scope: "learning-state",
+      outcome: "client-error",
+    });
 
     const saved = await handleStateRequest(
       new Request("http://127.0.0.1/api/state", {

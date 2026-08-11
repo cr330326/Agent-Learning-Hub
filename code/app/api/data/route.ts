@@ -1,4 +1,5 @@
 import { getLearningStateStore } from "../../../lib/learning-state";
+import { recordOperationalMetric } from "../../../lib/observability";
 import {
   exportLearningState,
   renderNotesMarkdown,
@@ -22,6 +23,7 @@ import {
   LOCAL_SESSION_VALUE,
 } from "../../../modules/auth/local-auth";
 import { stateWriteRateLimiter } from "../../../modules/auth/rate-limit";
+import type { PrivacyFirstMonitor } from "../../../modules/observability/privacy-monitor";
 
 export const dynamic = "force-dynamic";
 
@@ -54,7 +56,9 @@ async function readConfirmation(request: Request): Promise<string> {
   }
 }
 
-export async function handleDataRequest(
+type RequestMonitor = Pick<PrivacyFirstMonitor, "record">;
+
+async function executeDataRequest(
   request: Request,
   repository: LearningStateRepository,
   mode: DeploymentMode,
@@ -128,12 +132,30 @@ export async function handleDataRequest(
   }
 }
 
+export async function handleDataRequest(
+  request: Request,
+  repository: LearningStateRepository,
+  mode: DeploymentMode,
+  monitor?: RequestMonitor,
+): Promise<Response> {
+  const response = await executeDataRequest(request, repository, mode);
+  if (response.status >= 400) {
+    (monitor?.record ?? recordOperationalMetric)({
+      event: "request_error",
+      scope: "data-export",
+      outcome: response.status >= 500 ? "server-error" : "client-error",
+    });
+  }
+  return response;
+}
+
 export async function GET(request: Request): Promise<Response> {
   const store = getLearningStateStore();
   return handleDataRequest(
     request,
     store.repository,
     parseRuntimeConfig(process.env).mode,
+    undefined,
   );
 }
 
@@ -143,5 +165,6 @@ export async function DELETE(request: Request): Promise<Response> {
     request,
     store.repository,
     parseRuntimeConfig(process.env).mode,
+    undefined,
   );
 }

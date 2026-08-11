@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { PageViewTelemetry } from "./components/page-view-telemetry";
 import { SiteFooter, SiteHeader } from "./components/site-chrome";
 import "./globals.css";
 
@@ -20,6 +21,7 @@ export default function RootLayout({
         <SiteHeader mode={mode} />
         <div className="site-content">{children}</div>
         <SiteFooter />
+        <PageViewTelemetry />
       </body>
     </html>
   );

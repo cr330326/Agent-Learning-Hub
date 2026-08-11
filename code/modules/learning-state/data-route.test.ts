@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import { handleDataRequest } from "../../app/api/data/route";
 import { openLearningDatabase } from "./database";
@@ -11,6 +11,7 @@ describe("data export and account deletion route", () => {
       enableWal: false,
     });
     const repository = createLearningStateRepository(database);
+    const monitor = { record: vi.fn() };
     const user = repository.createUser({
       id: "local-user",
       mode: "local",
@@ -51,8 +52,14 @@ describe("data export and account deletion route", () => {
       }),
       repository,
       "local",
+      monitor,
     );
     expect(denied.status).toBe(400);
+    expect(monitor.record).toHaveBeenCalledWith({
+      event: "request_error",
+      scope: "data-export",
+      outcome: "client-error",
+    });
     expect(repository.getUser(user.id)).not.toBeNull();
 
     const deleted = await handleDataRequest(

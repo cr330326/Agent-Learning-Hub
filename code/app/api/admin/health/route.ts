@@ -5,6 +5,7 @@ import {
 } from "../../../../modules/admin/admin-health";
 import { getLearningStateStore } from "../../../../lib/learning-state";
 import { getLocalMaterialRoot } from "../../../../lib/catalog";
+import { getPrivacyFirstMonitor } from "../../../../lib/observability";
 import { getRequestUserAsync } from "../../../../modules/auth/request-auth";
 import { parseRuntimeConfig } from "../../../../modules/runtime/runtime-config";
 
@@ -30,6 +31,7 @@ export async function GET(request: Request): Promise<Response> {
           contentRoot: getDefaultContentRoot(process.env),
           localMaterialRoot:
             runtime.mode === "local" ? getLocalMaterialRoot() : undefined,
+          operationalMetrics: getPrivacyFirstMonitor().snapshot(),
         }),
     });
   } catch {

@@ -17,6 +17,10 @@ import {
 } from "../freshness/materials-check";
 import type { LearningDatabase } from "../learning-state/database";
 import type { UserRecord } from "../learning-state/repository";
+import {
+  createPrivacyFirstMonitor,
+  type OperationalMetricsSnapshot,
+} from "../observability/privacy-monitor";
 import type { DeploymentMode } from "../runtime/runtime-config";
 
 export type AdminHealthSnapshot = {
@@ -42,6 +46,7 @@ export type AdminHealthSnapshot = {
   backup: {
     status: "not-configured";
   };
+  observability: OperationalMetricsSnapshot;
   deployment: {
     version: string;
     nodeMajor: number;
@@ -159,6 +164,7 @@ export async function buildRuntimeAdminHealthSnapshot(options: {
   environment?: AdminHealthEnvironment;
   contentRoot?: string;
   localMaterialRoot?: string;
+  operationalMetrics?: OperationalMetricsSnapshot;
 }): Promise<AdminHealthSnapshot> {
   const environment = options.environment ?? process.env;
   const contentRoot = options.contentRoot ?? getDefaultContentRoot(environment);
@@ -186,6 +192,9 @@ export async function buildRuntimeAdminHealthSnapshot(options: {
     materials,
     database: databaseHealth(options.database),
     backup: { status: "not-configured" },
+    observability:
+      options.operationalMetrics ??
+      createPrivacyFirstMonitor(options.database).snapshot(),
     deployment: {
       version: environment.APP_VERSION?.trim() || "development",
       nodeMajor: Number.isFinite(nodeMajor) ? nodeMajor : 0,

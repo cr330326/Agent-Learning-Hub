@@ -566,6 +566,11 @@
 
 **当前进展（2026-08-09）**：[quality workflow](../../.github/workflows/quality.yml) 已加入 cloud/local 生产构建后的 HTTP 冒烟、cloud clean-room 镜像边界、依赖审计和明显凭据模式检查；本地已完成对应命令验证，但尚未在受保护分支上运行并确认全部 GitHub Actions 检查稳定通过，因此保留未勾选。
 
+**本机补充验证（2026-08-11）**：`npm run check:cloud --prefix code` 与
+`npm run check:local --prefix code` 均通过（111 个 Vitest、11 个 Node 工具测试、内容审计和
+生产构建）；新增 [浏览器验收脚本](../../code/tests/e2e/browser-acceptance.mjs) 并完成
+Cloud/Local 生产服务器走查。受保护分支的真实 Actions 结果仍未取得，因此不勾选。
+
 ### - [ ] T7.2 建立版本化镜像发布
 
 **依赖**：T5.4、T7.1  
@@ -619,6 +624,10 @@
 
 **当前进展（2026-08-09）**：自动化恢复命令和单元测试已验证解密、目标文件防覆盖及 SQLite 完整性检查；尚未在部署环境执行并提交带版本、耗时和结果的正式演练记录。
 
+**本机补充验证（2026-08-11）**：[本机端到端验收报告](../acceptance/local-e2e-2026-08-11.md)
+记录了隔离 SQLite 的加密备份、空目标恢复、SHA-256/`quick_check` 验证以及恢复副本上的
+浏览器状态、导出和删号回归。它不是空服务器/固定发布镜像的正式恢复演练，故不勾选。
+
 ### - [ ] T7.6 建立隐私优先监控
 
 **依赖**：T6.7、T7.3  
@@ -627,8 +636,17 @@
 - 记录请求错误、登录失败、数据库健康、备份、审计和更新结果。
 - 仅保留不关联个人身份的访问汇总。
 - 增加日志脱敏测试和告警规则。
+- 运营聚合只能记录固定枚举的事件、范围、结果、计数和最后发生时间；不得写入用户
+  ID、IP、Cookie、查询参数、路径参数、错误原文、笔记正文或秘密，并须设置有限保留期。
 
 **完成证据**：故障注入可触发预期告警，日志抽查不含秘密和笔记正文。
+
+**当前进展（2026-08-11）**：已新增 `operational_metrics` schema version 2、
+`observability/` 模块、页面匿名聚合路由和管理员聚合摘要；按小时写入固定枚举的事件、范围、
+结果、计数和最后发生时间，30 天后清理。页面浏览、健康检查、状态/数据 API 错误和登录失败
+已经接入；单元测试覆盖聚合、脱敏、失败阈值告警、跨代理同源校验和未知路径拒绝。本机浏览器
+验证确认无控制台错误。备份、审计、素材更新的命令级信号、外部日志收集及告警通知仍未部署，
+故不勾选。
 
 ### - [ ] T7.7 同步项目文档与运行手册
 
@@ -645,6 +663,9 @@
 **完成证据**：新用户仅依据 README 可完成 cloud/local 启动；归属抽查通过。
 
 **当前进展（2026-08-09）**：已同步根 [README](../../README.md)、[AGENTS](../../AGENTS.md)、[CONTEXT](../../CONTEXT.md)、[产品方案](./plan.md)、[产品规格](./spec.md)、本任务清单和 [local-courses README](../../local-courses/README.md)，统一指向 `code/`、Docker 双模式、Better Auth、内容归属、素材 check/audit/reindex/update、数据库操作和生成式报告；删除旧维护者身份与手工素材数量。`content-boundaries.md`、`content-model.md`、`database-operations.md`、`deployment.md` 和 `requirements-traceability.md` 已合并到方案/任务事实源，机器可读 `content-boundaries.json` 保留。文档命令已通过 Prettier 检查，Docker release Compose 已通过 `docker compose config`；T7.3 的真实部署演练尚未完成，故保留未勾选。
+
+**本机补充验证（2026-08-11）**：新增根 [Prompt.md](../../Prompt.md) 作为可复用端到端
+验收提示词，并更新方案目录、隐私监控和本次验收证据链接；仍等待真实部署/回滚证据，故不勾选。
 
 **Phase 7 退出条件**：指定版本可从空服务器部署、监控、备份、恢复和回滚；本地用户也有完整启动文档。
 
@@ -676,6 +697,11 @@
 
 **当前进展（2026-08-09）**：[dual-mode E2E acceptance](../acceptance/dual-mode-e2e-2026-08-09.md) 已覆盖全部十个 AC，并区分了本地应用级验证与仍需部署环境的证据；Local/Cloud 生产 HTTP 冒烟、Local 学习状态生命周期和移动端流程已通过。真实 GitHub 登录跨会话恢复、干净镜像运行、生产备份恢复与版本回滚尚未完成，故保留未勾选。
 
+**本机补充验证（2026-08-11）**：[本机端到端验收报告](../acceptance/local-e2e-2026-08-11.md)
+新增 Cloud 匿名、Local seed/resume/fallback/mobile、HTTP E2E、加密备份恢复和浏览器控制台
+证据，并记录了 Docker 镜像内 `npm ci` 长时间无进展而安全取消的事实。真实 GitHub 两用户
+登录、clean-room 镜像运行、服务器部署/回滚仍未完成，故不勾选。
+
 ### - [x] T8.3 执行移动端与无障碍验收
 
 **依赖**：T2.1、T4.7、T5.3、T6.2  
@@ -698,6 +724,11 @@
 - 确认云端无第三方正文和本地路径泄漏。
 
 **完成证据**：发布安全检查表完成，无未接受的高风险问题。
+
+**当前进展（2026-08-11）**：Cloud/Local 全质量门禁、内容边界审计、导出脱敏、CSRF、
+路径穿越/符号链接、恶意 Markdown、频率限制和管理员边界测试均通过；生产依赖
+`npm audit --omit=dev --audit-level=high` 报告 0 vulnerabilities。干净 Cloud 镜像和
+真实部署日志仍未完成复查，故不勾选。
 
 ### - [ ] T8.5 切换仓库入口并归档旧站
 

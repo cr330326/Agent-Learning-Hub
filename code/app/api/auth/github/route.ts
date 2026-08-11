@@ -1,4 +1,5 @@
 import { getBetterAuth } from "../../../../modules/auth/better-auth";
+import { recordOperationalMetric } from "../../../../lib/observability";
 import { LOCAL_SESSION_COOKIE } from "../../../../modules/auth/local-auth";
 import {
   CLOUD_SESSION_COOKIE,
@@ -193,6 +194,11 @@ export async function GET(request: Request): Promise<Response> {
     getRequestRateLimitKey(request),
   );
   if (!decision.allowed) {
+    recordOperationalMetric({
+      event: "login_failure",
+      scope: "github-login",
+      outcome: "client-error",
+    });
     return Response.json(
       { error: "登录请求过于频繁，请稍后再试。" },
       {
@@ -220,11 +226,13 @@ export async function GET(request: Request): Promise<Response> {
     const setCookie = response.headers.get("set-cookie");
     if (setCookie) redirect.headers.set("set-cookie", setCookie);
     return redirect;
-  } catch (error) {
-    return Response.json(
-      { error: error instanceof Error ? error.message : "GitHub 登录未配置。" },
-      { status: 503 },
-    );
+  } catch {
+    recordOperationalMetric({
+      event: "login_failure",
+      scope: "github-login",
+      outcome: "failure",
+    });
+    return Response.json({ error: "GitHub 登录暂时不可用。" }, { status: 503 });
   }
 }
 
@@ -241,6 +249,11 @@ export async function POST(request: Request): Promise<Response> {
       asResponse: true,
     });
   } catch {
+    recordOperationalMetric({
+      event: "request_error",
+      scope: "github-login",
+      outcome: "server-error",
+    });
     return Response.json({ error: "退出登录失败。" }, { status: 503 });
   }
 }

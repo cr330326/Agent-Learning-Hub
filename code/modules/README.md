@@ -11,6 +11,7 @@ and route handlers must not reimplement module policy.
 | `content-resolver/` | Cloud/Local resolved-content boundary              | T3.1–T3.2, T5.2 |
 | `freshness/`        | Read-only material status and host-command results | T6.4–T6.7       |
 | `learning-state/`   | Progress, notes, bookmarks, and outcomes           | T4.1–T4.8       |
+| `observability/`    | Privacy-first aggregate operational metrics        | T7.6            |
 | `reader/`           | Safe Markdown/MDX presentation and navigation      | T2.5, T5.3      |
 | `runtime/`          | Deployment-mode configuration                      | T1.1            |
 | `search/`           | Public and allowed Local Material search indexes   | T6.1–T6.3       |

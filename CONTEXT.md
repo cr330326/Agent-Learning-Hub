@@ -68,6 +68,10 @@ _Avoid_: Offline mirror
 属于单个用户的进度、阅读位置、收藏、笔记和阶段成果集合。
 _Avoid_: Course content, analytics
 
+**Operational Metric**:
+不关联用户身份的聚合运行事件，例如页面访问、健康检查或失败计数；它不保存用户 ID、IP、Cookie、查询参数、笔记正文或秘密。
+_Avoid_: Learning State, activity log, raw request log
+
 **Stage Outcome**:
 用户为证明完成一个 Learning Stage 而记录的代码仓库、演示链接或学习总结。
 _Avoid_: Completion checkbox, automatic score

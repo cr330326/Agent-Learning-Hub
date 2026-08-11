@@ -89,4 +89,28 @@ describe("request authentication context", () => {
     });
     database.close();
   });
+
+  it("keeps loopback local cookies usable over HTTP in a production build", async () => {
+    const environment = process.env as Record<string, string | undefined>;
+    const previousNodeEnv = environment.NODE_ENV;
+    environment.NODE_ENV = "production";
+    const database = openLearningDatabase({
+      filename: ":memory:",
+      enableWal: false,
+    });
+
+    try {
+      const response = await handleSessionRequest(
+        new Request("http://127.0.0.1/api/session"),
+        createLearningStateRepository(database),
+        "local",
+      );
+
+      expect(response.headers.get("set-cookie")).not.toContain("Secure");
+    } finally {
+      database.close();
+      if (previousNodeEnv === undefined) delete environment.NODE_ENV;
+      else environment.NODE_ENV = previousNodeEnv;
+    }
+  });
 });

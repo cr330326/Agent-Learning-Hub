@@ -33,6 +33,17 @@ function serializeCookie(
     .join("; ");
 }
 
+function requestUsesHttps(request: Request): boolean {
+  const forwardedProtocol = request.headers
+    .get("x-forwarded-proto")
+    ?.split(",", 1)[0]
+    ?.trim()
+    .toLowerCase();
+  return (
+    forwardedProtocol === "https" || new URL(request.url).protocol === "https:"
+  );
+}
+
 export async function handleSessionRequest(
   request: Request,
   repository: LearningStateRepository,
@@ -54,7 +65,10 @@ export async function handleSessionRequest(
   });
 
   if (mode === "local") {
-    const secure = process.env.NODE_ENV === "production";
+    // Local mode is deliberately loopback-only and is commonly served over
+    // plain HTTP. A Secure cookie would be silently dropped by browsers there,
+    // which prevents the CSRF-protected learning-state writes from working.
+    const secure = requestUsesHttps(request);
     response.headers.append(
       "set-cookie",
       serializeCookie(LOCAL_SESSION_COOKIE, LOCAL_SESSION_VALUE, {

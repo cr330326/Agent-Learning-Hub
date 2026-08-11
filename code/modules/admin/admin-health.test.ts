@@ -37,11 +37,19 @@ const snapshot: AdminHealthSnapshot = {
   },
   database: {
     status: "ok",
-    schemaVersion: 1,
+    schemaVersion: 2,
     sqliteVersion: "3.51.3",
     journalMode: "wal",
   },
   backup: { status: "not-configured" },
+  observability: {
+    generatedAt: "2026-08-09T00:00:00.000Z",
+    windowStartedAt: "2026-08-08T00:00:00.000Z",
+    totalPageViews: 7,
+    pageViews: [{ scope: "home", count: 7 }],
+    failures: [],
+    alerts: [],
+  },
   deployment: { version: "test", nodeMajor: 24 },
 };
 

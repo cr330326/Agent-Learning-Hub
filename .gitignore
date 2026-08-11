@@ -218,6 +218,11 @@ __marimo__/
 .streamlit/secrets.toml
 
 # Agent Learning Hub runtime boundaries
+# The generic Python `lib/` ignore rule above must not hide the Next.js runtime
+# helpers imported from `code/app/` and `code/modules/`.
+!/code/lib/
+!/code/lib/**
+
 # Keep the local material library on the developer machine.  Its README is
 # metadata for the library and remains versioned; all third-party bodies stay
 # out of Git and cloud build contexts.

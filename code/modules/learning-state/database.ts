@@ -3,6 +3,7 @@ import Database from "better-sqlite3";
 export const WAL_SAFE_MINIMUM_SQLITE_VERSION = "3.51.3";
 
 const INITIAL_SCHEMA_VERSION = 1;
+const OPERATIONAL_METRICS_SCHEMA_VERSION = 2;
 
 const INITIAL_SCHEMA_SQL = `
 CREATE TABLE IF NOT EXISTS users (
@@ -88,6 +89,58 @@ CREATE INDEX IF NOT EXISTS idx_stage_outcomes_user_id ON stage_outcomes(user_id)
 CREATE INDEX IF NOT EXISTS idx_stage_outcomes_stage_id ON stage_outcomes(stage_id);
 `;
 
+const OPERATIONAL_METRICS_SCHEMA_SQL = `
+CREATE TABLE IF NOT EXISTS operational_metrics (
+  bucket_started_at TEXT NOT NULL,
+  event TEXT NOT NULL CHECK (event IN (
+    'page_view',
+    'request_error',
+    'login_failure',
+    'health_check',
+    'backup',
+    'restore',
+    'content_audit',
+    'materials_update'
+  )),
+  scope TEXT NOT NULL CHECK (scope IN (
+    'home',
+    'roadmap',
+    'roadmap-stage',
+    'courses',
+    'course-detail',
+    'reader',
+    'search',
+    'projects',
+    'learning',
+    'login',
+    'content-policy',
+    'contribute',
+    'admin',
+    'learning-state',
+    'data-export',
+    'github-login',
+    'readiness',
+    'backup',
+    'restore',
+    'content-audit',
+    'materials-update'
+  )),
+  outcome TEXT NOT NULL CHECK (outcome IN (
+    'observed',
+    'success',
+    'client-error',
+    'server-error',
+    'failure'
+  )),
+  count INTEGER NOT NULL DEFAULT 0 CHECK (count >= 0),
+  last_occurred_at TEXT NOT NULL,
+  PRIMARY KEY (bucket_started_at, event, scope, outcome)
+);
+
+CREATE INDEX IF NOT EXISTS idx_operational_metrics_bucket
+  ON operational_metrics(bucket_started_at);
+`;
+
 type SQLiteVersionProvider = () => string;
 
 export type LearningDatabaseOptions = {
@@ -150,16 +203,25 @@ function applyMigrations(database: Database.Database): number {
     )
     .get() as { version: number };
 
-  if (currentRow.version < INITIAL_SCHEMA_VERSION) {
-    const applyInitialMigration = database.transaction(() => {
-      database.exec(INITIAL_SCHEMA_SQL);
+  const migrations = [
+    { version: INITIAL_SCHEMA_VERSION, sql: INITIAL_SCHEMA_SQL },
+    {
+      version: OPERATIONAL_METRICS_SCHEMA_VERSION,
+      sql: OPERATIONAL_METRICS_SCHEMA_SQL,
+    },
+  ];
+
+  for (const migration of migrations) {
+    if (currentRow.version >= migration.version) continue;
+    const applyMigration = database.transaction(() => {
+      database.exec(migration.sql);
       database
         .prepare(
           "INSERT INTO schema_migrations (version, applied_at) VALUES (?, strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))",
         )
-        .run(INITIAL_SCHEMA_VERSION);
+        .run(migration.version);
     });
-    applyInitialMigration();
+    applyMigration();
   }
 
   const finalRow = database

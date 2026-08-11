@@ -1,9 +1,11 @@
 import { getLearningStateStore } from "../../../lib/learning-state";
+import { recordOperationalMetric } from "../../../lib/observability";
 import { loadPublicCatalog } from "../../../lib/catalog";
 import {
   parseRuntimeConfig,
   type DeploymentMode,
 } from "../../../modules/runtime/runtime-config";
+import type { PrivacyFirstMonitor } from "../../../modules/observability/privacy-monitor";
 
 export const dynamic = "force-dynamic";
 
@@ -11,6 +13,7 @@ export type HealthCheckDependencies = {
   mode: DeploymentMode;
   checkCatalog: () => Promise<void>;
   checkDatabase: () => void;
+  monitor?: Pick<PrivacyFirstMonitor, "record">;
 };
 
 export async function handleHealthRequest(
@@ -19,12 +22,22 @@ export async function handleHealthRequest(
   try {
     await dependencies.checkCatalog();
     dependencies.checkDatabase();
+    (dependencies.monitor?.record ?? recordOperationalMetric)({
+      event: "health_check",
+      scope: "readiness",
+      outcome: "success",
+    });
     return Response.json({
       status: "ok",
       mode: dependencies.mode,
       checks: { catalog: "ok", database: "ok" },
     });
   } catch {
+    (dependencies.monitor?.record ?? recordOperationalMetric)({
+      event: "health_check",
+      scope: "readiness",
+      outcome: "failure",
+    });
     return Response.json(
       { status: "unavailable", mode: dependencies.mode },
       { status: 503 },

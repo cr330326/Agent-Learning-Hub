@@ -378,6 +378,7 @@ Local Material 或可能上传受保护数据时必须失败。云端构建上�
 | `notes`                           | 私人 Markdown 笔记           |
 | `bookmarks`                       | 收藏                         |
 | `stage_outcomes`                  | 阶段成果链接、总结和完成时间 |
+| `operational_metrics`             | 不关联身份的按时间桶运营汇总 |
 
 数据约束：
 
@@ -385,6 +386,8 @@ Local Material 或可能上传受保护数据时必须失败。云端构建上�
 - 笔记和请求频率设合理上限。
 - 用户可以导出自己的进度、收藏、成果和笔记。
 - 删除账户必须级联删除相关个人数据。
+- `operational_metrics` 不得存储用户 ID、IP、Cookie、查询参数、笔记正文、路径参数或秘密；
+  仅保存固定枚举的事件、范围、结果、计数和最后发生时间，并在有限保留期后清理。
 
 ## 9. 双运行模式
 
@@ -427,6 +430,7 @@ Local Material 或可能上传受保护数据时必须失败。云端构建上�
 ```text
 code/
   app/
+  lib/
   content/
     articles/
     catalog/
@@ -444,6 +448,7 @@ code/
     catalog/
     content-resolver/
     learning-state/
+    observability/
     reader/
     search/
     freshness/
@@ -454,6 +459,8 @@ code/
     materials.ts
     database.ts
   tests/
+    e2e/
+      browser-acceptance.mjs
 learning-site/
   ...迁移期间保持可运行
 local-courses/
@@ -520,6 +527,14 @@ local-courses/
 - 备份和恢复验证结果。
 - 内容审计和素材更新结果。
 - 不关联个人身份的页面访问汇总。
+
+应用仅写入固定枚举的 `Operational Metric` 聚合记录，并把同样的安全字段输出为结构化
+日志；绝不记录请求头、Cookie、IP、查询参数、路径参数、错误原文、私人笔记或秘密。
+当前实现以 SQLite schema version 2 按小时聚合 `page_view`、健康检查、状态/API 错误和
+GitHub 登录失败，并在写入时清理 30 天前的桶；备份、内容审计和素材更新的命令级指标仍需
+在完成相应部署/调度工作时接入。
+管理员健康摘要只显示聚合计数和由失败阈值计算的告警规则结果。实际日志收集、异地留存
+和告警通知由部署方接入其监控平台，不能由站点自行向外部端点发送数据。
 
 ### 13.4 部署、容器与数据库运维
 
@@ -673,6 +688,7 @@ Mode 的只读素材挂载、健康接口、公开路由、学习状态 HTTP 流
 - [ADR-0001：使用同一代码库支持云端与本地模式](../adr/0001-one-codebase-two-runtime-modes.md)
 - [ADR-0002：第三方素材只作为来源引用，不进入云端内容包](../adr/0002-third-party-materials-are-references.md)
 - [ADR-0003：采用自托管 Next.js 与单节点 SQLite](../adr/0003-self-hosted-nextjs-and-sqlite.md)
+- [ADR-0005：隐私优先的运营指标只保存匿名聚合](../adr/0005-privacy-first-operational-metrics.md)
 
 ## 18. 下一步
 

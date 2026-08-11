@@ -27,9 +27,16 @@ describe("learning-state database", () => {
     });
 
     expect(database.sqliteVersion).toMatch(/^3\./);
-    expect(database.schemaVersion).toBe(1);
+    expect(database.schemaVersion).toBe(2);
     expect(database.foreignKeysEnabled).toBe(true);
     expect(database.journalMode).toBe("wal");
+    expect(
+      database.handle
+        .prepare(
+          "SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'operational_metrics'",
+        )
+        .get(),
+    ).toBeTruthy();
 
     database.close();
   });
@@ -51,7 +58,7 @@ describe("learning-state database", () => {
       sqliteVersionProvider: () => "3.40.0",
     });
 
-    expect(database.schemaVersion).toBe(1);
+    expect(database.schemaVersion).toBe(2);
     expect(database.journalMode).toBe("memory");
     database.close();
   });
@@ -62,7 +69,7 @@ describe("learning-state database", () => {
     first.close();
 
     const second = openLearningDatabase({ filename, enableWal: false });
-    expect(second.schemaVersion).toBe(1);
+    expect(second.schemaVersion).toBe(2);
     second.close();
   });
 });

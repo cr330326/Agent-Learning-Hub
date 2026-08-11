@@ -16,7 +16,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "typecheck": "tsc --noEmit",
-    "test:tools": "node --test tests/baseline-report.test.mjs tests/content-boundaries.test.mjs tests/legacy-content-converter.test.mjs tests/content-audit-cli.test.mjs",
+    "test:tools": "node --test tests/baseline-report.test.mjs tests/content-boundaries.test.mjs tests/legacy-content-converter.test.mjs tests/content-audit-cli.test.mjs tests/runtime-source-tracking.test.mjs",
     "test:unit": "vitest run",
     "test": "npm run test:tools && npm run test:unit",
     "test:cloud": "DEPLOYMENT_MODE=cloud npm run test",

@@ -8,6 +8,7 @@ import {
 } from "../../modules/admin/admin-health";
 import { getLearningStateStore } from "../../lib/learning-state";
 import { getLocalMaterialRoot } from "../../lib/catalog";
+import { getPrivacyFirstMonitor } from "../../lib/observability";
 import { getRequestUserAsync } from "../../modules/auth/request-auth";
 import { parseRuntimeConfig } from "../../modules/runtime/runtime-config";
 
@@ -38,6 +39,7 @@ export default async function AdminPage() {
     contentRoot: getDefaultContentRoot(process.env),
     localMaterialRoot:
       runtime.mode === "local" ? getLocalMaterialRoot() : undefined,
+    operationalMetrics: getPrivacyFirstMonitor().snapshot(),
   });
 
   return (
@@ -79,6 +81,17 @@ export default async function AdminPage() {
           <p>
             schema v{snapshot.database.schemaVersion} · SQLite{" "}
             {snapshot.database.sqliteVersion} · {snapshot.database.journalMode}
+          </p>
+        </section>
+        <section className="admin-health-card">
+          <p className="eyebrow">OBSERVABILITY</p>
+          <h2>匿名运营指标</h2>
+          <p className="admin-health-status">
+            {snapshot.observability.alerts.length > 0 ? "需关注" : "正常"}
+          </p>
+          <p>
+            近 24 小时 {snapshot.observability.totalPageViews} 次访问 · 告警{" "}
+            {snapshot.observability.alerts.length} 条
           </p>
         </section>
         <section className="admin-health-card">

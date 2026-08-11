@@ -169,6 +169,11 @@ export function LearningDashboard({
             浏览课程目录 →
           </Link>
         </div>
+        {message ? (
+          <span className="learning-state-message" role="status">
+            {message}
+          </span>
+        ) : null}
       </div>
     );
   }
