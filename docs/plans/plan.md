@@ -494,6 +494,7 @@ local-courses/
 - `code/modules/learning-state/database.ts` 创建 `schema_migrations`，以事务应用每个 schema version；失败事务由 SQLite 回滚，再次启动会重试同一版本。每个连接启用外键，个人表从 `users` 级联删除。
 - WAL 仅在 SQLite `3.51.3` 或以上启用。数据库、`-wal` 和 `-shm` 是一个状态单元，不得在运行中只复制主文件。
 - `code/scripts/database.ts` 使用 SQLite backup API 创建一致性快照，AES-256-GCM 加密、写入 SHA-256 manifest，并保留 7 个 daily 与 3 个 weekly 槽位；异地复制、调度和告警仍由部署方负责。
+- 配置 `BACKUP_OUTPUT_DIR` 后，管理员健康摘要会核对保留备份的字节数与 SHA-256 manifest，并只返回数量、时间、大小和健康状态；不会返回备份文件名、绝对路径或校验和值。
 - 备份示例：
 
   ```bash
@@ -530,9 +531,10 @@ local-courses/
 
 应用仅写入固定枚举的 `Operational Metric` 聚合记录，并把同样的安全字段输出为结构化
 日志；绝不记录请求头、Cookie、IP、查询参数、路径参数、错误原文、私人笔记或秘密。
-当前实现以 SQLite schema version 2 按小时聚合 `page_view`、健康检查、状态/API 错误和
-GitHub 登录失败，并在写入时清理 30 天前的桶；备份、内容审计和素材更新的命令级指标仍需
-在完成相应部署/调度工作时接入。
+当前实现以 SQLite schema version 2 按小时聚合 `page_view`、健康检查、状态/API 错误、
+GitHub 登录失败，以及备份、恢复、内容审计和素材更新的命令级结果，并在写入时清理 30 天前
+的桶。维护命令通过 `OPERATIONAL_METRICS_DATABASE_PATH` 或既有 `STATE_DATABASE_PATH` 写入
+聚合；未配置数据库时仍输出同样的固定枚举结构化日志，不会创建额外状态库。
 管理员健康摘要只显示聚合计数和由失败阈值计算的告警规则结果。实际日志收集、异地留存
 和告警通知由部署方接入其监控平台，不能由站点自行向外部端点发送数据。
 

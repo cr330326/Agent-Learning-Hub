@@ -15,7 +15,13 @@ import { parseRuntimeConfig } from "../../modules/runtime/runtime-config";
 export const dynamic = "force-dynamic";
 
 function statusLabel(status: string) {
-  return status === "ok" ? "正常" : status === "degraded" ? "需关注" : status;
+  return status === "ok"
+    ? "正常"
+    : status === "degraded"
+      ? "需关注"
+      : status === "not-configured"
+        ? "未配置"
+        : status;
 }
 
 export default async function AdminPage() {
@@ -82,6 +88,25 @@ export default async function AdminPage() {
             schema v{snapshot.database.schemaVersion} · SQLite{" "}
             {snapshot.database.sqliteVersion} · {snapshot.database.journalMode}
           </p>
+        </section>
+        <section className="admin-health-card">
+          <p className="eyebrow">BACKUP</p>
+          <h2>加密备份</h2>
+          <p className="admin-health-status">
+            {statusLabel(snapshot.backup.status)}
+          </p>
+          {snapshot.backup.status === "not-configured" ? (
+            <p>设置 BACKUP_OUTPUT_DIR 后显示完整性摘要</p>
+          ) : (
+            <p>
+              保留 {snapshot.backup.retainedBackups} 份 · 最新{" "}
+              {snapshot.backup.latestCreatedAt
+                ? new Date(snapshot.backup.latestCreatedAt).toLocaleString(
+                    "zh-CN",
+                  )
+                : "无有效备份"}
+            </p>
+          )}
         </section>
         <section className="admin-health-card">
           <p className="eyebrow">OBSERVABILITY</p>

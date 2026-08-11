@@ -77,4 +77,69 @@ describe("privacy-first operational metrics", () => {
     expect(getPageViewScope("/api/state")).toBeNull();
     expect(getPageViewScope("/private/github-42")).toBeNull();
   });
+
+  it("raises alerts for failed content audits and material updates", () => {
+    const database = openLearningDatabase({
+      filename: ":memory:",
+      enableWal: false,
+    });
+    const monitor = createPrivacyFirstMonitor(database, {
+      now: () => new Date("2026-08-11T08:42:00.000Z"),
+      writeLog: () => undefined,
+    });
+
+    monitor.record({
+      event: "content_audit",
+      scope: "content-audit",
+      outcome: "failure",
+    });
+    monitor.record({
+      event: "materials_update",
+      scope: "materials-update",
+      outcome: "failure",
+    });
+
+    expect(monitor.snapshot().alerts).toEqual(
+      expect.arrayContaining([
+        {
+          id: "content-audit-failed",
+          severity: "warning",
+          count: 1,
+        },
+        {
+          id: "materials-update-failed",
+          severity: "warning",
+          count: 1,
+        },
+      ]),
+    );
+    database.close();
+  });
+
+  it("exposes aggregate command outcomes through the public snapshot", () => {
+    const database = openLearningDatabase({
+      filename: ":memory:",
+      enableWal: false,
+    });
+    const monitor = createPrivacyFirstMonitor(database, {
+      now: () => new Date("2026-08-11T08:42:00.000Z"),
+      writeLog: () => undefined,
+    });
+
+    monitor.record({
+      event: "backup",
+      scope: "backup",
+      outcome: "success",
+    });
+
+    expect(monitor.snapshot().operations).toEqual([
+      {
+        event: "backup",
+        scope: "backup",
+        outcome: "success",
+        count: 1,
+      },
+    ]);
+    database.close();
+  });
 });

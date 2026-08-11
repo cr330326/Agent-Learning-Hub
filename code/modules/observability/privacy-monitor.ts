@@ -81,6 +81,8 @@ export type OperationalAlert = {
   id:
     | "health-check-failed"
     | "backup-or-restore-failed"
+    | "content-audit-failed"
+    | "materials-update-failed"
     | "login-failure-spike"
     | "server-error-spike";
   severity: "warning" | "critical";
@@ -92,6 +94,7 @@ export type OperationalMetricsSnapshot = {
   windowStartedAt: string;
   totalPageViews: number;
   pageViews: Array<{ scope: PageViewScope; count: number }>;
+  operations: OperationalMetricAggregate[];
   failures: OperationalMetricAggregate[];
   alerts: OperationalAlert[];
 };
@@ -184,6 +187,32 @@ function alertsFor(
       id: "backup-or-restore-failed",
       severity: "critical",
       count: backupFailures,
+    });
+  }
+
+  const contentAuditFailures = countMatches(
+    aggregates,
+    (aggregate) =>
+      aggregate.event === "content_audit" && aggregate.outcome === "failure",
+  );
+  if (contentAuditFailures > 0) {
+    alerts.push({
+      id: "content-audit-failed",
+      severity: "warning",
+      count: contentAuditFailures,
+    });
+  }
+
+  const materialsUpdateFailures = countMatches(
+    aggregates,
+    (aggregate) =>
+      aggregate.event === "materials_update" && aggregate.outcome === "failure",
+  );
+  if (materialsUpdateFailures > 0) {
+    alerts.push({
+      id: "materials-update-failed",
+      severity: "warning",
+      count: materialsUpdateFailures,
     });
   }
 
@@ -312,6 +341,13 @@ export function createPrivacyFirstMonitor(
           aggregate.outcome === "failure" ||
           aggregate.outcome === "server-error",
       );
+      const operations = aggregates.filter(
+        (aggregate) =>
+          aggregate.event === "backup" ||
+          aggregate.event === "restore" ||
+          aggregate.event === "content_audit" ||
+          aggregate.event === "materials_update",
+      );
 
       return {
         generatedAt,
@@ -321,6 +357,7 @@ export function createPrivacyFirstMonitor(
           0,
         ),
         pageViews,
+        operations,
         failures,
         alerts: alertsFor(aggregates),
       };

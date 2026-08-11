@@ -567,9 +567,13 @@
 **当前进展（2026-08-09）**：[quality workflow](../../.github/workflows/quality.yml) 已加入 cloud/local 生产构建后的 HTTP 冒烟、cloud clean-room 镜像边界、依赖审计和明显凭据模式检查；本地已完成对应命令验证，但尚未在受保护分支上运行并确认全部 GitHub Actions 检查稳定通过，因此保留未勾选。
 
 **本机补充验证（2026-08-11）**：`npm run check:cloud --prefix code` 与
-`npm run check:local --prefix code` 均通过（111 个 Vitest、11 个 Node 工具测试、内容审计和
+`npm run check:local --prefix code` 均通过（123 个 Vitest、11 个 Node 工具测试、内容审计和
 生产构建）；新增 [浏览器验收脚本](../../code/tests/e2e/browser-acceptance.mjs) 并完成
 Cloud/Local 生产服务器走查。受保护分支的真实 Actions 结果仍未取得，因此不勾选。
+
+**本机续测（2026-08-11）**：按 `cloud-clean-room` 作业规则构建当前镜像，边界扫描确认不含
+Local Material、SQLite、备份、`.env` 或运行时测试凭据；容器健康、9 条公开路由和 Chrome
+Cloud `full` 均通过。远端受保护分支结果仍未取得，故 T7.1 保持未勾选。
 
 ### - [ ] T7.2 建立版本化镜像发布
 
@@ -609,7 +613,7 @@ Cloud/Local 生产服务器走查。受保护分支的真实 Actions 结果仍�
 
 **完成证据**：备份任务、失败告警和保留清理测试通过。
 
-**当前进展（2026-08-09）**：[backup module](../../code/modules/learning-state/backup.ts) 已提供 SQLite 一致性快照、AES-256-GCM 加密、SHA-256 manifest、7 个 daily/3 个 weekly 保留和 `quick_check` 恢复验证；`npm run db:backup --prefix code` 与 `npm run db:restore --prefix code` CLI 已用临时数据库完成正向走查。定时调度、异地复制、失败告警和正式恢复演练仍未完成，因此保留未勾选。
+**当前进展（2026-08-11）**：[backup module](../../code/modules/learning-state/backup.ts) 已提供 SQLite 一致性快照、AES-256-GCM 加密、SHA-256 manifest、7 个 daily/3 个 weekly 保留和 `quick_check` 恢复验证；`npm run db:backup --prefix code` 与 `npm run db:restore --prefix code` CLI 已完成成功/失败集成测试。管理员摘要会核对备份文件大小与 SHA-256，并只返回保留数量、时间、大小和状态；不可写输出目录与错误口令均触发匿名 critical 告警。定时调度、服务器外复制和正式恢复演练仍未完成，因此保留未勾选。
 
 ### - [ ] T7.5 执行干净环境恢复演练
 
@@ -644,9 +648,10 @@ Cloud/Local 生产服务器走查。受保护分支的真实 Actions 结果仍�
 **当前进展（2026-08-11）**：已新增 `operational_metrics` schema version 2、
 `observability/` 模块、页面匿名聚合路由和管理员聚合摘要；按小时写入固定枚举的事件、范围、
 结果、计数和最后发生时间，30 天后清理。页面浏览、健康检查、状态/数据 API 错误和登录失败
-已经接入；单元测试覆盖聚合、脱敏、失败阈值告警、跨代理同源校验和未知路径拒绝。本机浏览器
-验证确认无控制台错误。备份、审计、素材更新的命令级信号、外部日志收集及告警通知仍未部署，
-故不勾选。
+已经接入；备份、恢复、内容审计和素材更新 CLI 也会输出固定枚举日志并按配置写入同一聚合库。
+单元/集成测试覆盖聚合、脱敏、失败阈值、不可写备份目录、错误恢复口令、拒绝素材更新、跨代理
+同源校验和未知路径拒绝，故障注入可产生预期 critical/warning。管理员页面新增加密备份健康卡。
+外部日志收集与通知仍须由部署平台接入，且 T7.3 依赖未完成，因此 T7.6 保持未勾选。
 
 ### - [ ] T7.7 同步项目文档与运行手册
 
@@ -699,8 +704,10 @@ Cloud/Local 生产服务器走查。受保护分支的真实 Actions 结果仍�
 
 **本机补充验证（2026-08-11）**：[本机端到端验收报告](../acceptance/local-e2e-2026-08-11.md)
 新增 Cloud 匿名、Local seed/resume/fallback/mobile、HTTP E2E、加密备份恢复和浏览器控制台
-证据，并记录了 Docker 镜像内 `npm ci` 长时间无进展而安全取消的事实。真实 GitHub 两用户
-登录、clean-room 镜像运行、服务器部署/回滚仍未完成，故不勾选。
+证据。Docker 重试中，隔离 Local Compose 的镜像内 `npm ci` 在 71.3 秒完成，健康检查、Chrome
+状态跨 `local down`/`local up` 恢复以及 Local HTTP E2E 均通过，故 Local Docker 阻塞已解除。
+Cloud clean-room 当前镜像的边界、健康、HTTP 和 Chrome `full` 已补测通过。真实 GitHub 两用户
+登录、服务器部署/恢复/回滚仍未完成，故 T8.2 保持未勾选。
 
 ### - [x] T8.3 执行移动端与无障碍验收
 
@@ -727,8 +734,9 @@ Cloud/Local 生产服务器走查。受保护分支的真实 Actions 结果仍�
 
 **当前进展（2026-08-11）**：Cloud/Local 全质量门禁、内容边界审计、导出脱敏、CSRF、
 路径穿越/符号链接、恶意 Markdown、频率限制和管理员边界测试均通过；生产依赖
-`npm audit --omit=dev --audit-level=high` 报告 0 vulnerabilities。干净 Cloud 镜像和
-真实部署日志仍未完成复查，故不勾选。
+`npm audit --omit=dev --audit-level=high` 报告 0 vulnerabilities。当前 Cloud clean-room 镜像
+已确认不含 Local Material、SQLite、备份、`.env` 或运行时测试凭据；真实部署日志仍未完成
+复查，且 T8.2 依赖未完成，故 T8.4 保持未勾选。
 
 ### - [ ] T8.5 切换仓库入口并归档旧站
 
@@ -746,15 +754,15 @@ Cloud/Local 生产服务器走查。受保护分支的真实 Actions 结果仍�
 
 ## 12. 上线门槛核对表
 
-- [ ] GATE-01 cloud-clean-room 构建和公开流程通过。
-- [ ] GATE-02 local Docker 阅读、搜索和进度保存通过。
-- [ ] GATE-03 云端与本地使用相同课程 ID、schema 和状态规则。
+- [x] GATE-01 cloud-clean-room 构建和公开流程通过。（2026-08-11 隔离镜像实测）
+- [x] GATE-02 local Docker 阅读、搜索和进度保存通过。（2026-08-11 隔离 Compose 实测）
+- [x] GATE-03 云端与本地使用相同课程 ID、schema 和状态规则。（双模式同一构建与测试覆盖）
 - [ ] GATE-04 登录、笔记、收藏、成果、导出和删号集成测试通过。
-- [ ] GATE-05 路径回退、穿越保护和恶意 Markdown 测试通过。
-- [ ] GATE-06 手机端核心学习流程通过。
+- [x] GATE-05 路径回退、穿越保护和恶意 Markdown 测试通过。
+- [x] GATE-06 手机端核心学习流程通过。（见 T8.3 验收证据）
 - [ ] GATE-07 SQLite 干净环境恢复演练通过。
-- [ ] GATE-08 新站覆盖旧站首版核心能力。
-- [ ] GATE-09 云端镜像不含 `local-courses/`、数据库、备份或秘密。
+- [x] GATE-08 新站覆盖旧站首版核心能力。（见 T8.1 对等报告）
+- [x] GATE-09 云端镜像不含 `local-courses/`、数据库、备份或秘密。（2026-08-11 镜像扫描）
 - [ ] GATE-10 部署、回滚、素材维护和故障恢复文档可由他人复现。
 
 ## 13. 需求到任务追踪

@@ -7,6 +7,18 @@ import {
   renderContentAuditMarkdown,
   type ContentAuditMode,
 } from "../modules/catalog/content-audit";
+import { recordOperatorMetric } from "../modules/observability/operator-monitor";
+
+function recordContentAudit(outcome: "success" | "failure") {
+  recordOperatorMetric(
+    { event: "content_audit", scope: "content-audit", outcome },
+    {
+      databaseFilename:
+        process.env.OPERATIONAL_METRICS_DATABASE_PATH?.trim() ||
+        process.env.STATE_DATABASE_PATH?.trim(),
+    },
+  );
+}
 
 function usage() {
   return [
@@ -123,12 +135,14 @@ async function main() {
   process.stdout.write(
     `Content audit ${report.summary.errorCount === 0 ? "passed" : "failed"}: ${report.summary.errorCount} errors, ${report.summary.warningCount} warnings.\n`,
   );
+  recordContentAudit(report.summary.errorCount === 0 ? "success" : "failure");
   if (report.summary.errorCount > 0) {
     process.exitCode = 1;
   }
 }
 
 main().catch((error) => {
+  recordContentAudit("failure");
   process.stderr.write(`${error instanceof Error ? error.stack : error}\n`);
   process.exitCode = 1;
 });

@@ -17,6 +17,7 @@ import {
   type MaterialStatus,
 } from "../modules/freshness/materials-check";
 import { buildRuntimeSearchIndex } from "../modules/search/search-index";
+import { recordOperatorMetric } from "../modules/observability/operator-monitor";
 
 const statuses: readonly MaterialStatus[] = [
   "latest",
@@ -26,6 +27,17 @@ const statuses: readonly MaterialStatus[] = [
   "dirty",
   "check-failed",
 ];
+
+function recordMaterialsUpdate(outcome: "success" | "failure") {
+  recordOperatorMetric(
+    { event: "materials_update", scope: "materials-update", outcome },
+    {
+      databaseFilename:
+        process.env.OPERATIONAL_METRICS_DATABASE_PATH?.trim() ||
+        process.env.STATE_DATABASE_PATH?.trim(),
+    },
+  );
+}
 
 type MaterialsOptions = {
   root: string;
@@ -454,7 +466,10 @@ async function main() {
     return;
   }
   if (options.command === "check") await runCheck(options);
-  if (options.command === "update") await runUpdate(options);
+  if (options.command === "update") {
+    await runUpdate(options);
+    recordMaterialsUpdate(process.exitCode ? "failure" : "success");
+  }
   if (options.command === "audit") {
     if (!(await runAudit(options))) process.exitCode = 1;
   }
@@ -462,6 +477,7 @@ async function main() {
 }
 
 main().catch((error) => {
+  if (process.argv[2] === "update") recordMaterialsUpdate("failure");
   process.stderr.write(`${error instanceof Error ? error.stack : error}\n`);
   process.exitCode = 1;
 });

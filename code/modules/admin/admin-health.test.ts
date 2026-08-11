@@ -1,7 +1,17 @@
+import { mkdtemp, rm, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join, resolve } from "node:path";
+
 import { describe, expect, it } from "vitest";
 
+import {
+  createEncryptedBackup,
+  restoreEncryptedBackup,
+} from "../learning-state/backup";
+import { openLearningDatabase } from "../learning-state/database";
 import type { UserRecord } from "../learning-state/repository";
 import {
+  buildRuntimeAdminHealthSnapshot,
   handleAdminHealthRequest,
   isAdminUser,
   type AdminHealthSnapshot,
@@ -47,6 +57,7 @@ const snapshot: AdminHealthSnapshot = {
     windowStartedAt: "2026-08-08T00:00:00.000Z",
     totalPageViews: 7,
     pageViews: [{ scope: "home", count: 7 }],
+    operations: [],
     failures: [],
     alerts: [],
   },
@@ -128,5 +139,90 @@ describe("admin health boundary", () => {
     );
 
     expect(response.status).toBe(405);
+  });
+
+  it("reports configured backup health without exposing paths or filenames", async () => {
+    const root = await mkdtemp(join(tmpdir(), "agent-learning-admin-backup-"));
+    const sourceFilename = join(root, "state.sqlite");
+    const backupDirectory = join(root, "backups");
+    const database = openLearningDatabase({
+      filename: sourceFilename,
+      enableWal: false,
+    });
+
+    try {
+      const backup = await createEncryptedBackup({
+        sourceFilename,
+        outputDirectory: backupDirectory,
+        passphrase: "correct horse battery staple",
+        now: () => new Date("2026-08-11T01:02:03.000Z"),
+      });
+      await restoreEncryptedBackup({
+        backupFilename: backup.backupPath,
+        targetFilename: join(root, "restored.sqlite"),
+        passphrase: "correct horse battery staple",
+        now: () => new Date("2026-08-11T02:03:04.000Z"),
+      });
+
+      const result = await buildRuntimeAdminHealthSnapshot({
+        mode: "cloud",
+        database,
+        environment: {
+          APP_VERSION: "test",
+          BACKUP_OUTPUT_DIR: backupDirectory,
+        },
+        contentRoot: resolve(import.meta.dirname, "../../content"),
+      });
+
+      expect(result.backup).toEqual({
+        status: "ok",
+        retainedBackups: 1,
+        latestCreatedAt: "2026-08-11T01:02:03.000Z",
+        latestRestoreVerifiedAt: "2026-08-11T02:03:04.000Z",
+        latestByteSize: backup.manifest.byteSize,
+      });
+      expect(JSON.stringify(result.backup)).not.toContain(root);
+      expect(JSON.stringify(result.backup)).not.toContain(
+        backup.manifest.filename,
+      );
+    } finally {
+      database.close();
+      await rm(root, { recursive: true, force: true });
+    }
+  });
+
+  it("degrades backup health when encrypted content no longer matches its manifest", async () => {
+    const root = await mkdtemp(join(tmpdir(), "agent-learning-admin-backup-"));
+    const sourceFilename = join(root, "state.sqlite");
+    const backupDirectory = join(root, "backups");
+    const database = openLearningDatabase({
+      filename: sourceFilename,
+      enableWal: false,
+    });
+
+    try {
+      const backup = await createEncryptedBackup({
+        sourceFilename,
+        outputDirectory: backupDirectory,
+        passphrase: "correct horse battery staple",
+        now: () => new Date("2026-08-11T01:02:03.000Z"),
+      });
+      await writeFile(backup.backupPath, "corrupted backup content");
+
+      const result = await buildRuntimeAdminHealthSnapshot({
+        mode: "cloud",
+        database,
+        environment: { BACKUP_OUTPUT_DIR: backupDirectory },
+        contentRoot: resolve(import.meta.dirname, "../../content"),
+      });
+
+      expect(result.backup).toMatchObject({
+        status: "degraded",
+        retainedBackups: 1,
+      });
+    } finally {
+      database.close();
+      await rm(root, { recursive: true, force: true });
+    }
   });
 });

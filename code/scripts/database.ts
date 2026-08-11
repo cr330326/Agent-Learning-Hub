@@ -6,6 +6,7 @@ import {
   restoreEncryptedBackup,
 } from "../modules/learning-state/backup";
 import { getDefaultStateDatabaseFilename } from "../modules/learning-state/state-store";
+import { recordOperatorMetric } from "../modules/observability/operator-monitor";
 
 function optionValue(name: string): string | undefined {
   const index = process.argv.indexOf(name);
@@ -56,6 +57,13 @@ async function runBackup() {
       2,
     ),
   );
+  recordOperatorMetric(
+    { event: "backup", scope: "backup", outcome: "success" },
+    {
+      databaseFilename:
+        process.env.OPERATIONAL_METRICS_DATABASE_PATH?.trim() || sourceFilename,
+    },
+  );
 }
 
 async function runRestore() {
@@ -68,13 +76,51 @@ async function runRestore() {
     passphrase: passphrase(),
   });
   console.log(JSON.stringify({ operation: "restore", ...result }, null, 2));
+  recordOperatorMetric(
+    { event: "restore", scope: "restore", outcome: "success" },
+    {
+      databaseFilename:
+        process.env.OPERATIONAL_METRICS_DATABASE_PATH?.trim() ||
+        process.env.STATE_DATABASE_PATH?.trim(),
+    },
+  );
 }
 
-const command = process.argv[2];
-if (command === "backup") {
-  await runBackup();
-} else if (command === "restore") {
-  await runRestore();
-} else {
-  throw new Error("Usage: database.ts <backup|restore> [options].");
+async function main() {
+  const command = process.argv[2];
+  try {
+    if (command === "backup") {
+      await runBackup();
+    } else if (command === "restore") {
+      await runRestore();
+    } else {
+      throw new Error("Usage: database.ts <backup|restore> [options].");
+    }
+  } catch (error) {
+    if (command === "backup") {
+      const sourceFilename = resolve(
+        optionValue("--source") ?? getDefaultStateDatabaseFilename(),
+      );
+      recordOperatorMetric(
+        { event: "backup", scope: "backup", outcome: "failure" },
+        {
+          databaseFilename:
+            process.env.OPERATIONAL_METRICS_DATABASE_PATH?.trim() ||
+            sourceFilename,
+        },
+      );
+    } else if (command === "restore") {
+      recordOperatorMetric(
+        { event: "restore", scope: "restore", outcome: "failure" },
+        {
+          databaseFilename:
+            process.env.OPERATIONAL_METRICS_DATABASE_PATH?.trim() ||
+            process.env.STATE_DATABASE_PATH?.trim(),
+        },
+      );
+    }
+    throw error;
+  }
 }
+
+await main();

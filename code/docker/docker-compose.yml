@@ -10,6 +10,7 @@ services:
       NODE_ENV: production
       DEPLOYMENT_MODE: cloud
       STATE_DATABASE_PATH: /data/state/learning-state.sqlite
+      BACKUP_OUTPUT_DIR: ${BACKUP_OUTPUT_DIR:-}
     ports:
       - "${APP_BIND_HOST:-127.0.0.1}:${APP_PORT:-3000}:3000"
     volumes:
