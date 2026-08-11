@@ -41,12 +41,10 @@ npm run check:local --prefix code
 Compose 文件位于 [`code/docker/`](./code/docker/)。推荐通过部署助手启动，它会选择正确的 Compose 覆盖文件、等待容器健康检查，并请求 `/api/health`：
 
 ```bash
-code/scripts/docker-deploy.sh local up
-code/scripts/docker-deploy.sh local status
-code/scripts/docker-deploy.sh local down
+code/scripts/local-preview.sh
 ```
 
-Local Mode 默认只绑定 `127.0.0.1:3000`，以只读方式挂载 `local-courses/`，并将 SQLite 放入命名卷。`down` 不删除该卷。
+该命令从当前工作区构建 Docker 镜像、启动 Local Mode 并完成健康检查；随后打开 <http://127.0.0.1:3000>。常用管理命令为 `code/scripts/local-preview.sh status`、`logs`、`restart` 和 `down`。Local Mode 只绑定回环地址，以只读方式挂载 `local-courses/`，并将 SQLite 放入命名卷；`down` 不删除该卷。需要直接控制部署模式或覆盖 `APP_PORT` 等变量时，仍可使用 `code/scripts/docker-deploy.sh local up`。
 
 Cloud Mode 先从模板创建根目录 `.env`，填写 `BETTER_AUTH_SECRET`、`BETTER_AUTH_URL` 和 GitHub OAuth 凭据；先静态检查配置（不会输出展开后的秘密），再启动：
 
@@ -80,6 +78,7 @@ code/scripts/docker-deploy.sh release up
 
 | 命令                                                         | 用途                                                                                     |
 | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
+| `code/scripts/local-preview.sh`                              | 从当前代码构建镜像并启动、查看或停止本机 Local Mode 预览                                 |
 | `code/scripts/docker-deploy.sh`                              | 本地构建、启动、配置检查、健康验证和已发布镜像运行                                       |
 | `code/scripts/lighthouse-deploy.sh`                          | 通过 SSH 预检、初始化、备份、部署、验证和回滚专用 Lighthouse 生产主机                    |
 | `npm run audit:content --prefix code`                        | 校验内容 schema、来源、许可证和本地路径                                                  |
