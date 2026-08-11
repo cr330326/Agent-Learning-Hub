@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-11T15:21:35.801Z",
+  "generatedAt": "2026-08-11T16:23:23.247Z",
   "baseUrl": "http://127.0.0.1:3211",
   "pages": [
     {
@@ -72,7 +72,7 @@
       "path": "/learning",
       "viewport": "desktop",
       "status": 200,
-      "height": 2983
+      "height": 3057
     },
     {
       "path": "/login",
@@ -102,7 +102,7 @@
       "path": "/read/legacy-course-001",
       "viewport": "desktop",
       "status": 200,
-      "height": 8425
+      "height": 8570
     },
     {
       "path": "/",
@@ -174,7 +174,7 @@
       "path": "/learning",
       "viewport": "tablet",
       "status": 200,
-      "height": 3093
+      "height": 3167
     },
     {
       "path": "/login",
@@ -204,7 +204,7 @@
       "path": "/read/legacy-course-001",
       "viewport": "tablet",
       "status": 200,
-      "height": 8701
+      "height": 8847
     },
     {
       "path": "/",
@@ -276,7 +276,7 @@
       "path": "/learning",
       "viewport": "mobile",
       "status": 200,
-      "height": 4919
+      "height": 5044
     },
     {
       "path": "/login",
@@ -306,7 +306,7 @@
       "path": "/read/legacy-course-001",
       "viewport": "mobile",
       "status": 200,
-      "height": 11910
+      "height": 12056
     }
   ],
   "findings": []

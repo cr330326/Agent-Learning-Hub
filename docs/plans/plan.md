@@ -300,7 +300,17 @@ Local Adapter：
 - **字符实体**：`&emsp;` 等有效实体原样输出，不做二次转义（中文 README 依赖它做段首缩进）。
 - **扩展语法**：GFM 管道表格（外层 `overflow-x` 容器）、`---` 分隔线、缩进嵌套列表、`- [ ]` 任务项。
 
-图片额外受课程条目约束：只有条目声明过的 `localPath`（`localPath` 与 `references[].localPath`）会被解析成 `/api/local-image`；README 内部未声明的图片直接丢弃，不渲染成损坏图。这与 `/api/local-image` 自身的 allowlist 是同一份规则，两处必须一起改。
+链接与图片都先经 `resolveDocumentRelativePath()` 按**当前文档所在目录**解析，再对照课程条目声明的路径（`localPath` 与 `references[].localPath`）：
+
+- 命中允许章节的链接改写为 `/read/<id>?chapter=<path>`；未命中的降级为纯文本。
+- 命中声明路径的图片改写为 `/api/local-image`；未命中的整个 `<img>` 丢弃。
+- 解析结果若走出素材根（`../` 过多）一律拒绝。
+
+这一步是必需的：素材是按仓库检出写的，正文里的 `./docs/chapter1/x.md` 相对的是文件而不是阅读器路由，原样输出会被浏览器解析成 `/read/docs/chapter1/x.md` 并必然 404。该规则与 `/api/local-image` 自身的 allowlist 是同一份，两处必须一起改。
+
+章节集合同时驱动**上下章导航**：`listLocalChapters()` 的顺序即翻页顺序，首章无上一章、末章无下一章。
+
+> 已知内容缺口（不是代码缺陷）：512 个本地条目合计只声明了 547 个 markdown 章节，而这些目录下有约 17,030 个 md 文件，因此多数课程站内只能读到 1—2 章。全量声明并不可取——其中大量是文档站、i18n 和示例噪音，会污染阅读器与搜索索引。补齐属于逐课程的内容策展工作，见 tasks.md T8.7。
 
 安全规则：
 

@@ -23,7 +23,8 @@ Agent Learning Hub 是一个以实践成果为主线的 Agent 工程学习网站
 - 网站进程不得更新嵌套素材仓库；`materials update` 仅允许在指定单课程、clean working tree 上 fast-forward。
 - 运行模式、内容归属、身份或数据库边界有变化时，先更新 ADR、规格和任务清单。
 - 阅读器保留第三方 Markdown 中的排版 HTML，但只经 `modules/reader/markdown.ts` 的标签与属性 allowlist；`script`/`style`/`iframe`/表单等连同内容一起丢弃，`on*` 事件属性和非 `http(s)`/`mailto` 协议一律拒绝。扩大 allowlist 属于安全边界变更。
-- 阅读器内的图片只解析课程条目已声明的 `localPath`（`localPath` 与 `references[].localPath`）。README 内部未声明的图片会被丢弃而不是渲染成损坏图；要放开必须先改 `/api/local-image` 的 allowlist 并记录决定。
+- 阅读器内的链接和图片都必须先经 `resolveDocumentRelativePath()` 按当前文档所在目录解析，再对照课程条目声明的路径。未声明的目标：链接降级为纯文本，图片整个丢弃。**绝不要把文档里的相对地址原样输出**——它会被浏览器解析到 `/read/` 下并 404。要放开必须同时改 `/api/local-image` 的 allowlist 并记录决定。
+- 章节顺序由 `listLocalChapters()` 决定，同时驱动章节列表和上下章翻页；两者必须一致。
 
 ## 界面约定
 
@@ -62,7 +63,8 @@ Cloud/Release 模式通过根目录 `.env` 提供秘密与镜像变量。发布�
 - `code/scripts/lighthouse-deploy.sh` 是专用腾讯云 Lighthouse 主机的 SSH 部署入口；它不替代云端防火墙、DNS、快照、异地备份或真实恢复演练。
 - `code/scripts/local-preview.sh` 是本机 Docker 预览入口，委托给 `docker-deploy.sh`，只绑定回环地址。
 - `audit-content.ts`、`materials.ts`、`database.ts` 以及四个 `.mjs` 审计/走查脚本都是质量门禁或运维命令，不应因扩展名不是 `.sh` 而删除。
-- `ui-review.mjs` 是界面走查命令，需要运行中的服务和 Playwright，因此**不进** `npm run check`；改动界面后手动运行，产物写入 `code/reports/ui-review/`。
+- `ui-review.mjs`（`npm run audit:ui`）看版式，`functional-regression.mjs`（`npm run audit:functional`）真实点击。两者都需要运行中的服务和 Playwright，因此**不进** `npm run check`；改动界面或交互后手动运行，产物写入 `code/reports/`。
+- `functional-regression.mjs` 会读取页面上的运行模式徽标并据此断言：云端断言匿名访问被拒、本地素材不出正文；本地断言章节导航与学习状态读写。给某个模式新增能力时，要在两个分支里都补断言，不要用跳过掩盖差异。
 - 以 `code/package.json` scripts 作为命令事实源；不要在 README、任务文档或 CI 中复制已经失效的根目录 `scripts/`、`content/`、`reports/`、Dockerfile 或 Compose 路径。
 
 ## 文档职责

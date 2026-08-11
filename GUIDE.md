@@ -105,9 +105,13 @@ code/scripts/local-preview.sh
 - 右侧 **ON THIS PAGE** 是随页滚动的目录，长文会内部滚动。
 - 本地素材顶部有一行归属说明：第三方素材、作者、许可证、上游链接。
 - 有多个本地章节时，标题下方出现 **LOCAL CHAPTERS** 章节切换条。
+- 正文末尾是**上一章 / 下一章**翻页；首章只有下一章，末章只有上一章。
 - 素材缺失、格式不支持或路径不在白名单内时，页面会**明确说明原因**并给出上游回退入口，不会静默空白。
 
 渲染是安全的：第三方 Markdown 里的排版 HTML（居中、徽章、表格）会保留，脚本、表单、内联事件一律丢弃。
+
+> **为什么有些课只能读到一两章？**
+> 站内可读的章节由课程条目**显式声明**，这是本地素材的安全边界。正文里指向未声明文件的链接会显示为普通文字而不是死链——不是坏了，是还没被收录。补齐声明属于内容策展工作（见 tasks.md T8.8）；在那之前，用条目页的**上游链接**读完整仓库。
 
 ### 搜索 `/search`
 
@@ -171,33 +175,48 @@ code/scripts/local-preview.sh
 
 ---
 
-## 六、维护者：UI 走查
+## 六、维护者：走查与回归
 
-改动界面后，用走查脚本在三个视口回归检查：
+两个脚本，分工不同：**`ui-review` 看页面长什么样，`functional-regression` 真的去点。**
+
+先装一次 Playwright：
 
 ```bash
 npm i -D playwright --prefix code && npx playwright install chromium
 ```
 
+启动要测的模式，另开一个终端跑脚本：
+
 ```bash
 npm run dev:local --prefix code
 ```
 
-另开一个终端：
+### UI 走查（版式）
 
 ```bash
 node code/scripts/ui-review.mjs --base-url http://127.0.0.1:3000 --item-id legacy-course-001
 ```
 
-脚本会在 desktop / tablet / mobile 三档抓全页截图，并在发现以下问题时以非零码退出：
+在 desktop / tablet / mobile 三档抓全页截图，发现以下问题时非零退出：
 
 - HTTP 4xx / 5xx
 - 横向溢出（元素超出视口宽度）
-- 页面高度超过 12000px（通常意味着列表忘了分页）
+- 列表页高度超过 12000px（通常意味着忘了分页；阅读器按内容长度豁免）
 - 浏览器控制台报错
 
-产物在 `code/reports/ui-review/`：`ui-review.md`（人读）、`ui-review.json`（机读）、`screenshots/`（逐页截图）。
-这是**维护命令，不是质量门禁**——它需要运行中的服务和浏览器，所以 `npm run check` 不会调用它。
+产物：`code/reports/ui-review/` 下的 `ui-review.md`、`ui-review.json` 和 `screenshots/`。
+
+### 功能回归（点击）
+
+```bash
+node code/scripts/functional-regression.mjs --base-url http://127.0.0.1:3000
+```
+
+这个脚本会**真的操作站点**：遍历站内链接、翻页、应用筛选、切章节、点上下章、勾选任务、写删笔记、收藏再取消、拉导出接口。它会读页面上的模式徽标并据此断言——本地模式验证完整读写，云端模式验证匿名访问被正确拒绝、本地素材不出正文。脚本会清理自己创建的状态。
+
+任何一项失败都会打印具体原因并非零退出，产物在 `code/reports/functional-regression/`。
+
+两个脚本都是**维护命令，不是质量门禁**——它们需要运行中的服务和浏览器，所以 `npm run check` 不会调用它们。改完界面或交互后手动跑一次；两种模式都值得各跑一遍。
 
 提交前仍然跑双模式门禁：
 

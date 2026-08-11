@@ -36,8 +36,17 @@ const VIEWPORTS = [
   { name: "mobile", width: 390, height: 844 },
 ];
 
-/** Pages taller than this are almost always an unpaginated list. */
+/**
+ * A listing taller than this has almost certainly lost its pagination. The
+ * reader is exempt: a chapter's length is content-driven, and long upstream
+ * documents legitimately run to tens of thousands of pixels.
+ */
 const HEIGHT_BUDGET = 12000;
+const READER_HEIGHT_BUDGET = 120000;
+
+function heightBudgetFor(route) {
+  return route.path.startsWith("/read/") ? READER_HEIGHT_BUDGET : HEIGHT_BUDGET;
+}
 
 function usage() {
   process.stdout.write(`Usage: node scripts/ui-review.mjs [options]
@@ -248,11 +257,12 @@ async function main() {
             detail: `horizontal overflow from ${metrics.overflowing.join(", ") || "unknown element"}`,
           });
         }
-        if (metrics.height > HEIGHT_BUDGET) {
+        const budget = heightBudgetFor(route);
+        if (metrics.height > budget) {
           findings.push({
             route: route.path,
             viewport: viewport.name,
-            detail: `page is ${metrics.height}px tall; expected pagination under ${HEIGHT_BUDGET}px`,
+            detail: `page is ${metrics.height}px tall; expected pagination under ${budget}px`,
           });
         }
         for (const error of consoleErrors) {

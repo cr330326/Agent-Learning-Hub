@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-11T15:06:16.616Z",
+  "generatedAt": "2026-08-11T16:25:24.147Z",
   "baseUrl": "http://127.0.0.1:3210",
   "pages": [
     {
@@ -168,7 +168,7 @@
       "path": "/projects",
       "viewport": "tablet",
       "status": 200,
-      "height": 5339
+      "height": 4624
     },
     {
       "path": "/learning",
@@ -270,7 +270,7 @@
       "path": "/projects",
       "viewport": "mobile",
       "status": 200,
-      "height": 5416
+      "height": 4822
     },
     {
       "path": "/learning",

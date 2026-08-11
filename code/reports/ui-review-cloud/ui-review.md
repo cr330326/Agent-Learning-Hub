@@ -1,7 +1,7 @@
 # UI review
 
 - Instance: http://127.0.0.1:3210
-- Generated: 2026-08-11T15:06:16.616Z
+- Generated: 2026-08-11T16:25:24.148Z
 - Captures: 51
 - Findings: 0
 
@@ -38,7 +38,7 @@ No layout or console findings.
 | /courses?track=learning&access=owned&tag=none | tablet | 200 | 1134 |
 | /search | tablet | 200 | 3837 |
 | /search?q=agent | tablet | 200 | 3837 |
-| /projects | tablet | 200 | 5339 |
+| /projects | tablet | 200 | 4624 |
 | /learning | tablet | 200 | 1134 |
 | /login | tablet | 200 | 1134 |
 | /content-policy | tablet | 200 | 1134 |
@@ -55,7 +55,7 @@ No layout or console findings.
 | /courses?track=learning&access=owned&tag=none | mobile | 200 | 1288 |
 | /search | mobile | 200 | 4684 |
 | /search?q=agent | mobile | 200 | 4855 |
-| /projects | mobile | 200 | 5416 |
+| /projects | mobile | 200 | 4822 |
 | /learning | mobile | 200 | 900 |
 | /login | mobile | 200 | 900 |
 | /content-policy | mobile | 200 | 1478 |

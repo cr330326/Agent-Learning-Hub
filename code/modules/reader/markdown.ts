@@ -11,6 +11,13 @@ export type MarkdownDocument = {
 
 export type MarkdownRenderOptions = {
   resolveImageSrc?: (source: string) => string | null;
+  /**
+   * Rewrites a relative link found in the document (a sibling chapter, an
+   * asset) into a URL this site can serve. Returning null drops the link and
+   * keeps only its text — relative hrefs are resolved by the browser against
+   * the reader route, so emitting them unchanged produces guaranteed 404s.
+   */
+  resolveDocumentHref?: (source: string) => string | null;
 };
 
 /**
@@ -150,13 +157,9 @@ function escapeHtml(value: string) {
     .replaceAll("'", "&#39;");
 }
 
-function safeHref(value: string) {
+function safeHref(value: string, options: MarkdownRenderOptions = {}) {
   const href = value.trim();
   if (/^(?:https?:|mailto:)/i.test(href)) {
-    return href;
-  }
-
-  if (/^(?:\/(?!\/)|\.\.?\/)/.test(href)) {
     return href;
   }
 
@@ -164,7 +167,15 @@ function safeHref(value: string) {
     return href;
   }
 
-  return null;
+  // Site-absolute links are already routable.
+  if (/^\/(?!\/)/.test(href)) {
+    return href;
+  }
+
+  // Anything else is relative to the source document, not to the reader route.
+  // Only the caller knows how to map it onto a servable URL.
+  if (/^[a-z][a-z0-9+.-]*:/i.test(href)) return null;
+  return options.resolveDocumentHref?.(href) ?? null;
 }
 
 /**
@@ -219,7 +230,7 @@ function sanitizeAttributes(
     if (!GLOBAL_ATTRIBUTES.has(name) && !allowed?.has(name)) continue;
 
     if (name === "href") {
-      const href = safeHref(value);
+      const href = safeHref(value, options);
       if (href === null) continue;
       output += ` href="${escapeHtml(href)}"`;
       continue;
@@ -339,7 +350,7 @@ function renderInline(value: string, options: MarkdownRenderOptions = {}) {
     } else if (match[3] !== undefined) {
       output += `<code>${escapeHtml(match[3])}</code>`;
     } else if (match[4] !== undefined && match[5] !== undefined) {
-      const href = safeHref(match[5]);
+      const href = safeHref(match[5], options);
       if (href === null) {
         output += escapeText(match[4]);
       } else {

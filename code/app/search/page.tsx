@@ -11,6 +11,8 @@ import { getDefaultContentRoot } from "../../modules/catalog/catalog-api";
 import {
   buildRuntimeSearchIndex,
   searchDocuments,
+  type SearchDocument,
+  type SearchDocumentKind,
 } from "../../modules/search/search-index";
 
 export const dynamic = "force-dynamic";
@@ -173,28 +175,25 @@ export default async function SearchPage({
   );
 }
 
-function searchKindLabel(kind: string) {
-  return (
-    {
-      stage: "路线阶段",
-      item: "课程条目",
-      "learning-item": "课程条目",
-      article: "站内文章",
-      chapter: "本地章节",
-      project: "项目成果",
-      "project-outcome": "项目成果",
-    }[kind] ?? kind
-  );
+// Typed against the index's own unions so a new kind or policy fails the
+// build instead of leaking a raw enum value into the results list.
+function searchKindLabel(kind: SearchDocumentKind) {
+  return {
+    stage: "路线阶段",
+    item: "课程条目",
+    project: "项目成果",
+    "local-chapter": "本地章节",
+  }[kind];
 }
 
-function searchAccessLabel(policy: string) {
-  return (
-    {
-      owned: "站内内容",
-      "upstream-only": "上游链接",
-      "local-preferred": "本地优先",
-      "local-document": "本地章节",
-      unavailable: "待处理",
-    }[policy] ?? policy
-  );
+function searchAccessLabel(
+  policy: NonNullable<SearchDocument["accessPolicy"]>,
+) {
+  return {
+    owned: "站内内容",
+    "upstream-only": "上游链接",
+    "local-preferred": "本地优先",
+    "local-document": "本地章节",
+    unavailable: "待处理",
+  }[policy];
 }

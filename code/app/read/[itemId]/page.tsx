@@ -11,6 +11,7 @@ import {
 import {
   readLocalDocument,
   listLocalChapters,
+  resolveDocumentRelativePath,
   LocalChapterNotAllowlistedError,
   readOwnedDocument,
   readLocalDocumentSource,
@@ -142,28 +143,52 @@ export default async function ReaderPage({
     throw error;
   }
 
-  // /api/local-image only serves paths the course entry declares. Resolving
-  // against the same allowlist here means undeclared assets are dropped from
-  // the document instead of rendering as broken images.
-  const allowlistedImagePaths = new Set(
+  const isLocal = resolved.kind === "local-document";
+  const localChapters = isLocal
+    ? await listLocalChapters(item, { localRoot: getLocalMaterialRoot() })
+    : [];
+
+  // Links and images inside a document are relative to that document, and
+  // /api/local-image only serves paths the course entry declares. Resolve
+  // against the document, then check the same allowlist: undeclared targets
+  // lose their href instead of rendering as guaranteed 404s and broken images.
+  const allowlistedPaths = new Set(
     [
       item.localPath,
       ...item.references.map((reference) => reference.localPath),
     ].filter((path): path is string => path !== null),
   );
+  const readableChapters = new Set(
+    localChapters.map(({ relativePath }) => relativePath),
+  );
+  const resolveAgainstDocument = (source: string) =>
+    isLocal ? resolveDocumentRelativePath(document.sourcePath, source) : null;
+
   const rendered = renderMarkdownDocument(document.markdown, {
-    resolveImageSrc:
-      resolved.kind === "local-document"
-        ? (source) =>
-            allowlistedImagePaths.has(source)
-              ? `/api/local-image?itemId=${encodeURIComponent(item.id)}&path=${encodeURIComponent(source)}`
-              : null
-        : undefined,
+    resolveImageSrc: (source) => {
+      const target = resolveAgainstDocument(source);
+      return target !== null && allowlistedPaths.has(target)
+        ? `/api/local-image?itemId=${encodeURIComponent(item.id)}&path=${encodeURIComponent(target)}`
+        : null;
+    },
+    resolveDocumentHref: (source) => {
+      const target = resolveAgainstDocument(source);
+      return target !== null && readableChapters.has(target)
+        ? `/read/${item.id}?chapter=${encodeURIComponent(target)}`
+        : null;
+    },
   });
-  const localChapters =
-    resolved.kind === "local-document"
-      ? await listLocalChapters(item, { localRoot: getLocalMaterialRoot() })
-      : [];
+
+  // READ-001 requires previous/next chapter navigation, not just a chapter list.
+  const chapterIndex = localChapters.findIndex(
+    ({ relativePath }) => relativePath === document.sourcePath,
+  );
+  const previousChapter =
+    chapterIndex > 0 ? localChapters[chapterIndex - 1] : null;
+  const nextChapter =
+    chapterIndex >= 0 && chapterIndex < localChapters.length - 1
+      ? localChapters[chapterIndex + 1]
+      : null;
 
   return (
     <main className="page page-width reader-page">
@@ -231,6 +256,34 @@ export default async function ReaderPage({
         className="reader-body"
         dangerouslySetInnerHTML={{ __html: rendered.html }}
       />
+      {previousChapter || nextChapter ? (
+        <nav className="reader-pager" aria-label="上下章导航">
+          {previousChapter ? (
+            <Link
+              className="reader-pager-link"
+              href={`/read/${item.id}?chapter=${encodeURIComponent(previousChapter.relativePath)}`}
+              rel="prev"
+            >
+              <span>← 上一章</span>
+              <strong>{previousChapter.label}</strong>
+            </Link>
+          ) : (
+            <span />
+          )}
+          {nextChapter ? (
+            <Link
+              className="reader-pager-link is-next"
+              href={`/read/${item.id}?chapter=${encodeURIComponent(nextChapter.relativePath)}`}
+              rel="next"
+            >
+              <span>下一章 →</span>
+              <strong>{nextChapter.label}</strong>
+            </Link>
+          ) : (
+            <span />
+          )}
+        </nav>
+      ) : null}
       <LearningStateControls itemId={item.id} autoStart />
     </main>
   );

@@ -33,7 +33,8 @@
     "audit:baseline": "node scripts/baseline-report.mjs --root .. --output-dir reports/baseline",
     "audit:boundaries": "node scripts/audit-content-boundaries.mjs --root .. --output-dir reports/content-boundaries",
     "convert:legacy": "node scripts/convert-legacy-content.mjs --root .. --content-dir content --report-dir reports/legacy-conversion --baseline reports/baseline/baseline.json",
-    "audit:ui": "node scripts/ui-review.mjs --output-dir reports/ui-review"
+    "audit:ui": "node scripts/ui-review.mjs --output-dir reports/ui-review",
+    "audit:functional": "node scripts/functional-regression.mjs --output-dir reports/functional-regression"
   },
   "dependencies": {
     "better-auth": "^1.6.26",

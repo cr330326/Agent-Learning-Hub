@@ -124,6 +124,44 @@ async function resolveLocalChapterFile(
   return { fileAccess, file };
 }
 
+/**
+ * Resolves a link or image path written inside a document against that
+ * document's own directory, yielding a path relative to the material root.
+ *
+ * Documents are authored for a checkout, so their hrefs ("./docs/ch1.md") are
+ * relative to the file, not to the reader route. Returns null when the target
+ * escapes the root — callers still have to check the result against the
+ * item's allowlist before serving it.
+ */
+export function resolveDocumentRelativePath(
+  documentPath: string,
+  href: string,
+): string | null {
+  const withoutFragment = href.split(/[?#]/)[0].trim();
+  if (withoutFragment === "") return null;
+
+  let decoded: string;
+  try {
+    decoded = decodeURIComponent(withoutFragment);
+  } catch {
+    decoded = withoutFragment;
+  }
+  if (decoded.startsWith("/") || decoded.includes("\\")) return null;
+
+  const base = documentPath.split("/").slice(0, -1);
+  for (const segment of decoded.split("/")) {
+    if (segment === "" || segment === ".") continue;
+    if (segment === "..") {
+      if (base.length === 0) return null; // escaped the material root
+      base.pop();
+      continue;
+    }
+    base.push(segment);
+  }
+
+  return base.length === 0 ? null : base.join("/");
+}
+
 export async function listLocalChapters(
   item: LearningItem,
   options: { localRoot: string },

@@ -38,10 +38,14 @@ npm run check:cloud --prefix code
 npm run check:local --prefix code
 ```
 
-改动界面后，另外运行 UI 走查（需要运行中的服务与 Playwright，不属于 `check` 门禁）：
+改动界面或交互后，另外运行走查与功能回归（需要运行中的服务与 Playwright，不属于 `check` 门禁）：
 
 ```bash
 node code/scripts/ui-review.mjs --base-url http://127.0.0.1:3000 --item-id legacy-course-001
+```
+
+```bash
+node code/scripts/functional-regression.mjs --base-url http://127.0.0.1:3000
 ```
 
 ## Docker
@@ -96,6 +100,7 @@ code/scripts/docker-deploy.sh release up
 | `npm run audit:boundaries --prefix code`                     | 审计 Git、Docker 与 CI 的内容边界                                                        |
 | `npm run convert:legacy --prefix code`                       | 从 `learning-site/data.js` 可重复生成结构化内容与报告                                    |
 | `node code/scripts/ui-review.mjs --base-url <url>`           | 在 desktop/tablet/mobile 三档抓全页截图，报告 HTTP 错误、横向溢出、超长页面与控制台报错  |
+| `node code/scripts/functional-regression.mjs --base-url <url>` | 点击式功能回归：链接、翻页、筛选、章节与上下章导航、学习状态读写；按运行模式分支断言      |
 
 ## 文档入口
 

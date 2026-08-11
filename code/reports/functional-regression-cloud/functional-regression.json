@@ -1,0 +1,105 @@
+{
+  "generatedAt": "2026-08-11T16:24:27.170Z",
+  "baseUrl": "http://127.0.0.1:3210",
+  "total": 19,
+  "failed": 0,
+  "results": [
+    {
+      "name": "runtime mode detected",
+      "ok": true,
+      "detail": "cloud"
+    },
+    {
+      "name": "internal links resolve",
+      "ok": true,
+      "detail": "76 internal links, all < 400"
+    },
+    {
+      "name": "header navigation reaches every section",
+      "ok": true,
+      "detail": "6 sections reachable"
+    },
+    {
+      "name": "roadmap rows open their stage",
+      "ok": true,
+      "detail": "9 rows; first opens 理解 Agent 是什么"
+    },
+    {
+      "name": "stage pages chain prev/next",
+      "ok": true,
+      "detail": "stage-0 and stage-8 boundaries correct"
+    },
+    {
+      "name": "catalog pagination advances",
+      "ok": true,
+      "detail": "next/prev change the result window"
+    },
+    {
+      "name": "catalog filters narrow results",
+      "ok": true,
+      "detail": "63 of 515 after track=learning"
+    },
+    {
+      "name": "empty filter combination explains itself",
+      "ok": true,
+      "detail": "empty state present with recovery guidance"
+    },
+    {
+      "name": "search returns and filters results",
+      "ok": true,
+      "detail": "24 results, kind labels localised"
+    },
+    {
+      "name": "cloud reader withholds local material and offers upstream",
+      "ok": true,
+      "detail": "body withheld, upstream link offered"
+    },
+    {
+      "name": "reader opens the course document",
+      "ok": true,
+      "detail": "398 characters rendered"
+    },
+    {
+      "name": "reader chapter tabs switch content",
+      "ok": true,
+      "skipped": true,
+      "detail": "n/a in this mode"
+    },
+    {
+      "name": "reader has previous/next chapter links",
+      "ok": true,
+      "skipped": true,
+      "detail": "n/a in this mode"
+    },
+    {
+      "name": "reader in-body links are not dead ends",
+      "ok": true,
+      "detail": "no unresolved document-relative links"
+    },
+    {
+      "name": "reader table of contents anchors exist",
+      "ok": true,
+      "detail": "every TOC entry resolves to a heading"
+    },
+    {
+      "name": "course detail exposes references",
+      "ok": true,
+      "detail": "3 references, metadata localised"
+    },
+    {
+      "name": "anonymous cloud state is gated",
+      "ok": true,
+      "detail": "dashboard, export and writes all refused"
+    },
+    {
+      "name": "login page offers the cloud identity route",
+      "ok": true,
+      "detail": "GitHub sign-in offered"
+    },
+    {
+      "name": "no console errors during the run",
+      "ok": true,
+      "detail": ""
+    }
+  ]
+}
