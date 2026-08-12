@@ -49,7 +49,15 @@ export default async function ProjectsPage() {
             {ladderOutcomes.length} 个项目 · 每个都留下代码、演示和一段总结。
           </p>
         </div>
-        <div className="project-ladder">
+        {/* Ladder projects carry no suggested evidence, so reserving the
+            evidence column left a dead third column beside every row. */}
+        <div
+          className={
+            ladderOutcomes.some(({ evidenceTypes }) => evidenceTypes.length > 0)
+              ? "project-ladder"
+              : "project-ladder project-ladder-compact"
+          }
+        >
           {ladderOutcomes.map((outcome, index) => (
             <article className="project-rung" key={outcome.id}>
               <div className="project-level">

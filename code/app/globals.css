@@ -675,8 +675,12 @@ h3 {
   flex: 1;
 }
 
+/* Grid, not flex: a tag list with long option text used to stretch its own
+   select to three times the width of its siblings and squeeze the submit
+   button until its label wrapped mid-word. */
 .filter-bar {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) auto auto;
   align-items: end;
   gap: 12px;
   padding: 15px;
@@ -687,7 +691,11 @@ h3 {
 .filter-bar label {
   display: grid;
   gap: 6px;
-  min-width: 150px;
+  min-width: 0;
+}
+.filter-bar .button,
+.filter-reset {
+  white-space: nowrap;
 }
 .filter-bar label span {
   color: var(--muted);
@@ -980,6 +988,17 @@ h3 {
 .dashboard-export-actions a:hover,
 .dashboard-export-actions button:hover {
   color: #f4c06e;
+}
+/* Irreversible deletion sat in the export list styled exactly like the two
+   download links beside it; it reads as the same kind of action otherwise. */
+.dashboard-export-actions .is-destructive {
+  margin-top: 6px;
+  padding-top: 8px;
+  border-top: 1px solid rgb(251 248 242 / 28%);
+  color: #f0a08a;
+}
+.dashboard-export-actions .is-destructive:hover {
+  color: #ffc9b8;
 }
 .dashboard-section-heading {
   display: flex;
@@ -1510,6 +1529,9 @@ h3 {
 .project-ladder {
   border-top: 1px solid var(--line);
 }
+.project-ladder-compact .project-rung {
+  grid-template-columns: 90px minmax(0, 1fr);
+}
 .project-rung {
   display: grid;
   grid-template-columns: 90px minmax(0, 1fr) 190px;
@@ -1918,6 +1940,14 @@ h3 {
   padding-bottom: 11px;
   overflow-x: auto;
   scrollbar-width: none;
+  /* The rail hides its scrollbar, so a link clipped by the viewport edge has
+     to fade rather than end abruptly — otherwise it reads as broken text. */
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    #000 calc(100% - 34px),
+    transparent
+  );
+  mask-image: linear-gradient(90deg, #000 calc(100% - 34px), transparent);
 }
 .compact-nav::-webkit-scrollbar {
   display: none;
@@ -2151,10 +2181,30 @@ h3 {
   .hero-note {
     max-width: 420px;
   }
+  /* Only three of the nine stops fit, and nothing on screen said the rest
+     were one swipe away. The fade is the affordance; the rail keeps its
+     own scroll gutter so the dots never sit under it. */
+  .route-map-scroll {
+    position: relative;
+  }
+  .route-map-scroll::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 12px;
+    width: 46px;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, var(--paper) 78%);
+  }
   .route-map {
     overflow-x: auto;
     grid-template-columns: repeat(9, minmax(120px, 1fr));
     padding-bottom: 12px;
+    scroll-snap-type: x proximity;
+  }
+  .route-stop {
+    scroll-snap-align: center;
   }
   .route-map::before {
     left: 60px;
@@ -2263,15 +2313,18 @@ h3 {
     min-height: 155px;
   }
   .filter-bar {
+    grid-template-columns: minmax(0, 1fr);
     align-items: stretch;
-    flex-direction: column;
   }
   .filter-bar label {
-    min-width: 0;
     width: 100%;
   }
+  .filter-bar .button {
+    justify-self: start;
+  }
   .filter-reset {
-    align-self: flex-start;
+    justify-self: start;
+    align-self: center;
   }
   .section-intro {
     margin-bottom: 38px;

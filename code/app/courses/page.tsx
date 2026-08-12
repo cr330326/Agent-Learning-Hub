@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { ContentCard } from "../components/content-card";
+import { ContentCard, displayTags } from "../components/content-card";
 import { Pagination, paginate } from "../components/pagination";
 import { SectionIntro } from "../components/site-chrome";
 import { getContentResolver, loadPublicCatalog } from "../../lib/catalog";
@@ -34,17 +34,26 @@ export default async function CoursesPage({
   ].includes(params.access ?? "")
     ? (params.access as LearningItem["accessPolicy"])
     : undefined;
-  const tag = params.tag?.trim() || undefined;
+  // Only tags a reader can actually pick are honoured: an unrecognised value
+  // would otherwise be echoed back into the heading and silently empty the grid.
+  const tags = [
+    ...new Set(
+      displayTags(catalog.items.flatMap(({ tags: itemTags }) => itemTags)),
+    ),
+  ].sort((left, right) => left.localeCompare(right, "zh-CN"));
+  const requestedTag = params.tag?.trim();
+  const tag =
+    requestedTag && tags.includes(requestedTag) ? requestedTag : undefined;
+  const stage = catalog.stages.some(({ id }) => id === params.stage)
+    ? params.stage
+    : undefined;
   const items = catalog.items
     .filter((item) => track === undefined || item.track === track)
     .filter(
       (item) =>
         accessPolicy === undefined || item.accessPolicy === accessPolicy,
     )
-    .filter(
-      (item) =>
-        params.stage === undefined || item.stageIds.includes(params.stage),
-    )
+    .filter((item) => stage === undefined || item.stageIds.includes(stage))
     .filter((item) => tag === undefined || item.tags.includes(tag))
     .sort((left, right) => left.title.localeCompare(right.title, "zh-CN"));
   const resolver = getContentResolver();
@@ -58,9 +67,6 @@ export default async function CoursesPage({
       resolved: await resolver.resolve(item),
     })),
   );
-  const tags = [
-    ...new Set(catalog.items.flatMap(({ tags: itemTags }) => itemTags)),
-  ].sort((left, right) => left.localeCompare(right, "zh-CN"));
 
   return (
     <main className="page page-width courses-page">
@@ -146,12 +152,7 @@ export default async function CoursesPage({
       </div>
       <Pagination
         basePath="/courses"
-        params={{
-          track: params.track,
-          access: params.access,
-          stage: params.stage,
-          tag: params.tag,
-        }}
+        params={{ track, access: accessPolicy, stage, tag }}
         page={pageWindow.page}
         pageCount={pageWindow.pageCount}
       />

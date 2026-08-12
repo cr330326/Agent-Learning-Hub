@@ -36,6 +36,30 @@ CI also runs the content-boundary audit before any artifact could be uploaded.
 Future tasks add schema, integration, and end-to-end checks to these scripts;
 production data and the full Local Material Library are never test fixtures.
 
+## Browser-driven review commands
+
+Two commands need a running server and a Playwright browser, so `npm run check`
+deliberately does not call them. Run both, in both modes, after touching the
+interface or an interaction:
+
+```bash
+npm run audit:ui --prefix code -- --base-url <url> --item-id legacy-course-001
+npm run audit:functional --prefix code -- --base-url <url>
+```
+
+`ui-review.mjs` captures full-page screenshots at three widths and fails on HTTP
+errors, horizontal overflow, listing pages past the height budget, and console
+errors. `functional-regression.mjs` operates the site — links, paging, filters,
+chapter navigation, and the learning-state write/read/delete cycle — and branches
+its assertions on the runtime mode badge.
+
+**A clean run from both is a floor, not a verdict.** T8.9 found six defects
+behind two green reports, including duplicated search results and a filter bar
+whose submit button wrapped mid-word: none of them is an HTTP status, an
+overflow, a height, or a console error. Read the screenshots the review writes to
+`code/reports/ui-review/screenshots/`, and when a defect turns out to be real,
+land the assertion that would have caught it alongside the fix.
+
 ## Test pyramid and review expectations
 
 Most coverage should be fast module tests. Add integration tests for public route,

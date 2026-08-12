@@ -48,6 +48,8 @@ node code/scripts/ui-review.mjs --base-url http://127.0.0.1:3000 --item-id legac
 node code/scripts/functional-regression.mjs --base-url http://127.0.0.1:3000
 ```
 
+两者都通过只是底线，不是结论：走查脚本只判 HTTP 状态、横向溢出、页面高度和控制台报错四类信号。T8.9 就是在两份"零 finding"的报告后面逐屏看截图，才发现搜索结果成对重复、筛选栏按钮文字折行等六项缺陷。修完记得把当初能抓住它的断言一并补进 `functional-regression.mjs`。
+
 ## Docker
 
 Compose 文件位于 [`code/docker/`](./code/docker/)。推荐通过部署助手启动，它会选择正确的 Compose 覆盖文件、等待容器健康检查，并请求 `/api/health`：

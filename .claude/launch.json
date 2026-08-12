@@ -10,8 +10,30 @@
     {
       "name": "hub-local",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--prefix", "code", "--", "--port", "3210"],
+      "runtimeArgs": [
+        "run",
+        "dev:local",
+        "--prefix",
+        "code",
+        "--",
+        "--port",
+        "3210"
+      ],
       "port": 3210
+    },
+    {
+      "name": "hub-cloud",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev:cloud",
+        "--prefix",
+        "code",
+        "--",
+        "--port",
+        "3211"
+      ],
+      "port": 3211
     }
   ]
 }

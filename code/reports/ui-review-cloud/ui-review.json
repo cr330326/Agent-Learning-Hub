@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-11T16:25:24.147Z",
-  "baseUrl": "http://127.0.0.1:3210",
+  "generatedAt": "2026-08-12T15:55:26.904Z",
+  "baseUrl": "http://127.0.0.1:3211",
   "pages": [
     {
       "path": "/",
@@ -48,7 +48,7 @@
       "path": "/courses?track=learning&access=owned&tag=none",
       "viewport": "desktop",
       "status": 200,
-      "height": 1033
+      "height": 1059
     },
     {
       "path": "/search",
@@ -60,7 +60,7 @@
       "path": "/search?q=agent",
       "viewport": "desktop",
       "status": 200,
-      "height": 3924
+      "height": 3922
     },
     {
       "path": "/projects",
@@ -162,7 +162,7 @@
       "path": "/search?q=agent",
       "viewport": "tablet",
       "status": 200,
-      "height": 3837
+      "height": 3835
     },
     {
       "path": "/projects",
@@ -264,13 +264,13 @@
       "path": "/search?q=agent",
       "viewport": "mobile",
       "status": 200,
-      "height": 4855
+      "height": 4887
     },
     {
       "path": "/projects",
       "viewport": "mobile",
       "status": 200,
-      "height": 4822
+      "height": 4905
     },
     {
       "path": "/learning",

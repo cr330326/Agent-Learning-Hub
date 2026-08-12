@@ -249,7 +249,11 @@ export function LearningDashboard({
           <a href="/api/data?format=notes" download>
             导出笔记 Markdown
           </a>
-          <button type="button" onClick={() => void deleteAccount()}>
+          <button
+            className="is-destructive"
+            type="button"
+            onClick={() => void deleteAccount()}
+          >
             删除账户
           </button>
         </div>

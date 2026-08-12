@@ -1,8 +1,8 @@
 # Functional regression
 
-- Instance: http://127.0.0.1:3210
-- Generated: 2026-08-11T16:24:27.170Z
-- Checks: 19, failed: 0
+- Instance: http://127.0.0.1:3211
+- Generated: 2026-08-12T15:56:06.362Z
+- Checks: 21, failed: 0
 
 | Result | Check | Detail |
 | --- | --- | --- |
@@ -14,7 +14,9 @@
 | PASS | catalog pagination advances | next/prev change the result window |
 | PASS | catalog filters narrow results | 63 of 515 after track=learning |
 | PASS | empty filter combination explains itself | empty state present with recovery guidance |
+| PASS | unknown filter values are ignored | 515 items kept; internal tags hidden |
 | PASS | search returns and filters results | 24 results, kind labels localised |
+| PASS | search results are not duplicated | 24 distinct results with per-result context |
 | PASS | cloud reader withholds local material and offers upstream | body withheld, upstream link offered |
 | PASS | reader opens the course document | 398 characters rendered |
 | PASS | reader chapter tabs switch content | n/a in this mode |

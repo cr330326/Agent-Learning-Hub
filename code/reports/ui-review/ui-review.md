@@ -1,7 +1,7 @@
 # UI review
 
-- Instance: http://127.0.0.1:3211
-- Generated: 2026-08-11T16:23:23.247Z
+- Instance: http://127.0.0.1:3210
+- Generated: 2026-08-12T16:03:49.279Z
 - Captures: 51
 - Findings: 0
 
@@ -18,16 +18,16 @@ No layout or console findings.
 | /courses | desktop | 200 | 2497 |
 | /courses?page=2 | desktop | 200 | 2497 |
 | /courses?track=agentic | desktop | 200 | 2497 |
-| /courses?track=learning&access=owned&tag=none | desktop | 200 | 1033 |
+| /courses?track=learning&access=owned&tag=none | desktop | 200 | 1059 |
 | /search | desktop | 200 | 3924 |
-| /search?q=agent | desktop | 200 | 3924 |
+| /search?q=agent | desktop | 200 | 3920 |
 | /projects | desktop | 200 | 4182 |
 | /learning | desktop | 200 | 3057 |
 | /login | desktop | 200 | 903 |
 | /content-policy | desktop | 200 | 1083 |
 | /contribute | desktop | 200 | 985 |
 | /courses/legacy-course-001 | desktop | 200 | 1361 |
-| /read/legacy-course-001 | desktop | 200 | 8570 |
+| /read/legacy-course-001 | desktop | 200 | 8095 |
 | / | tablet | 200 | 2557 |
 | /roadmap | tablet | 200 | 2493 |
 | /roadmap/stage-0 | tablet | 200 | 1851 |
@@ -37,14 +37,14 @@ No layout or console findings.
 | /courses?track=agentic | tablet | 200 | 3248 |
 | /courses?track=learning&access=owned&tag=none | tablet | 200 | 1134 |
 | /search | tablet | 200 | 3837 |
-| /search?q=agent | tablet | 200 | 3837 |
+| /search?q=agent | tablet | 200 | 3833 |
 | /projects | tablet | 200 | 4624 |
 | /learning | tablet | 200 | 3167 |
 | /login | tablet | 200 | 1134 |
 | /content-policy | tablet | 200 | 1134 |
 | /contribute | tablet | 200 | 1134 |
 | /courses/legacy-course-001 | tablet | 200 | 1826 |
-| /read/legacy-course-001 | tablet | 200 | 8847 |
+| /read/legacy-course-001 | tablet | 200 | 8371 |
 | / | mobile | 200 | 3208 |
 | /roadmap | mobile | 200 | 2556 |
 | /roadmap/stage-0 | mobile | 200 | 2001 |
@@ -54,11 +54,11 @@ No layout or console findings.
 | /courses?track=agentic | mobile | 200 | 5866 |
 | /courses?track=learning&access=owned&tag=none | mobile | 200 | 1288 |
 | /search | mobile | 200 | 4684 |
-| /search?q=agent | mobile | 200 | 4821 |
-| /projects | mobile | 200 | 4822 |
-| /learning | mobile | 200 | 5044 |
+| /search?q=agent | mobile | 200 | 4868 |
+| /projects | mobile | 200 | 4905 |
+| /learning | mobile | 200 | 5055 |
 | /login | mobile | 200 | 900 |
 | /content-policy | mobile | 200 | 1478 |
 | /contribute | mobile | 200 | 1216 |
 | /courses/legacy-course-001 | mobile | 200 | 1940 |
-| /read/legacy-course-001 | mobile | 200 | 12056 |
+| /read/legacy-course-001 | mobile | 200 | 11846 |

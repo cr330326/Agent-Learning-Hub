@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-11T16:22:11.357Z",
-  "baseUrl": "http://127.0.0.1:3211",
-  "total": 20,
+  "generatedAt": "2026-08-12T16:05:18.385Z",
+  "baseUrl": "http://127.0.0.1:3210",
+  "total": 22,
   "failed": 0,
   "results": [
     {
@@ -12,7 +12,7 @@
     {
       "name": "internal links resolve",
       "ok": true,
-      "detail": "134 internal links, all < 400"
+      "detail": "131 internal links, all < 400"
     },
     {
       "name": "header navigation reaches every section",
@@ -45,9 +45,19 @@
       "detail": "empty state present with recovery guidance"
     },
     {
+      "name": "unknown filter values are ignored",
+      "ok": true,
+      "detail": "515 items kept; internal tags hidden"
+    },
+    {
       "name": "search returns and filters results",
       "ok": true,
       "detail": "24 results, kind labels localised"
+    },
+    {
+      "name": "search results are not duplicated",
+      "ok": true,
+      "detail": "24 distinct results with per-result context"
     },
     {
       "name": "reader opens the course document",

@@ -10,16 +10,21 @@ const trackColors: Record<Track["id"], string> = {
   application: "#8a5d10",
 };
 
-const navigationLinks = [
-  { href: "/roadmap", label: "九阶段路线" },
-  { href: "/courses", label: "课程目录" },
-  { href: "/search", label: "搜索" },
-  { href: "/projects", label: "项目阶梯" },
-  { href: "/learning", label: "我的学习" },
-  { href: "/login", label: "登录" },
-];
+// Local mode signs the single local learner in automatically, so labelling the
+// last entry "登录" contradicted the page it opens ("你不需要登录").
+function navigationLinks(mode: DeploymentMode) {
+  return [
+    { href: "/roadmap", label: "九阶段路线" },
+    { href: "/courses", label: "课程目录" },
+    { href: "/search", label: "搜索" },
+    { href: "/projects", label: "项目阶梯" },
+    { href: "/learning", label: "我的学习" },
+    { href: "/login", label: mode === "local" ? "账户" : "登录" },
+  ];
+}
 
 export function SiteHeader({ mode }: { mode: DeploymentMode }) {
+  const links = navigationLinks(mode);
   return (
     <header className="site-header">
       <div className="site-header-inner">
@@ -33,7 +38,7 @@ export function SiteHeader({ mode }: { mode: DeploymentMode }) {
           </span>
         </Link>
         <nav className="primary-nav" aria-label="主导航">
-          {navigationLinks.map(({ href, label }) => (
+          {links.map(({ href, label }) => (
             <Link href={href} key={href}>
               {label}
             </Link>
@@ -47,7 +52,7 @@ export function SiteHeader({ mode }: { mode: DeploymentMode }) {
       {/* Below the primary-nav breakpoint this scrolling rail is the only
           navigation, so it must stay in the markup rather than be hidden. */}
       <nav className="compact-nav" aria-label="主导航（窄屏）">
-        {navigationLinks.map(({ href, label }) => (
+        {links.map(({ href, label }) => (
           <Link href={href} key={href}>
             {label}
           </Link>
@@ -74,24 +79,26 @@ export function SiteFooter() {
 
 export function StageRoute({ stages }: { stages: Stage[] }) {
   return (
-    <ol className="route-map" aria-label="九阶段学习路线">
-      {stages
-        .slice()
-        .sort((left, right) => left.order - right.order)
-        .map((stage) => (
-          <li key={stage.id} className="route-stop">
-            <Link href={`/roadmap/${stage.id}`}>
-              <span className="route-dot" aria-hidden="true">
-                {stage.order}
-              </span>
-              <span className="route-label">
-                <small>STAGE {String(stage.order).padStart(2, "0")}</small>
-                <strong>{stage.title}</strong>
-              </span>
-            </Link>
-          </li>
-        ))}
-    </ol>
+    <div className="route-map-scroll">
+      <ol className="route-map" aria-label="九阶段学习路线">
+        {stages
+          .slice()
+          .sort((left, right) => left.order - right.order)
+          .map((stage) => (
+            <li key={stage.id} className="route-stop">
+              <Link href={`/roadmap/${stage.id}`}>
+                <span className="route-dot" aria-hidden="true">
+                  {stage.order}
+                </span>
+                <span className="route-label">
+                  <small>STAGE {String(stage.order).padStart(2, "0")}</small>
+                  <strong>{stage.title}</strong>
+                </span>
+              </Link>
+            </li>
+          ))}
+      </ol>
+    </div>
   );
 }
 

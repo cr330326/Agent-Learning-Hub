@@ -1,6 +1,12 @@
-import { describe, expect, it } from "vitest";
+import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { dirname, join } from "node:path";
 
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
+
+import type { ContentCatalog, LearningItem } from "../catalog/content-schema";
 import {
+  buildRuntimeSearchIndex,
   buildSearchIndex,
   searchDocuments,
   type SearchDocument,
@@ -107,5 +113,131 @@ describe("search index", () => {
         accessPolicy: "owned",
       }).map((document) => document.id),
     ).toEqual(["a"]);
+  });
+});
+
+describe("local-mode search index", () => {
+  let localRoot: string;
+
+  beforeEach(async () => {
+    localRoot = await mkdtemp(join(tmpdir(), "agent-learning-search-"));
+  });
+
+  afterEach(async () => {
+    await rm(localRoot, { recursive: true, force: true });
+  });
+
+  async function writeChapter(relativePath: string, body: string) {
+    await mkdir(join(localRoot, dirname(relativePath)), { recursive: true });
+    await writeFile(join(localRoot, relativePath), body, "utf8");
+  }
+
+  function localItem(
+    id: string,
+    title: string,
+    localPath: string,
+    references: LearningItem["references"],
+  ): LearningItem {
+    return {
+      id,
+      title,
+      track: "aicoding",
+      stageIds: [],
+      summary: "collection",
+      learningGoals: [],
+      sourceUrl: null,
+      localPath,
+      accessPolicy: "local-preferred",
+      publicationRights: "third-party",
+      author: "Unknown",
+      license: "Unknown",
+      licenseStatus: "unknown",
+      tags: [],
+      lastReviewedAt: null,
+      references,
+      unavailableReason: null,
+    };
+  }
+
+  function catalogOf(items: LearningItem[]): ContentCatalog {
+    return {
+      tracks: [{ id: "aicoding", title: "AICoding", summary: "agents" }],
+      stages: [],
+      stageTasks: [],
+      projectOutcomes: [],
+      items,
+    };
+  }
+
+  // The legacy import gave every upstream chapter file its own course entry
+  // whose single reference repeats that entry's title, so a chapter document
+  // per entry produced two identical rows for the same document.
+  it("folds a lone chapter into its entry instead of listing it twice", async () => {
+    await writeChapter("AICoding/memory.md", "agent memory internals");
+    const item = localItem(
+      "reading-004",
+      "04 Agent 记忆",
+      "AICoding/memory.md",
+      [
+        {
+          label: "04 Agent 记忆",
+          sourceUrl: null,
+          localPath: "AICoding/memory.md",
+        },
+      ],
+    );
+
+    const index = await buildRuntimeSearchIndex(catalogOf([item]), {
+      mode: "local",
+      localRoot,
+    });
+
+    expect(index.filter(({ kind }) => kind === "local-chapter")).toHaveLength(
+      0,
+    );
+    expect(
+      searchDocuments(index, { query: "记忆" }).map(({ id }) => id),
+    ).toEqual(["reading-004"]);
+    // Folding keeps the body searchable from the single remaining row.
+    expect(
+      searchDocuments(index, { query: "internals" }).map(({ id }) => id),
+    ).toEqual(["reading-004"]);
+  });
+
+  it("keeps per-chapter results for a genuinely multi-chapter entry", async () => {
+    await writeChapter("Learning/course/README.md", "overview text");
+    await writeChapter("Learning/course/preface.md", "preface text");
+    const item = localItem(
+      "course-001",
+      "Hello-Agents",
+      "Learning/course/README.md",
+      [
+        {
+          label: "本地 README",
+          sourceUrl: null,
+          localPath: "Learning/course/README.md",
+        },
+        {
+          label: "前言",
+          sourceUrl: null,
+          localPath: "Learning/course/preface.md",
+        },
+      ],
+    );
+
+    const index = await buildRuntimeSearchIndex(catalogOf([item]), {
+      mode: "local",
+      localRoot,
+    });
+
+    expect(
+      index
+        .filter(({ kind }) => kind === "local-chapter")
+        .map(({ title }) => title)
+        .sort(),
+    ).toEqual(["前言", "本地 README"]);
+    expect(
+      searchDocuments(index, { query: "preface" }).map(({ href }) => href),
+    ).toEqual(["/read/course-001?chapter=Learning%2Fcourse%2Fpreface.md"]);
   });
 });

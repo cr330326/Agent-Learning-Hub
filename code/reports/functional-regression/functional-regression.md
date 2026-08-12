@@ -1,20 +1,22 @@
 # Functional regression
 
-- Instance: http://127.0.0.1:3211
-- Generated: 2026-08-11T16:22:11.357Z
-- Checks: 20, failed: 0
+- Instance: http://127.0.0.1:3210
+- Generated: 2026-08-12T16:05:18.385Z
+- Checks: 22, failed: 0
 
 | Result | Check | Detail |
 | --- | --- | --- |
 | PASS | runtime mode detected | local |
-| PASS | internal links resolve | 134 internal links, all < 400 |
+| PASS | internal links resolve | 131 internal links, all < 400 |
 | PASS | header navigation reaches every section | 6 sections reachable |
 | PASS | roadmap rows open their stage | 9 rows; first opens 理解 Agent 是什么 |
 | PASS | stage pages chain prev/next | stage-0 and stage-8 boundaries correct |
 | PASS | catalog pagination advances | next/prev change the result window |
 | PASS | catalog filters narrow results | 63 of 515 after track=learning |
 | PASS | empty filter combination explains itself | empty state present with recovery guidance |
+| PASS | unknown filter values are ignored | 515 items kept; internal tags hidden |
 | PASS | search returns and filters results | 24 results, kind labels localised |
+| PASS | search results are not duplicated | 24 distinct results with per-result context |
 | PASS | reader opens the course document | 5126 characters rendered |
 | PASS | reader chapter tabs switch content | switched to 前言 |
 | PASS | reader has previous/next chapter links | next then previous round-trips |

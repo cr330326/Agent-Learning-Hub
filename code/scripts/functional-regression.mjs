@@ -301,13 +301,39 @@ async function main() {
       return `${filtered} of ${total} after track=learning`;
     });
 
+    // The combination has to be one the page actually honours: an unknown tag
+    // is now dropped rather than applied, so probing with `tag=none` would
+    // assert against a full grid instead of an empty one. "Pending" entries
+    // only exist on the learning track, so pairing it with another track is a
+    // real, empty combination.
     await recorder.run("empty filter combination explains itself", async () => {
-      await goto("/courses?track=learning&access=owned&tag=none");
+      await goto("/courses?track=aicoding&access=unavailable");
       const empty = await page.$(".empty-state-wide");
       assert(empty !== null, "no empty state rendered");
       const text = (await empty.textContent()) ?? "";
       assert(text.trim().length > 10, "empty state has no guidance");
       return "empty state present with recovery guidance";
+    });
+
+    // An unrecognised filter value used to be echoed straight back into the
+    // results heading and silently emptied the grid.
+    await recorder.run("unknown filter values are ignored", async () => {
+      await goto("/courses?tag=none");
+      const total = Number(
+        (await page.textContent(".directory-heading strong")) ?? "0",
+      );
+      assert(total > 0, "an unknown tag emptied the catalog");
+      const heading = (await page.textContent(".directory-heading")) ?? "";
+      assert(!heading.includes("none"), `raw tag echoed back: ${heading}`);
+      const options = await page.$$eval(
+        ".filter-bar select[name='tag'] option",
+        (nodes) => nodes.map((node) => node.value),
+      );
+      assert(
+        !options.includes("legacy-reading"),
+        "internal bookkeeping tags are offered as filters",
+      );
+      return `${total} items kept; internal tags hidden`;
     });
 
     // ---- Search ------------------------------------------------------------
@@ -326,6 +352,35 @@ async function main() {
         `raw enum kinds leaked: ${[...new Set(kinds)].join(",")}`,
       );
       return `${count} results, kind labels localised`;
+    });
+
+    // Local mode used to index a single-chapter entry twice — once as a course
+    // entry and once as its own chapter — so every row appeared as a pair.
+    await recorder.run("search results are not duplicated", async () => {
+      await goto("/search?q=agent");
+      // Two upstream projects may legitimately ship a file of the same name,
+      // so identity is the destination, not the heading text.
+      const targets = await page.$$eval(".search-result h2 a", (links) =>
+        links.map(
+          (link) => `${link.getAttribute("href")}::${link.textContent.trim()}`,
+        ),
+      );
+      assert(targets.length > 0, "no search results for 'agent'");
+      const duplicates = targets.filter(
+        (target, index) => targets.indexOf(target) !== index,
+      );
+      assert(
+        duplicates.length === 0,
+        `duplicate results: ${[...new Set(duplicates)].slice(0, 3).join(",")}`,
+      );
+      const contexts = await page.$$eval(".search-result p", (rows) =>
+        rows.map((row) => row.textContent.trim()),
+      );
+      assert(
+        !contexts.every((context) => context === "未关联路线阶段"),
+        "every result fell back to the same placeholder context",
+      );
+      return `${targets.length} distinct results with per-result context`;
     });
 
     // ---- Reader ------------------------------------------------------------

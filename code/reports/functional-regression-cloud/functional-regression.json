@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-11T16:24:27.170Z",
-  "baseUrl": "http://127.0.0.1:3210",
-  "total": 19,
+  "generatedAt": "2026-08-12T15:56:06.362Z",
+  "baseUrl": "http://127.0.0.1:3211",
+  "total": 21,
   "failed": 0,
   "results": [
     {
@@ -45,9 +45,19 @@
       "detail": "empty state present with recovery guidance"
     },
     {
+      "name": "unknown filter values are ignored",
+      "ok": true,
+      "detail": "515 items kept; internal tags hidden"
+    },
+    {
       "name": "search returns and filters results",
       "ok": true,
       "detail": "24 results, kind labels localised"
+    },
+    {
+      "name": "search results are not duplicated",
+      "ok": true,
+      "detail": "24 distinct results with per-result context"
     },
     {
       "name": "cloud reader withholds local material and offers upstream",

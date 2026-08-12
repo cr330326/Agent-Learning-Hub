@@ -99,6 +99,17 @@ const DISCARDED_SUBTREES = new Set([
 
 const VOID_TAGS = new Set(["br", "hr", "img"]);
 
+/**
+ * Upstream READMEs embed dozens of absolute image URLs (badges, avatars, CDN
+ * screenshots) that stay absolute after sanitising. Those requests still leave
+ * the reader's browser, so every reader image is emitted without a referrer and
+ * off the critical path — a document here can run to tens of thousands of
+ * pixels. Blocking remote images outright is a content-policy change, not a
+ * rendering one, and would need its own decision record.
+ */
+const IMAGE_LOADING_ATTRIBUTES =
+  ' loading="lazy" decoding="async" referrerpolicy="no-referrer"';
+
 const GLOBAL_ATTRIBUTES = new Set(["align", "title"]);
 
 const TAG_ATTRIBUTES: Record<string, ReadonlySet<string>> = {
@@ -312,7 +323,7 @@ function sanitizeHtml(value: string, options: MarkdownRenderOptions) {
     if (tag === "img" && !attributes.includes(" src=")) continue;
 
     if (VOID_TAGS.has(tag)) {
-      output += `<${tag}${attributes} />`;
+      output += `<${tag}${attributes}${tag === "img" ? IMAGE_LOADING_ATTRIBUTES : ""} />`;
       continue;
     }
 
@@ -345,7 +356,7 @@ function renderInline(value: string, options: MarkdownRenderOptions = {}) {
       if (src === null) {
         output += escapeText(match[1]);
       } else {
-        output += `<img src="${escapeHtml(src)}" alt="${escapeHtml(match[1])}" loading="lazy" />`;
+        output += `<img src="${escapeHtml(src)}" alt="${escapeHtml(match[1])}"${IMAGE_LOADING_ATTRIBUTES} />`;
       }
     } else if (match[3] !== undefined) {
       output += `<code>${escapeHtml(match[3])}</code>`;

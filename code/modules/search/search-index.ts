@@ -17,6 +17,8 @@ export type SearchDocument = {
   kind: SearchDocumentKind;
   title: string;
   text: string;
+  /** One line of context for the result list; never the matched body text. */
+  summary?: string;
   stageIds?: string[];
   track?: LearningItem["track"];
   accessPolicy?: LearningItem["accessPolicy"] | "local-document";
@@ -24,16 +26,20 @@ export type SearchDocument = {
   itemId?: string;
 };
 
+export type LocalChapterDocument = {
+  itemId: string;
+  title: string;
+  relativePath: string;
+  text: string;
+  stageIds?: string[];
+  track?: LearningItem["track"];
+  /** The course entry this chapter belongs to, shown as result context. */
+  itemTitle?: string;
+};
+
 export type SearchIndexOptions = {
   bodyByItemId?: ReadonlyMap<string, string>;
-  localChapterDocuments?: ReadonlyArray<{
-    itemId: string;
-    title: string;
-    relativePath: string;
-    text: string;
-    stageIds?: string[];
-    track?: LearningItem["track"];
-  }>;
+  localChapterDocuments?: ReadonlyArray<LocalChapterDocument>;
 };
 
 export type RuntimeSearchIndexOptions = {
@@ -86,6 +92,7 @@ export function buildSearchIndex(
           ...task.acceptanceCriteria,
         ]),
       ].join(" "),
+      summary: stage.summary,
       stageIds: [stage.id],
       href: `/roadmap/${stage.id}`,
     });
@@ -98,6 +105,7 @@ export function buildSearchIndex(
       kind: "item",
       title: item.title,
       text: `${publicItemText(item)} ${bodyByItemId.get(item.id) ?? ""}`,
+      summary: item.summary,
       stageIds: item.stageIds,
       track: item.track,
       accessPolicy: item.accessPolicy,
@@ -113,6 +121,7 @@ export function buildSearchIndex(
       text: [outcome.title, outcome.summary, ...outcome.evidenceTypes].join(
         " ",
       ),
+      summary: outcome.summary,
       stageIds: outcome.stageId ? [outcome.stageId] : [],
       href: outcome.stageId ? `/roadmap/${outcome.stageId}` : "/projects",
     });
@@ -124,6 +133,7 @@ export function buildSearchIndex(
       kind: "local-chapter",
       title: chapter.title,
       text: `${chapter.title} ${chapter.text}`,
+      summary: chapter.itemTitle,
       stageIds: chapter.stageIds,
       track: chapter.track,
       accessPolicy: "local-document",
@@ -148,14 +158,7 @@ export async function buildRuntimeSearchIndex(
     string,
     SearchDocument["accessPolicy"]
   >();
-  const localChapterDocuments: Array<{
-    itemId: string;
-    title: string;
-    relativePath: string;
-    text: string;
-    stageIds?: string[];
-    track?: LearningItem["track"];
-  }> = [];
+  const localChapterDocuments: LocalChapterDocument[] = [];
 
   await Promise.all(
     catalog.items.map(async (item) => {
@@ -189,26 +192,41 @@ export async function buildRuntimeSearchIndex(
         const chapters = await listLocalChapters(item, {
           localRoot,
         });
-        await Promise.all(
+        // The legacy import turned each upstream chapter file into its own
+        // course entry whose single reference repeats the entry's own title.
+        // Emitting a chapter document for those produced a second result row
+        // per entry, identical to the first. A lone chapter is therefore folded
+        // into its entry's searchable body instead of standing on its own; only
+        // genuinely multi-chapter entries keep per-chapter results.
+        const standalone = chapters.length > 1;
+        const chapterBodies = await Promise.all(
           chapters.map(async (chapter) => {
             try {
               const document = await readLocalDocument(item, {
                 localRoot,
                 relativePath: chapter.relativePath,
               });
-              localChapterDocuments.push({
-                itemId: item.id,
-                title: chapter.label,
-                relativePath: chapter.relativePath,
-                text: document.markdown,
-                stageIds: item.stageIds,
-                track: item.track,
-              });
+              if (standalone) {
+                localChapterDocuments.push({
+                  itemId: item.id,
+                  title: chapter.label,
+                  relativePath: chapter.relativePath,
+                  text: document.markdown,
+                  stageIds: item.stageIds,
+                  track: item.track,
+                  itemTitle: item.title,
+                });
+              }
+              return document.markdown;
             } catch {
               // A missing or unsupported chapter remains visible as metadata only.
+              return "";
             }
           }),
         );
+        if (!standalone && chapterBodies.length > 0) {
+          bodyByItemId.set(item.id, chapterBodies.join(" "));
+        }
       }
     }),
   );

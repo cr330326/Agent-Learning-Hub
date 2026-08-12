@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-11T16:23:23.247Z",
-  "baseUrl": "http://127.0.0.1:3211",
+  "generatedAt": "2026-08-12T16:03:49.278Z",
+  "baseUrl": "http://127.0.0.1:3210",
   "pages": [
     {
       "path": "/",
@@ -48,7 +48,7 @@
       "path": "/courses?track=learning&access=owned&tag=none",
       "viewport": "desktop",
       "status": 200,
-      "height": 1033
+      "height": 1059
     },
     {
       "path": "/search",
@@ -60,7 +60,7 @@
       "path": "/search?q=agent",
       "viewport": "desktop",
       "status": 200,
-      "height": 3924
+      "height": 3920
     },
     {
       "path": "/projects",
@@ -102,7 +102,7 @@
       "path": "/read/legacy-course-001",
       "viewport": "desktop",
       "status": 200,
-      "height": 8570
+      "height": 8095
     },
     {
       "path": "/",
@@ -162,7 +162,7 @@
       "path": "/search?q=agent",
       "viewport": "tablet",
       "status": 200,
-      "height": 3837
+      "height": 3833
     },
     {
       "path": "/projects",
@@ -204,7 +204,7 @@
       "path": "/read/legacy-course-001",
       "viewport": "tablet",
       "status": 200,
-      "height": 8847
+      "height": 8371
     },
     {
       "path": "/",
@@ -264,19 +264,19 @@
       "path": "/search?q=agent",
       "viewport": "mobile",
       "status": 200,
-      "height": 4821
+      "height": 4868
     },
     {
       "path": "/projects",
       "viewport": "mobile",
       "status": 200,
-      "height": 4822
+      "height": 4905
     },
     {
       "path": "/learning",
       "viewport": "mobile",
       "status": 200,
-      "height": 5044
+      "height": 5055
     },
     {
       "path": "/login",
@@ -306,7 +306,7 @@
       "path": "/read/legacy-course-001",
       "viewport": "mobile",
       "status": 200,
-      "height": 12056
+      "height": 11846
     }
   ],
   "findings": []

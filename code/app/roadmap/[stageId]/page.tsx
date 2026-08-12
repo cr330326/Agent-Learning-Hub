@@ -145,7 +145,14 @@ export default async function StagePage({
             <p className="eyebrow">CURATED READING</p>
             <h2 id="reading-title">配套资料</h2>
           </div>
-          <span className="section-aside">{items.length} 项</span>
+          {/* Almost every imported entry is still unmapped to a stage, so this
+              section is routinely one card wide; the catalog is the way on. */}
+          <p className="section-aside">
+            {items.length} 项 ·{" "}
+            <Link className="text-link" href="/courses">
+              到课程目录找更多 →
+            </Link>
+          </p>
         </div>
         <div className="content-grid">
           {resolvedItems.length === 0 ? (

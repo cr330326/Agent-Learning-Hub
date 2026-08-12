@@ -133,9 +133,14 @@ export default async function SearchPage({
         <div className="search-result-list">
           {pageWindow.items.map((result) => {
             const href = result.href ?? "/courses";
-            const stageLabels = (result.stageIds ?? [])
-              .map((stageId) => stageTitles.get(stageId) ?? stageId)
-              .join(" / ");
+            // A stage result's only stage is itself, so its stage label would
+            // just repeat the heading above it.
+            const stageLabels =
+              result.kind === "stage"
+                ? ""
+                : (result.stageIds ?? [])
+                    .map((stageId) => stageTitles.get(stageId) ?? stageId)
+                    .join(" / ");
             return (
               <article
                 className="search-result"
@@ -148,7 +153,9 @@ export default async function SearchPage({
                   <h2>
                     <Link href={href}>{result.title}</Link>
                   </h2>
-                  <p>{stageLabels || "未关联路线阶段"}</p>
+                  {/* Most legacy entries carry no stage, so the stage line
+                      alone repeated one placeholder down the whole page. */}
+                  <p>{stageLabels || result.summary || "公开目录条目"}</p>
                 </div>
                 <span className="item-policy">
                   {result.accessPolicy
