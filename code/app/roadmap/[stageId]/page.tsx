@@ -2,6 +2,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { ContentCard } from "../../components/content-card";
+import {
+  StageProgressProvider,
+  StageTaskChecklist,
+} from "../../components/stage-progress";
 import { getContentResolver, loadPublicCatalog } from "../../../lib/catalog";
 
 export const dynamic = "force-dynamic";
@@ -35,11 +39,10 @@ export default async function StagePage({
   const railFill = `${lastOrder === 0 ? 100 : Math.round((stage.order / lastOrder) * 100)}%`;
   // The legacy import seeded learningGoals from the task list and
   // maintainerGuide from the summary; show each string once.
-  const taskTitles = new Set(
-    stage.taskIds
-      .map((taskId) => tasksById.get(taskId)?.title)
-      .filter((title): title is string => title !== undefined),
-  );
+  const tasks = stage.taskIds
+    .map((taskId) => tasksById.get(taskId))
+    .filter((task): task is NonNullable<typeof task> => task !== undefined);
+  const taskTitles = new Set(tasks.map((task) => task.title));
   const distinctGoals = stage.learningGoals.filter(
     (goal) => !taskTitles.has(goal),
   );
@@ -67,77 +70,55 @@ export default async function StagePage({
         </div>
       </div>
 
-      <div className="stage-grid">
-        <section className="stage-column" aria-labelledby="goals-title">
-          <p className="eyebrow">01 / LEARNING GOALS</p>
-          <h2 id="goals-title">这一站要能说清楚</h2>
-          {distinctGoals.length > 0 ? (
-            <ul className="check-list">
-              {distinctGoals.map((goal) => (
-                <li key={goal}>{goal}</li>
-              ))}
-            </ul>
-          ) : (
-            <p className="empty-state">
-              这一站的目标就在右侧的实践任务里：把每一条做出来，就说明你说得清楚了。
-            </p>
-          )}
-          {showMaintainerGuide ? (
-            <div className="maintainer-note">
-              <span>维护者提示</span>
-              <p>{stage.maintainerGuide}</p>
-            </div>
-          ) : null}
-        </section>
+      <StageProgressProvider>
+        <div className="stage-grid">
+          <section className="stage-column" aria-labelledby="goals-title">
+            <p className="eyebrow">01 / LEARNING GOALS</p>
+            <h2 id="goals-title">这一站要能说清楚</h2>
+            {distinctGoals.length > 0 ? (
+              <ul className="check-list">
+                {distinctGoals.map((goal) => (
+                  <li key={goal}>{goal}</li>
+                ))}
+              </ul>
+            ) : (
+              <p className="empty-state">
+                这一站的目标就在右侧的实践任务里：把每一条做出来，就说明你说得清楚了。
+              </p>
+            )}
+            {showMaintainerGuide ? (
+              <div className="maintainer-note">
+                <span>维护者提示</span>
+                <p>{stage.maintainerGuide}</p>
+              </div>
+            ) : null}
+          </section>
 
-        <section className="stage-column" aria-labelledby="tasks-title">
-          <p className="eyebrow">02 / PRACTICE TASKS</p>
-          <h2 id="tasks-title">把理解变成动作</h2>
-          <ol className="task-list">
-            {stage.taskIds.map((taskId, index) => {
-              const task = tasksById.get(taskId);
-              if (!task) return null;
-              return (
-                <li key={task.id}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <div>
-                    <strong>{task.title}</strong>
-                    {task.summary.trim() !== "" &&
-                    task.summary.trim() !== task.title.trim() ? (
-                      <p>{task.summary}</p>
-                    ) : null}
-                    {task.acceptanceCriteria.length > 0 ? (
-                      <ul className="task-criteria">
-                        {task.acceptanceCriteria.map((criterion) => (
-                          <li key={criterion}>{criterion}</li>
-                        ))}
-                      </ul>
-                    ) : null}
-                  </div>
-                </li>
-              );
-            })}
-          </ol>
-        </section>
+          <section className="stage-column" aria-labelledby="tasks-title">
+            <p className="eyebrow">02 / PRACTICE TASKS</p>
+            <h2 id="tasks-title">把理解变成动作</h2>
+            <StageTaskChecklist tasks={tasks} />
+          </section>
 
-        <section
-          className="stage-column outcome-column"
-          aria-labelledby="outcome-title"
-        >
-          <p className="eyebrow">03 / PROOF OF WORK</p>
-          <h2 id="outcome-title">留下可复查的成果</h2>
-          {outcomes.map((outcome) => (
-            <div className="outcome-card" key={outcome.id}>
-              <span>STAGE OUTCOME</span>
-              <h3>{outcome.summary.replace(/^产出[：:]\s*/, "")}</h3>
-              <small>完成前至少提交一条成果，并主动确认阶段完成。</small>
-              <Link className="outcome-card-link" href="/learning">
-                去“我的学习”登记成果 →
-              </Link>
-            </div>
-          ))}
-        </section>
-      </div>
+          <section
+            className="stage-column outcome-column"
+            aria-labelledby="outcome-title"
+          >
+            <p className="eyebrow">03 / PROOF OF WORK</p>
+            <h2 id="outcome-title">留下可复查的成果</h2>
+            {outcomes.map((outcome) => (
+              <div className="outcome-card" key={outcome.id}>
+                <span>STAGE OUTCOME</span>
+                <h3>{outcome.summary.replace(/^产出[：:]\s*/, "")}</h3>
+                <small>完成前至少提交一条成果，并主动确认阶段完成。</small>
+                <Link className="outcome-card-link" href="/learning">
+                  去“我的学习”登记成果 →
+                </Link>
+              </div>
+            ))}
+          </section>
+        </div>
+      </StageProgressProvider>
 
       <section className="stage-reading" aria-labelledby="reading-title">
         <div className="section-bar">

@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-12T15:56:06.362Z",
+  "generatedAt": "2026-08-13T13:43:27.055Z",
   "baseUrl": "http://127.0.0.1:3211",
-  "total": 21,
+  "total": 22,
   "failed": 0,
   "results": [
     {
@@ -100,6 +100,11 @@
       "name": "anonymous cloud state is gated",
       "ok": true,
       "detail": "dashboard, export and writes all refused"
+    },
+    {
+      "name": "anonymous stage page stays read-only",
+      "ok": true,
+      "detail": "3 tasks readable, 0 controls"
     },
     {
       "name": "login page offers the cloud identity route",

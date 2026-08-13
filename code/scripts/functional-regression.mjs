@@ -565,6 +565,28 @@ async function main() {
         return "dashboard, export and writes all refused";
       });
 
+      // The stage page gained tick-in-place; anonymous readers must still get
+      // a readable list rather than controls that cannot save.
+      await recorder.run("anonymous stage page stays read-only", async () => {
+        await goto("/roadmap/stage-0");
+        await page.waitForTimeout(600);
+        const boxes = await page.locator(".task-check input").count();
+        assert(
+          boxes === 0,
+          `${boxes} tickable tasks offered to an anonymous reader`,
+        );
+        const badges = await page.locator(".stage-progress").count();
+        assert(badges === 0, "progress badge rendered without a session");
+        const tasks = await page.locator(".task-list li").count();
+        assert(tasks > 0, "practice tasks disappeared along with the controls");
+        const note = (await page.textContent(".task-list-note")) ?? "";
+        assert(
+          note.trim().length > 0,
+          "no explanation of why ticking is unavailable",
+        );
+        return `${tasks} tasks readable, 0 controls`;
+      });
+
       await recorder.run(
         "login page offers the cloud identity route",
         async () => {
@@ -632,6 +654,62 @@ async function main() {
         await waitFor(() => restored.isChecked().then((value) => !value));
         return `"${label.trim()}" persisted across a reload`;
       });
+
+      // PAGE-002 asks the roadmap to show completion, and the stage page is
+      // where the work actually happens — ticking used to be dashboard-only.
+      await recorder.run(
+        "stage page ticks tasks and roadmap shows it",
+        async () => {
+          await goto("/roadmap/stage-0");
+          const box = page.locator(".task-check input").first();
+          await waitFor(() => box.count().then((count) => count > 0));
+          if (await box.isChecked()) {
+            await box.click();
+            await waitFor(() => box.isChecked().then((value) => !value));
+          }
+
+          await goto("/roadmap");
+          const before =
+            (await page
+              .locator(".roadmap-row")
+              .first()
+              .locator(".stage-progress small")
+              .textContent()) ?? "";
+          assert(
+            before.includes("0/"),
+            `roadmap did not start from zero progress: ${before}`,
+          );
+
+          await goto("/roadmap/stage-0");
+          const target = page.locator(".task-check input").first();
+          await target.click();
+          await waitFor(() => target.isChecked());
+          await page.reload({ waitUntil: "networkidle" });
+          await waitFor(() =>
+            page.locator(".task-check input").first().isChecked(),
+          );
+
+          await goto("/roadmap");
+          const after =
+            (await page
+              .locator(".roadmap-row")
+              .first()
+              .locator(".stage-progress small")
+              .textContent()) ?? "";
+          assert(
+            after.includes("1/"),
+            `roadmap did not reflect the tick: ${after}`,
+          );
+
+          // Restore: this check owns the state it created.
+          await goto("/roadmap/stage-0");
+          const restore = page.locator(".task-check input").first();
+          await waitFor(() => restore.isChecked());
+          await restore.click();
+          await waitFor(() => restore.isChecked().then((value) => !value));
+          return `stage tick round-trips; roadmap went "${before.trim()}" → "${after.trim()}"`;
+        },
+      );
 
       await recorder.run("private note saves and deletes", async () => {
         await goto("/learning");

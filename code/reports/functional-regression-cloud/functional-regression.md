@@ -1,8 +1,8 @@
 # Functional regression
 
 - Instance: http://127.0.0.1:3211
-- Generated: 2026-08-12T15:56:06.362Z
-- Checks: 21, failed: 0
+- Generated: 2026-08-13T13:43:27.055Z
+- Checks: 22, failed: 0
 
 | Result | Check | Detail |
 | --- | --- | --- |
@@ -25,5 +25,6 @@
 | PASS | reader table of contents anchors exist | every TOC entry resolves to a heading |
 | PASS | course detail exposes references | 3 references, metadata localised |
 | PASS | anonymous cloud state is gated | dashboard, export and writes all refused |
+| PASS | anonymous stage page stays read-only | 3 tasks readable, 0 controls |
 | PASS | login page offers the cloud identity route | GitHub sign-in offered |
 | PASS | no console errors during the run |  |

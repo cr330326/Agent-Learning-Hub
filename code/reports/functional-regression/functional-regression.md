@@ -1,8 +1,8 @@
 # Functional regression
 
 - Instance: http://127.0.0.1:3210
-- Generated: 2026-08-12T16:05:18.385Z
-- Checks: 22, failed: 0
+- Generated: 2026-08-12T16:19:28.622Z
+- Checks: 23, failed: 0
 
 | Result | Check | Detail |
 | --- | --- | --- |
@@ -25,6 +25,7 @@
 | PASS | course detail exposes references | 3 references, metadata localised |
 | PASS | bookmark persists and can be undone | bookmark round-trips to the dashboard |
 | PASS | stage task checkbox persists | "画出 agent loop" persisted across a reload |
+| PASS | stage page ticks tasks and roadmap shows it | stage tick round-trips; roadmap went "动作 0/3" → "动作 1/3" |
 | PASS | private note saves and deletes | note created then removed |
 | PASS | personal data export responds | JSON and Markdown exports both respond |
 | PASS | no console errors during the run |  |

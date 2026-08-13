@@ -1386,6 +1386,69 @@ h3 {
     700 11px ui-monospace,
     monospace;
 }
+/* The stage page is where the work happens, so the ordinal doubles as the
+   checkbox target rather than sending the reader to the dashboard to record
+   what they just did here. */
+.task-check {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  cursor: pointer;
+}
+.task-check input {
+  margin: 0;
+  accent-color: var(--forest);
+}
+.task-check-index {
+  color: var(--coral);
+  font:
+    700 11px ui-monospace,
+    monospace;
+}
+.task-item-done > div > strong {
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+.task-list-note {
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+/* Roadmap rows report progress but never completion: STATE-004 reserves that
+   for an outcome the reader records deliberately. */
+.stage-progress {
+  display: grid;
+  gap: 5px;
+  margin-top: 4px;
+}
+.stage-progress-bar {
+  height: 3px;
+  background: var(--line);
+}
+.stage-progress-bar::before {
+  content: "";
+  display: block;
+  height: 100%;
+  width: var(--stage-progress-fill, 0%);
+  background: var(--coral);
+}
+.stage-progress small {
+  color: var(--muted);
+  font:
+    10px ui-monospace,
+    monospace;
+  letter-spacing: 0.04em;
+}
+.stage-progress-tasks-done .stage-progress-bar::before,
+.stage-progress-confirmed .stage-progress-bar::before {
+  background: var(--forest);
+  width: 100%;
+}
+.stage-progress-confirmed small {
+  color: var(--forest);
+  font-weight: 700;
+}
 .task-list strong {
   font-size: 14px;
   font-weight: 700;
