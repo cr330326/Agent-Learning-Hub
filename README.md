@@ -9,6 +9,7 @@ Agent Learning Hub 是一个以实践成果为主线的 Agent 工程学习网站
 ## 当前能力
 
 - 路线、课程目录、项目阶梯、搜索和安全阅读器；Cloud/Local 共享稳定课程 ID。
+- 路线页按阶段显示个人进度，实践动作可在阶段页就地勾选；完成仍以主动提交的成果为准。
 - Cloud Mode 使用 GitHub 登录；Local Mode 使用回环地址上的单用户身份。
 - SQLite 保存身份、会话和私人学习状态；公开目录位于 [`code/content/`](./code/content/)，不写入数据库。
 - Local Mode 只读挂载 [`local-courses/`](./local-courses/)，缺失素材会回退到上游地址；云端镜像不携带该目录。
@@ -90,19 +91,19 @@ code/scripts/docker-deploy.sh release up
 
 `code/scripts/` 中的非 `.sh` 文件不是冗余文件；它们是 `code/package.json` 和 CI 调用的 Node/TypeScript 维护入口，应保留：
 
-| 命令                                                         | 用途                                                                                     |
-| ------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
-| `code/scripts/local-preview.sh`                              | 从当前代码构建镜像并启动、查看或停止本机 Local Mode 预览                                 |
-| `code/scripts/docker-deploy.sh`                              | 本地构建、启动、配置检查、健康验证和已发布镜像运行                                       |
-| `code/scripts/lighthouse-deploy.sh`                          | 通过 SSH 预检、初始化、备份、部署、验证和回滚专用 Lighthouse 生产主机                    |
-| `npm run audit:content --prefix code`                        | 校验内容 schema、来源、许可证和本地路径                                                  |
-| `npm run materials --prefix code -- <check\|audit\|reindex>` | 查看素材新鲜度、审计路径和重建索引；`update <course-id> --yes` 只允许单仓库 fast-forward |
-| `npm run db:backup --prefix code` / `db:restore`             | 创建加密 SQLite 备份或在明确确认后恢复                                                   |
-| `npm run audit:baseline --prefix code`                       | 重新生成旧站能力基线                                                                     |
-| `npm run audit:boundaries --prefix code`                     | 审计 Git、Docker 与 CI 的内容边界                                                        |
-| `npm run convert:legacy --prefix code`                       | 从 `learning-site/data.js` 可重复生成结构化内容与报告                                    |
-| `node code/scripts/ui-review.mjs --base-url <url>`           | 在 desktop/tablet/mobile 三档抓全页截图，报告 HTTP 错误、横向溢出、超长页面与控制台报错  |
-| `node code/scripts/functional-regression.mjs --base-url <url>` | 点击式功能回归：链接、翻页、筛选、章节与上下章导航、学习状态读写；按运行模式分支断言      |
+| 命令                                                           | 用途                                                                                     |
+| -------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `code/scripts/local-preview.sh`                                | 从当前代码构建镜像并启动、查看或停止本机 Local Mode 预览                                 |
+| `code/scripts/docker-deploy.sh`                                | 本地构建、启动、配置检查、健康验证和已发布镜像运行                                       |
+| `code/scripts/lighthouse-deploy.sh`                            | 通过 SSH 预检、初始化、备份、部署、验证和回滚专用 Lighthouse 生产主机                    |
+| `npm run audit:content --prefix code`                          | 校验内容 schema、来源、许可证和本地路径                                                  |
+| `npm run materials --prefix code -- <check\|audit\|reindex>`   | 查看素材新鲜度、审计路径和重建索引；`update <course-id> --yes` 只允许单仓库 fast-forward |
+| `npm run db:backup --prefix code` / `db:restore`               | 创建加密 SQLite 备份或在明确确认后恢复                                                   |
+| `npm run audit:baseline --prefix code`                         | 重新生成旧站能力基线                                                                     |
+| `npm run audit:boundaries --prefix code`                       | 审计 Git、Docker 与 CI 的内容边界                                                        |
+| `npm run convert:legacy --prefix code`                         | 从 `learning-site/data.js` 可重复生成结构化内容与报告                                    |
+| `node code/scripts/ui-review.mjs --base-url <url>`             | 在 desktop/tablet/mobile 三档抓全页截图，报告 HTTP 错误、横向溢出、超长页面与控制台报错  |
+| `node code/scripts/functional-regression.mjs --base-url <url>` | 点击式功能回归：链接、翻页、筛选、章节与上下章导航、学习状态读写；按运行模式分支断言     |
 
 ## 文档入口
 

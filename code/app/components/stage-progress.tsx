@@ -186,7 +186,7 @@ export function StageProgressBadge({
     progress.completedTaskIds.has(taskId),
   ).length;
   const hasOutcome = progress.outcomeStageIds.has(stageId);
-  // Ticking every task is not completion — STATE-004 reserves that for a
+  // Ticking every task is not completion — STATE-005 reserves that for a
   // recorded outcome the reader submits deliberately.
   const stageState = hasOutcome
     ? "confirmed"

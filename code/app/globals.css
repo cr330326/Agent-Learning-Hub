@@ -1415,7 +1415,7 @@ h3 {
   color: var(--muted);
   font-size: 12px;
 }
-/* Roadmap rows report progress but never completion: STATE-004 reserves that
+/* Roadmap rows report progress but never completion: STATE-005 reserves that
    for an outcome the reader records deliberately. */
 .stage-progress {
   display: grid;

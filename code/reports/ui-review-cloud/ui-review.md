@@ -1,7 +1,7 @@
 # UI review
 
 - Instance: http://127.0.0.1:3211
-- Generated: 2026-08-12T15:55:26.906Z
+- Generated: 2026-08-13T14:05:46.563Z
 - Captures: 51
 - Findings: 0
 
@@ -30,8 +30,8 @@ No layout or console findings.
 | /read/legacy-course-001 | desktop | 200 | 903 |
 | / | tablet | 200 | 2557 |
 | /roadmap | tablet | 200 | 2493 |
-| /roadmap/stage-0 | tablet | 200 | 1851 |
-| /roadmap/stage-8 | tablet | 200 | 2017 |
+| /roadmap/stage-0 | tablet | 200 | 1886 |
+| /roadmap/stage-8 | tablet | 200 | 2052 |
 | /courses | tablet | 200 | 3248 |
 | /courses?page=2 | tablet | 200 | 3248 |
 | /courses?track=agentic | tablet | 200 | 3248 |
@@ -47,8 +47,8 @@ No layout or console findings.
 | /read/legacy-course-001 | tablet | 200 | 1134 |
 | / | mobile | 200 | 3208 |
 | /roadmap | mobile | 200 | 2556 |
-| /roadmap/stage-0 | mobile | 200 | 2001 |
-| /roadmap/stage-8 | mobile | 200 | 2382 |
+| /roadmap/stage-0 | mobile | 200 | 2036 |
+| /roadmap/stage-8 | mobile | 200 | 2417 |
 | /courses | mobile | 200 | 5866 |
 | /courses?page=2 | mobile | 200 | 5866 |
 | /courses?track=agentic | mobile | 200 | 5866 |

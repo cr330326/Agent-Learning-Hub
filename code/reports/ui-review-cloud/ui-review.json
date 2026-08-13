@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T15:55:26.904Z",
+  "generatedAt": "2026-08-13T14:05:46.561Z",
   "baseUrl": "http://127.0.0.1:3211",
   "pages": [
     {
@@ -120,13 +120,13 @@
       "path": "/roadmap/stage-0",
       "viewport": "tablet",
       "status": 200,
-      "height": 1851
+      "height": 1886
     },
     {
       "path": "/roadmap/stage-8",
       "viewport": "tablet",
       "status": 200,
-      "height": 2017
+      "height": 2052
     },
     {
       "path": "/courses",
@@ -222,13 +222,13 @@
       "path": "/roadmap/stage-0",
       "viewport": "mobile",
       "status": 200,
-      "height": 2001
+      "height": 2036
     },
     {
       "path": "/roadmap/stage-8",
       "viewport": "mobile",
       "status": 200,
-      "height": 2382
+      "height": 2417
     },
     {
       "path": "/courses",

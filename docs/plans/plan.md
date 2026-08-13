@@ -141,6 +141,10 @@ Agent Learning Hub 是一个以实践产出为主线的 Agent 工程学习平台
 
 顶部导航的最后一项随运行模式取值：Cloud Mode 是“登录”，Local Mode 是“账户”。Local Mode 由 `ensureLocalUser()` 自动签入固定单用户，`/login` 页面本身就写着“你不需要登录”，导航再提示登录只会自相矛盾。
 
+**个人状态在公开页面上的取用方式**：路线页和阶段页都要显示私人进度，但一个页面只允许对 `/api/state` 取一次快照。`app/components/stage-progress.tsx` 的 `StageProgressProvider` 是唯一的取数点，它包住服务端渲染的子树，`StageProgressBadge` 与 `StageTaskChecklist` 从 context 读——路线页一次渲染九行，逐行请求同一份快照是明确的回归项。未认证时这些控件整块不渲染并留一句说明，而不是渲染出点了不会保存的控件；快照到达前也不渲染 `0/3`，否则签出状态的读者会先看到一个凭空出现又消失的进度。
+
+进度与完成是两件事：徽标最多显示“动作已做完 · 待交成果”，只有 `stage_outcomes` 里真有记录才显示“已交成果”。STATE-005 把阶段完成的判定权留给用户主动提交的成果，界面不得用勾选数替它下结论。
+
 ## 5. 总体架构
 
 ```mermaid

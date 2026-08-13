@@ -1,7 +1,7 @@
 # UI review
 
 - Instance: http://127.0.0.1:3210
-- Generated: 2026-08-12T16:03:49.279Z
+- Generated: 2026-08-13T14:43:20.605Z
 - Captures: 51
 - Findings: 0
 
