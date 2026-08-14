@@ -1,7 +1,7 @@
 # Functional regression
 
-- Instance: http://127.0.0.1:3210
-- Generated: 2026-08-13T15:51:45.829Z
+- Instance: http://127.0.0.1:3000
+- Generated: 2026-08-14T15:06:06.758Z
 - Checks: 23, failed: 0
 
 | Result | Check | Detail |

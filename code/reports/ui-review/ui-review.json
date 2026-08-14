@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-13T15:56:38.374Z",
-  "baseUrl": "http://127.0.0.1:3210",
+  "generatedAt": "2026-08-14T15:00:07.806Z",
+  "baseUrl": "http://127.0.0.1:3000",
   "pages": [
     {
       "path": "/",
@@ -72,7 +72,7 @@
       "path": "/learning",
       "viewport": "desktop",
       "status": 200,
-      "height": 3132
+      "height": 3133
     },
     {
       "path": "/login",
@@ -91,6 +91,12 @@
       "viewport": "desktop",
       "status": 200,
       "height": 985
+    },
+    {
+      "path": "/no-such-page",
+      "viewport": "desktop",
+      "status": 404,
+      "height": 903
     },
     {
       "path": "/",
@@ -162,7 +168,7 @@
       "path": "/learning",
       "viewport": "tablet",
       "status": 200,
-      "height": 3242
+      "height": 3243
     },
     {
       "path": "/login",
@@ -181,6 +187,12 @@
       "viewport": "tablet",
       "status": 200,
       "height": 1134
+    },
+    {
+      "path": "/no-such-page",
+      "viewport": "tablet",
+      "status": 404,
+      "height": 1256
     },
     {
       "path": "/",
@@ -252,7 +264,7 @@
       "path": "/learning",
       "viewport": "mobile",
       "status": 200,
-      "height": 5184
+      "height": 5188
     },
     {
       "path": "/login",
@@ -271,6 +283,12 @@
       "viewport": "mobile",
       "status": 200,
       "height": 1216
+    },
+    {
+      "path": "/no-such-page",
+      "viewport": "mobile",
+      "status": 404,
+      "height": 1327
     }
   ],
   "findings": []

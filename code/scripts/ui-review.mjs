@@ -28,6 +28,7 @@ const ROUTES = [
   { name: "login", path: "/login" },
   { name: "content-policy", path: "/content-policy" },
   { name: "contribute", path: "/contribute" },
+  { name: "not-found", path: "/no-such-page", expectedStatus: 404 },
 ];
 
 const VIEWPORTS = [
@@ -243,7 +244,12 @@ async function main() {
           height: metrics.height,
         });
 
-        if (status >= 400) {
+        // A route can declare the status it must return (the 404 page exists
+        // to return 404); anything else still fails on HTTP >= 400.
+        const statusIsWrong = route.expectedStatus
+          ? status !== route.expectedStatus
+          : status >= 400;
+        if (statusIsWrong) {
           findings.push({
             route: route.path,
             viewport: viewport.name,
@@ -266,6 +272,15 @@ async function main() {
           });
         }
         for (const error of consoleErrors) {
+          // The browser logs the main document's own expected non-200 status
+          // (e.g. the 404 page's "Failed to load resource … 404"); that line
+          // is the route working as designed, not a regression.
+          if (
+            route.expectedStatus &&
+            error.includes(`a status of ${route.expectedStatus}`)
+          ) {
+            continue;
+          }
           findings.push({
             route: route.path,
             viewport: viewport.name,
