@@ -72,7 +72,7 @@ Cloud/Release 模式通过根目录 `.env` 提供秘密与镜像变量。发布�
 - `code/scripts/local-preview.sh` 是本机 Docker 预览入口，委托给 `docker-deploy.sh`，只绑定回环地址。
 - `code/scripts/mode-switch.sh` 在本机 Docker 上切换或并行运行 Local/Cloud 两种模式，同样委托给 `docker-deploy.sh`。两种模式用各自的 Compose 项目、端口和 SQLite 卷。Cloud Compose 的 `${VAR:?}` 会让缺凭据时连 `down`/`ps` 都失败，因此只读与停止路径注入显式假值；真正 `up` 必须显式传 `--preview-secrets` 才允许用一次性假凭据，且只够渲染匿名页面。
 - `code/scripts/image-release.sh` 是本机构建并推送发布镜像的手工路径，默认交叉构建 `linux/amd64`（云主机是 x86，Apple Silicon 直接构建的 arm64 镜像跑不起来），拒绝 `latest`，推送前检查版本是否已存在，成功后打印可固定的 digest。带 SBOM 与签名溯源的正式发布仍走 `v*.*.*` tag 触发的 `.github/workflows/release.yml`。
-- `audit-content.ts`、`materials.ts`、`database.ts` 以及四个 `.mjs` 审计/走查脚本都是质量门禁或运维命令，不应因扩展名不是 `.sh` 而删除。
+- `audit-content.ts`、`materials.ts`、`database.ts` 以及五个 `.mjs` 审计/走查脚本都是质量门禁或运维命令，不应因扩展名不是 `.sh` 而删除。
 - `ui-review.mjs`（`npm run audit:ui`）看版式，`functional-regression.mjs`（`npm run audit:functional`）真实点击。两者都需要运行中的服务和 Playwright，因此**不进** `npm run check`；改动界面或交互后手动运行，产物写入 `code/reports/`。
 - `functional-regression.mjs` 会读取页面上的运行模式徽标并据此断言：云端断言匿名访问被拒、本地素材不出正文；本地断言章节导航与学习状态读写。给某个模式新增能力时，要在两个分支里都补断言，不要用跳过掩盖差异。
 - 以 `code/package.json` scripts 作为命令事实源；不要在 README、任务文档或 CI 中复制已经失效的根目录 `scripts/`、`content/`、`reports/`、Dockerfile 或 Compose 路径。

@@ -1,7 +1,7 @@
 # Agent Learning Hub 产品与技术方案
 
 **状态**：首版实施基线；已与 `code/` 当前实现同步
-**最近同步**：2026-08-09
+**最近同步**：2026-08-14
 **产品名称**：Agent Learning Hub / Agent 学习中心
 
 ## 1. 方案摘要
@@ -502,24 +502,38 @@ code/
     docker-compose.release.yml
     docker-compose.production.yml
   modules/
+    admin/
     auth/
     catalog/
     content-resolver/
     learning-state/
     observability/
     reader/
+    runtime/
     search/
     freshness/
   reports/
   scripts/
     docker-deploy.sh
+    local-preview.sh
+    mode-switch.sh
+    image-release.sh
     lighthouse-deploy.sh
     audit-content.ts
     materials.ts
     database.ts
+    audit-content-boundaries.mjs
+    baseline-report.mjs
+    convert-legacy-content.mjs
+    ui-review.mjs
+    functional-regression.mjs
   tests/
     e2e/
       browser-acceptance.mjs
+      home-page-http-smoke.mjs
+      public-pages-http-smoke.mjs
+      health-http-smoke.mjs
+      learning-state-http.mjs
 learning-site/
   ...迁移期间保持可运行
 local-courses/
@@ -615,11 +629,16 @@ code/scripts/docker-deploy.sh local down
 ```
 
 Local Mode 仅允许回环 `APP_BIND_HOST`，只读挂载 `local-courses/`，并保留命名
-SQLite 卷。Cloud Mode 从根 `.env` 读取 Better Auth 与 GitHub OAuth 配置；先运行
-`cloud config` 静态校验合并配置且不输出展开后的秘密。GitHub 应用只注册
-`${BETTER_AUTH_URL}/api/auth/callback/github`，只申请 `read:user`；旧的
-`/api/auth/github/callback` 已停用。Release Mode 强制使用 `APP_IMAGE` 的固定版本或
-digest，先 `pull` 再启动，绝不在生产主机重新构建源码。
+SQLite 卷。本机日常预览有两个委托入口：`code/scripts/local-preview.sh` 只绑定
+回环地址启动 Local Mode 预览；`code/scripts/mode-switch.sh` 在本机 Docker 上切换
+或并行运行 Local/Cloud 两种模式——两者使用各自的 Compose 项目、端口和 SQLite
+卷，Cloud Compose 的 `${VAR:?}` 会让缺凭据时连 `down`/`ps` 都失败，因此只读与
+停止路径注入显式假值，真正 `up` 必须显式传 `--preview-secrets` 才允许用一次性
+假凭据，且只够渲染匿名页面。Cloud Mode 从根 `.env` 读取 Better Auth 与 GitHub
+OAuth 配置；先运行 `cloud config` 静态校验合并配置且不输出展开后的秘密。GitHub
+应用只注册 `${BETTER_AUTH_URL}/api/auth/callback/github`，只申请
+`read:user`；旧的 `/api/auth/github/callback` 已停用。Release Mode 强制使用
+`APP_IMAGE` 的固定版本或 digest，先 `pull` 再启动，绝不在生产主机重新构建源码。
 
 生产实例先复制 `.env.example` 并由密钥管理系统注入 Better Auth 与 GitHub OAuth；
 数据库备份口令保存在应用环境之外的 root-only 文件。不要把任何秘密写进 Compose、
@@ -629,6 +648,12 @@ digest，先 `pull` 再启动，绝不在生产主机重新构建源码。
 APP_IMAGE=ghcr.io/cr330326/agent-learning-hub:v0.1.0 \
 code/scripts/docker-deploy.sh release up
 ```
+
+本机构建并推送发布镜像的手工入口是 `code/scripts/image-release.sh`：默认交叉构建
+`linux/amd64`（云主机是 x86，Apple Silicon 直接构建的 arm64 镜像跑不起来），拒绝
+`latest`，推送前检查版本是否已存在，成功后打印可固定到 `APP_IMAGE` 或
+`LIGHTHOUSE_IMAGE` 的 digest。带 SBOM 与签名溯源的正式发布仍走 `v*.*.*` tag 触发的
+`.github/workflows/release.yml`；该脚本只覆盖 CI 到不了的镜像仓库或主机。
 
 `/api/health` 同时检查内容目录与 SQLite `quick_check`，不返回绝对路径、秘密或
 用户状态。部署后除了健康接口，还应验证公开浏览、登录重定向、上游链接和管理员边界。
@@ -654,6 +679,8 @@ Mode 的只读素材挂载、健康接口、公开路由、学习状态 HTTP 流
 为避免多个派生文档互相漂移，文档按主题分工：
 
 - 根 `README.md`：快速启动、目录导航、常用维护命令和安全边界。
+- 根 `USER.md`：本地模式快速上手（跑起来、Docker 里切换模式、构建推送镜像）。
+- 根 `GUIDE.md`：面向学习者和本机维护者的使用指南（模式差异、页面用法和走查命令）。
 - 根 `AGENTS.md`：工程协作约束、现役目录、命令事实源和不可突破的安全边界。
 - 根 `CONTEXT.md`：项目通用语言，避免把 Track、Stage、Curated Content 与 Local Material 混用。
 - 本文：架构、内容模型、归属、Docker、备份、恢复和运维边界。
@@ -756,6 +783,7 @@ Mode 的只读素材挂载、健康接口、公开路由、学习状态 HTTP 流
 - [ADR-0001：使用同一代码库支持云端与本地模式](../adr/0001-one-codebase-two-runtime-modes.md)
 - [ADR-0002：第三方素材只作为来源引用，不进入云端内容包](../adr/0002-third-party-materials-are-references.md)
 - [ADR-0003：采用自托管 Next.js 与单节点 SQLite](../adr/0003-self-hosted-nextjs-and-sqlite.md)
+- [ADR-0004：Better Auth 负责云端 GitHub 身份边界](../adr/0004-cloud-oauth-boundary.md)
 - [ADR-0005：隐私优先的运营指标只保存匿名聚合](../adr/0005-privacy-first-operational-metrics.md)
 
 ## 18. 下一步

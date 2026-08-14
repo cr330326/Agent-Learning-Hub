@@ -77,7 +77,7 @@ code/scripts/local-preview.sh down
 
 ## 3. 在本地 Docker 里切换本地 / 云端模式
 
-想对比"我自己能看到什么"和"公开发布后别人看到什么"，用模式切换脚本。两种模式使用各自独立的 Compose 项目、端口和 SQLite 卷，互不影响：
+想对比"我自己能看到什么"和"公开发布后别人看到什么"，用模式切换脚本。注意不能靠开两个 `npm run dev` 来对照——Next.js 16 对同一工程目录只允许一个 `next dev` 实例，第二个会以 "server is already running" 直接退出，所以并行对照只能走 Docker。两种模式使用各自独立的 Compose 项目、端口和 SQLite 卷，互不影响：
 
 ```bash
 code/scripts/mode-switch.sh local     # 本地模式 → http://127.0.0.1:3000

@@ -65,6 +65,8 @@ code/scripts/local-preview.sh
 > **只用 `127.0.0.1` 或 `localhost` 访问。** 本地模式的免登录身份只对回环地址成立，
 > 站点在绑定到非回环地址时会直接拒绝启动。
 
+同一 `code/` 目录同时只能跑一个 `next dev`（第二个实例会以 “server is already running” 退出），所以想在本机并行对照云端与本地两种模式，只能用 Docker 的 `code/scripts/mode-switch.sh`——用法见 [快速上手](USER.md) 第 3 节与 [README](README.md#docker)。
+
 ---
 
 ## 三、页面怎么用

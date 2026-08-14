@@ -590,6 +590,8 @@ Cloud `full` 均通过。远端受保护分支结果仍未取得，故 T7.1 保�
 
 **当前进展（2026-08-09）**：[release workflow](../../.github/workflows/release.yml) 已按 `vX.Y.Z` 标签发布 GHCR 镜像、长 SHA 标签、SBOM 和构建来源证明；[release Compose override](../../code/docker/docker-compose.release.yml) 清除本地 build 配置并强制要求版本或 digest。尚未从实际 GHCR 拉取镜像并完成回退演练，因此保留未勾选。
 
+**本机补充（2026-08-14）**：新增 [image-release.sh](../../code/scripts/image-release.sh) 作为本机构建并推送发布镜像的手工路径：默认交叉构建 `linux/amd64`（云主机为 x86），拒绝 `latest`，推送前用 `docker buildx imagetools inspect` 检查版本是否已存在，成功后打印可固定到 `APP_IMAGE`/`LIGHTHOUSE_IMAGE` 的 sha256 digest；带 SBOM 与签名溯源的正式发布仍走 release workflow。用法已写入根 [USER.md](../../USER.md)。从 GHCR 实际拉取指定版本并完成回退演练仍未进行，因此保留未勾选。
+
 ### - [ ] T7.3 编写云端部署和回滚流程
 
 **依赖**：T7.2  
@@ -677,6 +679,8 @@ Cloud `full` 均通过。远端受保护分支结果仍未取得，故 T7.1 保�
 验收提示词，并更新方案目录、隐私监控和本次验收证据链接；仍等待真实部署/回滚证据，故不勾选。
 
 **生产 Runbook 补充（2026-08-11）**：[`docs/deploy/`](../deploy/README.md) 已补充手工和 Lighthouse 自动化入口，并将命令映射到现有 Compose、固定发布镜像、OAuth、稳定 SQLite 卷、原生备份与恢复工具；文档和脚本静态验证不能替代空服务器 HTTPS、真实 OAuth、异地备份、恢复与回滚演练，因此 T7.7 仍不勾选。
+
+**本机补充（2026-08-14）**：新增根 [USER.md](../../USER.md) 作为本地模式快速上手（开发服务器、Docker 双模式切换与并行、本机构建推送镜像），深入用法仍归 [GUIDE.md](../../GUIDE.md)；配套新增 [mode-switch.sh](../../code/scripts/mode-switch.sh)，在本机 Docker 上以各自 Compose 项目、端口和 SQLite 卷切换或并行运行 Local/Cloud，Cloud 缺凭据时只读与停止路径注入显式假值、真正启动需显式 `--preview-secrets`。文档职责划分已同步到 [plan.md 第 14 节](./plan.md#14-文档职责)。T7.3 的真实部署演练仍未完成，故保留未勾选。
 
 **Phase 7 退出条件**：指定版本可从空服务器部署、监控、备份、恢复和回滚；本地用户也有完整启动文档。
 

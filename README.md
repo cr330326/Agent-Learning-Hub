@@ -69,7 +69,7 @@ code/scripts/docker-deploy.sh cloud config
 code/scripts/docker-deploy.sh cloud up
 ```
 
-要在本机对照两种模式，用模式切换助手。它给 Local 和 Cloud 各自的 Compose 项目、端口和 SQLite 卷，所以可以并行运行、单独停止：
+要在本机对照两种模式，用模式切换助手。同一 `code/` 目录同时只能跑一个 `next dev`（Next.js 16 按目录加锁，第二个实例会以 "server is already running" 退出），所以并行对照只能走 Docker。它给 Local 和 Cloud 各自的 Compose 项目、端口和 SQLite 卷，所以可以并行运行、单独停止：
 
 ```bash
 code/scripts/mode-switch.sh local     # http://127.0.0.1:3000
@@ -126,6 +126,7 @@ code/scripts/docker-deploy.sh release up
 
 ## 文档入口
 
+- [快速上手：本地模式](./USER.md)
 - [使用指南（面向学习者与本机维护者）](./GUIDE.md)
 - [产品规格与验收场景](./docs/plans/spec.md)
 - [架构、内容模型、部署和数据库运维](./docs/plans/plan.md)
