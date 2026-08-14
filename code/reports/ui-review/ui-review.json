@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-13T14:43:20.604Z",
+  "generatedAt": "2026-08-13T15:56:38.374Z",
   "baseUrl": "http://127.0.0.1:3210",
   "pages": [
     {
@@ -72,7 +72,7 @@
       "path": "/learning",
       "viewport": "desktop",
       "status": 200,
-      "height": 3057
+      "height": 3132
     },
     {
       "path": "/login",
@@ -91,18 +91,6 @@
       "viewport": "desktop",
       "status": 200,
       "height": 985
-    },
-    {
-      "path": "/courses/legacy-course-001",
-      "viewport": "desktop",
-      "status": 200,
-      "height": 1361
-    },
-    {
-      "path": "/read/legacy-course-001",
-      "viewport": "desktop",
-      "status": 200,
-      "height": 8095
     },
     {
       "path": "/",
@@ -174,7 +162,7 @@
       "path": "/learning",
       "viewport": "tablet",
       "status": 200,
-      "height": 3167
+      "height": 3242
     },
     {
       "path": "/login",
@@ -193,18 +181,6 @@
       "viewport": "tablet",
       "status": 200,
       "height": 1134
-    },
-    {
-      "path": "/courses/legacy-course-001",
-      "viewport": "tablet",
-      "status": 200,
-      "height": 1826
-    },
-    {
-      "path": "/read/legacy-course-001",
-      "viewport": "tablet",
-      "status": 200,
-      "height": 8371
     },
     {
       "path": "/",
@@ -276,7 +252,7 @@
       "path": "/learning",
       "viewport": "mobile",
       "status": 200,
-      "height": 5055
+      "height": 5184
     },
     {
       "path": "/login",
@@ -295,18 +271,6 @@
       "viewport": "mobile",
       "status": 200,
       "height": 1216
-    },
-    {
-      "path": "/courses/legacy-course-001",
-      "viewport": "mobile",
-      "status": 200,
-      "height": 1940
-    },
-    {
-      "path": "/read/legacy-course-001",
-      "viewport": "mobile",
-      "status": 200,
-      "height": 11846
     }
   ],
   "findings": []

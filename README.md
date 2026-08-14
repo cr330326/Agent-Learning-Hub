@@ -69,7 +69,26 @@ code/scripts/docker-deploy.sh cloud config
 code/scripts/docker-deploy.sh cloud up
 ```
 
-发布镜像必须使用不可变的版本标签或 digest。发布模式只拉取镜像，不会在目标主机重新构建源码：
+要在本机对照两种模式，用模式切换助手。它给 Local 和 Cloud 各自的 Compose 项目、端口和 SQLite 卷，所以可以并行运行、单独停止：
+
+```bash
+code/scripts/mode-switch.sh local     # http://127.0.0.1:3000
+code/scripts/mode-switch.sh cloud     # http://127.0.0.1:3001
+code/scripts/mode-switch.sh both
+code/scripts/mode-switch.sh status
+code/scripts/mode-switch.sh stop
+```
+
+只想查看未登录的公开视角时，`code/scripts/mode-switch.sh cloud --preview-secrets` 会用一次性假凭据启动；GitHub 登录不会成功，也不得用于任何部署。
+
+发布镜像必须使用不可变的版本标签或 digest。本机构建并推送发布镜像（默认交叉构建 `linux/amd64`，拒绝 `latest`，成功后打印可固定的 digest）：
+
+```bash
+docker login ghcr.io
+code/scripts/image-release.sh --push v0.1.0
+```
+
+打 `v*.*.*` Git tag 会触发 [`.github/workflows/release.yml`](./.github/workflows/release.yml)，用同一个 Dockerfile 构建并附带 SBOM 与签名溯源；正式发布优先走这条路，`image-release.sh` 是 CI 到不了的镜像仓库或主机时的手工路径。发布模式只拉取镜像，不会在目标主机重新构建源码：
 
 ```bash
 APP_IMAGE=ghcr.io/cr330326/agent-learning-hub:v0.1.0 \
