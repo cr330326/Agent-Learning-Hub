@@ -1,13 +1,13 @@
 # Functional regression
 
-- Instance: http://127.0.0.1:3000
-- Generated: 2026-08-14T15:06:06.758Z
+- Instance: http://127.0.0.1:3210
+- Generated: 2026-08-15T10:33:56.308Z
 - Checks: 23, failed: 0
 
 | Result | Check | Detail |
 | --- | --- | --- |
 | PASS | runtime mode detected | local |
-| PASS | internal links resolve | 131 internal links, all < 400 |
+| PASS | internal links resolve | 132 internal links, all < 400 |
 | PASS | header navigation reaches every section | 6 sections reachable |
 | PASS | roadmap rows open their stage | 9 rows; first opens 理解 Agent 是什么 |
 | PASS | stage pages chain prev/next | stage-0 and stage-8 boundaries correct |
