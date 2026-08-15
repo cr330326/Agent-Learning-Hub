@@ -3,6 +3,7 @@
 这份文档只回答一件事：**怎么最快把站点在本机跑起来，并且能读到 `local-courses/` 里的素材正文。**
 
 - 想了解每个页面怎么用 → [GUIDE.md](GUIDE.md)
+- 想要每一步都带验证点和故障处置的完整版 → [docs/deploy/local-manual.md](docs/deploy/local-manual.md)
 - 想了解架构、边界和运维 → [README.md](README.md)、[docs/plans/plan.md](docs/plans/plan.md)、[docs/deploy/](docs/deploy/README.md)
 
 ---
@@ -11,12 +12,12 @@
 
 站点只有两种运行模式，右上角徽标会告诉你当前在哪一种。
 
-|            | 本地模式 Local                          | 云端模式 Cloud             |
-| ---------- | --------------------------------------- | -------------------------- |
-| 身份       | 回环地址上的固定单用户，**免登录**      | GitHub OAuth 登录          |
-| 第三方素材 | 只读渲染，**可在站内直接读正文**        | 只给作者、许可证和上游地址 |
-| 学习状态   | 本机 SQLite                             | 服务端 SQLite，跟随账户    |
-| 素材来源   | 只读挂载仓库根的 `local-courses/`       | 完全不挂载、不索引         |
+|            | 本地模式 Local                     | 云端模式 Cloud             |
+| ---------- | ---------------------------------- | -------------------------- |
+| 身份       | 回环地址上的固定单用户，**免登录** | GitHub OAuth 登录          |
+| 第三方素材 | 只读渲染，**可在站内直接读正文**   | 只给作者、许可证和上游地址 |
+| 学习状态   | 本机 SQLite                        | 服务端 SQLite，跟随账户    |
+| 素材来源   | 只读挂载仓库根的 `local-courses/`  | 完全不挂载、不索引         |
 
 要真正读素材正文，用本地模式。
 
@@ -46,11 +47,11 @@ LOCAL_MATERIAL_ROOT=/path/to/local-courses npm run dev:local --prefix code
 
 跑不起来时先看这三条：
 
-| 症状                          | 检查                                                                     |
-| ----------------------------- | ------------------------------------------------------------------------ |
-| 徽标显示"云端模式"            | 用的是 `dev:cloud`，或 `DEPLOYMENT_MODE` 被环境变量覆盖了                 |
-| 素材页面提示文件不存在        | `local-courses/` 下确实没有该路径，或课程清单没有声明它（未声明即不可读） |
-| 页面白屏 / hydration 报错     | 访问地址不是 `127.0.0.1` 或 `localhost`                                  |
+| 症状                      | 检查                                                                      |
+| ------------------------- | ------------------------------------------------------------------------- |
+| 徽标显示"云端模式"        | 用的是 `dev:cloud`，或 `DEPLOYMENT_MODE` 被环境变量覆盖了                 |
+| 素材页面提示文件不存在    | `local-courses/` 下确实没有该路径，或课程清单没有声明它（未声明即不可读） |
+| 页面白屏 / hydration 报错 | 访问地址不是 `127.0.0.1` 或 `localhost`                                   |
 
 ---
 
@@ -108,6 +109,8 @@ code/scripts/mode-switch.sh cloud --preview-secrets
 ## 4. 发布到云端
 
 本机构建镜像 → 推送到镜像仓库 → 云端主机拉取固定版本运行。云端主机不构建源码。
+
+> 这一节只给最短路径。完整的云端上线流程有两份文档：[production-manual.md](docs/deploy/production-manual.md)（逐条手工，第一次上线走这份）和 [lighthouse-automation.md](docs/deploy/lighthouse-automation.md)（脚本化，理解流程后的重复执行）。
 
 ```bash
 docker login ghcr.io                              # 凭据由你自己输入

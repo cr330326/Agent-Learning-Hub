@@ -70,6 +70,16 @@ Cloud/Release 模式通过根目录 `.env` 提供秘密与镜像变量。发布�
 
 ## 脚本约定
 
+脚本按**在哪台机器上执行**和**作用于什么**分三类，两件事不一样：`image-release.sh` 和 `lighthouse-deploy.sh` 都在开发机上跑，作用对象却是云端。完整分类表在 [docs/deploy/README.md](docs/deploy/README.md#脚本按运行位置分类)，改动脚本时同步那里。
+
+| 类别               | 脚本                                                                                                                                            | 边界                                                  |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| 本机 → 本机        | `audit-content.ts`、`materials.ts`、`audit-content-boundaries.mjs`、`baseline-report.mjs`、`ui-review.mjs`、`functional-regression.mjs`         | 需要 `local-courses` 或浏览器的都不进 `npm run check` |
+| 本机 → 本机 Docker | `local-preview.sh`、`mode-switch.sh`、`docker-deploy.sh local\|cloud`                                                                           | 只绑回环地址                                          |
+| → 云端             | `image-release.sh`（本机执行）、`lighthouse-deploy.sh`（本机执行、SSH 操作云主机）、`docker-deploy.sh release` 与 `database.ts`（在云主机执行） | 只跑固定版本或 digest                                 |
+
+需要 `local-courses` 的脚本（`materials.ts`）和需要浏览器的脚本（两个走查脚本）**绝不能在生产主机运行**——云端镜像根本不包含素材库。
+
 - `code/scripts/docker-deploy.sh` 是容器构建、启动、健康验证与已发布镜像运行的入口。
 - `code/scripts/lighthouse-deploy.sh` 是专用腾讯云 Lighthouse 主机的 SSH 部署入口；它不替代云端防火墙、DNS、快照、异地备份或真实恢复演练。
 - `code/scripts/local-preview.sh` 是本机 Docker 预览入口，委托给 `docker-deploy.sh`，只绑定回环地址。
@@ -87,7 +97,7 @@ Cloud/Release 模式通过根目录 `.env` 提供秘密与镜像变量。发布�
 - `GUIDE.md`：面向学习者和本机维护者的使用指南（模式差异、页面用法、走查命令）。
 - `docs/plans/spec.md`：产品规格和验收场景。
 - `docs/plans/plan.md`：架构、内容模型、边界、Docker、备份与运维约束。
-- `docs/deploy/`：完全手工生产 Runbook 和 Lighthouse 自动化执行手册。
+- `docs/deploy/`：三条运行路径各一份可独立执行的 Runbook——`local-manual.md`（本机运行本地服务）、`production-manual.md`（云端完全手工）、`lighthouse-automation.md`（云端脚本化）；`README.md` 是入口，同时是脚本运行位置分类的事实源。云端两份做的是同一件事，必须保持逐节可互相定位。
 - `docs/plans/tasks.md`：任务、实施证据和需求到任务追踪。
 - `docs/testing-strategy.md`：测试层次与质量门禁。
 - `docs/adr/`：已接受的架构决策；不要用当前实现静默改写历史决定。

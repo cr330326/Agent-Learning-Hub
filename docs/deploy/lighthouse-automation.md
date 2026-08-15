@@ -2,7 +2,67 @@
 
 本文把[完全手工生产部署与运维](./production-manual.md)中可安全自动化的服务器动作，映射为本地脚本 [`code/scripts/lighthouse-deploy.sh`](../../code/scripts/lighthouse-deploy.sh)。默认 SSH 目标是 `tencent-lighthouse`；脚本从本机上传最小发布/维护 bundle，远端只拉取固定应用镜像，不构建 Next.js。
 
-> 文档核对日期：2026-08-11。当前仓库没有连接或改动真实 Lighthouse，也没有完成 T7.3/T7.5 的生产验收。本文可供后续人员或 Agent 直接执行，但每次外部变更仍须由操作者明确发起并保留证据。
+> 文档核对日期：2026-08-15。当前仓库没有连接或改动真实 Lighthouse，也没有完成 T7.3/T7.5 的生产验收。本文可供后续人员或 Agent 直接执行，但每次外部变更仍须由操作者明确发起并保留证据。
+
+## 0. 开始之前
+
+### 0.1 这份文档在哪个位置
+
+三条运行路径中，本文是脚本化的云端部署：
+
+| 路径             | 文档                                           | 什么时候用                           |
+| ---------------- | ---------------------------------------------- | ------------------------------------ |
+| 本机运行         | [local-manual.md](./local-manual.md)           | 学习、读素材、改代码                 |
+| 云端**手工**部署 | [production-manual.md](./production-manual.md) | 第一次上线，或需要理解每一步在做什么 |
+| 云端**脚本**部署 | **本文**                                       | 已经理解流程后的重复执行             |
+
+**第一次上线不建议直接用本文。** 脚本把手工文档的服务器动作压成九个 action，出错时错误信息指向的是脚本内部状态，你需要先知道那一步原本要做什么。逐节对应关系见 [production-manual 第 16 节](./production-manual.md#16-与自动化脚本的对应关系)。
+
+### 0.2 脚本在哪里执行
+
+`lighthouse-deploy.sh` **运行在你自己的电脑上**，通过 SSH 操作云主机。它不需要装在服务器上。
+
+```
+你的电脑                                云主机
+─────────                              ──────
+lighthouse-deploy.sh  ──── SSH/scp ──▶  docker-deploy.sh release
+                                        database.ts（维护容器内）
+                                        Caddy / Docker Engine
+image-release.sh      ──── push ────▶  镜像仓库 ──── pull ──▶ 云主机
+```
+
+镜像构建推送是**独立的前置步骤**，不由本脚本完成：先 `image-release.sh --push <version>` 拿到 digest（或等 `v*.*.*` tag 触发的 release workflow），再把 digest 传给 `LIGHTHOUSE_IMAGE`。完整分类见 [docs/deploy/README.md](./README.md#脚本按运行位置分类)。
+
+### 0.3 九个 action 速查
+
+| Action      | 幂等 | 会改服务器 | 必需环境变量                                            | 用途                                          |
+| ----------- | ---- | ---------- | ------------------------------------------------------- | --------------------------------------------- |
+| `preflight` | 是   | 否（只读） | —                                                       | SSH、架构、OS、sudo、磁盘、Docker、Caddy 检查 |
+| `bootstrap` | 是   | 是         | —                                                       | 装 Docker Engine/Compose 与 Caddy             |
+| `configure` | 是   | 是         | `LIGHTHOUSE_DOMAIN`、`LIGHTHOUSE_ENV_FILE`              | 上传 root-only 秘密文件                       |
+| `deploy`    | 是   | 是         | `LIGHTHOUSE_DOMAIN`、`LIGHTHOUSE_IMAGE`                 | 备份 → 上传 bundle → 起固定镜像               |
+| `backup`    | 是   | 是         | —（首次后 `LIGHTHOUSE_BACKUP_ENV_FILE` 可省）           | 原生加密 SQLite 备份                          |
+| `rollback`  | 否   | 是         | `LIGHTHOUSE_DOMAIN` + `LIGHTHOUSE_ROLLBACK_CONFIRMED=1` | 启动上一个固定版本；**不恢复数据**            |
+| `verify`    | 是   | 否         | `LIGHTHOUSE_DOMAIN`                                     | 内部健康 + 公网 HTTPS                         |
+| `status`    | 是   | 否         | —                                                       | 发布指针、Compose、Docker、Caddy、磁盘        |
+| `logs`      | 是   | 否         | —                                                       | 跟随应用容器日志                              |
+
+任何 action 都可以先加 `LIGHTHOUSE_DRY_RUN=1` 跑一遍：它校验参数、打印将要执行的动作，不做任何 SSH 写入。**第一次执行 `bootstrap`、`configure`、`deploy`、`rollback` 前都应该先 dry-run。**
+
+### 0.4 可选环境变量
+
+| 变量                               | 默认值                          | 何时需要改                                  |
+| ---------------------------------- | ------------------------------- | ------------------------------------------- |
+| `LIGHTHOUSE_SSH_TARGET`            | `tencent-lighthouse`            | SSH config 里用了别的别名                   |
+| `LIGHTHOUSE_REMOTE_ROOT`           | `/opt/agent-learning-hub`       | 服务器上换了发布根目录                      |
+| `LIGHTHOUSE_APP_PORT`              | `3000`                          | 回环端口冲突                                |
+| `LIGHTHOUSE_COMPOSE_PROJECT`       | `agent-learning-hub-production` | **改动会切换整套 Compose 资源**，非必要不动 |
+| `LIGHTHOUSE_WAIT_TIMEOUT`          | `180`                           | 主机慢，容器健康等待超时                    |
+| `LIGHTHOUSE_MAINTENANCE_IMAGE`     | `node:24.18.0-bookworm`         | 需要固定到别的维护镜像                      |
+| `LIGHTHOUSE_ALLOW_NO_BACKUP=1`     | 未设置                          | **破窗**：跳过升级/回滚前备份               |
+| `LIGHTHOUSE_ALLOW_CADDY_REPLACE=1` | 未设置                          | 覆盖主机上一份非本项目写入的 Caddyfile      |
+
+`LIGHTHOUSE_ALLOW_NO_BACKUP=1` 和 `LIGHTHOUSE_ALLOW_CADDY_REPLACE=1` 是刻意做成必须显式声明的：前者放弃了升级出问题时唯一的数据退路，后者会覆盖别人的反向代理配置。用了就要在验收记录里写明原因。
 
 ## 1. 自动化边界
 
@@ -299,3 +359,27 @@ code/scripts/lighthouse-deploy.sh logs
 | 备份失败                          | 口令、状态卷、维护依赖、空间或权限异常；升级必须停止                                   |
 | 内部 health 成功、外部 HTTPS 失败 | 检查 DNS、防火墙、80/443、Caddy journal；不要开放 3000 绕过                            |
 | rollback health 失败              | 可能是数据库 schema 不兼容；停止写入并按备份恢复到新卷                                 |
+
+## 15. 失败时回到手工文档的哪一节
+
+脚本失败会指向它自己的内部状态。用这张表把 action 翻译回手工流程的对应位置，再照那一节逐条排查：
+
+| 失败的 action | 回到手工文档                                                                              | 先确认                                             |
+| ------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| `preflight`   | [第 3–4 节](./production-manual.md#3-腾讯云控制面准备) 控制面与 SSH                       | 实例架构、防火墙 22 来源、密钥、非交互 sudo        |
+| `bootstrap`   | [第 5–6 节](./production-manual.md#5-手工安装-docker-engine-与-compose) 安装 Docker/Caddy | 主机是否干净基线、是否有冲突的容器包               |
+| `configure`   | [第 8 节](./production-manual.md#8-创建-github-oauth-app-与秘密文件) OAuth 与秘密         | 本机 env 文件权限 600、五项变量是否齐全            |
+| `deploy`      | [第 7、9 节](./production-manual.md#9-验证-compose-并首次启动) 配置与首次启动             | 镜像是否固定版本、`config --quiet` 是否通过        |
+| `verify`      | [第 10–11 节](./production-manual.md#10-配置-https-反向代理) HTTPS 与验收                 | DNS、80/443、Caddy journal；**绝不开放 3000 绕过** |
+| `backup`      | [第 12.2 节](./production-manual.md#122-创建原生一致性加密备份)                           | 口令、状态卷名、磁盘空间、维护镜像可拉取           |
+| `rollback`    | [第 14 节](./production-manual.md#14-应用回滚与数据库恢复)                                | 旧镜像能否读当前 schema；不能就走数据恢复          |
+
+**脚本不做的三件事**，失败时不要指望它补上：腾讯云控制面（实例/防火墙/DNS/快照）、数据库恢复与切卷（手工第 14.2–14.3 节）、备份的异地副本。
+
+## 16. 相关文档
+
+- [local-manual.md](./local-manual.md) — 本机运行本地服务
+- [production-manual.md](./production-manual.md) — 同一流程的完全手工版本
+- [docs/deploy/README.md](./README.md) — 三条路径的选择与脚本运行位置分类
+- [USER.md 第 4 节](../../USER.md) — 本机构建并推送发布镜像
+- [plan.md 第 13.4 节](../plans/plan.md#134-部署容器与数据库运维) — 部署、容器与数据库运维约定

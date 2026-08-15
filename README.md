@@ -108,22 +108,46 @@ code/scripts/docker-deploy.sh release up
 
 ## 维护命令
 
-`code/scripts/` 中的非 `.sh` 文件不是冗余文件；它们是 `code/package.json` 和 CI 调用的 Node/TypeScript 维护入口，应保留：
+`code/scripts/` 中的非 `.sh` 文件不是冗余文件；它们是 `code/package.json` 和 CI 调用的 Node/TypeScript 维护入口，应保留。
 
-| 命令                                                           | 用途                                                                                     |
-| -------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `code/scripts/local-preview.sh`                                | 从当前代码构建镜像并启动、查看或停止本机 Local Mode 预览                                 |
-| `code/scripts/docker-deploy.sh`                                | 本地构建、启动、配置检查、健康验证和已发布镜像运行                                       |
-| `code/scripts/lighthouse-deploy.sh`                            | 通过 SSH 预检、初始化、备份、部署、验证和回滚专用 Lighthouse 生产主机                    |
-| `npm run audit:content --prefix code`                          | 校验内容 schema、来源、许可证和本地路径                                                  |
-| `npm run materials --prefix code -- <check\|audit\|reindex>`   | 查看素材新鲜度、审计路径和重建索引；`update <course-id> --yes` 只允许单仓库 fast-forward |
-| `npm run audit:materials --prefix code`                        | 对账目录与素材库：失效路径及候选、未收录仓库、缺失的上游回退；加 `-- --apply` 才写回     |
-| `npm run db:backup --prefix code` / `db:restore`               | 创建加密 SQLite 备份或在明确确认后恢复                                                   |
-| `npm run audit:baseline --prefix code`                         | 重新生成旧站能力基线                                                                     |
-| `npm run audit:boundaries --prefix code`                       | 审计 Git、Docker 与 CI 的内容边界                                                        |
-| ~~`npm run convert:legacy --prefix code`~~                     | 已废弃：目录改为人手维护，见 [ADR 0006](docs/adr/0006-catalog-is-hand-maintained.md)     |
-| `node code/scripts/ui-review.mjs --base-url <url>`             | 在 desktop/tablet/mobile 三档抓全页截图，报告 HTTP 错误、横向溢出、超长页面与控制台报错  |
-| `node code/scripts/functional-regression.mjs --base-url <url>` | 点击式功能回归：链接、翻页、筛选、章节与上下章导航、学习状态读写；按运行模式分支断言     |
+脚本按**在哪台机器上执行**和**作用于什么**分三类——这两件事不一样：`image-release.sh` 和 `lighthouse-deploy.sh` 都在你自己电脑上跑，但作用对象是云端。完整分类与依赖见 [docs/deploy/README.md](./docs/deploy/README.md#脚本按运行位置分类)。
+
+### 本机运行、作用于本机
+
+| 命令                                                                | 用途                                                                                           |
+| ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `npm run dev:local --prefix code`                                   | **学习和读素材的默认方式**；热更新，只绑回环地址                                               |
+| `npm run dev:cloud --prefix code`                                   | 公开视角预览；第三方素材只给出处不给正文                                                       |
+| `npm run check:local --prefix code` / `check:cloud`                 | 提交前门禁：格式、lint、类型、内容审计、测试、构建                                             |
+| `npm run audit:content --prefix code`                               | 校验内容 schema、来源、许可证和本地路径                                                        |
+| `npm run materials --prefix code -- <check\|drift\|audit\|reindex>` | 素材新鲜度、目录漂移、路径审计和重建索引；`update <course-id> --yes` 只允许单仓库 fast-forward |
+| `npm run audit:materials --prefix code`                             | 对账目录与素材库：失效路径及候选、未收录仓库、缺失的上游回退；加 `-- --apply` 才写回           |
+| `npm run audit:boundaries --prefix code`                            | 审计 Git、Docker 与 CI 的内容边界（CI 也跑）                                                   |
+| `npm run audit:baseline --prefix code`                              | 重新生成旧站能力基线（迁移期历史工具）                                                         |
+| `npm run audit:ui --prefix code`                                    | 三档视口版式走查；**需要运行中的服务** + Playwright                                            |
+| `npm run audit:functional --prefix code`                            | 点击式功能回归；**需要运行中的服务** + Playwright，按运行模式分支断言                          |
+| ~~`npm run convert:legacy --prefix code`~~                          | 已废弃：目录改为人手维护，见 [ADR 0006](docs/adr/0006-catalog-is-hand-maintained.md)           |
+
+`audit:ui`、`audit:functional` 需要浏览器和运行中的服务，`audit:materials` 依赖仓库之外的素材库——三者都**不进** `npm run check`，各自非零退出作为独立门禁。
+
+### 本机运行、作用于本机 Docker
+
+| 命令                                               | 用途                                                |
+| -------------------------------------------------- | --------------------------------------------------- |
+| `code/scripts/local-preview.sh`                    | 构建镜像 + 启动 Local Mode + 健康验证，一条命令完成 |
+| `code/scripts/mode-switch.sh <local\|cloud\|both>` | 本机切换或并行跑两种模式，各自独立的项目、端口和卷  |
+| `code/scripts/docker-deploy.sh <mode> <action>`    | Compose 生命周期底层入口；上面两个脚本都委托给它    |
+
+### 作用于云端
+
+| 命令                                             | 执行位置    | 用途                                                   |
+| ------------------------------------------------ | ----------- | ------------------------------------------------------ |
+| `code/scripts/image-release.sh --push <version>` | 本机        | 交叉构建 `linux/amd64` 并推送固定版本，拒绝 `latest`   |
+| `code/scripts/lighthouse-deploy.sh <action>`     | 本机（SSH） | 预检、装机、传秘密、部署、备份、回滚、验证、状态、日志 |
+| `code/scripts/docker-deploy.sh release <action>` | **云主机**  | 跑固定镜像；由 `lighthouse-deploy.sh` 打包上传         |
+| `npm run db:backup --prefix code` / `db:restore` | **云主机**  | 加密 SQLite 备份与恢复；在维护容器内执行               |
+
+`baseline-report.mjs`、`convert-legacy-content.mjs`、`ui-review.mjs`、`functional-regression.mjs` 和 `materials.ts` **都不该在生产主机运行**：前两个是迁移期工具，中间两个需要浏览器，最后一个需要 `local-courses`——而云端镜像根本不包含也不挂载素材库。
 
 ## 文档入口
 
@@ -131,7 +155,10 @@ code/scripts/docker-deploy.sh release up
 - [使用指南（面向学习者与本机维护者）](./GUIDE.md)
 - [产品规格与验收场景](./docs/plans/spec.md)
 - [架构、内容模型、部署和数据库运维](./docs/plans/plan.md)
-- [生产部署与运维 Runbook](./docs/deploy/README.md)
+- [部署与运维入口（含脚本运行位置分类）](./docs/deploy/README.md)
+  - [本机手动运行本地服务](./docs/deploy/local-manual.md)
+  - [完全手工生产部署与运维](./docs/deploy/production-manual.md)
+  - [Lighthouse 自动化部署](./docs/deploy/lighthouse-automation.md)
 - [实施任务、证据与需求追踪](./docs/plans/tasks.md)
 - [测试策略](./docs/testing-strategy.md)
 - [架构决策记录](./docs/adr/)

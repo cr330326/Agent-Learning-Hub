@@ -3,6 +3,8 @@
 这份文档面向**使用者**：想按九阶段路线学 Agent 工程的人，以及在本机跑起这个站点的维护者。
 需求与验收以 [spec.md](docs/plans/spec.md) 为准，架构与边界以 [plan.md](docs/plans/plan.md) 为准；本文只讲“怎么用”。
 
+只想尽快跑起来看 [USER.md](USER.md)；要每一步都带验证点和故障处置的完整版看 [docs/deploy/local-manual.md](docs/deploy/local-manual.md)；要把站点发布到公网看 [docs/deploy/](docs/deploy/README.md)。
+
 ---
 
 ## 一、两种运行模式

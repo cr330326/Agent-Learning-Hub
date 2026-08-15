@@ -127,7 +127,7 @@
 
 **完成证据**：转换前后差异报告经人工确认；所有已策展条目均有确定去向。
 
-**实施证据（2026-08-09）**：[convert-legacy-content.mjs](../../code/scripts/convert-legacy-content.mjs) 可重复把 `learning-site/data.js` 转为 [结构化阶段](../../code/content/stages/legacy-import.json)、[课程与章节条目](../../code/content/courses/legacy-import.json)、[项目阶梯](../../code/content/catalog/project-outcomes.json) 与完整旧数据快照；各条转换记录保留 `legacyImport.raw`，完整源数据保留在快照中。[legacy-conversion.json](../../code/reports/legacy-conversion/legacy-conversion.json) 对照基线确认 4 轨、9 阶段、42 课程卡、38 分组、472 章节和路径引用；[待补全报告](../../code/reports/legacy-conversion/legacy-conversion.md) 明确列出 488 个缺失上游地址及 514 个未知作者/许可证，未猜测值。[legacy-content-converter.test.mjs](../../code/tests/legacy-content-converter.test.mjs) 断言转换可重复、数量与基线一致。
+**实施证据（2026-08-09）**：[convert-legacy-content.mjs](../../code/scripts/convert-legacy-content.mjs) 可重复把 `learning-site/data.js` 转为结构化阶段、课程与章节条目、[项目阶梯](../../code/content/catalog/project-outcomes.json) 与完整旧数据快照；前两者当时写入 `content/stages/legacy-import.json` 和 `content/courses/legacy-import.json`，T8.10 后已改名为 [stages.json](../../code/content/stages/stages.json) 与 [courses.json](../../code/content/courses/courses.json) 并转为人手维护；各条转换记录保留 `legacyImport.raw`，完整源数据保留在快照中。[legacy-conversion.json](../../code/reports/legacy-conversion/legacy-conversion.json) 对照基线确认 4 轨、9 阶段、42 课程卡、38 分组、472 章节和路径引用；[待补全报告](../../code/reports/legacy-conversion/legacy-conversion.md) 明确列出 488 个缺失上游地址及 514 个未知作者/许可证，未猜测值。[legacy-content-converter.test.mjs](../../code/tests/legacy-content-converter.test.mjs) 断言转换可重复、数量与基线一致。
 
 ### - [x] T1.5 建立内容审计命令
 
@@ -930,6 +930,29 @@ _验证。_ `materials drift` 从 119 失效降到 **0**；`materials check` 从
 
 **遗留**：`sourceUrl` 的 470 条回填待按 54 个仓库确认后落盘；3 个未收录仓库（`AICoding/opencode/code/openchamber`、`AICoding/opencode/plugins/opencode-goal-plugin`、`Agentic/Harness/deepseek/deepseek-harness`）待策展决定。
 
+### - [x] T8.11 按运行位置梳理脚本并补齐三条路径的 Runbook
+
+**依赖**：T8.10
+**规格**：DEPLOY-016、DEPLOY-017、DEPLOY-018
+
+- 给 `code/scripts/` 的每个脚本确定执行位置、作用对象和硬依赖。
+- 补上缺失的"本机运行本地服务"Runbook，让三条运行路径各有一份可独立执行的文档。
+- 让云端两份文档互相可定位，脚本失败时能回到手工流程的对应步骤。
+
+**问题陈述（2026-08-15）**：`code/scripts/` 有 13 个脚本，文档里是一张平铺的命令表，没有区分"在哪台机器上执行"和"作用于什么"。这两件事不一样——`image-release.sh` 和 `lighthouse-deploy.sh` 都在开发机上跑，作用对象却是云端；`docker-deploy.sh` 三种模式跨两台机器。同时 `docs/deploy/` 只覆盖云端两条路径，"在本机跑起来学习"这条最常用的路径没有对应文档，散落在 USER.md 和 GUIDE.md 里且没有验证点。
+
+**实施证据（2026-08-15）**：
+
+_分类。_ 逐脚本读 usage 并扫描硬依赖（docker / ssh / playwright / local-courses / 运行中的服务 / git / registry），归为三类：本机→本机 9 个、本机→本机 Docker 3 个、作用于云端 4 个（`docker-deploy.sh` 同时出现在后两类，因为 `release` 模式在云主机执行，由 `lighthouse-deploy.sh` 打包上传——已核对该脚本确实把 `docker-deploy.sh`、`database.ts`、`modules/` 和四个 Compose 文件一起 scp 到远端）。分类表写入 [docs/deploy/README.md](../deploy/README.md#脚本按运行位置分类)，并在 [README](../../README.md#维护命令)、[AGENTS](../../AGENTS.md#脚本约定) 和 [plan 13.5](./plan.md#135-脚本的运行位置) 保持一致。
+
+_新增文档。_ [local-manual.md](../deploy/local-manual.md)：两条本机路径（开发服务器 / 本机 Docker）的对比与选择、素材库准备与挂载验证、逐步验证点、学习状态存放位置与加密备份、走查命令、素材变动后的对账流程、9 类故障处置表。文中的 state 路径（`code/.data/learning-state.sqlite` 及 `-wal`/`-shm`）、口令变量（`BACKUP_PASSPHRASE`）和 Docker 卷名（`agent-learning-hub-local_learning-state`）均实机核对。
+
+_云端两份互相定位。_ [production-manual.md](../deploy/production-manual.md) 新增第 0 节（三条路径定位、分阶段时间预算、8 项前置检查清单、本文涉及的脚本在哪执行）与第 16 节（14 行逐节 ↔ action 映射，并列出脚本永远不做的三件事：腾讯云控制面、数据库恢复与切卷、异地备份副本）。[lighthouse-automation.md](../deploy/lighthouse-automation.md) 新增第 0 节（路径定位、执行位置示意、九个 action 的幂等性/是否改服务器/必需环境变量速查、可选环境变量表，含两个破窗开关的使用约束）与第 15 节（按失败 action 回指手工文档章节）。
+
+_规格。_ spec.md 新增 DEPLOY-016（脚本必须登记运行位置）、DEPLOY-017（依赖素材库或浏览器的脚本不得上生产、不进 `check`）、DEPLOY-018（三条路径各有 Runbook，云端两份须可互相定位）。
+
+**遗留**：文档描述的云端流程仍未在真实主机执行过，GATE-10 保持未勾选。
+
 ## 12. 上线门槛核对表
 
 - [x] GATE-01 cloud-clean-room 构建和公开流程通过。（2026-08-11 隔离镜像实测）
@@ -948,7 +971,7 @@ _验证。_ `materials drift` 从 119 失效降到 **0**；`materials check` 从
 | 规格域      | 主要任务                                                        |
 | ----------- | --------------------------------------------------------------- |
 | IA / PAGE   | T1.2—T1.4、T2.1—T2.4、T4.7、T8.3、T8.6、T8.9                    |
-| CAT         | T0.2、T1.2—T1.5、T3.4                                           |
+| CAT         | T0.2、T1.2—T1.5、T3.4、T8.10                                    |
 | RES         | T3.1—T3.3、T5.1—T5.3                                            |
 | READ        | T2.5、T4.4、T5.1、T5.3、T8.6、T8.7、T8.8、T8.9                  |
 | AUTH        | T4.2、T4.3、T4.5、T6.7、T8.4                                    |
@@ -957,7 +980,7 @@ _验证。_ `materials drift` 从 119 失效降到 **0**；`materials check` 从
 | MAT         | T6.4—T6.7                                                       |
 | DATA        | T4.8                                                            |
 | ADMIN       | T6.7、T7.6                                                      |
-| DEPLOY      | T0.2、T3.3、T4.3、T5.4、T7.1—T7.3                               |
+| DEPLOY      | T0.2、T3.3、T4.3、T5.4、T7.1—T7.3、T8.11                        |
 | SEC / PRIV  | T4.2、T4.5、T4.8、T5.1、T7.6、T8.4、T8.9                        |
 | OPS         | T4.1、T7.3—T7.5                                                 |
 | NFR         | T0.3、T2.1、T2.5、T7.1、T7.6、T8.3、T8.6、T8.7、T8.9            |

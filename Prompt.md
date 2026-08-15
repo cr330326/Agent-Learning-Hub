@@ -13,6 +13,7 @@
 
 - 先阅读仓库根 `AGENTS.md`、三个计划文档和 `code/package.json`。`code/` 是唯一现役应用；`learning-site/` 仅是迁移基线。
 - `local-courses/` 是第三方素材，只能以 Local Mode 只读访问。不得修改、提交、更新其嵌套仓库，也不得让 Cloud Mode 打包、索引或代理它。
+- 目录事实源是手工维护的 `code/content/courses/courses.json` 与 `code/content/stages/stages.json`。**不得运行 `convert:legacy`**（已废弃，见 ADR 0006），也不得用 `materials drift --apply` 改写目录——验收只读不写。
 - 所有测试数据库、下载文件、截图和日志都放在新建的临时目录（例如 `mktemp -d /tmp/agent-learning-e2e.XXXXXX`），不得写入 `code/.data/`、`backups/` 或仓库内容目录。
 - 不使用真实 GitHub OAuth、真实生产凭据、真实发布镜像、真实服务器、真实用户数据或外部通知端点。Cloud OAuth 只能验证未登录边界、授权入口和模拟/单元集成；真实两用户跨会话登录必须标为外部阻塞。
 - 不要用 `|| true`、跳过断言、修改 fixture/测试以掩盖失败，或把“命令没跑”写成通过。发生产品缺陷时保留最小可复现证据并停止对应结论。
@@ -28,6 +29,14 @@ npm run check:local --prefix code
 npm audit --omit=dev --audit-level=high --prefix code
 git diff --check
 ```
+
+素材库挂载时另跑目录对账（**不进** `npm run check`，因为它依赖仓库之外的素材库）：
+
+```bash
+npm run audit:materials --prefix code
+```
+
+期望 `0 missing paths`。非 0 说明目录声明的路径与磁盘对不上，属于产品缺陷而不是环境问题，要记为失败并保留 `code/reports/materials/catalog-drift.md`。素材库未挂载时脚本会明确报 `Local Material is not mounted` 并跳过比较——那种情况记为"未验证"，不能记为通过。
 
 若测试当前未提交的实现，先运行：
 
@@ -51,6 +60,8 @@ npm run build --prefix code
 | 共用   | 安全负向路径       | 运行现有模块/路由测试，覆盖路径穿越与符号链接逃逸、恶意 MDX 不执行、CSRF、频率限制、越权、导出脱敏、管理员边界和页面遥测不记录身份/秘密                                                                               | AC-03、SEC、PRIV               |
 | 移动端 | 390×844            | 路线、搜索和阅读器可用，无水平滚动；如条件允许完成一条笔记/成果流                                                                                                                                                     | AC-08、NFR-001                 |
 | Docker | Local Compose      | 先运行 `code/scripts/docker-deploy.sh local config`；在资源允许时以独立 `COMPOSE_PROJECT_NAME`、独立端口和测试镜像运行 `local up`，再执行 Local HTTP E2E，最后只执行同一项目的 `local down`。保留命名卷，不删除未知卷 | AC-01、AC-02、GATE-02、GATE-09 |
+| Local  | 目录漂移对账       | `materials drift`（**不加 `--apply`**）报 `0 missing paths`；把一个已声明路径临时改名到临时副本目录后重跑，确认它被列入报告且退出码非 0；随后还原                                                                     | AC-07、CAT 系列                |
+| 共用   | 未挂载素材时不误报 | 以只含 `README.md` 的空目录作 `LOCAL_MATERIAL_ROOT` 跑 `audit:content --mode local`，确认 0 errors 且只出 `local-material-root-unavailable` 警告——"目录存在"不等于"素材挂载"                                          | AC-02、NFR-005                 |
 
 ## 推荐运行方式
 

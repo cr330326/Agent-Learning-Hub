@@ -668,11 +668,29 @@ Mode 的只读素材挂载、健康接口、公开路由、学习状态 HTTP 流
 将升级前快照恢复至干净状态卷，再启动上一镜像。TLS、DNS、反向代理、密钥管理、
 异地备份复制、告警和正式恢复演练仍是部署方责任。
 
-可执行步骤集中在 [`docs/deploy/`](../deploy/README.md)：手工 Runbook 从空白 Ubuntu
-服务器开始；Lighthouse Runbook 通过 `code/scripts/lighthouse-deploy.sh` 在本机经
-`ssh tencent-lighthouse` 执行预检、初始化、秘密上传、升级前备份、固定镜像部署、
-验证与应用回滚。该脚本不会修改腾讯云防火墙、DNS、快照或异地存储，也不会把应用回滚
-误当成数据库恢复。
+可执行步骤集中在 [`docs/deploy/`](../deploy/README.md)，三份文档对应三条运行路径：
+[`local-manual.md`](../deploy/local-manual.md) 是本机运行本地服务的完整版（学习与
+开发）；[`production-manual.md`](../deploy/production-manual.md) 从空白 Ubuntu 服务器
+逐条手工执行；[`lighthouse-automation.md`](../deploy/lighthouse-automation.md) 通过
+`code/scripts/lighthouse-deploy.sh` 在本机经 `ssh tencent-lighthouse` 执行预检、初始化、
+秘密上传、升级前备份、固定镜像部署、验证与应用回滚。后两份做的是同一件事，逐节对应
+关系在手工文档第 16 节。该脚本不会修改腾讯云防火墙、DNS、快照或异地存储，也不会把
+应用回滚误当成数据库恢复。
+
+### 13.5 脚本的运行位置
+
+`code/scripts/` 的脚本按**执行位置**与**作用对象**分三类，两者不同：`image-release.sh`
+与 `lighthouse-deploy.sh` 都在开发机执行，作用对象却是云端。
+
+| 类别               | 脚本                                                                                                                                    | 关键约束                                      |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
+| 本机 → 本机        | `audit-content.ts`、`materials.ts`、`audit-content-boundaries.mjs`、`baseline-report.mjs`、`ui-review.mjs`、`functional-regression.mjs` | 依赖素材库或浏览器的都不进 `npm run check`    |
+| 本机 → 本机 Docker | `local-preview.sh`、`mode-switch.sh`、`docker-deploy.sh local\|cloud`                                                                   | 只绑回环地址，各模式独立项目/端口/卷          |
+| → 云端             | `image-release.sh`、`lighthouse-deploy.sh`（本机执行）；`docker-deploy.sh release`、`database.ts`（云主机执行，由部署脚本打包上传）     | 只跑固定版本或 digest，绝不在生产主机构建源码 |
+
+`materials.ts` 需要 `local-courses`，两个走查脚本需要浏览器和运行中的服务——三者都不
+在生产主机运行，云端镜像本就不包含素材库。完整表格与依赖见
+[`docs/deploy/README.md`](../deploy/README.md#脚本按运行位置分类)。
 
 ## 14. 文档职责
 
@@ -684,7 +702,7 @@ Mode 的只读素材挂载、健康接口、公开路由、学习状态 HTTP 流
 - 根 `AGENTS.md`：工程协作约束、现役目录、命令事实源和不可突破的安全边界。
 - 根 `CONTEXT.md`：项目通用语言，避免把 Track、Stage、Curated Content 与 Local Material 混用。
 - 本文：架构、内容模型、归属、Docker、备份、恢复和运维边界。
-- `docs/deploy/`：从上述边界派生的手工与 Lighthouse 自动化执行 Runbook；不改变规格或任务状态。
+- `docs/deploy/`：从上述边界派生的执行 Runbook，三份对应三条运行路径（本机、云端手工、云端脚本）；不改变规格或任务状态。`README.md` 是入口，同时给出脚本运行位置分类。
 - `tasks.md`：实施状态、可执行证据和需求到任务追踪。
 - `spec.md`：产品需求和验收场景；`docs/adr/` 保存已接受的决策。
 - `local-courses/README.md`：本地素材库的归属与维护约定。
