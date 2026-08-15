@@ -97,7 +97,7 @@ describe("Catalog API", () => {
 
   it("rejects invalid content with the source file and field path", async () => {
     const contentRoot = await createTemporaryContentRoot();
-    const itemPath = join(contentRoot, "courses", "legacy-import.json");
+    const itemPath = join(contentRoot, "courses", "courses.json");
     const items = JSON.parse(await readFile(itemPath, "utf8")) as Array<
       Record<string, unknown>
     >;
@@ -117,7 +117,7 @@ describe("Catalog API", () => {
 
   it("flattens array-based legacy imports and keeps unassigned project outcomes", async () => {
     const contentRoot = await createTemporaryContentRoot();
-    const sourceItemPath = join(contentRoot, "courses", "legacy-import.json");
+    const sourceItemPath = join(contentRoot, "courses", "courses.json");
     const [importedItem] = JSON.parse(
       await readFile(sourceItemPath, "utf8"),
     ) as Array<Record<string, unknown>>;

@@ -1,0 +1,1067 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-15T10:22:22.053Z",
+  "localMaterialRoot": "/Users/vsh9p8q/AI/Agent-Learning-Hub/local-courses",
+  "mounted": true,
+  "summary": {
+    "declaredPaths": 459,
+    "missing": 0,
+    "moved": 0,
+    "uncertain": 0,
+    "gone": 0,
+    "uncatalogued": 3,
+    "itemsMissingSourceUrl": 479,
+    "upstreamGapRepositories": 55
+  },
+  "missingPaths": [],
+  "uncatalogued": [
+    {
+      "repositoryPath": "Agentic/Harness/deepseek/deepseek-harness",
+      "remote": "https://github.com/deepseek-ai/deepseek-harness.git",
+      "branch": "master",
+      "markdownCount": 2348
+    },
+    {
+      "repositoryPath": "AICoding/opencode/code/openchamber",
+      "remote": "git@github.com:openchamber/openchamber.git",
+      "branch": "main",
+      "markdownCount": 53
+    },
+    {
+      "repositoryPath": "AICoding/opencode/plugins/opencode-goal-plugin",
+      "remote": "git@github.com:prevalentWare/opencode-goal-plugin.git",
+      "branch": "main",
+      "markdownCount": 8
+    }
+  ],
+  "upstreamGaps": [
+    {
+      "repositoryPath": "Agentic/openchamber",
+      "remote": "git@github.com:openchamber/openchamber.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/openchamber/openchamber",
+      "itemIds": [
+        "legacy-reading-14-015",
+        "legacy-reading-34-001",
+        "legacy-reading-34-002",
+        "legacy-reading-34-003",
+        "legacy-reading-34-004",
+        "legacy-reading-34-005",
+        "legacy-reading-34-006",
+        "legacy-reading-34-007",
+        "legacy-reading-34-008",
+        "legacy-reading-34-009",
+        "legacy-reading-34-010",
+        "legacy-reading-34-011",
+        "legacy-reading-34-012",
+        "legacy-reading-34-013",
+        "legacy-reading-34-014",
+        "legacy-reading-34-015",
+        "legacy-reading-34-016",
+        "legacy-reading-34-017",
+        "legacy-reading-34-018",
+        "legacy-reading-34-019",
+        "legacy-reading-34-020",
+        "legacy-reading-35-001",
+        "legacy-reading-35-002",
+        "legacy-reading-35-003",
+        "legacy-reading-35-004",
+        "legacy-reading-35-005",
+        "legacy-reading-35-006",
+        "legacy-reading-35-007",
+        "legacy-reading-35-008",
+        "legacy-reading-35-009",
+        "legacy-reading-35-010",
+        "legacy-reading-35-011",
+        "legacy-reading-35-012",
+        "legacy-reading-36-001",
+        "legacy-reading-36-002",
+        "legacy-reading-36-003",
+        "legacy-reading-36-004",
+        "legacy-reading-36-005",
+        "legacy-reading-36-006",
+        "legacy-reading-36-007",
+        "legacy-reading-36-008",
+        "legacy-reading-36-009",
+        "legacy-reading-36-010",
+        "legacy-reading-36-011",
+        "legacy-reading-36-012",
+        "legacy-reading-36-013"
+      ],
+      "sampleLocalPath": "Agentic/openchamber/README.md",
+      "sampleSourceUrl": "https://github.com/openchamber/openchamber/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding",
+      "remote": "git@github.com:ZhangHanDong/harness-engineering-from-cc-to-ai-coding.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/ZhangHanDong/harness-engineering-from-cc-to-ai-coding",
+      "itemIds": [
+        "legacy-reading-19-001",
+        "legacy-reading-19-002",
+        "legacy-reading-19-003",
+        "legacy-reading-19-004",
+        "legacy-reading-19-005",
+        "legacy-reading-19-006",
+        "legacy-reading-19-007",
+        "legacy-reading-19-008",
+        "legacy-reading-19-009",
+        "legacy-reading-19-010",
+        "legacy-reading-19-011",
+        "legacy-reading-20-001",
+        "legacy-reading-20-002",
+        "legacy-reading-20-003",
+        "legacy-reading-20-004",
+        "legacy-reading-20-005",
+        "legacy-reading-20-006",
+        "legacy-reading-20-007",
+        "legacy-reading-20-008",
+        "legacy-reading-20-009",
+        "legacy-reading-20-010",
+        "legacy-reading-20-011",
+        "legacy-reading-20-012",
+        "legacy-reading-20-013",
+        "legacy-reading-21-001",
+        "legacy-reading-21-002",
+        "legacy-reading-21-003",
+        "legacy-reading-21-004",
+        "legacy-reading-21-005",
+        "legacy-reading-21-006",
+        "legacy-reading-21-007",
+        "legacy-reading-21-008",
+        "legacy-reading-21-009",
+        "legacy-reading-21-010",
+        "legacy-reading-21-011",
+        "legacy-reading-21-012",
+        "legacy-reading-21-013",
+        "legacy-reading-21-014",
+        "legacy-reading-21-015",
+        "legacy-reading-21-016",
+        "legacy-reading-21-017"
+      ],
+      "sampleLocalPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/preface.md",
+      "sampleSourceUrl": "https://github.com/ZhangHanDong/harness-engineering-from-cc-to-ai-coding/blob/HEAD/book/src/preface.md"
+    },
+    {
+      "repositoryPath": "Agentic/crewAI",
+      "remote": "git@github.com:crewAIInc/crewAI.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/crewAIInc/crewAI",
+      "itemIds": [
+        "legacy-reading-22-007",
+        "legacy-reading-26-001",
+        "legacy-reading-26-002",
+        "legacy-reading-26-003",
+        "legacy-reading-26-004",
+        "legacy-reading-26-005",
+        "legacy-reading-26-006",
+        "legacy-reading-26-007",
+        "legacy-reading-26-008",
+        "legacy-reading-26-009",
+        "legacy-reading-26-010",
+        "legacy-reading-26-011",
+        "legacy-reading-27-001",
+        "legacy-reading-27-002",
+        "legacy-reading-27-003",
+        "legacy-reading-27-004",
+        "legacy-reading-27-005",
+        "legacy-reading-27-006",
+        "legacy-reading-27-007",
+        "legacy-reading-27-008",
+        "legacy-reading-27-009",
+        "legacy-reading-27-010",
+        "legacy-reading-27-011",
+        "legacy-reading-27-012",
+        "legacy-reading-27-013",
+        "legacy-reading-27-014",
+        "legacy-reading-28-001",
+        "legacy-reading-28-002",
+        "legacy-reading-28-003",
+        "legacy-reading-28-004",
+        "legacy-reading-28-005",
+        "legacy-reading-28-006",
+        "legacy-reading-28-007",
+        "legacy-reading-28-008",
+        "legacy-reading-28-009",
+        "legacy-reading-28-010"
+      ],
+      "sampleLocalPath": "Agentic/crewAI/README.md",
+      "sampleSourceUrl": "https://github.com/crewAIInc/crewAI/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "Learning/hello-agents",
+      "remote": "https://github.com/datawhalechina/hello-agents.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/datawhalechina/hello-agents",
+      "itemIds": [
+        "legacy-reading-02-001",
+        "legacy-reading-02-002",
+        "legacy-reading-02-003",
+        "legacy-reading-02-004",
+        "legacy-reading-02-005",
+        "legacy-reading-03-001",
+        "legacy-reading-03-002",
+        "legacy-reading-03-003",
+        "legacy-reading-03-004",
+        "legacy-reading-04-001",
+        "legacy-reading-04-002",
+        "legacy-reading-04-003",
+        "legacy-reading-04-004",
+        "legacy-reading-04-005",
+        "legacy-reading-05-001",
+        "legacy-reading-05-002",
+        "legacy-reading-05-003",
+        "legacy-reading-05-004",
+        "legacy-reading-06-001",
+        "legacy-reading-06-002",
+        "legacy-reading-06-003",
+        "legacy-reading-06-004",
+        "legacy-reading-06-005",
+        "legacy-reading-06-006",
+        "legacy-reading-06-007",
+        "legacy-reading-06-008",
+        "legacy-reading-06-009",
+        "legacy-reading-06-010",
+        "legacy-reading-06-011",
+        "legacy-reading-06-012",
+        "legacy-reading-06-013",
+        "legacy-reading-06-014"
+      ],
+      "sampleLocalPath": "Learning/hello-agents/README.md",
+      "sampleSourceUrl": "https://github.com/datawhalechina/hello-agents/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "Agentic/AutoGPT",
+      "remote": "git@github.com:Significant-Gravitas/AutoGPT.git",
+      "branch": "master",
+      "webBaseUrl": "https://github.com/Significant-Gravitas/AutoGPT",
+      "itemIds": [
+        "legacy-reading-22-009",
+        "legacy-reading-29-001",
+        "legacy-reading-29-002",
+        "legacy-reading-29-003",
+        "legacy-reading-29-004",
+        "legacy-reading-29-005",
+        "legacy-reading-29-006",
+        "legacy-reading-29-007",
+        "legacy-reading-29-008",
+        "legacy-reading-29-009",
+        "legacy-reading-29-010",
+        "legacy-reading-29-011",
+        "legacy-reading-29-012",
+        "legacy-reading-29-013",
+        "legacy-reading-29-014",
+        "legacy-reading-30-001",
+        "legacy-reading-30-002",
+        "legacy-reading-30-003",
+        "legacy-reading-30-004",
+        "legacy-reading-30-005",
+        "legacy-reading-30-006",
+        "legacy-reading-30-007",
+        "legacy-reading-30-008",
+        "legacy-reading-30-009",
+        "legacy-reading-30-010",
+        "legacy-reading-30-011",
+        "legacy-reading-30-012",
+        "legacy-reading-30-013"
+      ],
+      "sampleLocalPath": "Agentic/AutoGPT/README.md",
+      "sampleSourceUrl": "https://github.com/Significant-Gravitas/AutoGPT/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "Agentic/Harness/harness-books",
+      "remote": "git@github.com:wquguru/harness-books.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/wquguru/harness-books",
+      "itemIds": [
+        "legacy-course-023",
+        "legacy-reading-17-001",
+        "legacy-reading-17-002",
+        "legacy-reading-17-003",
+        "legacy-reading-17-004",
+        "legacy-reading-17-005",
+        "legacy-reading-17-006",
+        "legacy-reading-17-007",
+        "legacy-reading-17-008",
+        "legacy-reading-17-009",
+        "legacy-reading-17-010",
+        "legacy-reading-17-011",
+        "legacy-reading-17-012",
+        "legacy-reading-17-013",
+        "legacy-reading-18-001",
+        "legacy-reading-18-002",
+        "legacy-reading-18-003",
+        "legacy-reading-18-004",
+        "legacy-reading-18-005",
+        "legacy-reading-18-006",
+        "legacy-reading-18-007",
+        "legacy-reading-18-008",
+        "legacy-reading-18-009",
+        "legacy-reading-18-010",
+        "legacy-reading-18-011"
+      ],
+      "sampleLocalPath": "Agentic/Harness/harness-books/book1-claude-code/index.md",
+      "sampleSourceUrl": "https://github.com/wquguru/harness-books/blob/HEAD/book1-claude-code/index.md"
+    },
+    {
+      "repositoryPath": "AICoding/claude/document/learn-claude-code",
+      "remote": "git@github.com:shareAI-lab/learn-claude-code.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/shareAI-lab/learn-claude-code",
+      "itemIds": [
+        "legacy-reading-10-001",
+        "legacy-reading-10-002",
+        "legacy-reading-10-003",
+        "legacy-reading-10-004",
+        "legacy-reading-10-005",
+        "legacy-reading-10-006",
+        "legacy-reading-10-007",
+        "legacy-reading-10-008",
+        "legacy-reading-10-009",
+        "legacy-reading-10-010",
+        "legacy-reading-10-011",
+        "legacy-reading-10-012",
+        "legacy-reading-10-013",
+        "legacy-reading-10-014",
+        "legacy-reading-10-015",
+        "legacy-reading-10-016",
+        "legacy-reading-10-017",
+        "legacy-reading-10-018",
+        "legacy-reading-10-019",
+        "legacy-reading-10-020",
+        "legacy-reading-10-021"
+      ],
+      "sampleLocalPath": "AICoding/claude/document/learn-claude-code/README-zh.md",
+      "sampleSourceUrl": "https://github.com/shareAI-lab/learn-claude-code/blob/HEAD/README-zh.md"
+    },
+    {
+      "repositoryPath": "Agentic/ai-agent-deep-dive",
+      "remote": "git@github.com:tvytlx/ai-agent-deep-dive.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/tvytlx/ai-agent-deep-dive",
+      "itemIds": [
+        "legacy-course-034",
+        "legacy-reading-23-001",
+        "legacy-reading-23-002",
+        "legacy-reading-23-003",
+        "legacy-reading-23-004",
+        "legacy-reading-23-005",
+        "legacy-reading-23-006",
+        "legacy-reading-23-007",
+        "legacy-reading-23-008",
+        "legacy-reading-23-009",
+        "legacy-reading-23-010",
+        "legacy-reading-23-011",
+        "legacy-reading-23-012",
+        "legacy-reading-23-013",
+        "legacy-reading-23-014",
+        "legacy-reading-23-015",
+        "legacy-reading-23-016",
+        "legacy-reading-23-017",
+        "legacy-reading-23-018"
+      ],
+      "sampleLocalPath": "Agentic/ai-agent-deep-dive/README.md",
+      "sampleSourceUrl": "https://github.com/tvytlx/ai-agent-deep-dive/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "Application/cc-switch",
+      "remote": "git@github.com:farion1231/cc-switch.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/farion1231/cc-switch",
+      "itemIds": [
+        "legacy-reading-37-001",
+        "legacy-reading-37-002",
+        "legacy-reading-37-003",
+        "legacy-reading-37-004",
+        "legacy-reading-37-005",
+        "legacy-reading-37-006",
+        "legacy-reading-37-007",
+        "legacy-reading-37-008",
+        "legacy-reading-37-009",
+        "legacy-reading-37-010",
+        "legacy-reading-37-011",
+        "legacy-reading-37-012",
+        "legacy-reading-37-013",
+        "legacy-reading-37-014",
+        "legacy-reading-37-015",
+        "legacy-reading-37-016",
+        "legacy-reading-37-017",
+        "legacy-reading-37-018",
+        "legacy-reading-37-019"
+      ],
+      "sampleLocalPath": "Application/cc-switch/README_ZH.md",
+      "sampleSourceUrl": "https://github.com/farion1231/cc-switch/blob/HEAD/README_ZH.md"
+    },
+    {
+      "repositoryPath": "Learning/claw0",
+      "remote": "git@github.com:shareAI-lab/claw0.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/shareAI-lab/claw0",
+      "itemIds": [
+        "legacy-reading-07-001",
+        "legacy-reading-07-002",
+        "legacy-reading-07-003",
+        "legacy-reading-07-004",
+        "legacy-reading-07-005",
+        "legacy-reading-07-006",
+        "legacy-reading-07-007",
+        "legacy-reading-07-008",
+        "legacy-reading-07-009",
+        "legacy-reading-07-010",
+        "legacy-reading-07-011",
+        "legacy-reading-08-001",
+        "legacy-reading-08-002",
+        "legacy-reading-08-003",
+        "legacy-reading-08-004",
+        "legacy-reading-08-005",
+        "legacy-reading-08-006",
+        "legacy-reading-08-007",
+        "legacy-reading-08-008"
+      ],
+      "sampleLocalPath": "Learning/claw0/README.md",
+      "sampleSourceUrl": "https://github.com/shareAI-lab/claw0/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "AICoding/openclaw/doc/openclaw_guide",
+      "remote": "git@github.com:yeasy/openclaw_guide.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/yeasy/openclaw_guide",
+      "itemIds": [
+        "legacy-reading-13-001",
+        "legacy-reading-13-002",
+        "legacy-reading-13-003",
+        "legacy-reading-13-004",
+        "legacy-reading-13-005",
+        "legacy-reading-13-006",
+        "legacy-reading-13-007",
+        "legacy-reading-13-008",
+        "legacy-reading-13-009",
+        "legacy-reading-13-010",
+        "legacy-reading-13-011",
+        "legacy-reading-13-012",
+        "legacy-reading-13-013",
+        "legacy-reading-13-014",
+        "legacy-reading-13-015",
+        "legacy-reading-13-016",
+        "legacy-reading-13-017",
+        "legacy-reading-13-018"
+      ],
+      "sampleLocalPath": "AICoding/openclaw/doc/openclaw_guide/README.md",
+      "sampleSourceUrl": "https://github.com/yeasy/openclaw_guide/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "Agentic/Harness/learn-harness-engineering",
+      "remote": "git@github.com:walkinglabs/learn-harness-engineering.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/walkinglabs/learn-harness-engineering",
+      "itemIds": [
+        "legacy-reading-16-001",
+        "legacy-reading-16-002",
+        "legacy-reading-16-003",
+        "legacy-reading-16-004",
+        "legacy-reading-16-005",
+        "legacy-reading-16-006",
+        "legacy-reading-16-007",
+        "legacy-reading-16-008",
+        "legacy-reading-16-009",
+        "legacy-reading-16-010",
+        "legacy-reading-16-011",
+        "legacy-reading-16-012",
+        "legacy-reading-16-013",
+        "legacy-reading-16-014",
+        "legacy-reading-16-015",
+        "legacy-reading-16-016"
+      ],
+      "sampleLocalPath": "Agentic/Harness/learn-harness-engineering/docs/zh/index.md",
+      "sampleSourceUrl": "https://github.com/walkinglabs/learn-harness-engineering/blob/HEAD/docs/zh/index.md"
+    },
+    {
+      "repositoryPath": "Agentic/Harness/PI/pi-mono",
+      "remote": "git@github.com:earendil-works/pi.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/earendil-works/pi",
+      "itemIds": [
+        "legacy-course-031",
+        "legacy-reading-22-011",
+        "legacy-reading-22-012",
+        "legacy-reading-33-001",
+        "legacy-reading-33-002",
+        "legacy-reading-33-003",
+        "legacy-reading-33-004",
+        "legacy-reading-33-005",
+        "legacy-reading-33-006",
+        "legacy-reading-33-007",
+        "legacy-reading-33-008",
+        "legacy-reading-33-009",
+        "legacy-reading-33-010",
+        "legacy-reading-33-011",
+        "legacy-reading-33-012"
+      ],
+      "sampleLocalPath": "Agentic/Harness/PI/pi-mono/README.md",
+      "sampleSourceUrl": "https://github.com/earendil-works/pi/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "AICoding/claude/code/claude-code-analysis",
+      "remote": "https://github.com/liuup/claude-code-analysis",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/liuup/claude-code-analysis",
+      "itemIds": [
+        "legacy-course-009",
+        "legacy-reading-11-001",
+        "legacy-reading-11-002",
+        "legacy-reading-11-003",
+        "legacy-reading-11-004",
+        "legacy-reading-11-005",
+        "legacy-reading-11-006",
+        "legacy-reading-11-007",
+        "legacy-reading-11-008",
+        "legacy-reading-11-009",
+        "legacy-reading-11-010",
+        "legacy-reading-11-011",
+        "legacy-reading-11-012",
+        "legacy-reading-11-013"
+      ],
+      "sampleLocalPath": "AICoding/claude/code/claude-code-analysis/README.md",
+      "sampleSourceUrl": "https://github.com/liuup/claude-code-analysis/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "AICoding/opencode/learn-opencode",
+      "remote": "git@github.com:vbgate/learn-opencode.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/vbgate/learn-opencode",
+      "itemIds": [
+        "legacy-reading-14-001",
+        "legacy-reading-14-002",
+        "legacy-reading-14-003",
+        "legacy-reading-14-004",
+        "legacy-reading-14-005",
+        "legacy-reading-14-006",
+        "legacy-reading-14-007",
+        "legacy-reading-14-008",
+        "legacy-reading-14-009",
+        "legacy-reading-14-010",
+        "legacy-reading-14-011"
+      ],
+      "sampleLocalPath": "AICoding/opencode/learn-opencode/README.md",
+      "sampleSourceUrl": "https://github.com/vbgate/learn-opencode/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "Agentic/Harness/deepagents",
+      "remote": "git@github.com:langchain-ai/deepagents.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/langchain-ai/deepagents",
+      "itemIds": [
+        "legacy-reading-22-005",
+        "legacy-reading-22-006",
+        "legacy-reading-31-007",
+        "legacy-reading-31-008",
+        "legacy-reading-31-009",
+        "legacy-reading-31-010",
+        "legacy-reading-31-011",
+        "legacy-reading-31-012",
+        "legacy-reading-31-013",
+        "legacy-reading-31-014"
+      ],
+      "sampleLocalPath": "Agentic/Harness/deepagents/README.md",
+      "sampleSourceUrl": "https://github.com/langchain-ai/deepagents/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "Agentic/Harness/smolagents",
+      "remote": "git@github.com:huggingface/smolagents.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/huggingface/smolagents",
+      "itemIds": [
+        "legacy-reading-24-001",
+        "legacy-reading-24-002",
+        "legacy-reading-24-003",
+        "legacy-reading-24-004",
+        "legacy-reading-24-005",
+        "legacy-reading-24-006",
+        "legacy-reading-24-007",
+        "legacy-reading-24-008",
+        "legacy-reading-24-009",
+        "legacy-reading-24-010"
+      ],
+      "sampleLocalPath": "Agentic/Harness/smolagents/README.md",
+      "sampleSourceUrl": "https://github.com/huggingface/smolagents/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "Agentic/MetaGPT",
+      "remote": "git@github.com:FoundationAgents/MetaGPT.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/FoundationAgents/MetaGPT",
+      "itemIds": [
+        "legacy-reading-22-008",
+        "legacy-reading-32-001",
+        "legacy-reading-32-002",
+        "legacy-reading-32-003",
+        "legacy-reading-32-004",
+        "legacy-reading-32-005",
+        "legacy-reading-32-006",
+        "legacy-reading-32-007",
+        "legacy-reading-32-008"
+      ],
+      "sampleLocalPath": "Agentic/MetaGPT/README.md",
+      "sampleSourceUrl": "https://github.com/FoundationAgents/MetaGPT/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "",
+      "remote": null,
+      "branch": null,
+      "webBaseUrl": null,
+      "itemIds": [
+        "legacy-course-002",
+        "legacy-course-006",
+        "legacy-course-007",
+        "legacy-reading-01-002",
+        "legacy-reading-12-002",
+        "legacy-reading-12-003",
+        "legacy-reading-15-003",
+        "legacy-reading-15-004"
+      ],
+      "sampleLocalPath": "Learning/Book/Hello-Agents-V1.0.0-20251103.pdf",
+      "sampleSourceUrl": null
+    },
+    {
+      "repositoryPath": "Agentic/multica",
+      "remote": "git@github.com:multica-ai/multica.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/multica-ai/multica",
+      "itemIds": [
+        "legacy-course-035",
+        "legacy-reading-25-001",
+        "legacy-reading-25-002",
+        "legacy-reading-25-003",
+        "legacy-reading-25-004",
+        "legacy-reading-25-005",
+        "legacy-reading-25-006",
+        "legacy-reading-25-007"
+      ],
+      "sampleLocalPath": "Agentic/multica/README.zh-CN.md",
+      "sampleSourceUrl": "https://github.com/multica-ai/multica/blob/HEAD/README.zh-CN.md"
+    },
+    {
+      "repositoryPath": "Agentic/OpenHands",
+      "remote": "git@github.com:OpenHands/OpenHands.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/OpenHands/OpenHands",
+      "itemIds": [
+        "legacy-reading-22-010",
+        "legacy-reading-32-009",
+        "legacy-reading-32-010",
+        "legacy-reading-32-011",
+        "legacy-reading-32-012",
+        "legacy-reading-32-013"
+      ],
+      "sampleLocalPath": "Agentic/OpenHands/README.md",
+      "sampleSourceUrl": "https://github.com/OpenHands/OpenHands/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "Application/CodexSwitch",
+      "remote": "git@github.com:guhailin/CodexSwitch.git",
+      "branch": "master",
+      "webBaseUrl": "https://github.com/guhailin/CodexSwitch",
+      "itemIds": [
+        "legacy-course-040",
+        "legacy-reading-38-001",
+        "legacy-reading-38-002",
+        "legacy-reading-38-003",
+        "legacy-reading-38-004",
+        "legacy-reading-38-005"
+      ],
+      "sampleLocalPath": "Application/CodexSwitch/README.md",
+      "sampleSourceUrl": "https://github.com/guhailin/CodexSwitch/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "Application/solon-ai",
+      "remote": "https://gitee.com/opensolon/solon-ai.git",
+      "branch": "main",
+      "webBaseUrl": "https://gitee.com/opensolon/solon-ai",
+      "itemIds": [
+        "legacy-reading-38-008",
+        "legacy-reading-38-009",
+        "legacy-reading-38-010",
+        "legacy-reading-38-011",
+        "legacy-reading-38-012"
+      ],
+      "sampleLocalPath": "Application/solon-ai/README.md",
+      "sampleSourceUrl": "https://gitee.com/opensolon/solon-ai/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "Agentic/Harness/openworker",
+      "remote": "git@github.com:andrewyng/openworker.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/andrewyng/openworker",
+      "itemIds": [
+        "legacy-course-032",
+        "legacy-reading-22-013",
+        "legacy-reading-32-014",
+        "legacy-reading-32-015"
+      ],
+      "sampleLocalPath": "Agentic/Harness/openworker/README.md",
+      "sampleSourceUrl": "https://github.com/andrewyng/openworker/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "AICoding/claude/plugins/claude-mem",
+      "remote": "git@github.com:thedotmack/claude-mem.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/thedotmack/claude-mem",
+      "itemIds": [
+        "legacy-course-013",
+        "legacy-reading-12-005",
+        "legacy-reading-12-006",
+        "legacy-reading-12-007"
+      ],
+      "sampleLocalPath": "AICoding/claude/plugins/claude-mem/README.md",
+      "sampleSourceUrl": "https://github.com/thedotmack/claude-mem/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "AICoding/CyberClaw",
+      "remote": "git@github.com:ttguy0707/CyberClaw.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/ttguy0707/CyberClaw",
+      "itemIds": [
+        "legacy-reading-15-005",
+        "legacy-reading-15-006",
+        "legacy-reading-15-007",
+        "legacy-reading-15-008"
+      ],
+      "sampleLocalPath": "AICoding/CyberClaw/README.md",
+      "sampleSourceUrl": "https://github.com/ttguy0707/CyberClaw/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "AICoding/openclaw/openclaw-code",
+      "remote": "git@github.com:openclaw/openclaw.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/openclaw/openclaw",
+      "itemIds": [
+        "legacy-reading-13-020",
+        "legacy-reading-13-021",
+        "legacy-reading-13-022",
+        "legacy-reading-13-023"
+      ],
+      "sampleLocalPath": "AICoding/openclaw/openclaw-code/VISION.md",
+      "sampleSourceUrl": "https://github.com/openclaw/openclaw/blob/HEAD/VISION.md"
+    },
+    {
+      "repositoryPath": "AICoding/opencode/code/opencode",
+      "remote": "https://github.com/anomalyco/opencode",
+      "branch": "dev",
+      "webBaseUrl": "https://github.com/anomalyco/opencode",
+      "itemIds": [
+        "legacy-course-018",
+        "legacy-reading-14-012",
+        "legacy-reading-14-013"
+      ],
+      "sampleLocalPath": "AICoding/opencode/code/opencode/README.md",
+      "sampleSourceUrl": "https://github.com/anomalyco/opencode/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "Agentic/Memory/mem0",
+      "remote": "git@github.com:mem0ai/mem0.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/mem0ai/mem0",
+      "itemIds": [
+        "legacy-reading-22-001",
+        "legacy-reading-22-002"
+      ],
+      "sampleLocalPath": "Agentic/Memory/mem0/README.md",
+      "sampleSourceUrl": "https://github.com/mem0ai/mem0/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "AICoding/claude/code/awesome-claude-code",
+      "remote": "git@github.com:hesreallyhim/awesome-claude-code.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/hesreallyhim/awesome-claude-code",
+      "itemIds": [
+        "legacy-course-014",
+        "legacy-reading-12-019"
+      ],
+      "sampleLocalPath": "AICoding/claude/code/awesome-claude-code/README.md",
+      "sampleSourceUrl": "https://github.com/hesreallyhim/awesome-claude-code/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "AICoding/claude/code/claude-code-rev",
+      "remote": "git@github.com:oboard/claude-code-rev.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/oboard/claude-code-rev",
+      "itemIds": [
+        "legacy-reading-12-017",
+        "legacy-reading-12-018"
+      ],
+      "sampleLocalPath": "AICoding/claude/code/claude-code-rev/README.md",
+      "sampleSourceUrl": "https://github.com/oboard/claude-code-rev/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "AICoding/claude/code/claude-code-templates",
+      "remote": "git@github.com:davila7/claude-code-templates.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/davila7/claude-code-templates",
+      "itemIds": [
+        "legacy-reading-12-021",
+        "legacy-reading-12-022"
+      ],
+      "sampleLocalPath": "AICoding/claude/code/claude-code-templates/README.md",
+      "sampleSourceUrl": "https://github.com/davila7/claude-code-templates/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "AICoding/claude/code/collection-claude-code-source-code",
+      "remote": "git@github.com:chauncygu/collection-claude-code-source-code.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/chauncygu/collection-claude-code-source-code",
+      "itemIds": [
+        "legacy-course-010",
+        "legacy-reading-12-014"
+      ],
+      "sampleLocalPath": "AICoding/claude/code/collection-claude-code-source-code/README-CN.md",
+      "sampleSourceUrl": "https://github.com/chauncygu/collection-claude-code-source-code/blob/HEAD/README-CN.md"
+    },
+    {
+      "repositoryPath": "AICoding/claude/document/claude-code-guide",
+      "remote": "git@github.com:zebbern/claude-code-guide.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/zebbern/claude-code-guide",
+      "itemIds": [
+        "legacy-course-012",
+        "legacy-reading-12-001"
+      ],
+      "sampleLocalPath": "AICoding/claude/document/claude-code-guide/README.md",
+      "sampleSourceUrl": "https://github.com/zebbern/claude-code-guide/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "AICoding/claude/plugins/claude-auto-mode-unlock",
+      "remote": "git@github.com:zzturn/claude-auto-mode-unlock.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/zzturn/claude-auto-mode-unlock",
+      "itemIds": [
+        "legacy-reading-12-011",
+        "legacy-reading-12-012"
+      ],
+      "sampleLocalPath": "AICoding/claude/plugins/claude-auto-mode-unlock/README.md",
+      "sampleSourceUrl": "https://github.com/zzturn/claude-auto-mode-unlock/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "AICoding/MiMo-Code",
+      "remote": "git@github.com:XiaomiMiMo/MiMo-Code.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/XiaomiMiMo/MiMo-Code",
+      "itemIds": [
+        "legacy-reading-15-009",
+        "legacy-reading-15-010"
+      ],
+      "sampleLocalPath": "AICoding/MiMo-Code/README.zh.md",
+      "sampleSourceUrl": "https://github.com/XiaomiMiMo/MiMo-Code/blob/HEAD/README.zh.md"
+    },
+    {
+      "repositoryPath": "AICoding/opencode/code/opencode-supermemory",
+      "remote": "git@github.com:supermemoryai/opencode-supermemory.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/supermemoryai/opencode-supermemory",
+      "itemIds": [
+        "legacy-reading-14-017",
+        "legacy-reading-14-018"
+      ],
+      "sampleLocalPath": "AICoding/opencode/code/opencode-supermemory/README.md",
+      "sampleSourceUrl": "https://github.com/supermemoryai/opencode-supermemory/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "Application/workany",
+      "remote": "git@github.com:workany-ai/workany.git",
+      "branch": "dev",
+      "webBaseUrl": "https://github.com/workany-ai/workany",
+      "itemIds": [
+        "legacy-reading-38-006",
+        "legacy-reading-38-007"
+      ],
+      "sampleLocalPath": "Application/workany/README.md",
+      "sampleSourceUrl": "https://github.com/workany-ai/workany/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "Agentic/open-agent-sdk-typescript",
+      "remote": "git@github.com:codeany-ai/open-agent-sdk-typescript.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/codeany-ai/open-agent-sdk-typescript",
+      "itemIds": [
+        "legacy-reading-22-014"
+      ],
+      "sampleLocalPath": "Agentic/open-agent-sdk-typescript/README.md",
+      "sampleSourceUrl": "https://github.com/codeany-ai/open-agent-sdk-typescript/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "AICoding/claude/code/claude-code-haha",
+      "remote": "git@github.com:NanmiCoder/claude-code-haha.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/NanmiCoder/claude-code-haha",
+      "itemIds": [
+        "legacy-reading-12-016"
+      ],
+      "sampleLocalPath": "AICoding/claude/code/claude-code-haha/README.md",
+      "sampleSourceUrl": "https://github.com/NanmiCoder/claude-code-haha/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "AICoding/claude/code/claude-code-lens",
+      "remote": "git@github.com:ningzimu/claude-code-lens.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/ningzimu/claude-code-lens",
+      "itemIds": [
+        "legacy-reading-12-013"
+      ],
+      "sampleLocalPath": "AICoding/claude/code/claude-code-lens/README.zh-CN.md",
+      "sampleSourceUrl": "https://github.com/ningzimu/claude-code-lens/blob/HEAD/README.zh-CN.md"
+    },
+    {
+      "repositoryPath": "AICoding/claude/code/claude-code-source-code",
+      "remote": "git@github.com:sanbuphy/claude-code-source-code.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/sanbuphy/claude-code-source-code",
+      "itemIds": [
+        "legacy-reading-12-015"
+      ],
+      "sampleLocalPath": "AICoding/claude/code/claude-code-source-code/README_CN.md",
+      "sampleSourceUrl": "https://github.com/sanbuphy/claude-code-source-code/blob/HEAD/README_CN.md"
+    },
+    {
+      "repositoryPath": "AICoding/claude/code/claude-init",
+      "remote": "git@github.com:cfrs2005/claude-init.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/cfrs2005/claude-init",
+      "itemIds": [
+        "legacy-reading-12-020"
+      ],
+      "sampleLocalPath": "AICoding/claude/code/claude-init/README.md",
+      "sampleSourceUrl": "https://github.com/cfrs2005/claude-init/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "AICoding/claude/document/ClaudeMD/andrej-karpathy-skills",
+      "remote": "git@github.com:forrestchang/andrej-karpathy-skills.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/forrestchang/andrej-karpathy-skills",
+      "itemIds": [
+        "legacy-reading-12-004"
+      ],
+      "sampleLocalPath": "AICoding/claude/document/ClaudeMD/andrej-karpathy-skills/README.zh.md",
+      "sampleSourceUrl": "https://github.com/forrestchang/andrej-karpathy-skills/blob/HEAD/README.zh.md"
+    },
+    {
+      "repositoryPath": "AICoding/claude/plugins/claude-mermaid",
+      "remote": "https://github.com/veelenga/claude-mermaid.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/veelenga/claude-mermaid",
+      "itemIds": [
+        "legacy-reading-12-009"
+      ],
+      "sampleLocalPath": "AICoding/claude/plugins/claude-mermaid/README.md",
+      "sampleSourceUrl": "https://github.com/veelenga/claude-mermaid/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "AICoding/claude/plugins/claude-stt",
+      "remote": "git@github.com:jarrodwatts/claude-stt.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/jarrodwatts/claude-stt",
+      "itemIds": [
+        "legacy-reading-12-010"
+      ],
+      "sampleLocalPath": "AICoding/claude/plugins/claude-stt/README.md",
+      "sampleSourceUrl": "https://github.com/jarrodwatts/claude-stt/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "AICoding/claude/plugins/claudian",
+      "remote": "git@github.com:YishenTu/claudian.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/YishenTu/claudian",
+      "itemIds": [
+        "legacy-reading-12-008"
+      ],
+      "sampleLocalPath": "AICoding/claude/plugins/claudian/README.md",
+      "sampleSourceUrl": "https://github.com/YishenTu/claudian/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "AICoding/codex/codex-code",
+      "remote": "org-14957082@github.com:openai/codex.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/openai/codex",
+      "itemIds": [
+        "legacy-reading-15-001"
+      ],
+      "sampleLocalPath": "AICoding/codex/codex-code/README.md",
+      "sampleSourceUrl": "https://github.com/openai/codex/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "AICoding/hermes/hermes-agent",
+      "remote": "git@github.com:NousResearch/hermes-agent.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/NousResearch/hermes-agent",
+      "itemIds": [
+        "legacy-reading-15-002"
+      ],
+      "sampleLocalPath": "AICoding/hermes/hermes-agent/README.md",
+      "sampleSourceUrl": "https://github.com/NousResearch/hermes-agent/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "AICoding/openclaw/channels/openclaw-lark",
+      "remote": "git@github.com:larksuite/openclaw-lark.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/larksuite/openclaw-lark",
+      "itemIds": [
+        "legacy-reading-13-019"
+      ],
+      "sampleLocalPath": "AICoding/openclaw/channels/openclaw-lark/README.zh.md",
+      "sampleSourceUrl": "https://github.com/larksuite/openclaw-lark/blob/HEAD/README.zh.md"
+    },
+    {
+      "repositoryPath": "AICoding/opencode/awesome-opencode",
+      "remote": "git@github.com:awesome-opencode/awesome-opencode.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/awesome-opencode/awesome-opencode",
+      "itemIds": [
+        "legacy-reading-14-014"
+      ],
+      "sampleLocalPath": "AICoding/opencode/awesome-opencode/README.md",
+      "sampleSourceUrl": "https://github.com/awesome-opencode/awesome-opencode/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "AICoding/opencode/code/openwork",
+      "remote": "https://github.com/different-ai/openwork.git",
+      "branch": "dev",
+      "webBaseUrl": "https://github.com/different-ai/openwork",
+      "itemIds": [
+        "legacy-reading-14-016"
+      ],
+      "sampleLocalPath": "AICoding/opencode/code/openwork/README_ZH.md",
+      "sampleSourceUrl": "https://github.com/different-ai/openwork/blob/HEAD/README_ZH.md"
+    },
+    {
+      "repositoryPath": "AICoding/opencode/plugins/opencode-wakatime",
+      "remote": "git@github.com:angristan/opencode-wakatime.git",
+      "branch": "master",
+      "webBaseUrl": "https://github.com/angristan/opencode-wakatime",
+      "itemIds": [
+        "legacy-reading-14-019"
+      ],
+      "sampleLocalPath": "AICoding/opencode/plugins/opencode-wakatime/README.md",
+      "sampleSourceUrl": "https://github.com/angristan/opencode-wakatime/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "Learning/easy-agent",
+      "remote": "git@github.com:ConardLi/easy-agent.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/ConardLi/easy-agent",
+      "itemIds": [
+        "legacy-reading-09-001"
+      ],
+      "sampleLocalPath": "Learning/easy-agent/README.zh-CN.md",
+      "sampleSourceUrl": "https://github.com/ConardLi/easy-agent/blob/HEAD/README.zh-CN.md"
+    },
+    {
+      "repositoryPath": "Learning/easy-learn-ai",
+      "remote": "git@github.com:ConardLi/easy-learn-ai.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/ConardLi/easy-learn-ai",
+      "itemIds": [
+        "legacy-reading-09-002"
+      ],
+      "sampleLocalPath": "Learning/easy-learn-ai/readme.md",
+      "sampleSourceUrl": "https://github.com/ConardLi/easy-learn-ai/blob/HEAD/readme.md"
+    }
+  ]
+}

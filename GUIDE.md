@@ -190,7 +190,40 @@ code/scripts/local-preview.sh
 
 ---
 
-## 六、维护者：走查与回归
+## 六、维护者：改动过 local-courses 之后
+
+素材库是你自己的目录，你随时会重组、增删它。站点不会自动跟着变——目录（`code/content/courses/courses.json`）里记的是路径，路径失效条目就打不开了。
+
+改动之后跑一次对账：
+
+```bash
+npm run audit:materials --prefix code
+```
+
+它回答三个问题，报告写到 `code/reports/materials/catalog-drift.md`：
+
+| 报告小节           | 说的是                                                  |
+| ------------------ | ------------------------------------------------------- |
+| Corroborated moves | 失效路径 + 可信的新位置（被多条路径共同印证的目录搬迁） |
+| Needs a decision   | 判不准的和找不到的，只能你自己定                        |
+| Uncatalogued       | 磁盘上有、目录里没有的仓库，附可粘贴的条目骨架          |
+| Upstream fallback  | 没有上游回退的条目，按仓库分组                          |
+
+先读报告，确认 Corroborated moves 那一栏没问题，再落盘：
+
+```bash
+npm run audit:materials --prefix code -- --apply
+```
+
+`--apply` **只**改写 Corroborated moves，判不准的一条都不碰。原因很实在：素材库有十几万个文件，被删掉的文件几乎总能在别处找到同名的，匹配器根本没有“已删除”这个答案。真发生过一次——LangChain 被整个删掉后，它的 `libs/README.md` 唯一匹配到了 DeepAgents 的同名文件。自动应用的话，那个条目会指向另一个项目的正文，页面照常渲染、检查全绿，只有你读到的东西是错的。
+
+素材真的被删了、不是搬走了怎么办：把条目的 `localPath` 清空、`accessPolicy` 改成 `upstream-only`、补上 `sourceUrl`。条目本身要留着——云端目录从不依赖你本机有没有这份文件。
+
+> 对账**不进** `npm run check`。整理素材目录不该让 typecheck 和测试跑不了。`audit:materials` 自己会非零退出，单独用。
+
+---
+
+## 七、维护者：走查与回归
 
 两个脚本，分工不同：**`ui-review` 看页面长什么样，`functional-regression` 真的去点。**
 

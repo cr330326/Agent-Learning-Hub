@@ -1,5 +1,5 @@
 import { existsSync } from "node:fs";
-import { mkdir, rename, rm, writeFile } from "node:fs/promises";
+import { mkdir, readFile, rename, rm, writeFile } from "node:fs/promises";
 import { join, relative, resolve } from "node:path";
 import process from "node:process";
 
@@ -8,6 +8,12 @@ import {
   auditContentDirectory,
   renderContentAuditMarkdown,
 } from "../modules/catalog/content-audit";
+import {
+  applyMovedPaths,
+  buildCatalogDriftReport,
+  toWebBaseUrl,
+  type CatalogDriftReport,
+} from "../modules/freshness/catalog-drift";
 import {
   checkMaterialRepositories,
   discoverMaterialRepositories,
@@ -47,17 +53,23 @@ type MaterialsOptions = {
 };
 
 type MaterialsArguments = MaterialsOptions & {
-  command: "check" | "update" | "audit" | "reindex";
+  command: "check" | "update" | "audit" | "reindex" | "drift";
   help: boolean;
   courseId?: string;
   confirmed: boolean;
+  apply: boolean;
 };
 
 type MaterialCheckReport = {
   schemaVersion: 1;
   generatedAt: string;
   localMaterialRoot: string;
-  summary: Record<MaterialStatus, number> & { skipped: number; total: number };
+  summary: Record<MaterialStatus, number> & {
+    skipped: number;
+    /** References whose material path is gone — Catalog Drift, not a Git state. */
+    missing: number;
+    total: number;
+  };
   repositories: Array<
     Omit<MaterialRepositoryResult, "repositoryPath"> & {
       repositoryPath: string;
@@ -74,10 +86,13 @@ type MaterialCheckReport = {
 
 function usage(): string {
   return [
-    "Usage: tsx scripts/materials.ts <check|update|audit|reindex> [course-id] [options]",
+    "Usage: tsx scripts/materials.ts <check|drift|update|audit|reindex> [course-id] [options]",
     "",
-    "Checks Git freshness for each repository referenced by the content catalog.",
-    "The check command never pulls, fetches, or changes a material workspace.",
+    "The check command reports Freshness Status: Local Material against its",
+    "Upstream Source. It never pulls, fetches, or changes a material workspace.",
+    "The drift command reports Catalog Drift: what the catalog declares against",
+    "what the library actually holds. It writes nothing unless given --apply,",
+    "and even then only rewrites paths it could corroborate as moved.",
     "The update command requires one catalog course ID and --yes.",
     "",
     "Options:",
@@ -85,6 +100,7 @@ function usage(): string {
     "  --content-dir <path>           Content directory (default: <root>/content)",
     "  --local-material-root <path>   Local Material directory (default: ../local-courses)",
     "  --output-dir <path>            Report directory (default: <root>/reports/materials)",
+    "  --apply                        Write corroborated moves back to the catalog",
     "  --yes                          Confirm one explicit fast-forward update",
     "  -h, --help                     Show this help message",
   ].join("\n");
@@ -104,13 +120,15 @@ function parseArguments(args: string[]): MaterialsArguments {
       help: true,
       root: defaultApplicationRoot(),
       confirmed: false,
+      apply: false,
     };
   }
   if (
     command !== "check" &&
     command !== "update" &&
     command !== "audit" &&
-    command !== "reindex"
+    command !== "reindex" &&
+    command !== "drift"
   ) {
     throw new Error(`Unknown materials command: ${command}`);
   }
@@ -123,17 +141,32 @@ function parseArguments(args: string[]): MaterialsArguments {
     throw new Error("materials update requires one course ID.");
   }
   let confirmed = false;
+  let apply = false;
   const firstOptionIndex = command === "update" ? 2 : 1;
   for (let index = firstOptionIndex; index < args.length; index += 1) {
     const argument = args[index];
     if (argument === "-h" || argument === "--help") {
-      return { ...options, command, help: true, confirmed: false, courseId };
+      return {
+        ...options,
+        command,
+        help: true,
+        confirmed: false,
+        apply: false,
+        courseId,
+      };
     }
     if (argument === "--yes") {
       if (command !== "update") {
         throw new Error("--yes is only valid for materials update.");
       }
       confirmed = true;
+      continue;
+    }
+    if (argument === "--apply") {
+      if (command !== "drift") {
+        throw new Error("--apply is only valid for materials drift.");
+      }
+      apply = true;
       continue;
     }
     if (
@@ -172,6 +205,7 @@ function parseArguments(args: string[]): MaterialsArguments {
     command,
     courseId,
     confirmed,
+    apply,
   };
 }
 
@@ -179,6 +213,7 @@ function emptySummary(): MaterialCheckReport["summary"] {
   return {
     total: 0,
     skipped: 0,
+    missing: 0,
     latest: 0,
     behind: 0,
     ahead: 0,
@@ -205,6 +240,7 @@ function renderMarkdown(report: MaterialCheckReport): string {
     "| --- | ---: |",
     ...statuses.map((status) => `| ${status} | ${report.summary[status]} |`),
     `| skipped (not a Git repository) | ${report.summary.skipped} |`,
+    `| missing (material path is gone) | ${report.summary.missing} |`,
     "",
     "## Repositories",
     "",
@@ -247,12 +283,25 @@ function buildReport(
 
   for (const group of discovered) {
     if (!existsSync(join(group.repositoryPath, ".git"))) {
-      summary.skipped += 1;
+      // "No Git marker" and "the path is gone" are different failures. A loose
+      // PDF has no marker and never will; a vanished directory means the
+      // catalog is pointing at nothing and the site is broken. Folding both
+      // into one skipped count is how 133 dead entries once hid behind
+      // "56 non-Git references skipped" with a zero exit code.
+      const isMissing = !group.materialPaths.some((materialPath) =>
+        existsSync(resolve(localRoot, materialPath)),
+      );
+      if (isMissing) {
+        summary.missing += 1;
+      } else {
+        summary.skipped += 1;
+      }
       skipped.push({
         courseIds: group.courseIds,
         materialPaths: group.materialPaths,
-        reason:
-          "No Git repository marker was found for this material reference.",
+        reason: isMissing
+          ? "The material path does not exist. This is Catalog Drift; run `materials drift`."
+          : "No Git repository marker was found for this material reference.",
       });
       continue;
     }
@@ -316,9 +365,16 @@ async function runCheck(options: MaterialsArguments): Promise<void> {
     .map((status) => `${status}=${report.summary[status]}`)
     .join(", ");
   process.stdout.write(
-    `Materials check completed: ${report.summary.total} repositories${report.summary.skipped > 0 ? `, ${report.summary.skipped} non-Git references skipped` : ""}. ${statusSummary || "no repositories"}.\nJSON: ${jsonPath}\nMarkdown: ${markdownPath}\n`,
+    `Materials check completed: ${report.summary.total} repositories${report.summary.skipped > 0 ? `, ${report.summary.skipped} non-Git references skipped` : ""}${report.summary.missing > 0 ? `, ${report.summary.missing} missing material paths` : ""}. ${statusSummary || "no repositories"}.\nJSON: ${jsonPath}\nMarkdown: ${markdownPath}\n`,
   );
-  if (report.summary["check-failed"] > 0) process.exitCode = 1;
+  if (report.summary.missing > 0) {
+    process.stdout.write(
+      `${report.summary.missing} material paths no longer exist. Run \`materials drift\` for repair candidates.\n`,
+    );
+  }
+  if (report.summary["check-failed"] > 0 || report.summary.missing > 0) {
+    process.exitCode = 1;
+  }
 }
 
 async function runUpdate(options: MaterialsArguments): Promise<void> {
@@ -459,6 +515,239 @@ async function runReindex(
   );
 }
 
+function renderDriftMarkdown(report: CatalogDriftReport): string {
+  const lines = [
+    "# Catalog drift report",
+    "",
+    `Generated at: ${report.generatedAt}`,
+    `Local Material root: ${report.localMaterialRoot}`,
+    "",
+  ];
+
+  if (!report.mounted) {
+    lines.push(
+      "Local Material is not mounted, so nothing was compared. Declared paths:" +
+        ` ${report.summary.declaredPaths}.`,
+      "",
+    );
+    return `${lines.join("\n")}\n`;
+  }
+
+  lines.push(
+    "## Summary",
+    "",
+    "| Finding | Count |",
+    "| --- | ---: |",
+    `| Declared paths | ${report.summary.declaredPaths} |`,
+    `| Missing paths | ${report.summary.missing} |`,
+    `| — corroborated moves (\`--apply\` rewrites these) | ${report.summary.moved} |`,
+    `| — uncertain (decide by hand) | ${report.summary.uncertain} |`,
+    `| — gone (no file of that name on disk) | ${report.summary.gone} |`,
+    `| Uncatalogued repositories | ${report.summary.uncatalogued} |`,
+    `| Items without an upstream fallback | ${report.summary.itemsMissingSourceUrl} |`,
+    `| — grouped into repositories to confirm | ${report.summary.upstreamGapRepositories} |`,
+    "",
+  );
+
+  const moved = report.missingPaths.filter(({ kind }) => kind === "moved");
+  if (moved.length > 0) {
+    lines.push(
+      "## Corroborated moves",
+      "",
+      "Each target is backed by a directory rewrite that several paths agree on.",
+      "",
+      "| Declared path | Proposed path | Items |",
+      "| --- | --- | ---: |",
+      ...moved.map(
+        (finding) =>
+          `| \`${finding.localPath}\` | \`${finding.proposedPath}\` | ${finding.itemIds.length} |`,
+      ),
+      "",
+    );
+  }
+
+  const undecided = report.missingPaths.filter(({ kind }) => kind !== "moved");
+  if (undecided.length > 0) {
+    lines.push(
+      "## Needs a decision",
+      "",
+      "`--apply` never touches these. A deleted file usually still has a",
+      "same-named twin somewhere in the library, so a candidate here is not",
+      "evidence the material moved.",
+      "",
+      "| Declared path | Kind | Candidates | Items |",
+      "| --- | --- | ---: | ---: |",
+      ...undecided.map(
+        (finding) =>
+          `| \`${finding.localPath}\` | ${finding.kind} | ${finding.candidateCount} | ${finding.itemIds.join(", ")} |`,
+      ),
+      "",
+    );
+  }
+
+  if (report.uncatalogued.length > 0) {
+    lines.push(
+      "## Uncatalogued material",
+      "",
+      "Git repositories in the library that no catalog entry points into.",
+      "Nothing is added automatically: track, stage, summary, attribution and the",
+      "chapter list are curation decisions that cannot be read off a disk.",
+      "",
+      "| Repository | Markdown files | Branch | Remote |",
+      "| --- | ---: | --- | --- |",
+      ...report.uncatalogued.map(
+        (repository) =>
+          `| \`${repository.repositoryPath}\` | ${repository.markdownCount} | ${repository.branch ?? "—"} | ${repository.remote ?? "—"} |`,
+      ),
+      "",
+      "### Paste-ready skeleton",
+      "",
+      "```json",
+      JSON.stringify(
+        report.uncatalogued.map((repository) => ({
+          id: "TODO-stable-kebab-case-id",
+          title: "TODO",
+          track: "TODO: learning | aicoding | agentic | application",
+          stageIds: [],
+          summary: "TODO",
+          learningGoals: ["TODO"],
+          sourceUrl: toWebBaseUrl(repository.remote),
+          localPath: `${repository.repositoryPath}/README.md`,
+          accessPolicy: "local-preferred",
+          publicationRights: "third-party",
+          author: "TODO",
+          license: "TODO",
+          licenseStatus: "unknown",
+          tags: [],
+          lastReviewedAt: null,
+          references: [
+            {
+              label: "本地 README",
+              sourceUrl: null,
+              localPath: `${repository.repositoryPath}/README.md`,
+            },
+          ],
+          unavailableReason: null,
+        })),
+        null,
+        2,
+      ),
+      "```",
+      "",
+    );
+  }
+
+  if (report.upstreamGaps.length > 0) {
+    lines.push(
+      "## Upstream fallback gaps",
+      "",
+      "Items with no `sourceUrl`, grouped by the repository their material lives",
+      "in. Confirm once per repository rather than reading every derived link:",
+      "the sample is built exactly like the rest of its group, so opening it",
+      "settles the whole group.",
+      "",
+      "The sample URL is **derived, not verified** — this report stays offline by",
+      "design. Deriving is not enough on its own: a repository can be private,",
+      "renamed or deleted upstream, and a local copy that has drifted from",
+      "upstream can name a file that upstream no longer has. Open the sample",
+      "before accepting a group.",
+      "",
+      "| Repository | Items | Branch | Sample upstream URL |",
+      "| --- | ---: | --- | --- |",
+      ...report.upstreamGaps.map(
+        (gap) =>
+          `| \`${gap.repositoryPath || "(no repository)"}\` | ${gap.itemIds.length} | ${gap.branch ?? "—"} | ${gap.sampleSourceUrl ?? "—"} |`,
+      ),
+      "",
+    );
+  }
+
+  return `${lines.join("\n")}\n`;
+}
+
+async function formatAsPrettier(
+  filePath: string,
+  value: unknown,
+): Promise<string> {
+  const prettier = await import("prettier");
+  const config = await prettier.resolveConfig(filePath);
+
+  // Indent before handing it over. Prettier's JSON printer keeps an object
+  // expanded when the source has a newline after its brace, so feeding it
+  // minified JSON collapses every object that happens to fit the print width
+  // and turns a 113-path edit into a whole-file reformat.
+  return prettier.format(JSON.stringify(value, null, 2), {
+    ...config,
+    filepath: filePath,
+  });
+}
+
+async function runDrift(options: MaterialsArguments): Promise<void> {
+  const contentDirectory = resolve(
+    options.contentDirectory ?? join(options.root, "content"),
+  );
+  const localMaterialRoot = resolve(options.localMaterialRoot ?? "");
+  const catalog = await loadContentCatalogFromDirectory(contentDirectory);
+  const report = await buildCatalogDriftReport({
+    catalog,
+    localMaterialRoot,
+  });
+
+  const outputDirectory = resolve(
+    options.outputDirectory ?? join(options.root, "reports", "materials"),
+  );
+  await mkdir(outputDirectory, { recursive: true });
+  const jsonPath = join(outputDirectory, "catalog-drift.json");
+  const markdownPath = join(outputDirectory, "catalog-drift.md");
+  await Promise.all([
+    writeFile(jsonPath, `${JSON.stringify(report, null, 2)}\n`),
+    writeFile(markdownPath, renderDriftMarkdown(report)),
+  ]);
+
+  process.stdout.write(
+    `Catalog drift: ${report.summary.missing} missing paths ` +
+      `(${report.summary.moved} corroborated moves, ${report.summary.uncertain} uncertain, ` +
+      `${report.summary.gone} gone), ${report.summary.uncatalogued} uncatalogued repositories, ` +
+      `${report.summary.itemsMissingSourceUrl} items without an upstream fallback.\n` +
+      `JSON: ${jsonPath}\nMarkdown: ${markdownPath}\n`,
+  );
+
+  if (!report.mounted) {
+    process.stdout.write(
+      "Local Material is not mounted; nothing was compared.\n",
+    );
+    return;
+  }
+
+  if (options.apply) {
+    const catalogPath = join(contentDirectory, "courses", "courses.json");
+    const items = JSON.parse(await readFile(catalogPath, "utf8")) as unknown[];
+    const applied = applyMovedPaths(items, report);
+    if (applied.rewrittenPaths === 0) {
+      process.stdout.write("No corroborated moves to apply.\n");
+    } else {
+      // The catalog is hand-maintained and Prettier-checked, so the rewrite has
+      // to come back out in Prettier's shape. Writing raw JSON.stringify would
+      // expand every inline array and bury 113 real edits in a whole-file diff.
+      await writeFile(
+        catalogPath,
+        await formatAsPrettier(catalogPath, applied.items),
+      );
+      process.stdout.write(
+        `Applied ${applied.rewrittenPaths} path rewrites across ${applied.rewrittenItems} items in ${catalogPath}.\n`,
+      );
+    }
+  }
+
+  // Drift is reported, never enforced by npm run check: the material library is
+  // outside this repository and a maintainer reorganising it must not break
+  // typecheck, tests and build. A non-zero exit is what makes this command
+  // usable as its own gate.
+  if (report.summary.missing > 0 || report.summary.uncatalogued > 0) {
+    process.exitCode = 1;
+  }
+}
+
 async function main() {
   const options = parseArguments(process.argv.slice(2));
   if (options.help) {
@@ -466,6 +755,7 @@ async function main() {
     return;
   }
   if (options.command === "check") await runCheck(options);
+  if (options.command === "drift") await runDrift(options);
   if (options.command === "update") {
     await runUpdate(options);
     recordMaterialsUpdate(process.exitCode ? "failure" : "success");

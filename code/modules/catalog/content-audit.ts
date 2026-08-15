@@ -1,4 +1,4 @@
-import { realpath, stat } from "node:fs/promises";
+import { readdir, realpath, stat } from "node:fs/promises";
 import { relative, resolve, sep } from "node:path";
 
 import {
@@ -18,7 +18,6 @@ export type ContentAuditError = {
     | "content-document-parse"
     | "schema-validation"
     | "catalog-validation"
-    | "local-path-missing"
     | "local-path-not-file"
     | "local-path-escape"
     | "unexpected-audit-error";
@@ -35,7 +34,8 @@ export type ContentAuditWarningGroup = {
     | "unknown-author"
     | "unknown-license"
     | "unreferenced-item"
-    | "local-material-root-unavailable";
+    | "local-material-root-unavailable"
+    | "local-path-missing";
   message: string;
   count: number;
   itemIds: string[];
@@ -136,12 +136,50 @@ function finaliseReport(
   };
 }
 
+/**
+ * Answers whether Local Material is actually mounted, which is not the same
+ * question as whether the root directory exists.
+ *
+ * The repository tracks `local-courses/README.md` as library metadata, so a
+ * clean checkout — CI, a cloud clean room — has the directory but none of the
+ * material. Treating "directory exists" as "mounted" made every declared path
+ * look missing there, which is why `check:local` could never pass in CI. A
+ * mounted library always has at least one material directory under the root.
+ */
+export async function isLocalMaterialMounted(root: string): Promise<boolean> {
+  try {
+    const entries = await readdir(root, { withFileTypes: true });
+    return entries.some((entry) => entry.isDirectory());
+  } catch {
+    return false;
+  }
+}
+
+/** Every Local Material path an item makes readable: its own plus its chapters. */
+function declaredLocalPaths(
+  item: Awaited<
+    ReturnType<typeof loadContentCatalogFromDirectory>
+  >["items"][number],
+): string[] {
+  const paths = [
+    ...(item.localPath === null ? [] : [item.localPath]),
+    ...item.references
+      .map((reference) => reference.localPath)
+      .filter((path): path is string => path !== null),
+  ];
+
+  return [...new Set(paths)];
+}
+
 async function auditLocalPaths(
   localMaterialRoot: string | undefined,
   items: Awaited<ReturnType<typeof loadContentCatalogFromDirectory>>["items"],
   warnings: ReturnType<typeof createWarningCollector>,
 ): Promise<ContentAuditError[]> {
-  if (!localMaterialRoot) {
+  if (
+    !localMaterialRoot ||
+    !(await isLocalMaterialMounted(localMaterialRoot))
+  ) {
     warnings.add(
       "local-material-root-unavailable",
       "Local Material is not mounted, so local path existence checks were skipped.",
@@ -162,49 +200,57 @@ async function auditLocalPaths(
 
   const errors: ContentAuditError[] = [];
   for (const item of items) {
-    if (item.localPath === null) {
-      continue;
-    }
+    // A missing path is Catalog Drift, not an invalid catalog: the material
+    // library is outside this repository and the maintainer reorganises it
+    // freely. It warns here and `materials drift` reports it with repair
+    // candidates. An escaping or non-file path stays an error — those are
+    // boundary violations that no amount of reorganising makes correct.
+    let itemHasMissingPath = false;
 
-    const candidate = resolve(localMaterialRoot, item.localPath);
-    if (isOutsideDirectory(localMaterialRoot, candidate)) {
-      errors.push({
-        code: "local-path-escape",
-        message: "The local path escapes the Local Material root.",
-        itemId: item.id,
-        localPath: item.localPath,
-      });
-      continue;
-    }
-
-    try {
-      const resolvedCandidate = await realpath(candidate);
-      if (isOutsideDirectory(resolvedRoot, resolvedCandidate)) {
+    for (const localPath of declaredLocalPaths(item)) {
+      const candidate = resolve(localMaterialRoot, localPath);
+      if (isOutsideDirectory(localMaterialRoot, candidate)) {
         errors.push({
           code: "local-path-escape",
-          message: "The resolved local path escapes the Local Material root.",
+          message: "The local path escapes the Local Material root.",
           itemId: item.id,
-          localPath: item.localPath,
+          localPath,
         });
         continue;
       }
 
-      const target = await stat(resolvedCandidate);
-      if (!target.isFile()) {
-        errors.push({
-          code: "local-path-not-file",
-          message: "The local path must point to a regular file.",
-          itemId: item.id,
-          localPath: item.localPath,
-        });
+      try {
+        const resolvedCandidate = await realpath(candidate);
+        if (isOutsideDirectory(resolvedRoot, resolvedCandidate)) {
+          errors.push({
+            code: "local-path-escape",
+            message: "The resolved local path escapes the Local Material root.",
+            itemId: item.id,
+            localPath,
+          });
+          continue;
+        }
+
+        const target = await stat(resolvedCandidate);
+        if (!target.isFile()) {
+          errors.push({
+            code: "local-path-not-file",
+            message: "The local path must point to a regular file.",
+            itemId: item.id,
+            localPath,
+          });
+        }
+      } catch {
+        itemHasMissingPath = true;
       }
-    } catch {
-      errors.push({
-        code: "local-path-missing",
-        message: "The local path does not exist in Local Material.",
-        itemId: item.id,
-        localPath: item.localPath,
-      });
+    }
+
+    if (itemHasMissingPath) {
+      warnings.add(
+        "local-path-missing",
+        "A declared local path no longer exists; run `materials drift` for repair candidates.",
+        item.id,
+      );
     }
   }
 

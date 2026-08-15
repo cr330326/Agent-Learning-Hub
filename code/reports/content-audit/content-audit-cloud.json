@@ -6,7 +6,7 @@
     {
       "code": "missing-source-url",
       "message": "The Learning Item has no upstream source URL.",
-      "count": 488,
+      "count": 479,
       "itemIds": [
         "legacy-course-002",
         "legacy-course-006",
@@ -18,7 +18,6 @@
         "legacy-course-014",
         "legacy-course-018",
         "legacy-course-023",
-        "legacy-course-026",
         "legacy-course-031",
         "legacy-course-032",
         "legacy-course-034",
@@ -270,8 +269,6 @@
         "legacy-reading-21-017",
         "legacy-reading-22-001",
         "legacy-reading-22-002",
-        "legacy-reading-22-003",
-        "legacy-reading-22-004",
         "legacy-reading-22-005",
         "legacy-reading-22-006",
         "legacy-reading-22-007",
@@ -379,12 +376,6 @@
         "legacy-reading-30-011",
         "legacy-reading-30-012",
         "legacy-reading-30-013",
-        "legacy-reading-31-001",
-        "legacy-reading-31-002",
-        "legacy-reading-31-003",
-        "legacy-reading-31-004",
-        "legacy-reading-31-005",
-        "legacy-reading-31-006",
         "legacy-reading-31-007",
         "legacy-reading-31-008",
         "legacy-reading-31-009",
@@ -2046,7 +2037,7 @@
   ],
   "summary": {
     "errorCount": 0,
-    "warningCount": 2012
+    "warningCount": 2003
   },
   "network": {
     "status": "not-run",

@@ -21,6 +21,9 @@ Agent Learning Hub 是一个以实践成果为主线的 Agent 工程学习网站
 - 第三方条目必须保留作者、许可证状态和上游地址；本地副本不代表获得云端发布许可。
 - 本地文件必须来自 allowlist 并限制在只读挂载根内；拒绝路径穿越、符号链接逃逸和可执行 MDX。
 - 网站进程不得更新嵌套素材仓库；`materials update` 仅允许在指定单课程、clean working tree 上 fast-forward。
+- `code/content/courses/courses.json` 与 `code/content/stages/stages.json` 是目录的权威事实源，由人手维护。`convert:legacy` 已废弃（[ADR 0006](docs/adr/0006-catalog-is-hand-maintained.md)），只作溯源保留；它仍写死输出 `legacy-import.json`，误跑会因重复 stable ID 被校验拦下。不要把它接回任何流程，也不要改 `learning-site/data.js` 来影响目录。
+- **Catalog Drift**（目录声明 vs 磁盘实际）和 **Freshness Status**（本地素材 vs 上游）是两件事，分属 `materials drift` 和 `materials check`，不要合并。素材库随时会被重组，所以漂移**不进** `npm run check`——它会让维护者整理目录时连 typecheck 都跑不了；`materials drift` 自己非零退出。`audit:content` 里 `local-path-missing` 是 warning，`local-path-escape` 与 `local-path-not-file` 仍是 error。
+- 失效路径的修复由 `materials drift --apply` 落盘，但只落"被多条路径共同印证的目录搬迁"（[ADR 0007](docs/adr/0007-catalog-drift-is-proposed-not-applied.md)）。匹配器没有"已删除"这个输出——素材库有 17.5 万个文件，被删的文件几乎总有同名孪生——所以判不准的必须留给人。放宽这个门槛会让条目静默指向别的项目，页面照常渲染、审计全绿、只有内容是错的。
 - 运行模式、内容归属、身份或数据库边界有变化时，先更新 ADR、规格和任务清单。
 - 阅读器保留第三方 Markdown 中的排版 HTML，但只经 `modules/reader/markdown.ts` 的标签与属性 allowlist；`script`/`style`/`iframe`/表单等连同内容一起丢弃，`on*` 事件属性和非 `http(s)`/`mailto` 协议一律拒绝。扩大 allowlist 属于安全边界变更。
 - 阅读器内的链接和图片都必须先经 `resolveDocumentRelativePath()` 按当前文档所在目录解析，再对照课程条目声明的路径。未声明的目标：链接降级为纯文本，图片整个丢弃。**绝不要把文档里的相对地址原样输出**——它会被浏览器解析到 `/read/` 下并 404。要放开必须同时改 `/api/local-image` 的 allowlist 并记录决定。
@@ -74,6 +77,7 @@ Cloud/Release 模式通过根目录 `.env` 提供秘密与镜像变量。发布�
 - `code/scripts/image-release.sh` 是本机构建并推送发布镜像的手工路径，默认交叉构建 `linux/amd64`（云主机是 x86，Apple Silicon 直接构建的 arm64 镜像跑不起来），拒绝 `latest`，推送前检查版本是否已存在，成功后打印可固定的 digest。带 SBOM 与签名溯源的正式发布仍走 `v*.*.*` tag 触发的 `.github/workflows/release.yml`。
 - `audit-content.ts`、`materials.ts`、`database.ts` 以及五个 `.mjs` 审计/走查脚本都是质量门禁或运维命令，不应因扩展名不是 `.sh` 而删除。
 - `ui-review.mjs`（`npm run audit:ui`）看版式，`functional-regression.mjs`（`npm run audit:functional`）真实点击。两者都需要运行中的服务和 Playwright，因此**不进** `npm run check`；改动界面或交互后手动运行，产物写入 `code/reports/`。
+- `npm run audit:materials`（即 `materials drift`）同理不进 `check`：它依赖仓库之外的素材库。整理过 `local-courses/` 之后手动跑，先读 `code/reports/materials/catalog-drift.md`，再决定要不要 `--apply`。
 - `functional-regression.mjs` 会读取页面上的运行模式徽标并据此断言：云端断言匿名访问被拒、本地素材不出正文；本地断言章节导航与学习状态读写。给某个模式新增能力时，要在两个分支里都补断言，不要用跳过掩盖差异。
 - 以 `code/package.json` scripts 作为命令事实源；不要在 README、任务文档或 CI 中复制已经失效的根目录 `scripts/`、`content/`、`reports/`、Dockerfile 或 Compose 路径。
 

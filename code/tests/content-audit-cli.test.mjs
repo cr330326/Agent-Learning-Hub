@@ -53,7 +53,7 @@ test("content audit CLI exits unsuccessfully after writing a deterministic error
   t.after(() => rm(root, { force: true, recursive: true }));
   await cp(join(applicationRoot, "content"), contentRoot, { recursive: true });
 
-  const itemPath = join(contentRoot, "courses", "legacy-import.json");
+  const itemPath = join(contentRoot, "courses", "courses.json");
   const items = JSON.parse(await readFile(itemPath, "utf8"));
   delete items[0].title;
   await writeFile(itemPath, `${JSON.stringify(items, null, 2)}\n`);

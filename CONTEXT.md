@@ -78,7 +78,11 @@ _Avoid_: Completion checkbox, automatic score
 
 **Freshness Status**:
 描述 Local Material 与 Upstream Source 之间是否同步、落后、分叉或存在本地修改的状态。
-_Avoid_: Automatic update
+_Avoid_: Automatic update, Catalog Drift
+
+**Catalog Drift**:
+Content Catalog 声明的本地路径与 Local Material Library 实际内容之间的偏离，包括路径失效、素材被删除和未被收录的新素材。它与 Freshness Status 是两件事：一个比磁盘，一个比上游。
+_Avoid_: Freshness Status, git status
 
 **Deployment Helper**:
 `code/scripts/docker-deploy.sh` 提供的 Docker Compose 入口，用于构建、启动、配置检查、健康验证和运行已发布镜像。

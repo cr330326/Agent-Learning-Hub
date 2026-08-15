@@ -844,7 +844,9 @@ _沉淀：_ 新增 [functional-regression.mjs](../../code/scripts/functional-reg
 
 T8.7 之后代码行为已正确：已声明章节可读、可上下翻页，未声明的链接降级为纯文本而不是死链。**剩余工作纯属内容策展**，不涉及代码或安全边界。全量声明不可取——CrewAI 一个条目目录下就有 9,776 个 md 文件，多为文档站与 i18n，纳入会污染阅读器与搜索索引。
 
-建议做法：为主线课程按命名规则（如 `docs/chapter*/*.md`）生成候选章节，人工确认后写入条目的 `references`；先覆盖少数旗舰课程，再逐步扩展。注意 `content/courses/legacy-import.json` 由 `npm run convert:legacy` 生成，策展结果需要有对应的保留策略，否则会被重新生成覆盖。
+建议做法：为主线课程按命名规则（如 `docs/chapter*/*.md`）生成候选章节，人工确认后写入条目的 `references`；先覆盖少数旗舰课程，再逐步扩展。
+
+**保留策略已由 T8.10 解决（2026-08-15）**：目录不再由 `convert:legacy` 生成，`content/courses/courses.json` 就是权威事实源，策展结果不会被覆盖。这条前置阻塞已解除。
 
 ### - [x] T8.9 复查全站界面与交互并修复走查缺陷
 
@@ -888,6 +890,45 @@ _沉淀：_ `audit:functional` 从 20 项增至 23 项（Cloud 22 项）。新�
 **最终结果**：Local `23/23`、Cloud `22/22`；两种模式 UI 走查各 51 次抓取 0 finding；`npm run check:cloud` 与 `npm run check:local` 均以 0 退出（132 单元测试）。
 
 **Phase 8 退出条件**：所有上线门槛通过，新站成为仓库唯一推荐入口。
+
+### - [x] T8.10 建立 Catalog Drift 对账机制并修复目录路径漂移
+
+**依赖**：T8.7
+**规格**：CAT 系列、READ-014、NFR-010
+
+- 让目录声明的本地路径与素材库实际内容之间的偏差可发现、可提候选、可选择性落盘。
+- 修复素材库重组造成的既有漂移。
+- 把"素材库随时会变"确立为常态而不是异常。
+
+**问题陈述（2026-08-15）**：`local-courses/Agentic/` 新增聚合目录 `Harness/`，若干素材被收编其下，`langchain/` 与 `langgraph/` 被删除。目录里 465 个 distinct `localPath` 有 119 条失效，导致 514 个条目里 **133 个的主路径与全部章节引用同时失效**——阅读器整条打不开，其中 130 个没有 `sourceUrl`，落到"暂不可用"。
+
+同时暴露三个先前不可见的缺陷：
+
+1. **`check:local` 在 CI 里结构性失败**。`local-courses/**` 被 gitignore 但 `README.md` 被追踪，CI 检出后目录存在、素材为空；`auditLocalPaths` 的"未挂载则跳过"只在**根目录不存在**时触发，于是 511 条全判失效。Quality 工作流最近 5 次全 FAIL，`local quality` 恒定 `Content audit failed: 511 errors`。判定信号用错了：目录存在 ≠ 素材挂载。
+2. **审计只检 `item.localPath`，不检 `references[].localPath`**。本次两者恰好同步失效才没暴露。
+3. **`materials check` 把死路径静默归为 `no-git:` 跳过**，跳过数从 5 涨到 56、退出码仍是 0。
+
+**决定**：见 [ADR 0006](../adr/0006-catalog-is-hand-maintained.md)（目录改为人手维护，`convert:legacy` 废弃）与 [ADR 0007](../adr/0007-catalog-drift-is-proposed-not-applied.md)（漂移由工具提候选、由人确认）。新术语 **Catalog Drift** 已入 [CONTEXT.md](../../CONTEXT.md)，与既有 Freshness Status 明确分家。
+
+**实施证据（2026-08-15）**：
+
+_事实源与命名。_ `content/courses/legacy-import.json` → `courses.json`，`content/stages/legacy-import.json` → `stages.json`。`convert-legacy-content.mjs` 加废弃告警但仍写死旧文件名——误跑会产出重复 stable ID 被 `Duplicate stable ID` 校验当场拦下，而不是静默覆盖策展成果。
+
+_对账机制。_ 新增 [catalog-drift.ts](../../code/modules/freshness/catalog-drift.ts) 与 `materials drift` 子命令（`npm run audit:materials`），产出 [JSON](../../code/reports/materials/catalog-drift.json) 与 [Markdown](../../code/reports/materials/catalog-drift.md)，三块内容：失效路径与候选、未收录的独立仓库（自动排除嵌套在已收录仓库内的 vendoring）、`sourceUrl` 缺口按仓库分组。非零退出，**不进** `npm run check`。
+
+_候选匹配的两道守卫。_ 先按最长路径后缀收敛候选（`README.md` 单独匹配 1713 个文件，路径尾缀才是信号），再要求隐含的目录改写被多条路径共同印证。第二道守卫的第一版仍然失效：让**所有**候选参与投票时，`langchain/AGENTS.md` 的 127 个候选里恰好有一个隐含了同一条改写，把 `langchain/libs/README.md → deepagents/libs/README.md` 凑成了"已印证"。改为**只有后缀收敛后唯一命中的路径才有背书资格**——匹配上百个同名文件的路径并不知道自己去了哪。修正后 113 moved / 6 uncertain / 0 gone，与人工推导的 5 条重命名规则**零分歧**，且 6 条真删除全部落在 `uncertain`。
+
+_落盘。_ `materials drift --apply` 改写 252 处路径、覆盖 125 个条目，diff 为 252 增 252 删且**每一行都是 `localPath`**；`legacyImport.raw` 的历史路径未动。写回经 Prettier 归一——先给 Prettier 缩进过的 JSON 而不是压平的，否则它会折叠所有能放进行宽的对象，把 113 处改动淹没在全文件重排里。
+
+_真删除。_ langchain / langgraph 消失，8 个完全依赖它们的条目改为 `upstream-only` + `blob/HEAD/` 上游地址（`HEAD` 而非分支名，本地三个仓库在 `dev` 上）；混合条目 `legacy-course-026` 主文档改指唯一存活的 DeepAgents 章节，两条死引用转上游。6 个上游地址逐一实测 200。
+
+_缺陷修复。_ `isLocalMaterialMounted()` 改判"根下是否存在素材目录"；审计扩展到 `references[].localPath`；`local-path-missing` 降为 warning（`local-path-escape` 与 `local-path-not-file` 仍是 error）；`materials check` 区分"非 Git 引用"与"路径不存在"，后者非零退出并指向 `materials drift`。
+
+_`sourceUrl` 缺口。_ 479 个条目无上游回退，其中 470 个可从 `git remote` 推导，8 个不在任何仓库内（PDF 与手写文档）。54 组样例逐一实测：**52 组 200，2 组真 404**——`multica` 仓库在但本地副本声明的 `README.zh-CN.md` 上游没有，`CodexSwitch` 整个仓库 404。这两组共 14 个条目，正是"按仓库人工确认"而非全自动回填的实证依据。报告已注明样例链接"派生而未验证"。落盘待用户按仓库确认。
+
+_验证。_ `materials drift` 从 119 失效降到 **0**；`materials check` 从 47 仓库 / 56 跳过恢复为 54 仓库 / 5 跳过；[catalog-drift.test.ts](../../code/modules/freshness/catalog-drift.test.ts) 10 项单测覆盖后缀收敛、印证通过、孤证拒绝、高候选数不得投票、gone、选择性落盘、vendoring 排除、未挂载短路、SSO 形式 remote 解析与 HEAD 固定；`npm run check:cloud` 与 `npm run check:local` 均以 0 退出（144 单元测试）。
+
+**遗留**：`sourceUrl` 的 470 条回填待按 54 个仓库确认后落盘；3 个未收录仓库（`AICoding/opencode/code/openchamber`、`AICoding/opencode/plugins/opencode-goal-plugin`、`Agentic/Harness/deepseek/deepseek-harness`）待策展决定。
 
 ## 12. 上线门槛核对表
 

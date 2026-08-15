@@ -24,6 +24,7 @@
     "test:cloud": "DEPLOYMENT_MODE=cloud npm run test",
     "test:local": "DEPLOYMENT_MODE=local npm run test",
     "audit:content": "tsx scripts/audit-content.ts",
+    "audit:materials": "tsx scripts/materials.ts drift",
     "materials": "tsx scripts/materials.ts",
     "db:backup": "tsx scripts/database.ts backup",
     "db:restore": "tsx scripts/database.ts restore",

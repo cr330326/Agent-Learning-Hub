@@ -532,6 +532,19 @@ async function main() {
     return;
   }
 
+  // This converter ran once to migrate learning-site/data.js into content/.
+  // The catalog is now hand-maintained (content/courses/courses.json and
+  // content/stages/stages.json), so re-running this writes a *second* set of
+  // files under the old legacy-import.json names. Those carry the same stable
+  // IDs, so the catalog fails to load with "Duplicate stable ID" instead of
+  // silently overwriting curated work. Keep the script for provenance; do not
+  // wire it back into any pipeline.
+  process.stderr.write(
+    "WARNING: convert:legacy is deprecated. The catalog is hand-maintained in " +
+      "content/courses/courses.json and content/stages/stages.json. This script " +
+      "writes legacy-import.json, which will collide on stable IDs.\n",
+  );
+
   const dataPath = join(options.root, "learning-site", "data.js");
   const [source, baseline] = await Promise.all([
     readFile(dataPath, "utf8"),

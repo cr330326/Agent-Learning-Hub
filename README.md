@@ -117,10 +117,11 @@ code/scripts/docker-deploy.sh release up
 | `code/scripts/lighthouse-deploy.sh`                            | 通过 SSH 预检、初始化、备份、部署、验证和回滚专用 Lighthouse 生产主机                    |
 | `npm run audit:content --prefix code`                          | 校验内容 schema、来源、许可证和本地路径                                                  |
 | `npm run materials --prefix code -- <check\|audit\|reindex>`   | 查看素材新鲜度、审计路径和重建索引；`update <course-id> --yes` 只允许单仓库 fast-forward |
+| `npm run audit:materials --prefix code`                        | 对账目录与素材库：失效路径及候选、未收录仓库、缺失的上游回退；加 `-- --apply` 才写回     |
 | `npm run db:backup --prefix code` / `db:restore`               | 创建加密 SQLite 备份或在明确确认后恢复                                                   |
 | `npm run audit:baseline --prefix code`                         | 重新生成旧站能力基线                                                                     |
 | `npm run audit:boundaries --prefix code`                       | 审计 Git、Docker 与 CI 的内容边界                                                        |
-| `npm run convert:legacy --prefix code`                         | 从 `learning-site/data.js` 可重复生成结构化内容与报告                                    |
+| ~~`npm run convert:legacy --prefix code`~~                     | 已废弃：目录改为人手维护，见 [ADR 0006](docs/adr/0006-catalog-is-hand-maintained.md)     |
 | `node code/scripts/ui-review.mjs --base-url <url>`             | 在 desktop/tablet/mobile 三档抓全页截图，报告 HTTP 错误、横向溢出、超长页面与控制台报错  |
 | `node code/scripts/functional-regression.mjs --base-url <url>` | 点击式功能回归：链接、翻页、筛选、章节与上下章导航、学习状态读写；按运行模式分支断言     |
 

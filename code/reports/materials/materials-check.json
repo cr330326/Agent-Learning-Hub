@@ -1,0 +1,1773 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-15T02:54:13.040Z",
+  "localMaterialRoot": "local-courses",
+  "summary": {
+    "total": 54,
+    "skipped": 5,
+    "missing": 0,
+    "latest": 42,
+    "behind": 3,
+    "ahead": 0,
+    "diverged": 2,
+    "dirty": 7,
+    "check-failed": 0
+  },
+  "repositories": [
+    {
+      "courseId": "legacy-course-034",
+      "repositoryPath": "Agentic/ai-agent-deep-dive",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.033Z",
+      "courseIds": [
+        "legacy-course-034",
+        "legacy-reading-23-001",
+        "legacy-reading-23-002",
+        "legacy-reading-23-003",
+        "legacy-reading-23-004",
+        "legacy-reading-23-005",
+        "legacy-reading-23-006",
+        "legacy-reading-23-007",
+        "legacy-reading-23-008",
+        "legacy-reading-23-009",
+        "legacy-reading-23-010",
+        "legacy-reading-23-011",
+        "legacy-reading-23-012",
+        "legacy-reading-23-013",
+        "legacy-reading-23-014",
+        "legacy-reading-23-015",
+        "legacy-reading-23-016",
+        "legacy-reading-23-017",
+        "legacy-reading-23-018"
+      ],
+      "materialPaths": [
+        "Agentic/ai-agent-deep-dive/docs/00-product-overview.md",
+        "Agentic/ai-agent-deep-dive/docs/01-system-prompt-and-orchestration.md",
+        "Agentic/ai-agent-deep-dive/docs/02-tools-permissions-and-execution.md",
+        "Agentic/ai-agent-deep-dive/docs/03-skills-plugins-mcp.md",
+        "Agentic/ai-agent-deep-dive/docs/04-memory-and-session.md",
+        "Agentic/ai-agent-deep-dive/docs/05-commands-ui-and-operator-experience.md",
+        "Agentic/ai-agent-deep-dive/docs/06-verification-and-quality.md",
+        "Agentic/ai-agent-deep-dive/docs/07-architecture-map.md",
+        "Agentic/ai-agent-deep-dive/docs/08-agent-runtime-loop.md",
+        "Agentic/ai-agent-deep-dive/docs/09-message-model-and-state.md",
+        "Agentic/ai-agent-deep-dive/docs/10-context-management.md",
+        "Agentic/ai-agent-deep-dive/docs/11-task-model.md",
+        "Agentic/ai-agent-deep-dive/docs/12-workspace-and-isolation.md",
+        "Agentic/ai-agent-deep-dive/docs/13-failure-recovery.md",
+        "Agentic/ai-agent-deep-dive/docs/14-configuration-system.md",
+        "Agentic/ai-agent-deep-dive/docs/15-mvp-scope.md",
+        "Agentic/ai-agent-deep-dive/docs/16-python-implementation-notes.md",
+        "Agentic/ai-agent-deep-dive/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-029",
+      "repositoryPath": "Agentic/AutoGPT",
+      "status": "dirty",
+      "clean": false,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "master",
+      "checkedAt": "2026-08-15T02:54:13.033Z",
+      "courseIds": [
+        "legacy-course-029",
+        "legacy-reading-22-009",
+        "legacy-reading-29-001",
+        "legacy-reading-29-002",
+        "legacy-reading-29-003",
+        "legacy-reading-29-004",
+        "legacy-reading-29-005",
+        "legacy-reading-29-006",
+        "legacy-reading-29-007",
+        "legacy-reading-29-008",
+        "legacy-reading-29-009",
+        "legacy-reading-29-010",
+        "legacy-reading-29-011",
+        "legacy-reading-29-012",
+        "legacy-reading-29-013",
+        "legacy-reading-29-014",
+        "legacy-reading-30-001",
+        "legacy-reading-30-002",
+        "legacy-reading-30-003",
+        "legacy-reading-30-004",
+        "legacy-reading-30-005",
+        "legacy-reading-30-006",
+        "legacy-reading-30-007",
+        "legacy-reading-30-008",
+        "legacy-reading-30-009",
+        "legacy-reading-30-010",
+        "legacy-reading-30-011",
+        "legacy-reading-30-012",
+        "legacy-reading-30-013"
+      ],
+      "materialPaths": [
+        "Agentic/AutoGPT/AGENTS.md",
+        "Agentic/AutoGPT/docs/content/challenges/building_challenges.md",
+        "Agentic/AutoGPT/docs/content/challenges/introduction.md",
+        "Agentic/AutoGPT/docs/content/classic/configuration/options.md",
+        "Agentic/AutoGPT/docs/content/classic/index.md",
+        "Agentic/AutoGPT/docs/content/classic/setup/docker.md",
+        "Agentic/AutoGPT/docs/content/classic/setup/index.md",
+        "Agentic/AutoGPT/docs/content/classic/usage.md",
+        "Agentic/AutoGPT/docs/content/forge/components/built-in-components.md",
+        "Agentic/AutoGPT/docs/content/forge/components/commands.md",
+        "Agentic/AutoGPT/docs/content/forge/components/creating-components.md",
+        "Agentic/AutoGPT/docs/content/forge/components/introduction.md",
+        "Agentic/AutoGPT/docs/content/forge/components/protocols.md",
+        "Agentic/AutoGPT/docs/content/forge/get-started.md",
+        "Agentic/AutoGPT/docs/content/index.md",
+        "Agentic/AutoGPT/docs/platform/advanced_setup.md",
+        "Agentic/AutoGPT/docs/platform/agent-blocks.md",
+        "Agentic/AutoGPT/docs/platform/block-sdk-guide.md",
+        "Agentic/AutoGPT/docs/platform/copilot-local-llm.md",
+        "Agentic/AutoGPT/docs/platform/create-basic-agent.md",
+        "Agentic/AutoGPT/docs/platform/getting-started.md",
+        "Agentic/AutoGPT/docs/platform/new_blocks.md",
+        "Agentic/AutoGPT/docs/platform/ollama.md",
+        "Agentic/AutoGPT/docs/platform/org-feature-map.md",
+        "Agentic/AutoGPT/docs/platform/what-is-autogpt-platform.md",
+        "Agentic/AutoGPT/docs/platform/workspace-media-architecture.md",
+        "Agentic/AutoGPT/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-027",
+      "repositoryPath": "Agentic/crewAI",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.029Z",
+      "courseIds": [
+        "legacy-course-027",
+        "legacy-reading-22-007",
+        "legacy-reading-26-001",
+        "legacy-reading-26-002",
+        "legacy-reading-26-003",
+        "legacy-reading-26-004",
+        "legacy-reading-26-005",
+        "legacy-reading-26-006",
+        "legacy-reading-26-007",
+        "legacy-reading-26-008",
+        "legacy-reading-26-009",
+        "legacy-reading-26-010",
+        "legacy-reading-26-011",
+        "legacy-reading-27-001",
+        "legacy-reading-27-002",
+        "legacy-reading-27-003",
+        "legacy-reading-27-004",
+        "legacy-reading-27-005",
+        "legacy-reading-27-006",
+        "legacy-reading-27-007",
+        "legacy-reading-27-008",
+        "legacy-reading-27-009",
+        "legacy-reading-27-010",
+        "legacy-reading-27-011",
+        "legacy-reading-27-012",
+        "legacy-reading-27-013",
+        "legacy-reading-27-014",
+        "legacy-reading-28-001",
+        "legacy-reading-28-002",
+        "legacy-reading-28-003",
+        "legacy-reading-28-004",
+        "legacy-reading-28-005",
+        "legacy-reading-28-006",
+        "legacy-reading-28-007",
+        "legacy-reading-28-008",
+        "legacy-reading-28-009",
+        "legacy-reading-28-010"
+      ],
+      "materialPaths": [
+        "Agentic/crewAI/docs/edge/en/concepts/agent-capabilities.mdx",
+        "Agentic/crewAI/docs/edge/en/concepts/agents.mdx",
+        "Agentic/crewAI/docs/edge/en/concepts/checkpointing.mdx",
+        "Agentic/crewAI/docs/edge/en/concepts/cli.mdx",
+        "Agentic/crewAI/docs/edge/en/concepts/collaboration.mdx",
+        "Agentic/crewAI/docs/edge/en/concepts/crews.mdx",
+        "Agentic/crewAI/docs/edge/en/concepts/event-listener.mdx",
+        "Agentic/crewAI/docs/edge/en/concepts/files.mdx",
+        "Agentic/crewAI/docs/edge/en/concepts/flows.mdx",
+        "Agentic/crewAI/docs/edge/en/concepts/knowledge.mdx",
+        "Agentic/crewAI/docs/edge/en/concepts/llms.mdx",
+        "Agentic/crewAI/docs/edge/en/concepts/memory.mdx",
+        "Agentic/crewAI/docs/edge/en/concepts/planning.mdx",
+        "Agentic/crewAI/docs/edge/en/concepts/processes.mdx",
+        "Agentic/crewAI/docs/edge/en/concepts/production-architecture.mdx",
+        "Agentic/crewAI/docs/edge/en/concepts/reasoning.mdx",
+        "Agentic/crewAI/docs/edge/en/concepts/skills.mdx",
+        "Agentic/crewAI/docs/edge/en/concepts/streaming.mdx",
+        "Agentic/crewAI/docs/edge/en/concepts/tasks.mdx",
+        "Agentic/crewAI/docs/edge/en/concepts/testing.mdx",
+        "Agentic/crewAI/docs/edge/en/concepts/tools.mdx",
+        "Agentic/crewAI/docs/edge/en/concepts/training.mdx",
+        "Agentic/crewAI/docs/edge/en/installation.mdx",
+        "Agentic/crewAI/docs/edge/en/introduction.mdx",
+        "Agentic/crewAI/docs/edge/en/learn/bring-your-own-agent.mdx",
+        "Agentic/crewAI/docs/edge/en/learn/coding-agents.mdx",
+        "Agentic/crewAI/docs/edge/en/learn/create-custom-tools.mdx",
+        "Agentic/crewAI/docs/edge/en/learn/custom-manager-agent.mdx",
+        "Agentic/crewAI/docs/edge/en/learn/hierarchical-process.mdx",
+        "Agentic/crewAI/docs/edge/en/learn/human-in-the-loop.mdx",
+        "Agentic/crewAI/docs/edge/en/learn/llm-selection-guide.mdx",
+        "Agentic/crewAI/docs/edge/en/learn/multimodal-agents.mdx",
+        "Agentic/crewAI/docs/edge/en/learn/overview.mdx",
+        "Agentic/crewAI/docs/edge/en/learn/sequential-process.mdx",
+        "Agentic/crewAI/docs/edge/en/quickstart.mdx",
+        "Agentic/crewAI/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-026",
+      "repositoryPath": "Agentic/Harness/deepagents",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.033Z",
+      "courseIds": [
+        "legacy-course-026",
+        "legacy-reading-22-005",
+        "legacy-reading-22-006",
+        "legacy-reading-31-007",
+        "legacy-reading-31-008",
+        "legacy-reading-31-009",
+        "legacy-reading-31-010",
+        "legacy-reading-31-011",
+        "legacy-reading-31-012",
+        "legacy-reading-31-013",
+        "legacy-reading-31-014"
+      ],
+      "materialPaths": [
+        "Agentic/Harness/deepagents/AGENTS.md",
+        "Agentic/Harness/deepagents/openwiki/architecture/overview.md",
+        "Agentic/Harness/deepagents/openwiki/engineering/operations-and-testing.md",
+        "Agentic/Harness/deepagents/openwiki/index.md",
+        "Agentic/Harness/deepagents/openwiki/quickstart.md",
+        "Agentic/Harness/deepagents/openwiki/workflows/deep-agents-code.md",
+        "Agentic/Harness/deepagents/openwiki/workflows/evaluation-and-release.md",
+        "Agentic/Harness/deepagents/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-023",
+      "repositoryPath": "Agentic/Harness/harness-books",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.033Z",
+      "courseIds": [
+        "legacy-course-023",
+        "legacy-reading-17-001",
+        "legacy-reading-17-002",
+        "legacy-reading-17-003",
+        "legacy-reading-17-004",
+        "legacy-reading-17-005",
+        "legacy-reading-17-006",
+        "legacy-reading-17-007",
+        "legacy-reading-17-008",
+        "legacy-reading-17-009",
+        "legacy-reading-17-010",
+        "legacy-reading-17-011",
+        "legacy-reading-17-012",
+        "legacy-reading-17-013",
+        "legacy-reading-18-001",
+        "legacy-reading-18-002",
+        "legacy-reading-18-003",
+        "legacy-reading-18-004",
+        "legacy-reading-18-005",
+        "legacy-reading-18-006",
+        "legacy-reading-18-007",
+        "legacy-reading-18-008",
+        "legacy-reading-18-009",
+        "legacy-reading-18-010",
+        "legacy-reading-18-011"
+      ],
+      "materialPaths": [
+        "Agentic/Harness/harness-books/book1-claude-code/appendix-a-checklists.md",
+        "Agentic/Harness/harness-books/book1-claude-code/appendix-c-source-map.md",
+        "Agentic/Harness/harness-books/book1-claude-code/chapter-01-why-harness-engineering.md",
+        "Agentic/Harness/harness-books/book1-claude-code/chapter-02-prompt-is-control-plane.md",
+        "Agentic/Harness/harness-books/book1-claude-code/chapter-03-query-loop-heartbeat.md",
+        "Agentic/Harness/harness-books/book1-claude-code/chapter-04-tools-permissions-interrupts.md",
+        "Agentic/Harness/harness-books/book1-claude-code/chapter-05-context-memory-compact.md",
+        "Agentic/Harness/harness-books/book1-claude-code/chapter-06-errors-and-recovery.md",
+        "Agentic/Harness/harness-books/book1-claude-code/chapter-07-multi-agent-and-verification.md",
+        "Agentic/Harness/harness-books/book1-claude-code/chapter-08-team-landing-practices.md",
+        "Agentic/Harness/harness-books/book1-claude-code/chapter-09-ten-principles.md",
+        "Agentic/Harness/harness-books/book1-claude-code/index.md",
+        "Agentic/Harness/harness-books/book1-claude-code/preface.md",
+        "Agentic/Harness/harness-books/book2-comparing/appendix-b-checklists.md",
+        "Agentic/Harness/harness-books/book2-comparing/chapter-00-reading-map.md",
+        "Agentic/Harness/harness-books/book2-comparing/chapter-01-why-this-comparison.md",
+        "Agentic/Harness/harness-books/book2-comparing/chapter-02-two-control-planes.md",
+        "Agentic/Harness/harness-books/book2-comparing/chapter-03-loop-thread-and-rollout.md",
+        "Agentic/Harness/harness-books/book2-comparing/chapter-04-tools-sandbox-and-exec-policy.md",
+        "Agentic/Harness/harness-books/book2-comparing/chapter-05-skills-hooks-and-local-governance.md",
+        "Agentic/Harness/harness-books/book2-comparing/chapter-06-delegation-verification-and-state.md",
+        "Agentic/Harness/harness-books/book2-comparing/chapter-07-convergence-and-divergence.md",
+        "Agentic/Harness/harness-books/book2-comparing/chapter-08-how-to-choose-or-build.md",
+        "Agentic/Harness/harness-books/book2-comparing/preface.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-024",
+      "repositoryPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.033Z",
+      "courseIds": [
+        "legacy-course-024",
+        "legacy-reading-19-001",
+        "legacy-reading-19-002",
+        "legacy-reading-19-003",
+        "legacy-reading-19-004",
+        "legacy-reading-19-005",
+        "legacy-reading-19-006",
+        "legacy-reading-19-007",
+        "legacy-reading-19-008",
+        "legacy-reading-19-009",
+        "legacy-reading-19-010",
+        "legacy-reading-19-011",
+        "legacy-reading-20-001",
+        "legacy-reading-20-002",
+        "legacy-reading-20-003",
+        "legacy-reading-20-004",
+        "legacy-reading-20-005",
+        "legacy-reading-20-006",
+        "legacy-reading-20-007",
+        "legacy-reading-20-008",
+        "legacy-reading-20-009",
+        "legacy-reading-20-010",
+        "legacy-reading-20-011",
+        "legacy-reading-20-012",
+        "legacy-reading-20-013",
+        "legacy-reading-21-001",
+        "legacy-reading-21-002",
+        "legacy-reading-21-003",
+        "legacy-reading-21-004",
+        "legacy-reading-21-005",
+        "legacy-reading-21-006",
+        "legacy-reading-21-007",
+        "legacy-reading-21-008",
+        "legacy-reading-21-009",
+        "legacy-reading-21-010",
+        "legacy-reading-21-011",
+        "legacy-reading-21-012",
+        "legacy-reading-21-013",
+        "legacy-reading-21-014",
+        "legacy-reading-21-015",
+        "legacy-reading-21-016",
+        "legacy-reading-21-017"
+      ],
+      "materialPaths": [
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/appendix/b-env-vars.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/appendix/e-version-evolution.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/appendix/f-e2e-traces.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch01.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch02.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch03.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch04.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch04b.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch05.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch06.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch06b.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch07.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch08.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch09.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch10.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch11.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch12.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part4/ch13.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part4/ch14.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part4/ch15.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch16.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch17.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch17b.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch18.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch18b.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch19.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch20.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch20b.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch20c.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch21.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch22.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch22b.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch23.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch24.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch25.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch26.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch27.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch28.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch29.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch30.md",
+        "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/preface.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-022",
+      "repositoryPath": "Agentic/Harness/learn-harness-engineering",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-course-022",
+        "legacy-reading-16-001",
+        "legacy-reading-16-002",
+        "legacy-reading-16-003",
+        "legacy-reading-16-004",
+        "legacy-reading-16-005",
+        "legacy-reading-16-006",
+        "legacy-reading-16-007",
+        "legacy-reading-16-008",
+        "legacy-reading-16-009",
+        "legacy-reading-16-010",
+        "legacy-reading-16-011",
+        "legacy-reading-16-012",
+        "legacy-reading-16-013",
+        "legacy-reading-16-014",
+        "legacy-reading-16-015",
+        "legacy-reading-16-016"
+      ],
+      "materialPaths": [
+        "Agentic/Harness/learn-harness-engineering/docs/zh/index.md",
+        "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-01-why-capable-agents-still-fail/index.md",
+        "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-02-what-a-harness-actually-is/index.md",
+        "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-03-why-the-repository-must-become-the-system-of-record/index.md",
+        "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-04-why-one-giant-instruction-file-fails/index.md",
+        "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-05-why-long-running-tasks-lose-continuity/index.md",
+        "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-06-why-initialization-needs-its-own-phase/index.md",
+        "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-07-why-agents-overreach-and-under-finish/index.md",
+        "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-08-why-feature-lists-are-harness-primitives/index.md",
+        "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-09-why-agents-declare-victory-too-early/index.md",
+        "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-10-why-end-to-end-testing-changes-results/index.md",
+        "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-11-why-observability-belongs-inside-the-harness/index.md",
+        "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-12-why-every-session-must-leave-a-clean-state/index.md",
+        "Agentic/Harness/learn-harness-engineering/docs/zh/projects/index.md",
+        "Agentic/Harness/learn-harness-engineering/docs/zh/resources/index.md",
+        "Agentic/Harness/learn-harness-engineering/docs/zh/skills/index.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-032",
+      "repositoryPath": "Agentic/Harness/openworker",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-course-032",
+        "legacy-reading-22-013",
+        "legacy-reading-32-014",
+        "legacy-reading-32-015"
+      ],
+      "materialPaths": [
+        "Agentic/Harness/openworker/README.md",
+        "Agentic/Harness/openworker/surfaces/gui/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-031",
+      "repositoryPath": "Agentic/Harness/PI/pi-mono",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-course-031",
+        "legacy-reading-22-011",
+        "legacy-reading-22-012",
+        "legacy-reading-33-001",
+        "legacy-reading-33-002",
+        "legacy-reading-33-003",
+        "legacy-reading-33-004",
+        "legacy-reading-33-005",
+        "legacy-reading-33-006",
+        "legacy-reading-33-007",
+        "legacy-reading-33-008",
+        "legacy-reading-33-009",
+        "legacy-reading-33-010",
+        "legacy-reading-33-011",
+        "legacy-reading-33-012"
+      ],
+      "materialPaths": [
+        "Agentic/Harness/PI/pi-mono/AGENTS.md",
+        "Agentic/Harness/PI/pi-mono/CONTRIBUTING.md",
+        "Agentic/Harness/PI/pi-mono/packages/agent/README.md",
+        "Agentic/Harness/PI/pi-mono/packages/ai/README.md",
+        "Agentic/Harness/PI/pi-mono/packages/client/README.md",
+        "Agentic/Harness/PI/pi-mono/packages/coding-agent/README.md",
+        "Agentic/Harness/PI/pi-mono/packages/evals/README.md",
+        "Agentic/Harness/PI/pi-mono/packages/protocol/README.md",
+        "Agentic/Harness/PI/pi-mono/packages/server/README.md",
+        "Agentic/Harness/PI/pi-mono/packages/tui/README.md",
+        "Agentic/Harness/PI/pi-mono/README.md",
+        "Agentic/Harness/PI/pi-mono/tui-plan.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-036",
+      "repositoryPath": "Agentic/Harness/smolagents",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-course-036",
+        "legacy-reading-24-001",
+        "legacy-reading-24-002",
+        "legacy-reading-24-003",
+        "legacy-reading-24-004",
+        "legacy-reading-24-005",
+        "legacy-reading-24-006",
+        "legacy-reading-24-007",
+        "legacy-reading-24-008",
+        "legacy-reading-24-009",
+        "legacy-reading-24-010"
+      ],
+      "materialPaths": [
+        "Agentic/Harness/smolagents/docs/source/zh/conceptual_guides/intro_agents.md",
+        "Agentic/Harness/smolagents/docs/source/zh/conceptual_guides/react.md",
+        "Agentic/Harness/smolagents/docs/source/zh/guided_tour.md",
+        "Agentic/Harness/smolagents/docs/source/zh/index.md",
+        "Agentic/Harness/smolagents/docs/source/zh/tutorials/building_good_agents.md",
+        "Agentic/Harness/smolagents/docs/source/zh/tutorials/inspect_runs.md",
+        "Agentic/Harness/smolagents/docs/source/zh/tutorials/memory.md",
+        "Agentic/Harness/smolagents/docs/source/zh/tutorials/secure_code_execution.md",
+        "Agentic/Harness/smolagents/docs/source/zh/tutorials/tools.md",
+        "Agentic/Harness/smolagents/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-025",
+      "repositoryPath": "Agentic/Memory/mem0",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-course-025",
+        "legacy-reading-22-001",
+        "legacy-reading-22-002"
+      ],
+      "materialPaths": [
+        "Agentic/Memory/mem0/LLM.md",
+        "Agentic/Memory/mem0/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-028",
+      "repositoryPath": "Agentic/MetaGPT",
+      "status": "behind",
+      "clean": true,
+      "ahead": 0,
+      "behind": 2,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-course-028",
+        "legacy-reading-22-008",
+        "legacy-reading-32-001",
+        "legacy-reading-32-002",
+        "legacy-reading-32-003",
+        "legacy-reading-32-004",
+        "legacy-reading-32-005",
+        "legacy-reading-32-006",
+        "legacy-reading-32-007",
+        "legacy-reading-32-008"
+      ],
+      "materialPaths": [
+        "Agentic/MetaGPT/docs/ACADEMIC_WORK.md",
+        "Agentic/MetaGPT/docs/FAQ-EN.md",
+        "Agentic/MetaGPT/docs/install/cli_install_cn.md",
+        "Agentic/MetaGPT/docs/install/docker_install_cn.md",
+        "Agentic/MetaGPT/docs/README_CN.md",
+        "Agentic/MetaGPT/docs/ROADMAP.md",
+        "Agentic/MetaGPT/docs/tutorial/usage_cn.md",
+        "Agentic/MetaGPT/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-035",
+      "repositoryPath": "Agentic/multica",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-course-035",
+        "legacy-reading-25-001",
+        "legacy-reading-25-002",
+        "legacy-reading-25-003",
+        "legacy-reading-25-004",
+        "legacy-reading-25-005",
+        "legacy-reading-25-006",
+        "legacy-reading-25-007"
+      ],
+      "materialPaths": [
+        "Agentic/multica/CLAUDE.md",
+        "Agentic/multica/CLI_AND_DAEMON.md",
+        "Agentic/multica/docs/design.md",
+        "Agentic/multica/docs/product-overview.md",
+        "Agentic/multica/HANDOFF_ARCHITECTURE_AUDIT.md",
+        "Agentic/multica/README.zh-CN.md",
+        "Agentic/multica/SELF_HOSTING.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-037",
+      "repositoryPath": "Agentic/open-agent-sdk-typescript",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-course-037",
+        "legacy-reading-22-014"
+      ],
+      "materialPaths": [
+        "Agentic/open-agent-sdk-typescript/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-033",
+      "repositoryPath": "Agentic/openchamber",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-course-033",
+        "legacy-reading-14-015",
+        "legacy-reading-34-001",
+        "legacy-reading-34-002",
+        "legacy-reading-34-003",
+        "legacy-reading-34-004",
+        "legacy-reading-34-005",
+        "legacy-reading-34-006",
+        "legacy-reading-34-007",
+        "legacy-reading-34-008",
+        "legacy-reading-34-009",
+        "legacy-reading-34-010",
+        "legacy-reading-34-011",
+        "legacy-reading-34-012",
+        "legacy-reading-34-013",
+        "legacy-reading-34-014",
+        "legacy-reading-34-015",
+        "legacy-reading-34-016",
+        "legacy-reading-34-017",
+        "legacy-reading-34-018",
+        "legacy-reading-34-019",
+        "legacy-reading-34-020",
+        "legacy-reading-35-001",
+        "legacy-reading-35-002",
+        "legacy-reading-35-003",
+        "legacy-reading-35-004",
+        "legacy-reading-35-005",
+        "legacy-reading-35-006",
+        "legacy-reading-35-007",
+        "legacy-reading-35-008",
+        "legacy-reading-35-009",
+        "legacy-reading-35-010",
+        "legacy-reading-35-011",
+        "legacy-reading-35-012",
+        "legacy-reading-36-001",
+        "legacy-reading-36-002",
+        "legacy-reading-36-003",
+        "legacy-reading-36-004",
+        "legacy-reading-36-005",
+        "legacy-reading-36-006",
+        "legacy-reading-36-007",
+        "legacy-reading-36-008",
+        "legacy-reading-36-009",
+        "legacy-reading-36-010",
+        "legacy-reading-36-011",
+        "legacy-reading-36-012",
+        "legacy-reading-36-013"
+      ],
+      "materialPaths": [
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/agent-control-tool.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/commands-snippets.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/connect-devices.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/context.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/desktop-browser.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/desktop-tunnels.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/environment.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/git-identities.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/git.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/github.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/index.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/install.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/magic-prompts.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/mcp.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/mobile.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/multi-run.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/notes-todos-plans.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/notifications.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/opencode-server.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/preview.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/private-relay.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/project-actions.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/project-icons.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/projects.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/providers.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/quickstart.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/remote-instances.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/reverse-proxy.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/scheduled-tasks.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/security.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/session-goals.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/skills-catalog.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/skills.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/ssh-hosts-proxying.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/themes.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/troubleshooting.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/troubleshooting/opencode-connection.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/troubleshooting/remote-access.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/troubleshooting/worktrees-git.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/tunnels.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/updates.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/usage.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/voice.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/walkthrough.mdx",
+        "Agentic/openchamber/packages/docs/content/docs/zh-cn/worktrees.mdx",
+        "Agentic/openchamber/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-030",
+      "repositoryPath": "Agentic/OpenHands",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-course-030",
+        "legacy-reading-22-010",
+        "legacy-reading-32-009",
+        "legacy-reading-32-010",
+        "legacy-reading-32-011",
+        "legacy-reading-32-012",
+        "legacy-reading-32-013"
+      ],
+      "materialPaths": [
+        "Agentic/OpenHands/docs/ACP_AGENTS.md",
+        "Agentic/OpenHands/docs/architecture.md",
+        "Agentic/OpenHands/docs/DEVELOPMENT.md",
+        "Agentic/OpenHands/docs/SELF_HOSTING.md",
+        "Agentic/OpenHands/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-014",
+      "repositoryPath": "AICoding/claude/code/awesome-claude-code",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-course-014",
+        "legacy-reading-12-019"
+      ],
+      "materialPaths": [
+        "AICoding/claude/code/awesome-claude-code/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-009",
+      "repositoryPath": "AICoding/claude/code/claude-code-analysis",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-course-009",
+        "legacy-reading-11-001",
+        "legacy-reading-11-002",
+        "legacy-reading-11-003",
+        "legacy-reading-11-004",
+        "legacy-reading-11-005",
+        "legacy-reading-11-006",
+        "legacy-reading-11-007",
+        "legacy-reading-11-008",
+        "legacy-reading-11-009",
+        "legacy-reading-11-010",
+        "legacy-reading-11-011",
+        "legacy-reading-11-012",
+        "legacy-reading-11-013"
+      ],
+      "materialPaths": [
+        "AICoding/claude/code/claude-code-analysis/analysis/01-architecture-overview.md",
+        "AICoding/claude/code/claude-code-analysis/analysis/02-security-analysis.md",
+        "AICoding/claude/code/claude-code-analysis/analysis/04-agent-memory.md",
+        "AICoding/claude/code/claude-code-analysis/analysis/04b-tool-call-implementation.md",
+        "AICoding/claude/code/claude-code-analysis/analysis/04c-skills-implementation.md",
+        "AICoding/claude/code/claude-code-analysis/analysis/04d-mcp-implementation.md",
+        "AICoding/claude/code/claude-code-analysis/analysis/04e-sandbox-implementation.md",
+        "AICoding/claude/code/claude-code-analysis/analysis/04f-context-management.md",
+        "AICoding/claude/code/claude-code-analysis/analysis/04g-prompt-management.md",
+        "AICoding/claude/code/claude-code-analysis/analysis/04h-multi-agent.md",
+        "AICoding/claude/code/claude-code-analysis/analysis/04i-session-storage-resume.md",
+        "AICoding/claude/code/claude-code-analysis/analysis/07-code-evidence-index.md",
+        "AICoding/claude/code/claude-code-analysis/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-reading-12-016",
+      "repositoryPath": "AICoding/claude/code/claude-code-haha",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-reading-12-016"
+      ],
+      "materialPaths": [
+        "AICoding/claude/code/claude-code-haha/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-011",
+      "repositoryPath": "AICoding/claude/code/claude-code-lens",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-course-011",
+        "legacy-reading-12-013"
+      ],
+      "materialPaths": [
+        "AICoding/claude/code/claude-code-lens/README.zh-CN.md"
+      ]
+    },
+    {
+      "courseId": "legacy-reading-12-017",
+      "repositoryPath": "AICoding/claude/code/claude-code-rev",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-reading-12-017",
+        "legacy-reading-12-018"
+      ],
+      "materialPaths": [
+        "AICoding/claude/code/claude-code-rev/AGENTS.md",
+        "AICoding/claude/code/claude-code-rev/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-reading-12-015",
+      "repositoryPath": "AICoding/claude/code/claude-code-source-code",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-reading-12-015"
+      ],
+      "materialPaths": [
+        "AICoding/claude/code/claude-code-source-code/README_CN.md"
+      ]
+    },
+    {
+      "courseId": "legacy-reading-12-021",
+      "repositoryPath": "AICoding/claude/code/claude-code-templates",
+      "status": "behind",
+      "clean": true,
+      "ahead": 0,
+      "behind": 60,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-reading-12-021",
+        "legacy-reading-12-022"
+      ],
+      "materialPaths": [
+        "AICoding/claude/code/claude-code-templates/CLAUDE.md",
+        "AICoding/claude/code/claude-code-templates/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-reading-12-020",
+      "repositoryPath": "AICoding/claude/code/claude-init",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-reading-12-020"
+      ],
+      "materialPaths": [
+        "AICoding/claude/code/claude-init/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-010",
+      "repositoryPath": "AICoding/claude/code/collection-claude-code-source-code",
+      "status": "diverged",
+      "clean": true,
+      "ahead": 57,
+      "behind": 246,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-course-010",
+        "legacy-reading-12-014"
+      ],
+      "materialPaths": [
+        "AICoding/claude/code/collection-claude-code-source-code/README-CN.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-012",
+      "repositoryPath": "AICoding/claude/document/claude-code-guide",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-course-012",
+        "legacy-reading-12-001"
+      ],
+      "materialPaths": [
+        "AICoding/claude/document/claude-code-guide/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-reading-12-004",
+      "repositoryPath": "AICoding/claude/document/ClaudeMD/andrej-karpathy-skills",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-reading-12-004"
+      ],
+      "materialPaths": [
+        "AICoding/claude/document/ClaudeMD/andrej-karpathy-skills/README.zh.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-008",
+      "repositoryPath": "AICoding/claude/document/learn-claude-code",
+      "status": "dirty",
+      "clean": false,
+      "ahead": 0,
+      "behind": 30,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.034Z",
+      "courseIds": [
+        "legacy-course-008",
+        "legacy-reading-10-001",
+        "legacy-reading-10-002",
+        "legacy-reading-10-003",
+        "legacy-reading-10-004",
+        "legacy-reading-10-005",
+        "legacy-reading-10-006",
+        "legacy-reading-10-007",
+        "legacy-reading-10-008",
+        "legacy-reading-10-009",
+        "legacy-reading-10-010",
+        "legacy-reading-10-011",
+        "legacy-reading-10-012",
+        "legacy-reading-10-013",
+        "legacy-reading-10-014",
+        "legacy-reading-10-015",
+        "legacy-reading-10-016",
+        "legacy-reading-10-017",
+        "legacy-reading-10-018",
+        "legacy-reading-10-019",
+        "legacy-reading-10-020",
+        "legacy-reading-10-021"
+      ],
+      "materialPaths": [
+        "AICoding/claude/document/learn-claude-code/README-zh.md",
+        "AICoding/claude/document/learn-claude-code/s01_agent_loop/README.md",
+        "AICoding/claude/document/learn-claude-code/s02_tool_use/README.md",
+        "AICoding/claude/document/learn-claude-code/s03_permission/README.md",
+        "AICoding/claude/document/learn-claude-code/s04_hooks/README.md",
+        "AICoding/claude/document/learn-claude-code/s05_todo_write/README.md",
+        "AICoding/claude/document/learn-claude-code/s06_subagent/README.md",
+        "AICoding/claude/document/learn-claude-code/s07_skill_loading/README.md",
+        "AICoding/claude/document/learn-claude-code/s08_context_compact/README.md",
+        "AICoding/claude/document/learn-claude-code/s09_memory/README.md",
+        "AICoding/claude/document/learn-claude-code/s10_system_prompt/README.md",
+        "AICoding/claude/document/learn-claude-code/s11_error_recovery/README.md",
+        "AICoding/claude/document/learn-claude-code/s12_task_system/README.md",
+        "AICoding/claude/document/learn-claude-code/s13_background_tasks/README.md",
+        "AICoding/claude/document/learn-claude-code/s14_cron_scheduler/README.md",
+        "AICoding/claude/document/learn-claude-code/s15_agent_teams/README.md",
+        "AICoding/claude/document/learn-claude-code/s16_team_protocols/README.md",
+        "AICoding/claude/document/learn-claude-code/s17_autonomous_agents/README.md",
+        "AICoding/claude/document/learn-claude-code/s18_worktree_isolation/README.md",
+        "AICoding/claude/document/learn-claude-code/s19_mcp_plugin/README.md",
+        "AICoding/claude/document/learn-claude-code/s20_comprehensive/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-reading-12-011",
+      "repositoryPath": "AICoding/claude/plugins/claude-auto-mode-unlock",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-reading-12-011",
+        "legacy-reading-12-012"
+      ],
+      "materialPaths": [
+        "AICoding/claude/plugins/claude-auto-mode-unlock/METHODOLOGY.md",
+        "AICoding/claude/plugins/claude-auto-mode-unlock/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-013",
+      "repositoryPath": "AICoding/claude/plugins/claude-mem",
+      "status": "dirty",
+      "clean": false,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.035Z",
+      "courseIds": [
+        "legacy-course-013",
+        "legacy-reading-12-005",
+        "legacy-reading-12-006",
+        "legacy-reading-12-007"
+      ],
+      "materialPaths": [
+        "AICoding/claude/plugins/claude-mem/cursor-hooks/CONTEXT-INJECTION.md",
+        "AICoding/claude/plugins/claude-mem/cursor-hooks/README.md",
+        "AICoding/claude/plugins/claude-mem/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-reading-12-009",
+      "repositoryPath": "AICoding/claude/plugins/claude-mermaid",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-reading-12-009"
+      ],
+      "materialPaths": [
+        "AICoding/claude/plugins/claude-mermaid/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-reading-12-010",
+      "repositoryPath": "AICoding/claude/plugins/claude-stt",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-reading-12-010"
+      ],
+      "materialPaths": [
+        "AICoding/claude/plugins/claude-stt/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-reading-12-008",
+      "repositoryPath": "AICoding/claude/plugins/claudian",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-reading-12-008"
+      ],
+      "materialPaths": [
+        "AICoding/claude/plugins/claudian/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-015",
+      "repositoryPath": "AICoding/codex/codex-code",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-course-015",
+        "legacy-reading-15-001"
+      ],
+      "materialPaths": [
+        "AICoding/codex/codex-code/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-020",
+      "repositoryPath": "AICoding/CyberClaw",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-course-020",
+        "legacy-reading-15-005",
+        "legacy-reading-15-006",
+        "legacy-reading-15-007",
+        "legacy-reading-15-008"
+      ],
+      "materialPaths": [
+        "AICoding/CyberClaw/docs/LAZY_LOADING_GUIDE.md",
+        "AICoding/CyberClaw/docs/LAZY_LOADING_QUICKSTART.md",
+        "AICoding/CyberClaw/docs/LAZY_LOADING_SUMMARY.md",
+        "AICoding/CyberClaw/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-019",
+      "repositoryPath": "AICoding/hermes/hermes-agent",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.029Z",
+      "courseIds": [
+        "legacy-course-019",
+        "legacy-reading-15-002"
+      ],
+      "materialPaths": [
+        "AICoding/hermes/hermes-agent/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-021",
+      "repositoryPath": "AICoding/MiMo-Code",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-course-021",
+        "legacy-reading-15-009",
+        "legacy-reading-15-010"
+      ],
+      "materialPaths": [
+        "AICoding/MiMo-Code/AGENTS.md",
+        "AICoding/MiMo-Code/README.zh.md"
+      ]
+    },
+    {
+      "courseId": "legacy-reading-13-019",
+      "repositoryPath": "AICoding/openclaw/channels/openclaw-lark",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-reading-13-019"
+      ],
+      "materialPaths": [
+        "AICoding/openclaw/channels/openclaw-lark/README.zh.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-016",
+      "repositoryPath": "AICoding/openclaw/doc/openclaw_guide",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-course-016",
+        "legacy-reading-13-001",
+        "legacy-reading-13-002",
+        "legacy-reading-13-003",
+        "legacy-reading-13-004",
+        "legacy-reading-13-005",
+        "legacy-reading-13-006",
+        "legacy-reading-13-007",
+        "legacy-reading-13-008",
+        "legacy-reading-13-009",
+        "legacy-reading-13-010",
+        "legacy-reading-13-011",
+        "legacy-reading-13-012",
+        "legacy-reading-13-013",
+        "legacy-reading-13-014",
+        "legacy-reading-13-015",
+        "legacy-reading-13-016",
+        "legacy-reading-13-017",
+        "legacy-reading-13-018"
+      ],
+      "materialPaths": [
+        "AICoding/openclaw/doc/openclaw_guide/01_overview/README.md",
+        "AICoding/openclaw/doc/openclaw_guide/02_setup/README.md",
+        "AICoding/openclaw/doc/openclaw_guide/03_minimal_loop/README.md",
+        "AICoding/openclaw/doc/openclaw_guide/04_config_models/README.md",
+        "AICoding/openclaw/doc/openclaw_guide/05_tools_skills/README.md",
+        "AICoding/openclaw/doc/openclaw_guide/06_context_memory/README.md",
+        "AICoding/openclaw/doc/openclaw_guide/07_multi_agent/README.md",
+        "AICoding/openclaw/doc/openclaw_guide/08_automation_ops/README.md",
+        "AICoding/openclaw/doc/openclaw_guide/09_gateway_protocol/README.md",
+        "AICoding/openclaw/doc/openclaw_guide/10_agent_loop/README.md",
+        "AICoding/openclaw/doc/openclaw_guide/11_reliability_security/README.md",
+        "AICoding/openclaw/doc/openclaw_guide/12_extension_engineering/README.md",
+        "AICoding/openclaw/doc/openclaw_guide/13_practical_cases/README.md",
+        "AICoding/openclaw/doc/openclaw_guide/14_performance_cost/README.md",
+        "AICoding/openclaw/doc/openclaw_guide/15_troubleshooting_trees/README.md",
+        "AICoding/openclaw/doc/openclaw_guide/16_claude_ecosystem/README.md",
+        "AICoding/openclaw/doc/openclaw_guide/appendix/README.md",
+        "AICoding/openclaw/doc/openclaw_guide/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-reading-13-020",
+      "repositoryPath": "AICoding/openclaw/openclaw-code",
+      "status": "dirty",
+      "clean": false,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.037Z",
+      "courseIds": [
+        "legacy-reading-13-020",
+        "legacy-reading-13-021",
+        "legacy-reading-13-022",
+        "legacy-reading-13-023"
+      ],
+      "materialPaths": [
+        "AICoding/openclaw/openclaw-code/AGENTS.md",
+        "AICoding/openclaw/openclaw-code/docs.acp.md",
+        "AICoding/openclaw/openclaw-code/SECURITY.md",
+        "AICoding/openclaw/openclaw-code/VISION.md"
+      ]
+    },
+    {
+      "courseId": "legacy-reading-14-014",
+      "repositoryPath": "AICoding/opencode/awesome-opencode",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-reading-14-014"
+      ],
+      "materialPaths": [
+        "AICoding/opencode/awesome-opencode/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-018",
+      "repositoryPath": "AICoding/opencode/code/opencode",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "dev",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-course-018",
+        "legacy-reading-14-012",
+        "legacy-reading-14-013"
+      ],
+      "materialPaths": [
+        "AICoding/opencode/code/opencode/AGENTS.md",
+        "AICoding/opencode/code/opencode/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-reading-14-017",
+      "repositoryPath": "AICoding/opencode/code/opencode-supermemory",
+      "status": "dirty",
+      "clean": false,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.029Z",
+      "courseIds": [
+        "legacy-reading-14-017",
+        "legacy-reading-14-018"
+      ],
+      "materialPaths": [
+        "AICoding/opencode/code/opencode-supermemory/README.md",
+        "AICoding/opencode/code/opencode-supermemory/工程解读报告.md"
+      ]
+    },
+    {
+      "courseId": "legacy-reading-14-016",
+      "repositoryPath": "AICoding/opencode/code/openwork",
+      "status": "diverged",
+      "clean": true,
+      "ahead": 1614,
+      "behind": 2706,
+      "branch": "dev",
+      "checkedAt": "2026-08-15T02:54:13.029Z",
+      "courseIds": [
+        "legacy-reading-14-016"
+      ],
+      "materialPaths": [
+        "AICoding/opencode/code/openwork/README_ZH.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-017",
+      "repositoryPath": "AICoding/opencode/learn-opencode",
+      "status": "behind",
+      "clean": true,
+      "ahead": 0,
+      "behind": 58,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-course-017",
+        "legacy-reading-14-001",
+        "legacy-reading-14-002",
+        "legacy-reading-14-003",
+        "legacy-reading-14-004",
+        "legacy-reading-14-005",
+        "legacy-reading-14-006",
+        "legacy-reading-14-007",
+        "legacy-reading-14-008",
+        "legacy-reading-14-009",
+        "legacy-reading-14-010",
+        "legacy-reading-14-011"
+      ],
+      "materialPaths": [
+        "AICoding/opencode/learn-opencode/docs/1-start/01-intro.md",
+        "AICoding/opencode/learn-opencode/docs/1-start/02-install.md",
+        "AICoding/opencode/learn-opencode/docs/1-start/04-connect.md",
+        "AICoding/opencode/learn-opencode/docs/2-daily/01-interface.md",
+        "AICoding/opencode/learn-opencode/docs/3-workflow/02-agents.md",
+        "AICoding/opencode/learn-opencode/docs/4-scenarios/coder-daily.md",
+        "AICoding/opencode/learn-opencode/docs/5-advanced/02a-agent-quickstart.md",
+        "AICoding/opencode/learn-opencode/docs/5-advanced/07a-mcp-basics.md",
+        "AICoding/opencode/learn-opencode/docs/appendix/faq.md",
+        "AICoding/opencode/learn-opencode/docs/index.md",
+        "AICoding/opencode/learn-opencode/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-reading-14-019",
+      "repositoryPath": "AICoding/opencode/plugins/opencode-wakatime",
+      "status": "dirty",
+      "clean": false,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "master",
+      "checkedAt": "2026-08-15T02:54:13.029Z",
+      "courseIds": [
+        "legacy-reading-14-019"
+      ],
+      "materialPaths": [
+        "AICoding/opencode/plugins/opencode-wakatime/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-039",
+      "repositoryPath": "Application/cc-switch",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "courseIds": [
+        "legacy-course-039",
+        "legacy-reading-37-001",
+        "legacy-reading-37-002",
+        "legacy-reading-37-003",
+        "legacy-reading-37-004",
+        "legacy-reading-37-005",
+        "legacy-reading-37-006",
+        "legacy-reading-37-007",
+        "legacy-reading-37-008",
+        "legacy-reading-37-009",
+        "legacy-reading-37-010",
+        "legacy-reading-37-011",
+        "legacy-reading-37-012",
+        "legacy-reading-37-013",
+        "legacy-reading-37-014",
+        "legacy-reading-37-015",
+        "legacy-reading-37-016",
+        "legacy-reading-37-017",
+        "legacy-reading-37-018",
+        "legacy-reading-37-019"
+      ],
+      "materialPaths": [
+        "Application/cc-switch/docs/guides/codex-claude-routing-guide-zh.md",
+        "Application/cc-switch/docs/guides/codex-deepseek-routing-guide-zh.md",
+        "Application/cc-switch/docs/guides/codex-kimi-routing-guide-zh.md",
+        "Application/cc-switch/docs/guides/proxy-guide-zh.md",
+        "Application/cc-switch/docs/user-manual/zh/1-getting-started/1.1-introduction.md",
+        "Application/cc-switch/docs/user-manual/zh/1-getting-started/1.2-installation.md",
+        "Application/cc-switch/docs/user-manual/zh/1-getting-started/1.3-interface.md",
+        "Application/cc-switch/docs/user-manual/zh/1-getting-started/1.4-quickstart.md",
+        "Application/cc-switch/docs/user-manual/zh/1-getting-started/1.5-settings.md",
+        "Application/cc-switch/docs/user-manual/zh/2-providers/2.1-add.md",
+        "Application/cc-switch/docs/user-manual/zh/2-providers/2.2-switch.md",
+        "Application/cc-switch/docs/user-manual/zh/2-providers/2.5-usage-query.md",
+        "Application/cc-switch/docs/user-manual/zh/2-providers/2.6-claude-desktop.md",
+        "Application/cc-switch/docs/user-manual/zh/5-faq/5.1-config-files.md",
+        "Application/cc-switch/docs/user-manual/zh/5-faq/5.2-questions.md",
+        "Application/cc-switch/docs/user-manual/zh/5-faq/5.4-env-conflict.md",
+        "Application/cc-switch/docs/user-manual/zh/README.md",
+        "Application/cc-switch/README_ZH.md",
+        "Application/cc-switch/session-manager.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-040",
+      "repositoryPath": "Application/CodexSwitch",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "master",
+      "checkedAt": "2026-08-15T02:54:13.023Z",
+      "courseIds": [
+        "legacy-course-040",
+        "legacy-reading-38-001",
+        "legacy-reading-38-002",
+        "legacy-reading-38-003",
+        "legacy-reading-38-004",
+        "legacy-reading-38-005"
+      ],
+      "materialPaths": [
+        "Application/CodexSwitch/AGENTS.md",
+        "Application/CodexSwitch/DESIGN.md",
+        "Application/CodexSwitch/docs/codex-upstream-api-inventory.md",
+        "Application/CodexSwitch/README.md",
+        "Application/CodexSwitch/SPEC.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-042",
+      "repositoryPath": "Application/solon-ai",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.029Z",
+      "courseIds": [
+        "legacy-course-042",
+        "legacy-reading-38-008",
+        "legacy-reading-38-009",
+        "legacy-reading-38-010",
+        "legacy-reading-38-011",
+        "legacy-reading-38-012"
+      ],
+      "materialPaths": [
+        "Application/solon-ai/README.md",
+        "Application/solon-ai/solon-ai-a2a/README.md",
+        "Application/solon-ai/solon-ai-anp/README.md",
+        "Application/solon-ai/solon-ai-flow/README.md",
+        "Application/solon-ai/UPDATE_LOG.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-041",
+      "repositoryPath": "Application/workany",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "dev",
+      "checkedAt": "2026-08-15T02:54:13.033Z",
+      "courseIds": [
+        "legacy-course-041",
+        "legacy-reading-38-006",
+        "legacy-reading-38-007"
+      ],
+      "materialPaths": [
+        "Application/workany/CONTRIBUTING.md",
+        "Application/workany/README.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-004",
+      "repositoryPath": "Learning/claw0",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.033Z",
+      "courseIds": [
+        "legacy-course-004",
+        "legacy-reading-07-001",
+        "legacy-reading-07-002",
+        "legacy-reading-07-003",
+        "legacy-reading-07-004",
+        "legacy-reading-07-005",
+        "legacy-reading-07-006",
+        "legacy-reading-07-007",
+        "legacy-reading-07-008",
+        "legacy-reading-07-009",
+        "legacy-reading-07-010",
+        "legacy-reading-07-011",
+        "legacy-reading-08-001",
+        "legacy-reading-08-002",
+        "legacy-reading-08-003",
+        "legacy-reading-08-004",
+        "legacy-reading-08-005",
+        "legacy-reading-08-006",
+        "legacy-reading-08-007",
+        "legacy-reading-08-008"
+      ],
+      "materialPaths": [
+        "Learning/claw0/README.md",
+        "Learning/claw0/sessions/zh/s01_agent_loop.md",
+        "Learning/claw0/sessions/zh/s02_tool_use.md",
+        "Learning/claw0/sessions/zh/s03_sessions.md",
+        "Learning/claw0/sessions/zh/s04_channels.md",
+        "Learning/claw0/sessions/zh/s05_gateway_routing.md",
+        "Learning/claw0/sessions/zh/s06_intelligence.md",
+        "Learning/claw0/sessions/zh/s07_heartbeat_cron.md",
+        "Learning/claw0/sessions/zh/s08_delivery.md",
+        "Learning/claw0/sessions/zh/s09_resilience.md",
+        "Learning/claw0/sessions/zh/s10_concurrency.md",
+        "Learning/claw0/workspace/AGENTS.md",
+        "Learning/claw0/workspace/BOOTSTRAP.md",
+        "Learning/claw0/workspace/HEARTBEAT.md",
+        "Learning/claw0/workspace/IDENTITY.md",
+        "Learning/claw0/workspace/MEMORY.md",
+        "Learning/claw0/workspace/SOUL.md",
+        "Learning/claw0/workspace/TOOLS.md",
+        "Learning/claw0/workspace/USER.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-003",
+      "repositoryPath": "Learning/easy-agent",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.029Z",
+      "courseIds": [
+        "legacy-course-003",
+        "legacy-reading-09-001"
+      ],
+      "materialPaths": [
+        "Learning/easy-agent/README.zh-CN.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-005",
+      "repositoryPath": "Learning/easy-learn-ai",
+      "status": "latest",
+      "clean": true,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.029Z",
+      "courseIds": [
+        "legacy-course-005",
+        "legacy-reading-09-002"
+      ],
+      "materialPaths": [
+        "Learning/easy-learn-ai/readme.md"
+      ]
+    },
+    {
+      "courseId": "legacy-course-001",
+      "repositoryPath": "Learning/hello-agents",
+      "status": "dirty",
+      "clean": false,
+      "ahead": 0,
+      "behind": 0,
+      "branch": "main",
+      "checkedAt": "2026-08-15T02:54:13.039Z",
+      "courseIds": [
+        "legacy-course-001",
+        "legacy-reading-02-001",
+        "legacy-reading-02-002",
+        "legacy-reading-02-003",
+        "legacy-reading-02-004",
+        "legacy-reading-02-005",
+        "legacy-reading-03-001",
+        "legacy-reading-03-002",
+        "legacy-reading-03-003",
+        "legacy-reading-03-004",
+        "legacy-reading-04-001",
+        "legacy-reading-04-002",
+        "legacy-reading-04-003",
+        "legacy-reading-04-004",
+        "legacy-reading-04-005",
+        "legacy-reading-05-001",
+        "legacy-reading-05-002",
+        "legacy-reading-05-003",
+        "legacy-reading-05-004",
+        "legacy-reading-06-001",
+        "legacy-reading-06-002",
+        "legacy-reading-06-003",
+        "legacy-reading-06-004",
+        "legacy-reading-06-005",
+        "legacy-reading-06-006",
+        "legacy-reading-06-007",
+        "legacy-reading-06-008",
+        "legacy-reading-06-009",
+        "legacy-reading-06-010",
+        "legacy-reading-06-011",
+        "legacy-reading-06-012",
+        "legacy-reading-06-013",
+        "legacy-reading-06-014"
+      ],
+      "materialPaths": [
+        "Learning/hello-agents/Additional-Chapter/N8N_INSTALL_GUIDE.md",
+        "Learning/hello-agents/Additional-Chapter/NODEJS_INSTALL_GUIDE.md",
+        "Learning/hello-agents/docs/chapter1/第一章 初识智能体.md",
+        "Learning/hello-agents/docs/chapter10/第十章 智能体通信协议.md",
+        "Learning/hello-agents/docs/chapter11/第十一章 Agentic-RL.md",
+        "Learning/hello-agents/docs/chapter12/第十二章 智能体性能评估.md",
+        "Learning/hello-agents/docs/chapter13/第十三章 智能旅行助手.md",
+        "Learning/hello-agents/docs/chapter14/第十四章 自动化深度研究智能体.md",
+        "Learning/hello-agents/docs/chapter15/第十五章 构建赛博小镇.md",
+        "Learning/hello-agents/docs/chapter16/第十六章 毕业设计.md",
+        "Learning/hello-agents/docs/chapter2/第二章 智能体发展史.md",
+        "Learning/hello-agents/docs/chapter3/第三章 大语言模型基础.md",
+        "Learning/hello-agents/docs/chapter4/第四章 智能体经典范式构建.md",
+        "Learning/hello-agents/docs/chapter5/第五章 基于低代码平台的智能体搭建.md",
+        "Learning/hello-agents/docs/chapter6/第六章 框架开发实践.md",
+        "Learning/hello-agents/docs/chapter7/第七章 构建你的Agent框架.md",
+        "Learning/hello-agents/docs/chapter8/第八章 记忆与检索.md",
+        "Learning/hello-agents/docs/chapter9/第九章 上下文工程.md",
+        "Learning/hello-agents/docs/前言.md",
+        "Learning/hello-agents/Extra-Chapter/Extra01-面试问题总结.md",
+        "Learning/hello-agents/Extra-Chapter/Extra02-上下文工程补充知识.md",
+        "Learning/hello-agents/Extra-Chapter/Extra03-Dify智能体创建保姆级操作流程.md",
+        "Learning/hello-agents/Extra-Chapter/Extra04-DatawhaleFAQ.md",
+        "Learning/hello-agents/Extra-Chapter/Extra05-AgentSkills解读.md",
+        "Learning/hello-agents/Extra-Chapter/Extra06-GUIAgent科普与实战.md",
+        "Learning/hello-agents/Extra-Chapter/Extra07-环境配置.md",
+        "Learning/hello-agents/Extra-Chapter/Extra08-如何写出好的Skill.md",
+        "Learning/hello-agents/Extra-Chapter/Extra09-Agent应用开发实践踩坑与经验分享.md",
+        "Learning/hello-agents/Extra-Chapter/Extra10-Agent自进化.md",
+        "Learning/hello-agents/Extra-Chapter/Extra11-WebAgent科普与实战.md",
+        "Learning/hello-agents/Extra-Chapter/Extra12-旅行助手后训练实战.md",
+        "Learning/hello-agents/README.md"
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "courseIds": [
+        "legacy-reading-01-002"
+      ],
+      "materialPaths": [
+        "README.md"
+      ],
+      "reason": "No Git repository marker was found for this material reference."
+    },
+    {
+      "courseIds": [
+        "legacy-reading-12-002",
+        "legacy-reading-12-003"
+      ],
+      "materialPaths": [
+        "AICoding/claude/document/ClaudeMD/App/claude.md",
+        "AICoding/claude/document/ClaudeMD/App/constitution.md"
+      ],
+      "reason": "No Git repository marker was found for this material reference."
+    },
+    {
+      "courseIds": [
+        "legacy-reading-15-003",
+        "legacy-reading-15-004"
+      ],
+      "materialPaths": [
+        "AICoding/hermes/docs/Kimi_Agent_Hermes 记忆机制/Hermes_LearningLoop_深度调研报告.md",
+        "AICoding/hermes/docs/Kimi_Agent_Hermes 记忆机制/hermes-memory-deep-dive.md"
+      ],
+      "reason": "No Git repository marker was found for this material reference."
+    },
+    {
+      "courseIds": [
+        "legacy-course-002",
+        "legacy-course-006"
+      ],
+      "materialPaths": [
+        "Learning/Book/Hello-Agents-V1.0.0-20251103.pdf",
+        "Learning/Book/LLMBook.pdf"
+      ],
+      "reason": "No Git repository marker was found for this material reference."
+    },
+    {
+      "courseIds": [
+        "legacy-course-007"
+      ],
+      "materialPaths": [
+        "Learning/Book/Palantir-Ontology/本体论.pdf"
+      ],
+      "reason": "No Git repository marker was found for this material reference."
+    }
+  ]
+}

@@ -1189,7 +1189,7 @@
       "建议作为 Stage 3 的理论主线：为什么强模型仍会失败、仓库如何成为事实来源、如何验证与交接。"
     ],
     "sourceUrl": "https://github.com/walkinglabs/learn-harness-engineering",
-    "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/index.md",
+    "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/index.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -1201,7 +1201,7 @@
       {
         "label": "课程导览",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/index.md"
+        "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/index.md"
       },
       {
         "label": "GitHub",
@@ -1243,7 +1243,7 @@
       "Book 1 看 prompt 控制面、循环心跳、上下文压缩；Book 2 看两家 harness 的收敛与分歧。"
     ],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-books/book1-claude-code/index.md",
+    "localPath": "Agentic/Harness/harness-books/book1-claude-code/index.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -1255,12 +1255,12 @@
       {
         "label": "Book 1 导读",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-books/book1-claude-code/index.md"
+        "localPath": "Agentic/Harness/harness-books/book1-claude-code/index.md"
       },
       {
         "label": "Book 2 前言",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-books/book2-comparing/preface.md"
+        "localPath": "Agentic/Harness/harness-books/book2-comparing/preface.md"
       }
     ],
     "unavailableReason": null,
@@ -1299,7 +1299,7 @@
       "全书最硬核的 Claude Code 内幕资料。第 3 章 Agent Loop 是全书锚点，建议先读第一篇再按需跳章。"
     ],
     "sourceUrl": "https://github.com/ZhangHanDong/harness-engineering-from-cc-to-ai-coding",
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/preface.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/preface.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -1311,7 +1311,7 @@
       {
         "label": "本地前言",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/preface.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/preface.md"
       },
       {
         "label": "GitHub",
@@ -1411,8 +1411,8 @@
     "learningGoals": [
       "重点看 LangGraph 的状态机模型和 DeepAgents 的子 agent / 计划文件设计，而不是抄 chain 模板。"
     ],
-    "sourceUrl": null,
-    "localPath": "Agentic/Langchain-ai/langchain/README.md",
+    "sourceUrl": "https://github.com/langchain-ai/langchain",
+    "localPath": "Agentic/Harness/deepagents/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -1423,18 +1423,18 @@
     "references": [
       {
         "label": "LangChain",
-        "sourceUrl": null,
-        "localPath": "Agentic/Langchain-ai/langchain/README.md"
+        "sourceUrl": "https://github.com/langchain-ai/langchain/blob/HEAD/README.md",
+        "localPath": null
       },
       {
         "label": "LangGraph",
-        "sourceUrl": null,
-        "localPath": "Agentic/Langchain-ai/langgraph/README.md"
+        "sourceUrl": "https://github.com/langchain-ai/langgraph/blob/HEAD/README.md",
+        "localPath": null
       },
       {
         "label": "DeepAgents",
         "sourceUrl": null,
-        "localPath": "Agentic/Langchain-ai/deepagents/README.md"
+        "localPath": "Agentic/Harness/deepagents/README.md"
       }
     ],
     "unavailableReason": null,
@@ -1668,7 +1668,7 @@
       "看 AGENTS.md 里的工程约定，是 monorepo 下多包 agent 项目的组织参考。"
     ],
     "sourceUrl": null,
-    "localPath": "Agentic/PI/pi-mono/README.md",
+    "localPath": "Agentic/Harness/PI/pi-mono/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -1680,12 +1680,12 @@
       {
         "label": "本地 README",
         "sourceUrl": null,
-        "localPath": "Agentic/PI/pi-mono/README.md"
+        "localPath": "Agentic/Harness/PI/pi-mono/README.md"
       },
       {
         "label": "工程约定 AGENTS.md",
         "sourceUrl": null,
-        "localPath": "Agentic/PI/pi-mono/AGENTS.md"
+        "localPath": "Agentic/Harness/PI/pi-mono/AGENTS.md"
       }
     ],
     "unavailableReason": null,
@@ -1718,7 +1718,7 @@
       "关注 connectors + personas 的分层，是长运行个人 agent 的另一种产品形态。"
     ],
     "sourceUrl": null,
-    "localPath": "Agentic/openworker/README.md",
+    "localPath": "Agentic/Harness/openworker/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -1730,7 +1730,7 @@
       {
         "label": "本地 README",
         "sourceUrl": null,
-        "localPath": "Agentic/openworker/README.md"
+        "localPath": "Agentic/Harness/openworker/README.md"
       }
     ],
     "unavailableReason": null,
@@ -1937,7 +1937,7 @@
       "库本身几千行，适合通读。中文文档齐全：导览 + 4 篇教程 + 3 篇概念指南，其中「写出好 agent」和「安全代码执行」两篇最值得读。"
     ],
     "sourceUrl": "https://github.com/huggingface/smolagents",
-    "localPath": "Agentic/smolagents/README.md",
+    "localPath": "Agentic/Harness/smolagents/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -1949,12 +1949,12 @@
       {
         "label": "本地 README",
         "sourceUrl": null,
-        "localPath": "Agentic/smolagents/README.md"
+        "localPath": "Agentic/Harness/smolagents/README.md"
       },
       {
         "label": "中文导览",
         "sourceUrl": null,
-        "localPath": "Agentic/smolagents/docs/source/zh/guided_tour.md"
+        "localPath": "Agentic/Harness/smolagents/docs/source/zh/guided_tour.md"
       },
       {
         "label": "GitHub",
@@ -8827,7 +8827,7 @@
     "summary": "Learn Harness Engineering · 12 讲",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/index.md",
+    "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/index.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -8839,7 +8839,7 @@
       {
         "label": "课程导览",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/index.md"
+        "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/index.md"
       }
     ],
     "unavailableReason": null,
@@ -8867,7 +8867,7 @@
     "summary": "Learn Harness Engineering · 12 讲",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-01-why-capable-agents-still-fail/index.md",
+    "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-01-why-capable-agents-still-fail/index.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -8879,7 +8879,7 @@
       {
         "label": "第 1 讲：模型能力强 ≠ 执行可靠",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-01-why-capable-agents-still-fail/index.md"
+        "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-01-why-capable-agents-still-fail/index.md"
       }
     ],
     "unavailableReason": null,
@@ -8907,7 +8907,7 @@
     "summary": "Learn Harness Engineering · 12 讲",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-02-what-a-harness-actually-is/index.md",
+    "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-02-what-a-harness-actually-is/index.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -8919,7 +8919,7 @@
       {
         "label": "第 2 讲：Harness 到底是什么",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-02-what-a-harness-actually-is/index.md"
+        "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-02-what-a-harness-actually-is/index.md"
       }
     ],
     "unavailableReason": null,
@@ -8947,7 +8947,7 @@
     "summary": "Learn Harness Engineering · 12 讲",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-03-why-the-repository-must-become-the-system-of-record/index.md",
+    "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-03-why-the-repository-must-become-the-system-of-record/index.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -8959,7 +8959,7 @@
       {
         "label": "第 3 讲：仓库成为唯一事实来源",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-03-why-the-repository-must-become-the-system-of-record/index.md"
+        "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-03-why-the-repository-must-become-the-system-of-record/index.md"
       }
     ],
     "unavailableReason": null,
@@ -8987,7 +8987,7 @@
     "summary": "Learn Harness Engineering · 12 讲",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-04-why-one-giant-instruction-file-fails/index.md",
+    "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-04-why-one-giant-instruction-file-fails/index.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -8999,7 +8999,7 @@
       {
         "label": "第 4 讲：把指令拆分到不同文件",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-04-why-one-giant-instruction-file-fails/index.md"
+        "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-04-why-one-giant-instruction-file-fails/index.md"
       }
     ],
     "unavailableReason": null,
@@ -9027,7 +9027,7 @@
     "summary": "Learn Harness Engineering · 12 讲",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-05-why-long-running-tasks-lose-continuity/index.md",
+    "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-05-why-long-running-tasks-lose-continuity/index.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9039,7 +9039,7 @@
       {
         "label": "第 5 讲：跨会话任务的上下文连续",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-05-why-long-running-tasks-lose-continuity/index.md"
+        "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-05-why-long-running-tasks-lose-continuity/index.md"
       }
     ],
     "unavailableReason": null,
@@ -9067,7 +9067,7 @@
     "summary": "Learn Harness Engineering · 12 讲",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-06-why-initialization-needs-its-own-phase/index.md",
+    "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-06-why-initialization-needs-its-own-phase/index.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9079,7 +9079,7 @@
       {
         "label": "第 6 讲：工作前先初始化",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-06-why-initialization-needs-its-own-phase/index.md"
+        "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-06-why-initialization-needs-its-own-phase/index.md"
       }
     ],
     "unavailableReason": null,
@@ -9107,7 +9107,7 @@
     "summary": "Learn Harness Engineering · 12 讲",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-07-why-agents-overreach-and-under-finish/index.md",
+    "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-07-why-agents-overreach-and-under-finish/index.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9119,7 +9119,7 @@
       {
         "label": "第 7 讲：划清每次任务的边界",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-07-why-agents-overreach-and-under-finish/index.md"
+        "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-07-why-agents-overreach-and-under-finish/index.md"
       }
     ],
     "unavailableReason": null,
@@ -9147,7 +9147,7 @@
     "summary": "Learn Harness Engineering · 12 讲",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-08-why-feature-lists-are-harness-primitives/index.md",
+    "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-08-why-feature-lists-are-harness-primitives/index.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9159,7 +9159,7 @@
       {
         "label": "第 8 讲：用功能清单约束 agent",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-08-why-feature-lists-are-harness-primitives/index.md"
+        "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-08-why-feature-lists-are-harness-primitives/index.md"
       }
     ],
     "unavailableReason": null,
@@ -9187,7 +9187,7 @@
     "summary": "Learn Harness Engineering · 12 讲",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-09-why-agents-declare-victory-too-early/index.md",
+    "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-09-why-agents-declare-victory-too-early/index.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9199,7 +9199,7 @@
       {
         "label": "第 9 讲：防止提前宣告完成",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-09-why-agents-declare-victory-too-early/index.md"
+        "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-09-why-agents-declare-victory-too-early/index.md"
       }
     ],
     "unavailableReason": null,
@@ -9227,7 +9227,7 @@
     "summary": "Learn Harness Engineering · 12 讲",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-10-why-end-to-end-testing-changes-results/index.md",
+    "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-10-why-end-to-end-testing-changes-results/index.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9239,7 +9239,7 @@
       {
         "label": "第 10 讲：跑通完整流程才算验证",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-10-why-end-to-end-testing-changes-results/index.md"
+        "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-10-why-end-to-end-testing-changes-results/index.md"
       }
     ],
     "unavailableReason": null,
@@ -9267,7 +9267,7 @@
     "summary": "Learn Harness Engineering · 12 讲",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-11-why-observability-belongs-inside-the-harness/index.md",
+    "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-11-why-observability-belongs-inside-the-harness/index.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9279,7 +9279,7 @@
       {
         "label": "第 11 讲：运行过程可观测",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-11-why-observability-belongs-inside-the-harness/index.md"
+        "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-11-why-observability-belongs-inside-the-harness/index.md"
       }
     ],
     "unavailableReason": null,
@@ -9307,7 +9307,7 @@
     "summary": "Learn Harness Engineering · 12 讲",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-12-why-every-session-must-leave-a-clean-state/index.md",
+    "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-12-why-every-session-must-leave-a-clean-state/index.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9319,7 +9319,7 @@
       {
         "label": "第 12 讲：会话结束前做好交接",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-12-why-every-session-must-leave-a-clean-state/index.md"
+        "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-12-why-every-session-must-leave-a-clean-state/index.md"
       }
     ],
     "unavailableReason": null,
@@ -9347,7 +9347,7 @@
     "summary": "Learn Harness Engineering · 12 讲",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/projects/index.md",
+    "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/projects/index.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9359,7 +9359,7 @@
       {
         "label": "实战项目导览",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/projects/index.md"
+        "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/projects/index.md"
       }
     ],
     "unavailableReason": null,
@@ -9387,7 +9387,7 @@
     "summary": "Learn Harness Engineering · 12 讲",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/skills/index.md",
+    "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/skills/index.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9399,7 +9399,7 @@
       {
         "label": "技能库导览",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/skills/index.md"
+        "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/skills/index.md"
       }
     ],
     "unavailableReason": null,
@@ -9427,7 +9427,7 @@
     "summary": "Learn Harness Engineering · 12 讲",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/resources/index.md",
+    "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/resources/index.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9439,7 +9439,7 @@
       {
         "label": "资料库导览",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/learn-harness-engineering/docs/zh/resources/index.md"
+        "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/resources/index.md"
       }
     ],
     "unavailableReason": null,
@@ -9467,7 +9467,7 @@
     "summary": "Harness Books · Book 1：Claude Code 驾驭工程",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-books/book1-claude-code/index.md",
+    "localPath": "Agentic/Harness/harness-books/book1-claude-code/index.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9479,7 +9479,7 @@
       {
         "label": "导读",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-books/book1-claude-code/index.md"
+        "localPath": "Agentic/Harness/harness-books/book1-claude-code/index.md"
       }
     ],
     "unavailableReason": null,
@@ -9507,7 +9507,7 @@
     "summary": "Harness Books · Book 1：Claude Code 驾驭工程",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-books/book1-claude-code/preface.md",
+    "localPath": "Agentic/Harness/harness-books/book1-claude-code/preface.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9519,7 +9519,7 @@
       {
         "label": "前言",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-books/book1-claude-code/preface.md"
+        "localPath": "Agentic/Harness/harness-books/book1-claude-code/preface.md"
       }
     ],
     "unavailableReason": null,
@@ -9547,7 +9547,7 @@
     "summary": "Harness Books · Book 1：Claude Code 驾驭工程",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-books/book1-claude-code/chapter-01-why-harness-engineering.md",
+    "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-01-why-harness-engineering.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9559,7 +9559,7 @@
       {
         "label": "第 1 章：为什么是驾驭工程",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-books/book1-claude-code/chapter-01-why-harness-engineering.md"
+        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-01-why-harness-engineering.md"
       }
     ],
     "unavailableReason": null,
@@ -9587,7 +9587,7 @@
     "summary": "Harness Books · Book 1：Claude Code 驾驭工程",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-books/book1-claude-code/chapter-02-prompt-is-control-plane.md",
+    "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-02-prompt-is-control-plane.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9599,7 +9599,7 @@
       {
         "label": "第 2 章：Prompt 是控制平面",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-books/book1-claude-code/chapter-02-prompt-is-control-plane.md"
+        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-02-prompt-is-control-plane.md"
       }
     ],
     "unavailableReason": null,
@@ -9627,7 +9627,7 @@
     "summary": "Harness Books · Book 1：Claude Code 驾驭工程",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-books/book1-claude-code/chapter-03-query-loop-heartbeat.md",
+    "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-03-query-loop-heartbeat.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9639,7 +9639,7 @@
       {
         "label": "第 3 章：查询循环与心跳",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-books/book1-claude-code/chapter-03-query-loop-heartbeat.md"
+        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-03-query-loop-heartbeat.md"
       }
     ],
     "unavailableReason": null,
@@ -9667,7 +9667,7 @@
     "summary": "Harness Books · Book 1：Claude Code 驾驭工程",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-books/book1-claude-code/chapter-04-tools-permissions-interrupts.md",
+    "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-04-tools-permissions-interrupts.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9679,7 +9679,7 @@
       {
         "label": "第 4 章：工具、权限与中断",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-books/book1-claude-code/chapter-04-tools-permissions-interrupts.md"
+        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-04-tools-permissions-interrupts.md"
       }
     ],
     "unavailableReason": null,
@@ -9707,7 +9707,7 @@
     "summary": "Harness Books · Book 1：Claude Code 驾驭工程",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-books/book1-claude-code/chapter-05-context-memory-compact.md",
+    "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-05-context-memory-compact.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9719,7 +9719,7 @@
       {
         "label": "第 5 章：上下文、记忆与压缩",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-books/book1-claude-code/chapter-05-context-memory-compact.md"
+        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-05-context-memory-compact.md"
       }
     ],
     "unavailableReason": null,
@@ -9747,7 +9747,7 @@
     "summary": "Harness Books · Book 1：Claude Code 驾驭工程",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-books/book1-claude-code/chapter-06-errors-and-recovery.md",
+    "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-06-errors-and-recovery.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9759,7 +9759,7 @@
       {
         "label": "第 6 章：错误与恢复",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-books/book1-claude-code/chapter-06-errors-and-recovery.md"
+        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-06-errors-and-recovery.md"
       }
     ],
     "unavailableReason": null,
@@ -9787,7 +9787,7 @@
     "summary": "Harness Books · Book 1：Claude Code 驾驭工程",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-books/book1-claude-code/chapter-07-multi-agent-and-verification.md",
+    "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-07-multi-agent-and-verification.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9799,7 +9799,7 @@
       {
         "label": "第 7 章：多 Agent 与验证",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-books/book1-claude-code/chapter-07-multi-agent-and-verification.md"
+        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-07-multi-agent-and-verification.md"
       }
     ],
     "unavailableReason": null,
@@ -9827,7 +9827,7 @@
     "summary": "Harness Books · Book 1：Claude Code 驾驭工程",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-books/book1-claude-code/chapter-08-team-landing-practices.md",
+    "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-08-team-landing-practices.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9839,7 +9839,7 @@
       {
         "label": "第 8 章：团队落地实践",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-books/book1-claude-code/chapter-08-team-landing-practices.md"
+        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-08-team-landing-practices.md"
       }
     ],
     "unavailableReason": null,
@@ -9867,7 +9867,7 @@
     "summary": "Harness Books · Book 1：Claude Code 驾驭工程",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-books/book1-claude-code/chapter-09-ten-principles.md",
+    "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-09-ten-principles.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9879,7 +9879,7 @@
       {
         "label": "第 9 章：十条原则",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-books/book1-claude-code/chapter-09-ten-principles.md"
+        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-09-ten-principles.md"
       }
     ],
     "unavailableReason": null,
@@ -9907,7 +9907,7 @@
     "summary": "Harness Books · Book 1：Claude Code 驾驭工程",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-books/book1-claude-code/appendix-a-checklists.md",
+    "localPath": "Agentic/Harness/harness-books/book1-claude-code/appendix-a-checklists.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9919,7 +9919,7 @@
       {
         "label": "附录 A：检查清单",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-books/book1-claude-code/appendix-a-checklists.md"
+        "localPath": "Agentic/Harness/harness-books/book1-claude-code/appendix-a-checklists.md"
       }
     ],
     "unavailableReason": null,
@@ -9947,7 +9947,7 @@
     "summary": "Harness Books · Book 1：Claude Code 驾驭工程",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-books/book1-claude-code/appendix-c-source-map.md",
+    "localPath": "Agentic/Harness/harness-books/book1-claude-code/appendix-c-source-map.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9959,7 +9959,7 @@
       {
         "label": "附录 C：源码地图",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-books/book1-claude-code/appendix-c-source-map.md"
+        "localPath": "Agentic/Harness/harness-books/book1-claude-code/appendix-c-source-map.md"
       }
     ],
     "unavailableReason": null,
@@ -9987,7 +9987,7 @@
     "summary": "Harness Books · Book 2：CC vs Codex",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-books/book2-comparing/preface.md",
+    "localPath": "Agentic/Harness/harness-books/book2-comparing/preface.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9999,7 +9999,7 @@
       {
         "label": "前言",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-books/book2-comparing/preface.md"
+        "localPath": "Agentic/Harness/harness-books/book2-comparing/preface.md"
       }
     ],
     "unavailableReason": null,
@@ -10027,7 +10027,7 @@
     "summary": "Harness Books · Book 2：CC vs Codex",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-books/book2-comparing/chapter-00-reading-map.md",
+    "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-00-reading-map.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -10039,7 +10039,7 @@
       {
         "label": "第 0 章：阅读地图",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-books/book2-comparing/chapter-00-reading-map.md"
+        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-00-reading-map.md"
       }
     ],
     "unavailableReason": null,
@@ -10067,7 +10067,7 @@
     "summary": "Harness Books · Book 2：CC vs Codex",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-books/book2-comparing/chapter-01-why-this-comparison.md",
+    "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-01-why-this-comparison.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -10079,7 +10079,7 @@
       {
         "label": "第 1 章：为什么做这个对比",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-books/book2-comparing/chapter-01-why-this-comparison.md"
+        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-01-why-this-comparison.md"
       }
     ],
     "unavailableReason": null,
@@ -10107,7 +10107,7 @@
     "summary": "Harness Books · Book 2：CC vs Codex",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-books/book2-comparing/chapter-02-two-control-planes.md",
+    "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-02-two-control-planes.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -10119,7 +10119,7 @@
       {
         "label": "第 2 章：两个控制平面",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-books/book2-comparing/chapter-02-two-control-planes.md"
+        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-02-two-control-planes.md"
       }
     ],
     "unavailableReason": null,
@@ -10147,7 +10147,7 @@
     "summary": "Harness Books · Book 2：CC vs Codex",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-books/book2-comparing/chapter-03-loop-thread-and-rollout.md",
+    "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-03-loop-thread-and-rollout.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -10159,7 +10159,7 @@
       {
         "label": "第 3 章：Loop、Thread 与 Rollout",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-books/book2-comparing/chapter-03-loop-thread-and-rollout.md"
+        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-03-loop-thread-and-rollout.md"
       }
     ],
     "unavailableReason": null,
@@ -10187,7 +10187,7 @@
     "summary": "Harness Books · Book 2：CC vs Codex",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-books/book2-comparing/chapter-04-tools-sandbox-and-exec-policy.md",
+    "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-04-tools-sandbox-and-exec-policy.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -10199,7 +10199,7 @@
       {
         "label": "第 4 章：工具、沙箱与执行策略",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-books/book2-comparing/chapter-04-tools-sandbox-and-exec-policy.md"
+        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-04-tools-sandbox-and-exec-policy.md"
       }
     ],
     "unavailableReason": null,
@@ -10227,7 +10227,7 @@
     "summary": "Harness Books · Book 2：CC vs Codex",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-books/book2-comparing/chapter-05-skills-hooks-and-local-governance.md",
+    "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-05-skills-hooks-and-local-governance.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -10239,7 +10239,7 @@
       {
         "label": "第 5 章：Skills、Hooks 与本地治理",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-books/book2-comparing/chapter-05-skills-hooks-and-local-governance.md"
+        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-05-skills-hooks-and-local-governance.md"
       }
     ],
     "unavailableReason": null,
@@ -10267,7 +10267,7 @@
     "summary": "Harness Books · Book 2：CC vs Codex",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-books/book2-comparing/chapter-06-delegation-verification-and-state.md",
+    "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-06-delegation-verification-and-state.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -10279,7 +10279,7 @@
       {
         "label": "第 6 章：委派、验证与状态",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-books/book2-comparing/chapter-06-delegation-verification-and-state.md"
+        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-06-delegation-verification-and-state.md"
       }
     ],
     "unavailableReason": null,
@@ -10307,7 +10307,7 @@
     "summary": "Harness Books · Book 2：CC vs Codex",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-books/book2-comparing/chapter-07-convergence-and-divergence.md",
+    "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-07-convergence-and-divergence.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -10319,7 +10319,7 @@
       {
         "label": "第 7 章：收敛与分歧",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-books/book2-comparing/chapter-07-convergence-and-divergence.md"
+        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-07-convergence-and-divergence.md"
       }
     ],
     "unavailableReason": null,
@@ -10347,7 +10347,7 @@
     "summary": "Harness Books · Book 2：CC vs Codex",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-books/book2-comparing/chapter-08-how-to-choose-or-build.md",
+    "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-08-how-to-choose-or-build.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -10359,7 +10359,7 @@
       {
         "label": "第 8 章：如何选择或自建",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-books/book2-comparing/chapter-08-how-to-choose-or-build.md"
+        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-08-how-to-choose-or-build.md"
       }
     ],
     "unavailableReason": null,
@@ -10387,7 +10387,7 @@
     "summary": "Harness Books · Book 2：CC vs Codex",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-books/book2-comparing/appendix-b-checklists.md",
+    "localPath": "Agentic/Harness/harness-books/book2-comparing/appendix-b-checklists.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -10399,7 +10399,7 @@
       {
         "label": "附录 B：检查清单",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-books/book2-comparing/appendix-b-checklists.md"
+        "localPath": "Agentic/Harness/harness-books/book2-comparing/appendix-b-checklists.md"
       }
     ],
     "unavailableReason": null,
@@ -10427,7 +10427,7 @@
     "summary": "驾驭工程书 · 架构与提示工程",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/preface.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/preface.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -10439,7 +10439,7 @@
       {
         "label": "前言",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/preface.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/preface.md"
       }
     ],
     "unavailableReason": null,
@@ -10467,7 +10467,7 @@
     "summary": "驾驭工程书 · 架构与提示工程",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch01.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch01.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -10479,7 +10479,7 @@
       {
         "label": "第 1 章：AI 编码 Agent 的完整技术栈",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch01.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch01.md"
       }
     ],
     "unavailableReason": null,
@@ -10507,7 +10507,7 @@
     "summary": "驾驭工程书 · 架构与提示工程",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch02.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch02.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -10519,7 +10519,7 @@
       {
         "label": "第 2 章：工具系统 — 40+ 工具",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch02.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch02.md"
       }
     ],
     "unavailableReason": null,
@@ -10547,7 +10547,7 @@
     "summary": "驾驭工程书 · 架构与提示工程",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch03.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch03.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -10559,7 +10559,7 @@
       {
         "label": "第 3 章：Agent Loop 完整生命周期",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch03.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch03.md"
       }
     ],
     "unavailableReason": null,
@@ -10587,7 +10587,7 @@
     "summary": "驾驭工程书 · 架构与提示工程",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch04.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch04.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -10599,7 +10599,7 @@
       {
         "label": "第 4 章：工具执行编排",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch04.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch04.md"
       }
     ],
     "unavailableReason": null,
@@ -10627,7 +10627,7 @@
     "summary": "驾驭工程书 · 架构与提示工程",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch04b.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch04b.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -10639,7 +10639,7 @@
       {
         "label": "第 4b 章：计划模式",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch04b.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch04b.md"
       }
     ],
     "unavailableReason": null,
@@ -10667,7 +10667,7 @@
     "summary": "驾驭工程书 · 架构与提示工程",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch05.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch05.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -10679,7 +10679,7 @@
       {
         "label": "第 5 章：系统提示词架构",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch05.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch05.md"
       }
     ],
     "unavailableReason": null,
@@ -10707,7 +10707,7 @@
     "summary": "驾驭工程书 · 架构与提示工程",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch06.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch06.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -10719,7 +10719,7 @@
       {
         "label": "第 6 章：通过提示词引导行为",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch06.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch06.md"
       }
     ],
     "unavailableReason": null,
@@ -10747,7 +10747,7 @@
     "summary": "驾驭工程书 · 架构与提示工程",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch06b.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch06b.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -10759,7 +10759,7 @@
       {
         "label": "第 6b 章：API 通信层",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch06b.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch06b.md"
       }
     ],
     "unavailableReason": null,
@@ -10787,7 +10787,7 @@
     "summary": "驾驭工程书 · 架构与提示工程",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch07.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch07.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -10799,7 +10799,7 @@
       {
         "label": "第 7 章：模型特定调优与 A/B 测试",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch07.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch07.md"
       }
     ],
     "unavailableReason": null,
@@ -10827,7 +10827,7 @@
     "summary": "驾驭工程书 · 架构与提示工程",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch08.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch08.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -10839,7 +10839,7 @@
       {
         "label": "第 8 章：工具提示词作为微型驾驭器",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch08.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch08.md"
       }
     ],
     "unavailableReason": null,
@@ -10867,7 +10867,7 @@
     "summary": "驾驭工程书 · 上下文、缓存与安全",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch09.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch09.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -10879,7 +10879,7 @@
       {
         "label": "第 9 章：自动压缩",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch09.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch09.md"
       }
     ],
     "unavailableReason": null,
@@ -10907,7 +10907,7 @@
     "summary": "驾驭工程书 · 上下文、缓存与安全",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch10.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch10.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -10919,7 +10919,7 @@
       {
         "label": "第 10 章：压缩后的文件状态保留",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch10.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch10.md"
       }
     ],
     "unavailableReason": null,
@@ -10947,7 +10947,7 @@
     "summary": "驾驭工程书 · 上下文、缓存与安全",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch11.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch11.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -10959,7 +10959,7 @@
       {
         "label": "第 11 章：微压缩",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch11.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch11.md"
       }
     ],
     "unavailableReason": null,
@@ -10987,7 +10987,7 @@
     "summary": "驾驭工程书 · 上下文、缓存与安全",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch12.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch12.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -10999,7 +10999,7 @@
       {
         "label": "第 12 章：Token 预算策略",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch12.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch12.md"
       }
     ],
     "unavailableReason": null,
@@ -11027,7 +11027,7 @@
     "summary": "驾驭工程书 · 上下文、缓存与安全",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part4/ch13.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part4/ch13.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -11039,7 +11039,7 @@
       {
         "label": "第 13 章：缓存架构与断点设计",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part4/ch13.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part4/ch13.md"
       }
     ],
     "unavailableReason": null,
@@ -11067,7 +11067,7 @@
     "summary": "驾驭工程书 · 上下文、缓存与安全",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part4/ch14.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part4/ch14.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -11079,7 +11079,7 @@
       {
         "label": "第 14 章：缓存中断检测系统",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part4/ch14.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part4/ch14.md"
       }
     ],
     "unavailableReason": null,
@@ -11107,7 +11107,7 @@
     "summary": "驾驭工程书 · 上下文、缓存与安全",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part4/ch15.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part4/ch15.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -11119,7 +11119,7 @@
       {
         "label": "第 15 章：缓存优化模式",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part4/ch15.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part4/ch15.md"
       }
     ],
     "unavailableReason": null,
@@ -11147,7 +11147,7 @@
     "summary": "驾驭工程书 · 上下文、缓存与安全",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch16.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch16.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -11159,7 +11159,7 @@
       {
         "label": "第 16 章：权限系统",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch16.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch16.md"
       }
     ],
     "unavailableReason": null,
@@ -11187,7 +11187,7 @@
     "summary": "驾驭工程书 · 上下文、缓存与安全",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch17.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch17.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -11199,7 +11199,7 @@
       {
         "label": "第 17 章：YOLO 分类器",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch17.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch17.md"
       }
     ],
     "unavailableReason": null,
@@ -11227,7 +11227,7 @@
     "summary": "驾驭工程书 · 上下文、缓存与安全",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch17b.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch17b.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -11239,7 +11239,7 @@
       {
         "label": "第 17b 章：提示注入防御",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch17b.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch17b.md"
       }
     ],
     "unavailableReason": null,
@@ -11267,7 +11267,7 @@
     "summary": "驾驭工程书 · 上下文、缓存与安全",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch18.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch18.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -11279,7 +11279,7 @@
       {
         "label": "第 18 章：Hooks 拦截点",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch18.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch18.md"
       }
     ],
     "unavailableReason": null,
@@ -11307,7 +11307,7 @@
     "summary": "驾驭工程书 · 上下文、缓存与安全",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch18b.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch18b.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -11319,7 +11319,7 @@
       {
         "label": "第 18b 章：沙箱系统",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch18b.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch18b.md"
       }
     ],
     "unavailableReason": null,
@@ -11347,7 +11347,7 @@
     "summary": "驾驭工程书 · 上下文、缓存与安全",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch19.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch19.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -11359,7 +11359,7 @@
       {
         "label": "第 19 章：CLAUDE.md 作为覆盖层",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch19.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch19.md"
       }
     ],
     "unavailableReason": null,
@@ -11387,7 +11387,7 @@
     "summary": "驾驭工程书 · 高级子系统与经验",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch20.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch20.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -11399,7 +11399,7 @@
       {
         "label": "第 20 章：Agent 派生与编排",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch20.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch20.md"
       }
     ],
     "unavailableReason": null,
@@ -11427,7 +11427,7 @@
     "summary": "驾驭工程书 · 高级子系统与经验",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch20b.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch20b.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -11439,7 +11439,7 @@
       {
         "label": "第 20b 章：Teams 与多进程协作",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch20b.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch20b.md"
       }
     ],
     "unavailableReason": null,
@@ -11467,7 +11467,7 @@
     "summary": "驾驭工程书 · 高级子系统与经验",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch20c.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch20c.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -11479,7 +11479,7 @@
       {
         "label": "第 20c 章：Ultraplan 远程多代理规划",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch20c.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch20c.md"
       }
     ],
     "unavailableReason": null,
@@ -11507,7 +11507,7 @@
     "summary": "驾驭工程书 · 高级子系统与经验",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch21.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch21.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -11519,7 +11519,7 @@
       {
         "label": "第 21 章：Effort、Fast Mode 与 Thinking",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch21.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch21.md"
       }
     ],
     "unavailableReason": null,
@@ -11547,7 +11547,7 @@
     "summary": "驾驭工程书 · 高级子系统与经验",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch22.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch22.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -11559,7 +11559,7 @@
       {
         "label": "第 22 章：技能系统",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch22.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch22.md"
       }
     ],
     "unavailableReason": null,
@@ -11587,7 +11587,7 @@
     "summary": "驾驭工程书 · 高级子系统与经验",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch22b.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch22b.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -11599,7 +11599,7 @@
       {
         "label": "第 22b 章：插件系统",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch22b.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch22b.md"
       }
     ],
     "unavailableReason": null,
@@ -11627,7 +11627,7 @@
     "summary": "驾驭工程书 · 高级子系统与经验",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch23.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch23.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -11639,7 +11639,7 @@
       {
         "label": "第 23 章：未发布功能管线",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch23.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch23.md"
       }
     ],
     "unavailableReason": null,
@@ -11667,7 +11667,7 @@
     "summary": "驾驭工程书 · 高级子系统与经验",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch24.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch24.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -11679,7 +11679,7 @@
       {
         "label": "第 24 章：跨会话记忆",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch24.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch24.md"
       }
     ],
     "unavailableReason": null,
@@ -11707,7 +11707,7 @@
     "summary": "驾驭工程书 · 高级子系统与经验",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch25.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch25.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -11719,7 +11719,7 @@
       {
         "label": "第 25 章：驾驭工程原则",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch25.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch25.md"
       }
     ],
     "unavailableReason": null,
@@ -11747,7 +11747,7 @@
     "summary": "驾驭工程书 · 高级子系统与经验",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch26.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch26.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -11759,7 +11759,7 @@
       {
         "label": "第 26 章：上下文管理作为核心能力",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch26.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch26.md"
       }
     ],
     "unavailableReason": null,
@@ -11787,7 +11787,7 @@
     "summary": "驾驭工程书 · 高级子系统与经验",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch27.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch27.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -11799,7 +11799,7 @@
       {
         "label": "第 27 章：生产级 AI 编码模式",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch27.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch27.md"
       }
     ],
     "unavailableReason": null,
@@ -11827,7 +11827,7 @@
     "summary": "驾驭工程书 · 高级子系统与经验",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch28.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch28.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -11839,7 +11839,7 @@
       {
         "label": "第 28 章：Claude Code 的不足之处",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch28.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch28.md"
       }
     ],
     "unavailableReason": null,
@@ -11867,7 +11867,7 @@
     "summary": "驾驭工程书 · 高级子系统与经验",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch29.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch29.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -11879,7 +11879,7 @@
       {
         "label": "第 29 章：可观测性工程",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch29.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch29.md"
       }
     ],
     "unavailableReason": null,
@@ -11907,7 +11907,7 @@
     "summary": "驾驭工程书 · 高级子系统与经验",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch30.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch30.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -11919,7 +11919,7 @@
       {
         "label": "第 30 章：构建你自己的 AI Agent",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch30.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch30.md"
       }
     ],
     "unavailableReason": null,
@@ -11947,7 +11947,7 @@
     "summary": "驾驭工程书 · 高级子系统与经验",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/appendix/b-env-vars.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/appendix/b-env-vars.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -11959,7 +11959,7 @@
       {
         "label": "附录 B：环境变量参考",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/appendix/b-env-vars.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/appendix/b-env-vars.md"
       }
     ],
     "unavailableReason": null,
@@ -11987,7 +11987,7 @@
     "summary": "驾驭工程书 · 高级子系统与经验",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/appendix/e-version-evolution.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/appendix/e-version-evolution.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -11999,7 +11999,7 @@
       {
         "label": "附录 E：版本演化记录",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/appendix/e-version-evolution.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/appendix/e-version-evolution.md"
       }
     ],
     "unavailableReason": null,
@@ -12027,7 +12027,7 @@
     "summary": "驾驭工程书 · 高级子系统与经验",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/appendix/f-e2e-traces.md",
+    "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/appendix/f-e2e-traces.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -12039,7 +12039,7 @@
       {
         "label": "附录 F：端到端案例追踪",
         "sourceUrl": null,
-        "localPath": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/appendix/f-e2e-traces.md"
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/appendix/f-e2e-traces.md"
       }
     ],
     "unavailableReason": null,
@@ -12146,9 +12146,9 @@
     "stageIds": [],
     "summary": "记忆层与多 Agent 框架",
     "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Langchain-ai/langchain/README.md",
-    "accessPolicy": "local-preferred",
+    "sourceUrl": "https://github.com/langchain-ai/langchain/blob/HEAD/README.md",
+    "localPath": null,
+    "accessPolicy": "upstream-only",
     "publicationRights": "third-party",
     "author": "Unknown",
     "license": "Unknown",
@@ -12158,8 +12158,8 @@
     "references": [
       {
         "label": "LangChain",
-        "sourceUrl": null,
-        "localPath": "Agentic/Langchain-ai/langchain/README.md"
+        "sourceUrl": "https://github.com/langchain-ai/langchain/blob/HEAD/README.md",
+        "localPath": null
       }
     ],
     "unavailableReason": null,
@@ -12186,9 +12186,9 @@
     "stageIds": [],
     "summary": "记忆层与多 Agent 框架",
     "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Langchain-ai/langgraph/README.md",
-    "accessPolicy": "local-preferred",
+    "sourceUrl": "https://github.com/langchain-ai/langgraph/blob/HEAD/README.md",
+    "localPath": null,
+    "accessPolicy": "upstream-only",
     "publicationRights": "third-party",
     "author": "Unknown",
     "license": "Unknown",
@@ -12198,8 +12198,8 @@
     "references": [
       {
         "label": "LangGraph",
-        "sourceUrl": null,
-        "localPath": "Agentic/Langchain-ai/langgraph/README.md"
+        "sourceUrl": "https://github.com/langchain-ai/langgraph/blob/HEAD/README.md",
+        "localPath": null
       }
     ],
     "unavailableReason": null,
@@ -12227,7 +12227,7 @@
     "summary": "记忆层与多 Agent 框架",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Langchain-ai/deepagents/README.md",
+    "localPath": "Agentic/Harness/deepagents/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -12239,7 +12239,7 @@
       {
         "label": "DeepAgents",
         "sourceUrl": null,
-        "localPath": "Agentic/Langchain-ai/deepagents/README.md"
+        "localPath": "Agentic/Harness/deepagents/README.md"
       }
     ],
     "unavailableReason": null,
@@ -12267,7 +12267,7 @@
     "summary": "记忆层与多 Agent 框架",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Langchain-ai/deepagents/AGENTS.md",
+    "localPath": "Agentic/Harness/deepagents/AGENTS.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -12279,7 +12279,7 @@
       {
         "label": "DeepAgents AGENTS.md",
         "sourceUrl": null,
-        "localPath": "Agentic/Langchain-ai/deepagents/AGENTS.md"
+        "localPath": "Agentic/Harness/deepagents/AGENTS.md"
       }
     ],
     "unavailableReason": null,
@@ -12467,7 +12467,7 @@
     "summary": "记忆层与多 Agent 框架",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/PI/pi-mono/README.md",
+    "localPath": "Agentic/Harness/PI/pi-mono/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -12479,7 +12479,7 @@
       {
         "label": "PI（pi-mono）",
         "sourceUrl": null,
-        "localPath": "Agentic/PI/pi-mono/README.md"
+        "localPath": "Agentic/Harness/PI/pi-mono/README.md"
       }
     ],
     "unavailableReason": null,
@@ -12507,7 +12507,7 @@
     "summary": "记忆层与多 Agent 框架",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/PI/pi-mono/AGENTS.md",
+    "localPath": "Agentic/Harness/PI/pi-mono/AGENTS.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -12519,7 +12519,7 @@
       {
         "label": "PI AGENTS.md",
         "sourceUrl": null,
-        "localPath": "Agentic/PI/pi-mono/AGENTS.md"
+        "localPath": "Agentic/Harness/PI/pi-mono/AGENTS.md"
       }
     ],
     "unavailableReason": null,
@@ -12547,7 +12547,7 @@
     "summary": "记忆层与多 Agent 框架",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/openworker/README.md",
+    "localPath": "Agentic/Harness/openworker/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -12559,7 +12559,7 @@
       {
         "label": "openworker",
         "sourceUrl": null,
-        "localPath": "Agentic/openworker/README.md"
+        "localPath": "Agentic/Harness/openworker/README.md"
       }
     ],
     "unavailableReason": null,
@@ -13347,7 +13347,7 @@
     "summary": "smolagents · 中文文档",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/smolagents/README.md",
+    "localPath": "Agentic/Harness/smolagents/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -13359,7 +13359,7 @@
       {
         "label": "总览 README",
         "sourceUrl": null,
-        "localPath": "Agentic/smolagents/README.md"
+        "localPath": "Agentic/Harness/smolagents/README.md"
       }
     ],
     "unavailableReason": null,
@@ -13387,7 +13387,7 @@
     "summary": "smolagents · 中文文档",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/smolagents/docs/source/zh/index.md",
+    "localPath": "Agentic/Harness/smolagents/docs/source/zh/index.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -13399,7 +13399,7 @@
       {
         "label": "文档首页",
         "sourceUrl": null,
-        "localPath": "Agentic/smolagents/docs/source/zh/index.md"
+        "localPath": "Agentic/Harness/smolagents/docs/source/zh/index.md"
       }
     ],
     "unavailableReason": null,
@@ -13427,7 +13427,7 @@
     "summary": "smolagents · 中文文档",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/smolagents/docs/source/zh/guided_tour.md",
+    "localPath": "Agentic/Harness/smolagents/docs/source/zh/guided_tour.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -13439,7 +13439,7 @@
       {
         "label": "导览：上手 smolagents",
         "sourceUrl": null,
-        "localPath": "Agentic/smolagents/docs/source/zh/guided_tour.md"
+        "localPath": "Agentic/Harness/smolagents/docs/source/zh/guided_tour.md"
       }
     ],
     "unavailableReason": null,
@@ -13467,7 +13467,7 @@
     "summary": "smolagents · 中文文档",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/smolagents/docs/source/zh/conceptual_guides/intro_agents.md",
+    "localPath": "Agentic/Harness/smolagents/docs/source/zh/conceptual_guides/intro_agents.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -13479,7 +13479,7 @@
       {
         "label": "教程：Agent 入门",
         "sourceUrl": null,
-        "localPath": "Agentic/smolagents/docs/source/zh/conceptual_guides/intro_agents.md"
+        "localPath": "Agentic/Harness/smolagents/docs/source/zh/conceptual_guides/intro_agents.md"
       }
     ],
     "unavailableReason": null,
@@ -13507,7 +13507,7 @@
     "summary": "smolagents · 中文文档",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/smolagents/docs/source/zh/conceptual_guides/react.md",
+    "localPath": "Agentic/Harness/smolagents/docs/source/zh/conceptual_guides/react.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -13519,7 +13519,7 @@
       {
         "label": "教程：ReAct 范式",
         "sourceUrl": null,
-        "localPath": "Agentic/smolagents/docs/source/zh/conceptual_guides/react.md"
+        "localPath": "Agentic/Harness/smolagents/docs/source/zh/conceptual_guides/react.md"
       }
     ],
     "unavailableReason": null,
@@ -13547,7 +13547,7 @@
     "summary": "smolagents · 中文文档",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/smolagents/docs/source/zh/tutorials/building_good_agents.md",
+    "localPath": "Agentic/Harness/smolagents/docs/source/zh/tutorials/building_good_agents.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -13559,7 +13559,7 @@
       {
         "label": "教程：写出好的 Agent",
         "sourceUrl": null,
-        "localPath": "Agentic/smolagents/docs/source/zh/tutorials/building_good_agents.md"
+        "localPath": "Agentic/Harness/smolagents/docs/source/zh/tutorials/building_good_agents.md"
       }
     ],
     "unavailableReason": null,
@@ -13587,7 +13587,7 @@
     "summary": "smolagents · 中文文档",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/smolagents/docs/source/zh/tutorials/tools.md",
+    "localPath": "Agentic/Harness/smolagents/docs/source/zh/tutorials/tools.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -13599,7 +13599,7 @@
       {
         "label": "教程：工具",
         "sourceUrl": null,
-        "localPath": "Agentic/smolagents/docs/source/zh/tutorials/tools.md"
+        "localPath": "Agentic/Harness/smolagents/docs/source/zh/tutorials/tools.md"
       }
     ],
     "unavailableReason": null,
@@ -13627,7 +13627,7 @@
     "summary": "smolagents · 中文文档",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/smolagents/docs/source/zh/tutorials/memory.md",
+    "localPath": "Agentic/Harness/smolagents/docs/source/zh/tutorials/memory.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -13639,7 +13639,7 @@
       {
         "label": "教程：记忆",
         "sourceUrl": null,
-        "localPath": "Agentic/smolagents/docs/source/zh/tutorials/memory.md"
+        "localPath": "Agentic/Harness/smolagents/docs/source/zh/tutorials/memory.md"
       }
     ],
     "unavailableReason": null,
@@ -13667,7 +13667,7 @@
     "summary": "smolagents · 中文文档",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/smolagents/docs/source/zh/tutorials/secure_code_execution.md",
+    "localPath": "Agentic/Harness/smolagents/docs/source/zh/tutorials/secure_code_execution.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -13679,7 +13679,7 @@
       {
         "label": "教程：安全代码执行",
         "sourceUrl": null,
-        "localPath": "Agentic/smolagents/docs/source/zh/tutorials/secure_code_execution.md"
+        "localPath": "Agentic/Harness/smolagents/docs/source/zh/tutorials/secure_code_execution.md"
       }
     ],
     "unavailableReason": null,
@@ -13707,7 +13707,7 @@
     "summary": "smolagents · 中文文档",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/smolagents/docs/source/zh/tutorials/inspect_runs.md",
+    "localPath": "Agentic/Harness/smolagents/docs/source/zh/tutorials/inspect_runs.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -13719,7 +13719,7 @@
       {
         "label": "教程：检查运行过程",
         "sourceUrl": null,
-        "localPath": "Agentic/smolagents/docs/source/zh/tutorials/inspect_runs.md"
+        "localPath": "Agentic/Harness/smolagents/docs/source/zh/tutorials/inspect_runs.md"
       }
     ],
     "unavailableReason": null,
@@ -16506,9 +16506,9 @@
     "stageIds": [],
     "summary": "LangChain · LangGraph · DeepAgents",
     "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Langchain-ai/langchain/README.md",
-    "accessPolicy": "local-preferred",
+    "sourceUrl": "https://github.com/langchain-ai/langchain/blob/HEAD/README.md",
+    "localPath": null,
+    "accessPolicy": "upstream-only",
     "publicationRights": "third-party",
     "author": "Unknown",
     "license": "Unknown",
@@ -16518,8 +16518,8 @@
     "references": [
       {
         "label": "LangChain README",
-        "sourceUrl": null,
-        "localPath": "Agentic/Langchain-ai/langchain/README.md"
+        "sourceUrl": "https://github.com/langchain-ai/langchain/blob/HEAD/README.md",
+        "localPath": null
       }
     ],
     "unavailableReason": null,
@@ -16546,9 +16546,9 @@
     "stageIds": [],
     "summary": "LangChain · LangGraph · DeepAgents",
     "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Langchain-ai/langchain/AGENTS.md",
-    "accessPolicy": "local-preferred",
+    "sourceUrl": "https://github.com/langchain-ai/langchain/blob/HEAD/AGENTS.md",
+    "localPath": null,
+    "accessPolicy": "upstream-only",
     "publicationRights": "third-party",
     "author": "Unknown",
     "license": "Unknown",
@@ -16558,8 +16558,8 @@
     "references": [
       {
         "label": "LangChain 工程约定",
-        "sourceUrl": null,
-        "localPath": "Agentic/Langchain-ai/langchain/AGENTS.md"
+        "sourceUrl": "https://github.com/langchain-ai/langchain/blob/HEAD/AGENTS.md",
+        "localPath": null
       }
     ],
     "unavailableReason": null,
@@ -16586,9 +16586,9 @@
     "stageIds": [],
     "summary": "LangChain · LangGraph · DeepAgents",
     "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Langchain-ai/langchain/libs/README.md",
-    "accessPolicy": "local-preferred",
+    "sourceUrl": "https://github.com/langchain-ai/langchain/blob/HEAD/libs/README.md",
+    "localPath": null,
+    "accessPolicy": "upstream-only",
     "publicationRights": "third-party",
     "author": "Unknown",
     "license": "Unknown",
@@ -16598,8 +16598,8 @@
     "references": [
       {
         "label": "LangChain libs 总览",
-        "sourceUrl": null,
-        "localPath": "Agentic/Langchain-ai/langchain/libs/README.md"
+        "sourceUrl": "https://github.com/langchain-ai/langchain/blob/HEAD/libs/README.md",
+        "localPath": null
       }
     ],
     "unavailableReason": null,
@@ -16626,9 +16626,9 @@
     "stageIds": [],
     "summary": "LangChain · LangGraph · DeepAgents",
     "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Langchain-ai/langgraph/README.md",
-    "accessPolicy": "local-preferred",
+    "sourceUrl": "https://github.com/langchain-ai/langgraph/blob/HEAD/README.md",
+    "localPath": null,
+    "accessPolicy": "upstream-only",
     "publicationRights": "third-party",
     "author": "Unknown",
     "license": "Unknown",
@@ -16638,8 +16638,8 @@
     "references": [
       {
         "label": "LangGraph README",
-        "sourceUrl": null,
-        "localPath": "Agentic/Langchain-ai/langgraph/README.md"
+        "sourceUrl": "https://github.com/langchain-ai/langgraph/blob/HEAD/README.md",
+        "localPath": null
       }
     ],
     "unavailableReason": null,
@@ -16666,9 +16666,9 @@
     "stageIds": [],
     "summary": "LangChain · LangGraph · DeepAgents",
     "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Langchain-ai/langgraph/AGENTS.md",
-    "accessPolicy": "local-preferred",
+    "sourceUrl": "https://github.com/langchain-ai/langgraph/blob/HEAD/AGENTS.md",
+    "localPath": null,
+    "accessPolicy": "upstream-only",
     "publicationRights": "third-party",
     "author": "Unknown",
     "license": "Unknown",
@@ -16678,8 +16678,8 @@
     "references": [
       {
         "label": "LangGraph 工程约定",
-        "sourceUrl": null,
-        "localPath": "Agentic/Langchain-ai/langgraph/AGENTS.md"
+        "sourceUrl": "https://github.com/langchain-ai/langgraph/blob/HEAD/AGENTS.md",
+        "localPath": null
       }
     ],
     "unavailableReason": null,
@@ -16706,9 +16706,9 @@
     "stageIds": [],
     "summary": "LangChain · LangGraph · DeepAgents",
     "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Langchain-ai/langgraph/examples/README.md",
-    "accessPolicy": "local-preferred",
+    "sourceUrl": "https://github.com/langchain-ai/langgraph/blob/HEAD/examples/README.md",
+    "localPath": null,
+    "accessPolicy": "upstream-only",
     "publicationRights": "third-party",
     "author": "Unknown",
     "license": "Unknown",
@@ -16718,8 +16718,8 @@
     "references": [
       {
         "label": "LangGraph 示例索引",
-        "sourceUrl": null,
-        "localPath": "Agentic/Langchain-ai/langgraph/examples/README.md"
+        "sourceUrl": "https://github.com/langchain-ai/langgraph/blob/HEAD/examples/README.md",
+        "localPath": null
       }
     ],
     "unavailableReason": null,
@@ -16747,7 +16747,7 @@
     "summary": "LangChain · LangGraph · DeepAgents",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Langchain-ai/deepagents/README.md",
+    "localPath": "Agentic/Harness/deepagents/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -16759,7 +16759,7 @@
       {
         "label": "DeepAgents README",
         "sourceUrl": null,
-        "localPath": "Agentic/Langchain-ai/deepagents/README.md"
+        "localPath": "Agentic/Harness/deepagents/README.md"
       }
     ],
     "unavailableReason": null,
@@ -16787,7 +16787,7 @@
     "summary": "LangChain · LangGraph · DeepAgents",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Langchain-ai/deepagents/AGENTS.md",
+    "localPath": "Agentic/Harness/deepagents/AGENTS.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -16799,7 +16799,7 @@
       {
         "label": "DeepAgents 工程约定",
         "sourceUrl": null,
-        "localPath": "Agentic/Langchain-ai/deepagents/AGENTS.md"
+        "localPath": "Agentic/Harness/deepagents/AGENTS.md"
       }
     ],
     "unavailableReason": null,
@@ -16827,7 +16827,7 @@
     "summary": "LangChain · LangGraph · DeepAgents",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Langchain-ai/deepagents/openwiki/index.md",
+    "localPath": "Agentic/Harness/deepagents/openwiki/index.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -16839,7 +16839,7 @@
       {
         "label": "DeepAgents Wiki 首页",
         "sourceUrl": null,
-        "localPath": "Agentic/Langchain-ai/deepagents/openwiki/index.md"
+        "localPath": "Agentic/Harness/deepagents/openwiki/index.md"
       }
     ],
     "unavailableReason": null,
@@ -16867,7 +16867,7 @@
     "summary": "LangChain · LangGraph · DeepAgents",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Langchain-ai/deepagents/openwiki/quickstart.md",
+    "localPath": "Agentic/Harness/deepagents/openwiki/quickstart.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -16879,7 +16879,7 @@
       {
         "label": "DeepAgents 快速开始",
         "sourceUrl": null,
-        "localPath": "Agentic/Langchain-ai/deepagents/openwiki/quickstart.md"
+        "localPath": "Agentic/Harness/deepagents/openwiki/quickstart.md"
       }
     ],
     "unavailableReason": null,
@@ -16907,7 +16907,7 @@
     "summary": "LangChain · LangGraph · DeepAgents",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Langchain-ai/deepagents/openwiki/architecture/overview.md",
+    "localPath": "Agentic/Harness/deepagents/openwiki/architecture/overview.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -16919,7 +16919,7 @@
       {
         "label": "DeepAgents 架构总览",
         "sourceUrl": null,
-        "localPath": "Agentic/Langchain-ai/deepagents/openwiki/architecture/overview.md"
+        "localPath": "Agentic/Harness/deepagents/openwiki/architecture/overview.md"
       }
     ],
     "unavailableReason": null,
@@ -16947,7 +16947,7 @@
     "summary": "LangChain · LangGraph · DeepAgents",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Langchain-ai/deepagents/openwiki/workflows/deep-agents-code.md",
+    "localPath": "Agentic/Harness/deepagents/openwiki/workflows/deep-agents-code.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -16959,7 +16959,7 @@
       {
         "label": "工作流：deep-agents-code",
         "sourceUrl": null,
-        "localPath": "Agentic/Langchain-ai/deepagents/openwiki/workflows/deep-agents-code.md"
+        "localPath": "Agentic/Harness/deepagents/openwiki/workflows/deep-agents-code.md"
       }
     ],
     "unavailableReason": null,
@@ -16987,7 +16987,7 @@
     "summary": "LangChain · LangGraph · DeepAgents",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Langchain-ai/deepagents/openwiki/workflows/evaluation-and-release.md",
+    "localPath": "Agentic/Harness/deepagents/openwiki/workflows/evaluation-and-release.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -16999,7 +16999,7 @@
       {
         "label": "工作流：评估与发布",
         "sourceUrl": null,
-        "localPath": "Agentic/Langchain-ai/deepagents/openwiki/workflows/evaluation-and-release.md"
+        "localPath": "Agentic/Harness/deepagents/openwiki/workflows/evaluation-and-release.md"
       }
     ],
     "unavailableReason": null,
@@ -17027,7 +17027,7 @@
     "summary": "LangChain · LangGraph · DeepAgents",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/Langchain-ai/deepagents/openwiki/engineering/operations-and-testing.md",
+    "localPath": "Agentic/Harness/deepagents/openwiki/engineering/operations-and-testing.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -17039,7 +17039,7 @@
       {
         "label": "工程：运维与测试",
         "sourceUrl": null,
-        "localPath": "Agentic/Langchain-ai/deepagents/openwiki/engineering/operations-and-testing.md"
+        "localPath": "Agentic/Harness/deepagents/openwiki/engineering/operations-and-testing.md"
       }
     ],
     "unavailableReason": null,
@@ -17587,7 +17587,7 @@
     "summary": "MetaGPT · OpenHands · openworker",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/openworker/README.md",
+    "localPath": "Agentic/Harness/openworker/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -17599,7 +17599,7 @@
       {
         "label": "openworker README",
         "sourceUrl": null,
-        "localPath": "Agentic/openworker/README.md"
+        "localPath": "Agentic/Harness/openworker/README.md"
       }
     ],
     "unavailableReason": null,
@@ -17627,7 +17627,7 @@
     "summary": "MetaGPT · OpenHands · openworker",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/openworker/surfaces/gui/README.md",
+    "localPath": "Agentic/Harness/openworker/surfaces/gui/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -17639,7 +17639,7 @@
       {
         "label": "openworker GUI",
         "sourceUrl": null,
-        "localPath": "Agentic/openworker/surfaces/gui/README.md"
+        "localPath": "Agentic/Harness/openworker/surfaces/gui/README.md"
       }
     ],
     "unavailableReason": null,
@@ -17667,7 +17667,7 @@
     "summary": "PI · pi-mono 工具链",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/PI/pi-mono/README.md",
+    "localPath": "Agentic/Harness/PI/pi-mono/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -17679,7 +17679,7 @@
       {
         "label": "总览 README",
         "sourceUrl": null,
-        "localPath": "Agentic/PI/pi-mono/README.md"
+        "localPath": "Agentic/Harness/PI/pi-mono/README.md"
       }
     ],
     "unavailableReason": null,
@@ -17707,7 +17707,7 @@
     "summary": "PI · pi-mono 工具链",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/PI/pi-mono/AGENTS.md",
+    "localPath": "Agentic/Harness/PI/pi-mono/AGENTS.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -17719,7 +17719,7 @@
       {
         "label": "工程约定 AGENTS.md",
         "sourceUrl": null,
-        "localPath": "Agentic/PI/pi-mono/AGENTS.md"
+        "localPath": "Agentic/Harness/PI/pi-mono/AGENTS.md"
       }
     ],
     "unavailableReason": null,
@@ -17747,7 +17747,7 @@
     "summary": "PI · pi-mono 工具链",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/PI/pi-mono/CONTRIBUTING.md",
+    "localPath": "Agentic/Harness/PI/pi-mono/CONTRIBUTING.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -17759,7 +17759,7 @@
       {
         "label": "贡献指南",
         "sourceUrl": null,
-        "localPath": "Agentic/PI/pi-mono/CONTRIBUTING.md"
+        "localPath": "Agentic/Harness/PI/pi-mono/CONTRIBUTING.md"
       }
     ],
     "unavailableReason": null,
@@ -17787,7 +17787,7 @@
     "summary": "PI · pi-mono 工具链",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/PI/pi-mono/tui-plan.md",
+    "localPath": "Agentic/Harness/PI/pi-mono/tui-plan.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -17799,7 +17799,7 @@
       {
         "label": "TUI 设计方案",
         "sourceUrl": null,
-        "localPath": "Agentic/PI/pi-mono/tui-plan.md"
+        "localPath": "Agentic/Harness/PI/pi-mono/tui-plan.md"
       }
     ],
     "unavailableReason": null,
@@ -17827,7 +17827,7 @@
     "summary": "PI · pi-mono 工具链",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/PI/pi-mono/packages/agent/README.md",
+    "localPath": "Agentic/Harness/PI/pi-mono/packages/agent/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -17839,7 +17839,7 @@
       {
         "label": "包：agent",
         "sourceUrl": null,
-        "localPath": "Agentic/PI/pi-mono/packages/agent/README.md"
+        "localPath": "Agentic/Harness/PI/pi-mono/packages/agent/README.md"
       }
     ],
     "unavailableReason": null,
@@ -17867,7 +17867,7 @@
     "summary": "PI · pi-mono 工具链",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/PI/pi-mono/packages/coding-agent/README.md",
+    "localPath": "Agentic/Harness/PI/pi-mono/packages/coding-agent/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -17879,7 +17879,7 @@
       {
         "label": "包：coding-agent",
         "sourceUrl": null,
-        "localPath": "Agentic/PI/pi-mono/packages/coding-agent/README.md"
+        "localPath": "Agentic/Harness/PI/pi-mono/packages/coding-agent/README.md"
       }
     ],
     "unavailableReason": null,
@@ -17907,7 +17907,7 @@
     "summary": "PI · pi-mono 工具链",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/PI/pi-mono/packages/protocol/README.md",
+    "localPath": "Agentic/Harness/PI/pi-mono/packages/protocol/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -17919,7 +17919,7 @@
       {
         "label": "包：protocol",
         "sourceUrl": null,
-        "localPath": "Agentic/PI/pi-mono/packages/protocol/README.md"
+        "localPath": "Agentic/Harness/PI/pi-mono/packages/protocol/README.md"
       }
     ],
     "unavailableReason": null,
@@ -17947,7 +17947,7 @@
     "summary": "PI · pi-mono 工具链",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/PI/pi-mono/packages/server/README.md",
+    "localPath": "Agentic/Harness/PI/pi-mono/packages/server/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -17959,7 +17959,7 @@
       {
         "label": "包：server",
         "sourceUrl": null,
-        "localPath": "Agentic/PI/pi-mono/packages/server/README.md"
+        "localPath": "Agentic/Harness/PI/pi-mono/packages/server/README.md"
       }
     ],
     "unavailableReason": null,
@@ -17987,7 +17987,7 @@
     "summary": "PI · pi-mono 工具链",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/PI/pi-mono/packages/client/README.md",
+    "localPath": "Agentic/Harness/PI/pi-mono/packages/client/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -17999,7 +17999,7 @@
       {
         "label": "包：client",
         "sourceUrl": null,
-        "localPath": "Agentic/PI/pi-mono/packages/client/README.md"
+        "localPath": "Agentic/Harness/PI/pi-mono/packages/client/README.md"
       }
     ],
     "unavailableReason": null,
@@ -18027,7 +18027,7 @@
     "summary": "PI · pi-mono 工具链",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/PI/pi-mono/packages/tui/README.md",
+    "localPath": "Agentic/Harness/PI/pi-mono/packages/tui/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -18039,7 +18039,7 @@
       {
         "label": "包：tui",
         "sourceUrl": null,
-        "localPath": "Agentic/PI/pi-mono/packages/tui/README.md"
+        "localPath": "Agentic/Harness/PI/pi-mono/packages/tui/README.md"
       }
     ],
     "unavailableReason": null,
@@ -18067,7 +18067,7 @@
     "summary": "PI · pi-mono 工具链",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/PI/pi-mono/packages/ai/README.md",
+    "localPath": "Agentic/Harness/PI/pi-mono/packages/ai/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -18079,7 +18079,7 @@
       {
         "label": "包：ai",
         "sourceUrl": null,
-        "localPath": "Agentic/PI/pi-mono/packages/ai/README.md"
+        "localPath": "Agentic/Harness/PI/pi-mono/packages/ai/README.md"
       }
     ],
     "unavailableReason": null,
@@ -18107,7 +18107,7 @@
     "summary": "PI · pi-mono 工具链",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/PI/pi-mono/packages/evals/README.md",
+    "localPath": "Agentic/Harness/PI/pi-mono/packages/evals/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -18119,7 +18119,7 @@
       {
         "label": "包：evals",
         "sourceUrl": null,
-        "localPath": "Agentic/PI/pi-mono/packages/evals/README.md"
+        "localPath": "Agentic/Harness/PI/pi-mono/packages/evals/README.md"
       }
     ],
     "unavailableReason": null,
