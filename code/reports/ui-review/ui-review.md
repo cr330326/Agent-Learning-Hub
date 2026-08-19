@@ -1,8 +1,8 @@
 # UI review
 
-- Instance: http://127.0.0.1:3210
-- Generated: 2026-08-15T10:37:57.915Z
-- Captures: 54
+- Instance: http://127.0.0.1:3000
+- Generated: 2026-08-19T14:43:28.215Z
+- Captures: 48
 - Findings: 0
 
 No layout or console findings.
@@ -27,8 +27,6 @@ No layout or console findings.
 | /content-policy | desktop | 200 | 1083 |
 | /contribute | desktop | 200 | 985 |
 | /no-such-page | desktop | 404 | 903 |
-| /courses/legacy-course-023 | desktop | 200 | 1319 |
-| /read/legacy-course-023 | desktop | 200 | 2064 |
 | / | tablet | 200 | 2557 |
 | /roadmap | tablet | 200 | 2493 |
 | /roadmap/stage-0 | tablet | 200 | 1851 |
@@ -45,8 +43,6 @@ No layout or console findings.
 | /content-policy | tablet | 200 | 1134 |
 | /contribute | tablet | 200 | 1134 |
 | /no-such-page | tablet | 404 | 1256 |
-| /courses/legacy-course-023 | tablet | 200 | 1784 |
-| /read/legacy-course-023 | tablet | 200 | 2157 |
 | / | mobile | 200 | 3208 |
 | /roadmap | mobile | 200 | 2556 |
 | /roadmap/stage-0 | mobile | 200 | 2001 |
@@ -58,10 +54,8 @@ No layout or console findings.
 | /search | mobile | 200 | 4684 |
 | /search?q=agent | mobile | 200 | 4868 |
 | /projects | mobile | 200 | 4905 |
-| /learning | mobile | 200 | 5188 |
+| /learning | mobile | 200 | 5239 |
 | /login | mobile | 200 | 900 |
 | /content-policy | mobile | 200 | 1478 |
 | /contribute | mobile | 200 | 1216 |
 | /no-such-page | mobile | 404 | 1327 |
-| /courses/legacy-course-023 | mobile | 200 | 1984 |
-| /read/legacy-course-023 | mobile | 200 | 2659 |
