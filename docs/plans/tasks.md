@@ -848,6 +848,28 @@ T8.7 之后代码行为已正确：已声明章节可读、可上下翻页，未
 
 **保留策略已由 T8.10 解决（2026-08-15）**：目录不再由 `convert:legacy` 生成，`content/courses/courses.json` 就是权威事实源，策展结果不会被覆盖。这条前置阻塞已解除。
 
+**实施证据（2026-08-20）**：按上面的建议做法完成 7 门旗舰课程（`featured` 标签）的策展，新增 **110 条**章节声明，站内可读章节从 456 增至 566。
+
+| 条目 | 课程 | 声明数 | 命名规律 |
+| --- | --- | --- | --- |
+| legacy-course-001 | Hello-Agents | 2 → 18 | `docs/chapter*/第*章 *.md` |
+| legacy-course-004 | claw0 | 2 → 11 | `sessions/zh/s*.md` |
+| legacy-course-008 | learn-claude-code | 1 → 13 | `docs/zh/s*.md` |
+| legacy-course-016 | OpenClaw | 3 → 19 | `[0-9][0-9]_*/README.md` |
+| legacy-course-022 | Learn Harness Engineering | 1 → 13 | `docs/zh/lectures/lecture-*/index.md` |
+| legacy-course-024 | 驾驭工程：从 CC 到 AI Coding | 1 → 39 | `book/src/part*/ch*.md` + `preface.md` |
+| legacy-course-039 | cc-switch | 2 → 9 | `README_ZH.md` + `docs/guides/*-zh.md` |
+
+每门课单独定规则，不做跨课的全量匹配——七门课的章节命名互不相同，且都带 en/ja 孪生文件，统一规则只会把 i18n 副本一起拖进来。标签取自各文件的**首个 H1**，回退到文件名。
+
+两个实现细节值得记住：H1 提取必须跳过围栏代码块，否则会把代码里的 `# 注释` 当成标题——Hello-Agents 第三章一度被标成「示例语料库，与上方案例讲解中的语料库保持一致」。写入顺序是「已有本地章节 → 新增章节 → 上游链接」，因为章节顺序同时驱动章节列表和上下章翻页，上游链接不该夹在正文中间。
+
+验收：`audit:content` 在改动前后同为 **0 errors / 2003 warnings**，即 110 条新路径全部指向真实文件、未引入任何新警告。
+
+_顺带修掉的走查脆弱点。_ 策展后跑 `audit:functional` 出现 7 项失败，全部是 `page.goto: Timeout 30000ms exceeded`。查明与本次改动无关：脚本用 `networkidle` 等页面，而 Hello-Agents 的 README（改动前就已声明、且仍是默认打开的第一章）嵌了 8 张远程徽章图，其中 `contrib.rocks` 当时不可达，浏览器 8 张图全部 `complete:false`，网络永不空闲。服务端本身只用 33ms 返回。已把 `goto`/`reload` 的等待条件改为 `domcontentloaded`——这些断言看的是 DOM 与状态往返，不需要图片加载完——之后 23/23 通过。约定写入 [AGENTS.md](../../AGENTS.md)。
+
+**遗留**：其余约 500 个 `local-preferred` 条目仍是单章或少章声明。它们多为工具仓库、文档站或资源索引，本就不存在"完整章节"这一说；后续按需逐条策展，不追求全量。
+
 ### - [x] T8.9 复查全站界面与交互并修复走查缺陷
 
 **依赖**：T8.7
@@ -953,18 +975,100 @@ _规格。_ spec.md 新增 DEPLOY-016（脚本必须登记运行位置）、DEPL
 
 **遗留**：文档描述的云端流程仍未在真实主机执行过，GATE-10 保持未勾选。
 
+### - [x] T8.12 补齐 Cloud Mode 登录端到端测试与恢复演练命令
+
+**依赖**：T8.11
+**规格**：NFR-007、NFR-012、OPS-006、OPS-007、OPS-008
+
+- 让 Cloud Mode 的准入路径（登录）进入端到端测试，而不是只有模块级 mock。
+- 把"干净环境恢复演练"从一段照做的文档变成一条自带判定的命令。
+- 让云端自动化路径能在目标主机上执行同一套演练。
+
+**问题陈述（2026-08-19）**：GATE-04 和 GATE-07 卡了很久，原因是两处缺口都不在实现里，而在**验证方式**上。
+
+其一，`learning-state-http.mjs` 覆盖了笔记、收藏、成果、导出和删号，但它只在 Local Mode 跑——那个模式**自动签入固定单用户，压根没有登录这一步**。Cloud Mode 的登录只有 `better-auth.test.ts` 的模块级 mock。于是 GATE-04 要求的六件事里，"登录"从未跨过 HTTP 边界被验证过，而登录恰恰是 Cloud Mode 全部访问规则的入口：匿名拒绝、CSRF、删号后会话失效，都挂在它后面。CI 的 cloud 分支只跑三个公开页面 smoke，这个缺口在流水线里是看不见的。
+
+其二，`lighthouse-deploy.sh` 有 `backup` 但**没有任何恢复入口**，`rollback` 明确写着"never restores data"。恢复演练只存在于 `production-manual.md` 第 14.2 节的一串手工命令里。没跑过的备份只是一个假设，而这串命令没人跑过，也没有判定标准——照着敲完，你并不知道它算不算通过。
+
+**实施证据（2026-08-19）**：
+
+_Cloud Mode 端到端。_ 新增 [`code/tests/e2e/cloud-auth-state-http.mts`](../../code/tests/e2e/cloud-auth-state-http.mts)，28 项断言，覆盖：匿名对 `/api/state`（读/写）、`/api/data`（导出/删号）四个入口全部 401；登录跳转 GitHub；回调签发会话且不落盘任何 provider token；会话解析到正确身份并签发 CSRF；缺失与不匹配的 CSRF 各自 403；进度/笔记/收藏/成果/阶段确认五种写入；快照回读；JSON 与 Markdown 导出；未确认删号 400；删号成功后会话不再认证、8 张私有表全部清空、用户行消失、公开目录不受影响；原始会话 token 从不出现在数据库文件里。
+
+会话不是伪造的：测试用 Better Auth **自己的 API** 在服务端同一个 SQLite 文件上走一遍 `signInSocial` → 回调，只打桩 GitHub 的 token 与 profile 两个端点。服务器认这个 cookie 是因为它由同一个库、同一个 secret 签发，而不是因为测试重新实现了签名。负向对照已验证：把 `BETTER_AUTH_SECRET` 换成别的值，测试在"session resolves to the GitHub identity"处失败。测试可重复执行——末尾删号，下次运行重新建号。
+
+新增 `npm run test:e2e:cloud`；[quality.yml](../../.github/workflows/quality.yml) 改为按模式调用 `test:e2e:${mode}`，让 package.json 保持命令事实源，cloud 分支不再只跑公开 smoke。
+
+_恢复演练。_ 新增 [`code/scripts/restore-drill.ts`](../../code/scripts/restore-drill.ts)（`npm run drill:restore`），16 步：建库或快照实库 → `db:backup` → 在从未存在过数据库的目录里 `db:restore` → `integrity_check`、schema 比对、8 张私有表逐表行数比对、用应用自己的 opener 重开并读出每个用户 → manifest 的 `restoreVerifiedAt` 被写上。三组反向对照证明恢复路径确实会失败：错误口令、翻掉一个字节的密文（GCM 认证标签拒绝）、往已存在的库上恢复。另加"缺 `--yes`"的确认门。演练走的是 `db:backup`/`db:restore` 两条真实 CLI，不是直接调模块，所以 CLI 层的回归也会被它抓到。
+
+`--source` 用 SQLite **在线备份 API** 取快照而非 `cp`：live 库的已提交页可能还在 `-wal` 里，文件拷贝会得到撕裂或过期的快照。这一条使得把演练指向生产卷是安全的。
+
+_云端入口。_ `lighthouse-deploy.sh` 新增第十个 action `restore-drill`，与 `backup` 同形：同一个维护容器、只读挂载状态卷、只写自己的演练目录，不停服、不碰运行中的发布。`restore-drill.ts` 一并进入发布 bundle。
+
+_实测发现（已写入文档）。_ 生产备份在**只读**挂载的状态卷上打开数据库。实测确认：`-shm` 存在时（应用运行中或非正常退出）只读打开与在线备份都正常；但 `-wal` 非空而 `-shm` 缺失时，只读打开直接 `SQLITE_CANTOPEN`，报错里不提任何文件名。这解释了"手工搬运库文件"为什么是危险操作，症状已补进三份 Runbook 的故障表。另确认容器 `docker stop` 后 `-wal`/`-shm` 都保留，因此停服状态下的备份路径成立。
+
+_发布镜像实测（2026-08-20）_。把 `test:e2e:cloud` 打到将要上云的那个镜像（`ghcr.io/cr330326/agent-learning-hub:v0.1.0`，linux/amd64，digest `sha256:76da5d2a…23af3c`）上，验证了三种拓扑：
+
+| 拓扑 | 结果 |
+| --- | --- |
+| 容器 + 状态放在 macOS bind mount | 前 24 项通过，删号级联断言失败 |
+| 容器 + 容器共享命名卷（与云主机同构） | 29/29 |
+| 开发机原生文件系统 | 29/29 |
+
+第一行**不是应用缺陷**。定位过程：容器内查询与宿主查询结果一致（排除陈旧读）；容器日志时间线证明残留的 user/account/session 三行来自测试开头的登录、而非删号后重建；镜像内 `foreign_keys=1` 且 `DELETE FROM users` 级联正常（直接探针验证）。根因是测试为了签发会话必须成为服务端 SQLite 文件的**第二个写入者**，而 SQLite 的 WAL 锁经由内存映射的 `-shm` 协调，这个映射跨 macOS/VM 边界不相干。
+
+已加护栏：测试中段新增第 29 项断言「the database file agrees with the server about the note just written」，在这种环境下直接点名文件系统问题，而不是让它以幻影级联 bug 的形式在末尾爆掉。约束同时写入测试文件头与 [testing-strategy.md](../testing-strategy.md)。
+
+_端到端测试的破坏性（2026-08-20）_。把 `test:e2e:local` 指向正在用的本地预览时暴露了一个隐患：该测试**以删号收尾**，而 Local Mode 只有一个用户就是维护者本人。实测中它在失败前已向真实学习状态写入 1 条笔记、1 条收藏、1 条进度和 1 条成果（已逐条还原，进度 9 / 收藏 2 / 笔记 0 / 成果 0 与运行前一致）；若它通过了中途的回读断言，末尾就会清空全部阅读进度、笔记与收藏。危险之处在于中途每一条断言针对的都是测试自己刚写的数据，全程看不出异常。已在 `learning-state-http.mjs` 开跑前加检查：目标已有学习状态即拒绝运行，除非显式 `E2E_ALLOW_DESTRUCTIVE=1`。CI 始终从空库起步，因此不受影响（干净实例上 `test:e2e:local` 仍通过）。约束写入 [AGENTS.md](../../AGENTS.md) 与 [testing-strategy.md](../testing-strategy.md)。
+
+**遗留**：三条命令均已实测通过（cloud e2e 29/29 × 原生与容器两种拓扑、local e2e、演练 16/16 合成 fixture 与真实本地库各一次）。GATE-04 因此勾选。GATE-07 要求的是**目标主机上**的演练证据，GATE-10 要求云端流程被真实执行过——两者在 2026-08-20 都因**开发机出网异常**未能执行，与云端无关。
+
+排查记录（这次的教训主要是**测量方法**，不是结论）：现象是 `ssh tencent-lighthouse` 超时。中途得出过两个错误结论，都被后续数据推翻，记在这里以免重来：
+
+1. ~~腾讯云防火墙拦截~~ —— 控制台规则明确放行 TCP 22（全部 IPv4）、3000、6080、8080、27408 与 ICMP。
+2. ~~所在网络封了直连出网~~ —— 由一次 `nc -G 6` 的坏测量得出；改用 `-w` 重测，直连到 baidu / qq / aliyun 的 443 全部成功。
+
+最终确认的事实：主机侧 `ufw` inactive、未装 fail2ban、`sshd` active、`*:22` 在监听；**主机对全网可达**——OrcaTerm 里看到 13:47 与 13:51 仍有其他 IP 正常连入 22。而本机无论直连还是经代理都到不了这台主机（代理访问其 8080/3000 返回 502），同一分钟内 `nc` 报 `Connection refused`、`ssh` 报 `Operation timed out`。昨晚 23:16–23:24 的成功会话来自出口 `183.128.47.100`（主机安全里记为 10 条「异常登录」），此后本机出口已变。
+
+结论：主机与云端配置都正常，问题在本机到该主机的这条**网络路径**上，不是项目配置问题。可复用的方法沉淀进了两份云端 Runbook 的排查小节，核心是**先从服务器侧确认别人还连不连得进来**，以及四个容易骗过人的观测（`ping` 通≠TCP 通、`curl` 读 `HTTP_PROXY` 而 `ssh`/`nc` 不读、`refused` 与 `timed out` 并存说明路径被干预、直连可能只对部分目的地有效）。换一个网络（手机热点）是最快的验证手段。
+
 ## 12. 上线门槛核对表
 
 - [x] GATE-01 cloud-clean-room 构建和公开流程通过。（2026-08-11 隔离镜像实测）
 - [x] GATE-02 local Docker 阅读、搜索和进度保存通过。（2026-08-11 隔离 Compose 实测）
 - [x] GATE-03 云端与本地使用相同课程 ID、schema 和状态规则。（双模式同一构建与测试覆盖）
-- [ ] GATE-04 登录、笔记、收藏、成果、导出和删号集成测试通过。
+- [x] GATE-04 登录、笔记、收藏、成果、导出和删号集成测试通过。（2026-08-20，`test:e2e:cloud` 29 项 + `test:e2e:local`；已在发布镜像上按云主机拓扑复跑，见 T8.12）
 - [x] GATE-05 路径回退、穿越保护和恶意 Markdown 测试通过。
 - [x] GATE-06 手机端核心学习流程通过。（见 T8.3 验收证据）
-- [ ] GATE-07 SQLite 干净环境恢复演练通过。
+- [ ] GATE-07 SQLite 干净环境恢复演练通过。（命令已就绪并在开发机 16/16 通过，含真实本地库；仍缺目标主机上的执行证据——2026-08-20 因开发机直连出网失效未能执行，排查记录见 T8.12）
 - [x] GATE-08 新站覆盖旧站首版核心能力。（见 T8.1 对等报告）
 - [x] GATE-09 云端镜像不含 `local-courses/`、数据库、备份或秘密。（2026-08-11 镜像扫描）
 - [ ] GATE-10 部署、回滚、素材维护和故障恢复文档可由他人复现。
+
+## 12.1 剩余工作与解除条件（2026-08-20 核实）
+
+11 个未完成任务中，T8.8 已于本日完成。**其余 10 个全部卡在仓库之外的四类前置条件上**，实现与测试本身都已就绪。逐条核实如下，避免下一个人重新排查一遍：
+
+| 任务 | 差的最后一步 | 解除条件 |
+| --- | --- | --- |
+| T7.1 完善 CI 流程 | 受保护分支上的 Actions 结果 | 推送到受保护分支并跑通 |
+| T7.2 版本化镜像发布 | 从 GHCR 拉取固定版本并回退 | GHCR 凭据（现为 `403 Forbidden`，包私有且本机未认证） |
+| T7.3 云端部署与回滚 | 真实执行一遍 | ①② |
+| T7.4 备份与保留策略 | 定时调度、异地副本 | ① |
+| T7.5 干净环境恢复演练（GATE-07） | 目标主机上执行 `restore-drill` | ① |
+| T7.6 隐私优先监控 | 真实部署日志抽查 | ① |
+| T7.7 文档与运行手册同步 | 依赖 T7.3 | ① |
+| T8.2 双模式端到端验收 | 真实 GitHub 登录、生产备份恢复与回滚 | ①③ |
+| T8.4 安全与隐私发布审查 | 真实部署日志复核 | ① |
+| T8.5 切换入口并归档旧站（GATE-10） | 生产冒烟与回滚路径验证 | ①②③ |
+
+四类前置条件：
+
+1. **能连上云主机。** 2026-08-20 实测：主机健康、云防火墙放行 22、外部 IP 仍在正常连入，但开发机到它的路径不通。排查方法见 T8.12 与两份云端 Runbook；换一个网络是最快的验证。
+2. **镜像仓库凭据。** 拉取 `ghcr.io/cr330326/agent-learning-hub` 需要 GitHub token。
+3. **域名与 GitHub OAuth App。** `LIGHTHOUSE_DOMAIN`、`GITHUB_CLIENT_ID`、`GITHUB_CLIENT_SECRET`。Cloud Mode 的登录链路没有真实凭据就起不来，站点公开可访问也需要维护者本人决定。
+4. **推送权限。** 受保护分支的 CI 结果。
+
+前置条件 2、3、4 按约定由维护者本人操作，自动化脚本不代持凭据、不动腾讯云控制面（见 [lighthouse-automation 第 1 节](../deploy/lighthouse-automation.md#1-自动化边界)）。
 
 ## 13. 需求到任务追踪
 
@@ -974,7 +1078,7 @@ _规格。_ spec.md 新增 DEPLOY-016（脚本必须登记运行位置）、DEPL
 | CAT         | T0.2、T1.2—T1.5、T3.4、T8.10                                    |
 | RES         | T3.1—T3.3、T5.1—T5.3                                            |
 | READ        | T2.5、T4.4、T5.1、T5.3、T8.6、T8.7、T8.8、T8.9                  |
-| AUTH        | T4.2、T4.3、T4.5、T6.7、T8.4                                    |
+| AUTH        | T4.2、T4.3、T4.5、T6.7、T8.4、T8.12                             |
 | STATE       | T4.1、T4.4—T4.8、T8.9                                           |
 | SEARCH      | T6.1—T6.3、T6.6、T8.9                                           |
 | MAT         | T6.4—T6.7                                                       |
@@ -982,8 +1086,8 @@ _规格。_ spec.md 新增 DEPLOY-016（脚本必须登记运行位置）、DEPL
 | ADMIN       | T6.7、T7.6                                                      |
 | DEPLOY      | T0.2、T3.3、T4.3、T5.4、T7.1—T7.3、T8.11                        |
 | SEC / PRIV  | T4.2、T4.5、T4.8、T5.1、T7.6、T8.4、T8.9                        |
-| OPS         | T4.1、T7.3—T7.5                                                 |
-| NFR         | T0.3、T2.1、T2.5、T7.1、T7.6、T8.3、T8.6、T8.7、T8.9            |
+| OPS         | T4.1、T7.3—T7.5、T8.12                                          |
+| NFR         | T0.3、T2.1、T2.5、T7.1、T7.6、T8.3、T8.6、T8.7、T8.9、T8.12     |
 | AC-01—AC-10 | T3.3、T5.2、T5.1、T4.4、T4.6、T4.8、T6.5、T8.3、T7.5、T8.1—T8.2 |
 
 ## 14. 推荐首个实施批次

@@ -1,7 +1,7 @@
 # UI review
 
 - Instance: http://127.0.0.1:3000
-- Generated: 2026-08-19T14:43:28.215Z
+- Generated: 2026-08-20T06:30:13.418Z
 - Captures: 48
 - Findings: 0
 
@@ -20,7 +20,7 @@ No layout or console findings.
 | /courses?track=agentic | desktop | 200 | 2497 |
 | /courses?track=learning&access=owned&tag=none | desktop | 200 | 1059 |
 | /search | desktop | 200 | 3924 |
-| /search?q=agent | desktop | 200 | 3920 |
+| /search?q=agent | desktop | 200 | 3916 |
 | /projects | desktop | 200 | 4182 |
 | /learning | desktop | 200 | 3133 |
 | /login | desktop | 200 | 903 |
@@ -36,7 +36,7 @@ No layout or console findings.
 | /courses?track=agentic | tablet | 200 | 3248 |
 | /courses?track=learning&access=owned&tag=none | tablet | 200 | 1134 |
 | /search | tablet | 200 | 3837 |
-| /search?q=agent | tablet | 200 | 3833 |
+| /search?q=agent | tablet | 200 | 3898 |
 | /projects | tablet | 200 | 4624 |
 | /learning | tablet | 200 | 3243 |
 | /login | tablet | 200 | 1134 |
@@ -52,7 +52,7 @@ No layout or console findings.
 | /courses?track=agentic | mobile | 200 | 5866 |
 | /courses?track=learning&access=owned&tag=none | mobile | 200 | 1288 |
 | /search | mobile | 200 | 4684 |
-| /search?q=agent | mobile | 200 | 4868 |
+| /search?q=agent | mobile | 200 | 5155 |
 | /projects | mobile | 200 | 4905 |
 | /learning | mobile | 200 | 5239 |
 | /login | mobile | 200 | 900 |

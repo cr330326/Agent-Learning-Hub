@@ -35,6 +35,26 @@ if (!sessionPayload.authenticated || sessionPayload.user?.id !== "local-user") {
   throw new Error("Local session did not resolve to the fixed user.");
 }
 
+// This test ends by deleting the account, and Local Mode has exactly one user:
+// the person running it. Pointed at a real instance it would wipe their reading
+// progress, notes and bookmarks — and it would do so silently, because every
+// assertion up to that point is about state the test itself just wrote. CI
+// always starts from an empty database, so refusing a non-empty one costs
+// nothing there and prevents the only case where this test is destructive.
+const existing = await request("/api/state");
+const existingState = (await existing.json()).state ?? {};
+const occupied = ["itemProgress", "notes", "bookmarks", "stageOutcomes"].filter(
+  (key) => (existingState[key] ?? []).length > 0,
+);
+if (occupied.length > 0 && process.env.E2E_ALLOW_DESTRUCTIVE !== "1") {
+  throw new Error(
+    `Refusing to run: ${baseUrl} already holds learning state (${occupied.join(", ")}). ` +
+      "This test deletes the account when it finishes. Point APP_URL at a throwaway " +
+      "instance with its own STATE_DATABASE_PATH, or set E2E_ALLOW_DESTRUCTIVE=1 if " +
+      "the data is genuinely disposable.",
+  );
+}
+
 const csrf = sessionPayload.csrfToken;
 const write = (body) =>
   request("/api/state", {

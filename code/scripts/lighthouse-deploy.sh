@@ -16,6 +16,10 @@ Actions:
   configure   Upload root-owned application and optional backup environment files.
   deploy      Back up an existing database, stage a release bundle, and deploy it.
   backup      Create an application-native encrypted SQLite backup on the server.
+  restore-drill
+              Prove a fresh backup of live production data restores into a clean
+              environment, with wrong-passphrase and tamper controls. Reads the
+              state volume read-only and never touches the running release.
   rollback    Start the previous pinned application release; never restores data.
   verify      Check the internal health endpoint and public HTTPS endpoint.
   status      Show the release, Compose, Docker, Caddy, and disk status.
@@ -471,6 +475,10 @@ build_release_bundle() {
   fi
   cp -R "$application_root/modules" "$bundle_root/code/modules"
   cp "$application_root/scripts/database.ts" "$bundle_root/code/scripts/database.ts"
+  # The drill shells out to the db:backup / db:restore npm scripts, so it has to
+  # travel with them: a release whose backups cannot be proven restorable on the
+  # host itself is the state GATE-07 exists to prevent.
+  cp "$application_root/scripts/restore-drill.ts" "$bundle_root/code/scripts/restore-drill.ts"
   cp "$application_root/scripts/docker-deploy.sh" "$bundle_root/code/scripts/docker-deploy.sh"
   cp "$application_root/docker/Dockerfile" "$bundle_root/code/docker/Dockerfile"
   cp "$application_root/docker/docker-compose.yml" \
@@ -538,6 +546,68 @@ sudo -n docker run --rm --pull=missing \
     fi
     npm run db:backup --prefix code
   '
+REMOTE
+}
+
+run_remote_restore_drill() {
+  info "Proving the production backup restores into a clean environment (GATE-07)"
+  if enabled "$lighthouse_dry_run"; then
+    printf '+ ssh %s <back up %s, restore into a throwaway location, verify>\n' \
+      "$lighthouse_ssh_target" "$lighthouse_backup_host_path"
+    return
+  fi
+  remote_file_exists "$lighthouse_config_root/backup.env" ||
+    fail "Remote backup secret is missing; configure LIGHTHOUSE_BACKUP_ENV_FILE first."
+  remote_current_exists || fail "No deployed release is available to run the drill tooling."
+  "${ssh_command[@]}" bash -s -- \
+    "$lighthouse_remote_root" \
+    "$lighthouse_config_root" \
+    "$lighthouse_backup_host_path" \
+    "$lighthouse_compose_project" \
+    "$lighthouse_maintenance_image" <<'REMOTE'
+set -Eeuo pipefail
+remote_root=$1
+config_root=$2
+backup_root=$3
+compose_project=$4
+maintenance_image=$5
+current_release=$(sudo -n readlink -f "$remote_root/current")
+[[ -n $current_release && -d $current_release ]] || { printf '%s\n' 'Current release is missing.' >&2; exit 1; }
+
+state_volume=$(sudo -n awk -F= '$1 == "STATE_VOLUME_NAME" { print substr($0, index($0, "=") + 1) }' \
+  "$current_release/.env" | tail -n 1)
+[[ $state_volume =~ ^[A-Za-z0-9][A-Za-z0-9_.-]*$ ]] || {
+  printf '%s\n' 'Current release has an invalid STATE_VOLUME_NAME.' >&2
+  exit 1
+}
+sudo -n docker volume inspect "$state_volume" >/dev/null
+
+# The drill needs somewhere writable for its evidence; the release bundle is
+# mounted read-only on purpose so a drill can never mutate the deployed tree.
+sudo -n install -d -m 0700 "$backup_root/restore-drill"
+
+tool_cache="${compose_project}-maintenance-node-modules"
+sudo -n docker run --rm --pull=missing \
+  --mount "type=bind,src=$current_release,dst=/workspace,readonly" \
+  --mount "type=volume,src=$state_volume,dst=/data/state,readonly" \
+  --mount "type=bind,src=$backup_root/restore-drill,dst=/secure/drill" \
+  --mount "type=volume,src=$tool_cache,dst=/workspace/code/node_modules" \
+  --env-file "$config_root/backup.env" \
+  --workdir /workspace \
+  "$maintenance_image" \
+  bash -lc '
+    set -Eeuo pipefail
+    expected_hash=$(sha256sum code/package-lock.json | cut -d " " -f 1)
+    installed_hash=$(cat code/node_modules/.agent-learning-lock 2>/dev/null || true)
+    if [[ $installed_hash != "$expected_hash" ]]; then
+      npm ci --prefix code
+      printf "%s\n" "$expected_hash" > code/node_modules/.agent-learning-lock
+    fi
+    npm run drill:restore --prefix code -- \
+      --source /data/state/learning-state.sqlite \
+      --output-dir /secure/drill
+  '
+printf 'Drill evidence: %s/restore-drill/restore-drill.md\n' "$backup_root"
 REMOTE
 }
 
@@ -835,6 +905,12 @@ case "$action" in
     run_preflight
     configure_backup_secret_if_requested
     run_remote_backup
+    ;;
+  restore-drill)
+    require_command scp
+    run_preflight
+    configure_backup_secret_if_requested
+    run_remote_restore_drill
     ;;
   rollback)
     require_command scp

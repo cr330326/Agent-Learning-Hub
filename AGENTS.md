@@ -57,6 +57,19 @@ npm run check:local --prefix code
 
 开发服务只能通过 `127.0.0.1` 或 `localhost` 访问。Local Mode 的免登录身份仅对回环地址成立，`next.config.ts` 的 `allowedDevOrigins` 也据此限定；改动这里会直接影响本地模式能否 hydration。
 
+`check` 里没有端到端测试——它们需要一个已经跑起来的构建产物。改过登录、学习状态或导出后，按模式各跑一次：
+
+```bash
+APP_URL=http://127.0.0.1:3100 npm run test:e2e:local --prefix code
+APP_URL=http://127.0.0.1:3100 npm run test:e2e:cloud --prefix code
+```
+
+两条命令都会**在结尾删号**，所以 `APP_URL` 必须指向一次性实例（自带 `STATE_DATABASE_PATH`），不要指向你日常在用的本地预览。Local Mode 只有一个用户，就是你本人：指错了会把阅读进度、笔记和收藏一起清掉，而且中途所有断言都只针对测试自己刚写的数据，看不出异常。`learning-state-http.mjs` 因此在开跑前检查目标是否已有学习状态，非空即拒绝，除非显式 `E2E_ALLOW_DESTRUCTIVE=1`。
+
+两者不是同一个测试的两种配置。Local Mode 自动签入固定单用户，可以直接写状态；**Cloud Mode 必须先真的登录一次**，因为匿名拒绝、CSRF、删号后会话失效全都挂在登录后面——跳过登录的云端 e2e 会把匿名断言全跑通，却对鉴权后的一半毫无覆盖。`cloud-auth-state-http.mts` 用 Better Auth 自己的 API 在服务端同一个 SQLite 文件上签发会话，只打桩 GitHub 的 token 与 profile 两个端点；它要求 `STATE_DATABASE_PATH`、`BETTER_AUTH_SECRET`、`BETTER_AUTH_URL`、`GITHUB_CLIENT_ID`、`GITHUB_CLIENT_SECRET` 与服务端完全一致，不要改成自己拼 cookie 签名。
+
+签发会话让这个测试成了服务端 SQLite 文件的**第二个写入者**，所以它必须和服务端共享文件系统——CI、开发机，或共用一个卷的两个容器。指向"容器化服务 + 状态放在 macOS/Windows bind mount"会产生假失败：SQLite 的 WAL 锁经由内存映射的 `-shm` 协调，该映射跨 VM 边界不相干。实测症状具有迷惑性——写入成功、删号返回 200、会话确实失效，但文件里用户行还在，于是在删号级联那步失败，而应用本身是对的。测试中段的「the database file agrees with the server about the note just written」就是为点名这种环境而设。要验证容器，就让应用和测试共用同一个 Docker 卷（这也正是生产拓扑），同一套断言 29/29 通过。
+
 `code/AGENTS.md` 和 `code/CLAUDE.md` 由 `next dev` 自动生成，不是本仓库手写的规则文件；不要在其中记录项目约定，项目约定只写在根目录这一份。
 
 Docker Compose 位于 `code/docker/`；从仓库根目录使用：
@@ -72,11 +85,11 @@ Cloud/Release 模式通过根目录 `.env` 提供秘密与镜像变量。发布�
 
 脚本按**在哪台机器上执行**和**作用于什么**分三类，两件事不一样：`image-release.sh` 和 `lighthouse-deploy.sh` 都在开发机上跑，作用对象却是云端。完整分类表在 [docs/deploy/README.md](docs/deploy/README.md#脚本按运行位置分类)，改动脚本时同步那里。
 
-| 类别               | 脚本                                                                                                                                            | 边界                                                  |
-| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| 本机 → 本机        | `audit-content.ts`、`materials.ts`、`audit-content-boundaries.mjs`、`baseline-report.mjs`、`ui-review.mjs`、`functional-regression.mjs`         | 需要 `local-courses` 或浏览器的都不进 `npm run check` |
-| 本机 → 本机 Docker | `local-preview.sh`、`mode-switch.sh`、`docker-deploy.sh local\|cloud`                                                                           | 只绑回环地址                                          |
-| → 云端             | `image-release.sh`（本机执行）、`lighthouse-deploy.sh`（本机执行、SSH 操作云主机）、`docker-deploy.sh release` 与 `database.ts`（在云主机执行） | 只跑固定版本或 digest                                 |
+| 类别               | 脚本                                                                                                                                                                | 边界                                                  |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| 本机 → 本机        | `audit-content.ts`、`materials.ts`、`audit-content-boundaries.mjs`、`baseline-report.mjs`、`ui-review.mjs`、`functional-regression.mjs`、`restore-drill.ts`         | 需要 `local-courses` 或浏览器的都不进 `npm run check` |
+| 本机 → 本机 Docker | `local-preview.sh`、`mode-switch.sh`、`docker-deploy.sh local\|cloud`                                                                                               | 只绑回环地址                                          |
+| → 云端             | `image-release.sh`（本机执行）、`lighthouse-deploy.sh`（本机执行、SSH 操作云主机）、`docker-deploy.sh release`、`database.ts` 与 `restore-drill.ts`（在云主机执行） | 只跑固定版本或 digest                                 |
 
 需要 `local-courses` 的脚本（`materials.ts`）和需要浏览器的脚本（两个走查脚本）**绝不能在生产主机运行**——云端镜像根本不包含素材库。
 
@@ -85,9 +98,12 @@ Cloud/Release 模式通过根目录 `.env` 提供秘密与镜像变量。发布�
 - `code/scripts/local-preview.sh` 是本机 Docker 预览入口，委托给 `docker-deploy.sh`，只绑定回环地址。
 - `code/scripts/mode-switch.sh` 在本机 Docker 上切换或并行运行 Local/Cloud 两种模式，同样委托给 `docker-deploy.sh`。两种模式用各自的 Compose 项目、端口和 SQLite 卷。Cloud Compose 的 `${VAR:?}` 会让缺凭据时连 `down`/`ps` 都失败，因此只读与停止路径注入显式假值；真正 `up` 必须显式传 `--preview-secrets` 才允许用一次性假凭据，且只够渲染匿名页面。
 - `code/scripts/image-release.sh` 是本机构建并推送发布镜像的手工路径，默认交叉构建 `linux/amd64`（云主机是 x86，Apple Silicon 直接构建的 arm64 镜像跑不起来），拒绝 `latest`，推送前检查版本是否已存在，成功后打印可固定的 digest。带 SBOM 与签名溯源的正式发布仍走 `v*.*.*` tag 触发的 `.github/workflows/release.yml`。
-- `audit-content.ts`、`materials.ts`、`database.ts` 以及五个 `.mjs` 审计/走查脚本都是质量门禁或运维命令，不应因扩展名不是 `.sh` 而删除。
+- `code/scripts/restore-drill.ts`（`npm run drill:restore`）是 GATE-07 的执行体。它跑真实的 `db:backup`/`db:restore` 两条 CLI，在一个从未存在过数据库的目录里恢复，并逐张私有表比对行数。三组**反向对照**是它的核心而不是附加项——错误口令、被翻掉一个字节的密文、覆盖已有目标，三者必须全部被拒绝；某条"本该失败却成功了"和恢复失败同等严重。删掉任何一条对照，演练就退化成"命令没报错"。`--source` 必须走 SQLite 在线备份 API 而不是文件拷贝：live 库的已提交页可能还在 `-wal` 里。
+- 只读挂载状态卷时 `-shm` 必须存在。实测：`-wal` 非空而 `-shm` 缺失时，只读打开直接 `SQLITE_CANTOPEN`，报错里不提任何文件名。生产备份和演练都在只读卷上打开数据库，所以"不得手工搬运库文件"不是洁癖。
+- `audit-content.ts`、`materials.ts`、`database.ts`、`restore-drill.ts` 以及五个 `.mjs` 审计/走查脚本都是质量门禁或运维命令，不应因扩展名不是 `.sh` 而删除。
 - `ui-review.mjs`（`npm run audit:ui`）看版式，`functional-regression.mjs`（`npm run audit:functional`）真实点击。两者都需要运行中的服务和 Playwright，因此**不进** `npm run check`；改动界面或交互后手动运行，产物写入 `code/reports/`。
 - `npm run audit:materials`（即 `materials drift`）同理不进 `check`：它依赖仓库之外的素材库。整理过 `local-courses/` 之后手动跑，先读 `code/reports/materials/catalog-drift.md`，再决定要不要 `--apply`。
+- `functional-regression.mjs` 的页面等待用 `domcontentloaded` 而不是 `networkidle`。第三方 README 里嵌着 shields.io / contrib.rocks / trendshift 这类远程徽章图，阅读器按内容政策保留它们；等 `networkidle` 会让走查结果取决于**跑它的机器能不能连上这些图床**——实测有一个挂住时，每次导航都在 30 秒超时，报告把网络问题记成阅读器缺陷。这些断言看的是 DOM 结构和学习状态往返，不需要图片加载完，真正的异步由各自的 `waitFor()` 等。
 - `functional-regression.mjs` 会读取页面上的运行模式徽标并据此断言：云端断言匿名访问被拒、本地素材不出正文；本地断言章节导航与学习状态读写。给某个模式新增能力时，要在两个分支里都补断言，不要用跳过掩盖差异。
 - 以 `code/package.json` scripts 作为命令事实源；不要在 README、任务文档或 CI 中复制已经失效的根目录 `scripts/`、`content/`、`reports/`、Dockerfile 或 Compose 路径。
 

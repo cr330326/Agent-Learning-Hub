@@ -268,6 +268,27 @@ node code/scripts/functional-regression.mjs --base-url http://127.0.0.1:3000
 
 两个脚本都是**维护命令，不是质量门禁**——它们需要运行中的服务和浏览器，所以 `npm run check` 不会调用它们。改完界面或交互后手动跑一次；两种模式都值得各跑一遍。
 
+### 端到端测试（HTTP 层）
+
+走查用浏览器点界面，e2e 直接打接口。改过登录、学习状态或导出后跑它，需要一个**构建好并启动**的服务（不是 `dev`）：
+
+```bash
+APP_URL=http://127.0.0.1:3100 npm run test:e2e:local --prefix code
+APP_URL=http://127.0.0.1:3100 npm run test:e2e:cloud --prefix code
+```
+
+> **`APP_URL` 别指向你日常在用的预览。** 两条命令都以删号收尾，而本地模式只有一个用户就是你自己——指错了会清空阅读进度、笔记和收藏。更麻烦的是中途所有断言针对的都是测试自己刚写的数据，看不出任何异常。所以要另起一个带独立 `STATE_DATABASE_PATH` 的一次性服务（上面示例用 3100 而不是预览的 3000，就是这个原因）。本地那条已经会在开跑前检查目标是否已有学习状态，非空即拒绝，除非你确认数据可弃并显式加 `E2E_ALLOW_DESTRUCTIVE=1`。
+
+两条不是同一个测试换个模式跑。本地模式自动签入固定单用户，可以直接写状态；云端模式**必须先真的登录一次**——匿名拒绝、CSRF 校验、删号后会话失效，全都挂在登录后面。云端那条要求 `STATE_DATABASE_PATH`、`BETTER_AUTH_SECRET`、`BETTER_AUTH_URL`、`GITHUB_CLIENT_ID`、`GITHUB_CLIENT_SECRET` 与服务端完全一致；GitHub 全程不联网。
+
+### 恢复演练
+
+```bash
+BACKUP_PASSPHRASE='<长口令>' npm run drill:restore --prefix code
+```
+
+备份没恢复过就只是一个假设。这条命令备份、在一个从未存在过数据库的目录里恢复、逐张私有表比对行数，再用三组反向对照证明恢复路径确实会失败：错误口令、被改了一个字节的备份、往已存在的库上恢复。产物在 `code/reports/restore-drill/`。
+
 提交前仍然跑双模式门禁：
 
 ```bash

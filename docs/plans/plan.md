@@ -589,8 +589,11 @@ local-courses/
 
 恢复命令会拒绝覆盖已有目标，解密后先执行 SQLite `quick_check`，再原子安装数据库。
 生产恢复时先停止写入，将完整状态单元恢复到可写目录，让应用重新打开数据库并执行
-迁移和外键检查。调度、异地存储、告警和带日期的干净环境恢复演练在完成任务证据前
-仍属于部署方工作。
+迁移和外键检查。调度、异地存储和告警仍属于部署方工作。
+
+- `code/scripts/restore-drill.ts`（`npm run drill:restore`）把恢复演练固定成一条自带判定的命令：备份 → 在从未存在过数据库的目录里恢复 → `integrity_check`、schema 与逐表行数比对 → 用应用自己的 opener 重开。它同时验证恢复路径**会失败**：错误口令、被篡改一个字节的密文、覆盖已有目标三者必须全部被拒绝。命令在开发机用合成 fixture 跑，在云主机由 `lighthouse-deploy.sh restore-drill` 对真实生产数据跑，两边是同一段代码。
+- `--source` 通过 SQLite 在线备份 API 取快照，不用文件拷贝：live 库的已提交页可能仍在 `-wal` 里。这条约束使得把演练指向生产卷是安全的。
+- 只读挂载状态卷时，`-shm` 必须存在。实测确认 `-wal` 非空而 `-shm` 缺失时只读打开直接 `SQLITE_CANTOPEN`，且报错不提任何文件名——这是"不得手工搬运库文件"这条约束的具体后果。
 
 ### 13.3 监控
 
@@ -682,14 +685,15 @@ Mode 的只读素材挂载、健康接口、公开路由、学习状态 HTTP 流
 `code/scripts/` 的脚本按**执行位置**与**作用对象**分三类，两者不同：`image-release.sh`
 与 `lighthouse-deploy.sh` 都在开发机执行，作用对象却是云端。
 
-| 类别               | 脚本                                                                                                                                    | 关键约束                                      |
-| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| 本机 → 本机        | `audit-content.ts`、`materials.ts`、`audit-content-boundaries.mjs`、`baseline-report.mjs`、`ui-review.mjs`、`functional-regression.mjs` | 依赖素材库或浏览器的都不进 `npm run check`    |
-| 本机 → 本机 Docker | `local-preview.sh`、`mode-switch.sh`、`docker-deploy.sh local\|cloud`                                                                   | 只绑回环地址，各模式独立项目/端口/卷          |
-| → 云端             | `image-release.sh`、`lighthouse-deploy.sh`（本机执行）；`docker-deploy.sh release`、`database.ts`（云主机执行，由部署脚本打包上传）     | 只跑固定版本或 digest，绝不在生产主机构建源码 |
+| 类别               | 脚本                                                                                                                                                        | 关键约束                                      |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
+| 本机 → 本机        | `audit-content.ts`、`materials.ts`、`audit-content-boundaries.mjs`、`baseline-report.mjs`、`ui-review.mjs`、`functional-regression.mjs`、`restore-drill.ts` | 依赖素材库或浏览器的都不进 `npm run check`    |
+| 本机 → 本机 Docker | `local-preview.sh`、`mode-switch.sh`、`docker-deploy.sh local\|cloud`                                                                                       | 只绑回环地址，各模式独立项目/端口/卷          |
+| → 云端             | `image-release.sh`、`lighthouse-deploy.sh`（本机执行）；`docker-deploy.sh release`、`database.ts`、`restore-drill.ts`（云主机执行，由部署脚本打包上传）     | 只跑固定版本或 digest，绝不在生产主机构建源码 |
 
 `materials.ts` 需要 `local-courses`，两个走查脚本需要浏览器和运行中的服务——三者都不
-在生产主机运行，云端镜像本就不包含素材库。完整表格与依赖见
+在生产主机运行，云端镜像本就不包含素材库。`restore-drill.ts` 是唯一横跨两类的脚本：
+本机跑合成 fixture，云主机跑真实生产数据，两边是同一段代码。完整表格与依赖见
 [`docs/deploy/README.md`](../deploy/README.md#脚本按运行位置分类)。
 
 ## 14. 文档职责

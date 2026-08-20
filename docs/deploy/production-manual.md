@@ -2,7 +2,7 @@
 
 本文面向第一次接手项目的运维人员，从一台空白 Ubuntu 服务器开始，逐条完成 Cloud Mode 的固定镜像部署、HTTPS、GitHub OAuth、持久化、备份、升级、恢复和回滚。所有命令都从本仓库根目录或文中明确标出的服务器目录执行。
 
-> 文档核对日期：2026-08-15。本文是可执行 Runbook，不是生产演练证据。完成 T7.3/T7.5 前，仍需在真实主机保存带日期、镜像 digest、备份 manifest、耗时和结果的验收记录。
+> 文档核对日期：2026-08-19。本文是可执行 Runbook，不是生产演练证据。完成 T7.3/T7.5 前，仍需在真实主机保存带日期、镜像 digest、备份 manifest、耗时和结果的验收记录。
 
 ## 0. 开始之前
 
@@ -20,15 +20,15 @@
 
 ### 0.2 时间预算
 
-| 阶段                         | 一次性 / 重复      | 预计耗时   |
-| ---------------------------- | ------------------ | ---------- |
-| 第 2–4 节 控制面与 SSH       | 一次性             | 30–60 分钟 |
-| 第 5–6 节 安装 Docker、Caddy | 一次性             | 15–30 分钟 |
-| 第 7–8 节 配置与秘密         | 一次性             | 20–40 分钟 |
-| 第 9–10 节 首次启动与 HTTPS  | 一次性             | 15–30 分钟 |
-| 第 11 节 上线验收            | 每次发布           | 20–40 分钟 |
-| 第 13 节 版本升级            | 每次发布           | 20–30 分钟 |
-| 第 14.2 节 恢复演练          | 每月/每次改 schema | 30–60 分钟 |
+| 阶段                         | 一次性 / 重复      | 预计耗时                             |
+| ---------------------------- | ------------------ | ------------------------------------ |
+| 第 2–4 节 控制面与 SSH       | 一次性             | 30–60 分钟                           |
+| 第 5–6 节 安装 Docker、Caddy | 一次性             | 15–30 分钟                           |
+| 第 7–8 节 配置与秘密         | 一次性             | 20–40 分钟                           |
+| 第 9–10 节 首次启动与 HTTPS  | 一次性             | 15–30 分钟                           |
+| 第 11 节 上线验收            | 每次发布           | 20–40 分钟                           |
+| 第 13 节 版本升级            | 每次发布           | 20–30 分钟                           |
+| 第 14.2 节 恢复演练          | 每月/每次改 schema | 5 分钟（脚本）/ 30–60 分钟（含切卷） |
 
 DNS 生效和证书签发有外部等待，实际耗时可能更长。**不要在没有回滚窗口的时间点开始升级。**
 
@@ -53,6 +53,7 @@ DNS 生效和证书签发有外部等待，实际耗时可能更长。**不要�
 | ------------------------------- | -------- | ------------------------------------------- |
 | `code/scripts/docker-deploy.sh` | 服务器   | `release` 模式的 Compose 生命周期与健康检查 |
 | `code/scripts/database.ts`      | 服务器   | 加密备份与恢复，在维护容器内执行            |
+| `code/scripts/restore-drill.ts` | 服务器   | 备份可恢复性演练，在维护容器内执行          |
 
 镜像构建与推送（`image-release.sh`）在**你自己的电脑上**执行，见[第 7 节](#7-获取与镜像匹配的部署配置)与 [USER.md 第 4 节](../../USER.md)。完整的脚本运行位置分类见 [docs/deploy/README.md](./README.md#脚本按运行位置分类)。
 
@@ -153,6 +154,44 @@ exit
 ```
 
 预期架构为 `x86_64`，系统为 Ubuntu 22.04/24.04，`sudo -n true` 成功。自动化脚本要求密钥登录和非交互 sudo；完全手工执行时可以在明确的交互会话中输入 sudo 密码。
+
+### 4.1 连不上时先分清"超时"和"被拒"
+
+`Operation timed out` 表示包**根本没到**，`Connection refused` 表示到了但被拒——两者的排查方向相反。超时时，先做一条与本项目无关的对照，它比任何云端检查都便宜：
+
+```bash
+nc -z -w 6 github.com 443 && echo OK || echo FAIL
+```
+
+**这条也失败，就是本机出网的问题，不要去查云端。**
+
+比继续在本机猜更有效的一步，是**从服务器反过来看**。用轻量云控制台的 OrcaTerm 免密登录（TAT 通道，不经本机出网），看此刻还有没有别的客户端连得进来：
+
+```bash
+date; sudo -n journalctl -u ssh --no-pager --since "-30min" | tail -10
+```
+
+互联网扫描器每隔几分钟就会敲一次 22 端口。**日志里有近几分钟来自其他 IP 的连接，就证明主机和云防火墙都正常，问题只在你到它的这条路径上**——别再去改防火墙或重启 sshd。只有当别人也连不进来时，才轮到查第 3 节的控制面和主机本身。
+
+排查本机侧时，有几个反复骗过人的观测要留意：
+
+- `ping` 通不代表 TCP 通；ICMP 和 TCP 在路径上可能被区别对待。
+- `curl` 读 `HTTP_PROXY`，`ssh` 和 `nc` 不读。测直连要用 `curl --noproxy '*'`。
+- 同一时刻 `nc` 报 `Connection refused` 而 `ssh` 报 `Operation timed out`，说明路径上有东西在干预，不是"端口没开"。
+- 直连可能只对部分目的地有效（国内通、境外不通是常见情形），所以对照目标要挑与本项目无关、且与云主机同区域的地址。
+
+**不要把 `lighthouse-deploy.sh` 改成走代理**：它的 `ssh`/`scp` 调用要和本文的手工步骤保持一致，代理属于操作者的网络环境，不属于部署配置。换一个网络（手机热点即可）是最快的验证手段。
+
+对照成功（本机出网正常）时才继续查云端，顺序是：控制台防火墙是否放行 TCP 22（第 3 节）→ 实例是否运行中 → 主机侧 sshd 与系统防火墙。查最后一项**不要再试 SSH**，用轻量云控制台的 OrcaTerm 免密登录（TAT 通道，不经本机出网）：
+
+```bash
+sudo -n ufw status; systemctl is-active ssh; ss -tln | grep ':22'
+sudo -n journalctl -u ssh --no-pager --since "-2h" | tail -20
+```
+
+sshd 日志里**没有你的出口 IP**，就是"包没到"的第二条证据，说明问题仍在链路而非主机。OrcaTerm 可以作为应急终端，但它替代不了部署：本文第 6 节起的步骤和 `lighthouse-deploy.sh` 都需要 `scp` 上传文件。
+
+脚本化路径的同一节见 [lighthouse-automation 第 14 节](./lighthouse-automation.md#14-常见失败)。
 
 ## 5. 手工安装 Docker Engine 与 Compose
 
@@ -508,6 +547,43 @@ sudo env COMPOSE_PROJECT_NAME="$ALH_PROJECT" \
 
 ### 14.2 在新卷执行恢复演练
 
+演练分两件事，别混在一起：
+
+1. **备份本身能不能恢复**——纯数据问题，不需要停服，随时可跑，应当定期跑。
+2. **恢复出来的卷能不能接管生产**——需要停写、切卷、验收，只在真正要恢复时做。
+
+第 1 件已经脚本化，跑一条命令就有结论和证据（详见 [lighthouse-automation 第 9.1 节](./lighthouse-automation.md#91-恢复演练gate-07)）：
+
+```bash
+cd /opt/agent-learning-hub/repository
+sudo install -d -m 0700 /var/backups/agent-learning-hub/restore-drill
+sudo docker run --rm --pull=missing \
+  --mount "type=bind,src=$PWD,dst=/workspace,readonly" \
+  --mount "type=volume,src=$ALH_STATE_VOLUME,dst=/data/state,readonly" \
+  --mount type=bind,src=/var/backups/agent-learning-hub/restore-drill,dst=/secure/drill \
+  --mount "type=volume,src=$ALH_TOOL_CACHE,dst=/workspace/code/node_modules" \
+  --env-file /etc/agent-learning-hub/backup.env \
+  --workdir /workspace \
+  node:24.18.0-bookworm \
+  bash -lc '
+    set -Eeuo pipefail
+    expected_hash=$(sha256sum code/package-lock.json | cut -d " " -f 1)
+    installed_hash=$(cat code/node_modules/.agent-learning-lock 2>/dev/null || true)
+    if [[ $installed_hash != "$expected_hash" ]]; then
+      npm ci --prefix code
+      printf "%s\n" "$expected_hash" > code/node_modules/.agent-learning-lock
+    fi
+    npm run drill:restore --prefix code -- \
+      --source /data/state/learning-state.sqlite --output-dir /secure/drill
+  '
+```
+
+它备份当前生产数据、在一个从未存在过数据库的干净目录里恢复、逐表比对行数，并用三组反向对照证明恢复路径确实会失败：错误口令、被改了一个字节的备份、往已存在的库上恢复。任何一条"本该失败却成功了"都会非零退出。证据落在 `/var/backups/agent-learning-hub/restore-drill/restore-drill.md`。
+
+> 状态卷是**只读**挂载的。这一步能成立的前提是卷里 `-shm` 还在——`-wal` 非空而 `-shm` 缺失时，只读打开会直接 `SQLITE_CANTOPEN`，报错不会提到任何一个文件名。所以永远不要手工搬运库文件。
+
+下面第 2 件仍然是手工的：脚本不切卷，也不停服。
+
 选择与目标应用版本兼容的备份，创建全新卷；恢复命令拒绝覆盖已有目标：
 
 ```bash
@@ -594,29 +670,31 @@ sudo docker stop agent-learning-hub-restore-drill
 
 ## 16. 与自动化脚本的对应关系
 
-[`lighthouse-deploy.sh`](../../code/scripts/lighthouse-deploy.sh) 把本文中**可安全自动化的服务器动作**包成九个 action。下表是逐节映射——脚本报错时，用它定位失败卡在本文的哪一步，然后回到那一节手工排查。
+[`lighthouse-deploy.sh`](../../code/scripts/lighthouse-deploy.sh) 把本文中**可安全自动化的服务器动作**包成十个 action。下表是逐节映射——脚本报错时，用它定位失败卡在本文的哪一步，然后回到那一节手工排查。
 
-| 本文章节                   | 脚本 action              | 自动化程度                                                             |
-| -------------------------- | ------------------------ | ---------------------------------------------------------------------- |
-| 第 3 节 腾讯云控制面       | —                        | **完全手工**。脚本不调用腾讯云 API                                     |
-| 第 4 节 SSH 配置与验证     | `preflight`              | 只读检查 SSH、架构、OS、sudo、磁盘、Docker、Caddy                      |
-| 第 5 节 安装 Docker        | `bootstrap`              | 全自动                                                                 |
-| 第 6 节 安装 Caddy         | `bootstrap`              | 全自动                                                                 |
-| 第 7 节 获取部署配置       | `deploy`（staging 阶段） | 从本机打包最小 bundle 上传，不在远端 clone 仓库                        |
-| 第 8 节 OAuth 与秘密文件   | `configure`              | 上传 root-only 环境文件；**OAuth App 本身仍需手工创建**                |
-| 第 9 节 首次启动           | `deploy`                 | 全自动，含健康等待                                                     |
-| 第 10 节 HTTPS 反向代理    | `bootstrap` + `deploy`   | 写入 Caddyfile 并 reload                                               |
-| 第 11 节 上线验收          | `verify`                 | 只覆盖内部健康 + 公网 HTTPS；**OAuth、多用户隔离、移动端仍需人工验收** |
-| 第 12.1 节 状态与日志      | `status` / `logs`        | 全自动                                                                 |
-| 第 12.2 节 加密备份        | `backup`                 | 全自动；**服务器外复制仍需手工**                                       |
-| 第 13 节 版本升级          | `deploy`                 | 自动含升级前备份                                                       |
-| 第 14.1 节 回滚应用镜像    | `rollback`               | 需 `LIGHTHOUSE_ROLLBACK_CONFIRMED=1`                                   |
-| 第 14.2–14.3 节 数据库恢复 | —                        | **完全手工**。脚本明确不做数据恢复                                     |
+| 本文章节                 | 脚本 action              | 自动化程度                                                             |
+| ------------------------ | ------------------------ | ---------------------------------------------------------------------- |
+| 第 3 节 腾讯云控制面     | —                        | **完全手工**。脚本不调用腾讯云 API                                     |
+| 第 4 节 SSH 配置与验证   | `preflight`              | 只读检查 SSH、架构、OS、sudo、磁盘、Docker、Caddy                      |
+| 第 5 节 安装 Docker      | `bootstrap`              | 全自动                                                                 |
+| 第 6 节 安装 Caddy       | `bootstrap`              | 全自动                                                                 |
+| 第 7 节 获取部署配置     | `deploy`（staging 阶段） | 从本机打包最小 bundle 上传，不在远端 clone 仓库                        |
+| 第 8 节 OAuth 与秘密文件 | `configure`              | 上传 root-only 环境文件；**OAuth App 本身仍需手工创建**                |
+| 第 9 节 首次启动         | `deploy`                 | 全自动，含健康等待                                                     |
+| 第 10 节 HTTPS 反向代理  | `bootstrap` + `deploy`   | 写入 Caddyfile 并 reload                                               |
+| 第 11 节 上线验收        | `verify`                 | 只覆盖内部健康 + 公网 HTTPS；**OAuth、多用户隔离、移动端仍需人工验收** |
+| 第 12.1 节 状态与日志    | `status` / `logs`        | 全自动                                                                 |
+| 第 12.2 节 加密备份      | `backup`                 | 全自动；**服务器外复制仍需手工**                                       |
+| 第 14.2 节 备份可恢复性  | `restore-drill`          | 全自动，含三组反向对照；只读挂载状态卷，不动运行中的发布               |
+| 第 13 节 版本升级        | `deploy`                 | 自动含升级前备份                                                       |
+| 第 14.1 节 回滚应用镜像  | `rollback`               | 需 `LIGHTHOUSE_ROLLBACK_CONFIRMED=1`                                   |
+| 第 14.2 节 切卷前的验证  | —                        | **完全手工**。启动候选卷、抽查数据                                     |
+| 第 14.3 节 切入生产      | —                        | **完全手工**。脚本不停服、不换卷、不删卷                               |
 
 三件事脚本永远不做，必须按本文手工完成：
 
 1. **腾讯云控制面** — 实例、防火墙、DNS、快照。
-2. **数据库恢复与切卷** — 第 14.2、14.3 节。`rollback` 只换镜像，不动数据。
+2. **切卷与数据恢复** — 第 14.3 节。`restore-drill` 只证明备份可恢复，从不接管生产；`rollback` 只换镜像，不动数据。
 3. **异地备份副本** — `backup` 只在服务器上生成加密文件。
 
 准备好用脚本执行时，转到 [lighthouse-automation.md](./lighthouse-automation.md)。

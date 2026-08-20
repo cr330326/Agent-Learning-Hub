@@ -1,13 +1,13 @@
 # Functional regression
 
 - Instance: http://127.0.0.1:3000
-- Generated: 2026-08-19T14:44:47.275Z
+- Generated: 2026-08-20T06:28:07.803Z
 - Checks: 23, failed: 0
 
 | Result | Check | Detail |
 | --- | --- | --- |
 | PASS | runtime mode detected | local |
-| PASS | internal links resolve | 131 internal links, all < 400 |
+| PASS | internal links resolve | 148 internal links, all < 400 |
 | PASS | header navigation reaches every section | 6 sections reachable |
 | PASS | roadmap rows open their stage | 9 rows; first opens 理解 Agent 是什么 |
 | PASS | stage pages chain prev/next | stage-0 and stage-8 boundaries correct |
@@ -18,11 +18,11 @@
 | PASS | search returns and filters results | 24 results, kind labels localised |
 | PASS | search results are not duplicated | 24 distinct results with per-result context |
 | PASS | reader opens the course document | 5126 characters rendered |
-| PASS | reader chapter tabs switch content | switched to 前言 |
+| PASS | reader chapter tabs switch content | switched to 第十六章 毕业设计：构建属于你的多智能体应用 |
 | PASS | reader has previous/next chapter links | next then previous round-trips |
 | PASS | reader in-body links are not dead ends | no unresolved document-relative links |
 | PASS | reader table of contents anchors exist | every TOC entry resolves to a heading |
-| PASS | course detail exposes references | 3 references, metadata localised |
+| PASS | course detail exposes references | 19 references, metadata localised |
 | PASS | bookmark persists and can be undone | bookmark round-trips to the dashboard |
 | PASS | stage task checkbox persists | "画出 agent loop" persisted across a reload |
 | PASS | stage page ticks tasks and roadmap shows it | stage tick round-trips; roadmap went "动作 0/3" → "动作 1/3" |

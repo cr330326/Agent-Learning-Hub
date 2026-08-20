@@ -65,10 +65,10 @@ jobs:
             cat /tmp/agent-learning-${{ matrix.mode }}.log
             exit 1
           fi
-          APP_URL=http://127.0.0.1:3100 EXPECTED_RUNTIME_MODE=${{ matrix.mode }} npm run test:e2e --prefix code
-          if [ "${{ matrix.mode }}" = "local" ]; then
-            APP_URL=http://127.0.0.1:3100 node code/tests/e2e/learning-state-http.mjs
-          fi
+          # Each mode script already runs the shared public smoke, then adds the
+          # learning-state gate its own access rules demand: Local Mode drives
+          # the fixed single user, Cloud Mode has to log in first.
+          APP_URL=http://127.0.0.1:3100 npm run test:e2e:${{ matrix.mode }} --prefix code
 
   dependency-and-secret-guards:
     name: dependency and secret guards

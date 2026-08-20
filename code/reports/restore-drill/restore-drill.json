@@ -1,0 +1,109 @@
+{
+  "generatedAt": "2026-08-20T05:25:23.279Z",
+  "source": "synthetic fixture",
+  "backupByteSize": 143437,
+  "sourceCounts": {
+    "users": 1,
+    "accounts": 1,
+    "sessions": 1,
+    "item_progress": 1,
+    "stage_task_progress": 1,
+    "notes": 1,
+    "bookmarks": 1,
+    "stage_outcomes": 1
+  },
+  "restoredCounts": {
+    "users": 1,
+    "accounts": 1,
+    "sessions": 1,
+    "item_progress": 1,
+    "stage_task_progress": 1,
+    "notes": 1,
+    "bookmarks": 1,
+    "stage_outcomes": 1
+  },
+  "steps": [
+    {
+      "name": "synthetic source database seeded",
+      "outcome": "pass",
+      "detail": "every private table"
+    },
+    {
+      "name": "source database carries rows to lose",
+      "outcome": "pass",
+      "detail": "{\"users\":1,\"accounts\":1,\"sessions\":1,\"item_progress\":1,\"stage_task_progress\":1,\"notes\":1,\"bookmarks\":1,\"stage_outcomes\":1}"
+    },
+    {
+      "name": "db:backup produces an encrypted backup",
+      "outcome": "pass",
+      "detail": ""
+    },
+    {
+      "name": "backup is encrypted, not a readable SQLite file",
+      "outcome": "pass",
+      "detail": ""
+    },
+    {
+      "name": "backup has not yet been proven restorable",
+      "outcome": "pass",
+      "detail": "null"
+    },
+    {
+      "name": "restore target environment is clean",
+      "outcome": "pass",
+      "detail": ""
+    },
+    {
+      "name": "db:restore rebuilds the database in the clean environment",
+      "outcome": "pass",
+      "detail": ""
+    },
+    {
+      "name": "restored database passes integrity_check",
+      "outcome": "pass",
+      "detail": "ok"
+    },
+    {
+      "name": "restored schema matches the source",
+      "outcome": "pass",
+      "detail": "10 tables"
+    },
+    {
+      "name": "every private table restores with the same row count",
+      "outcome": "pass",
+      "detail": "{\"users\":1,\"accounts\":1,\"sessions\":1,\"item_progress\":1,\"stage_task_progress\":1,\"notes\":1,\"bookmarks\":1,\"stage_outcomes\":1}"
+    },
+    {
+      "name": "the application reopens the restored database and reads every user",
+      "outcome": "pass",
+      "detail": "1 users"
+    },
+    {
+      "name": "the manifest records when the backup was proven restorable",
+      "outcome": "pass",
+      "detail": "2026-08-20T05:25:21.355Z"
+    },
+    {
+      "name": "a wrong passphrase cannot restore the backup",
+      "outcome": "pass",
+      "detail": "exit 1"
+    },
+    {
+      "name": "a tampered backup is rejected by authenticated decryption",
+      "outcome": "pass",
+      "detail": "exit 1"
+    },
+    {
+      "name": "restoring over an existing database is refused",
+      "outcome": "pass",
+      "detail": "exit 1"
+    },
+    {
+      "name": "restoring without --yes is refused",
+      "outcome": "pass",
+      "detail": "exit 1"
+    }
+  ],
+  "passed": 16,
+  "failed": 0
+}

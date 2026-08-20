@@ -150,8 +150,17 @@ async function main() {
     if (message.type() === "error") consoleErrors.push(message.text());
   });
 
+  // Third-party READMEs embed remote badge images (shields.io, contrib.rocks,
+  // trendshift), and the reader deliberately keeps them — sanitised but still
+  // absolute. Waiting for "networkidle" therefore makes this suite depend on
+  // whether the machine running it can reach those hosts: when one of them
+  // hangs, every navigation fails on a 30s timeout and the report blames the
+  // reader for a network condition. These checks assert DOM structure and
+  // learning-state round-trips, none of which need images to finish, so wait
+  // for the document instead. Anything genuinely async is awaited by the
+  // individual checks through waitFor().
   const goto = (path) =>
-    page.goto(base + path, { waitUntil: "networkidle", timeout: 30000 });
+    page.goto(base + path, { waitUntil: "domcontentloaded", timeout: 30000 });
 
   try {
     // Cloud and Local expose deliberately different capabilities, so the
@@ -644,7 +653,7 @@ async function main() {
         await box.click();
         await waitFor(() => box.isChecked());
 
-        await page.reload({ waitUntil: "networkidle" });
+        await page.reload({ waitUntil: "domcontentloaded" });
         await waitFor(() =>
           page.locator(".dashboard-task input").first().isChecked(),
         );
@@ -684,7 +693,7 @@ async function main() {
           const target = page.locator(".task-check input").first();
           await target.click();
           await waitFor(() => target.isChecked());
-          await page.reload({ waitUntil: "networkidle" });
+          await page.reload({ waitUntil: "domcontentloaded" });
           await waitFor(() =>
             page.locator(".task-check input").first().isChecked(),
           );

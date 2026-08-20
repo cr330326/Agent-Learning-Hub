@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-19T14:43:28.214Z",
+  "generatedAt": "2026-08-20T06:30:13.417Z",
   "baseUrl": "http://127.0.0.1:3000",
   "pages": [
     {
@@ -60,7 +60,7 @@
       "path": "/search?q=agent",
       "viewport": "desktop",
       "status": 200,
-      "height": 3920
+      "height": 3916
     },
     {
       "path": "/projects",
@@ -156,7 +156,7 @@
       "path": "/search?q=agent",
       "viewport": "tablet",
       "status": 200,
-      "height": 3833
+      "height": 3898
     },
     {
       "path": "/projects",
@@ -252,7 +252,7 @@
       "path": "/search?q=agent",
       "viewport": "mobile",
       "status": 200,
-      "height": 4868
+      "height": 5155
     },
     {
       "path": "/projects",

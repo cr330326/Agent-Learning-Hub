@@ -14,7 +14,7 @@
 
 ## 脚本按运行位置分类
 
-`code/scripts/` 下 13 个脚本，按**在哪台机器上执行**和**作用于什么**分三类。区分这两件事很重要：`image-release.sh` 和 `lighthouse-deploy.sh` 都在你自己电脑上跑，但作用对象是云端。
+`code/scripts/` 下 14 个脚本，按**在哪台机器上执行**和**作用于什么**分三类。区分这两件事很重要：`image-release.sh` 和 `lighthouse-deploy.sh` 都在你自己电脑上跑，但作用对象是云端。
 
 ### 甲、本机运行、作用于本机（学习与开发）
 
@@ -30,6 +30,7 @@
 | `baseline-report.mjs`          | `npm run audit:baseline`                | 旧站能力基线（迁移期历史工具）                                                     | `learning-site/`             |
 | `ui-review.mjs`                | `npm run audit:ui`                      | 三档视口版式走查                                                                   | **运行中的服务**、Playwright |
 | `functional-regression.mjs`    | `npm run audit:functional`              | 真实点击的功能回归                                                                 | **运行中的服务**、Playwright |
+| `restore-drill.ts`             | `npm run drill:restore`                 | 备份→干净环境恢复演练，附错误口令/篡改/覆盖三组反向对照                            | `BACKUP_PASSPHRASE`          |
 | `convert-legacy-content.mjs`   | ~~`npm run convert:legacy`~~            | **已废弃**，见 [ADR 0006](../adr/0006-catalog-is-hand-maintained.md)，仅作溯源保留 | —                            |
 
 `audit:ui` 和 `audit:functional` 需要运行中的服务和浏览器，因此**不进** `npm run check`；`audit:materials` 依赖仓库之外的素材库，同样不进。三者都自己非零退出，各自作为独立门禁使用。
@@ -48,12 +49,15 @@
 
 ### 丙、作用于云端
 
-| 脚本                   | 在哪执行   | 作用于        | 用途                                                         |
-| ---------------------- | ---------- | ------------- | ------------------------------------------------------------ |
-| `image-release.sh`     | **本机**   | 镜像仓库      | 交叉构建 `linux/amd64` 并推送固定版本，拒绝 `latest`         |
-| `lighthouse-deploy.sh` | **本机**   | 云主机（SSH） | 预检、装机、传秘密、部署、备份、回滚、验证、状态、日志       |
-| `docker-deploy.sh`     | **云主机** | 云主机        | `release` 模式跑固定镜像；由 `lighthouse-deploy.sh` 打包上传 |
-| `database.ts`          | **云主机** | 生产 SQLite   | 加密备份与恢复；在维护容器里执行，不用 `cp` 复制运行中的库   |
+| 脚本                   | 在哪执行   | 作用于        | 用途                                                                     |
+| ---------------------- | ---------- | ------------- | ------------------------------------------------------------------------ |
+| `image-release.sh`     | **本机**   | 镜像仓库      | 交叉构建 `linux/amd64` 并推送固定版本，拒绝 `latest`                     |
+| `lighthouse-deploy.sh` | **本机**   | 云主机（SSH） | 预检、装机、传秘密、部署、备份、恢复演练、回滚、验证、状态、日志         |
+| `docker-deploy.sh`     | **云主机** | 云主机        | `release` 模式跑固定镜像；由 `lighthouse-deploy.sh` 打包上传             |
+| `database.ts`          | **云主机** | 生产 SQLite   | 加密备份与恢复；在维护容器里执行，不用 `cp` 复制运行中的库               |
+| `restore-drill.ts`     | **云主机** | 生产 SQLite   | 由 `lighthouse-deploy.sh restore-drill` 在维护容器里执行；只读挂载状态卷 |
+
+`restore-drill.ts` 同时出现在甲、丙两类：本机跑的是合成 fixture（不需要任何生产数据，任何人都能复现），云主机跑的是**当前生产数据**的真实演练。两者跑的是同一段代码和同一组反向对照。
 
 正式发布优先走 `v*.*.*` Git tag 触发的 [`release.yml`](../../.github/workflows/release.yml)——同一个 Dockerfile，额外附带 SBOM 和签名溯源。`image-release.sh` 是 CI 到不了的镜像仓库或主机时的手工路径。
 
@@ -66,7 +70,7 @@
 - 只部署固定版本标签或 `sha256` digest，禁止 `latest`。
 - Cloud 镜像不包含、不挂载、不代理 `local-courses/`。
 - 应用端口仅监听 `127.0.0.1`；公网只开放反向代理的 `80/443`。
-- SQLite、WAL 和共享内存文件位于同一个持久化卷；运行中不得只复制主数据库文件。
+- SQLite、WAL 和共享内存文件位于同一个持久化卷；运行中不得只复制主数据库文件。漏掉 `-shm` 的后果已实测：`-wal` 非空而 `-shm` 缺失时，只读挂载下打开数据库会直接 `SQLITE_CANTOPEN`，备份和演练一起失败。始终走 `db:backup`（内部用 SQLite 在线备份 API）。
 - 升级前执行项目原生的一致性加密备份；每日备份还必须复制到服务器之外。
 - 应用回滚与数据库恢复是两个不同动作。旧镜像能否读取新 schema 必须先确认；不能确认时恢复升级前备份到新卷。
 - Lighthouse 系统盘快照是额外的主机级保护，不替代应用一致性备份、异地副本或恢复演练。
@@ -79,7 +83,7 @@
 3. 在腾讯云控制台完成人工控制面准备：实例、SSH 密钥、防火墙、DNS 和必要快照。
 4. 运行自动化脚本的 `preflight` 与 dry-run，确认目标主机和固定镜像。
 5. 首次执行 `bootstrap`、`configure`、`deploy`，随后完成公开页面、OAuth 与管理员边界验收。
-6. 配置每日 `backup` 和服务器外复制，执行一次干净卷恢复演练。
+6. 配置每日 `backup` 和服务器外复制，执行一次干净环境恢复演练（`code/scripts/lighthouse-deploy.sh restore-drill`，或手工文档第 14.2 节）。
 7. 将日期、镜像 digest、备份 manifest、耗时和结果写入新的 `docs/acceptance/` 证据；确认真实结果后再按项目流程更新任务状态。
 
 ## 官方平台参考

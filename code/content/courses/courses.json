@@ -29,6 +29,86 @@
         "localPath": "Learning/hello-agents/docs/前言.md"
       },
       {
+        "label": "第一章 初识智能体",
+        "sourceUrl": null,
+        "localPath": "Learning/hello-agents/docs/chapter1/第一章 初识智能体.md"
+      },
+      {
+        "label": "第二章 智能体发展史",
+        "sourceUrl": null,
+        "localPath": "Learning/hello-agents/docs/chapter2/第二章 智能体发展史.md"
+      },
+      {
+        "label": "第三章 大语言模型基础",
+        "sourceUrl": null,
+        "localPath": "Learning/hello-agents/docs/chapter3/第三章 大语言模型基础.md"
+      },
+      {
+        "label": "第四章 智能体经典范式构建",
+        "sourceUrl": null,
+        "localPath": "Learning/hello-agents/docs/chapter4/第四章 智能体经典范式构建.md"
+      },
+      {
+        "label": "第五章 基于低代码平台的智能体搭建",
+        "sourceUrl": null,
+        "localPath": "Learning/hello-agents/docs/chapter5/第五章 基于低代码平台的智能体搭建.md"
+      },
+      {
+        "label": "第六章 框架开发实践",
+        "sourceUrl": null,
+        "localPath": "Learning/hello-agents/docs/chapter6/第六章 框架开发实践.md"
+      },
+      {
+        "label": "第七章 构建你的智能体框架",
+        "sourceUrl": null,
+        "localPath": "Learning/hello-agents/docs/chapter7/第七章 构建你的Agent框架.md"
+      },
+      {
+        "label": "第八章 记忆与检索",
+        "sourceUrl": null,
+        "localPath": "Learning/hello-agents/docs/chapter8/第八章 记忆与检索.md"
+      },
+      {
+        "label": "第九章 上下文工程",
+        "sourceUrl": null,
+        "localPath": "Learning/hello-agents/docs/chapter9/第九章 上下文工程.md"
+      },
+      {
+        "label": "第十章 智能体通信协议",
+        "sourceUrl": null,
+        "localPath": "Learning/hello-agents/docs/chapter10/第十章 智能体通信协议.md"
+      },
+      {
+        "label": "第十一章 Agentic-RL",
+        "sourceUrl": null,
+        "localPath": "Learning/hello-agents/docs/chapter11/第十一章 Agentic-RL.md"
+      },
+      {
+        "label": "第十二章 智能体性能评估",
+        "sourceUrl": null,
+        "localPath": "Learning/hello-agents/docs/chapter12/第十二章 智能体性能评估.md"
+      },
+      {
+        "label": "第十三章 智能旅行助手",
+        "sourceUrl": null,
+        "localPath": "Learning/hello-agents/docs/chapter13/第十三章 智能旅行助手.md"
+      },
+      {
+        "label": "第十四章 自动化深度研究智能体",
+        "sourceUrl": null,
+        "localPath": "Learning/hello-agents/docs/chapter14/第十四章 自动化深度研究智能体.md"
+      },
+      {
+        "label": "第十五章 构建赛博小镇",
+        "sourceUrl": null,
+        "localPath": "Learning/hello-agents/docs/chapter15/第十五章 构建赛博小镇.md"
+      },
+      {
+        "label": "第十六章 毕业设计：构建属于你的多智能体应用",
+        "sourceUrl": null,
+        "localPath": "Learning/hello-agents/docs/chapter16/第十六章 毕业设计.md"
+      },
+      {
         "label": "GitHub",
         "sourceUrl": "https://github.com/datawhalechina/hello-agents",
         "localPath": null
@@ -176,6 +256,51 @@
         "label": "s01 Agent Loop",
         "sourceUrl": null,
         "localPath": "Learning/claw0/sessions/zh/s01_agent_loop.md"
+      },
+      {
+        "label": "第 02 节: 工具使用",
+        "sourceUrl": null,
+        "localPath": "Learning/claw0/sessions/zh/s02_tool_use.md"
+      },
+      {
+        "label": "第 03 节: 会话与上下文保护",
+        "sourceUrl": null,
+        "localPath": "Learning/claw0/sessions/zh/s03_sessions.md"
+      },
+      {
+        "label": "第 04 节: 通道",
+        "sourceUrl": null,
+        "localPath": "Learning/claw0/sessions/zh/s04_channels.md"
+      },
+      {
+        "label": "第 05 节: 网关与路由",
+        "sourceUrl": null,
+        "localPath": "Learning/claw0/sessions/zh/s05_gateway_routing.md"
+      },
+      {
+        "label": "第 06 节: 智能层",
+        "sourceUrl": null,
+        "localPath": "Learning/claw0/sessions/zh/s06_intelligence.md"
+      },
+      {
+        "label": "第 07 节: 心跳与 Cron",
+        "sourceUrl": null,
+        "localPath": "Learning/claw0/sessions/zh/s07_heartbeat_cron.md"
+      },
+      {
+        "label": "第 08 节: 消息投递",
+        "sourceUrl": null,
+        "localPath": "Learning/claw0/sessions/zh/s08_delivery.md"
+      },
+      {
+        "label": "第 09 节: 弹性",
+        "sourceUrl": null,
+        "localPath": "Learning/claw0/sessions/zh/s09_resilience.md"
+      },
+      {
+        "label": "第 10 节: 并发",
+        "sourceUrl": null,
+        "localPath": "Learning/claw0/sessions/zh/s10_concurrency.md"
       },
       {
         "label": "GitHub",
@@ -362,6 +487,66 @@
         "label": "本地 README（中文）",
         "sourceUrl": null,
         "localPath": "AICoding/claude/document/learn-claude-code/README-zh.md"
+      },
+      {
+        "label": "s01: The Agent Loop (Agent 循环)",
+        "sourceUrl": null,
+        "localPath": "AICoding/claude/document/learn-claude-code/docs/zh/s01-the-agent-loop.md"
+      },
+      {
+        "label": "s02: Tool Use (工具使用)",
+        "sourceUrl": null,
+        "localPath": "AICoding/claude/document/learn-claude-code/docs/zh/s02-tool-use.md"
+      },
+      {
+        "label": "s03: TodoWrite (待办写入)",
+        "sourceUrl": null,
+        "localPath": "AICoding/claude/document/learn-claude-code/docs/zh/s03-todo-write.md"
+      },
+      {
+        "label": "s04: Subagents (Subagent)",
+        "sourceUrl": null,
+        "localPath": "AICoding/claude/document/learn-claude-code/docs/zh/s04-subagent.md"
+      },
+      {
+        "label": "s05: Skills (Skill 加载)",
+        "sourceUrl": null,
+        "localPath": "AICoding/claude/document/learn-claude-code/docs/zh/s05-skill-loading.md"
+      },
+      {
+        "label": "s06: Context Compact (上下文压缩)",
+        "sourceUrl": null,
+        "localPath": "AICoding/claude/document/learn-claude-code/docs/zh/s06-context-compact.md"
+      },
+      {
+        "label": "s07: Task System (任务系统)",
+        "sourceUrl": null,
+        "localPath": "AICoding/claude/document/learn-claude-code/docs/zh/s07-task-system.md"
+      },
+      {
+        "label": "s08: Background Tasks (后台任务)",
+        "sourceUrl": null,
+        "localPath": "AICoding/claude/document/learn-claude-code/docs/zh/s08-background-tasks.md"
+      },
+      {
+        "label": "s09: Agent Teams (Agent 团队)",
+        "sourceUrl": null,
+        "localPath": "AICoding/claude/document/learn-claude-code/docs/zh/s09-agent-teams.md"
+      },
+      {
+        "label": "s10: Team Protocols (团队协议)",
+        "sourceUrl": null,
+        "localPath": "AICoding/claude/document/learn-claude-code/docs/zh/s10-team-protocols.md"
+      },
+      {
+        "label": "s11: Autonomous Agents (Autonomous Agent)",
+        "sourceUrl": null,
+        "localPath": "AICoding/claude/document/learn-claude-code/docs/zh/s11-autonomous-agents.md"
+      },
+      {
+        "label": "s12: Worktree + Task Isolation (Worktree 任务隔离)",
+        "sourceUrl": null,
+        "localPath": "AICoding/claude/document/learn-claude-code/docs/zh/s12-worktree-task-isolation.md"
       },
       {
         "label": "GitHub",
@@ -847,6 +1032,86 @@
         "localPath": "AICoding/openclaw/channels/openclaw-lark/README.zh.md"
       },
       {
+        "label": "第一章 认识 OpenClaw",
+        "sourceUrl": null,
+        "localPath": "AICoding/openclaw/doc/openclaw_guide/01_overview/README.md"
+      },
+      {
+        "label": "第二章 环境准备与安装部署",
+        "sourceUrl": null,
+        "localPath": "AICoding/openclaw/doc/openclaw_guide/02_setup/README.md"
+      },
+      {
+        "label": "第三章 快速上手与首轮对话实战",
+        "sourceUrl": null,
+        "localPath": "AICoding/openclaw/doc/openclaw_guide/03_minimal_loop/README.md"
+      },
+      {
+        "label": "第四章 配置体系与模型治理",
+        "sourceUrl": null,
+        "localPath": "AICoding/openclaw/doc/openclaw_guide/04_config_models/README.md"
+      },
+      {
+        "label": "第五章 工具系统、技能与插件",
+        "sourceUrl": null,
+        "localPath": "AICoding/openclaw/doc/openclaw_guide/05_tools_skills/README.md"
+      },
+      {
+        "label": "第六章 会话、上下文与记忆",
+        "sourceUrl": null,
+        "localPath": "AICoding/openclaw/doc/openclaw_guide/06_context_memory/README.md"
+      },
+      {
+        "label": "第七章 多渠道分发与多智能体协作",
+        "sourceUrl": null,
+        "localPath": "AICoding/openclaw/doc/openclaw_guide/07_multi_agent/README.md"
+      },
+      {
+        "label": "第八章 自动化与运维安全实践",
+        "sourceUrl": null,
+        "localPath": "AICoding/openclaw/doc/openclaw_guide/08_automation_ops/README.md"
+      },
+      {
+        "label": "第九章 Gateway 控制平面与协议机制",
+        "sourceUrl": null,
+        "localPath": "AICoding/openclaw/doc/openclaw_guide/09_gateway_protocol/README.md"
+      },
+      {
+        "label": "第十章 Agent Loop 运行内核剖析",
+        "sourceUrl": null,
+        "localPath": "AICoding/openclaw/doc/openclaw_guide/10_agent_loop/README.md"
+      },
+      {
+        "label": "第十一章 可靠性与安全机制实现",
+        "sourceUrl": null,
+        "localPath": "AICoding/openclaw/doc/openclaw_guide/11_reliability_security/README.md"
+      },
+      {
+        "label": "第十二章 插件扩展与生产落地",
+        "sourceUrl": null,
+        "localPath": "AICoding/openclaw/doc/openclaw_guide/12_extension_engineering/README.md"
+      },
+      {
+        "label": "第十三章 实战案例集锦",
+        "sourceUrl": null,
+        "localPath": "AICoding/openclaw/doc/openclaw_guide/13_practical_cases/README.md"
+      },
+      {
+        "label": "第十四章 性能与成本优化实战",
+        "sourceUrl": null,
+        "localPath": "AICoding/openclaw/doc/openclaw_guide/14_performance_cost/README.md"
+      },
+      {
+        "label": "第十五章 故障诊断决策",
+        "sourceUrl": null,
+        "localPath": "AICoding/openclaw/doc/openclaw_guide/15_troubleshooting_trees/README.md"
+      },
+      {
+        "label": "第十六章 与主流 AI 生态集成",
+        "sourceUrl": null,
+        "localPath": "AICoding/openclaw/doc/openclaw_guide/16_claude_ecosystem/README.md"
+      },
+      {
         "label": "GitHub",
         "sourceUrl": "https://github.com/openclaw/openclaw",
         "localPath": null
@@ -1204,6 +1469,66 @@
         "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/index.md"
       },
       {
+        "label": "第一讲. 模型能力强，不等于执行可靠",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-01-why-capable-agents-still-fail/index.md"
+      },
+      {
+        "label": "第二讲. Harness 到底是什么",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-02-what-a-harness-actually-is/index.md"
+      },
+      {
+        "label": "第三讲. 让代码仓库成为唯一的事实来源",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-03-why-the-repository-must-become-the-system-of-record/index.md"
+      },
+      {
+        "label": "第四讲. 把指令拆分到不同文件里",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-04-why-one-giant-instruction-file-fails/index.md"
+      },
+      {
+        "label": "第五讲. 让跨会话的任务保持上下文连续",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-05-why-long-running-tasks-lose-continuity/index.md"
+      },
+      {
+        "label": "第六讲. 让 agent 每次工作前先初始化",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-06-why-initialization-needs-its-own-phase/index.md"
+      },
+      {
+        "label": "第七讲. 给 agent 划清每次任务的边界",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-07-why-agents-overreach-and-under-finish/index.md"
+      },
+      {
+        "label": "第八讲. 用功能清单约束 agent 该做什么",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-08-why-feature-lists-are-harness-primitives/index.md"
+      },
+      {
+        "label": "第九讲. 防止 agent 提前宣告完成",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-09-why-agents-declare-victory-too-early/index.md"
+      },
+      {
+        "label": "第十讲. 跑通完整流程才算真正验证",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-10-why-end-to-end-testing-changes-results/index.md"
+      },
+      {
+        "label": "第十一讲. 让 agent 的运行过程可观测",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-11-why-observability-belongs-inside-the-harness/index.md"
+      },
+      {
+        "label": "第十二讲. 每次会话结束前都做好交接",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/learn-harness-engineering/docs/zh/lectures/lecture-12-why-every-session-must-leave-a-clean-state/index.md"
+      },
+      {
         "label": "GitHub",
         "sourceUrl": "https://github.com/walkinglabs/learn-harness-engineering",
         "localPath": null
@@ -1312,6 +1637,196 @@
         "label": "本地前言",
         "sourceUrl": null,
         "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/preface.md"
+      },
+      {
+        "label": "第1章：AI 编码 Agent 的完整技术栈",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch01.md"
+      },
+      {
+        "label": "第2章：工具系统 — 40+ 个工具作为模型的双手",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch02.md"
+      },
+      {
+        "label": "第3章：Agent Loop — 从用户输入到模型响应的完整生命周期",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch03.md"
+      },
+      {
+        "label": "第4章：工具执行编排 -- 权限、并发、流式与中断",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch04.md"
+      },
+      {
+        "label": "第4b章：计划模式 — 从\"先做后看\"到\"先看后做\"",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch04b.md"
+      },
+      {
+        "label": "第5章：系统提示词架构",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch05.md"
+      },
+      {
+        "label": "第6章：通过提示词引导行为",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch06.md"
+      },
+      {
+        "label": "第6b章：API 通信层 — 重试、流式与降级工程",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch06b.md"
+      },
+      {
+        "label": "第7章：模型特定调优与 A/B 测试",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch07.md"
+      },
+      {
+        "label": "第8章：工具提示词作为微型驾驭器",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch08.md"
+      },
+      {
+        "label": "第9章：自动压缩 — 上下文何时以及如何被压缩",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch09.md"
+      },
+      {
+        "label": "第10章：压缩后的文件状态保留",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch10.md"
+      },
+      {
+        "label": "第11章：微压缩 — 精准上下文修剪",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch11.md"
+      },
+      {
+        "label": "第12章：Token 预算策略",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch12.md"
+      },
+      {
+        "label": "第13章：缓存架构与断点设计",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part4/ch13.md"
+      },
+      {
+        "label": "第14章：缓存中断检测系统",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part4/ch14.md"
+      },
+      {
+        "label": "第15章：缓存优化模式",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part4/ch15.md"
+      },
+      {
+        "label": "第16章：权限系统",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch16.md"
+      },
+      {
+        "label": "第17章：YOLO 分类器",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch17.md"
+      },
+      {
+        "label": "第17b章：提示注入防御 — 从 Unicode 清洗到纵深防御",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch17b.md"
+      },
+      {
+        "label": "第18章：Hooks — 用户自定义拦截点",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch18.md"
+      },
+      {
+        "label": "第18b章：沙箱系统 — 从 Seatbelt 到 Bubblewrap 的多平台隔离",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch18b.md"
+      },
+      {
+        "label": "第19章：CLAUDE.md — 用户指令作为覆盖层",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch19.md"
+      },
+      {
+        "label": "第20章：Agent 派生与编排",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch20.md"
+      },
+      {
+        "label": "第20b章：Teams 与多进程协作",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch20b.md"
+      },
+      {
+        "label": "第20c章：Ultraplan — 远程多代理规划",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch20c.md"
+      },
+      {
+        "label": "第21章：Effort、Fast Mode 与 Thinking",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch21.md"
+      },
+      {
+        "label": "第22章：技能系统 -- 从内置到用户自定义",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch22.md"
+      },
+      {
+        "label": "第22b章：插件系统 — 从打包到市场的扩展工程",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch22b.md"
+      },
+      {
+        "label": "第23章：未发布功能管线 -- 89 个 Feature Flag 背后的路线图",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch23.md"
+      },
+      {
+        "label": "补充章：跨会话记忆 — 从遗忘到持久学习",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch23b.md"
+      },
+      {
+        "label": "第24章：跨会话记忆 — 从遗忘到持久学习",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch24.md"
+      },
+      {
+        "label": "第25章：驾驭工程原则",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch25.md"
+      },
+      {
+        "label": "第26章：上下文管理作为核心能力",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch26.md"
+      },
+      {
+        "label": "第27章：生产级 AI 编码模式",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch27.md"
+      },
+      {
+        "label": "第28章：Claude Code 的不足之处（以及你能修复什么）",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch28.md"
+      },
+      {
+        "label": "第29章：可观测性工程 — 从 logEvent 到生产级遥测",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch29.md"
+      },
+      {
+        "label": "第30章：构建你自己的 AI Agent — 从 Claude Code 模式到实战",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch30.md"
       },
       {
         "label": "GitHub",
@@ -2105,6 +2620,41 @@
         "label": "用户手册（中文）",
         "sourceUrl": null,
         "localPath": "Application/cc-switch/docs/user-manual/zh/README.md"
+      },
+      {
+        "label": "在 Codex 中用 Claude：CC Switch 本地路由攻略",
+        "sourceUrl": null,
+        "localPath": "Application/cc-switch/docs/guides/codex-claude-routing-guide-zh.md"
+      },
+      {
+        "label": "在 Codex 中用 DeepSeek 这类 Chat 格式 API：CC Switch 本地路由攻略",
+        "sourceUrl": null,
+        "localPath": "Application/cc-switch/docs/guides/codex-deepseek-routing-guide-zh.md"
+      },
+      {
+        "label": "Codex 桌面应用里看不到自定义模型？（常见问题）",
+        "sourceUrl": null,
+        "localPath": "Application/cc-switch/docs/guides/codex-desktop-custom-model-visibility-zh.md"
+      },
+      {
+        "label": "在 Codex 中用 Kimi：CC Switch 本地路由攻略",
+        "sourceUrl": null,
+        "localPath": "Application/cc-switch/docs/guides/codex-kimi-routing-guide-zh.md"
+      },
+      {
+        "label": "使用第三方 API 时保留 Codex 远程操作和官方插件：CC Switch 配置攻略",
+        "sourceUrl": null,
+        "localPath": "Application/cc-switch/docs/guides/codex-official-auth-preservation-guide-zh.md"
+      },
+      {
+        "label": "统一 Codex 会话历史：功能介绍与使用攻略（CC Switch）",
+        "sourceUrl": null,
+        "localPath": "Application/cc-switch/docs/guides/codex-unified-session-history-guide-zh.md"
+      },
+      {
+        "label": "CC Switch 代理功能使用指南",
+        "sourceUrl": null,
+        "localPath": "Application/cc-switch/docs/guides/proxy-guide-zh.md"
       },
       {
         "label": "GitHub",

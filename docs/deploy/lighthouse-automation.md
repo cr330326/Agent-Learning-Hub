@@ -2,7 +2,7 @@
 
 本文把[完全手工生产部署与运维](./production-manual.md)中可安全自动化的服务器动作，映射为本地脚本 [`code/scripts/lighthouse-deploy.sh`](../../code/scripts/lighthouse-deploy.sh)。默认 SSH 目标是 `tencent-lighthouse`；脚本从本机上传最小发布/维护 bundle，远端只拉取固定应用镜像，不构建 Next.js。
 
-> 文档核对日期：2026-08-15。当前仓库没有连接或改动真实 Lighthouse，也没有完成 T7.3/T7.5 的生产验收。本文可供后续人员或 Agent 直接执行，但每次外部变更仍须由操作者明确发起并保留证据。
+> 文档核对日期：2026-08-19。当前仓库没有连接或改动真实 Lighthouse，也没有完成 T7.3/T7.5 的生产验收。本文可供后续人员或 Agent 直接执行，但每次外部变更仍须由操作者明确发起并保留证据。
 
 ## 0. 开始之前
 
@@ -16,7 +16,7 @@
 | 云端**手工**部署 | [production-manual.md](./production-manual.md) | 第一次上线，或需要理解每一步在做什么 |
 | 云端**脚本**部署 | **本文**                                       | 已经理解流程后的重复执行             |
 
-**第一次上线不建议直接用本文。** 脚本把手工文档的服务器动作压成九个 action，出错时错误信息指向的是脚本内部状态，你需要先知道那一步原本要做什么。逐节对应关系见 [production-manual 第 16 节](./production-manual.md#16-与自动化脚本的对应关系)。
+**第一次上线不建议直接用本文。** 脚本把手工文档的服务器动作压成十个 action，出错时错误信息指向的是脚本内部状态，你需要先知道那一步原本要做什么。逐节对应关系见 [production-manual 第 16 节](./production-manual.md#16-与自动化脚本的对应关系)。
 
 ### 0.2 脚本在哪里执行
 
@@ -27,25 +27,27 @@
 ─────────                              ──────
 lighthouse-deploy.sh  ──── SSH/scp ──▶  docker-deploy.sh release
                                         database.ts（维护容器内）
+                                        restore-drill.ts（维护容器内）
                                         Caddy / Docker Engine
 image-release.sh      ──── push ────▶  镜像仓库 ──── pull ──▶ 云主机
 ```
 
 镜像构建推送是**独立的前置步骤**，不由本脚本完成：先 `image-release.sh --push <version>` 拿到 digest（或等 `v*.*.*` tag 触发的 release workflow），再把 digest 传给 `LIGHTHOUSE_IMAGE`。完整分类见 [docs/deploy/README.md](./README.md#脚本按运行位置分类)。
 
-### 0.3 九个 action 速查
+### 0.3 十个 action 速查
 
-| Action      | 幂等 | 会改服务器 | 必需环境变量                                            | 用途                                          |
-| ----------- | ---- | ---------- | ------------------------------------------------------- | --------------------------------------------- |
-| `preflight` | 是   | 否（只读） | —                                                       | SSH、架构、OS、sudo、磁盘、Docker、Caddy 检查 |
-| `bootstrap` | 是   | 是         | —                                                       | 装 Docker Engine/Compose 与 Caddy             |
-| `configure` | 是   | 是         | `LIGHTHOUSE_DOMAIN`、`LIGHTHOUSE_ENV_FILE`              | 上传 root-only 秘密文件                       |
-| `deploy`    | 是   | 是         | `LIGHTHOUSE_DOMAIN`、`LIGHTHOUSE_IMAGE`                 | 备份 → 上传 bundle → 起固定镜像               |
-| `backup`    | 是   | 是         | —（首次后 `LIGHTHOUSE_BACKUP_ENV_FILE` 可省）           | 原生加密 SQLite 备份                          |
-| `rollback`  | 否   | 是         | `LIGHTHOUSE_DOMAIN` + `LIGHTHOUSE_ROLLBACK_CONFIRMED=1` | 启动上一个固定版本；**不恢复数据**            |
-| `verify`    | 是   | 否         | `LIGHTHOUSE_DOMAIN`                                     | 内部健康 + 公网 HTTPS                         |
-| `status`    | 是   | 否         | —                                                       | 发布指针、Compose、Docker、Caddy、磁盘        |
-| `logs`      | 是   | 否         | —                                                       | 跟随应用容器日志                              |
+| Action          | 幂等 | 会改服务器         | 必需环境变量                                            | 用途                                          |
+| --------------- | ---- | ------------------ | ------------------------------------------------------- | --------------------------------------------- |
+| `preflight`     | 是   | 否（只读）         | —                                                       | SSH、架构、OS、sudo、磁盘、Docker、Caddy 检查 |
+| `bootstrap`     | 是   | 是                 | —                                                       | 装 Docker Engine/Compose 与 Caddy             |
+| `configure`     | 是   | 是                 | `LIGHTHOUSE_DOMAIN`、`LIGHTHOUSE_ENV_FILE`              | 上传 root-only 秘密文件                       |
+| `deploy`        | 是   | 是                 | `LIGHTHOUSE_DOMAIN`、`LIGHTHOUSE_IMAGE`                 | 备份 → 上传 bundle → 起固定镜像               |
+| `backup`        | 是   | 是                 | —（首次后 `LIGHTHOUSE_BACKUP_ENV_FILE` 可省）           | 原生加密 SQLite 备份                          |
+| `restore-drill` | 是   | 是（只写演练目录） | —（同 `backup`）                                        | 证明备份能恢复；**只读读状态卷，不动发布**    |
+| `rollback`      | 否   | 是                 | `LIGHTHOUSE_DOMAIN` + `LIGHTHOUSE_ROLLBACK_CONFIRMED=1` | 启动上一个固定版本；**不恢复数据**            |
+| `verify`        | 是   | 否                 | `LIGHTHOUSE_DOMAIN`                                     | 内部健康 + 公网 HTTPS                         |
+| `status`        | 是   | 否                 | —                                                       | 发布指针、Compose、Docker、Caddy、磁盘        |
+| `logs`          | 是   | 否                 | —                                                       | 跟随应用容器日志                              |
 
 任何 action 都可以先加 `LIGHTHOUSE_DRY_RUN=1` 跑一遍：它校验参数、打印将要执行的动作，不做任何 SSH 写入。**第一次执行 `bootstrap`、`configure`、`deploy`、`rollback` 前都应该先 dry-run。**
 
@@ -282,6 +284,30 @@ code/scripts/lighthouse-deploy.sh backup
 
 每次成功后还要把加密文件复制出服务器。可直接执行手工文档[第 12.2 节](./production-manual.md#122-创建原生一致性加密备份)的 SSH 归档命令，或接入组织批准的异地对象存储。没有服务器外副本时，OPS-003 仍未完成。
 
+### 9.1 恢复演练（GATE-07）
+
+备份跑成功不等于备份能用。这条命令在服务器上跑完整回路：
+
+```bash
+code/scripts/lighthouse-deploy.sh restore-drill
+```
+
+它在同一个维护容器里：
+
+- 只读挂载当前发布工具和 SQLite 状态卷——**不动运行中的发布**，不需要停服；
+- 对当前生产数据做一次在线备份；
+- 在一个从未存在过数据库的干净目录里恢复它；
+- 逐张私有表比对行数，跑 `integrity_check`，再用应用自己的 opener 重新打开并读出每个用户；
+- 跑三组反向对照：错误口令、被改了一个字节的备份（GCM 认证标签应当拒绝）、往已存在的库上恢复（应当被拒绝）。
+
+任何一条"本该失败却成功了"都会让命令非零退出。证据写在服务器的 `/var/backups/agent-learning-hub/restore-drill/restore-drill.md`，含逐步结果和源库/恢复库的逐表行数对照。
+
+演练**不做**的三件事，仍然要按手工文档[第 14.3 节](./production-manual.md#143-将已验证的新卷切入生产)执行：停写、把恢复出来的卷切入生产、以及删除旧卷。脚本从不接管生产数据。
+
+改过 schema、换过应用大版本、或距上次演练超过一个月时重跑。本机用合成数据跑同一段代码：`npm run drill:restore --prefix code`。
+
+> 状态卷是只读挂载的。这一步成立的前提是卷里 `-shm` 还在——`-wal` 非空而 `-shm` 缺失时，只读打开会直接 `SQLITE_CANTOPEN`，报错里不会提到任何文件名。所以永远不要手工搬运库文件，备份和恢复都走 `database.ts`。
+
 ## 10. 版本升级
 
 1. 在本地切到与新镜像一致的 tag，确认 clean working tree。
@@ -340,41 +366,90 @@ code/scripts/lighthouse-deploy.sh logs
 2. 只读检查本地 `git status`、目标 tag、脚本帮助和 `preflight`。
 3. 核对用户明确提供的目标域名、固定镜像、SSH alias 和秘密文件路径；绝不请求或回显秘密值。
 4. 先 dry-run，并向用户报告将改动的远端目录、服务、镜像和卷。
-5. `bootstrap/configure/deploy/rollback` 都是外部状态写入；仅在当前请求明确授权相应动作时执行。
+5. `bootstrap/configure/deploy/rollback` 都是外部状态写入；仅在当前请求明确授权相应动作时执行。`preflight`、`status`、`logs` 只读，`restore-drill` 只写自己的演练目录且只读读状态卷，这四个可以在授权部署的前提下自行执行。
 6. 不使用 `LIGHTHOUSE_ALLOW_NO_BACKUP` 或 `LIGHTHOUSE_ALLOW_CADDY_REPLACE`，除非用户对本次执行明确批准。
 7. 不调用腾讯云快照回滚、不删卷、不执行 `down -v`、不清空 Caddyfile、不改变 DNS/防火墙，除非另有明确授权和目标核对。
 8. 完成后保存：UTC 时间、实例标识（脱敏）、Git revision、镜像 digest、状态卷名、备份 manifest、内部/外部 health、OAuth/权限人工结果和回滚结果。
-9. 真实证据未齐全时，不勾选 T7.3/T7.5/GATE-07/GATE-10。
+9. 真实证据未齐全时，不勾选 T7.3/T7.5/GATE-07/GATE-10。GATE-07 的证据是**在目标主机上** `restore-drill` 的非零退出为 0 且报告全 PASS；本机合成演练不能替代它。
 
 ## 14. 常见失败
 
-| 失败                              | 含义与处置                                                                             |
-| --------------------------------- | -------------------------------------------------------------------------------------- |
-| `BatchMode=yes` 登录失败          | SSH alias、密钥、用户名、22 端口或主机指纹不正确；回控制台核对，不降级到明文密码自动化 |
-| `sudo=non-interactive` 未出现     | 当前用户不能无交互 sudo；改为受控部署用户或走手工 Runbook                              |
-| 冲突容器包                        | 主机不是干净基线；人工评估并按 Docker 官方说明卸载，脚本不会代删                       |
-| 镜像被拒绝                        | 未显式 tag/digest 或使用了 `latest`；选择真实发布版本                                  |
-| `config --quiet` 失败             | 缺 secret、卷名/路径无效或 Compose 不兼容；不要启动容器                                |
-| 拒绝 Caddyfile                    | 主机已有其他站点或非本脚本配置；人工合并，或确认专机后单次授权替换                     |
-| 备份失败                          | 口令、状态卷、维护依赖、空间或权限异常；升级必须停止                                   |
-| 内部 health 成功、外部 HTTPS 失败 | 检查 DNS、防火墙、80/443、Caddy journal；不要开放 3000 绕过                            |
-| rollback health 失败              | 可能是数据库 schema 不兼容；停止写入并按备份恢复到新卷                                 |
+| 失败                               | 含义与处置                                                                                         |
+| ---------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `BatchMode=yes` 登录失败           | SSH alias、密钥、用户名、22 端口或主机指纹不正确；回控制台核对，不降级到明文密码自动化             |
+| SSH 直接超时（连不上，不是被拒）   | **先怀疑开发机出网，别先查云端。**见下方"SSH 超时的排查顺序"                                       |
+| `sudo=non-interactive` 未出现      | 当前用户不能无交互 sudo；改为受控部署用户或走手工 Runbook                                          |
+| 冲突容器包                         | 主机不是干净基线；人工评估并按 Docker 官方说明卸载，脚本不会代删                                   |
+| 镜像被拒绝                         | 未显式 tag/digest 或使用了 `latest`；选择真实发布版本                                              |
+| `config --quiet` 失败              | 缺 secret、卷名/路径无效或 Compose 不兼容；不要启动容器                                            |
+| 拒绝 Caddyfile                     | 主机已有其他站点或非本脚本配置；人工合并，或确认专机后单次授权替换                                 |
+| 备份失败                           | 口令、状态卷、维护依赖、空间或权限异常；升级必须停止                                               |
+| 备份/演练报 `SQLITE_CANTOPEN`      | 状态卷里 `-wal` 非空但 `-shm` 缺失（多因手工搬运过库文件）。别手工修，从最近一次可用备份恢复到新卷 |
+| 演练报某条反向对照"本该失败却成功" | 恢复路径的保护失效了，比失败本身更严重。停止使用该备份链路并排查 `backup.ts` 与口令来源            |
+| 内部 health 成功、外部 HTTPS 失败  | 检查 DNS、防火墙、80/443、Caddy journal；不要开放 3000 绕过                                        |
+| rollback health 失败               | 可能是数据库 schema 不兼容；停止写入并按备份恢复到新卷                                             |
+
+### SSH 超时的排查顺序
+
+`Operation timed out` 和 `Connection refused` 不是一回事：前者说明包**根本没到**，后者说明到了但被拒。超时时按下面的顺序查，能少走很多弯路——2026-08-20 的一次实测就是先误判成"腾讯云防火墙拦截"，实际原因在开发机。
+
+先做一条**对照**，它比任何云端检查都便宜：
+
+```bash
+nc -z -w 6 github.com 443 && echo OK || echo FAIL   # 与本项目无关的第三方目标
+```
+
+这条也失败，就说明是开发机出网问题，云端一侧不用查了。
+
+**最有价值的一步是从服务器反过来看**：用轻量云控制台的 OrcaTerm 免密登录（TAT 通道，不经开发机出网），确认此刻还有没有别的客户端连得进来：
+
+```bash
+date; sudo -n journalctl -u ssh --no-pager --since "-30min" | tail -10
+```
+
+互联网上的扫描器每隔几分钟就会敲一次 22 端口。**日志里有近几分钟来自其他 IP 的连接，就证明主机和云防火墙都是好的，问题只在你到它的这条路径上**——不要再去改防火墙规则或重启 sshd。反过来，如果连别人也连不进来，才轮到查主机与控制面。
+
+排查开发机侧时，注意几个反复骗过人的观测：
+
+- `ping` 通不代表 TCP 通，ICMP 和 TCP 在路径上可能被区别对待。
+- `curl` 会读 `HTTP_PROXY`，`ssh` 和 `nc` 不会。用 `curl --noproxy '*'` 才是在测直连。
+- 同一时刻 `nc` 报 `Connection refused` 而 `ssh` 报 `Operation timed out`，说明路径上有东西在干预，不是简单的"端口没开"。
+- 直连可能只对部分目的地有效（例如国内通、境外不通），所以对照目标要挑与本项目无关、且和云主机同一区域的地址。
+
+**不要把 `lighthouse-deploy.sh` 改成走代理**：它对 `ssh`/`scp` 的调用应当与手工流程保持一致，代理属于操作者的网络环境，不属于部署脚本的配置。换一个网络（手机热点即可）是最快的验证手段。
+
+只有上面那条对照成功（说明开发机出网正常）时，才继续查云端：
+
+1. 控制台防火墙是否放行 TCP 22（本项目的规则见[第 2 节](#2-一次性控制面准备)）。
+2. 实例是否"运行中"。
+3. 主机侧 sshd 与系统防火墙。**不要为了这一步再去试 SSH**——用轻量云控制台的 OrcaTerm 免密登录（TAT 通道，不经开发机出网）：
+
+   ```bash
+   sudo -n ufw status; systemctl is-active ssh; ss -tln | grep ':22'
+   sudo -n journalctl -u ssh --no-pager --since "-2h" | tail -20
+   ```
+
+   日志里**看不到你的出口 IP**，就是又一条"包没到"的证据，说明问题仍在链路而不在主机。
+
+OrcaTerm 同时是自动化路径失效时的应急入口，但它只是一个终端：`lighthouse-deploy.sh` 需要 `ssh`/`scp` 才能上传发布包，所以恢复直连之前，部署与恢复演练都无法执行。
 
 ## 15. 失败时回到手工文档的哪一节
 
 脚本失败会指向它自己的内部状态。用这张表把 action 翻译回手工流程的对应位置，再照那一节逐条排查：
 
-| 失败的 action | 回到手工文档                                                                              | 先确认                                             |
-| ------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| `preflight`   | [第 3–4 节](./production-manual.md#3-腾讯云控制面准备) 控制面与 SSH                       | 实例架构、防火墙 22 来源、密钥、非交互 sudo        |
-| `bootstrap`   | [第 5–6 节](./production-manual.md#5-手工安装-docker-engine-与-compose) 安装 Docker/Caddy | 主机是否干净基线、是否有冲突的容器包               |
-| `configure`   | [第 8 节](./production-manual.md#8-创建-github-oauth-app-与秘密文件) OAuth 与秘密         | 本机 env 文件权限 600、五项变量是否齐全            |
-| `deploy`      | [第 7、9 节](./production-manual.md#9-验证-compose-并首次启动) 配置与首次启动             | 镜像是否固定版本、`config --quiet` 是否通过        |
-| `verify`      | [第 10–11 节](./production-manual.md#10-配置-https-反向代理) HTTPS 与验收                 | DNS、80/443、Caddy journal；**绝不开放 3000 绕过** |
-| `backup`      | [第 12.2 节](./production-manual.md#122-创建原生一致性加密备份)                           | 口令、状态卷名、磁盘空间、维护镜像可拉取           |
-| `rollback`    | [第 14 节](./production-manual.md#14-应用回滚与数据库恢复)                                | 旧镜像能否读当前 schema；不能就走数据恢复          |
+| 失败的 action   | 回到手工文档                                                                              | 先确认                                             |
+| --------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| `preflight`     | [第 3–4 节](./production-manual.md#3-腾讯云控制面准备) 控制面与 SSH                       | 实例架构、防火墙 22 来源、密钥、非交互 sudo        |
+| `preflight` 超时 | [第 4.1 节](./production-manual.md#41-连不上时先分清超时和被拒)                          | **先跑第三方对照**确认是不是开发机出网；别先查云端 |
+| `bootstrap`     | [第 5–6 节](./production-manual.md#5-手工安装-docker-engine-与-compose) 安装 Docker/Caddy | 主机是否干净基线、是否有冲突的容器包               |
+| `configure`     | [第 8 节](./production-manual.md#8-创建-github-oauth-app-与秘密文件) OAuth 与秘密         | 本机 env 文件权限 600、五项变量是否齐全            |
+| `deploy`        | [第 7、9 节](./production-manual.md#9-验证-compose-并首次启动) 配置与首次启动             | 镜像是否固定版本、`config --quiet` 是否通过        |
+| `verify`        | [第 10–11 节](./production-manual.md#10-配置-https-反向代理) HTTPS 与验收                 | DNS、80/443、Caddy journal；**绝不开放 3000 绕过** |
+| `backup`        | [第 12.2 节](./production-manual.md#122-创建原生一致性加密备份)                           | 口令、状态卷名、磁盘空间、维护镜像可拉取           |
+| `restore-drill` | [第 14.2 节](./production-manual.md#142-在新卷执行恢复演练)                               | 口令是否与创建备份时一致、状态卷三个文件是否齐全   |
+| `rollback`      | [第 14 节](./production-manual.md#14-应用回滚与数据库恢复)                                | 旧镜像能否读当前 schema；不能就走数据恢复          |
 
-**脚本不做的三件事**，失败时不要指望它补上：腾讯云控制面（实例/防火墙/DNS/快照）、数据库恢复与切卷（手工第 14.2–14.3 节）、备份的异地副本。
+**脚本不做的三件事**，失败时不要指望它补上：腾讯云控制面（实例/防火墙/DNS/快照）、切卷与数据恢复（手工第 14.3 节；`restore-drill` 只证明备份可恢复，从不接管生产）、备份的异地副本。
 
 ## 16. 相关文档
 

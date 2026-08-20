@@ -200,7 +200,35 @@ BACKUP_PASSPHRASE='<同一口令>' npm run db:restore --prefix code -- \
   --input <备份文件> --target <目标 sqlite 路径> --yes
 ```
 
-> SQLite 有 `-wal` 和 `-shm` 两个伴随文件。**不要用 `cp` 复制主库文件当备份**——运行中复制会得到不一致的快照。始终走 `db:backup`。
+> SQLite 有 `-wal` 和 `-shm` 两个伴随文件。**不要用 `cp` 复制主库文件当备份**——运行中复制会得到不一致的快照。始终走 `db:backup`，它内部用的是 SQLite 在线备份 API。
+
+三个伴随文件必须一起处理，漏一个的后果是实测过的：把 `.sqlite` 和 `-wal` 拷到别处、唯独漏掉 `-shm`，再以只读方式打开，会直接失败：
+
+```
+OPEN FAILED: SQLITE_CANTOPEN unable to open database file
+```
+
+报错里没有任何一个字提到 WAL 或 shm。备份和恢复演练会一起卡在这里，而数据其实是好的。
+
+### 4.1 证明备份真的能恢复
+
+备份没恢复过就只是一个假设。这条命令跑完整回路——建库、备份、在一个**从未存在过数据库**的干净目录里恢复、逐表比对行数，再用三组反向对照证明恢复路径确实会失败：
+
+```bash
+BACKUP_PASSPHRASE='<你的长口令>' npm run drill:restore --prefix code
+```
+
+反向对照分别是：错误口令、被改过一个字节的备份（GCM 认证标签应当拒绝）、以及往已存在的库上恢复（应当被拒绝而不是覆盖）。任何一条"本该失败却成功了"都会让演练非零退出。
+
+演练默认用合成 fixture，覆盖全部 8 张私有表，不需要任何真实数据，任何人都能复现。要拿真实数据演练就指定 `--source`：
+
+```bash
+# 先把运行中容器的库取出来（drill 内部会用在线备份 API 读它，不写原文件）
+docker cp agent-learning-hub-local-app-1:/data/state/learning-state.sqlite /tmp/live.sqlite
+BACKUP_PASSPHRASE='<你的长口令>' npm run drill:restore --prefix code -- --source /tmp/live.sqlite
+```
+
+证据写入 `code/reports/restore-drill/`。云端的同一套演练见 [lighthouse-automation 第 9.1 节](./lighthouse-automation.md#91-恢复演练gate-07)。
 
 ---
 
@@ -211,6 +239,28 @@ npm run check:local --prefix code
 ```
 
 一条命令跑完：格式检查 → lint → 类型检查 → 内容审计 → 单元与工具测试 → 生产构建。这是提交前的门禁。
+
+`check` 不含端到端测试，因为那需要一个跑起来的服务。改过登录、学习状态或导出之后，另起一个构建好的服务再跑对应模式的 e2e：
+
+```bash
+# 本地模式：固定单用户，直接读写学习状态
+APP_URL=http://127.0.0.1:3100 npm run test:e2e:local --prefix code
+
+# 云端模式：先登录，再验证匿名拒绝、CSRF、导出和删号
+APP_URL=http://127.0.0.1:3100 npm run test:e2e:cloud --prefix code
+```
+
+上面两条都用 3100 而不是本手册前面启动的 3000，这不是随手写的端口号：**两条 e2e 都以删号收尾**。本地模式只有一个用户，就是你——把 `APP_URL` 指向日常使用的预览会清空阅读进度、笔记和收藏，而且中途每条断言针对的都是测试自己刚写的数据，全程看不出异常。请另起一个带独立 `STATE_DATABASE_PATH` 的一次性服务。本地那条现在会在开跑前检查目标是否已有学习状态，非空即拒绝：
+
+```
+Refusing to run: http://127.0.0.1:3000 already holds learning state (itemProgress, bookmarks).
+```
+
+确认数据可弃时才加 `E2E_ALLOW_DESTRUCTIVE=1` 绕过。
+
+云端那条还有一条环境约束：它为了签发会话会成为服务端 SQLite 的**第二个写入者**，因此必须和服务共享文件系统——本机、CI，或共用一个卷的两个容器。指向"容器化服务 + 状态放在 macOS/Windows bind mount"会产生假失败（SQLite 的 WAL 锁经由 mmap 的 `-shm` 协调，跨 VM 边界不相干），症状是删号级联那步失败而应用其实正常。测试中段的「the database file agrees with the server about the note just written」就是为点名这种环境而设。要验证容器，让应用和测试共用同一个 Docker 卷即可。
+
+云端那条需要和服务**完全一致**的 `STATE_DATABASE_PATH`、`BETTER_AUTH_SECRET`、`BETTER_AUTH_URL`、`GITHUB_CLIENT_ID` 和 `GITHUB_CLIENT_SECRET`：它通过 Better Auth 自己的 API 在同一个 SQLite 文件上签发会话，再拿这个 cookie 打真实 HTTP 接口。GitHub 全程不联网，token 和 profile 两个端点都是打桩的。密钥对不上时会在"session resolves to the GitHub identity"这一步失败——那说明服务不认这个 cookie，不是测试写错了。
 
 界面或交互改动后，另开终端，在**服务已经跑起来**的前提下手工走查：
 
@@ -260,17 +310,20 @@ npm run audit:materials --prefix code -- --apply
 
 ## 7. 故障处置
 
-| 症状                             | 原因与处置                                                                                       |
-| -------------------------------- | ------------------------------------------------------------------------------------------------ |
-| 徽标显示"云端模式"               | 跑的是 `dev:cloud`，或 `DEPLOYMENT_MODE` 被 shell 环境变量覆盖了。`echo $DEPLOYMENT_MODE` 确认   |
-| 页面白屏 / hydration 报错        | 访问地址不是 `127.0.0.1` 或 `localhost`。开发模式下非回环来源的静态资源会被拒绝                  |
-| "server is already running"      | 同一 `code/` 已有一个 `next dev`。停掉它，或改用 Docker 路径并行                                 |
-| 条目提示"本地素材暂时不可用"     | 该路径在 `local-courses/` 下确实不存在。跑 `audit:materials` 看是搬走了还是删了                  |
-| 某课只能读到一两章               | 章节由课程条目**显式声明**，这是安全边界。未声明的文件不可读；正文里指向它们的链接会降级为纯文字 |
-| `audit:materials` 说 not mounted | 目录不存在，或里面只有 `README.md` 没有任何子目录。检查 `LOCAL_MATERIAL_ROOT`                    |
-| Docker 构建失败或极慢            | 首次构建要拉基础镜像。`code/scripts/local-preview.sh logs` 看具体阶段                            |
-| 端口被占用                       | 路径 A 用 `-- --port <n>`，路径 B 用 `APP_PORT=<n>`                                              |
-| 学习状态"丢了"                   | 确认是不是换了路径——路径 A 和路径 B 用不同的存储，状态不互通                                     |
+| 症状                                                   | 原因与处置                                                                                          |
+| ------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
+| 徽标显示"云端模式"                                     | 跑的是 `dev:cloud`，或 `DEPLOYMENT_MODE` 被 shell 环境变量覆盖了。`echo $DEPLOYMENT_MODE` 确认      |
+| 页面白屏 / hydration 报错                              | 访问地址不是 `127.0.0.1` 或 `localhost`。开发模式下非回环来源的静态资源会被拒绝                     |
+| "server is already running"                            | 同一 `code/` 已有一个 `next dev`。停掉它，或改用 Docker 路径并行                                    |
+| 条目提示"本地素材暂时不可用"                           | 该路径在 `local-courses/` 下确实不存在。跑 `audit:materials` 看是搬走了还是删了                     |
+| 某课只能读到一两章                                     | 章节由课程条目**显式声明**，这是安全边界。未声明的文件不可读；正文里指向它们的链接会降级为纯文字    |
+| `audit:materials` 说 not mounted                       | 目录不存在，或里面只有 `README.md` 没有任何子目录。检查 `LOCAL_MATERIAL_ROOT`                       |
+| Docker 构建失败或极慢                                  | 首次构建要拉基础镜像。`code/scripts/local-preview.sh logs` 看具体阶段                               |
+| 端口被占用                                             | 路径 A 用 `-- --port <n>`，路径 B 用 `APP_PORT=<n>`                                                 |
+| 学习状态"丢了"                                         | 确认是不是换了路径——路径 A 和路径 B 用不同的存储，状态不互通                                        |
+| `SQLITE_CANTOPEN`                                      | 把库文件搬走时漏了 `-shm`（`-wal` 非空时必须三个文件一起）。别手工搬，用 `db:backup` / `db:restore` |
+| 演练报"restoring over an existing database is refused" | 这是**期望行为**。恢复不覆盖已有库，换一个不存在的 `--target`                                       |
+| e2e 停在"session resolves to the GitHub identity"      | 测试环境的 `BETTER_AUTH_SECRET` 和服务端不一致，服务不认这个 cookie                                 |
 
 ---
 
