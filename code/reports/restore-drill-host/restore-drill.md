@@ -1,9 +1,9 @@
 # SQLite restore drill
 
-- Generated: 2026-08-20T13:37:29.291Z
-- Elapsed: 2.7s
-- Host: CICNBJSMCCD0160 (darwin/arm64, node v24.14.0)
-- Version: development @ a9605c4
+- Generated: 2026-08-20T13:37:48.325Z
+- Elapsed: 3.0s
+- Host: c081d761ca41 (linux/x64, node v24.18.0)
+- Version: v0.1.0
 - Source: synthetic fixture
 - Steps: 16, failed: 0
 
@@ -20,7 +20,7 @@
 | PASS | restored schema matches the source | 10 tables |
 | PASS | every private table restores with the same row count | {"users":1,"accounts":1,"sessions":1,"item_progress":1,"stage_task_progress":1,"notes":1,"bookmarks":1,"stage_outcomes":1} |
 | PASS | the application reopens the restored database and reads every user | 1 users |
-| PASS | the manifest records when the backup was proven restorable | 2026-08-20T13:37:27.481Z |
+| PASS | the manifest records when the backup was proven restorable | 2026-08-20T13:37:46.427Z |
 | PASS | a wrong passphrase cannot restore the backup | exit 1 |
 | PASS | a tampered backup is rejected by authenticated decryption | exit 1 |
 | PASS | restoring over an existing database is refused | exit 1 |

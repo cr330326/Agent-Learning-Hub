@@ -114,21 +114,21 @@ code/scripts/docker-deploy.sh release up
 
 ### 本机运行、作用于本机
 
-| 命令                                                                | 用途                                                                                               |
-| ------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `npm run dev:local --prefix code`                                   | **学习和读素材的默认方式**；热更新，只绑回环地址                                                   |
-| `npm run dev:cloud --prefix code`                                   | 公开视角预览；第三方素材只给出处不给正文                                                           |
-| `npm run check:local --prefix code` / `check:cloud`                 | 提交前门禁：格式、lint、类型、内容审计、测试、构建                                                 |
-| `npm run audit:content --prefix code`                               | 校验内容 schema、来源、许可证和本地路径                                                            |
-| `npm run materials --prefix code -- <check\|drift\|audit\|reindex>` | 素材新鲜度、目录漂移、路径审计和重建索引；`update <course-id> --yes` 只允许单仓库 fast-forward     |
-| `npm run audit:materials --prefix code`                             | 对账目录与素材库：失效路径及候选、未收录仓库、缺失的上游回退；加 `-- --apply` 才写回               |
-| `npm run audit:boundaries --prefix code`                            | 审计 Git、Docker 与 CI 的内容边界（CI 也跑）                                                       |
-| `npm run audit:baseline --prefix code`                              | 重新生成旧站能力基线（迁移期历史工具）                                                             |
-| `npm run audit:ui --prefix code`                                    | 三档视口版式走查；**需要运行中的服务** + Playwright                                                |
-| `npm run audit:functional --prefix code`                            | 点击式功能回归；**需要运行中的服务** + Playwright，按运行模式分支断言                              |
-| `npm run test:e2e:local --prefix code` / `test:e2e:cloud`           | 端到端 HTTP 测试；**需要运行中的服务**，且**以删号收尾**——只指向一次性实例。云端那条会先真的登录一次 |
-| `npm run drill:restore --prefix code`                               | 恢复演练：备份 → 干净环境恢复 → 逐表比对，附错误口令/篡改/覆盖三组反向对照；需 `BACKUP_PASSPHRASE` |
-| ~~`npm run convert:legacy --prefix code`~~                          | 已废弃：目录改为人手维护，见 [ADR 0006](docs/adr/0006-catalog-is-hand-maintained.md)               |
+| 命令                                                                | 用途                                                                                                                         |
+| ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `npm run dev:local --prefix code`                                   | **学习和读素材的默认方式**；热更新，只绑回环地址                                                                             |
+| `npm run dev:cloud --prefix code`                                   | 公开视角预览；第三方素材只给出处不给正文                                                                                     |
+| `npm run check:local --prefix code` / `check:cloud`                 | 提交前门禁：格式、lint、类型、内容审计、测试、构建                                                                           |
+| `npm run audit:content --prefix code`                               | 校验内容 schema、来源、许可证和本地路径                                                                                      |
+| `npm run materials --prefix code -- <check\|drift\|audit\|reindex>` | 素材新鲜度、目录漂移、路径审计和重建索引；`update <course-id> --yes` 只允许单仓库 fast-forward                               |
+| `npm run audit:materials --prefix code`                             | 对账目录与素材库：失效路径及候选、未收录仓库、缺失的上游回退；加 `-- --apply` 才写回                                         |
+| `npm run audit:boundaries --prefix code`                            | 审计 Git、Docker 与 CI 的内容边界（CI 也跑）                                                                                 |
+| `npm run audit:baseline --prefix code`                              | 重新生成旧站能力基线（迁移期历史工具）                                                                                       |
+| `npm run audit:ui --prefix code`                                    | 三档视口版式走查；**需要运行中的服务** + Playwright                                                                          |
+| `npm run audit:functional --prefix code`                            | 点击式功能回归；**需要运行中的服务** + Playwright，按运行模式分支断言                                                        |
+| `npm run test:e2e:local --prefix code` / `test:e2e:cloud`           | 端到端 HTTP 测试；**需要运行中的服务**，且**以删号收尾**——只指向一次性实例。云端那条会先真的登录一次                         |
+| `npm run drill:restore --prefix code`                               | 恢复演练：备份 → 干净环境恢复 → 逐表比对，附错误口令/篡改/覆盖三组反向对照；报告记录主机、版本与耗时；需 `BACKUP_PASSPHRASE` |
+| ~~`npm run convert:legacy --prefix code`~~                          | 已废弃：目录改为人手维护，见 [ADR 0006](docs/adr/0006-catalog-is-hand-maintained.md)                                         |
 
 `audit:ui`、`audit:functional`、`test:e2e:*` 需要运行中的服务，`audit:materials` 依赖仓库之外的素材库——它们都**不进** `npm run check`，各自非零退出作为独立门禁。两条 e2e 不是同一个测试的两种配置：Local Mode 自动签入固定单用户，Cloud Mode 必须先登录，而登录是它全部访问规则的入口。
 

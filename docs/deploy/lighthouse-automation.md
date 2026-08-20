@@ -161,6 +161,20 @@ export LIGHTHOUSE_BACKUP_ENV_FILE=~/.config/agent-learning-hub/backup.env
 
 `LIGHTHOUSE_IMAGE` 必须是非 `latest` tag 或 `@sha256:<64-hex>` digest。发布后优先使用 GHCR 返回的 digest。备份维护容器也使用显式 Node 版本；生产加固时可把 `LIGHTHOUSE_MAINTENANCE_IMAGE` 换成预先核验的 digest。当前发布工作流按 amd64 验收，本脚本会拒绝 ARM 主机。
 
+### 5.1 镜像仓库不可用时的传输回退
+
+GHCR 上的包默认是私有的。主机没有 registry 凭据时 `docker pull` 会返回 `denied`（本机未登录则是 `403 Forbidden`），部署会停在拉取这一步。两条出路：给主机配 registry 凭据，或者**直接把已经构建好的镜像传过去**：
+
+```bash
+docker save ghcr.io/cr330326/agent-learning-hub:<version> \
+  | gzip -1 \
+  | ssh tencent-lighthouse 'gunzip | sudo -n docker load'
+```
+
+实测 286MB 的镜像传输在分钟级完成。传完后主机上就有这个 tag，`docker-deploy.sh release` 的 `up` 可以直接起（但它仍会先尝试 `pull`，所以这条回退适合手工验证与应急，不适合作为常规发布路径）。
+
+回退不改变任何边界：传的是**同一个已构建的固定版本镜像**，主机依旧不构建源码，版本依旧可追溯到 digest。常规发布仍应走 registry，否则每次升级都要人工搬运，也失去了 registry 侧的留存与溯源。
+
 可选参数及默认值以脚本帮助为准：
 
 ```bash
@@ -263,6 +277,31 @@ code/scripts/lighthouse-deploy.sh verify
 
 仍须人工验证：匿名页面、真实 GitHub 登录、跨会话恢复、双用户隔离、管理员/普通用户边界、上游链接、云端无 Local Material。把结果写入新的 `docs/acceptance/` 报告，不要修改旧验收记录。
 
+### 8.1 先在回环地址上验一遍再对外
+
+域名、TLS 与 OAuth 都还没就位时，Cloud Mode 本身就可以先在主机上验证——把镜像绑到 `127.0.0.1` 起一个一次性容器，用占位秘密（只够渲染匿名页面），跑项目自己的公开冒烟套件。这能在任何东西对公网可见之前，抓出"镜像在这台机器上跑不起来"和"云端模式漏出本地素材"这两类问题：
+
+```bash
+ssh tencent-lighthouse 'sudo -n docker run -d --name alh-verify -p 127.0.0.1:3000:3000 \
+  -e DEPLOYMENT_MODE=cloud -e STATE_DATABASE_PATH=/data/state/learning-state.sqlite \
+  -e BETTER_AUTH_SECRET=<throwaway> -e BETTER_AUTH_URL=http://127.0.0.1:3000 \
+  -e GITHUB_CLIENT_ID=<throwaway> -e GITHUB_CLIENT_SECRET=<throwaway> \
+  -v alh-verify-state:/data/state <pinned-image>'
+
+ssh -f -N -L 3401:127.0.0.1:3000 tencent-lighthouse
+APP_URL=http://127.0.0.1:3401 EXPECTED_RUNTIME_MODE=cloud npm run test:e2e --prefix code
+```
+
+2026-08-20 用这条路径在 `VM-0-9-ubuntu` 上验过 `v0.1.0`，结果见 [cloud-host-verify](../../code/reports/cloud-host-verify/cloud-host-verify.md)。除冒烟套件外还要核这几条：匿名对 `/api/state`、`/api/data`、`/api/admin/health` 均 401；`/api/local-image` 404；`/read/<local-preferred 条目>`**按内容**核对——它返回 200 是对的，渲染的应当是「READER / SAFE FALLBACK」说明页，**只看状态码会漏掉正文泄漏**，要确认第三方正文特征串一个都不出现。
+
+验完就拆掉，别把配着占位 OAuth 凭据的容器留在生产主机上——它很容易被后来的人误认成真实部署：
+
+```bash
+ssh tencent-lighthouse 'sudo -n docker rm -f alh-verify && sudo -n docker volume rm alh-verify-state'
+```
+
+这一步**替代不了**正式部署：登录、学习状态、导出与删号整个鉴权侧都不在覆盖范围内，那需要真实的 OAuth App 与域名。
+
 ## 9. 备份、调度和服务器外副本
 
 手工触发项目原生在线备份：
@@ -305,6 +344,10 @@ code/scripts/lighthouse-deploy.sh restore-drill
 演练**不做**的三件事，仍然要按手工文档[第 14.3 节](./production-manual.md#143-将已验证的新卷切入生产)执行：停写、把恢复出来的卷切入生产、以及删除旧卷。脚本从不接管生产数据。
 
 改过 schema、换过应用大版本、或距上次演练超过一个月时重跑。本机用合成数据跑同一段代码：`npm run drill:restore --prefix code`。
+
+报告头部记录日期、耗时、主机平台、node 与应用版本——OPS-006 要的演练记录必须能让后来的人看出**是哪台机器、哪个构建**跑的。2026-08-20 已在 `VM-0-9-ubuntu`（Ubuntu 24.04、x86_64）实跑，16/16 通过、耗时 3.0s，GATE-07 据此勾选；证据见 [restore-drill-host](../../code/reports/restore-drill-host/restore-drill.md)。
+
+注意报告里的 `hostname` 是**维护容器的 ID**，不是宿主机名——演练跑在容器内，宿主机身份要另行记录。
 
 > 状态卷是只读挂载的。这一步成立的前提是卷里 `-shm` 还在——`-wal` 非空而 `-shm` 缺失时，只读打开会直接 `SQLITE_CANTOPEN`，报错里不会提到任何文件名。所以永远不要手工搬运库文件，备份和恢复都走 `database.ts`。
 
@@ -437,17 +480,17 @@ OrcaTerm 同时是自动化路径失效时的应急入口，但它只是一个�
 
 脚本失败会指向它自己的内部状态。用这张表把 action 翻译回手工流程的对应位置，再照那一节逐条排查：
 
-| 失败的 action   | 回到手工文档                                                                              | 先确认                                             |
-| --------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| `preflight`     | [第 3–4 节](./production-manual.md#3-腾讯云控制面准备) 控制面与 SSH                       | 实例架构、防火墙 22 来源、密钥、非交互 sudo        |
-| `preflight` 超时 | [第 4.1 节](./production-manual.md#41-连不上时先分清超时和被拒)                          | **先跑第三方对照**确认是不是开发机出网；别先查云端 |
-| `bootstrap`     | [第 5–6 节](./production-manual.md#5-手工安装-docker-engine-与-compose) 安装 Docker/Caddy | 主机是否干净基线、是否有冲突的容器包               |
-| `configure`     | [第 8 节](./production-manual.md#8-创建-github-oauth-app-与秘密文件) OAuth 与秘密         | 本机 env 文件权限 600、五项变量是否齐全            |
-| `deploy`        | [第 7、9 节](./production-manual.md#9-验证-compose-并首次启动) 配置与首次启动             | 镜像是否固定版本、`config --quiet` 是否通过        |
-| `verify`        | [第 10–11 节](./production-manual.md#10-配置-https-反向代理) HTTPS 与验收                 | DNS、80/443、Caddy journal；**绝不开放 3000 绕过** |
-| `backup`        | [第 12.2 节](./production-manual.md#122-创建原生一致性加密备份)                           | 口令、状态卷名、磁盘空间、维护镜像可拉取           |
-| `restore-drill` | [第 14.2 节](./production-manual.md#142-在新卷执行恢复演练)                               | 口令是否与创建备份时一致、状态卷三个文件是否齐全   |
-| `rollback`      | [第 14 节](./production-manual.md#14-应用回滚与数据库恢复)                                | 旧镜像能否读当前 schema；不能就走数据恢复          |
+| 失败的 action    | 回到手工文档                                                                              | 先确认                                             |
+| ---------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| `preflight`      | [第 3–4 节](./production-manual.md#3-腾讯云控制面准备) 控制面与 SSH                       | 实例架构、防火墙 22 来源、密钥、非交互 sudo        |
+| `preflight` 超时 | [第 4.1 节](./production-manual.md#41-连不上时先分清超时和被拒)                           | **先跑第三方对照**确认是不是开发机出网；别先查云端 |
+| `bootstrap`      | [第 5–6 节](./production-manual.md#5-手工安装-docker-engine-与-compose) 安装 Docker/Caddy | 主机是否干净基线、是否有冲突的容器包               |
+| `configure`      | [第 8 节](./production-manual.md#8-创建-github-oauth-app-与秘密文件) OAuth 与秘密         | 本机 env 文件权限 600、五项变量是否齐全            |
+| `deploy`         | [第 7、9 节](./production-manual.md#9-验证-compose-并首次启动) 配置与首次启动             | 镜像是否固定版本、`config --quiet` 是否通过        |
+| `verify`         | [第 10–11 节](./production-manual.md#10-配置-https-反向代理) HTTPS 与验收                 | DNS、80/443、Caddy journal；**绝不开放 3000 绕过** |
+| `backup`         | [第 12.2 节](./production-manual.md#122-创建原生一致性加密备份)                           | 口令、状态卷名、磁盘空间、维护镜像可拉取           |
+| `restore-drill`  | [第 14.2 节](./production-manual.md#142-在新卷执行恢复演练)                               | 口令是否与创建备份时一致、状态卷三个文件是否齐全   |
+| `rollback`       | [第 14 节](./production-manual.md#14-应用回滚与数据库恢复)                                | 旧镜像能否读当前 schema；不能就走数据恢复          |
 
 **脚本不做的三件事**，失败时不要指望它补上：腾讯云控制面（实例/防火墙/DNS/快照）、切卷与数据恢复（手工第 14.3 节；`restore-drill` 只证明备份可恢复，从不接管生产）、备份的异地副本。
 

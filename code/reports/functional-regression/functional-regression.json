@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-20T06:28:07.803Z",
+  "generatedAt": "2026-08-20T13:45:57.488Z",
   "baseUrl": "http://127.0.0.1:3000",
   "total": 23,
   "failed": 0,
@@ -12,7 +12,7 @@
     {
       "name": "internal links resolve",
       "ok": true,
-      "detail": "148 internal links, all < 400"
+      "detail": "130 internal links, all < 400"
     },
     {
       "name": "header navigation reaches every section",
@@ -67,7 +67,7 @@
     {
       "name": "reader chapter tabs switch content",
       "ok": true,
-      "detail": "switched to 第十六章 毕业设计：构建属于你的多智能体应用"
+      "detail": "switched to 前言"
     },
     {
       "name": "reader has previous/next chapter links",
@@ -87,7 +87,7 @@
     {
       "name": "course detail exposes references",
       "ok": true,
-      "detail": "19 references, metadata localised"
+      "detail": "3 references, metadata localised"
     },
     {
       "name": "bookmark persists and can be undone",

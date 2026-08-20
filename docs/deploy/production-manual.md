@@ -157,41 +157,35 @@ exit
 
 ### 4.1 连不上时先分清"超时"和"被拒"
 
-`Operation timed out` 表示包**根本没到**，`Connection refused` 表示到了但被拒——两者的排查方向相反。超时时，先做一条与本项目无关的对照，它比任何云端检查都便宜：
+`Operation timed out` 表示包**根本没到**，`Connection refused` 表示到了但被拒——两者的排查方向相反。下面按"最便宜的判据优先"排列。
+
+**第一步：一条与本项目无关的对照。**
 
 ```bash
 nc -z -w 6 github.com 443 && echo OK || echo FAIL
 ```
 
-**这条也失败，就是本机出网的问题，不要去查云端。**
+这条也失败，就是本机出网的问题，云端一侧不用查。
 
-比继续在本机猜更有效的一步，是**从服务器反过来看**。用轻量云控制台的 OrcaTerm 免密登录（TAT 通道，不经本机出网），看此刻还有没有别的客户端连得进来：
+**第二步：从服务器反过来看。** 这一步比在本机继续猜有效得多。用轻量云控制台的 OrcaTerm 免密登录（TAT 通道，不经本机出网），看此刻还有没有别的客户端连得进来，顺带核对主机自身：
 
 ```bash
 date; sudo -n journalctl -u ssh --no-pager --since "-30min" | tail -10
+sudo -n ufw status; systemctl is-active ssh; ss -tln | grep ':22'
 ```
 
-互联网扫描器每隔几分钟就会敲一次 22 端口。**日志里有近几分钟来自其他 IP 的连接，就证明主机和云防火墙都正常，问题只在你到它的这条路径上**——别再去改防火墙或重启 sshd。只有当别人也连不进来时，才轮到查第 3 节的控制面和主机本身。
+互联网扫描器每隔几分钟就会敲一次 22 端口。**日志里有近几分钟来自其他 IP 的连接，就证明主机和云防火墙都正常，问题只在你到它的这条路径上**——别再去改防火墙或重启 sshd。反过来，日志里连别人都没有，才轮到查第 3 节的控制面与主机本身。日志里**没有你的出口 IP**，是"包没到"的又一条证据。
 
-排查本机侧时，有几个反复骗过人的观测要留意：
+**第三步：排查本机侧。** 有几个反复骗过人的观测：
 
 - `ping` 通不代表 TCP 通；ICMP 和 TCP 在路径上可能被区别对待。
 - `curl` 读 `HTTP_PROXY`，`ssh` 和 `nc` 不读。测直连要用 `curl --noproxy '*'`。
 - 同一时刻 `nc` 报 `Connection refused` 而 `ssh` 报 `Operation timed out`，说明路径上有东西在干预，不是"端口没开"。
 - 直连可能只对部分目的地有效（国内通、境外不通是常见情形），所以对照目标要挑与本项目无关、且与云主机同区域的地址。
 
-**不要把 `lighthouse-deploy.sh` 改成走代理**：它的 `ssh`/`scp` 调用要和本文的手工步骤保持一致，代理属于操作者的网络环境，不属于部署配置。换一个网络（手机热点即可）是最快的验证手段。
+换一个网络（手机热点即可）是最快的验证手段。**不要把 `lighthouse-deploy.sh` 改成走代理**：它的 `ssh`/`scp` 调用要和本文的手工步骤保持一致，代理属于操作者的网络环境，不属于部署配置。
 
-对照成功（本机出网正常）时才继续查云端，顺序是：控制台防火墙是否放行 TCP 22（第 3 节）→ 实例是否运行中 → 主机侧 sshd 与系统防火墙。查最后一项**不要再试 SSH**，用轻量云控制台的 OrcaTerm 免密登录（TAT 通道，不经本机出网）：
-
-```bash
-sudo -n ufw status; systemctl is-active ssh; ss -tln | grep ':22'
-sudo -n journalctl -u ssh --no-pager --since "-2h" | tail -20
-```
-
-sshd 日志里**没有你的出口 IP**，就是"包没到"的第二条证据，说明问题仍在链路而非主机。OrcaTerm 可以作为应急终端，但它替代不了部署：本文第 6 节起的步骤和 `lighthouse-deploy.sh` 都需要 `scp` 上传文件。
-
-脚本化路径的同一节见 [lighthouse-automation 第 14 节](./lighthouse-automation.md#14-常见失败)。
+OrcaTerm 是应急终端，替代不了部署：本文第 6 节起的步骤和 `lighthouse-deploy.sh` 都需要 `scp` 上传文件。脚本化路径的同一节见 [lighthouse-automation 第 14 节](./lighthouse-automation.md#14-常见失败)。
 
 ## 5. 手工安装 Docker Engine 与 Compose
 
@@ -370,6 +364,14 @@ sudo env \
   COMPOSE_EXTRA_FILES=code/docker/docker-compose.production.yml \
   code/scripts/docker-deploy.sh release up
 ```
+
+> **拉取被拒时**：GHCR 的包默认私有，主机没有 registry 凭据时会返回 `denied`。除了给主机配凭据，也可以把已构建好的固定版本镜像直接传过去：
+>
+> ```bash
+> docker save <pinned-image> | gzip -1 | ssh <host> 'gunzip | sudo -n docker load'
+> ```
+>
+> 传的是同一个已构建镜像，主机依旧不构建源码。这条回退适合手工验证与应急；常规发布仍走 registry，否则每次升级都要人工搬运，也失去 registry 侧的留存与溯源。
 
 脚本会拉取镜像、等待容器健康并请求内部 `/api/health`。首次拉取后记录不可变 digest：
 

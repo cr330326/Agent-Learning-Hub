@@ -1,4 +1,9 @@
-# Agent Learning Hub · 本地学习网站
+# Agent Learning Hub · 本地学习网站（迁移归档）
+
+> **这不是现役站点。** 现役全栈工程在 [`../code/`](../code/)，运行与部署方式见根目录
+> [README](../README.md) 与 [GUIDE](../GUIDE.md)。本目录是迁移基线，保留用于对照旧站
+> 首版能力（对等报告见 [tasks.md](../docs/plans/tasks.md) T8.1），**不再独立演进、
+> 不新增产品功能**。下文描述的是归档当时的状态，其中的数量与能力不代表现在的站点。
 
 把 [`../local-courses/`](../local-courses/) 里 11 GB、8800+ 篇 Markdown 的课程素材，
 收束成一个带路线、搜索、进度追踪和 Markdown 阅读器的单页应用。
@@ -15,11 +20,11 @@
 
 它会先校验一遍课程路径，再起服务并打开浏览器。可选参数：
 
-| 参数 | 作用 |
-| --- | --- |
+| 参数          | 作用                                            |
+| ------------- | ----------------------------------------------- |
 | `--port 9000` | 换端口（默认 8765，被占用时自动顺延最多 10 个） |
-| `--no-open` | 不自动开浏览器 |
-| `--no-audit` | 跳过路径校验 |
+| `--no-open`   | 不自动开浏览器                                  |
+| `--no-audit`  | 跳过路径校验                                    |
 
 等价的手动做法——在仓库**根目录**（不是这个目录）运行：
 
@@ -30,6 +35,7 @@ python3 -m http.server 8765
 然后打开 <http://localhost:8765/learning-site/>。
 
 > 两个约束都不能省：
+>
 > - **必须从仓库根目录起服务**。阅读器按 `../local-courses/` 取文件，从 `learning-site/`
 >   里起会让整个课程目录落在 document root 之外。
 > - **必须走 HTTP**。直接双击 `index.html`（`file://` 协议）会让 `fetch()` 被跨域策略
@@ -39,19 +45,19 @@ python3 -m http.server 8765
 
 ## 文件结构
 
-| 文件 | 职责 |
-| --- | --- |
-| `index.html` | 页面骨架 |
-| `styles.css` | 样式 |
-| `data.js` | **全部内容数据**：轨道、九阶段、课程卡片、项目阶梯、速记卡、阅读器菜单、图片重写规则 |
-| `app.js` | 渲染与交互逻辑，不含任何内容 |
-| `assets/marks/` | 课程图形标记 SVG（单墨剪影，供 CSS mask 用） |
-| `scripts/audit_paths.py` | 双向校验：`data.js` 的引用是否都存在，磁盘上的项目是否都被收录 |
-| `../start-site.sh` | 一键启动（校验 → 起服务 → 开浏览器） |
-| `design-spec.md` / `direction-approved.md` | 设计 spec 与方向定稿记录 |
-| `index-a/b/c.html` + `styles-a/b/c.css` | 三个设计方向初稿（归档，不参与线上） |
-| `design-shots/` | 各方向与定稿截图 |
-| `*-legacy.*.bak` | 改版前的旧站点备份 |
+| 文件                                       | 职责                                                                                 |
+| ------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `index.html`                               | 页面骨架                                                                             |
+| `styles.css`                               | 样式                                                                                 |
+| `data.js`                                  | **全部内容数据**：轨道、九阶段、课程卡片、项目阶梯、速记卡、阅读器菜单、图片重写规则 |
+| `app.js`                                   | 渲染与交互逻辑，不含任何内容                                                         |
+| `assets/marks/`                            | 课程图形标记 SVG（单墨剪影，供 CSS mask 用）                                         |
+| `scripts/audit_paths.py`                   | 双向校验：`data.js` 的引用是否都存在，磁盘上的项目是否都被收录                       |
+| `../start-site.sh`                         | 一键启动（校验 → 起服务 → 开浏览器）                                                 |
+| `design-spec.md` / `direction-approved.md` | 设计 spec 与方向定稿记录                                                             |
+| `index-a/b/c.html` + `styles-a/b/c.css`    | 三个设计方向初稿（归档，不参与线上）                                                 |
+| `design-shots/`                            | 各方向与定稿截图                                                                     |
+| `*-legacy.*.bak`                           | 改版前的旧站点备份                                                                   |
 
 **数据与逻辑分离**是刻意的：加课程只改 `data.js`，永远不用碰 `app.js`。
 
@@ -80,11 +86,11 @@ python3 -m http.server 8765
 
 `app.js` 的 `docUrl()` 统一补前缀。三种写法：
 
-| 写法 | 解析为 | 用途 |
-| --- | --- | --- |
-| `Learning/xxx/README.md` | `../local-courses/Learning/xxx/README.md` | 课程文档（绝大多数） |
-| `@root/README.md` | `../README.md` | 仓库根目录的文件 |
-| `https://…` | 原样 | 外链，卡片上渲染成 `↗` |
+| 写法                     | 解析为                                    | 用途                   |
+| ------------------------ | ----------------------------------------- | ---------------------- |
+| `Learning/xxx/README.md` | `../local-courses/Learning/xxx/README.md` | 课程文档（绝大多数）   |
+| `@root/README.md`        | `../README.md`                            | 仓库根目录的文件       |
+| `https://…`              | 原样                                      | 外链，卡片上渲染成 `↗` |
 
 这样目录再次重组时，只需批量替换 `data.js` 里的字符串。
 
@@ -110,13 +116,13 @@ python3 -m http.server 8765
 
 三类状态都存 `localStorage`：
 
-| 键 | 内容 |
-| --- | --- |
-| `agentHubDone` | 阶段任务勾选 |
-| `agentHubDocsDone` | 章节完成标记 |
-| `agentHubLastDoc` | 最后阅读位置 |
+| 键                  | 内容               |
+| ------------------- | ------------------ |
+| `agentHubDone`      | 阶段任务勾选       |
+| `agentHubDocsDone`  | 章节完成标记       |
+| `agentHubLastDoc`   | 最后阅读位置       |
 | `agentHubCollapsed` | 阅读器分组折叠状态 |
-| `agentHubTrack` | 当前轨道筛选 |
+| `agentHubTrack`     | 当前轨道筛选       |
 
 清浏览器数据会重置进度。
 
@@ -140,14 +146,14 @@ python3 -m http.server 8765
 CrewAI 的文档是 Mintlify 体系的 `.mdx`：带 YAML frontmatter，正文混着大写开头的
 JSX 组件。`app.js` 的 `preprocessMdx()` 在进主循环前把它们降级掉：
 
-| 源 | 渲染成 |
-| --- | --- |
-| frontmatter `title` / `description` | `<h1>` + `.doc-lead` 引言 |
-| `<Note> <Tip> <Info> <Check> <Warning>` | `.mdx-callout`，左边线按语义取线路色 |
-| `<Card> <Accordion> <Step> <Tab> <Frame>` | `.mdx-block`，`title=` 取成小标题 |
-| `<ParamField> <ResponseField>` | `.mdx-param` 签名行（名 / 类型 / required） |
-| `<Steps> <CardGroup> <Tabs> <CodeGroup>` 等纯容器 | 标签丢掉，内容照常走 Markdown |
-| `import` / `export`、`{/* 注释 */}` | 整行去掉 |
+| 源                                                | 渲染成                                      |
+| ------------------------------------------------- | ------------------------------------------- |
+| frontmatter `title` / `description`               | `<h1>` + `.doc-lead` 引言                   |
+| `<Note> <Tip> <Info> <Check> <Warning>`           | `.mdx-callout`，左边线按语义取线路色        |
+| `<Card> <Accordion> <Step> <Tab> <Frame>`         | `.mdx-block`，`title=` 取成小标题           |
+| `<ParamField> <ResponseField>`                    | `.mdx-param` 签名行（名 / 类型 / required） |
+| `<Steps> <CardGroup> <Tabs> <CodeGroup>` 等纯容器 | 标签丢掉，内容照常走 Markdown               |
+| `import` / `export`、`{/* 注释 */}`               | 整行去掉                                    |
 
 关键在于组件标签换成的是**哨兵行**而不是直接吐 HTML。渲染器碰到裸 HTML 会进
 `htmlBlockDepth > 0` 分支、把块内所有行原样输出——那样组件**内部**的 Markdown 就全废了。
@@ -158,9 +164,9 @@ HTML 分支，不会被吞掉。
 
 ### 键盘
 
-| 键 | 作用 |
-| --- | --- |
-| `/` | 聚焦搜索框 |
+| 键        | 作用            |
+| --------- | --------------- |
+| `/`       | 聚焦搜索框      |
 | `[` / `]` | 上一章 / 下一章 |
 
 ---
@@ -228,10 +234,10 @@ python3 scripts/audit_paths.py
 
 `data.js` 和 `local-courses/` 会往两个方向漂，两种都不报错：
 
-| 漂移 | 症状 | 后果 |
-| --- | --- | --- |
-| **路径失效**——目录改名/移动，引用指向空气 | 页面照常渲染，点开某一章才 404 | `AI-Coding/` → `AICoding/` 那次废掉 119 条引用 |
-| **内容遗漏**——新课程躺在磁盘上，`data.js` 没提 | 连 404 都没有，站点上就是不存在 | 下载完忘了接，几个月都发现不了 |
+| 漂移                                           | 症状                            | 后果                                           |
+| ---------------------------------------------- | ------------------------------- | ---------------------------------------------- |
+| **路径失效**——目录改名/移动，引用指向空气      | 页面照常渲染，点开某一章才 404  | `AI-Coding/` → `AICoding/` 那次废掉 119 条引用 |
+| **内容遗漏**——新课程躺在磁盘上，`data.js` 没提 | 连 404 都没有，站点上就是不存在 | 下载完忘了接，几个月都发现不了                 |
 
 一条命令同时查两个方向：
 

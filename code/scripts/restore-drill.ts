@@ -23,7 +23,7 @@ import {
   rmSync,
   writeFileSync,
 } from "node:fs";
-import { tmpdir } from "node:os";
+import { hostname, tmpdir } from "node:os";
 import { basename, dirname, join, resolve } from "node:path";
 
 import Database from "better-sqlite3";
@@ -49,7 +49,16 @@ type Step = {
 };
 
 const steps: Step[] = [];
+const startedAt = Date.now();
 let failed = false;
+
+function gitRevision(): string | null {
+  const result = spawnSync("git", ["rev-parse", "--short", "HEAD"], {
+    cwd: resolve(import.meta.dirname, ".."),
+    encoding: "utf8",
+  });
+  return result.status === 0 ? (result.stdout ?? "").trim() || null : null;
+}
 
 function record(name: string, outcome: "pass" | "fail", detail = ""): void {
   steps.push({ name, outcome, detail });
@@ -474,8 +483,19 @@ async function main(): Promise<void> {
     // 6. Evidence.
     mkdirSync(outputDirectory, { recursive: true });
     const generatedAt = new Date().toISOString();
+    // OPS-006 asks a drill record to say *where*, *which version* and *how
+    // long*, not just pass/fail: a drill is only evidence if a later reader can
+    // tell which host and build it actually exercised.
     const report = {
       generatedAt,
+      elapsedMs: Date.now() - startedAt,
+      environment: {
+        hostname: hostname(),
+        platform: `${process.platform}/${process.arch}`,
+        node: process.version,
+        appVersion: process.env.APP_VERSION?.trim() || "development",
+        gitRevision: gitRevision(),
+      },
       source: sourceOption ? resolve(sourceOption) : "synthetic fixture",
       backupByteSize: manifest.byteSize,
       sourceCounts,
@@ -494,6 +514,9 @@ async function main(): Promise<void> {
         "# SQLite restore drill",
         "",
         `- Generated: ${generatedAt}`,
+        `- Elapsed: ${(report.elapsedMs / 1000).toFixed(1)}s`,
+        `- Host: ${report.environment.hostname} (${report.environment.platform}, node ${report.environment.node})`,
+        `- Version: ${report.environment.appVersion}${report.environment.gitRevision ? ` @ ${report.environment.gitRevision}` : ""}`,
         `- Source: ${report.source}`,
         `- Steps: ${steps.length}, failed: ${report.failed}`,
         "",
