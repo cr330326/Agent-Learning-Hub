@@ -80,11 +80,11 @@ npm ci --prefix code
 npm run dev:local --prefix code
 ```
 
-这条命令等价于 `DEPLOYMENT_MODE=local LOCAL_BIND_HOST=127.0.0.1 next dev`。两个环境变量分别决定"以本地模式运行"和"只绑回环地址"。
+这条命令等价于 `DEPLOYMENT_MODE=local LOCAL_BIND_HOST=127.0.0.1 next dev -p 3001`。前两个环境变量分别决定"以本地模式运行"和"只绑回环地址"，`-p 3001` 是本机默认端口（3000 常被其他应用占用）。
 
 ### 2.3 验证
 
-打开 <http://127.0.0.1:3000>，逐项确认：
+打开 <http://127.0.0.1:3001>，逐项确认：
 
 | 检查点         | 期望                                                      |
 | -------------- | --------------------------------------------------------- |
@@ -96,7 +96,7 @@ npm run dev:local --prefix code
 命令行验证：
 
 ```bash
-curl -s http://127.0.0.1:3000/api/health
+curl -s http://127.0.0.1:3001/api/health
 ```
 
 ### 2.4 换端口
@@ -142,7 +142,7 @@ APP_PORT=3300 code/scripts/local-preview.sh
 想同时看"我自己能读到什么"和"公开发布后别人看到什么"：
 
 ```bash
-code/scripts/mode-switch.sh both      # 本地 :3000 + 云端 :3001
+code/scripts/mode-switch.sh both      # 本地 :3001 + 云端 :3002
 code/scripts/mode-switch.sh status    # 谁在跑、在哪个端口
 code/scripts/mode-switch.sh stop      # 都停掉，保留卷
 ```
@@ -251,10 +251,10 @@ APP_URL=http://127.0.0.1:3100 npm run test:e2e:local --prefix code
 APP_URL=http://127.0.0.1:3100 npm run test:e2e:cloud --prefix code
 ```
 
-上面两条都用 3100 而不是本手册前面启动的 3000，这不是随手写的端口号：**两条 e2e 都以删号收尾**。本地模式只有一个用户，就是你——把 `APP_URL` 指向日常使用的预览会清空阅读进度、笔记和收藏，而且中途每条断言针对的都是测试自己刚写的数据，全程看不出异常。请另起一个带独立 `STATE_DATABASE_PATH` 的一次性服务。本地那条现在会在开跑前检查目标是否已有学习状态，非空即拒绝：
+上面两条都用 3100 而不是本手册前面启动的 3001，这不是随手写的端口号：**两条 e2e 都以删号收尾**。本地模式只有一个用户，就是你——把 `APP_URL` 指向日常使用的预览会清空阅读进度、笔记和收藏，而且中途每条断言针对的都是测试自己刚写的数据，全程看不出异常。请另起一个带独立 `STATE_DATABASE_PATH` 的一次性服务。本地那条现在会在开跑前检查目标是否已有学习状态，非空即拒绝：
 
 ```
-Refusing to run: http://127.0.0.1:3000 already holds learning state (itemProgress, bookmarks).
+Refusing to run: http://127.0.0.1:3001 already holds learning state (itemProgress, bookmarks).
 ```
 
 确认数据可弃时才加 `E2E_ALLOW_DESTRUCTIVE=1` 绕过。
@@ -270,7 +270,7 @@ npm run audit:ui --prefix code            # 三种视口截图，查溢出/超�
 npm run audit:functional --prefix code    # 真实点击：翻页、筛选、切章节、勾选、笔记
 ```
 
-两个脚本都需要 Playwright（`npm i -D playwright --prefix code && npx playwright install chromium`）和运行中的服务，因此**不进** `npm run check`。端口不是 3000 时：
+两个脚本都需要 Playwright（`npm i -D playwright --prefix code && npx playwright install chromium`）和运行中的服务，因此**不进** `npm run check`。端口不是 3001 时：
 
 ```bash
 npm run audit:functional --prefix code -- --base-url http://127.0.0.1:3210

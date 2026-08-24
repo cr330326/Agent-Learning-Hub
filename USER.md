@@ -37,7 +37,7 @@ npm ci --prefix code
 npm run dev:local --prefix code
 ```
 
-打开 <http://127.0.0.1:3000>，右上角应显示**本地模式**。改代码即时热更新，这是日常开发和试用的默认方式。
+打开 <http://127.0.0.1:3001>，右上角应显示**本地模式**。改代码即时热更新，这是日常开发和试用的默认方式。
 
 素材目录默认取仓库根的 `local-courses/`，放在别处时指定：
 
@@ -63,7 +63,7 @@ LOCAL_MATERIAL_ROOT=/path/to/local-courses npm run dev:local --prefix code
 code/scripts/local-preview.sh
 ```
 
-打开 <http://127.0.0.1:3000>。管理命令：
+打开 <http://127.0.0.1:3001>。管理命令：
 
 ```bash
 code/scripts/local-preview.sh status
@@ -81,8 +81,8 @@ code/scripts/local-preview.sh down
 想对比"我自己能看到什么"和"公开发布后别人看到什么"，用模式切换脚本。注意不能靠开两个 `npm run dev` 来对照——Next.js 16 对同一工程目录只允许一个 `next dev` 实例，第二个会以 "server is already running" 直接退出，所以并行对照只能走 Docker。两种模式使用各自独立的 Compose 项目、端口和 SQLite 卷，互不影响：
 
 ```bash
-code/scripts/mode-switch.sh local     # 本地模式 → http://127.0.0.1:3000
-code/scripts/mode-switch.sh cloud     # 云端模式 → http://127.0.0.1:3001
+code/scripts/mode-switch.sh local     # 本地模式 → http://127.0.0.1:3001
+code/scripts/mode-switch.sh cloud     # 云端模式 → http://127.0.0.1:3002
 code/scripts/mode-switch.sh both      # 两个一起跑，左右对照
 code/scripts/mode-switch.sh status    # 看哪个在跑、在哪个端口
 code/scripts/mode-switch.sh stop      # 都停掉，保留 SQLite 卷
@@ -154,7 +154,7 @@ npm run audit:ui --prefix code            # 看版式，三种视口截图
 npm run audit:functional --prefix code    # 真实点击：翻页、筛选、切章节、勾选、笔记
 ```
 
-默认对 <http://127.0.0.1:3000> 走查，端口不同时加 `-- --base-url http://127.0.0.1:3210`。报告写入 `code/reports/`。
+默认对 <http://127.0.0.1:3001> 走查，端口不同时加 `-- --base-url http://127.0.0.1:3210`。报告写入 `code/reports/`。
 
 `audit:functional` 会读取页面上的运行模式徽标并据此断言：本地模式断言章节导航与学习状态读写，云端模式断言匿名访问被拒、本地素材不出正文。给某个模式新增能力时，两个分支都要补断言。
 

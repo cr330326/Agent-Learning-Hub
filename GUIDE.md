@@ -39,7 +39,7 @@ npm ci --prefix code
 npm run dev:local --prefix code
 ```
 
-打开 <http://127.0.0.1:3000>。右上角应显示**本地模式**。
+打开 <http://127.0.0.1:3001>。右上角应显示**本地模式**。
 
 素材目录默认取仓库根的 `local-courses/`。放在别处时指定：
 
@@ -61,7 +61,7 @@ npm run dev:cloud --prefix code
 code/scripts/local-preview.sh
 ```
 
-从当前代码构建镜像、启动本地模式、跑健康检查，然后打开 <http://127.0.0.1:3000>。
+从当前代码构建镜像、启动本地模式、跑健康检查，然后打开 <http://127.0.0.1:3001>。
 管理命令：`status`、`logs`、`restart`、`down`。`down` **不会**删除保存学习状态的 SQLite 卷。
 
 > **只用 `127.0.0.1` 或 `localhost` 访问。** 本地模式的免登录身份只对回环地址成立，
@@ -244,7 +244,7 @@ npm run dev:local --prefix code
 ### UI 走查（版式）
 
 ```bash
-node code/scripts/ui-review.mjs --base-url http://127.0.0.1:3000 --item-id legacy-course-001
+node code/scripts/ui-review.mjs --base-url http://127.0.0.1:3001 --item-id legacy-course-001
 ```
 
 在 desktop / tablet / mobile 三档抓全页截图，发现以下问题时非零退出：
@@ -259,7 +259,7 @@ node code/scripts/ui-review.mjs --base-url http://127.0.0.1:3000 --item-id legac
 ### 功能回归（点击）
 
 ```bash
-node code/scripts/functional-regression.mjs --base-url http://127.0.0.1:3000
+node code/scripts/functional-regression.mjs --base-url http://127.0.0.1:3001
 ```
 
 这个脚本会**真的操作站点**：遍历站内链接、翻页、应用筛选、切章节、点上下章、勾选任务、写删笔记、收藏再取消、拉导出接口。它会读页面上的模式徽标并据此断言——本地模式验证完整读写，云端模式验证匿名访问被正确拒绝、本地素材不出正文。脚本会清理自己创建的状态。
@@ -277,7 +277,7 @@ APP_URL=http://127.0.0.1:3100 npm run test:e2e:local --prefix code
 APP_URL=http://127.0.0.1:3100 npm run test:e2e:cloud --prefix code
 ```
 
-> **`APP_URL` 别指向你日常在用的预览。** 两条命令都以删号收尾，而本地模式只有一个用户就是你自己——指错了会清空阅读进度、笔记和收藏。更麻烦的是中途所有断言针对的都是测试自己刚写的数据，看不出任何异常。所以要另起一个带独立 `STATE_DATABASE_PATH` 的一次性服务（上面示例用 3100 而不是预览的 3000，就是这个原因）。本地那条已经会在开跑前检查目标是否已有学习状态，非空即拒绝，除非你确认数据可弃并显式加 `E2E_ALLOW_DESTRUCTIVE=1`。
+> **`APP_URL` 别指向你日常在用的预览。** 两条命令都以删号收尾，而本地模式只有一个用户就是你自己——指错了会清空阅读进度、笔记和收藏。更麻烦的是中途所有断言针对的都是测试自己刚写的数据，看不出任何异常。所以要另起一个带独立 `STATE_DATABASE_PATH` 的一次性服务（上面示例用 3100 而不是预览的 3001，就是这个原因）。本地那条已经会在开跑前检查目标是否已有学习状态，非空即拒绝，除非你确认数据可弃并显式加 `E2E_ALLOW_DESTRUCTIVE=1`。
 
 两条不是同一个测试换个模式跑。本地模式自动签入固定单用户，可以直接写状态；云端模式**必须先真的登录一次**——匿名拒绝、CSRF 校验、删号后会话失效，全都挂在登录后面。云端那条要求 `STATE_DATABASE_PATH`、`BETTER_AUTH_SECRET`、`BETTER_AUTH_URL`、`GITHUB_CLIENT_ID`、`GITHUB_CLIENT_SECRET` 与服务端完全一致；GitHub 全程不联网。
 

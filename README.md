@@ -24,7 +24,7 @@ npm ci --prefix code
 npm run dev:cloud --prefix code
 ```
 
-打开 <http://127.0.0.1:3000>。要在站内阅读 `local-courses/` 的素材正文，改用 Local Mode：
+打开 <http://127.0.0.1:3001>。要在站内阅读 `local-courses/` 的素材正文，改用 Local Mode：
 
 ```bash
 npm run dev:local --prefix code
@@ -42,11 +42,11 @@ npm run check:local --prefix code
 改动界面或交互后，另外运行走查与功能回归（需要运行中的服务与 Playwright，不属于 `check` 门禁）：
 
 ```bash
-node code/scripts/ui-review.mjs --base-url http://127.0.0.1:3000 --item-id legacy-course-001
+node code/scripts/ui-review.mjs --base-url http://127.0.0.1:3001 --item-id legacy-course-001
 ```
 
 ```bash
-node code/scripts/functional-regression.mjs --base-url http://127.0.0.1:3000
+node code/scripts/functional-regression.mjs --base-url http://127.0.0.1:3001
 ```
 
 两者都通过只是底线，不是结论：走查脚本只判 HTTP 状态、横向溢出、页面高度和控制台报错四类信号。T8.9 就是在两份"零 finding"的报告后面逐屏看截图，才发现搜索结果成对重复、筛选栏按钮文字折行等六项缺陷。修完记得把当初能抓住它的断言一并补进 `functional-regression.mjs`。
@@ -59,7 +59,7 @@ Compose 文件位于 [`code/docker/`](./code/docker/)。推荐通过部署助手
 code/scripts/local-preview.sh
 ```
 
-该命令从当前工作区构建 Docker 镜像、启动 Local Mode 并完成健康检查；随后打开 <http://127.0.0.1:3000>。常用管理命令为 `code/scripts/local-preview.sh status`、`logs`、`restart` 和 `down`。Local Mode 只绑定回环地址，以只读方式挂载 `local-courses/`，并将 SQLite 放入命名卷；`down` 不删除该卷。需要直接控制部署模式或覆盖 `APP_PORT` 等变量时，仍可使用 `code/scripts/docker-deploy.sh local up`。
+该命令从当前工作区构建 Docker 镜像、启动 Local Mode 并完成健康检查；随后打开 <http://127.0.0.1:3001>。常用管理命令为 `code/scripts/local-preview.sh status`、`logs`、`restart` 和 `down`。Local Mode 只绑定回环地址，以只读方式挂载 `local-courses/`，并将 SQLite 放入命名卷；`down` 不删除该卷。需要直接控制部署模式或覆盖 `APP_PORT` 等变量时，仍可使用 `code/scripts/docker-deploy.sh local up`。
 
 Cloud Mode 先从模板创建根目录 `.env`，填写 `BETTER_AUTH_SECRET`、`BETTER_AUTH_URL` 和 GitHub OAuth 凭据；先静态检查配置（不会输出展开后的秘密），再启动：
 
@@ -72,8 +72,8 @@ code/scripts/docker-deploy.sh cloud up
 要在本机对照两种模式，用模式切换助手。同一 `code/` 目录同时只能跑一个 `next dev`（Next.js 16 按目录加锁，第二个实例会以 "server is already running" 退出），所以并行对照只能走 Docker。它给 Local 和 Cloud 各自的 Compose 项目、端口和 SQLite 卷，所以可以并行运行、单独停止：
 
 ```bash
-code/scripts/mode-switch.sh local     # http://127.0.0.1:3000
-code/scripts/mode-switch.sh cloud     # http://127.0.0.1:3001
+code/scripts/mode-switch.sh local     # http://127.0.0.1:3001
+code/scripts/mode-switch.sh cloud     # http://127.0.0.1:3002
 code/scripts/mode-switch.sh both
 code/scripts/mode-switch.sh status
 code/scripts/mode-switch.sh stop
