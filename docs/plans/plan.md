@@ -691,7 +691,9 @@ Mode 的只读素材挂载、健康接口、公开路由、学习状态 HTTP 流
 将升级前快照恢复至干净状态卷，再启动上一镜像。TLS、DNS、反向代理、密钥管理、
 异地备份复制、告警和正式恢复演练仍是部署方责任。
 
-可执行步骤集中在 [`docs/deploy/`](../deploy/README.md)，三份文档对应三条运行路径：
+可执行步骤集中在 [`docs/deploy/`](../deploy/README.md)；其中
+[`phase-7-delivery-deployment-operations.md`](../deploy/phase-7-delivery-deployment-operations.md)
+记录 Phase 7 的计划、状态和证据，另外三份文档对应三条运行路径：
 [`local-manual.md`](../deploy/local-manual.md) 是本机运行本地服务的完整版（学习与
 开发）；[`production-manual.md`](../deploy/production-manual.md) 从空白 Ubuntu 服务器
 逐条手工执行；[`lighthouse-automation.md`](../deploy/lighthouse-automation.md) 通过
@@ -726,7 +728,7 @@ Mode 的只读素材挂载、健康接口、公开路由、学习状态 HTTP 流
 - 根 `AGENTS.md`：工程协作约束、现役目录、命令事实源和不可突破的安全边界。
 - 根 `CONTEXT.md`：项目通用语言，避免把 Track、Stage、Curated Content 与 Local Material 混用。
 - 本文：架构、内容模型、归属、Docker、备份、恢复和运维边界。
-- `docs/deploy/`：从上述边界派生的执行 Runbook，三份对应三条运行路径（本机、云端手工、云端脚本）；不改变规格或任务状态。`README.md` 是入口，同时给出脚本运行位置分类。
+- `docs/deploy/`：从上述边界派生的 Phase 7 交付计划/证据和三份执行 Runbook；`phase-7-delivery-deployment-operations.md` 负责任务拆解与本地优先顺序，另外三份对应三条运行路径（本机、云端手工、云端脚本）。不改变规格或任务状态。`README.md` 是入口，同时给出脚本运行位置分类。
 - `tasks.md`：实施状态、可执行证据和需求到任务追踪。
 - `spec.md`：产品需求和验收场景；`docs/adr/` 保存已接受的决策。
 - `local-courses/README.md`：本地素材库的归属与维护约定。

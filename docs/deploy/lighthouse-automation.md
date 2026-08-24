@@ -405,7 +405,7 @@ code/scripts/lighthouse-deploy.sh logs
 
 后续 Agent 可以依据本文执行，但必须遵守以下顺序：
 
-1. 读取本目录 README、本文和手工 Runbook；读取当前 `tasks.md` Phase 7 状态。
+1. 读取本目录 README、Phase 7 独立文档、本文和手工 Runbook；再读取当前 `tasks.md` Phase 7 状态入口。
 2. 只读检查本地 `git status`、目标 tag、脚本帮助和 `preflight`。
 3. 核对用户明确提供的目标域名、固定镜像、SSH alias 和秘密文件路径；绝不请求或回显秘密值。
 4. 先 dry-run，并向用户报告将改动的远端目录、服务、镜像和卷。
@@ -498,6 +498,7 @@ OrcaTerm 同时是自动化路径失效时的应急入口，但它只是一个�
 
 - [local-manual.md](./local-manual.md) — 本机运行本地服务
 - [production-manual.md](./production-manual.md) — 同一流程的完全手工版本
-- [docs/deploy/README.md](./README.md) — 三条路径的选择与脚本运行位置分类
+- [Phase 7 交付、部署与运维](./phase-7-delivery-deployment-operations.md) — 本地优先顺序、任务状态和交付证据
+- [docs/deploy/README.md](./README.md) — Phase 7 入口、三条路径的选择与脚本运行位置分类
 - [USER.md 第 4 节](../../USER.md) — 本机构建并推送发布镜像
 - [plan.md 第 13.4 节](../plans/plan.md#134-部署容器与数据库运维) — 部署、容器与数据库运维约定

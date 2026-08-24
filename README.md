@@ -173,6 +173,7 @@ code/scripts/docker-deploy.sh release up
 - [产品规格与验收场景](./docs/plans/spec.md)
 - [架构、内容模型、部署和数据库运维](./docs/plans/plan.md)
 - [部署与运维入口（含脚本运行位置分类）](./docs/deploy/README.md)
+  - [Phase 7 交付、部署与运维计划及证据](./docs/deploy/phase-7-delivery-deployment-operations.md)
   - [本机手动运行本地服务](./docs/deploy/local-manual.md)
   - [完全手工生产部署与运维](./docs/deploy/production-manual.md)
   - [Lighthouse 自动化部署](./docs/deploy/lighthouse-automation.md)

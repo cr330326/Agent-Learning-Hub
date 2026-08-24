@@ -333,6 +333,7 @@ npm run audit:materials --prefix code -- --apply
 - [USER.md](../../USER.md) — 三行命令的快速版
 - [GUIDE.md](../../GUIDE.md) — 每个页面怎么用、推荐学习动线
 - [README.md](../../README.md) — 仓库结构、命令总表、脚本运行位置分类
+- [Phase 7 交付、部署与运维](./phase-7-delivery-deployment-operations.md) — 本地优先顺序、任务状态和交付证据
 - [production-manual.md](./production-manual.md) — 云端纯手工部署
 - [lighthouse-automation.md](./lighthouse-automation.md) — 云端脚本化部署
 - [plan.md 第 9 节](../plans/plan.md#9-双运行模式) — 双模式的架构约定

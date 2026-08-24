@@ -116,7 +116,7 @@ Cloud/Release 模式通过根目录 `.env` 提供秘密与镜像变量。发布�
 - `GUIDE.md`：面向学习者和本机维护者的使用指南（模式差异、页面用法、走查命令）。
 - `docs/plans/spec.md`：产品规格和验收场景。
 - `docs/plans/plan.md`：架构、内容模型、边界、Docker、备份与运维约束。
-- `docs/deploy/`：三条运行路径各一份可独立执行的 Runbook——`local-manual.md`（本机运行本地服务）、`production-manual.md`（云端完全手工）、`lighthouse-automation.md`（云端脚本化）；`README.md` 是入口，同时是脚本运行位置分类的事实源。云端两份做的是同一件事，必须保持逐节可互相定位。
+- `docs/deploy/`：Phase 7 交付计划与证据见 `phase-7-delivery-deployment-operations.md`；三条运行路径各一份可独立执行的 Runbook——`local-manual.md`（本机运行本地服务）、`production-manual.md`（云端完全手工）、`lighthouse-automation.md`（云端脚本化）。`README.md` 是入口，同时是脚本运行位置分类的事实源。云端两份做的是同一件事，必须保持逐节可互相定位；Phase 7 文档不替代任务状态或 Runbook。
 - `docs/plans/tasks.md`：任务、实施证据和需求到任务追踪。
 - `docs/testing-strategy.md`：测试层次与质量门禁。
 - `docs/adr/`：已接受的架构决策；不要用当前实现静默改写历史决定。

@@ -1,6 +1,6 @@
 # Agent Learning Hub baseline report
 
-Generated: 2026-08-24T15:17:09.421Z
+Generated: 2026-08-24T16:05:44.152Z
 
 ## Legacy content counts
 

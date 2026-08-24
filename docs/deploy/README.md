@@ -1,16 +1,17 @@
 # 部署与运维入口
 
-本目录把 [`plan.md` 第 13 节](../plans/plan.md#13-运行隐私备份与监控)定义的架构和安全边界，转换成可由运维人员逐步执行的 Runbook。规格、架构和任务状态仍分别以 [`spec.md`](../plans/spec.md)、[`plan.md`](../plans/plan.md) 和 [`tasks.md`](../plans/tasks.md) 为准；这里不另建第二套产品或数据契约。
+本目录把 [`plan.md` 第 13 节](../plans/plan.md#13-运行隐私备份与监控)定义的架构和安全边界，转换成可由运维人员逐步执行的 Runbook，并集中保存 Phase 7 的交付计划与证据。规格、架构和任务状态仍分别以 [`spec.md`](../plans/spec.md)、[`plan.md`](../plans/plan.md) 和 [`tasks.md`](../plans/tasks.md) 为准；这里不另建第二套产品或数据契约。
 
 ## 选择入口
 
-| 场景                                              | 文档                                                | 执行入口                            |
-| ------------------------------------------------- | --------------------------------------------------- | ----------------------------------- |
-| 在自己电脑上跑起来读素材、学习、改代码            | [本机手动运行本地服务](./local-manual.md)           | `npm run dev:local` 或本机 Docker   |
-| 从空白 Ubuntu 主机逐条安装、配置、上线和恢复      | [完全手工生产部署与运维](./production-manual.md)    | 人工执行每一条命令并保存演练证据    |
-| 腾讯云 Lighthouse 专用主机，通过本机 SSH 自动部署 | [Lighthouse 自动化部署](./lighthouse-automation.md) | `code/scripts/lighthouse-deploy.sh` |
+| 场景                                              | 文档                                                                    | 执行入口                            |
+| ------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------- |
+| 查看 Phase 7 任务拆解、本地优先顺序和交付证据     | [Phase 7 交付、部署与运维](./phase-7-delivery-deployment-operations.md) | 只读核对，不执行外部写入            |
+| 在自己电脑上跑起来读素材、学习、改代码            | [本机手动运行本地服务](./local-manual.md)                               | `npm run dev:local` 或本机 Docker   |
+| 从空白 Ubuntu 主机逐条安装、配置、上线和恢复      | [完全手工生产部署与运维](./production-manual.md)                        | 人工执行每一条命令并保存演练证据    |
+| 腾讯云 Lighthouse 专用主机，通过本机 SSH 自动部署 | [Lighthouse 自动化部署](./lighthouse-automation.md)                     | `code/scripts/lighthouse-deploy.sh` |
 
-后两份文档做的是**同一件事**，只是一份逐条手工、一份脚本化。第一次上线建议先通读手工文档理解每一步在做什么，再用自动化脚本执行——脚本失败时你需要知道它卡在手工流程的哪一步。两者的步骤对应关系见 [production-manual 第 16 节](./production-manual.md#16-与自动化脚本的对应关系)。
+Phase 7 文档是计划、任务和证据的统一入口，不是第四条部署路径。后两份文档做的是**同一件事**，只是一份逐条手工、一份脚本化。第一次上线建议先通读手工文档理解每一步在做什么，再用自动化脚本执行——脚本失败时你需要知道它卡在手工流程的哪一步。两者的步骤对应关系见 [production-manual 第 16 节](./production-manual.md#16-与自动化脚本的对应关系)。
 
 ## 脚本按运行位置分类
 
@@ -78,13 +79,14 @@
 
 ## 推荐执行顺序
 
-1. 先在本机把站点跑通（[local-manual.md](./local-manual.md)），确认内容与素材边界符合预期。
-2. 通读手工文档，理解域名、OAuth、秘密、卷、备份和回滚边界。
-3. 在腾讯云控制台完成人工控制面准备：实例、SSH 密钥、防火墙、DNS 和必要快照。
-4. 运行自动化脚本的 `preflight` 与 dry-run，确认目标主机和固定镜像。
-5. 首次执行 `bootstrap`、`configure`、`deploy`，随后完成公开页面、OAuth 与管理员边界验收。
-6. 配置每日 `backup` 和服务器外复制，执行一次干净环境恢复演练（`code/scripts/lighthouse-deploy.sh restore-drill`，或手工文档第 14.2 节）。
-7. 将日期、镜像 digest、备份 manifest、耗时和结果写入新的 `docs/acceptance/` 证据；确认真实结果后再按项目流程更新任务状态。
+1. 先阅读 [Phase 7 独立文档](./phase-7-delivery-deployment-operations.md)，确认当前任务状态和本地/云端边界。
+2. 在本机把站点跑通（[local-manual.md](./local-manual.md)），确认内容与素材边界符合预期。
+3. 只有本地功能和本机 Docker 证据稳定后，才通读手工文档，准备域名、OAuth、秘密、卷、备份和回滚边界。
+4. 在腾讯云控制台完成人工控制面准备：实例、SSH 密钥、防火墙、DNS 和必要快照。
+5. 运行自动化脚本的 `preflight` 与 dry-run，确认目标主机和固定镜像。
+6. 首次执行 `bootstrap`、`configure`、`deploy`，随后完成公开页面、OAuth 与管理员边界验收。
+7. 配置每日 `backup` 和服务器外复制，执行一次干净环境恢复演练（`code/scripts/lighthouse-deploy.sh restore-drill`，或手工文档第 14.2 节）。
+8. 将日期、镜像 digest、备份 manifest、耗时和结果写入新的 `docs/acceptance/` 证据；确认真实结果后再回到 `tasks.md` 更新任务状态。
 
 ## 官方平台参考
 

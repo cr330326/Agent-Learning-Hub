@@ -705,6 +705,7 @@ sudo docker stop agent-learning-hub-restore-drill
 
 - [local-manual.md](./local-manual.md) — 本机运行本地服务
 - [lighthouse-automation.md](./lighthouse-automation.md) — 同一流程的脚本化版本
-- [docs/deploy/README.md](./README.md) — 三条路径的选择与脚本运行位置分类
+- [Phase 7 交付、部署与运维](./phase-7-delivery-deployment-operations.md) — 本地优先顺序、任务状态和交付证据
+- [docs/deploy/README.md](./README.md) — Phase 7 入口、三条路径的选择与脚本运行位置分类
 - [plan.md 第 13 节](../plans/plan.md#13-运行隐私备份与监控) — 运行、隐私、备份与监控的架构约定
 - [spec.md 第 15 节](../plans/spec.md#15-部署规格) — 部署规格与验收要求
