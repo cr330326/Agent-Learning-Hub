@@ -54,13 +54,13 @@ export LOCAL_MATERIAL_ROOT=/path/to/local-courses
 npm run audit:materials --prefix code
 ```
 
-看输出第一行。`Local Material is not mounted` 说明目录不存在或里面没有任何子目录（只有 `README.md` 不算挂载）。正常输出形如：
+看输出第一行。`Local Material is not mounted` 说明目录不存在或里面没有任何子目录（只有 `README.md` 不算挂载）。正常输出会包含动态数量，示例结构如下；不要把某次运行的仓库数量复制回手册：
 
 ```
-Catalog drift: 0 missing paths (0 corroborated moves, 0 uncertain, 0 gone), 3 uncatalogued repositories, 479 items without an upstream fallback.
+Catalog drift: <missing paths> missing paths (<corroborated moves> corroborated moves, <uncertain> uncertain, <gone> gone), <uncatalogued repositories> uncatalogued repositories, <items without fallback> items without an upstream fallback.
 ```
 
-`missing paths` 不是 0 时，说明目录里记的路径和磁盘对不上——见本文第 6 节。
+`missing paths` 不是 0 时，说明目录里记的路径和磁盘对不上；未收录仓库或没有上游回退也需要人工策展。完整结果见 [`code/reports/materials/catalog-drift.md`](../../code/reports/materials/catalog-drift.md)，处置规则见本文第 6 节。该命令按设计可能非零退出，不代表应用启动失败。
 
 ---
 

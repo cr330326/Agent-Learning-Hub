@@ -21,6 +21,12 @@
 
 一句话：**想真正读素材正文，用本地模式。**
 
+### 当前验收边界（2026-08-24）
+
+核心页面、阅读器、搜索、Local/Cloud 访问边界、学习状态、收藏、笔记、阶段成果、导出和删号已经通过本地代码级与一次性原生生产构建服务验收。Cloud 的测试登录使用测试桩，不代表真实 GitHub OAuth；公网部署、固定镜像回滚、DNS/TLS、异地备份和告警仍需按 [tasks.md](docs/plans/tasks.md) 单独验收。
+
+本地素材的章节不是扫描到就自动公开：课程条目必须显式声明允许阅读的路径。当前 T8.8 仍在做目录归属决策，重复正文的唯一拥有者尚未确定；遇到未声明章节时显示为普通文字是安全边界，不是阅读器故障。
+
 ---
 
 ## 二、把站点跑起来
@@ -201,6 +207,17 @@ code/scripts/local-preview.sh
 ```bash
 npm run audit:materials --prefix code
 ```
+
+需要同时区分三类维护检查：
+
+```bash
+npm run materials --prefix code -- check    # 上游 freshness，只读
+npm run materials --prefix code -- audit    # schema 与本地边界
+npm run materials --prefix code -- reindex  # 重建允许内容的搜索索引
+npm run materials --prefix code -- drift    # 目录声明与磁盘实际对账
+```
+
+`drift` 发现未收录仓库、失效路径或缺少上游回退时按设计非零退出；它不是 `check` 的失败，也不能用一次通过的 `materials check` 代替目录策展。数量和仓库名单以 `code/reports/materials/` 的最新报告为准，不要把某次扫描结果写死在文档里。
 
 它回答三个问题，报告写到 `code/reports/materials/catalog-drift.md`：
 

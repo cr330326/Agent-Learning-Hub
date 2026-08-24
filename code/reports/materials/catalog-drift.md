@@ -1,18 +1,18 @@
 # Catalog drift report
 
-Generated at: 2026-08-15T10:22:22.053Z
+Generated at: 2026-08-24T15:17:38.188Z
 Local Material root: /Users/vsh9p8q/AI/Agent-Learning-Hub/local-courses
 
 ## Summary
 
 | Finding | Count |
 | --- | ---: |
-| Declared paths | 459 |
+| Declared paths | 475 |
 | Missing paths | 0 |
 | — corroborated moves (`--apply` rewrites these) | 0 |
 | — uncertain (decide by hand) | 0 |
 | — gone (no file of that name on disk) | 0 |
-| Uncatalogued repositories | 3 |
+| Uncatalogued repositories | 4 |
 | Items without an upstream fallback | 479 |
 | — grouped into repositories to confirm | 55 |
 
@@ -24,7 +24,8 @@ chapter list are curation decisions that cannot be read off a disk.
 
 | Repository | Markdown files | Branch | Remote |
 | --- | ---: | --- | --- |
-| `Agentic/Harness/deepseek/deepseek-harness` | 2348 | master | https://github.com/deepseek-ai/deepseek-harness.git |
+| `Agentic/Harness/deepseek/deepseek-harness` | 2499 | master | https://github.com/deepseek-ai/deepseek-harness.git |
+| `Agentic/HelloAgents` | 17 | learn_version | git@github.com:jjyaoao/HelloAgents.git |
 | `AICoding/opencode/code/openchamber` | 53 | main | git@github.com:openchamber/openchamber.git |
 | `AICoding/opencode/plugins/opencode-goal-plugin` | 8 | main | git@github.com:prevalentWare/opencode-goal-plugin.git |
 
@@ -55,6 +56,33 @@ chapter list are curation decisions that cannot be read off a disk.
         "label": "本地 README",
         "sourceUrl": null,
         "localPath": "Agentic/Harness/deepseek/deepseek-harness/README.md"
+      }
+    ],
+    "unavailableReason": null
+  },
+  {
+    "id": "TODO-stable-kebab-case-id",
+    "title": "TODO",
+    "track": "TODO: learning | aicoding | agentic | application",
+    "stageIds": [],
+    "summary": "TODO",
+    "learningGoals": [
+      "TODO"
+    ],
+    "sourceUrl": "https://github.com/jjyaoao/HelloAgents",
+    "localPath": "Agentic/HelloAgents/README.md",
+    "accessPolicy": "local-preferred",
+    "publicationRights": "third-party",
+    "author": "TODO",
+    "license": "TODO",
+    "licenseStatus": "unknown",
+    "tags": [],
+    "lastReviewedAt": null,
+    "references": [
+      {
+        "label": "本地 README",
+        "sourceUrl": null,
+        "localPath": "Agentic/HelloAgents/README.md"
       }
     ],
     "unavailableReason": null

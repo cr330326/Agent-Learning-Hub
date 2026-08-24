@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-15T02:54:13.040Z",
+  "generatedAt": "2026-08-24T15:17:40.500Z",
   "localMaterialRoot": "local-courses",
   "summary": {
     "total": 54,
@@ -22,7 +22,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.033Z",
+      "checkedAt": "2026-08-24T15:17:40.464Z",
       "courseIds": [
         "legacy-course-034",
         "legacy-reading-23-001",
@@ -73,7 +73,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "master",
-      "checkedAt": "2026-08-15T02:54:13.033Z",
+      "checkedAt": "2026-08-24T15:17:40.490Z",
       "courseIds": [
         "legacy-course-029",
         "legacy-reading-22-009",
@@ -143,7 +143,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.029Z",
+      "checkedAt": "2026-08-24T15:17:40.464Z",
       "courseIds": [
         "legacy-course-027",
         "legacy-reading-22-007",
@@ -230,7 +230,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.033Z",
+      "checkedAt": "2026-08-24T15:17:40.464Z",
       "courseIds": [
         "legacy-course-026",
         "legacy-reading-22-005",
@@ -263,7 +263,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.033Z",
+      "checkedAt": "2026-08-24T15:17:40.490Z",
       "courseIds": [
         "legacy-course-023",
         "legacy-reading-17-001",
@@ -326,7 +326,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.033Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-course-024",
         "legacy-reading-19-001",
@@ -423,7 +423,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-course-022",
         "legacy-reading-16-001",
@@ -470,7 +470,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-course-032",
         "legacy-reading-22-013",
@@ -490,7 +490,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-course-031",
         "legacy-reading-22-011",
@@ -531,7 +531,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-course-036",
         "legacy-reading-24-001",
@@ -566,7 +566,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-course-025",
         "legacy-reading-22-001",
@@ -585,7 +585,7 @@
       "ahead": 0,
       "behind": 2,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-course-028",
         "legacy-reading-22-008",
@@ -617,7 +617,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-course-035",
         "legacy-reading-25-001",
@@ -646,7 +646,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-course-037",
         "legacy-reading-22-014"
@@ -663,7 +663,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-course-033",
         "legacy-reading-14-015",
@@ -770,7 +770,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-course-030",
         "legacy-reading-22-010",
@@ -796,7 +796,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-course-014",
         "legacy-reading-12-019"
@@ -813,7 +813,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-course-009",
         "legacy-reading-11-001",
@@ -854,7 +854,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-reading-12-016"
       ],
@@ -870,7 +870,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-course-011",
         "legacy-reading-12-013"
@@ -887,7 +887,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-reading-12-017",
         "legacy-reading-12-018"
@@ -905,7 +905,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-reading-12-015"
       ],
@@ -921,7 +921,7 @@
       "ahead": 0,
       "behind": 60,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-reading-12-021",
         "legacy-reading-12-022"
@@ -939,7 +939,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-reading-12-020"
       ],
@@ -955,7 +955,7 @@
       "ahead": 57,
       "behind": 246,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-course-010",
         "legacy-reading-12-014"
@@ -972,7 +972,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-course-012",
         "legacy-reading-12-001"
@@ -989,7 +989,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-reading-12-004"
       ],
@@ -1005,7 +1005,7 @@
       "ahead": 0,
       "behind": 30,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.034Z",
+      "checkedAt": "2026-08-24T15:17:40.490Z",
       "courseIds": [
         "legacy-course-008",
         "legacy-reading-10-001",
@@ -1062,7 +1062,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-reading-12-011",
         "legacy-reading-12-012"
@@ -1080,7 +1080,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.035Z",
+      "checkedAt": "2026-08-24T15:17:40.464Z",
       "courseIds": [
         "legacy-course-013",
         "legacy-reading-12-005",
@@ -1101,7 +1101,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-reading-12-009"
       ],
@@ -1117,7 +1117,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-reading-12-010"
       ],
@@ -1133,7 +1133,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-reading-12-008"
       ],
@@ -1149,7 +1149,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-course-015",
         "legacy-reading-15-001"
@@ -1166,7 +1166,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-course-020",
         "legacy-reading-15-005",
@@ -1189,7 +1189,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.029Z",
+      "checkedAt": "2026-08-24T15:17:40.464Z",
       "courseIds": [
         "legacy-course-019",
         "legacy-reading-15-002"
@@ -1206,7 +1206,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.464Z",
       "courseIds": [
         "legacy-course-021",
         "legacy-reading-15-009",
@@ -1225,7 +1225,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-reading-13-019"
       ],
@@ -1241,7 +1241,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-course-016",
         "legacy-reading-13-001",
@@ -1292,7 +1292,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.037Z",
+      "checkedAt": "2026-08-24T15:17:40.492Z",
       "courseIds": [
         "legacy-reading-13-020",
         "legacy-reading-13-021",
@@ -1314,7 +1314,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-reading-14-014"
       ],
@@ -1330,7 +1330,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "dev",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.464Z",
       "courseIds": [
         "legacy-course-018",
         "legacy-reading-14-012",
@@ -1349,7 +1349,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.029Z",
+      "checkedAt": "2026-08-24T15:17:40.464Z",
       "courseIds": [
         "legacy-reading-14-017",
         "legacy-reading-14-018"
@@ -1367,7 +1367,7 @@
       "ahead": 1614,
       "behind": 2706,
       "branch": "dev",
-      "checkedAt": "2026-08-15T02:54:13.029Z",
+      "checkedAt": "2026-08-24T15:17:40.490Z",
       "courseIds": [
         "legacy-reading-14-016"
       ],
@@ -1383,7 +1383,7 @@
       "ahead": 0,
       "behind": 58,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-course-017",
         "legacy-reading-14-001",
@@ -1420,7 +1420,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "master",
-      "checkedAt": "2026-08-15T02:54:13.029Z",
+      "checkedAt": "2026-08-24T15:17:40.464Z",
       "courseIds": [
         "legacy-reading-14-019"
       ],
@@ -1436,7 +1436,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.024Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-course-039",
         "legacy-reading-37-001",
@@ -1489,7 +1489,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "master",
-      "checkedAt": "2026-08-15T02:54:13.023Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-course-040",
         "legacy-reading-38-001",
@@ -1514,7 +1514,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.029Z",
+      "checkedAt": "2026-08-24T15:17:40.464Z",
       "courseIds": [
         "legacy-course-042",
         "legacy-reading-38-008",
@@ -1539,7 +1539,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "dev",
-      "checkedAt": "2026-08-15T02:54:13.033Z",
+      "checkedAt": "2026-08-24T15:17:40.451Z",
       "courseIds": [
         "legacy-course-041",
         "legacy-reading-38-006",
@@ -1558,7 +1558,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.033Z",
+      "checkedAt": "2026-08-24T15:17:40.450Z",
       "courseIds": [
         "legacy-course-004",
         "legacy-reading-07-001",
@@ -1611,7 +1611,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.029Z",
+      "checkedAt": "2026-08-24T15:17:40.470Z",
       "courseIds": [
         "legacy-course-003",
         "legacy-reading-09-001"
@@ -1628,7 +1628,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.029Z",
+      "checkedAt": "2026-08-24T15:17:40.464Z",
       "courseIds": [
         "legacy-course-005",
         "legacy-reading-09-002"
@@ -1645,7 +1645,7 @@
       "ahead": 0,
       "behind": 0,
       "branch": "main",
-      "checkedAt": "2026-08-15T02:54:13.039Z",
+      "checkedAt": "2026-08-24T15:17:40.500Z",
       "courseIds": [
         "legacy-course-001",
         "legacy-reading-02-001",

@@ -1,7 +1,7 @@
 # Functional regression
 
-- Instance: http://127.0.0.1:3000
-- Generated: 2026-08-20T13:45:57.488Z
+- Instance: http://127.0.0.1:3210
+- Generated: 2026-08-24T15:23:43.902Z
 - Checks: 23, failed: 0
 
 | Result | Check | Detail |
@@ -17,7 +17,7 @@
 | PASS | unknown filter values are ignored | 515 items kept; internal tags hidden |
 | PASS | search returns and filters results | 24 results, kind labels localised |
 | PASS | search results are not duplicated | 24 distinct results with per-result context |
-| PASS | reader opens the course document | 5126 characters rendered |
+| PASS | reader opens the course document | 5196 characters rendered |
 | PASS | reader chapter tabs switch content | switched to 前言 |
 | PASS | reader has previous/next chapter links | next then previous round-trips |
 | PASS | reader in-body links are not dead ends | no unresolved document-relative links |

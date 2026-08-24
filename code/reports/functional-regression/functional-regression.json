@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-20T13:45:57.488Z",
-  "baseUrl": "http://127.0.0.1:3000",
+  "generatedAt": "2026-08-24T15:23:43.902Z",
+  "baseUrl": "http://127.0.0.1:3210",
   "total": 23,
   "failed": 0,
   "results": [
@@ -62,7 +62,7 @@
     {
       "name": "reader opens the course document",
       "ok": true,
-      "detail": "5126 characters rendered"
+      "detail": "5196 characters rendered"
     },
     {
       "name": "reader chapter tabs switch content",

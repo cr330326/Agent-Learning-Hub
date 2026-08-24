@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-15T10:22:22.053Z",
+  "generatedAt": "2026-08-24T15:17:38.188Z",
   "localMaterialRoot": "/Users/vsh9p8q/AI/Agent-Learning-Hub/local-courses",
   "mounted": true,
   "summary": {
-    "declaredPaths": 459,
+    "declaredPaths": 475,
     "missing": 0,
     "moved": 0,
     "uncertain": 0,
     "gone": 0,
-    "uncatalogued": 3,
+    "uncatalogued": 4,
     "itemsMissingSourceUrl": 479,
     "upstreamGapRepositories": 55
   },
@@ -19,7 +19,13 @@
       "repositoryPath": "Agentic/Harness/deepseek/deepseek-harness",
       "remote": "https://github.com/deepseek-ai/deepseek-harness.git",
       "branch": "master",
-      "markdownCount": 2348
+      "markdownCount": 2499
+    },
+    {
+      "repositoryPath": "Agentic/HelloAgents",
+      "remote": "git@github.com:jjyaoao/HelloAgents.git",
+      "branch": "learn_version",
+      "markdownCount": 17
     },
     {
       "repositoryPath": "AICoding/opencode/code/openchamber",

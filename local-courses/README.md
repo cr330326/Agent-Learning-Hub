@@ -49,11 +49,13 @@ npm run dev --prefix code
 npm run materials --prefix code -- check
 npm run materials --prefix code -- audit
 npm run materials --prefix code -- reindex
+npm run materials --prefix code -- drift
 ```
 
 - `check` 检查目录白名单引用的 Git 仓库 freshness，只读执行，不会 fetch、pull 或修改工作区。
 - `audit` 校验 schema、路径、访问策略和本地文件边界，生成 `code/reports/materials/audit/`。
 - `reindex` 先审计，再仅索引允许访问的站内正文和本地白名单章节，生成 `code/reports/materials/search-index.json`。
+- `drift` 对账目录声明与磁盘实际内容，生成 `code/reports/materials/catalog-drift.md`；发现未收录仓库、失效路径或缺少上游回退时按设计非零退出。它与 `check` 的上游 freshness 状态不同，也不应通过 `--apply` 自动猜测课程归属。
 
 如需检查某个非默认根目录：
 

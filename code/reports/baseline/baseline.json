@@ -1,6 +1,6 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-08-09T15:05:35.861Z",
+  "generatedAt": "2026-08-24T15:17:09.421Z",
   "source": {
     "legacyData": "learning-site/data.js"
   },
@@ -15,28 +15,28 @@
   "localMaterials": {
     "summary": {
       "available": true,
-      "nestedGitRepositories": 57,
-      "visibleFiles": 106520
+      "nestedGitRepositories": 58,
+      "visibleFiles": 108937
     },
     "nestedRepositories": [
       "Agentic/ai-agent-deep-dive",
       "Agentic/AutoGPT",
       "Agentic/crewAI",
-      "Agentic/Document/harness-books",
-      "Agentic/Document/harness-engineering-from-cc-to-ai-coding",
-      "Agentic/Document/learn-harness-engineering",
-      "Agentic/Langchain-ai/deepagents",
-      "Agentic/Langchain-ai/langchain",
-      "Agentic/Langchain-ai/langgraph",
+      "Agentic/Harness/deepagents",
+      "Agentic/Harness/deepseek/deepseek-harness",
+      "Agentic/Harness/harness-books",
+      "Agentic/Harness/harness-engineering-from-cc-to-ai-coding",
+      "Agentic/Harness/learn-harness-engineering",
+      "Agentic/Harness/openworker",
+      "Agentic/Harness/PI/pi-mono",
+      "Agentic/Harness/smolagents",
+      "Agentic/HelloAgents",
       "Agentic/Memory/mem0",
       "Agentic/MetaGPT",
       "Agentic/multica",
       "Agentic/open-agent-sdk-typescript",
       "Agentic/openchamber",
       "Agentic/OpenHands",
-      "Agentic/openworker",
-      "Agentic/PI/pi-mono",
-      "Agentic/smolagents",
       "AICoding/claude/code/awesome-claude-code",
       "AICoding/claude/code/claude-code-analysis",
       "AICoding/claude/code/claude-code-haha",
@@ -67,6 +67,7 @@
       "AICoding/opencode/code/opencode-supermemory",
       "AICoding/opencode/code/openwork",
       "AICoding/opencode/learn-opencode",
+      "AICoding/opencode/plugins/opencode-goal-plugin",
       "AICoding/opencode/plugins/opencode-wakatime",
       "Application/cc-switch",
       "Application/CodexSwitch",
@@ -83,53 +84,605 @@
       "id": "learning-route",
       "label": "Learning route",
       "available": true,
-      "evidence": ["learning-site/data.js"]
+      "evidence": [
+        "learning-site/data.js"
+      ]
     },
     {
       "id": "course-catalog",
       "label": "Course catalog",
       "available": true,
-      "evidence": ["learning-site/data.js"]
+      "evidence": [
+        "learning-site/data.js"
+      ]
     },
     {
       "id": "track-filtering",
       "label": "Track filtering",
       "available": true,
-      "evidence": ["learning-site/data.js", "learning-site/app.js"]
+      "evidence": [
+        "learning-site/data.js",
+        "learning-site/app.js"
+      ]
     },
     {
       "id": "local-document-reader",
       "label": "Local Markdown reader",
       "available": true,
-      "evidence": ["learning-site/app.js"]
+      "evidence": [
+        "learning-site/app.js"
+      ]
     },
     {
       "id": "reading-progress",
       "label": "Reading progress",
       "available": true,
-      "evidence": ["learning-site/app.js"]
+      "evidence": [
+        "learning-site/app.js"
+      ]
     },
     {
       "id": "path-audit",
       "label": "Local path audit",
       "available": true,
-      "evidence": ["learning-site/scripts/audit_paths.py"]
+      "evidence": [
+        "learning-site/scripts/audit_paths.py"
+      ]
     },
     {
       "id": "responsive-layout",
       "label": "Responsive layout",
       "available": true,
-      "evidence": ["learning-site/styles.css"]
+      "evidence": [
+        "learning-site/styles.css"
+      ]
     }
   ],
   "referenceAudit": {
-    "missing": [],
-    "resolved": 552,
+    "missing": [
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-books/book1-claude-code/appendix-a-checklists.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-books/book1-claude-code/appendix-c-source-map.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-books/book1-claude-code/chapter-01-why-harness-engineering.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-books/book1-claude-code/chapter-02-prompt-is-control-plane.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-books/book1-claude-code/chapter-03-query-loop-heartbeat.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-books/book1-claude-code/chapter-04-tools-permissions-interrupts.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-books/book1-claude-code/chapter-05-context-memory-compact.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-books/book1-claude-code/chapter-06-errors-and-recovery.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-books/book1-claude-code/chapter-07-multi-agent-and-verification.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-books/book1-claude-code/chapter-08-team-landing-practices.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-books/book1-claude-code/chapter-09-ten-principles.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-books/book1-claude-code/index.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-books/book1-claude-code/preface.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-books/book2-comparing/appendix-b-checklists.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-books/book2-comparing/chapter-00-reading-map.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-books/book2-comparing/chapter-01-why-this-comparison.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-books/book2-comparing/chapter-02-two-control-planes.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-books/book2-comparing/chapter-03-loop-thread-and-rollout.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-books/book2-comparing/chapter-04-tools-sandbox-and-exec-policy.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-books/book2-comparing/chapter-05-skills-hooks-and-local-governance.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-books/book2-comparing/chapter-06-delegation-verification-and-state.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-books/book2-comparing/chapter-07-convergence-and-divergence.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-books/book2-comparing/chapter-08-how-to-choose-or-build.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-books/book2-comparing/preface.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/appendix/b-env-vars.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/appendix/e-version-evolution.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/appendix/f-e2e-traces.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch01.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch02.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch03.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch04.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch04b.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch05.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch06.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch06b.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch07.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch08.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch09.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch10.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch11.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part3/ch12.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part4/ch13.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part4/ch14.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part4/ch15.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch16.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch17.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch17b.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch18.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch18b.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part5/ch19.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch20.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch20b.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch20c.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch21.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch22.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch22b.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch23.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch24.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch25.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch26.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch27.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch28.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch29.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part7/ch30.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/preface.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/learn-harness-engineering/docs/zh/index.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-01-why-capable-agents-still-fail/index.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-02-what-a-harness-actually-is/index.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-03-why-the-repository-must-become-the-system-of-record/index.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-04-why-one-giant-instruction-file-fails/index.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-05-why-long-running-tasks-lose-continuity/index.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-06-why-initialization-needs-its-own-phase/index.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-07-why-agents-overreach-and-under-finish/index.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-08-why-feature-lists-are-harness-primitives/index.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-09-why-agents-declare-victory-too-early/index.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-10-why-end-to-end-testing-changes-results/index.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-11-why-observability-belongs-inside-the-harness/index.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/learn-harness-engineering/docs/zh/lectures/lecture-12-why-every-session-must-leave-a-clean-state/index.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/learn-harness-engineering/docs/zh/projects/index.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/learn-harness-engineering/docs/zh/resources/index.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Document/learn-harness-engineering/docs/zh/skills/index.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Langchain-ai/deepagents/AGENTS.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Langchain-ai/deepagents/openwiki/architecture/overview.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Langchain-ai/deepagents/openwiki/engineering/operations-and-testing.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Langchain-ai/deepagents/openwiki/index.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Langchain-ai/deepagents/openwiki/quickstart.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Langchain-ai/deepagents/openwiki/workflows/deep-agents-code.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Langchain-ai/deepagents/openwiki/workflows/evaluation-and-release.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Langchain-ai/deepagents/README.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Langchain-ai/langchain/AGENTS.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Langchain-ai/langchain/libs/README.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Langchain-ai/langchain/README.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Langchain-ai/langgraph/AGENTS.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Langchain-ai/langgraph/examples/README.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/Langchain-ai/langgraph/README.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/openworker/README.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/openworker/surfaces/gui/README.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/PI/pi-mono/AGENTS.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/PI/pi-mono/CONTRIBUTING.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/PI/pi-mono/packages/agent/README.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/PI/pi-mono/packages/ai/README.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/PI/pi-mono/packages/client/README.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/PI/pi-mono/packages/coding-agent/README.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/PI/pi-mono/packages/evals/README.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/PI/pi-mono/packages/protocol/README.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/PI/pi-mono/packages/server/README.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/PI/pi-mono/packages/tui/README.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/PI/pi-mono/README.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/PI/pi-mono/tui-plan.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/smolagents/docs/source/zh/conceptual_guides/intro_agents.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/smolagents/docs/source/zh/conceptual_guides/react.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/smolagents/docs/source/zh/guided_tour.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/smolagents/docs/source/zh/index.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/smolagents/docs/source/zh/tutorials/building_good_agents.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/smolagents/docs/source/zh/tutorials/inspect_runs.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/smolagents/docs/source/zh/tutorials/memory.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/smolagents/docs/source/zh/tutorials/secure_code_execution.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/smolagents/docs/source/zh/tutorials/tools.md"
+      },
+      {
+        "kind": "doc",
+        "path": "Agentic/smolagents/README.md"
+      },
+      {
+        "kind": "link",
+        "path": "Agentic/Document/harness-books/book1-claude-code/index.md"
+      },
+      {
+        "kind": "link",
+        "path": "Agentic/Document/harness-books/book2-comparing/preface.md"
+      },
+      {
+        "kind": "link",
+        "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/preface.md"
+      },
+      {
+        "kind": "link",
+        "path": "Agentic/Document/learn-harness-engineering/docs/zh/index.md"
+      },
+      {
+        "kind": "link",
+        "path": "Agentic/Langchain-ai/deepagents/README.md"
+      },
+      {
+        "kind": "link",
+        "path": "Agentic/Langchain-ai/langchain/README.md"
+      },
+      {
+        "kind": "link",
+        "path": "Agentic/Langchain-ai/langgraph/README.md"
+      },
+      {
+        "kind": "link",
+        "path": "Agentic/openworker/README.md"
+      },
+      {
+        "kind": "link",
+        "path": "Agentic/PI/pi-mono/AGENTS.md"
+      },
+      {
+        "kind": "link",
+        "path": "Agentic/PI/pi-mono/README.md"
+      },
+      {
+        "kind": "link",
+        "path": "Agentic/smolagents/docs/source/zh/guided_tour.md"
+      },
+      {
+        "kind": "link",
+        "path": "Agentic/smolagents/README.md"
+      }
+    ],
+    "resolved": 421,
     "total": 552
   },
   "coverage": {
-    "projectDirectories": 56,
-    "unlistedProjects": ["AICoding/opencode/code/openchamber"]
+    "projectDirectories": 57,
+    "unlistedProjects": [
+      "Agentic/Harness/deepagents",
+      "Agentic/Harness/deepseek/deepseek-harness",
+      "Agentic/Harness/harness-books",
+      "Agentic/Harness/harness-engineering-from-cc-to-ai-coding",
+      "Agentic/Harness/learn-harness-engineering",
+      "Agentic/Harness/openworker",
+      "Agentic/Harness/PI/pi-mono",
+      "Agentic/Harness/smolagents",
+      "Agentic/HelloAgents",
+      "AICoding/opencode/code/openchamber",
+      "AICoding/opencode/plugins/opencode-goal-plugin"
+    ]
   },
   "repositories": [
     {
@@ -145,27 +698,39 @@
       "workingTree": "clean"
     },
     {
-      "path": "Agentic/Document/harness-books",
+      "path": "Agentic/Harness/deepagents",
       "workingTree": "clean"
     },
     {
-      "path": "Agentic/Document/harness-engineering-from-cc-to-ai-coding",
+      "path": "Agentic/Harness/deepseek/deepseek-harness",
       "workingTree": "clean"
     },
     {
-      "path": "Agentic/Document/learn-harness-engineering",
+      "path": "Agentic/Harness/harness-books",
       "workingTree": "clean"
     },
     {
-      "path": "Agentic/Langchain-ai/deepagents",
+      "path": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding",
       "workingTree": "clean"
     },
     {
-      "path": "Agentic/Langchain-ai/langchain",
+      "path": "Agentic/Harness/learn-harness-engineering",
       "workingTree": "clean"
     },
     {
-      "path": "Agentic/Langchain-ai/langgraph",
+      "path": "Agentic/Harness/openworker",
+      "workingTree": "clean"
+    },
+    {
+      "path": "Agentic/Harness/PI/pi-mono",
+      "workingTree": "clean"
+    },
+    {
+      "path": "Agentic/Harness/smolagents",
+      "workingTree": "clean"
+    },
+    {
+      "path": "Agentic/HelloAgents",
       "workingTree": "clean"
     },
     {
@@ -190,18 +755,6 @@
     },
     {
       "path": "Agentic/OpenHands",
-      "workingTree": "clean"
-    },
-    {
-      "path": "Agentic/openworker",
-      "workingTree": "clean"
-    },
-    {
-      "path": "Agentic/PI/pi-mono",
-      "workingTree": "clean"
-    },
-    {
-      "path": "Agentic/smolagents",
       "workingTree": "clean"
     },
     {
@@ -322,6 +875,10 @@
     },
     {
       "path": "AICoding/opencode/learn-opencode",
+      "workingTree": "clean"
+    },
+    {
+      "path": "AICoding/opencode/plugins/opencode-goal-plugin",
       "workingTree": "clean"
     },
     {
