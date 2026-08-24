@@ -1,5 +1,9 @@
 import Link from "next/link";
 
+// Header mode comes from runtime env; prerendering would bake in the
+// build-time default, so this page renders per request like every other page.
+export const dynamic = "force-dynamic";
+
 export default function ContributePage() {
   return (
     <main className="page page-width prose-page">

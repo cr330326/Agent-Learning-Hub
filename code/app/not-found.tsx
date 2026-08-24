@@ -2,6 +2,10 @@ import Link from "next/link";
 
 import { NotFoundPath } from "./components/not-found-path";
 
+// Header mode comes from runtime env; a prerendered 404 would bake in the
+// build-time default, so render per request like every other page.
+export const dynamic = "force-dynamic";
+
 const RECOVERY_LINKS = [
   { href: "/roadmap", label: "九阶段路线", note: "回到主线" },
   { href: "/courses", label: "课程目录", note: "515 项资料" },
