@@ -30,7 +30,9 @@ Actions:
 Environment:
   APP_IMAGE             Image tag for local/cloud builds or required pinned release image.
   APP_BIND_HOST         Host binding (defaults to 127.0.0.1; local mode rejects non-loopback values).
-  APP_PORT              Host port (defaults to 3000).
+  APP_PORT              Host port (defaults: local 3001, cloud 3002, release 3000).
+                        The local defaults avoid the common 3000 dev-machine conflict;
+                        release keeps 3000 for the cloud host loopback + Caddy runbooks.
   COMPOSE_PROJECT_NAME  Isolated Compose project name (default: agent-learning-hub-<mode>).
   COMPOSE_EXTRA_FILES   Colon-separated Compose overrides appended after the mode files.
                         Relative paths resolve from the repository root; local mode rejects them.
@@ -83,7 +85,16 @@ if ! docker info >/dev/null 2>&1; then
 fi
 
 bind_host=${APP_BIND_HOST:-127.0.0.1}
-port=${APP_PORT:-3000}
+case "$mode" in
+  local) default_port=3001 ;;
+  cloud) default_port=3002 ;;
+  release) default_port=3000 ;;
+esac
+port=${APP_PORT:-$default_port}
+# Compose interpolates ${APP_PORT} from the shell environment before the
+# --env-file, so export the resolved value to keep the published port and the
+# health check below pointed at the same number.
+export APP_PORT=$port
 wait_timeout=${WAIT_TIMEOUT:-120}
 
 if [[ $mode == "local" && $bind_host != "127.0.0.1" && $bind_host != "::1" && $bind_host != "localhost" ]]; then

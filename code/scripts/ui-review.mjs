@@ -52,7 +52,7 @@ function heightBudgetFor(route) {
 function usage() {
   process.stdout.write(`Usage: node scripts/ui-review.mjs [options]
 
-  --base-url <url>     Instance to review (default: http://127.0.0.1:3000)
+  --base-url <url>     Instance to review (default: http://127.0.0.1:3001)
   --output-dir <dir>   Report and screenshot directory
                        (default: reports/ui-review)
   --item-id <id>       Extra course/reader routes to include
@@ -66,7 +66,7 @@ Requires a running server and Playwright:
 
 function parseArguments(argv) {
   const options = {
-    baseUrl: "http://127.0.0.1:3000",
+    baseUrl: "http://127.0.0.1:3001",
     outputDir: "reports/ui-review",
     itemId: undefined,
     viewport: undefined,

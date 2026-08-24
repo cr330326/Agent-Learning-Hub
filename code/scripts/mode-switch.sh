@@ -7,8 +7,8 @@ script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)
 repository_root=$(cd -- "$script_dir/../.." && pwd -P)
 deploy_script="$script_dir/docker-deploy.sh"
 
-local_port=${LOCAL_MODE_PORT:-3000}
-cloud_port=${CLOUD_MODE_PORT:-3001}
+local_port=${LOCAL_MODE_PORT:-3001}
+cloud_port=${CLOUD_MODE_PORT:-3002}
 
 usage() {
   cat <<'EOF'
@@ -32,8 +32,8 @@ Options:
   -h, --help        Show this help.
 
 Environment:
-  LOCAL_MODE_PORT   Host port for Local Mode (default: 3000).
-  CLOUD_MODE_PORT   Host port for Cloud Mode (default: 3001).
+  LOCAL_MODE_PORT   Host port for Local Mode (default: 3001).
+  CLOUD_MODE_PORT   Host port for Cloud Mode (default: 3002).
 
 Both modes bind 127.0.0.1 only and use separate Compose projects
 (agent-learning-hub-local / agent-learning-hub-cloud), so their containers,

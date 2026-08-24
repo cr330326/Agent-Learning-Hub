@@ -131,7 +131,7 @@ Agent Learning Hub 是一个以实践产出为主线的 Agent 工程学习平台
 目录规模决定了展示层的两条硬约束：
 
 - **分页**：课程目录与搜索结果按每页 24 条分页（`app/components/pagination.tsx`），且只对当前页调用 Content Resolver。目录有 500+ 条，全量解析会在 Local Mode 逐条命中文件系统，页面高度也会失控。分页写进 URL 查询参数。
-- **标签映射**：`accessPolicy`、`publicationRights`、`licenseStatus` 和搜索 `kind` 都是 schema 枚举，必须经 `app/components/content-card.tsx` 的标签函数转成中文再渲染。
+- **标签映射**：`accessPolicy`、`publicationRights`、`licenseStatus`、搜索 `kind` 和阶段成果 `kind` 都是 schema 枚举，必须映射成中文再渲染——目录卡片走 `app/components/content-card.tsx` 的标签函数，搜索结果与学习面板各有自己的映射表（`searchKindLabel`、`outcomeKindLabels`）。
 
 旧站导入的遗留形态同样在展示层收敛，而不是回写数据：缺失字段的字面量 `Unknown` 显示为“作者待补 / 许可证待确认”，`legacy-reading` 等内部标签不出现在卡片上，与 summary 完全重复的标签不重复渲染。数据层保留原样，以便后续人工复核时能看出哪些条目还没有元数据。同一份 `displayTags()` 也决定 `/courses` 标签下拉的可选值——记账标签既然不该出现在卡片上，就更不该成为可分享的筛选状态。
 
@@ -236,6 +236,10 @@ Content Resolver 在当前运行模式下判断。
 `code/content/` 的结构化清单、保留 `legacyImport.raw` 和无损源快照，并写入
 `code/reports/legacy-conversion/`。转换器不会猜测第三方归属：未知作者/许可证以
 `Unknown` 显式保留，缺少上游地址保留为 `null`，所有待补项目写入报告。
+
+该转换器是迁移期工具，已随目录改为人手维护而废弃，仅作溯源保留，输出固定写
+`legacy-import.json`，不再产生现役目录；见
+[ADR 0006](../adr/0006-catalog-is-hand-maintained.md)。
 
 ### 6.2 Content Resolver Module
 

@@ -950,6 +950,12 @@ _沉淀：_ `audit:functional` 从 20 项增至 23 项（Cloud 22 项）。新�
 
 **最终结果**：Local `23/23`、Cloud `22/22`；两种模式 UI 走查各 51 次抓取 0 finding；`npm run check:cloud` 与 `npm run check:local` 均以 0 退出（132 单元测试）。
 
+**实施证据（2026-08-24，Local Mode 全页面复查）**：在本地 Docker 部署（`http://127.0.0.1:3001`）上逐页走查并留存截图 16 张（`code/reports/ui-walkthrough/`，01-home 至 15-admin 为走查记录，16-content-policy-fixed 为修复后复核），覆盖首页、路线与阶段页、课程目录（筛选/分页/非法参数）、课程详情、单章与多章阅读器（章节切换、图片 `loading="lazy"`/`decoding="async"`/`referrerpolicy="no-referrer"` 属性）、搜索、项目阶梯、学习面板（任务勾选往返、收藏往返、笔记增删、阶段成果提交/确认/删除、JSON 与笔记 Markdown 导出）、`/login`、`/content-policy`、`/contribute` 与 `/admin`（非管理员 404）。发现并修复两处缺陷（修复后重建镜像复核通过，`npm run check:local` 以 0 退出）：
+
+_缺陷 1：三个静态页面的模式徽标被构建期固化。_ `/content-policy`、`/contribute` 与 `not-found` 此前没有 `export const dynamic`，构建时被静态预渲染，header 的模式徽标与末项导航按构建期默认值输出，本地 Docker 部署里这三页错误显示“云端模式 + 登录”。`next dev` 按请求渲染所以此前未暴露，只有构建产物会固化默认值。三个页面补上 `export const dynamic = "force-dynamic"`，与项目内其余全部页面一致；约定已写入 [AGENTS.md](../../AGENTS.md)。（PAGE-007、PAGE-015）
+
+_缺陷 2：学习面板把成果类型枚举原样渲染。_ `/learning` 的阶段成果列表直接显示 schema 枚举 `repository`/`demo`/`reflection`，违反 PAGE-011。新增 `outcomeKindLabels` 映射（GitHub 仓库 / 演示链接 / Markdown 总结），与成果表单下拉文案一致；枚举示例已同步进 [AGENTS.md](../../AGENTS.md) 与 [plan.md](plan.md) 4.3 的标签映射约定。
+
 **Phase 8 退出条件**：所有上线门槛通过，新站成为仓库唯一推荐入口。
 
 ### - [x] T8.10 建立 Catalog Drift 对账机制并修复目录路径漂移

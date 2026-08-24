@@ -16,7 +16,7 @@ import process from "node:process";
 function usage() {
   process.stdout.write(`Usage: node scripts/functional-regression.mjs [options]
 
-  --base-url <url>     Instance under test (default: http://127.0.0.1:3000)
+  --base-url <url>     Instance under test (default: http://127.0.0.1:3001)
   --output-dir <dir>   Report directory (default: reports/functional-regression)
   --item-id <id>       Local-preferred course used for reader checks
                        (default: legacy-course-001)
@@ -27,7 +27,7 @@ function usage() {
 
 function parseArguments(argv) {
   const options = {
-    baseUrl: "http://127.0.0.1:3000",
+    baseUrl: "http://127.0.0.1:3001",
     outputDir: "reports/functional-regression",
     itemId: "legacy-course-001",
     skipState: false,

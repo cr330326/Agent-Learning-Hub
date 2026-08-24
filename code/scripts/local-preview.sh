@@ -19,7 +19,7 @@ Defaults to: up
   verify   Call the preview health endpoint.
 
 Environment:
-  APP_PORT      Host port (default: 3000).
+  APP_PORT      Host port (default: 3001).
   WAIT_TIMEOUT  Container health wait in seconds (default: 120).
 
 The preview only binds to 127.0.0.1. It mounts local-courses read-only and
@@ -52,7 +52,7 @@ if [[ ! -x $deploy_script ]]; then
 fi
 
 export APP_BIND_HOST=127.0.0.1
-export APP_PORT=${APP_PORT:-3000}
+export APP_PORT=${APP_PORT:-3001}
 
 preview_url="http://127.0.0.1:$APP_PORT"
 

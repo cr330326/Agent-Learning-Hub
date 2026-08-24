@@ -41,6 +41,16 @@ type DashboardState = {
   }>;
 };
 
+/** Outcome kinds stay Chinese in the UI; the schema enum never renders raw. */
+const outcomeKindLabels: Record<
+  DashboardState["stageOutcomes"][number]["kind"],
+  string
+> = {
+  repository: "GitHub 仓库",
+  demo: "演示链接",
+  reflection: "Markdown 总结",
+};
+
 /**
  * `position` is the stored scroll offset. Users care about "where was I", not
  * the pixel value, so report the saved time and only hint that a position exists.
@@ -582,7 +592,8 @@ export function LearningDashboard({
                     {stageTitles.get(outcome.stageId) ?? outcome.stageId}
                   </strong>
                   <span>
-                    {outcome.kind} · {outcome.confirmedAt ? "已确认" : "待确认"}
+                    {outcomeKindLabels[outcome.kind]} ·{" "}
+                    {outcome.confirmedAt ? "已确认" : "待确认"}
                   </span>
                   {outcome.url ? <a href={outcome.url}>{outcome.url}</a> : null}
                   {outcome.summary ? <p>{outcome.summary}</p> : null}
