@@ -83,6 +83,7 @@ async function runCloud(page) {
   await navigate(page, "/courses/legacy-course-001");
   await page
     .locator('a[href="https://github.com/datawhalechina/hello-agents"]')
+    .first()
     .waitFor();
 
   await navigate(page, "/search?q=agent");
@@ -176,6 +177,7 @@ async function runLocalFallback(page) {
   await navigate(page, "/courses/legacy-course-001");
   await page
     .locator('a[href="https://github.com/datawhalechina/hello-agents"]')
+    .first()
     .waitFor();
   assert.equal(
     await page.locator('a[href="/read/legacy-course-001"]').count(),

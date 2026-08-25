@@ -1,7 +1,7 @@
 # Phase 7：交付、部署与运维
 
 **状态**：本地优先；云端交付规划待本地功能和发布前置条件稳定后执行
-**维护日期**：2026-08-24  
+**维护日期**：2026-08-25
 **任务状态入口**：[docs/plans/tasks.md](../plans/tasks.md#10-phase-7-交付部署与运维)  
 **执行入口**：[docs/deploy/README.md](./README.md)
 
@@ -25,11 +25,12 @@
 
 指定版本可以从空服务器部署、监控、备份、恢复和回滚；本地用户也有完整启动文档。退出必须同时保存真实环境的部署、HTTPS、OAuth、备份、恢复和受控回滚证据，文档或脚本静态验证不能单独关闭 Phase 7。
 
-## 3. 当前复核结论（2026-08-24）
+## 3. 当前复核结论（2026-08-25）
 
 - `check:cloud` 与 `check:local` 已通过；原生生产构建服务的双模式 HTTP E2E、学习状态、鉴权、导出和删号链路已有证据。
-- Local 浏览器 UI 走查为 54 captures / 0 findings，点击式功能回归为 23/23；素材边界审计通过，素材 freshness、audit 和 reindex 命令可运行。
-- 本轮隔离 Docker 新构建因 BuildKit 超过 3 分钟无输出而停止，未把既有健康容器当作新镜像构建证据；因此本机 Docker 新鲜构建仍需补证。
+- 原生 Local 浏览器 `seed/resume/fallback/mobile` 全部通过；正式镜像容器 UI 走查为 48 captures / 0 findings，点击式功能回归为 23/23；素材边界审计、freshness、audit 和 reindex 命令均已复跑。
+- 已生成正式本地镜像 `agent-learning-hub:local-20260825`，并以 `--no-build` 运行验证命名卷重启、空素材回退、HTTP E2E 和 Cloud clean-room 公开流程；试运行实例位于 `127.0.0.1:3345`。
+- 本轮完整证据见 [2026-08-25 本地全量端到端验收报告](../acceptance/local-e2e-2026-08-25.md)；报告中的本地试运行不是云端部署或发布替代证据。
 - 云端主机上的 Cloud Mode 镜像公开冒烟和恢复演练已有历史证据，但公网 DNS/TLS、真实 GitHub OAuth、GHCR 拉取、受控回滚、服务器外备份和外部日志/告警仍未完成。
 
 ## 4. T7.1 完善 CI 流程
@@ -189,7 +190,7 @@
 
 本机补充（2026-08-14）：新增根 [USER.md](../../USER.md) 作为本地模式快速上手（开发服务器、Docker 双模式切换与并行、本机构建推送镜像），深入用法归 [GUIDE.md](../../GUIDE.md)；配套新增 [mode-switch.sh](../../code/scripts/mode-switch.sh)，在本机 Docker 上以各自 Compose 项目、端口和 SQLite 卷切换或并行运行。T7.3 的真实部署演练仍未完成。
 
-本次文档复核（2026-08-24）：已同步本文件列出的入口和相关文档，项目相关文档链接路径检查、Prettier 和 `git diff --check` 通过；全仓库链接脚本仍会报告 `.agents/` 与 `.claude/` 内既有技能示例的外部/占位链接，未将这些非项目文档混入本次迁移。T7.7 仍未完成，因为完成定义包含依赖 T7.3 的云端流程可复现。
+本次文档复核（2026-08-25）：已同步本文件列出的入口和相关文档，补充正式本地 Docker 镜像、试运行及 [本地全量端到端验收报告](../acceptance/local-e2e-2026-08-25.md)；项目相关文档链接路径检查、Prettier 和 `git diff --check` 通过。全仓库链接脚本仍会报告 `.agents/` 与 `.claude/` 内既有技能示例的外部/占位链接，未将这些非项目文档混入本次迁移。T7.7 仍未完成，因为完成定义包含依赖 T7.3 的云端流程可复现。
 
 ## 11. 本地优先与云端后续清单
 
@@ -197,7 +198,7 @@
 
 - 使用 [`local-manual.md`](./local-manual.md) 验证开发服务和本机 Docker 两条路径。
 - 跑 `npm run check:cloud --prefix code` 与 `npm run check:local --prefix code`，再按风险执行一次性实例 E2E、浏览器走查和素材检查。
-- 修复或明确本机 Docker 新鲜构建的 BuildKit 阻塞，确认 Local Mode 只读素材挂载、健康检查和 SQLite 命名卷持久化。
+- 已完成本机 Docker 正式镜像构建与复验；确认 Local Mode 只读素材挂载、健康检查、SQLite 命名卷持久化，以及基于固定本地镜像的试运行。
 - 运行本地恢复演练时使用临时 fixture 和交互式口令；不要把日常状态库或真实秘密写入文档。
 
 ### 本地完成后再规划云端

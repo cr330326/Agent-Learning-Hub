@@ -270,7 +270,7 @@ npm run audit:ui --prefix code            # 三种视口截图，查溢出/超�
 npm run audit:functional --prefix code    # 真实点击：翻页、筛选、切章节、勾选、笔记
 ```
 
-两个脚本都需要 Playwright（`npm i -D playwright --prefix code && npx playwright install chromium`）和运行中的服务，因此**不进** `npm run check`。端口不是 3001 时：
+两个脚本都需要本机外部 Playwright（`npm install --no-save --ignore-scripts playwright --prefix code && npx --prefix code playwright install chromium`）和运行中的服务，因此**不进** `npm run check`。Playwright 不写入 `code/package.json`，也不会进入正式 Docker 镜像。端口不是 3001 时：
 
 ```bash
 npm run audit:functional --prefix code -- --base-url http://127.0.0.1:3210

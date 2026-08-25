@@ -69,7 +69,7 @@ APP_URL=http://127.0.0.1:3100 npm run test:e2e:cloud --prefix code
 
 两者不是同一个测试的两种配置。Local Mode 自动签入固定单用户，可以直接写状态；**Cloud Mode 必须先真的登录一次**，因为匿名拒绝、CSRF、删号后会话失效全都挂在登录后面——跳过登录的云端 e2e 会把匿名断言全跑通，却对鉴权后的一半毫无覆盖。`cloud-auth-state-http.mts` 用 Better Auth 自己的 API 在服务端同一个 SQLite 文件上签发会话，只打桩 GitHub 的 token 与 profile 两个端点；它要求 `STATE_DATABASE_PATH`、`BETTER_AUTH_SECRET`、`BETTER_AUTH_URL`、`GITHUB_CLIENT_ID`、`GITHUB_CLIENT_SECRET` 与服务端完全一致，不要改成自己拼 cookie 签名。
 
-当前验收口径（2026-08-24）：`check:cloud`/`check:local` 只证明代码级质量门禁和生产构建；`test:e2e:*`、`audit:ui`、`audit:functional`、`materials check/audit/reindex` 和 Docker 启动验证是独立证据，不能用一次命令的退出码替代其他层。`materials drift` 发现未收录仓库或路径问题时按设计非零退出，也不能把它从 `check` 中强行接回。系统完成度与未完成任务以 [docs/plans/tasks.md](docs/plans/tasks.md) 的最新复核段为准；本地证据不等于真实 OAuth、GHCR、DNS/TLS、异地备份或生产回滚证据。
+当前验收口径（2026-08-25）：`check:cloud`/`check:local` 只证明代码级质量门禁和生产构建；`test:e2e:*`、`audit:ui`、`audit:functional`、`materials check/audit/reindex` 和 Docker 启动验证是独立证据，不能用一次命令的退出码替代其他层。`materials drift` 发现未收录仓库或路径问题时按设计非零退出，也不能把它从 `check` 中强行接回。系统完成度与未完成任务以 [docs/plans/tasks.md](docs/plans/tasks.md) 的最新复核段为准；本地正式镜像验收不等于真实 OAuth、GHCR、DNS/TLS、异地备份或生产回滚证据。
 
 签发会话让这个测试成了服务端 SQLite 文件的**第二个写入者**，所以它必须和服务端共享文件系统——CI、开发机，或共用一个卷的两个容器。指向"容器化服务 + 状态放在 macOS/Windows bind mount"会产生假失败：SQLite 的 WAL 锁经由内存映射的 `-shm` 协调，该映射跨 VM 边界不相干。实测症状具有迷惑性——写入成功、删号返回 200、会话确实失效，但文件里用户行还在，于是在删号级联那步失败，而应用本身是对的。测试中段的「the database file agrees with the server about the note just written」就是为点名这种环境而设。要验证容器，就让应用和测试共用同一个 Docker 卷（这也正是生产拓扑），同一套断言 29/29 通过。
 

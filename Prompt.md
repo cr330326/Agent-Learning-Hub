@@ -51,16 +51,16 @@ npm run materials --prefix code -- check         # 素材新鲜度，只读，�
 
 为每个模式显式注入隔离状态路径和端口，不要依赖脚本默认值：
 
-| 变量                    | 用途与取值                                                                                                                                       |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `DEPLOYMENT_MODE`       | `cloud` 或 `local`；`test:e2e:local`/`check:local` 会自己带上                                                                                     |
-| `LOCAL_BIND_HOST`       | Local Mode 必须 `127.0.0.1`，运行时会校验回环绑定（`modules/auth/local-auth.ts`）                                                                   |
-| `LOCAL_MATERIAL_ROOT`   | 素材根目录，**必须指向真实存在的绝对路径**。传空串不会回退默认值——代码用 `??` 判断，空串会被解析成进程工作目录。回退场景应指向一个只含 `README.md` 的空临时目录 |
-| `STATE_DATABASE_PATH`   | 学习状态 SQLite 的隔离路径，指向临时目录；不设则落到 `code/.data/learning-state.sqlite`（验收时禁止污染）                                          |
-| `APP_URL`               | HTTP 冒烟与服务地址。三个 smoke 脚本默认 `127.0.0.1:3100`、`learning-state-http.mjs` 默认 `3218`，不一致——必须显式设置                                |
-| `EXPECTED_RUNTIME_MODE` | 健康检查断言的模式；`test:e2e:local` 自带 `local`，云端默认 `cloud`                                                                                |
-| `BETTER_AUTH_SECRET`    | Cloud Mode 启动必需（占位值即可）；配 `BETTER_AUTH_URL` 指向测试地址。OAuth 提供方缺省时 `/api/auth/...` 正确行为是 503，不是缺陷                    |
-| `BACKUP_PASSPHRASE`     | `db:backup`/`db:restore` 必需的口令，用一次性测试值                                                                                                |
+| 变量                     | 用途与取值                                                                                                                                                                                |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `DEPLOYMENT_MODE`        | `cloud` 或 `local`；`test:e2e:local`/`check:local` 会自己带上                                                                                                                             |
+| `LOCAL_BIND_HOST`        | Local Mode 必须 `127.0.0.1`，运行时会校验回环绑定（`modules/auth/local-auth.ts`）                                                                                                         |
+| `LOCAL_MATERIAL_ROOT`    | 素材根目录，**必须指向真实存在的绝对路径**。传空串不会回退默认值——代码用 `??` 判断，空串会被解析成进程工作目录。回退场景应指向一个只含 `README.md` 的空临时目录                           |
+| `STATE_DATABASE_PATH`    | 学习状态 SQLite 的隔离路径，指向临时目录；不设则落到 `code/.data/learning-state.sqlite`（验收时禁止污染）                                                                                 |
+| `APP_URL`                | HTTP 冒烟与服务地址。三个 smoke 脚本默认 `127.0.0.1:3100`、`learning-state-http.mjs` 默认 `3218`，不一致——必须显式设置                                                                    |
+| `EXPECTED_RUNTIME_MODE`  | 健康检查断言的模式；`test:e2e:local` 自带 `local`，云端默认 `cloud`                                                                                                                       |
+| `BETTER_AUTH_SECRET`     | Cloud Mode 启动必需（占位值即可）；配 `BETTER_AUTH_URL` 指向测试地址。OAuth 提供方缺省时 `/api/auth/...` 正确行为是 503，不是缺陷                                                         |
+| `BACKUP_PASSPHRASE`      | `db:backup`/`db:restore` 必需的口令，用一次性测试值                                                                                                                                       |
 | `PLAYWRIGHT_CHROME_PATH` | `browser-acceptance.mjs` 默认找 `/Applications/Google Chrome.app/.../Google Chrome`，非 macOS 布局时用此变量覆盖；走查脚本（`audit:ui`/`audit:functional`）则要求可用的 Playwright 浏览器 |
 
 浏览器验收用生产构建而非开发服务器：
@@ -70,25 +70,32 @@ npm run build --prefix code
 npm run start --prefix code -- -p <port> -H 127.0.0.1   # 连同上述模式变量一起注入
 ```
 
+浏览器脚本依赖本机外部 Playwright，不属于产品或正式 Docker 镜像依赖；首次验收先执行：
+
+```bash
+npm install --no-save --ignore-scripts playwright --prefix code
+npx --prefix code playwright install chromium
+```
+
 可使用 `/Users/vsh9p8q/.agents/skills/webapp-testing/scripts/with_server.py` 管理临时服务器（`--server "<启动命令>" --port <port> -- <测试命令>`），确保每次测试后停止进程。
 
 ## 必测场景与断言
 
-| 范围   | 场景               | 至少验证                                                                                                                                                                                                              | 关联验收                       |
-| ------ | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
-| Cloud  | 无本地素材公开流程 | 首页显示“云端模式”徽标；九阶段路线、公开搜索（`/search?q=agent` 出 `.search-result`）和第三方上游链接可用；`/learning` 为未登录空态；`/api/session` 返回 `authenticated:false`；`/api/admin/health` 匿名返回 401；浏览器控制台无错误 | AC-01、NFR-007                 |
-| Local  | 正常素材挂载       | 首页显示“本地模式”徽标；本地优先条目可进入 `/read/...`；阅读、收藏、任务勾选、笔记、阶段成果和主动确认可完成；`/api/admin/health` 返回 403（非管理员）                                                                  | AC-02、AC-05、AC-06            |
-| Local  | 进程重启           | 使用同一临时 SQLite 重启服务后，阅读进度、任务、收藏、笔记和成果仍在；导出 JSON/Markdown 包含本人数据且不含 token/session secret；删号后为空态和提示可见                                                              | AC-04、AC-06                   |
-| Local  | 缺失素材降级       | 把 `LOCAL_MATERIAL_ROOT` 指向只含 `README.md` 的空临时目录（**不要传空串**，见上表）；同一第三方课程只提供上游链接，不出现 `/read/...` 站内阅读入口                                                                    | AC-02、NFR-005                 |
-| Local  | 备份恢复           | 对含学习状态的临时数据库执行 `db:backup`（`BACKUP_PASSPHRASE` 用测试口令，`--output-dir` 指向临时目录）；`db:restore --input <备份文件> --yes` 恢复到一个不存在的新目标；以恢复副本启动并复验状态、导出和健康检查      | AC-09、OPS-006、GATE-07        |
-| 共用   | 安全负向路径       | 确认以下场景均有测试文件且在 `check` 中通过：路径穿越与符号链接逃逸（`modules/content-resolver/local-file-access.test.ts`）、Markdown 消毒（`modules/reader/markdown.test.ts`）、CSRF/频率限制与导出脱敏（`app/api/` 各 `*.test.ts`）、管理员边界与健康接口越权 | AC-03、SEC、PRIV               |
-| 共用   | 界面与内容不变量   | 列表页分页（每页 24 条）；无效查询参数被忽略且不回显；Local 顶部导航末项是“账户”而非“登录”；进度徽标文案是“动作已做完 · 待交成果”而不自行判完成；未登录时状态控件整块不渲染且无 `0/3` 先渲染；阅读器 `<img>` 带 `loading="lazy"` `decoding="async"` `referrerpolicy="no-referrer"`；未知路由出 404 页 | AC-05、NFR-003、NFR-005       |
-| 移动端 | 390×844            | 路线、搜索和阅读器可用，无水平滚动；如条件允许完成一条笔记/成果流                                                                                                                                                     | AC-08、NFR-001                 |
-| Docker | Local Compose      | 先运行 `code/scripts/docker-deploy.sh local config`；在资源允许时以独立 `COMPOSE_PROJECT_NAME`、独立端口和测试镜像运行 `local up`，随后用 `local verify`（调用 `/api/health`）确认健康，再执行 Local HTTP E2E，最后只执行同一项目的 `local down`。保留命名卷，不删除未知卷 | AC-01、AC-02、GATE-02、GATE-09 |
-| Local  | 目录漂移对账       | `materials drift`（**不加 `--apply`**）报 `0 missing paths`；把一个已声明路径临时改名到临时副本目录后重跑，确认它被列入报告且退出码非 0；随后还原。`materials check` 另行记录新鲜度结论，不与漂移合并                  | AC-07、CAT 系列                |
-| 共用   | 未挂载素材时不误报 | 以只含 `README.md` 的空目录作 `LOCAL_MATERIAL_ROOT` 跑 `npm run audit:content --prefix code -- --mode local`（npm 传参需要 `--`），确认 0 errors 且只出 `local-material-root-unavailable` 警告——“目录存在”不等于“素材挂载” | AC-02、NFR-005                 |
-| 共用   | UI 走查            | `npm run audit:ui --prefix code -- --base-url <url> --output-dir <临时或 reports>`：desktop/tablet/mobile 三档全页截图，对 HTTP 错误、横向溢出、异常页高和控制台报错零 finding（依赖运行中的服务与 Playwright，不进 `check`） | NFR-010、PAGE 系列             |
-| 共用   | 功能回归           | `npm run audit:functional --prefix code -- --base-url <url> --output-dir <临时或 reports>`：真实点击遍历站内链接、翻页、筛选、章节导航和学习状态写入/读取/删除；脚本读 `.mode-badge` 识别运行模式——云端断言匿名访问被拒、本地素材出正文，两种模式都要跑且全部通过 | NFR-011、READ 系列、GATE-04    |
+| 范围   | 场景               | 至少验证                                                                                                                                                                                                                                                                                              | 关联验收                       |
+| ------ | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| Cloud  | 无本地素材公开流程 | 首页显示“云端模式”徽标；九阶段路线、公开搜索（`/search?q=agent` 出 `.search-result`）和第三方上游链接可用；`/learning` 为未登录空态；`/api/session` 返回 `authenticated:false`；`/api/admin/health` 匿名返回 401；浏览器控制台无错误                                                                  | AC-01、NFR-007                 |
+| Local  | 正常素材挂载       | 首页显示“本地模式”徽标；本地优先条目可进入 `/read/...`；阅读、收藏、任务勾选、笔记、阶段成果和主动确认可完成；`/api/admin/health` 返回 403（非管理员）                                                                                                                                                | AC-02、AC-05、AC-06            |
+| Local  | 进程重启           | 使用同一临时 SQLite 重启服务后，阅读进度、任务、收藏、笔记和成果仍在；导出 JSON/Markdown 包含本人数据且不含 token/session secret；删号后为空态和提示可见                                                                                                                                              | AC-04、AC-06                   |
+| Local  | 缺失素材降级       | 把 `LOCAL_MATERIAL_ROOT` 指向只含 `README.md` 的空临时目录（**不要传空串**，见上表）；同一第三方课程只提供上游链接，不出现 `/read/...` 站内阅读入口                                                                                                                                                   | AC-02、NFR-005                 |
+| Local  | 备份恢复           | 对含学习状态的临时数据库执行 `db:backup`（`BACKUP_PASSPHRASE` 用测试口令，`--output-dir` 指向临时目录）；`db:restore --input <备份文件> --yes` 恢复到一个不存在的新目标；以恢复副本启动并复验状态、导出和健康检查                                                                                     | AC-09、OPS-006、GATE-07        |
+| 共用   | 安全负向路径       | 确认以下场景均有测试文件且在 `check` 中通过：路径穿越与符号链接逃逸（`modules/content-resolver/local-file-access.test.ts`）、Markdown 消毒（`modules/reader/markdown.test.ts`）、CSRF/频率限制与导出脱敏（`app/api/` 各 `*.test.ts`）、管理员边界与健康接口越权                                       | AC-03、SEC、PRIV               |
+| 共用   | 界面与内容不变量   | 列表页分页（每页 24 条）；无效查询参数被忽略且不回显；Local 顶部导航末项是“账户”而非“登录”；进度徽标文案是“动作已做完 · 待交成果”而不自行判完成；未登录时状态控件整块不渲染且无 `0/3` 先渲染；阅读器 `<img>` 带 `loading="lazy"` `decoding="async"` `referrerpolicy="no-referrer"`；未知路由出 404 页 | AC-05、NFR-003、NFR-005        |
+| 移动端 | 390×844            | 路线、搜索和阅读器可用，无水平滚动；如条件允许完成一条笔记/成果流                                                                                                                                                                                                                                     | AC-08、NFR-001                 |
+| Docker | Local Compose      | 先运行 `code/scripts/docker-deploy.sh local config`；在资源允许时以独立 `COMPOSE_PROJECT_NAME`、独立端口和测试镜像运行 `local up`，随后用 `local verify`（调用 `/api/health`）确认健康，再执行 Local HTTP E2E，最后只执行同一项目的 `local down`。保留命名卷，不删除未知卷                            | AC-01、AC-02、GATE-02、GATE-09 |
+| Local  | 目录漂移对账       | `materials drift`（**不加 `--apply`**）报 `0 missing paths`；把一个已声明路径临时改名到临时副本目录后重跑，确认它被列入报告且退出码非 0；随后还原。`materials check` 另行记录新鲜度结论，不与漂移合并                                                                                                 | AC-07、CAT 系列                |
+| 共用   | 未挂载素材时不误报 | 以只含 `README.md` 的空目录作 `LOCAL_MATERIAL_ROOT` 跑 `npm run audit:content --prefix code -- --mode local`（npm 传参需要 `--`），确认 0 errors 且只出 `local-material-root-unavailable` 警告——“目录存在”不等于“素材挂载”                                                                            | AC-02、NFR-005                 |
+| 共用   | UI 走查            | `npm run audit:ui --prefix code -- --base-url <url> --output-dir <临时或 reports>`：desktop/tablet/mobile 三档全页截图，对 HTTP 错误、横向溢出、异常页高和控制台报错零 finding（依赖运行中的服务与 Playwright，不进 `check`）                                                                         | NFR-010、PAGE 系列             |
+| 共用   | 功能回归           | `npm run audit:functional --prefix code -- --base-url <url> --output-dir <临时或 reports>`：真实点击遍历站内链接、翻页、筛选、章节导航和学习状态写入/读取/删除；脚本读 `.mode-badge` 识别运行模式——云端断言匿名访问被拒、本地素材出正文，两种模式都要跑且全部通过                                     | NFR-011、READ 系列、GATE-04    |
 
 ## 推荐运行方式
 
@@ -104,7 +111,7 @@ node tests/e2e/browser-acceptance.mjs --base-url <url> --mode cloud  --phase ful
 
 （以上命令在 `code/` 目录下执行，或改用绝对路径。）
 
-同时运行项目内置 HTTP 流程，显式设置 `APP_URL`：Local 使用 `npm run test:e2e:local --prefix code`（含 `learning-state-http.mjs` 的状态写入/读取/删除全链路），Cloud 使用 `npm run test:e2e --prefix code`。每个浏览器阶段与走查脚本自身都等待 `networkidle` 并收集 `console.error` 与页面异常；任何 4xx/5xx 的业务请求都要区分是否为预期安全拒绝（例如云端 `/api/admin/health` 的 401、Local 的 403、未配置 OAuth 的 503）。
+同时运行项目内置 HTTP 流程，显式设置 `APP_URL`：Local 使用 `npm run test:e2e:local --prefix code`（含 `learning-state-http.mjs` 的状态写入/读取/删除全链路），Cloud 使用 `npm run test:e2e --prefix code`。`browser-acceptance.mjs` 等待 `networkidle`；`functional-regression.mjs` 按约定使用 `domcontentloaded`，避免第三方 README 远程徽章阻塞走查；两者都收集 `console.error` 与页面异常。任何 4xx/5xx 的业务请求都要区分是否为预期安全拒绝（例如云端 `/api/admin/health` 的 401、Local 的 403、未配置 OAuth 的 503）。
 
 ## 结果与报告要求
 

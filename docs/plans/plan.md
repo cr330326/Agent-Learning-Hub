@@ -1,7 +1,7 @@
 # Agent Learning Hub 产品与技术方案
 
 **状态**：首版实施基线；已与 `code/` 当前实现同步
-**最近同步**：2026-08-24
+**最近同步**：2026-08-25
 **产品名称**：Agent Learning Hub / Agent 学习中心
 
 ## 1. 方案摘要
@@ -41,14 +41,14 @@ Agent Learning Hub 是一个以实践产出为主线的 Agent 工程学习平台
 [`code/reports/`](../../code/reports/)。历史统计只以生成的
 [基线报告](../../code/reports/baseline/baseline.md) 为准。
 
-### 2.1 当前实现与验收边界（2026-08-24）
+### 2.1 当前实现与验收边界（2026-08-25）
 
 本方案描述架构和边界，任务完成状态以 [`tasks.md`](./tasks.md) 的系统复核为准。当前复核确认：
 
-- `check:cloud` 与 `check:local` 均通过，原生生产构建服务的 Local/Cloud HTTP E2E、学习状态、鉴权、导出和删号链路通过；Local 浏览器走查 54 captures / 0 findings，功能回归 23/23。
+- `check:cloud` 与 `check:local` 均通过，原生生产构建服务的 Local/Cloud HTTP E2E、学习状态、鉴权、导出和删号链路通过；正式 Docker 镜像的 Local UI 走查 48 captures / 0 findings，功能回归 23/23。
 - `audit:boundaries` 通过；`materials check`、`audit`、`reindex` 可运行。`materials drift` 是独立的目录策展检查，当前因 4 个未收录仓库非零退出，不应并入 `check` 或被解释成应用故障。
 - T8.8 仍未完成：课程条目和旧站单章条目之间存在重复正文声明，必须先确定唯一目录拥有者，再继续章节策展。不要把当前素材仓库动态数量写进方案正文。
-- 真实 DNS/TLS/OAuth、固定发布镜像的拉取与回滚、受保护分支 Actions、异地备份/调度/告警和生产日志复核仍属于外部运维验收；本地测试不能代替这些证据。
+- 本地正式镜像 `agent-learning-hub:local-20260825` 已构建并以 `--no-build` 运行；真实 DNS/TLS/OAuth、GHCR 固定镜像的拉取与回滚、受保护分支 Actions、异地备份/调度/告警和生产日志复核仍属于外部运维验收，本地测试不能代替这些证据。
 
 本机端口事实由 `code/scripts/docker-deploy.sh` 和 `mode-switch.sh` 维护：原生开发服务与 Local Docker 默认使用 `3001`，Cloud Docker 默认使用 `3002`，Release/生产实例使用回环地址 `3000`。`3100` 只用于隔离端到端测试示例，不是日常预览端口。
 

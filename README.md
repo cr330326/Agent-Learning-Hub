@@ -15,17 +15,17 @@ Agent Learning Hub 是一个以实践成果为主线的 Agent 工程学习网站
 - Local Mode 只读挂载 [`local-courses/`](./local-courses/)，缺失素材会回退到上游地址；云端镜像不携带该目录。
 - 管理员健康摘要、内容审计、素材检查、备份/恢复工具和生成式报告。
 
-## 当前验收结论（2026-08-24）
+## 当前验收结论（2026-08-25）
 
 本次按 [`code/package.json`](./code/package.json) 的命令事实源，对现役 `code/` 做了双模式系统复核。结论是：核心产品功能已达到本地验收 GO，但项目整体还不能标记为“全部完成”。
 
 - `check:cloud` 与 `check:local` 均通过：格式、lint、类型、内容审计（0 errors）、11 个工具测试、144 个 Vitest 测试和生产构建均通过。构建仍输出 6 条非阻塞的 Turbopack 动态文件系统追踪 warning，需在生产发布前继续评估。
-- 一次性原生生产构建服务的 Local E2E 通过；Cloud E2E 通过 29 项登录、鉴权、状态、导出和删号检查（GitHub 端点为测试桩，不等于真实 OAuth）。Local 浏览器 UI 走查为 54 captures / 0 findings，点击式功能回归为 23/23。
+- 一次性原生生产构建服务的 Local `seed/resume/fallback/mobile` 与 HTTP E2E 通过；Cloud E2E 通过 29 项登录、鉴权、状态、导出和删号检查（GitHub 端点为测试桩，不等于真实 OAuth）。正式 Docker 镜像的 UI 走查为 48 captures / 0 findings，点击式功能回归为 23/23。
 - 素材 `check`、内容 `audit` 和 `reindex` 均可运行；`materials drift` 当前因 4 个未收录仓库而按设计非零退出。漂移报告中的数量是动态事实，不应复制到文档或手工修改目录。
 - 仍未完成的非云端产品工作是 T8.8：先解决课程条目与旧站单章条目的章节归属决策，再继续章节策展；当前 74 个文件被多个条目声明，不能用“多加 references”掩盖重复目标。
-- 云端部署、真实域名/TLS/OAuth、GHCR 固定镜像拉取与回滚、受保护分支 Actions、异地备份/调度/告警和生产日志复核仍是外部验收项，不能由本地测试代替。一次新的隔离 Docker 构建本轮因 BuildKit 超过 3 分钟无输出而停止，因此不能把现有健康容器当作本轮新镜像构建证据。
+- 正式本地镜像 `agent-learning-hub:local-20260825` 已构建并以 `--no-build` 运行；试运行地址为 <http://127.0.0.1:3345>。云端部署、真实域名/TLS/OAuth、GHCR 固定镜像拉取与回滚、受保护分支 Actions、异地备份/调度/告警和生产日志复核仍是外部验收项，不能由本地测试代替。
 
-详细的逐项状态、证据和 NO-GO 边界见 [`docs/plans/tasks.md`](./docs/plans/tasks.md)；动态报告见 [`code/reports/`](./code/reports/)。
+详细的逐项状态、证据和 NO-GO 边界见 [`docs/plans/tasks.md`](./docs/plans/tasks.md)；本轮本地全量验收见 [`docs/acceptance/local-e2e-2026-08-25.md`](./docs/acceptance/local-e2e-2026-08-25.md)；动态报告见 [`code/reports/`](./code/reports/)。
 
 ## 快速开始
 
