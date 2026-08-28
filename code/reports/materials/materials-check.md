@@ -1,20 +1,20 @@
 # Material freshness check
 
-Generated at: 2026-08-24T16:05:42.575Z
+Generated at: 2026-08-28T01:33:45.313Z
 Local Material root: local-courses
 
 ## Summary
 
 | Status | Count |
 | --- | ---: |
-| latest | 42 |
-| behind | 3 |
+| latest | 40 |
+| behind | 2 |
 | ahead | 0 |
 | diverged | 2 |
 | dirty | 7 |
 | check-failed | 0 |
 | skipped (not a Git repository) | 5 |
-| missing (material path is gone) | 0 |
+| missing (material path is gone) | 4 |
 
 ## Repositories
 
@@ -47,24 +47,21 @@ Local Material root: local-courses
 | AICoding/claude/code/collection-claude-code-source-code | legacy-course-010, legacy-reading-12-014 | diverged | 57 | 246 |  |
 | AICoding/claude/document/claude-code-guide | legacy-course-012, legacy-reading-12-001 | latest | 0 | 0 |  |
 | AICoding/claude/document/ClaudeMD/andrej-karpathy-skills | legacy-reading-12-004 | latest | 0 | 0 |  |
-| AICoding/claude/document/learn-claude-code | legacy-course-008, legacy-reading-10-001, legacy-reading-10-002, legacy-reading-10-003, legacy-reading-10-004, legacy-reading-10-005, legacy-reading-10-006, legacy-reading-10-007, legacy-reading-10-008, legacy-reading-10-009, legacy-reading-10-010, legacy-reading-10-011, legacy-reading-10-012, legacy-reading-10-013, legacy-reading-10-014, legacy-reading-10-015, legacy-reading-10-016, legacy-reading-10-017, legacy-reading-10-018, legacy-reading-10-019, legacy-reading-10-020, legacy-reading-10-021 | dirty | 0 | 30 |  |
-| AICoding/claude/plugins/claude-auto-mode-unlock | legacy-reading-12-011, legacy-reading-12-012 | latest | 0 | 0 |  |
+| AICoding/claude/document/learn-claude-code | legacy-course-008, legacy-reading-10-001, legacy-reading-10-002, legacy-reading-10-003, legacy-reading-10-004, legacy-reading-10-005, legacy-reading-10-006, legacy-reading-10-007, legacy-reading-10-008, legacy-reading-10-009, legacy-reading-10-010, legacy-reading-10-011, legacy-reading-10-012, legacy-reading-10-013, legacy-reading-10-014, legacy-reading-10-015, legacy-reading-10-016, legacy-reading-10-017, legacy-reading-10-018, legacy-reading-10-019, legacy-reading-10-020, legacy-reading-10-021 | dirty | 0 | 0 |  |
 | AICoding/claude/plugins/claude-mem | legacy-course-013, legacy-reading-12-005, legacy-reading-12-006, legacy-reading-12-007 | dirty | 0 | 0 |  |
 | AICoding/claude/plugins/claude-mermaid | legacy-reading-12-009 | latest | 0 | 0 |  |
 | AICoding/claude/plugins/claude-stt | legacy-reading-12-010 | latest | 0 | 0 |  |
 | AICoding/claude/plugins/claudian | legacy-reading-12-008 | latest | 0 | 0 |  |
 | AICoding/codex/codex-code | legacy-course-015, legacy-reading-15-001 | latest | 0 | 0 |  |
-| AICoding/CyberClaw | legacy-course-020, legacy-reading-15-005, legacy-reading-15-006, legacy-reading-15-007, legacy-reading-15-008 | latest | 0 | 0 |  |
 | AICoding/hermes/hermes-agent | legacy-course-019, legacy-reading-15-002 | latest | 0 | 0 |  |
-| AICoding/MiMo-Code | legacy-course-021, legacy-reading-15-009, legacy-reading-15-010 | latest | 0 | 0 |  |
 | AICoding/openclaw/channels/openclaw-lark | legacy-reading-13-019 | latest | 0 | 0 |  |
 | AICoding/openclaw/doc/openclaw_guide | legacy-course-016, legacy-reading-13-001, legacy-reading-13-002, legacy-reading-13-003, legacy-reading-13-004, legacy-reading-13-005, legacy-reading-13-006, legacy-reading-13-007, legacy-reading-13-008, legacy-reading-13-009, legacy-reading-13-010, legacy-reading-13-011, legacy-reading-13-012, legacy-reading-13-013, legacy-reading-13-014, legacy-reading-13-015, legacy-reading-13-016, legacy-reading-13-017, legacy-reading-13-018 | latest | 0 | 0 |  |
-| AICoding/openclaw/openclaw-code | legacy-reading-13-020, legacy-reading-13-021, legacy-reading-13-022, legacy-reading-13-023 | dirty | 0 | 0 |  |
+| AICoding/openclaw/openclaw-code | legacy-reading-13-020, legacy-reading-13-021, legacy-reading-13-022, legacy-reading-13-023 | dirty | 0 | 56167 |  |
 | AICoding/opencode/awesome-opencode | legacy-reading-14-014 | latest | 0 | 0 |  |
 | AICoding/opencode/code/opencode | legacy-course-018, legacy-reading-14-012, legacy-reading-14-013 | latest | 0 | 0 |  |
 | AICoding/opencode/code/opencode-supermemory | legacy-reading-14-017, legacy-reading-14-018 | dirty | 0 | 0 |  |
-| AICoding/opencode/code/openwork | legacy-reading-14-016 | diverged | 1614 | 2706 |  |
-| AICoding/opencode/learn-opencode | legacy-course-017, legacy-reading-14-001, legacy-reading-14-002, legacy-reading-14-003, legacy-reading-14-004, legacy-reading-14-005, legacy-reading-14-006, legacy-reading-14-007, legacy-reading-14-008, legacy-reading-14-009, legacy-reading-14-010, legacy-reading-14-011 | behind | 0 | 58 |  |
+| AICoding/opencode/code/openwork | legacy-reading-14-016 | diverged | 1614 | 4597 |  |
+| AICoding/opencode/learn-opencode | legacy-course-017, legacy-reading-14-001, legacy-reading-14-002, legacy-reading-14-003, legacy-reading-14-004, legacy-reading-14-005, legacy-reading-14-006, legacy-reading-14-007, legacy-reading-14-008, legacy-reading-14-009, legacy-reading-14-010, legacy-reading-14-011 | latest | 0 | 0 |  |
 | AICoding/opencode/plugins/opencode-wakatime | legacy-reading-14-019 | dirty | 0 | 0 |  |
 | Application/cc-switch | legacy-course-039, legacy-reading-37-001, legacy-reading-37-002, legacy-reading-37-003, legacy-reading-37-004, legacy-reading-37-005, legacy-reading-37-006, legacy-reading-37-007, legacy-reading-37-008, legacy-reading-37-009, legacy-reading-37-010, legacy-reading-37-011, legacy-reading-37-012, legacy-reading-37-013, legacy-reading-37-014, legacy-reading-37-015, legacy-reading-37-016, legacy-reading-37-017, legacy-reading-37-018, legacy-reading-37-019 | latest | 0 | 0 |  |
 | Application/CodexSwitch | legacy-course-040, legacy-reading-38-001, legacy-reading-38-002, legacy-reading-38-003, legacy-reading-38-004, legacy-reading-38-005 | latest | 0 | 0 |  |
@@ -81,6 +78,10 @@ These catalog references do not belong to a Git repository and were not passed t
 
 - legacy-reading-01-002: README.md — No Git repository marker was found for this material reference.
 - legacy-reading-12-002, legacy-reading-12-003: AICoding/claude/document/ClaudeMD/App/claude.md, AICoding/claude/document/ClaudeMD/App/constitution.md — No Git repository marker was found for this material reference.
+- legacy-reading-12-011, legacy-reading-12-012: AICoding/claude/plugins/claude-auto-mode-unlock/METHODOLOGY.md, AICoding/claude/plugins/claude-auto-mode-unlock/README.md — The material path does not exist. This is Catalog Drift; run `materials drift`.
+- legacy-course-020, legacy-reading-15-005: AICoding/CyberClaw/README.md — The material path does not exist. This is Catalog Drift; run `materials drift`.
+- legacy-reading-15-006, legacy-reading-15-007, legacy-reading-15-008: AICoding/CyberClaw/docs/LAZY_LOADING_GUIDE.md, AICoding/CyberClaw/docs/LAZY_LOADING_QUICKSTART.md, AICoding/CyberClaw/docs/LAZY_LOADING_SUMMARY.md — The material path does not exist. This is Catalog Drift; run `materials drift`.
 - legacy-reading-15-003, legacy-reading-15-004: AICoding/hermes/docs/Kimi_Agent_Hermes 记忆机制/Hermes_LearningLoop_深度调研报告.md, AICoding/hermes/docs/Kimi_Agent_Hermes 记忆机制/hermes-memory-deep-dive.md — No Git repository marker was found for this material reference.
+- legacy-course-021, legacy-reading-15-009, legacy-reading-15-010: AICoding/MiMo-Code/AGENTS.md, AICoding/MiMo-Code/README.zh.md — The material path does not exist. This is Catalog Drift; run `materials drift`.
 - legacy-course-002, legacy-course-006: Learning/Book/Hello-Agents-V1.0.0-20251103.pdf, Learning/Book/LLMBook.pdf — No Git repository marker was found for this material reference.
 - legacy-course-007: Learning/Book/Palantir-Ontology/本体论.pdf — No Git repository marker was found for this material reference.

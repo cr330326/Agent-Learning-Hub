@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-24T16:06:01.462Z",
-  "documentCount": 621,
+  "generatedAt": "2026-08-28T01:45:06.372Z",
+  "documentCount": 612,
   "documentKinds": {
     "stage": 9,
     "item": 515,
     "project": 20,
-    "local-chapter": 77
+    "local-chapter": 68
   },
   "documents": [
     {
@@ -139,7 +139,7 @@
       "track": "learning",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-course-003",
-      "textLength": 5472
+      "textLength": 7391
     },
     {
       "id": "legacy-course-004",
@@ -161,7 +161,7 @@
       "track": "learning",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-course-005",
-      "textLength": 12017
+      "textLength": 16064
     },
     {
       "id": "legacy-course-006",
@@ -271,7 +271,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-course-015",
-      "textLength": 2955
+      "textLength": 3480
     },
     {
       "id": "legacy-course-016",
@@ -324,7 +324,7 @@
       "summary": "企业级透明可控智能体，专注白盒化决策、两段式安全调用、双水位记忆系统和心跳任务编排。",
       "stageIds": [],
       "track": "aicoding",
-      "accessPolicy": "local-document",
+      "accessPolicy": "upstream-only",
       "href": "/courses/legacy-course-020",
       "textLength": 116
     },
@@ -335,7 +335,7 @@
       "summary": "小米开源的终端 AI coding assistant，主打模型与 agent 协同进化、持久记忆和自我改进。",
       "stageIds": [],
       "track": "aicoding",
-      "accessPolicy": "local-document",
+      "accessPolicy": "upstream-only",
       "href": "/courses/legacy-course-021",
       "textLength": 151
     },
@@ -348,7 +348,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-course-022",
-      "textLength": 2779
+      "textLength": 2930
     },
     {
       "id": "legacy-course-023",
@@ -403,7 +403,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-course-027",
-      "textLength": 33957
+      "textLength": 32812
     },
     {
       "id": "legacy-course-028",
@@ -436,7 +436,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-course-030",
-      "textLength": 9043
+      "textLength": 10242
     },
     {
       "id": "legacy-course-031",
@@ -458,7 +458,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-course-032",
-      "textLength": 7578
+      "textLength": 10351
     },
     {
       "id": "legacy-course-033",
@@ -489,9 +489,9 @@
       "summary": "人与 AI 并肩工作的多 agent 协作平台：CLI + daemon + Web，带自托管方案和完整的架构交接审计。",
       "stageIds": [],
       "track": "agentic",
-      "accessPolicy": "local-document",
+      "accessPolicy": "unavailable",
       "href": "/courses/legacy-course-035",
-      "textLength": 175
+      "textLength": 57356
     },
     {
       "id": "legacy-course-036",
@@ -1178,7 +1178,7 @@
       "track": "learning",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-09-001",
-      "textLength": 5404
+      "textLength": 7323
     },
     {
       "id": "legacy-reading-09-002",
@@ -1189,7 +1189,7 @@
       "track": "learning",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-09-002",
-      "textLength": 11946
+      "textLength": 15993
     },
     {
       "id": "legacy-reading-10-001",
@@ -1200,7 +1200,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-10-001",
-      "textLength": 16931
+      "textLength": 16985
     },
     {
       "id": "legacy-reading-10-002",
@@ -1213,7 +1213,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-10-002",
-      "textLength": 5282
+      "textLength": 4894
     },
     {
       "id": "legacy-reading-10-003",
@@ -1224,7 +1224,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-10-003",
-      "textLength": 5699
+      "textLength": 5142
     },
     {
       "id": "legacy-reading-10-004",
@@ -1235,7 +1235,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-10-004",
-      "textLength": 6908
+      "textLength": 5895
     },
     {
       "id": "legacy-reading-10-005",
@@ -1246,7 +1246,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-10-005",
-      "textLength": 8789
+      "textLength": 8264
     },
     {
       "id": "legacy-reading-10-006",
@@ -1257,7 +1257,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-10-006",
-      "textLength": 4693
+      "textLength": 5563
     },
     {
       "id": "legacy-reading-10-007",
@@ -1268,7 +1268,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-10-007",
-      "textLength": 6764
+      "textLength": 4650
     },
     {
       "id": "legacy-reading-10-008",
@@ -1279,7 +1279,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-10-008",
-      "textLength": 5884
+      "textLength": 4933
     },
     {
       "id": "legacy-reading-10-009",
@@ -1290,7 +1290,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-10-009",
-      "textLength": 10425
+      "textLength": 14851
     },
     {
       "id": "legacy-reading-10-010",
@@ -1301,7 +1301,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-10-010",
-      "textLength": 9420
+      "textLength": 8699
     },
     {
       "id": "legacy-reading-10-011",
@@ -1310,9 +1310,9 @@
       "summary": "learn-claude-code · 20 章",
       "stageIds": [],
       "track": "aicoding",
-      "accessPolicy": "local-document",
+      "accessPolicy": "unavailable",
       "href": "/courses/legacy-reading-10-011",
-      "textLength": 7391
+      "textLength": 107
     },
     {
       "id": "legacy-reading-10-012",
@@ -1321,9 +1321,9 @@
       "summary": "learn-claude-code · 20 章",
       "stageIds": [],
       "track": "aicoding",
-      "accessPolicy": "local-document",
+      "accessPolicy": "unavailable",
       "href": "/courses/legacy-reading-10-012",
-      "textLength": 8412
+      "textLength": 111
     },
     {
       "id": "legacy-reading-10-013",
@@ -1332,9 +1332,9 @@
       "summary": "learn-claude-code · 20 章",
       "stageIds": [],
       "track": "aicoding",
-      "accessPolicy": "local-document",
+      "accessPolicy": "unavailable",
       "href": "/courses/legacy-reading-10-013",
-      "textLength": 8657
+      "textLength": 107
     },
     {
       "id": "legacy-reading-10-014",
@@ -1343,9 +1343,9 @@
       "summary": "learn-claude-code · 20 章",
       "stageIds": [],
       "track": "aicoding",
-      "accessPolicy": "local-document",
+      "accessPolicy": "unavailable",
       "href": "/courses/legacy-reading-10-014",
-      "textLength": 8547
+      "textLength": 111
     },
     {
       "id": "legacy-reading-10-015",
@@ -1354,9 +1354,9 @@
       "summary": "learn-claude-code · 20 章",
       "stageIds": [],
       "track": "aicoding",
-      "accessPolicy": "local-document",
+      "accessPolicy": "unavailable",
       "href": "/courses/legacy-reading-10-015",
-      "textLength": 8714
+      "textLength": 111
     },
     {
       "id": "legacy-reading-10-016",
@@ -1367,9 +1367,9 @@
         "stage-4"
       ],
       "track": "aicoding",
-      "accessPolicy": "local-document",
+      "accessPolicy": "unavailable",
       "href": "/courses/legacy-reading-10-016",
-      "textLength": 7769
+      "textLength": 108
     },
     {
       "id": "legacy-reading-10-017",
@@ -1378,9 +1378,9 @@
       "summary": "learn-claude-code · 20 章",
       "stageIds": [],
       "track": "aicoding",
-      "accessPolicy": "local-document",
+      "accessPolicy": "unavailable",
       "href": "/courses/legacy-reading-10-017",
-      "textLength": 7958
+      "textLength": 110
     },
     {
       "id": "legacy-reading-10-018",
@@ -1389,9 +1389,9 @@
       "summary": "learn-claude-code · 20 章",
       "stageIds": [],
       "track": "aicoding",
-      "accessPolicy": "local-document",
+      "accessPolicy": "unavailable",
       "href": "/courses/legacy-reading-10-018",
-      "textLength": 8819
+      "textLength": 114
     },
     {
       "id": "legacy-reading-10-019",
@@ -1400,9 +1400,9 @@
       "summary": "learn-claude-code · 20 章",
       "stageIds": [],
       "track": "aicoding",
-      "accessPolicy": "local-document",
+      "accessPolicy": "unavailable",
       "href": "/courses/legacy-reading-10-019",
-      "textLength": 6883
+      "textLength": 111
     },
     {
       "id": "legacy-reading-10-020",
@@ -1411,9 +1411,9 @@
       "summary": "learn-claude-code · 20 章",
       "stageIds": [],
       "track": "aicoding",
-      "accessPolicy": "local-document",
+      "accessPolicy": "unavailable",
       "href": "/courses/legacy-reading-10-020",
-      "textLength": 8113
+      "textLength": 106
     },
     {
       "id": "legacy-reading-10-021",
@@ -1422,9 +1422,9 @@
       "summary": "learn-claude-code · 20 章",
       "stageIds": [],
       "track": "aicoding",
-      "accessPolicy": "local-document",
+      "accessPolicy": "unavailable",
       "href": "/courses/legacy-reading-10-021",
-      "textLength": 5938
+      "textLength": 112
     },
     {
       "id": "legacy-reading-11-001",
@@ -1578,7 +1578,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-12-001",
-      "textLength": 148415
+      "textLength": 168271
     },
     {
       "id": "legacy-reading-12-002",
@@ -1622,7 +1622,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-12-005",
-      "textLength": 15351
+      "textLength": 16925
     },
     {
       "id": "legacy-reading-12-006",
@@ -1633,7 +1633,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-12-006",
-      "textLength": 7735
+      "textLength": 7842
     },
     {
       "id": "legacy-reading-12-007",
@@ -1655,7 +1655,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-12-008",
-      "textLength": 14380
+      "textLength": 11996
     },
     {
       "id": "legacy-reading-12-009",
@@ -1686,9 +1686,9 @@
       "summary": "Claude 文档 · 插件 · 资源",
       "stageIds": [],
       "track": "aicoding",
-      "accessPolicy": "local-document",
+      "accessPolicy": "unavailable",
       "href": "/courses/legacy-reading-12-011",
-      "textLength": 8303
+      "textLength": 88
     },
     {
       "id": "legacy-reading-12-012",
@@ -1697,9 +1697,9 @@
       "summary": "Claude 文档 · 插件 · 资源",
       "stageIds": [],
       "track": "aicoding",
-      "accessPolicy": "local-document",
+      "accessPolicy": "unavailable",
       "href": "/courses/legacy-reading-12-012",
-      "textLength": 18437
+      "textLength": 96
     },
     {
       "id": "legacy-reading-12-013",
@@ -1743,7 +1743,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-12-016",
-      "textLength": 7593
+      "textLength": 15981
     },
     {
       "id": "legacy-reading-12-017",
@@ -1776,7 +1776,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-12-019",
-      "textLength": 74605
+      "textLength": 141698
     },
     {
       "id": "legacy-reading-12-020",
@@ -2095,7 +2095,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-14-003",
-      "textLength": 3640
+      "textLength": 3638
     },
     {
       "id": "legacy-reading-14-004",
@@ -2106,7 +2106,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-14-004",
-      "textLength": 3108
+      "textLength": 3986
     },
     {
       "id": "legacy-reading-14-005",
@@ -2117,7 +2117,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-14-005",
-      "textLength": 2938
+      "textLength": 4959
     },
     {
       "id": "legacy-reading-14-006",
@@ -2128,7 +2128,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-14-006",
-      "textLength": 3637
+      "textLength": 4763
     },
     {
       "id": "legacy-reading-14-007",
@@ -2139,7 +2139,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-14-007",
-      "textLength": 4551
+      "textLength": 5301
     },
     {
       "id": "legacy-reading-14-008",
@@ -2150,7 +2150,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-14-008",
-      "textLength": 4445
+      "textLength": 4823
     },
     {
       "id": "legacy-reading-14-009",
@@ -2161,7 +2161,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-14-009",
-      "textLength": 7697
+      "textLength": 12069
     },
     {
       "id": "legacy-reading-14-010",
@@ -2172,7 +2172,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-14-010",
-      "textLength": 4226
+      "textLength": 6253
     },
     {
       "id": "legacy-reading-14-011",
@@ -2183,7 +2183,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-14-011",
-      "textLength": 5684
+      "textLength": 6102
     },
     {
       "id": "legacy-reading-14-012",
@@ -2194,7 +2194,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-14-012",
-      "textLength": 6306
+      "textLength": 5397
     },
     {
       "id": "legacy-reading-14-013",
@@ -2205,7 +2205,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-14-013",
-      "textLength": 2729
+      "textLength": 8831
     },
     {
       "id": "legacy-reading-14-014",
@@ -2216,7 +2216,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-14-014",
-      "textLength": 51302
+      "textLength": 122031
     },
     {
       "id": "legacy-reading-14-015",
@@ -2249,7 +2249,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-14-017",
-      "textLength": 6921
+      "textLength": 9210
     },
     {
       "id": "legacy-reading-14-018",
@@ -2282,7 +2282,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-15-001",
-      "textLength": 2928
+      "textLength": 3453
     },
     {
       "id": "legacy-reading-15-002",
@@ -2293,7 +2293,7 @@
       "track": "aicoding",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-15-002",
-      "textLength": 17628
+      "textLength": 17699
     },
     {
       "id": "legacy-reading-15-003",
@@ -2324,9 +2324,9 @@
       "summary": "Codex · Hermes · CyberClaw · MiMo",
       "stageIds": [],
       "track": "aicoding",
-      "accessPolicy": "local-document",
+      "accessPolicy": "unavailable",
       "href": "/courses/legacy-reading-15-005",
-      "textLength": 13527
+      "textLength": 116
     },
     {
       "id": "legacy-reading-15-006",
@@ -2335,9 +2335,9 @@
       "summary": "Codex · Hermes · CyberClaw · MiMo",
       "stageIds": [],
       "track": "aicoding",
-      "accessPolicy": "local-document",
+      "accessPolicy": "unavailable",
       "href": "/courses/legacy-reading-15-006",
-      "textLength": 4617
+      "textLength": 127
     },
     {
       "id": "legacy-reading-15-007",
@@ -2346,9 +2346,9 @@
       "summary": "Codex · Hermes · CyberClaw · MiMo",
       "stageIds": [],
       "track": "aicoding",
-      "accessPolicy": "local-document",
+      "accessPolicy": "unavailable",
       "href": "/courses/legacy-reading-15-007",
-      "textLength": 2462
+      "textLength": 116
     },
     {
       "id": "legacy-reading-15-008",
@@ -2357,9 +2357,9 @@
       "summary": "Codex · Hermes · CyberClaw · MiMo",
       "stageIds": [],
       "track": "aicoding",
-      "accessPolicy": "local-document",
+      "accessPolicy": "unavailable",
       "href": "/courses/legacy-reading-15-008",
-      "textLength": 5307
+      "textLength": 114
     },
     {
       "id": "legacy-reading-15-009",
@@ -2368,9 +2368,9 @@
       "summary": "Codex · Hermes · CyberClaw · MiMo",
       "stageIds": [],
       "track": "aicoding",
-      "accessPolicy": "local-document",
+      "accessPolicy": "unavailable",
       "href": "/courses/legacy-reading-15-009",
-      "textLength": 3897
+      "textLength": 120
     },
     {
       "id": "legacy-reading-15-010",
@@ -2379,9 +2379,9 @@
       "summary": "Codex · Hermes · CyberClaw · MiMo",
       "stageIds": [],
       "track": "aicoding",
-      "accessPolicy": "local-document",
+      "accessPolicy": "unavailable",
       "href": "/courses/legacy-reading-15-010",
-      "textLength": 2826
+      "textLength": 119
     },
     {
       "id": "legacy-reading-16-001",
@@ -2392,7 +2392,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-16-001",
-      "textLength": 2684
+      "textLength": 2835
     },
     {
       "id": "legacy-reading-16-002",
@@ -2403,7 +2403,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-16-002",
-      "textLength": 5257
+      "textLength": 5268
     },
     {
       "id": "legacy-reading-16-003",
@@ -2416,7 +2416,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-16-003",
-      "textLength": 5092
+      "textLength": 5103
     },
     {
       "id": "legacy-reading-16-004",
@@ -2438,7 +2438,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-16-005",
-      "textLength": 5362
+      "textLength": 5373
     },
     {
       "id": "legacy-reading-16-006",
@@ -2449,7 +2449,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-16-006",
-      "textLength": 6331
+      "textLength": 6342
     },
     {
       "id": "legacy-reading-16-007",
@@ -2460,7 +2460,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-16-007",
-      "textLength": 5124
+      "textLength": 5135
     },
     {
       "id": "legacy-reading-16-008",
@@ -2482,7 +2482,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-16-009",
-      "textLength": 4919
+      "textLength": 4943
     },
     {
       "id": "legacy-reading-16-010",
@@ -2504,7 +2504,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-16-011",
-      "textLength": 5405
+      "textLength": 5429
     },
     {
       "id": "legacy-reading-16-012",
@@ -2541,7 +2541,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-16-014",
-      "textLength": 814
+      "textLength": 891
     },
     {
       "id": "legacy-reading-16-015",
@@ -2563,7 +2563,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-16-016",
-      "textLength": 1516
+      "textLength": 1696
     },
     {
       "id": "legacy-reading-17-001",
@@ -3363,7 +3363,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-22-007",
-      "textLength": 33893
+      "textLength": 32748
     },
     {
       "id": "legacy-reading-22-008",
@@ -3396,7 +3396,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-22-010",
-      "textLength": 8988
+      "textLength": 10187
     },
     {
       "id": "legacy-reading-22-011",
@@ -3407,7 +3407,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-22-011",
-      "textLength": 6680
+      "textLength": 6833
     },
     {
       "id": "legacy-reading-22-012",
@@ -3418,7 +3418,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-22-012",
-      "textLength": 10805
+      "textLength": 12002
     },
     {
       "id": "legacy-reading-22-013",
@@ -3429,7 +3429,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-22-013",
-      "textLength": 7487
+      "textLength": 10260
     },
     {
       "id": "legacy-reading-22-014",
@@ -3451,7 +3451,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-23-001",
-      "textLength": 1029
+      "textLength": 1772
     },
     {
       "id": "legacy-reading-23-002",
@@ -3757,9 +3757,9 @@
       "summary": "Multica · 多 Agent 协作平台",
       "stageIds": [],
       "track": "agentic",
-      "accessPolicy": "local-document",
+      "accessPolicy": "unavailable",
       "href": "/courses/legacy-reading-25-001",
-      "textLength": 5169
+      "textLength": 88
     },
     {
       "id": "legacy-reading-25-002",
@@ -3768,9 +3768,9 @@
       "summary": "Multica · 多 Agent 协作平台",
       "stageIds": [],
       "track": "agentic",
-      "accessPolicy": "local-document",
+      "accessPolicy": "unavailable",
       "href": "/courses/legacy-reading-25-002",
-      "textLength": 11220
+      "textLength": 82
     },
     {
       "id": "legacy-reading-25-003",
@@ -3779,9 +3779,9 @@
       "summary": "Multica · 多 Agent 协作平台",
       "stageIds": [],
       "track": "agentic",
-      "accessPolicy": "local-document",
+      "accessPolicy": "unavailable",
       "href": "/courses/legacy-reading-25-003",
-      "textLength": 29426
+      "textLength": 82
     },
     {
       "id": "legacy-reading-25-004",
@@ -3792,7 +3792,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-25-004",
-      "textLength": 14581
+      "textLength": 57271
     },
     {
       "id": "legacy-reading-25-005",
@@ -3801,9 +3801,9 @@
       "summary": "Multica · 多 Agent 协作平台",
       "stageIds": [],
       "track": "agentic",
-      "accessPolicy": "local-document",
+      "accessPolicy": "unavailable",
       "href": "/courses/legacy-reading-25-005",
-      "textLength": 12800
+      "textLength": 84
     },
     {
       "id": "legacy-reading-25-006",
@@ -3814,7 +3814,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-25-006",
-      "textLength": 8238
+      "textLength": 24699
     },
     {
       "id": "legacy-reading-25-007",
@@ -3825,7 +3825,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-25-007",
-      "textLength": 19855
+      "textLength": 20024
     },
     {
       "id": "legacy-reading-26-001",
@@ -3869,7 +3869,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-26-004",
-      "textLength": 31282
+      "textLength": 31633
     },
     {
       "id": "legacy-reading-26-005",
@@ -3891,7 +3891,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-26-006",
-      "textLength": 27719
+      "textLength": 28071
     },
     {
       "id": "legacy-reading-26-007",
@@ -3913,7 +3913,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-26-008",
-      "textLength": 45347
+      "textLength": 46552
     },
     {
       "id": "legacy-reading-26-009",
@@ -3990,7 +3990,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-27-004",
-      "textLength": 49188
+      "textLength": 50165
     },
     {
       "id": "legacy-reading-27-005",
@@ -4034,7 +4034,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-27-008",
-      "textLength": 2780
+      "textLength": 2928
     },
     {
       "id": "legacy-reading-27-009",
@@ -4045,7 +4045,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-27-009",
-      "textLength": 15512
+      "textLength": 15658
     },
     {
       "id": "legacy-reading-27-010",
@@ -4100,7 +4100,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-27-014",
-      "textLength": 14869
+      "textLength": 16717
     },
     {
       "id": "legacy-reading-28-001",
@@ -4243,7 +4243,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-29-003",
-      "textLength": 3647
+      "textLength": 4011
     },
     {
       "id": "legacy-reading-29-004",
@@ -4254,7 +4254,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-29-004",
-      "textLength": 11374
+      "textLength": 19278
     },
     {
       "id": "legacy-reading-29-005",
@@ -4298,7 +4298,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-29-008",
-      "textLength": 33946
+      "textLength": 33902
     },
     {
       "id": "legacy-reading-29-009",
@@ -4309,7 +4309,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-29-009",
-      "textLength": 3867
+      "textLength": 3886
     },
     {
       "id": "legacy-reading-29-010",
@@ -4320,7 +4320,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-29-010",
-      "textLength": 9159
+      "textLength": 9063
     },
     {
       "id": "legacy-reading-29-011",
@@ -4331,7 +4331,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-29-011",
-      "textLength": 19154
+      "textLength": 19877
     },
     {
       "id": "legacy-reading-29-012",
@@ -4760,7 +4760,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-32-009",
-      "textLength": 9031
+      "textLength": 10230
     },
     {
       "id": "legacy-reading-32-010",
@@ -4782,7 +4782,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-32-011",
-      "textLength": 8739
+      "textLength": 10104
     },
     {
       "id": "legacy-reading-32-012",
@@ -4793,7 +4793,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-32-012",
-      "textLength": 9761
+      "textLength": 10398
     },
     {
       "id": "legacy-reading-32-013",
@@ -4815,7 +4815,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-32-014",
-      "textLength": 7530
+      "textLength": 10303
     },
     {
       "id": "legacy-reading-32-015",
@@ -4826,7 +4826,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-32-015",
-      "textLength": 1942
+      "textLength": 1902
     },
     {
       "id": "legacy-reading-33-001",
@@ -4837,7 +4837,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-33-001",
-      "textLength": 6682
+      "textLength": 6835
     },
     {
       "id": "legacy-reading-33-002",
@@ -4848,7 +4848,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-33-002",
-      "textLength": 10811
+      "textLength": 12008
     },
     {
       "id": "legacy-reading-33-003",
@@ -4881,7 +4881,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-33-005",
-      "textLength": 17233
+      "textLength": 17398
     },
     {
       "id": "legacy-reading-33-006",
@@ -4892,7 +4892,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-33-006",
-      "textLength": 32127
+      "textLength": 32845
     },
     {
       "id": "legacy-reading-33-007",
@@ -4903,7 +4903,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-33-007",
-      "textLength": 3725
+      "textLength": 4116
     },
     {
       "id": "legacy-reading-33-008",
@@ -4914,7 +4914,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-33-008",
-      "textLength": 3642
+      "textLength": 3403
     },
     {
       "id": "legacy-reading-33-009",
@@ -4925,7 +4925,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-33-009",
-      "textLength": 4650
+      "textLength": 4713
     },
     {
       "id": "legacy-reading-33-010",
@@ -4936,7 +4936,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-33-010",
-      "textLength": 29048
+      "textLength": 29305
     },
     {
       "id": "legacy-reading-33-011",
@@ -4947,7 +4947,7 @@
       "track": "agentic",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-33-011",
-      "textLength": 79715
+      "textLength": 80689
     },
     {
       "id": "legacy-reading-33-012",
@@ -5466,7 +5466,7 @@
       "track": "application",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-37-001",
-      "textLength": 27010
+      "textLength": 27909
     },
     {
       "id": "legacy-reading-37-002",
@@ -5532,7 +5532,7 @@
       "track": "application",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-37-007",
-      "textLength": 8222
+      "textLength": 9043
     },
     {
       "id": "legacy-reading-37-008",
@@ -5543,7 +5543,7 @@
       "track": "application",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-37-008",
-      "textLength": 17163
+      "textLength": 16817
     },
     {
       "id": "legacy-reading-37-009",
@@ -5576,7 +5576,7 @@
       "track": "application",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-37-011",
-      "textLength": 9384
+      "textLength": 9396
     },
     {
       "id": "legacy-reading-37-012",
@@ -5598,7 +5598,7 @@
       "track": "application",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-37-013",
-      "textLength": 5107
+      "textLength": 5357
     },
     {
       "id": "legacy-reading-37-014",
@@ -5631,7 +5631,7 @@
       "track": "application",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-37-016",
-      "textLength": 4024
+      "textLength": 6041
     },
     {
       "id": "legacy-reading-37-017",
@@ -5752,7 +5752,7 @@
       "track": "application",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-38-008",
-      "textLength": 9165
+      "textLength": 17172
     },
     {
       "id": "legacy-reading-38-009",
@@ -5761,9 +5761,9 @@
       "summary": "CodexSwitch · WorkAny · Solon-AI",
       "stageIds": [],
       "track": "application",
-      "accessPolicy": "local-document",
+      "accessPolicy": "unavailable",
       "href": "/courses/legacy-reading-38-009",
-      "textLength": 120
+      "textLength": 115
     },
     {
       "id": "legacy-reading-38-010",
@@ -5785,7 +5785,7 @@
       "track": "application",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-38-011",
-      "textLength": 4207
+      "textLength": 4203
     },
     {
       "id": "legacy-reading-38-012",
@@ -5796,7 +5796,7 @@
       "track": "application",
       "accessPolicy": "local-document",
       "href": "/courses/legacy-reading-38-012",
-      "textLength": 6485
+      "textLength": 41029
     },
     {
       "id": "agent-loop-maintainer-guide",
@@ -6022,6 +6022,30 @@
       "textLength": 3334
     },
     {
+      "id": "legacy-course-001#Learning/hello-agents/docs/前言.md",
+      "kind": "local-chapter",
+      "title": "前言",
+      "summary": "Hello-Agents",
+      "stageIds": [],
+      "track": "learning",
+      "accessPolicy": "local-document",
+      "itemId": "legacy-course-001",
+      "href": "/read/legacy-course-001?chapter=Learning%2Fhello-agents%2Fdocs%2F%E5%89%8D%E8%A8%80.md",
+      "textLength": 1567
+    },
+    {
+      "id": "legacy-course-009#AICoding/claude/code/claude-code-analysis/analysis/01-architecture-overview.md",
+      "kind": "local-chapter",
+      "title": "架构总览",
+      "summary": "Claude Code 源码逆向分析",
+      "stageIds": [],
+      "track": "aicoding",
+      "accessPolicy": "local-document",
+      "itemId": "legacy-course-009",
+      "href": "/read/legacy-course-009?chapter=AICoding%2Fclaude%2Fcode%2Fclaude-code-analysis%2Fanalysis%2F01-architecture-overview.md",
+      "textLength": 15022
+    },
+    {
       "id": "legacy-course-001#Learning/hello-agents/README.md",
       "kind": "local-chapter",
       "title": "本地 README",
@@ -6046,42 +6070,6 @@
       "textLength": 7714
     },
     {
-      "id": "legacy-course-001#Learning/hello-agents/docs/前言.md",
-      "kind": "local-chapter",
-      "title": "前言",
-      "summary": "Hello-Agents",
-      "stageIds": [],
-      "track": "learning",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-001",
-      "href": "/read/legacy-course-001?chapter=Learning%2Fhello-agents%2Fdocs%2F%E5%89%8D%E8%A8%80.md",
-      "textLength": 1567
-    },
-    {
-      "id": "legacy-course-021#AICoding/MiMo-Code/README.zh.md",
-      "kind": "local-chapter",
-      "title": "本地 README（中文）",
-      "summary": "MiMo-Code",
-      "stageIds": [],
-      "track": "aicoding",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-021",
-      "href": "/read/legacy-course-021?chapter=AICoding%2FMiMo-Code%2FREADME.zh.md",
-      "textLength": 3791
-    },
-    {
-      "id": "legacy-course-009#AICoding/claude/code/claude-code-analysis/analysis/01-architecture-overview.md",
-      "kind": "local-chapter",
-      "title": "架构总览",
-      "summary": "Claude Code 源码逆向分析",
-      "stageIds": [],
-      "track": "aicoding",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-009",
-      "href": "/read/legacy-course-009?chapter=AICoding%2Fclaude%2Fcode%2Fclaude-code-analysis%2Fanalysis%2F01-architecture-overview.md",
-      "textLength": 15022
-    },
-    {
       "id": "legacy-course-009#AICoding/claude/code/claude-code-analysis/README.md",
       "kind": "local-chapter",
       "title": "本地 README",
@@ -6092,18 +6080,6 @@
       "itemId": "legacy-course-009",
       "href": "/read/legacy-course-009?chapter=AICoding%2Fclaude%2Fcode%2Fclaude-code-analysis%2FREADME.md",
       "textLength": 5931
-    },
-    {
-      "id": "legacy-course-021#AICoding/MiMo-Code/AGENTS.md",
-      "kind": "local-chapter",
-      "title": "工程约定 AGENTS.md",
-      "summary": "MiMo-Code",
-      "stageIds": [],
-      "track": "aicoding",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-021",
-      "href": "/read/legacy-course-021?chapter=AICoding%2FMiMo-Code%2FAGENTS.md",
-      "textLength": 2722
     },
     {
       "id": "legacy-course-017#AICoding/opencode/learn-opencode/README.md",
@@ -6118,16 +6094,52 @@
       "textLength": 3446
     },
     {
-      "id": "legacy-course-020#AICoding/CyberClaw/docs/LAZY_LOADING_GUIDE.md",
+      "id": "legacy-course-025#Agentic/Memory/mem0/LLM.md",
       "kind": "local-chapter",
-      "title": "Lazy Loading 指南",
-      "summary": "CyberClaw",
+      "title": "架构总览 LLM.md",
+      "summary": "mem0",
+      "stageIds": [],
+      "track": "agentic",
+      "accessPolicy": "local-document",
+      "itemId": "legacy-course-025",
+      "href": "/read/legacy-course-025?chapter=Agentic%2FMemory%2Fmem0%2FLLM.md",
+      "textLength": 37253
+    },
+    {
+      "id": "legacy-course-023#Agentic/Harness/harness-books/book2-comparing/preface.md",
+      "kind": "local-chapter",
+      "title": "Book 2 前言",
+      "summary": "Harness Books（双册）",
+      "stageIds": [],
+      "track": "agentic",
+      "accessPolicy": "local-document",
+      "itemId": "legacy-course-023",
+      "href": "/read/legacy-course-023?chapter=Agentic%2FHarness%2Fharness-books%2Fbook2-comparing%2Fpreface.md",
+      "textLength": 2106
+    },
+    {
+      "id": "legacy-course-023#Agentic/Harness/harness-books/book1-claude-code/index.md",
+      "kind": "local-chapter",
+      "title": "Book 1 导读",
+      "summary": "Harness Books（双册）",
+      "stageIds": [],
+      "track": "agentic",
+      "accessPolicy": "local-document",
+      "itemId": "legacy-course-023",
+      "href": "/read/legacy-course-023?chapter=Agentic%2FHarness%2Fharness-books%2Fbook1-claude-code%2Findex.md",
+      "textLength": 1281
+    },
+    {
+      "id": "legacy-course-017#AICoding/opencode/learn-opencode/docs/index.md",
+      "kind": "local-chapter",
+      "title": "课程导览",
+      "summary": "OpenCode 中文实战课",
       "stageIds": [],
       "track": "aicoding",
       "accessPolicy": "local-document",
-      "itemId": "legacy-course-020",
-      "href": "/read/legacy-course-020?chapter=AICoding%2FCyberClaw%2Fdocs%2FLAZY_LOADING_GUIDE.md",
-      "textLength": 4506
+      "itemId": "legacy-course-017",
+      "href": "/read/legacy-course-017?chapter=AICoding%2Fopencode%2Flearn-opencode%2Fdocs%2Findex.md",
+      "textLength": 3535
     },
     {
       "id": "legacy-course-025#Agentic/Memory/mem0/README.md",
@@ -6151,31 +6163,7 @@
       "accessPolicy": "local-document",
       "itemId": "legacy-course-019",
       "href": "/read/legacy-course-019?chapter=AICoding%2Fhermes%2Fhermes-agent%2FREADME.md",
-      "textLength": 17519
-    },
-    {
-      "id": "legacy-course-023#Agentic/Harness/harness-books/book2-comparing/preface.md",
-      "kind": "local-chapter",
-      "title": "Book 2 前言",
-      "summary": "Harness Books（双册）",
-      "stageIds": [],
-      "track": "agentic",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-023",
-      "href": "/read/legacy-course-023?chapter=Agentic%2FHarness%2Fharness-books%2Fbook2-comparing%2Fpreface.md",
-      "textLength": 2106
-    },
-    {
-      "id": "legacy-course-025#Agentic/Memory/mem0/LLM.md",
-      "kind": "local-chapter",
-      "title": "架构总览 LLM.md",
-      "summary": "mem0",
-      "stageIds": [],
-      "track": "agentic",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-025",
-      "href": "/read/legacy-course-025?chapter=Agentic%2FMemory%2Fmem0%2FLLM.md",
-      "textLength": 37253
+      "textLength": 17590
     },
     {
       "id": "legacy-course-019#AICoding/hermes/docs/Kimi_Agent_Hermes 记忆机制/hermes-memory-deep-dive.md",
@@ -6190,76 +6178,28 @@
       "textLength": 15910
     },
     {
-      "id": "legacy-course-023#Agentic/Harness/harness-books/book1-claude-code/index.md",
+      "id": "legacy-course-024#Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/preface.md",
       "kind": "local-chapter",
-      "title": "Book 1 导读",
-      "summary": "Harness Books（双册）",
+      "title": "本地前言",
+      "summary": "驾驭工程：从 CC 到 AI Coding",
       "stageIds": [],
       "track": "agentic",
       "accessPolicy": "local-document",
-      "itemId": "legacy-course-023",
-      "href": "/read/legacy-course-023?chapter=Agentic%2FHarness%2Fharness-books%2Fbook1-claude-code%2Findex.md",
-      "textLength": 1281
+      "itemId": "legacy-course-024",
+      "href": "/read/legacy-course-024?chapter=Agentic%2FHarness%2Fharness-engineering-from-cc-to-ai-coding%2Fbook%2Fsrc%2Fpreface.md",
+      "textLength": 3599
     },
     {
-      "id": "legacy-course-033#Agentic/openchamber/packages/docs/content/docs/zh-cn/index.mdx",
-      "kind": "local-chapter",
-      "title": "中文文档首页",
-      "summary": "OpenChamber",
-      "stageIds": [],
-      "track": "agentic",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-033",
-      "href": "/read/legacy-course-033?chapter=Agentic%2Fopenchamber%2Fpackages%2Fdocs%2Fcontent%2Fdocs%2Fzh-cn%2Findex.mdx",
-      "textLength": 733
-    },
-    {
-      "id": "legacy-course-031#Agentic/Harness/PI/pi-mono/AGENTS.md",
-      "kind": "local-chapter",
-      "title": "工程约定 AGENTS.md",
-      "summary": "PI（pi-mono）",
-      "stageIds": [],
-      "track": "agentic",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-031",
-      "href": "/read/legacy-course-031?chapter=Agentic%2FHarness%2FPI%2Fpi-mono%2FAGENTS.md",
-      "textLength": 10746
-    },
-    {
-      "id": "legacy-course-017#AICoding/opencode/learn-opencode/docs/index.md",
-      "kind": "local-chapter",
-      "title": "课程导览",
-      "summary": "OpenCode 中文实战课",
-      "stageIds": [],
-      "track": "aicoding",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-017",
-      "href": "/read/legacy-course-017?chapter=AICoding%2Fopencode%2Flearn-opencode%2Fdocs%2Findex.md",
-      "textLength": 3535
-    },
-    {
-      "id": "legacy-course-031#Agentic/Harness/PI/pi-mono/README.md",
+      "id": "legacy-course-034#Agentic/ai-agent-deep-dive/README.md",
       "kind": "local-chapter",
       "title": "本地 README",
-      "summary": "PI（pi-mono）",
+      "summary": "AI Agent Deep Dive",
       "stageIds": [],
       "track": "agentic",
       "accessPolicy": "local-document",
-      "itemId": "legacy-course-031",
-      "href": "/read/legacy-course-031?chapter=Agentic%2FHarness%2FPI%2Fpi-mono%2FREADME.md",
-      "textLength": 6617
-    },
-    {
-      "id": "legacy-course-020#AICoding/CyberClaw/README.md",
-      "kind": "local-chapter",
-      "title": "本地 README",
-      "summary": "CyberClaw",
-      "stageIds": [],
-      "track": "aicoding",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-020",
-      "href": "/read/legacy-course-020?chapter=AICoding%2FCyberClaw%2FREADME.md",
-      "textLength": 13421
+      "itemId": "legacy-course-034",
+      "href": "/read/legacy-course-034?chapter=Agentic%2Fai-agent-deep-dive%2FREADME.md",
+      "textLength": 1685
     },
     {
       "id": "legacy-course-034#Agentic/ai-agent-deep-dive/docs/00-product-overview.md",
@@ -6286,16 +6226,40 @@
       "textLength": 8445
     },
     {
-      "id": "legacy-course-034#Agentic/ai-agent-deep-dive/README.md",
+      "id": "legacy-course-031#Agentic/Harness/PI/pi-mono/README.md",
       "kind": "local-chapter",
       "title": "本地 README",
-      "summary": "AI Agent Deep Dive",
+      "summary": "PI（pi-mono）",
       "stageIds": [],
       "track": "agentic",
       "accessPolicy": "local-document",
-      "itemId": "legacy-course-034",
-      "href": "/read/legacy-course-034?chapter=Agentic%2Fai-agent-deep-dive%2FREADME.md",
-      "textLength": 942
+      "itemId": "legacy-course-031",
+      "href": "/read/legacy-course-031?chapter=Agentic%2FHarness%2FPI%2Fpi-mono%2FREADME.md",
+      "textLength": 6770
+    },
+    {
+      "id": "legacy-course-033#Agentic/openchamber/packages/docs/content/docs/zh-cn/index.mdx",
+      "kind": "local-chapter",
+      "title": "中文文档首页",
+      "summary": "OpenChamber",
+      "stageIds": [],
+      "track": "agentic",
+      "accessPolicy": "local-document",
+      "itemId": "legacy-course-033",
+      "href": "/read/legacy-course-033?chapter=Agentic%2Fopenchamber%2Fpackages%2Fdocs%2Fcontent%2Fdocs%2Fzh-cn%2Findex.mdx",
+      "textLength": 733
+    },
+    {
+      "id": "legacy-course-031#Agentic/Harness/PI/pi-mono/AGENTS.md",
+      "kind": "local-chapter",
+      "title": "工程约定 AGENTS.md",
+      "summary": "PI（pi-mono）",
+      "stageIds": [],
+      "track": "agentic",
+      "accessPolicy": "local-document",
+      "itemId": "legacy-course-031",
+      "href": "/read/legacy-course-031?chapter=Agentic%2FHarness%2FPI%2Fpi-mono%2FAGENTS.md",
+      "textLength": 11943
     },
     {
       "id": "legacy-course-036#Agentic/Harness/smolagents/README.md",
@@ -6322,18 +6286,6 @@
       "textLength": 14441
     },
     {
-      "id": "legacy-course-024#Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/preface.md",
-      "kind": "local-chapter",
-      "title": "本地前言",
-      "summary": "驾驭工程：从 CC 到 AI Coding",
-      "stageIds": [],
-      "track": "agentic",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-024",
-      "href": "/read/legacy-course-024?chapter=Agentic%2FHarness%2Fharness-engineering-from-cc-to-ai-coding%2Fbook%2Fsrc%2Fpreface.md",
-      "textLength": 3599
-    },
-    {
       "id": "legacy-course-024#Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/part6/ch23b.md",
       "kind": "local-chapter",
       "title": "补充章：跨会话记忆 — 从遗忘到持久学习",
@@ -6344,6 +6296,30 @@
       "itemId": "legacy-course-024",
       "href": "/read/legacy-course-024?chapter=Agentic%2FHarness%2Fharness-engineering-from-cc-to-ai-coding%2Fbook%2Fsrc%2Fpart6%2Fch23b.md",
       "textLength": 44
+    },
+    {
+      "id": "legacy-course-042#Application/solon-ai/README.md",
+      "kind": "local-chapter",
+      "title": "本地 README",
+      "summary": "Solon-AI",
+      "stageIds": [],
+      "track": "application",
+      "accessPolicy": "local-document",
+      "itemId": "legacy-course-042",
+      "href": "/read/legacy-course-042?chapter=Application%2Fsolon-ai%2FREADME.md",
+      "textLength": 17069
+    },
+    {
+      "id": "legacy-course-042#Application/solon-ai/solon-ai-flow/README.md",
+      "kind": "local-chapter",
+      "title": "Flow 模块",
+      "summary": "Solon-AI",
+      "stageIds": [],
+      "track": "application",
+      "accessPolicy": "local-document",
+      "itemId": "legacy-course-042",
+      "href": "/read/legacy-course-042?chapter=Application%2Fsolon-ai%2Fsolon-ai-flow%2FREADME.md",
+      "textLength": 4095
     },
     {
       "id": "legacy-course-012#AICoding/claude/document/ClaudeMD/App/claude.md",
@@ -6379,7 +6355,19 @@
       "accessPolicy": "local-document",
       "itemId": "legacy-course-012",
       "href": "/read/legacy-course-012?chapter=AICoding%2Fclaude%2Fdocument%2Fclaude-code-guide%2FREADME.md",
-      "textLength": 148344
+      "textLength": 168200
+    },
+    {
+      "id": "legacy-course-014#AICoding/claude/code/awesome-claude-code/README.md",
+      "kind": "local-chapter",
+      "title": "本地 README",
+      "summary": "awesome-claude-code",
+      "stageIds": [],
+      "track": "aicoding",
+      "accessPolicy": "local-document",
+      "itemId": "legacy-course-014",
+      "href": "/read/legacy-course-014?chapter=AICoding%2Fclaude%2Fcode%2Fawesome-claude-code%2FREADME.md",
+      "textLength": 141617
     },
     {
       "id": "legacy-course-016#AICoding/openclaw/openclaw-code/VISION.md",
@@ -6394,18 +6382,6 @@
       "textLength": 4647
     },
     {
-      "id": "legacy-course-014#AICoding/claude/code/claude-code-templates/README.md",
-      "kind": "local-chapter",
-      "title": "claude-code-templates",
-      "summary": "awesome-claude-code",
-      "stageIds": [],
-      "track": "aicoding",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-014",
-      "href": "/read/legacy-course-014?chapter=AICoding%2Fclaude%2Fcode%2Fclaude-code-templates%2FREADME.md",
-      "textLength": 8496
-    },
-    {
       "id": "legacy-course-014#AICoding/claude/code/claude-init/README.md",
       "kind": "local-chapter",
       "title": "claude-init",
@@ -6418,40 +6394,16 @@
       "textLength": 9734
     },
     {
-      "id": "legacy-course-016#AICoding/openclaw/channels/openclaw-lark/README.zh.md",
+      "id": "legacy-course-014#AICoding/claude/code/claude-code-templates/README.md",
       "kind": "local-chapter",
-      "title": "Lark 通道（中文）",
-      "summary": "OpenClaw",
+      "title": "claude-code-templates",
+      "summary": "awesome-claude-code",
       "stageIds": [],
       "track": "aicoding",
       "accessPolicy": "local-document",
-      "itemId": "legacy-course-016",
-      "href": "/read/legacy-course-016?chapter=AICoding%2Fopenclaw%2Fchannels%2Fopenclaw-lark%2FREADME.zh.md",
-      "textLength": 2454
-    },
-    {
-      "id": "legacy-course-016#AICoding/openclaw/doc/openclaw_guide/README.md",
-      "kind": "local-chapter",
-      "title": "官方指南",
-      "summary": "OpenClaw",
-      "stageIds": [],
-      "track": "aicoding",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-016",
-      "href": "/read/legacy-course-016?chapter=AICoding%2Fopenclaw%2Fdoc%2Fopenclaw_guide%2FREADME.md",
-      "textLength": 4078
-    },
-    {
-      "id": "legacy-course-040#Application/CodexSwitch/DESIGN.md",
-      "kind": "local-chapter",
-      "title": "设计文档",
-      "summary": "CodexSwitch",
-      "stageIds": [],
-      "track": "application",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-040",
-      "href": "/read/legacy-course-040?chapter=Application%2FCodexSwitch%2FDESIGN.md",
-      "textLength": 6748
+      "itemId": "legacy-course-014",
+      "href": "/read/legacy-course-014?chapter=AICoding%2Fclaude%2Fcode%2Fclaude-code-templates%2FREADME.md",
+      "textLength": 8496
     },
     {
       "id": "legacy-course-040#Application/CodexSwitch/README.md",
@@ -6466,76 +6418,40 @@
       "textLength": 1148
     },
     {
-      "id": "legacy-course-014#AICoding/claude/code/awesome-claude-code/README.md",
+      "id": "legacy-course-040#Application/CodexSwitch/DESIGN.md",
       "kind": "local-chapter",
-      "title": "本地 README",
-      "summary": "awesome-claude-code",
+      "title": "设计文档",
+      "summary": "CodexSwitch",
+      "stageIds": [],
+      "track": "application",
+      "accessPolicy": "local-document",
+      "itemId": "legacy-course-040",
+      "href": "/read/legacy-course-040?chapter=Application%2FCodexSwitch%2FDESIGN.md",
+      "textLength": 6748
+    },
+    {
+      "id": "legacy-course-016#AICoding/openclaw/doc/openclaw_guide/README.md",
+      "kind": "local-chapter",
+      "title": "官方指南",
+      "summary": "OpenClaw",
       "stageIds": [],
       "track": "aicoding",
       "accessPolicy": "local-document",
-      "itemId": "legacy-course-014",
-      "href": "/read/legacy-course-014?chapter=AICoding%2Fclaude%2Fcode%2Fawesome-claude-code%2FREADME.md",
-      "textLength": 74524
+      "itemId": "legacy-course-016",
+      "href": "/read/legacy-course-016?chapter=AICoding%2Fopenclaw%2Fdoc%2Fopenclaw_guide%2FREADME.md",
+      "textLength": 4078
     },
     {
-      "id": "legacy-course-042#Application/solon-ai/README.md",
+      "id": "legacy-course-016#AICoding/openclaw/channels/openclaw-lark/README.zh.md",
       "kind": "local-chapter",
-      "title": "本地 README",
-      "summary": "Solon-AI",
+      "title": "Lark 通道（中文）",
+      "summary": "OpenClaw",
       "stageIds": [],
-      "track": "application",
+      "track": "aicoding",
       "accessPolicy": "local-document",
-      "itemId": "legacy-course-042",
-      "href": "/read/legacy-course-042?chapter=Application%2Fsolon-ai%2FREADME.md",
-      "textLength": 9062
-    },
-    {
-      "id": "legacy-course-035#Agentic/multica/README.zh-CN.md",
-      "kind": "local-chapter",
-      "title": "本地 README（中文）",
-      "summary": "Multica",
-      "stageIds": [],
-      "track": "agentic",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-035",
-      "href": "/read/legacy-course-035?chapter=Agentic%2Fmultica%2FREADME.zh-CN.md",
-      "textLength": 5095
-    },
-    {
-      "id": "legacy-course-042#Application/solon-ai/solon-ai-a2a/README.md",
-      "kind": "local-chapter",
-      "title": "A2A 模块",
-      "summary": "Solon-AI",
-      "stageIds": [],
-      "track": "application",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-042",
-      "href": "/read/legacy-course-042?chapter=Application%2Fsolon-ai%2Fsolon-ai-a2a%2FREADME.md",
-      "textLength": 12
-    },
-    {
-      "id": "legacy-course-042#Application/solon-ai/solon-ai-flow/README.md",
-      "kind": "local-chapter",
-      "title": "Flow 模块",
-      "summary": "Solon-AI",
-      "stageIds": [],
-      "track": "application",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-042",
-      "href": "/read/legacy-course-042?chapter=Application%2Fsolon-ai%2Fsolon-ai-flow%2FREADME.md",
-      "textLength": 4099
-    },
-    {
-      "id": "legacy-course-035#Agentic/multica/CLI_AND_DAEMON.md",
-      "kind": "local-chapter",
-      "title": "CLI 与 Daemon",
-      "summary": "Multica",
-      "stageIds": [],
-      "track": "agentic",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-035",
-      "href": "/read/legacy-course-035?chapter=Agentic%2Fmultica%2FCLI_AND_DAEMON.md",
-      "textLength": 14504
+      "itemId": "legacy-course-016",
+      "href": "/read/legacy-course-016?chapter=AICoding%2Fopenclaw%2Fchannels%2Fopenclaw-lark%2FREADME.zh.md",
+      "textLength": 2454
     },
     {
       "id": "legacy-course-040#Application/CodexSwitch/SPEC.md",
@@ -6550,28 +6466,16 @@
       "textLength": 24846
     },
     {
-      "id": "legacy-course-035#Agentic/multica/docs/design.md",
+      "id": "legacy-course-013#AICoding/claude/plugins/claudian/README.md",
       "kind": "local-chapter",
-      "title": "设计文档",
-      "summary": "Multica",
-      "stageIds": [],
-      "track": "agentic",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-035",
-      "href": "/read/legacy-course-035?chapter=Agentic%2Fmultica%2Fdocs%2Fdesign.md",
-      "textLength": 11143
-    },
-    {
-      "id": "legacy-course-013#AICoding/claude/plugins/claude-mem/README.md",
-      "kind": "local-chapter",
-      "title": "claude-mem",
+      "title": "claudian",
       "summary": "Claude 插件生态",
       "stageIds": [],
       "track": "aicoding",
       "accessPolicy": "local-document",
       "itemId": "legacy-course-013",
-      "href": "/read/legacy-course-013?chapter=AICoding%2Fclaude%2Fplugins%2Fclaude-mem%2FREADME.md",
-      "textLength": 15275
+      "href": "/read/legacy-course-013?chapter=AICoding%2Fclaude%2Fplugins%2Fclaudian%2FREADME.md",
+      "textLength": 11925
     },
     {
       "id": "legacy-course-013#AICoding/claude/plugins/claude-mermaid/README.md",
@@ -6586,28 +6490,40 @@
       "textLength": 11624
     },
     {
-      "id": "legacy-course-013#AICoding/claude/plugins/claudian/README.md",
+      "id": "legacy-course-013#AICoding/claude/plugins/claude-mem/README.md",
       "kind": "local-chapter",
-      "title": "claudian",
+      "title": "claude-mem",
       "summary": "Claude 插件生态",
       "stageIds": [],
       "track": "aicoding",
       "accessPolicy": "local-document",
       "itemId": "legacy-course-013",
-      "href": "/read/legacy-course-013?chapter=AICoding%2Fclaude%2Fplugins%2Fclaudian%2FREADME.md",
-      "textLength": 14309
+      "href": "/read/legacy-course-013?chapter=AICoding%2Fclaude%2Fplugins%2Fclaude-mem%2FREADME.md",
+      "textLength": 16849
     },
     {
-      "id": "legacy-course-013#AICoding/claude/plugins/claude-auto-mode-unlock/METHODOLOGY.md",
+      "id": "legacy-course-010#AICoding/claude/code/claude-code-haha/README.md",
       "kind": "local-chapter",
-      "title": "auto-mode-unlock 方法论",
-      "summary": "Claude 插件生态",
+      "title": "claude-code-haha",
+      "summary": "Claude Code 源码合集",
       "stageIds": [],
       "track": "aicoding",
       "accessPolicy": "local-document",
-      "itemId": "legacy-course-013",
-      "href": "/read/legacy-course-013?chapter=AICoding%2Fclaude%2Fplugins%2Fclaude-auto-mode-unlock%2FMETHODOLOGY.md",
-      "textLength": 18362
+      "itemId": "legacy-course-010",
+      "href": "/read/legacy-course-010?chapter=AICoding%2Fclaude%2Fcode%2Fclaude-code-haha%2FREADME.md",
+      "textLength": 15905
+    },
+    {
+      "id": "legacy-course-010#AICoding/claude/code/claude-code-rev/README.md",
+      "kind": "local-chapter",
+      "title": "claude-code-rev",
+      "summary": "Claude Code 源码合集",
+      "stageIds": [],
+      "track": "aicoding",
+      "accessPolicy": "local-document",
+      "itemId": "legacy-course-010",
+      "href": "/read/legacy-course-010?chapter=AICoding%2Fclaude%2Fcode%2Fclaude-code-rev%2FREADME.md",
+      "textLength": 3536
     },
     {
       "id": "legacy-course-010#AICoding/claude/code/claude-code-source-code/README_CN.md",
@@ -6634,30 +6550,6 @@
       "textLength": 7513
     },
     {
-      "id": "legacy-course-010#AICoding/claude/code/claude-code-haha/README.md",
-      "kind": "local-chapter",
-      "title": "claude-code-haha",
-      "summary": "Claude Code 源码合集",
-      "stageIds": [],
-      "track": "aicoding",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-010",
-      "href": "/read/legacy-course-010?chapter=AICoding%2Fclaude%2Fcode%2Fclaude-code-haha%2FREADME.md",
-      "textLength": 7517
-    },
-    {
-      "id": "legacy-course-010#AICoding/claude/code/claude-code-rev/README.md",
-      "kind": "local-chapter",
-      "title": "claude-code-rev",
-      "summary": "Claude Code 源码合集",
-      "stageIds": [],
-      "track": "aicoding",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-010",
-      "href": "/read/legacy-course-010?chapter=AICoding%2Fclaude%2Fcode%2Fclaude-code-rev%2FREADME.md",
-      "textLength": 3536
-    },
-    {
       "id": "legacy-course-018#AICoding/opencode/code/opencode/README.md",
       "kind": "local-chapter",
       "title": "OpenCode 本体",
@@ -6667,31 +6559,7 @@
       "accessPolicy": "local-document",
       "itemId": "legacy-course-018",
       "href": "/read/legacy-course-018?chapter=AICoding%2Fopencode%2Fcode%2Fopencode%2FREADME.md",
-      "textLength": 6238
-    },
-    {
-      "id": "legacy-course-018#AICoding/opencode/awesome-opencode/README.md",
-      "kind": "local-chapter",
-      "title": "awesome-opencode",
-      "summary": "OpenCode 生态",
-      "stageIds": [],
-      "track": "aicoding",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-018",
-      "href": "/read/legacy-course-018?chapter=AICoding%2Fopencode%2Fawesome-opencode%2FREADME.md",
-      "textLength": 51238
-    },
-    {
-      "id": "legacy-course-018#Agentic/openchamber/README.md",
-      "kind": "local-chapter",
-      "title": "openchamber",
-      "summary": "OpenCode 生态",
-      "stageIds": [],
-      "track": "aicoding",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-018",
-      "href": "/read/legacy-course-018?chapter=Agentic%2Fopenchamber%2FREADME.md",
-      "textLength": 8447
+      "textLength": 5329
     },
     {
       "id": "legacy-course-018#AICoding/opencode/code/openwork/README_ZH.md",
@@ -6718,6 +6586,42 @@
       "textLength": 8687
     },
     {
+      "id": "legacy-course-018#Agentic/openchamber/README.md",
+      "kind": "local-chapter",
+      "title": "openchamber",
+      "summary": "OpenCode 生态",
+      "stageIds": [],
+      "track": "aicoding",
+      "accessPolicy": "local-document",
+      "itemId": "legacy-course-018",
+      "href": "/read/legacy-course-018?chapter=Agentic%2Fopenchamber%2FREADME.md",
+      "textLength": 8447
+    },
+    {
+      "id": "legacy-course-018#AICoding/opencode/awesome-opencode/README.md",
+      "kind": "local-chapter",
+      "title": "awesome-opencode",
+      "summary": "OpenCode 生态",
+      "stageIds": [],
+      "track": "aicoding",
+      "accessPolicy": "local-document",
+      "itemId": "legacy-course-018",
+      "href": "/read/legacy-course-018?chapter=AICoding%2Fopencode%2Fawesome-opencode%2FREADME.md",
+      "textLength": 121967
+    },
+    {
+      "id": "legacy-course-039#Application/cc-switch/README_ZH.md",
+      "kind": "local-chapter",
+      "title": "本地 README（中文）",
+      "summary": "cc-switch",
+      "stageIds": [],
+      "track": "application",
+      "accessPolicy": "local-document",
+      "itemId": "legacy-course-039",
+      "href": "/read/legacy-course-039?chapter=Application%2Fcc-switch%2FREADME_ZH.md",
+      "textLength": 27843
+    },
+    {
       "id": "legacy-course-039#Application/cc-switch/docs/user-manual/zh/README.md",
       "kind": "local-chapter",
       "title": "用户手册（中文）",
@@ -6740,18 +6644,6 @@
       "itemId": "legacy-course-039",
       "href": "/read/legacy-course-039?chapter=Application%2Fcc-switch%2Fdocs%2Fguides%2Fcodex-desktop-custom-model-visibility-zh.md",
       "textLength": 1868
-    },
-    {
-      "id": "legacy-course-039#Application/cc-switch/README_ZH.md",
-      "kind": "local-chapter",
-      "title": "本地 README（中文）",
-      "summary": "cc-switch",
-      "stageIds": [],
-      "track": "application",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-039",
-      "href": "/read/legacy-course-039?chapter=Application%2Fcc-switch%2FREADME_ZH.md",
-      "textLength": 26944
     },
     {
       "id": "legacy-course-039#Application/cc-switch/docs/guides/codex-official-auth-preservation-guide-zh.md",
@@ -6778,30 +6670,6 @@
       "textLength": 17848
     },
     {
-      "id": "legacy-course-008#AICoding/claude/document/learn-claude-code/README-zh.md",
-      "kind": "local-chapter",
-      "title": "本地 README（中文）",
-      "summary": "learn-claude-code",
-      "stageIds": [],
-      "track": "aicoding",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-008",
-      "href": "/read/legacy-course-008?chapter=AICoding%2Fclaude%2Fdocument%2Flearn-claude-code%2FREADME-zh.md",
-      "textLength": 16850
-    },
-    {
-      "id": "legacy-course-008#AICoding/claude/document/learn-claude-code/docs/zh/s03-todo-write.md",
-      "kind": "local-chapter",
-      "title": "s03: TodoWrite (待办写入)",
-      "summary": "learn-claude-code",
-      "stageIds": [],
-      "track": "aicoding",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-008",
-      "href": "/read/legacy-course-008?chapter=AICoding%2Fclaude%2Fdocument%2Flearn-claude-code%2Fdocs%2Fzh%2Fs03-todo-write.md",
-      "textLength": 2938
-    },
-    {
       "id": "legacy-course-008#AICoding/claude/document/learn-claude-code/docs/zh/s02-tool-use.md",
       "kind": "local-chapter",
       "title": "s02: Tool Use (工具使用)",
@@ -6811,67 +6679,19 @@
       "accessPolicy": "local-document",
       "itemId": "legacy-course-008",
       "href": "/read/legacy-course-008?chapter=AICoding%2Fclaude%2Fdocument%2Flearn-claude-code%2Fdocs%2Fzh%2Fs02-tool-use.md",
-      "textLength": 2980
+      "textLength": 2996
     },
     {
-      "id": "legacy-course-008#AICoding/claude/document/learn-claude-code/docs/zh/s10-team-protocols.md",
+      "id": "legacy-course-008#AICoding/claude/document/learn-claude-code/README-zh.md",
       "kind": "local-chapter",
-      "title": "s10: Team Protocols (团队协议)",
+      "title": "本地 README（中文）",
       "summary": "learn-claude-code",
       "stageIds": [],
       "track": "aicoding",
       "accessPolicy": "local-document",
       "itemId": "legacy-course-008",
-      "href": "/read/legacy-course-008?chapter=AICoding%2Fclaude%2Fdocument%2Flearn-claude-code%2Fdocs%2Fzh%2Fs10-team-protocols.md",
-      "textLength": 3332
-    },
-    {
-      "id": "legacy-course-008#AICoding/claude/document/learn-claude-code/docs/zh/s09-agent-teams.md",
-      "kind": "local-chapter",
-      "title": "s09: Agent Teams (Agent 团队)",
-      "summary": "learn-claude-code",
-      "stageIds": [],
-      "track": "aicoding",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-008",
-      "href": "/read/legacy-course-008?chapter=AICoding%2Fclaude%2Fdocument%2Flearn-claude-code%2Fdocs%2Fzh%2Fs09-agent-teams.md",
-      "textLength": 4068
-    },
-    {
-      "id": "legacy-course-008#AICoding/claude/document/learn-claude-code/docs/zh/s07-task-system.md",
-      "kind": "local-chapter",
-      "title": "s07: Task System (任务系统)",
-      "summary": "learn-claude-code",
-      "stageIds": [],
-      "track": "aicoding",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-008",
-      "href": "/read/legacy-course-008?chapter=AICoding%2Fclaude%2Fdocument%2Flearn-claude-code%2Fdocs%2Fzh%2Fs07-task-system.md",
-      "textLength": 3987
-    },
-    {
-      "id": "legacy-course-008#AICoding/claude/document/learn-claude-code/docs/zh/s11-autonomous-agents.md",
-      "kind": "local-chapter",
-      "title": "s11: Autonomous Agents (Autonomous Agent)",
-      "summary": "learn-claude-code",
-      "stageIds": [],
-      "track": "aicoding",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-008",
-      "href": "/read/legacy-course-008?chapter=AICoding%2Fclaude%2Fdocument%2Flearn-claude-code%2Fdocs%2Fzh%2Fs11-autonomous-agents.md",
-      "textLength": 4171
-    },
-    {
-      "id": "legacy-course-008#AICoding/claude/document/learn-claude-code/docs/zh/s01-the-agent-loop.md",
-      "kind": "local-chapter",
-      "title": "s01: The Agent Loop (Agent 循环)",
-      "summary": "learn-claude-code",
-      "stageIds": [],
-      "track": "aicoding",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-008",
-      "href": "/read/legacy-course-008?chapter=AICoding%2Fclaude%2Fdocument%2Flearn-claude-code%2Fdocs%2Fzh%2Fs01-the-agent-loop.md",
-      "textLength": 3116
+      "href": "/read/legacy-course-008?chapter=AICoding%2Fclaude%2Fdocument%2Flearn-claude-code%2FREADME-zh.md",
+      "textLength": 16904
     },
     {
       "id": "legacy-course-008#AICoding/claude/document/learn-claude-code/docs/zh/s05-skill-loading.md",
@@ -6883,19 +6703,7 @@
       "accessPolicy": "local-document",
       "itemId": "legacy-course-008",
       "href": "/read/legacy-course-008?chapter=AICoding%2Fclaude%2Fdocument%2Flearn-claude-code%2Fdocs%2Fzh%2Fs05-skill-loading.md",
-      "textLength": 3267
-    },
-    {
-      "id": "legacy-course-008#AICoding/claude/document/learn-claude-code/docs/zh/s08-background-tasks.md",
-      "kind": "local-chapter",
-      "title": "s08: Background Tasks (后台任务)",
-      "summary": "learn-claude-code",
-      "stageIds": [],
-      "track": "aicoding",
-      "accessPolicy": "local-document",
-      "itemId": "legacy-course-008",
-      "href": "/read/legacy-course-008?chapter=AICoding%2Fclaude%2Fdocument%2Flearn-claude-code%2Fdocs%2Fzh%2Fs08-background-tasks.md",
-      "textLength": 3188
+      "textLength": 3283
     },
     {
       "id": "legacy-course-008#AICoding/claude/document/learn-claude-code/docs/zh/s04-subagent.md",
@@ -6910,6 +6718,66 @@
       "textLength": 3151
     },
     {
+      "id": "legacy-course-008#AICoding/claude/document/learn-claude-code/docs/zh/s01-the-agent-loop.md",
+      "kind": "local-chapter",
+      "title": "s01: The Agent Loop (Agent 循环)",
+      "summary": "learn-claude-code",
+      "stageIds": [],
+      "track": "aicoding",
+      "accessPolicy": "local-document",
+      "itemId": "legacy-course-008",
+      "href": "/read/legacy-course-008?chapter=AICoding%2Fclaude%2Fdocument%2Flearn-claude-code%2Fdocs%2Fzh%2Fs01-the-agent-loop.md",
+      "textLength": 3116
+    },
+    {
+      "id": "legacy-course-008#AICoding/claude/document/learn-claude-code/docs/zh/s03-todo-write.md",
+      "kind": "local-chapter",
+      "title": "s03: TodoWrite (待办写入)",
+      "summary": "learn-claude-code",
+      "stageIds": [],
+      "track": "aicoding",
+      "accessPolicy": "local-document",
+      "itemId": "legacy-course-008",
+      "href": "/read/legacy-course-008?chapter=AICoding%2Fclaude%2Fdocument%2Flearn-claude-code%2Fdocs%2Fzh%2Fs03-todo-write.md",
+      "textLength": 2938
+    },
+    {
+      "id": "legacy-course-008#AICoding/claude/document/learn-claude-code/docs/zh/s11-autonomous-agents.md",
+      "kind": "local-chapter",
+      "title": "s11: Autonomous Agents (Autonomous Agent)",
+      "summary": "learn-claude-code",
+      "stageIds": [],
+      "track": "aicoding",
+      "accessPolicy": "local-document",
+      "itemId": "legacy-course-008",
+      "href": "/read/legacy-course-008?chapter=AICoding%2Fclaude%2Fdocument%2Flearn-claude-code%2Fdocs%2Fzh%2Fs11-autonomous-agents.md",
+      "textLength": 4187
+    },
+    {
+      "id": "legacy-course-008#AICoding/claude/document/learn-claude-code/docs/zh/s10-team-protocols.md",
+      "kind": "local-chapter",
+      "title": "s10: Team Protocols (团队协议)",
+      "summary": "learn-claude-code",
+      "stageIds": [],
+      "track": "aicoding",
+      "accessPolicy": "local-document",
+      "itemId": "legacy-course-008",
+      "href": "/read/legacy-course-008?chapter=AICoding%2Fclaude%2Fdocument%2Flearn-claude-code%2Fdocs%2Fzh%2Fs10-team-protocols.md",
+      "textLength": 3332
+    },
+    {
+      "id": "legacy-course-008#AICoding/claude/document/learn-claude-code/docs/zh/s08-background-tasks.md",
+      "kind": "local-chapter",
+      "title": "s08: Background Tasks (后台任务)",
+      "summary": "learn-claude-code",
+      "stageIds": [],
+      "track": "aicoding",
+      "accessPolicy": "local-document",
+      "itemId": "legacy-course-008",
+      "href": "/read/legacy-course-008?chapter=AICoding%2Fclaude%2Fdocument%2Flearn-claude-code%2Fdocs%2Fzh%2Fs08-background-tasks.md",
+      "textLength": 3188
+    },
+    {
       "id": "legacy-course-008#AICoding/claude/document/learn-claude-code/docs/zh/s06-context-compact.md",
       "kind": "local-chapter",
       "title": "s06: Context Compact (上下文压缩)",
@@ -6920,6 +6788,30 @@
       "itemId": "legacy-course-008",
       "href": "/read/legacy-course-008?chapter=AICoding%2Fclaude%2Fdocument%2Flearn-claude-code%2Fdocs%2Fzh%2Fs06-context-compact.md",
       "textLength": 3860
+    },
+    {
+      "id": "legacy-course-008#AICoding/claude/document/learn-claude-code/docs/zh/s09-agent-teams.md",
+      "kind": "local-chapter",
+      "title": "s09: Agent Teams (Agent 团队)",
+      "summary": "learn-claude-code",
+      "stageIds": [],
+      "track": "aicoding",
+      "accessPolicy": "local-document",
+      "itemId": "legacy-course-008",
+      "href": "/read/legacy-course-008?chapter=AICoding%2Fclaude%2Fdocument%2Flearn-claude-code%2Fdocs%2Fzh%2Fs09-agent-teams.md",
+      "textLength": 4102
+    },
+    {
+      "id": "legacy-course-008#AICoding/claude/document/learn-claude-code/docs/zh/s07-task-system.md",
+      "kind": "local-chapter",
+      "title": "s07: Task System (任务系统)",
+      "summary": "learn-claude-code",
+      "stageIds": [],
+      "track": "aicoding",
+      "accessPolicy": "local-document",
+      "itemId": "legacy-course-008",
+      "href": "/read/legacy-course-008?chapter=AICoding%2Fclaude%2Fdocument%2Flearn-claude-code%2Fdocs%2Fzh%2Fs07-task-system.md",
+      "textLength": 4003
     },
     {
       "id": "legacy-course-008#AICoding/claude/document/learn-claude-code/docs/zh/s12-worktree-task-isolation.md",

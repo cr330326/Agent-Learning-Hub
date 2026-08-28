@@ -4,6 +4,42 @@
   "errors": [],
   "warningGroups": [
     {
+      "code": "local-path-missing",
+      "message": "A declared local path no longer exists; run `materials drift` for repair candidates.",
+      "count": 29,
+      "itemIds": [
+        "legacy-course-013",
+        "legacy-course-020",
+        "legacy-course-021",
+        "legacy-course-035",
+        "legacy-course-042",
+        "legacy-reading-10-011",
+        "legacy-reading-10-012",
+        "legacy-reading-10-013",
+        "legacy-reading-10-014",
+        "legacy-reading-10-015",
+        "legacy-reading-10-016",
+        "legacy-reading-10-017",
+        "legacy-reading-10-018",
+        "legacy-reading-10-019",
+        "legacy-reading-10-020",
+        "legacy-reading-10-021",
+        "legacy-reading-12-011",
+        "legacy-reading-12-012",
+        "legacy-reading-15-005",
+        "legacy-reading-15-006",
+        "legacy-reading-15-007",
+        "legacy-reading-15-008",
+        "legacy-reading-15-009",
+        "legacy-reading-15-010",
+        "legacy-reading-25-001",
+        "legacy-reading-25-002",
+        "legacy-reading-25-003",
+        "legacy-reading-25-005",
+        "legacy-reading-38-009"
+      ]
+    },
+    {
       "code": "missing-source-url",
       "message": "The Learning Item has no upstream source URL.",
       "count": 479,
@@ -2037,7 +2073,7 @@
   ],
   "summary": {
     "errorCount": 0,
-    "warningCount": 2003
+    "warningCount": 2032
   },
   "network": {
     "status": "not-run",
