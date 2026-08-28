@@ -147,6 +147,12 @@ export function createCatalogApi(catalog: ContentCatalog): CatalogApi {
   return {
     listItems(query = {}) {
       return items.filter((item) => {
+        // Retired entries exist so their old IDs keep resolving; they are not
+        // catalog content and never appear in listings, filters or counts.
+        if (item.redirect) {
+          return false;
+        }
+
         if (
           query.stageId !== undefined &&
           !item.stageIds.includes(query.stageId)

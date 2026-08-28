@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
+import { itemRedirectHref } from "../../../modules/catalog/item-redirect";
 import {
   ResolverAction,
   authorLabel,
@@ -24,6 +25,8 @@ export default async function CourseDetailPage({
   const catalog = await loadPublicCatalog();
   const item = catalog.items.find(({ id }) => id === itemId);
   if (!item) notFound();
+  const retiredHref = itemRedirectHref(item);
+  if (retiredHref) redirect(retiredHref);
   const track = catalog.tracks.find(({ id }) => id === item.track);
   if (!track) notFound();
   const stages = catalog.stages.filter(({ id }) => item.stageIds.includes(id));

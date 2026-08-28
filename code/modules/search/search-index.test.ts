@@ -204,6 +204,54 @@ describe("local-mode search index", () => {
     ).toEqual(["reading-004"]);
   });
 
+  it("excludes a redirected entry and keeps only the owner's documents", async () => {
+    await writeChapter("Learning/course/README.md", "overview text");
+    await writeChapter("Learning/course/preface.md", "preface text");
+    const owner = localItem(
+      "course-001",
+      "Hello-Agents",
+      "Learning/course/README.md",
+      [
+        {
+          label: "本地 README",
+          sourceUrl: null,
+          localPath: "Learning/course/README.md",
+        },
+        {
+          label: "前言",
+          sourceUrl: null,
+          localPath: "Learning/course/preface.md",
+        },
+      ],
+    );
+    const retired = localItem(
+      "reading-001",
+      "第一章",
+      "Learning/course/README.md",
+      [
+        {
+          label: "第一章",
+          sourceUrl: null,
+          localPath: "Learning/course/README.md",
+        },
+      ],
+    );
+    retired.redirect = {
+      itemId: "course-001",
+      chapter: "Learning/course/README.md",
+    };
+
+    const index = await buildRuntimeSearchIndex(catalogOf([owner, retired]), {
+      mode: "local",
+      localRoot,
+    });
+
+    expect(index.some(({ id }) => id === "reading-001")).toBe(false);
+    expect(
+      searchDocuments(index, { query: "overview" }).map(({ id }) => id),
+    ).toEqual(["course-001#Learning/course/README.md"]);
+  });
+
   it("keeps per-chapter results for a genuinely multi-chapter entry", async () => {
     await writeChapter("Learning/course/README.md", "overview text");
     await writeChapter("Learning/course/preface.md", "preface text");

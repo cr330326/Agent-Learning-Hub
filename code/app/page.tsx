@@ -12,8 +12,10 @@ export default async function HomePage() {
     .sort((left, right) => left.order - right.order);
   // The four counts must account for every entry — otherwise the panel reads
   // like broken arithmetic (the catalog is overwhelmingly local material).
+  // Retired entries keep their old ID resolvable but are not catalog content.
+  const browsableItems = catalog.items.filter((item) => !item.redirect);
   const countByPolicy = (policy: string) =>
-    catalog.items.filter(({ accessPolicy }) => accessPolicy === policy).length;
+    browsableItems.filter(({ accessPolicy }) => accessPolicy === policy).length;
   const ownedCount = countByPolicy("owned");
   const upstreamCount = countByPolicy("upstream-only");
   const localCount = countByPolicy("local-preferred");
@@ -46,7 +48,7 @@ export default async function HomePage() {
           <dl>
             <div>
               <dt>课程条目</dt>
-              <dd>{catalog.items.length}</dd>
+              <dd>{browsableItems.length}</dd>
             </div>
             <div>
               <dt>本地素材</dt>

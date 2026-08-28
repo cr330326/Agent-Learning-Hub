@@ -47,7 +47,7 @@ Agent Learning Hub 是一个以实践产出为主线的 Agent 工程学习平台
 
 - `check:cloud` 与 `check:local` 均通过，原生生产构建服务的 Local/Cloud HTTP E2E、学习状态、鉴权、导出和删号链路通过；正式 Docker 镜像的 Local UI 走查 48 captures / 0 findings，功能回归 23/23。
 - `audit:boundaries` 通过；`materials check`、`audit`、`reindex` 可运行。`materials drift` 是独立的目录策展检查，当前因 4 个未收录仓库非零退出，不应并入 `check` 或被解释成应用故障。
-- T8.8 仍未完成：课程条目和旧站单章条目之间存在重复正文声明，必须先确定唯一目录拥有者，再继续章节策展。不要把当前素材仓库动态数量写进方案正文。
+- T8.8 的目录归属决策已按 [ADR 0008](../adr/0008-chapter-content-has-a-single-owner.md) 落定并实施：同一份正文只有一个未退场拥有者，119 个单章条目退场并携带 `redirect`(81 个存量重复 + 38 个两门课程策展收编)。剩余工作是以同一模式继续逐课程章节策展。不要把当前素材仓库动态数量写进方案正文。
 - 本地正式镜像 `agent-learning-hub:local-20260825` 已构建并以 `--no-build` 运行；真实 DNS/TLS/OAuth、GHCR 固定镜像的拉取与回滚、受保护分支 Actions、异地备份/调度/告警和生产日志复核仍属于外部运维验收，本地测试不能代替这些证据。
 
 本机端口事实由 `code/scripts/docker-deploy.sh` 和 `mode-switch.sh` 维护：原生开发服务与 Local Docker 默认使用 `3001`，Cloud Docker 默认使用 `3002`，Release/生产实例使用回环地址 `3000`。`3100` 只用于隔离端到端测试示例，不是日常预览端口。
@@ -243,6 +243,14 @@ Project Outcome 可以暂时没有明确阶段映射；Learning Item 可暂时�
 `unavailable` 不得伪造可访问地址。schema 只验证元数据，实际文件是否可读仍由
 Content Resolver 在当前运行模式下判断。
 
+章节正文的归属也由 schema 强制（[ADR
+0008](../adr/0008-chapter-content-has-a-single-owner.md)）：一份本地素材正文只能
+被一个未退场条目声明；退场条目携带 `redirect: { itemId, chapter? }`，条目不再
+进入目录列表、搜索、首页计数和学习面板，`/courses/<id>` 与 `/read/<id>` 把旧
+ID 转发到拥有者（章节带 `chapter` 时进入拥有者的阅读器，保留课程语境）。校验
+覆盖 redirect 目标存在、目标确已声明该章节、禁止自指、禁止 Stage 阅读列表引
+用退场条目；重复归属与上述校验同为 catalog 级错误，违反时加载即失败。
+
 `npm run convert:legacy --prefix code` 可重复把 `learning-site/data.js` 转为
 `code/content/` 的结构化清单、保留 `legacyImport.raw` 和无损源快照，并写入
 `code/reports/legacy-conversion/`。转换器不会猜测第三方归属：未知作者/许可证以
@@ -334,7 +342,7 @@ Local Adapter：
 
 章节集合同时驱动**上下章导航**：`listLocalChapters()` 的顺序即翻页顺序，首章无上一章、末章无下一章。
 
-> 历史内容缺口基线（2026-08-11，不是代码缺陷）：512 个本地条目合计只声明了 547 个 markdown 章节，而这些目录下有约 17,030 个 md 文件，因此多数课程站内只能读到 1—2 章。全量声明并不可取——其中大量是文档站、i18n 和示例噪音，会污染阅读器与搜索索引。补齐属于逐课程的内容策展工作，见 tasks.md T8.8；当前重复声明的归属问题仍须先决策。
+> 历史内容缺口基线（2026-08-11，不是代码缺陷）：512 个本地条目合计只声明了 547 个 markdown 章节，而这些目录下有约 17,030 个 md 文件，因此多数课程站内只能读到 1—2 章。全量声明并不可取——其中大量是文档站、i18n 和示例噪音，会污染阅读器与搜索索引。补齐属于逐课程的内容策展工作，见 tasks.md T8.8；重复声明的归属决策已由 [ADR 0008](../adr/0008-chapter-content-has-a-single-owner.md) 落定，后续策展沿用"退场 + redirect"模式。
 
 安全规则：
 
@@ -357,6 +365,8 @@ Local Adapter：
 **一个目标一条结果。** 历史导入把每个上游章节文件都升格成了独立课程条目（当时 514 条中有 472 条是 `reading-chapter`），这些条目的唯一 reference 与条目同名、指向同一个文件。早期的索引对每个条目既产出 `item` 文档又产出 `local-chapter` 文档，于是本地模式下每条结果都成对出现；这些数字是缺陷修复前的历史快照，不是当前目录统计。
 
 `buildRuntimeSearchIndex()` 因此按章节数分流：**单章条目**把章节正文并进条目自身的检索文本，不再单独产出章节文档——这同时补上了一个空缺，因为在此之前只有 `owned` 条目的正文进入索引，本地条目仅靠元数据可搜；**多章条目**（如 Hello-Agents 的 README + 前言）保留逐章文档，它们标题不同、目标不同，读者需要直接跳到某一章。给本地素材增加索引维度时必须维持这个不变量。
+
+不变量的另一半在数据层（[ADR 0008](../adr/0008-chapter-content-has-a-single-owner.md)）：同一份正文不得被两个未退场条目声明，否则两种分流都会为它各产出一条文档。因此退场条目（携带 `redirect`）被索引整体跳过，目录、计数和筛选也把它们排除；唯一归属由 schema 强制，索引层不需要任何按路径去重的特判。
 
 结果行的定位信息取自 `SearchDocument.summary`：条目用自身摘要、阶段用阶段摘要、章节用所属条目标题。此前历史导入条目中只有少数挂了阶段，整页结果都塌成同一句“未关联路线阶段”。当前数量由目录和搜索索引命令生成，不在方案中固化。
 

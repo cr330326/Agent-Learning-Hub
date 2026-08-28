@@ -105,6 +105,17 @@ export const legacyImportSchema = z.object({
   raw: z.record(z.string(), z.unknown()),
 });
 
+/**
+ * Marks a retired entry whose content is owned by another entry. The ID stays
+ * resolvable — visitors are forwarded to the owner — but the entry no longer
+ * counts as a content owner itself, so the same Local Material file can never
+ * surface twice in the catalog, the search index or the reader.
+ */
+export const itemRedirectSchema = z.object({
+  itemId: stableIdSchema,
+  chapter: localPathSchema.optional(),
+});
+
 export const trackSchema = z.object({
   id: z.enum(learningTrackIds),
   title: requiredTextSchema,
@@ -163,6 +174,7 @@ export const learningItemSchema = z
     lastReviewedAt: dateOnlySchema.nullable(),
     references: z.array(contentReferenceSchema).optional().default([]),
     unavailableReason: requiredTextSchema.nullable().optional().default(null),
+    redirect: itemRedirectSchema.optional(),
     legacyImport: legacyImportSchema.optional(),
   })
   .superRefine((item, context) => {
@@ -441,6 +453,90 @@ export const contentCatalogSchema = z
         }
       });
     });
+
+    const localPathsOf = (item: (typeof catalog.items)[number]) => {
+      const paths = [
+        ...(item.localPath === null ? [] : [item.localPath]),
+        ...item.references
+          .map((reference) => reference.localPath)
+          .filter((path): path is string => path !== null),
+      ];
+      return [...new Set(paths)];
+    };
+
+    catalog.items.forEach((item, itemIndex) => {
+      if (!item.redirect) {
+        return;
+      }
+
+      if (item.redirect.itemId === item.id) {
+        context.addIssue({
+          code: "custom",
+          message: `A redirected entry cannot redirect to itself: ${item.id}.`,
+          path: ["items", itemIndex, "redirect", "itemId"],
+        });
+        return;
+      }
+
+      const target = catalog.items.find(
+        ({ id }) => id === item.redirect!.itemId,
+      );
+      if (!target) {
+        context.addIssue({
+          code: "custom",
+          message: `Unknown redirect target: ${item.redirect.itemId}.`,
+          path: ["items", itemIndex, "redirect", "itemId"],
+        });
+        return;
+      }
+
+      if (
+        item.redirect.chapter !== undefined &&
+        !localPathsOf(target).includes(item.redirect.chapter)
+      ) {
+        context.addIssue({
+          code: "custom",
+          message: `The redirect chapter is not declared by ${item.redirect.itemId}: ${item.redirect.chapter}.`,
+          path: ["items", itemIndex, "redirect", "chapter"],
+        });
+      }
+    });
+
+    catalog.stages.forEach((stage, stageIndex) => {
+      stage.learningItemIds.forEach((itemId, itemIndex) => {
+        const item = catalog.items.find(({ id }) => id === itemId);
+        if (item?.redirect) {
+          context.addIssue({
+            code: "custom",
+            message: `A Stage cannot reference a redirected entry: ${itemId}.`,
+            path: ["stages", stageIndex, "learningItemIds", itemIndex],
+          });
+        }
+      });
+    });
+
+    const ownersByLocalPath = new Map<string, string[]>();
+    catalog.items.forEach((item) => {
+      if (item.redirect) {
+        return;
+      }
+
+      for (const localPath of localPathsOf(item)) {
+        const owners = ownersByLocalPath.get(localPath) ?? [];
+        owners.push(item.id);
+        ownersByLocalPath.set(localPath, owners);
+      }
+    });
+
+    for (const [localPath, owners] of ownersByLocalPath) {
+      if (owners.length > 1) {
+        context.addIssue({
+          code: "custom",
+          message: `Local Material path is declared by multiple entries; retire the extra owners with a redirect (${owners.join(", ")}): ${localPath}.`,
+          path: ["items"],
+        });
+      }
+    }
   });
 
 export type Track = z.output<typeof trackSchema>;

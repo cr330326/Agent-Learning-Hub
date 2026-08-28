@@ -152,7 +152,7 @@
     "id": "legacy-course-004",
     "title": "claw0",
     "track": "learning",
-    "stageIds": [],
+    "stageIds": ["stage-1"],
     "summary": "从 agent loop 走向 OpenClaw-like gateway，覆盖 session、channel、memory、delivery、resilience 和 concurrency。",
     "learningGoals": [
       "sessions/zh 下 10 章中文讲义 + 配套 Python，适合 Stage 3 之后进阶，重点学长运行 agent 的系统边界。"
@@ -1024,11 +1024,6 @@
         "localPath": "AICoding/opencode/awesome-opencode/README.md"
       },
       {
-        "label": "openchamber",
-        "sourceUrl": null,
-        "localPath": "Agentic/openchamber/README.md"
-      },
-      {
         "label": "openwork（中文）",
         "sourceUrl": null,
         "localPath": "AICoding/opencode/code/openwork/README_ZH.md"
@@ -1318,9 +1313,119 @@
         "localPath": "Agentic/Harness/harness-books/book1-claude-code/index.md"
       },
       {
+        "label": "Book 1 · 附录 A：检查清单",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-books/book1-claude-code/appendix-a-checklists.md"
+      },
+      {
+        "label": "Book 1 · 附录 C：源码地图",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-books/book1-claude-code/appendix-c-source-map.md"
+      },
+      {
+        "label": "Book 1 · 第 1 章：为什么是驾驭工程",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-01-why-harness-engineering.md"
+      },
+      {
+        "label": "Book 1 · 第 2 章：Prompt 是控制平面",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-02-prompt-is-control-plane.md"
+      },
+      {
+        "label": "Book 1 · 第 3 章：查询循环与心跳",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-03-query-loop-heartbeat.md"
+      },
+      {
+        "label": "Book 1 · 第 4 章：工具、权限与中断",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-04-tools-permissions-interrupts.md"
+      },
+      {
+        "label": "Book 1 · 第 5 章：上下文、记忆与压缩",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-05-context-memory-compact.md"
+      },
+      {
+        "label": "Book 1 · 第 6 章：错误与恢复",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-06-errors-and-recovery.md"
+      },
+      {
+        "label": "Book 1 · 第 7 章：多 Agent 与验证",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-07-multi-agent-and-verification.md"
+      },
+      {
+        "label": "Book 1 · 第 8 章：团队落地实践",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-08-team-landing-practices.md"
+      },
+      {
+        "label": "Book 1 · 第 9 章：十条原则",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-09-ten-principles.md"
+      },
+      {
+        "label": "Book 1 · 前言",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-books/book1-claude-code/preface.md"
+      },
+      {
         "label": "Book 2 前言",
         "sourceUrl": null,
         "localPath": "Agentic/Harness/harness-books/book2-comparing/preface.md"
+      },
+      {
+        "label": "Book 2 · 附录 B：检查清单",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-books/book2-comparing/appendix-b-checklists.md"
+      },
+      {
+        "label": "Book 2 · 第 0 章：阅读地图",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-00-reading-map.md"
+      },
+      {
+        "label": "Book 2 · 第 1 章：为什么做这个对比",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-01-why-this-comparison.md"
+      },
+      {
+        "label": "Book 2 · 第 2 章：两个控制平面",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-02-two-control-planes.md"
+      },
+      {
+        "label": "Book 2 · 第 3 章：Loop、Thread 与 Rollout",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-03-loop-thread-and-rollout.md"
+      },
+      {
+        "label": "Book 2 · 第 4 章：工具、沙箱与执行策略",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-04-tools-sandbox-and-exec-policy.md"
+      },
+      {
+        "label": "Book 2 · 第 5 章：Skills、Hooks 与本地治理",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-05-skills-hooks-and-local-governance.md"
+      },
+      {
+        "label": "Book 2 · 第 6 章：委派、验证与状态",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-06-delegation-verification-and-state.md"
+      },
+      {
+        "label": "Book 2 · 第 7 章：收敛与分歧",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-07-convergence-and-divergence.md"
+      },
+      {
+        "label": "Book 2 · 第 8 章：如何选择或自建",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-08-how-to-choose-or-build.md"
       }
     ],
     "unavailableReason": null,
@@ -1415,7 +1520,7 @@
     "id": "legacy-course-025",
     "title": "mem0",
     "track": "agentic",
-    "stageIds": [],
+    "stageIds": ["stage-2"],
     "summary": "生产级 agent 记忆层：抽取、存储、检索三段式记忆管道，支持向量库、图记忆和多平台 SDK。",
     "learningGoals": [
       "Stage 2 记忆专题的工业参照：对比自己实现的 memory 与 mem0 的抽取/检索策略。"
@@ -1902,6 +2007,86 @@
         "label": "产品总览",
         "sourceUrl": null,
         "localPath": "Agentic/ai-agent-deep-dive/docs/00-product-overview.md"
+      },
+      {
+        "label": "01 系统提示词与编排",
+        "sourceUrl": null,
+        "localPath": "Agentic/ai-agent-deep-dive/docs/01-system-prompt-and-orchestration.md"
+      },
+      {
+        "label": "02 工具、权限与执行",
+        "sourceUrl": null,
+        "localPath": "Agentic/ai-agent-deep-dive/docs/02-tools-permissions-and-execution.md"
+      },
+      {
+        "label": "03 Skills、插件与 MCP",
+        "sourceUrl": null,
+        "localPath": "Agentic/ai-agent-deep-dive/docs/03-skills-plugins-mcp.md"
+      },
+      {
+        "label": "04 记忆与会话",
+        "sourceUrl": null,
+        "localPath": "Agentic/ai-agent-deep-dive/docs/04-memory-and-session.md"
+      },
+      {
+        "label": "05 命令、UI 与操作体验",
+        "sourceUrl": null,
+        "localPath": "Agentic/ai-agent-deep-dive/docs/05-commands-ui-and-operator-experience.md"
+      },
+      {
+        "label": "06 验证与质量",
+        "sourceUrl": null,
+        "localPath": "Agentic/ai-agent-deep-dive/docs/06-verification-and-quality.md"
+      },
+      {
+        "label": "07 架构地图",
+        "sourceUrl": null,
+        "localPath": "Agentic/ai-agent-deep-dive/docs/07-architecture-map.md"
+      },
+      {
+        "label": "08 Agent 运行时循环",
+        "sourceUrl": null,
+        "localPath": "Agentic/ai-agent-deep-dive/docs/08-agent-runtime-loop.md"
+      },
+      {
+        "label": "09 消息模型与状态",
+        "sourceUrl": null,
+        "localPath": "Agentic/ai-agent-deep-dive/docs/09-message-model-and-state.md"
+      },
+      {
+        "label": "10 上下文管理",
+        "sourceUrl": null,
+        "localPath": "Agentic/ai-agent-deep-dive/docs/10-context-management.md"
+      },
+      {
+        "label": "11 任务模型",
+        "sourceUrl": null,
+        "localPath": "Agentic/ai-agent-deep-dive/docs/11-task-model.md"
+      },
+      {
+        "label": "12 工作区与隔离",
+        "sourceUrl": null,
+        "localPath": "Agentic/ai-agent-deep-dive/docs/12-workspace-and-isolation.md"
+      },
+      {
+        "label": "13 失败恢复",
+        "sourceUrl": null,
+        "localPath": "Agentic/ai-agent-deep-dive/docs/13-failure-recovery.md"
+      },
+      {
+        "label": "14 配置系统",
+        "sourceUrl": null,
+        "localPath": "Agentic/ai-agent-deep-dive/docs/14-configuration-system.md"
+      },
+      {
+        "label": "15 MVP 范围",
+        "sourceUrl": null,
+        "localPath": "Agentic/ai-agent-deep-dive/docs/15-mvp-scope.md"
+      },
+      {
+        "label": "16 Python 实现笔记",
+        "sourceUrl": null,
+        "localPath": "Agentic/ai-agent-deep-dive/docs/16-python-implementation-notes.md"
       },
       {
         "label": "打开 PDF（v2）",
@@ -2497,6 +2682,10 @@
           "doc": "Learning/hello-agents/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-001",
+      "chapter": "Learning/hello-agents/README.md"
     }
   },
   {
@@ -2537,6 +2726,10 @@
           "doc": "Learning/hello-agents/docs/前言.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-001",
+      "chapter": "Learning/hello-agents/docs/前言.md"
     }
   },
   {
@@ -3777,13 +3970,17 @@
           "doc": "Learning/claw0/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-004",
+      "chapter": "Learning/claw0/README.md"
     }
   },
   {
     "id": "legacy-reading-07-002",
     "title": "s01：Agent Loop",
     "track": "learning",
-    "stageIds": ["stage-1"],
+    "stageIds": [],
     "summary": "claw0 · 10 章中文讲义",
     "learningGoals": [],
     "sourceUrl": null,
@@ -3817,6 +4014,10 @@
           "doc": "Learning/claw0/sessions/zh/s01_agent_loop.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-004",
+      "chapter": "Learning/claw0/sessions/zh/s01_agent_loop.md"
     }
   },
   {
@@ -4537,6 +4738,10 @@
           "doc": "Learning/easy-agent/README.zh-CN.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-003",
+      "chapter": "Learning/easy-agent/README.zh-CN.md"
     }
   },
   {
@@ -4577,6 +4782,10 @@
           "doc": "Learning/easy-learn-ai/readme.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-005",
+      "chapter": "Learning/easy-learn-ai/readme.md"
     }
   },
   {
@@ -4617,6 +4826,10 @@
           "doc": "AICoding/claude/document/learn-claude-code/README-zh.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-008",
+      "chapter": "AICoding/claude/document/learn-claude-code/README-zh.md"
     }
   },
   {
@@ -5457,6 +5670,10 @@
           "doc": "AICoding/claude/code/claude-code-analysis/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-009",
+      "chapter": "AICoding/claude/code/claude-code-analysis/README.md"
     }
   },
   {
@@ -5497,6 +5714,10 @@
           "doc": "AICoding/claude/code/claude-code-analysis/analysis/01-architecture-overview.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-009",
+      "chapter": "AICoding/claude/code/claude-code-analysis/analysis/01-architecture-overview.md"
     }
   },
   {
@@ -5977,6 +6198,10 @@
           "doc": "AICoding/claude/document/claude-code-guide/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-012",
+      "chapter": "AICoding/claude/document/claude-code-guide/README.md"
     }
   },
   {
@@ -6017,6 +6242,10 @@
           "doc": "AICoding/claude/document/ClaudeMD/App/claude.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-012",
+      "chapter": "AICoding/claude/document/ClaudeMD/App/claude.md"
     }
   },
   {
@@ -6097,6 +6326,10 @@
           "doc": "AICoding/claude/document/ClaudeMD/andrej-karpathy-skills/README.zh.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-012",
+      "chapter": "AICoding/claude/document/ClaudeMD/andrej-karpathy-skills/README.zh.md"
     }
   },
   {
@@ -6137,6 +6370,10 @@
           "doc": "AICoding/claude/plugins/claude-mem/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-013",
+      "chapter": "AICoding/claude/plugins/claude-mem/README.md"
     }
   },
   {
@@ -6257,6 +6494,10 @@
           "doc": "AICoding/claude/plugins/claudian/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-013",
+      "chapter": "AICoding/claude/plugins/claudian/README.md"
     }
   },
   {
@@ -6297,6 +6538,10 @@
           "doc": "AICoding/claude/plugins/claude-mermaid/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-013",
+      "chapter": "AICoding/claude/plugins/claude-mermaid/README.md"
     }
   },
   {
@@ -6417,6 +6662,10 @@
           "doc": "AICoding/claude/plugins/claude-auto-mode-unlock/METHODOLOGY.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-013",
+      "chapter": "AICoding/claude/plugins/claude-auto-mode-unlock/METHODOLOGY.md"
     }
   },
   {
@@ -6457,6 +6706,10 @@
           "doc": "AICoding/claude/code/claude-code-lens/README.zh-CN.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-011",
+      "chapter": "AICoding/claude/code/claude-code-lens/README.zh-CN.md"
     }
   },
   {
@@ -6497,6 +6750,10 @@
           "doc": "AICoding/claude/code/collection-claude-code-source-code/README-CN.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-010",
+      "chapter": "AICoding/claude/code/collection-claude-code-source-code/README-CN.md"
     }
   },
   {
@@ -6537,6 +6794,10 @@
           "doc": "AICoding/claude/code/claude-code-source-code/README_CN.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-010",
+      "chapter": "AICoding/claude/code/claude-code-source-code/README_CN.md"
     }
   },
   {
@@ -6577,6 +6838,10 @@
           "doc": "AICoding/claude/code/claude-code-haha/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-010",
+      "chapter": "AICoding/claude/code/claude-code-haha/README.md"
     }
   },
   {
@@ -6617,6 +6882,10 @@
           "doc": "AICoding/claude/code/claude-code-rev/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-010",
+      "chapter": "AICoding/claude/code/claude-code-rev/README.md"
     }
   },
   {
@@ -6697,6 +6966,10 @@
           "doc": "AICoding/claude/code/awesome-claude-code/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-014",
+      "chapter": "AICoding/claude/code/awesome-claude-code/README.md"
     }
   },
   {
@@ -6737,6 +7010,10 @@
           "doc": "AICoding/claude/code/claude-init/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-014",
+      "chapter": "AICoding/claude/code/claude-init/README.md"
     }
   },
   {
@@ -6777,6 +7054,10 @@
           "doc": "AICoding/claude/code/claude-code-templates/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-014",
+      "chapter": "AICoding/claude/code/claude-code-templates/README.md"
     }
   },
   {
@@ -6857,6 +7138,10 @@
           "doc": "AICoding/openclaw/doc/openclaw_guide/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-016",
+      "chapter": "AICoding/openclaw/doc/openclaw_guide/README.md"
     }
   },
   {
@@ -7577,6 +7862,10 @@
           "doc": "AICoding/openclaw/channels/openclaw-lark/README.zh.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-016",
+      "chapter": "AICoding/openclaw/channels/openclaw-lark/README.zh.md"
     }
   },
   {
@@ -7617,6 +7906,10 @@
           "doc": "AICoding/openclaw/openclaw-code/VISION.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-016",
+      "chapter": "AICoding/openclaw/openclaw-code/VISION.md"
     }
   },
   {
@@ -7777,6 +8070,10 @@
           "doc": "AICoding/opencode/learn-opencode/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-017",
+      "chapter": "AICoding/opencode/learn-opencode/README.md"
     }
   },
   {
@@ -7817,6 +8114,10 @@
           "doc": "AICoding/opencode/learn-opencode/docs/index.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-017",
+      "chapter": "AICoding/opencode/learn-opencode/docs/index.md"
     }
   },
   {
@@ -8217,6 +8518,10 @@
           "doc": "AICoding/opencode/code/opencode/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-018",
+      "chapter": "AICoding/opencode/code/opencode/README.md"
     }
   },
   {
@@ -8297,6 +8602,10 @@
           "doc": "AICoding/opencode/awesome-opencode/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-018",
+      "chapter": "AICoding/opencode/awesome-opencode/README.md"
     }
   },
   {
@@ -8337,6 +8646,10 @@
           "doc": "Agentic/openchamber/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-033",
+      "chapter": "Agentic/openchamber/README.md"
     }
   },
   {
@@ -8377,6 +8690,10 @@
           "doc": "AICoding/opencode/code/openwork/README_ZH.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-018",
+      "chapter": "AICoding/opencode/code/openwork/README_ZH.md"
     }
   },
   {
@@ -8457,6 +8774,10 @@
           "doc": "AICoding/opencode/code/opencode-supermemory/工程解读报告.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-018",
+      "chapter": "AICoding/opencode/code/opencode-supermemory/工程解读报告.md"
     }
   },
   {
@@ -8537,6 +8858,10 @@
           "doc": "AICoding/codex/codex-code/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-015",
+      "chapter": "AICoding/codex/codex-code/README.md"
     }
   },
   {
@@ -8577,6 +8902,10 @@
           "doc": "AICoding/hermes/hermes-agent/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-019",
+      "chapter": "AICoding/hermes/hermes-agent/README.md"
     }
   },
   {
@@ -8617,6 +8946,10 @@
           "doc": "AICoding/hermes/docs/Kimi_Agent_Hermes 记忆机制/hermes-memory-deep-dive.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-019",
+      "chapter": "AICoding/hermes/docs/Kimi_Agent_Hermes 记忆机制/hermes-memory-deep-dive.md"
     }
   },
   {
@@ -8697,6 +9030,10 @@
           "doc": "AICoding/CyberClaw/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-020",
+      "chapter": "AICoding/CyberClaw/README.md"
     }
   },
   {
@@ -8737,6 +9074,10 @@
           "doc": "AICoding/CyberClaw/docs/LAZY_LOADING_GUIDE.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-020",
+      "chapter": "AICoding/CyberClaw/docs/LAZY_LOADING_GUIDE.md"
     }
   },
   {
@@ -8857,6 +9198,10 @@
           "doc": "AICoding/MiMo-Code/README.zh.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-021",
+      "chapter": "AICoding/MiMo-Code/README.zh.md"
     }
   },
   {
@@ -8897,6 +9242,10 @@
           "doc": "AICoding/MiMo-Code/AGENTS.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-021",
+      "chapter": "AICoding/MiMo-Code/AGENTS.md"
     }
   },
   {
@@ -8937,6 +9286,10 @@
           "doc": "Agentic/Document/learn-harness-engineering/docs/zh/index.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-022",
+      "chapter": "Agentic/Harness/learn-harness-engineering/docs/zh/index.md"
     }
   },
   {
@@ -9577,6 +9930,10 @@
           "doc": "Agentic/Document/harness-books/book1-claude-code/index.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-023",
+      "chapter": "Agentic/Harness/harness-books/book1-claude-code/index.md"
     }
   },
   {
@@ -9617,6 +9974,10 @@
           "doc": "Agentic/Document/harness-books/book1-claude-code/preface.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-023",
+      "chapter": "Agentic/Harness/harness-books/book1-claude-code/preface.md"
     }
   },
   {
@@ -9657,6 +10018,10 @@
           "doc": "Agentic/Document/harness-books/book1-claude-code/chapter-01-why-harness-engineering.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-023",
+      "chapter": "Agentic/Harness/harness-books/book1-claude-code/chapter-01-why-harness-engineering.md"
     }
   },
   {
@@ -9697,6 +10062,10 @@
           "doc": "Agentic/Document/harness-books/book1-claude-code/chapter-02-prompt-is-control-plane.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-023",
+      "chapter": "Agentic/Harness/harness-books/book1-claude-code/chapter-02-prompt-is-control-plane.md"
     }
   },
   {
@@ -9737,6 +10106,10 @@
           "doc": "Agentic/Document/harness-books/book1-claude-code/chapter-03-query-loop-heartbeat.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-023",
+      "chapter": "Agentic/Harness/harness-books/book1-claude-code/chapter-03-query-loop-heartbeat.md"
     }
   },
   {
@@ -9777,6 +10150,10 @@
           "doc": "Agentic/Document/harness-books/book1-claude-code/chapter-04-tools-permissions-interrupts.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-023",
+      "chapter": "Agentic/Harness/harness-books/book1-claude-code/chapter-04-tools-permissions-interrupts.md"
     }
   },
   {
@@ -9817,6 +10194,10 @@
           "doc": "Agentic/Document/harness-books/book1-claude-code/chapter-05-context-memory-compact.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-023",
+      "chapter": "Agentic/Harness/harness-books/book1-claude-code/chapter-05-context-memory-compact.md"
     }
   },
   {
@@ -9857,6 +10238,10 @@
           "doc": "Agentic/Document/harness-books/book1-claude-code/chapter-06-errors-and-recovery.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-023",
+      "chapter": "Agentic/Harness/harness-books/book1-claude-code/chapter-06-errors-and-recovery.md"
     }
   },
   {
@@ -9897,6 +10282,10 @@
           "doc": "Agentic/Document/harness-books/book1-claude-code/chapter-07-multi-agent-and-verification.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-023",
+      "chapter": "Agentic/Harness/harness-books/book1-claude-code/chapter-07-multi-agent-and-verification.md"
     }
   },
   {
@@ -9937,6 +10326,10 @@
           "doc": "Agentic/Document/harness-books/book1-claude-code/chapter-08-team-landing-practices.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-023",
+      "chapter": "Agentic/Harness/harness-books/book1-claude-code/chapter-08-team-landing-practices.md"
     }
   },
   {
@@ -9977,6 +10370,10 @@
           "doc": "Agentic/Document/harness-books/book1-claude-code/chapter-09-ten-principles.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-023",
+      "chapter": "Agentic/Harness/harness-books/book1-claude-code/chapter-09-ten-principles.md"
     }
   },
   {
@@ -10017,6 +10414,10 @@
           "doc": "Agentic/Document/harness-books/book1-claude-code/appendix-a-checklists.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-023",
+      "chapter": "Agentic/Harness/harness-books/book1-claude-code/appendix-a-checklists.md"
     }
   },
   {
@@ -10057,6 +10458,10 @@
           "doc": "Agentic/Document/harness-books/book1-claude-code/appendix-c-source-map.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-023",
+      "chapter": "Agentic/Harness/harness-books/book1-claude-code/appendix-c-source-map.md"
     }
   },
   {
@@ -10097,6 +10502,10 @@
           "doc": "Agentic/Document/harness-books/book2-comparing/preface.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-023",
+      "chapter": "Agentic/Harness/harness-books/book2-comparing/preface.md"
     }
   },
   {
@@ -10137,6 +10546,10 @@
           "doc": "Agentic/Document/harness-books/book2-comparing/chapter-00-reading-map.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-023",
+      "chapter": "Agentic/Harness/harness-books/book2-comparing/chapter-00-reading-map.md"
     }
   },
   {
@@ -10177,6 +10590,10 @@
           "doc": "Agentic/Document/harness-books/book2-comparing/chapter-01-why-this-comparison.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-023",
+      "chapter": "Agentic/Harness/harness-books/book2-comparing/chapter-01-why-this-comparison.md"
     }
   },
   {
@@ -10217,6 +10634,10 @@
           "doc": "Agentic/Document/harness-books/book2-comparing/chapter-02-two-control-planes.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-023",
+      "chapter": "Agentic/Harness/harness-books/book2-comparing/chapter-02-two-control-planes.md"
     }
   },
   {
@@ -10257,6 +10678,10 @@
           "doc": "Agentic/Document/harness-books/book2-comparing/chapter-03-loop-thread-and-rollout.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-023",
+      "chapter": "Agentic/Harness/harness-books/book2-comparing/chapter-03-loop-thread-and-rollout.md"
     }
   },
   {
@@ -10297,6 +10722,10 @@
           "doc": "Agentic/Document/harness-books/book2-comparing/chapter-04-tools-sandbox-and-exec-policy.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-023",
+      "chapter": "Agentic/Harness/harness-books/book2-comparing/chapter-04-tools-sandbox-and-exec-policy.md"
     }
   },
   {
@@ -10337,6 +10766,10 @@
           "doc": "Agentic/Document/harness-books/book2-comparing/chapter-05-skills-hooks-and-local-governance.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-023",
+      "chapter": "Agentic/Harness/harness-books/book2-comparing/chapter-05-skills-hooks-and-local-governance.md"
     }
   },
   {
@@ -10377,6 +10810,10 @@
           "doc": "Agentic/Document/harness-books/book2-comparing/chapter-06-delegation-verification-and-state.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-023",
+      "chapter": "Agentic/Harness/harness-books/book2-comparing/chapter-06-delegation-verification-and-state.md"
     }
   },
   {
@@ -10417,6 +10854,10 @@
           "doc": "Agentic/Document/harness-books/book2-comparing/chapter-07-convergence-and-divergence.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-023",
+      "chapter": "Agentic/Harness/harness-books/book2-comparing/chapter-07-convergence-and-divergence.md"
     }
   },
   {
@@ -10457,6 +10898,10 @@
           "doc": "Agentic/Document/harness-books/book2-comparing/chapter-08-how-to-choose-or-build.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-023",
+      "chapter": "Agentic/Harness/harness-books/book2-comparing/chapter-08-how-to-choose-or-build.md"
     }
   },
   {
@@ -10497,6 +10942,10 @@
           "doc": "Agentic/Document/harness-books/book2-comparing/appendix-b-checklists.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-023",
+      "chapter": "Agentic/Harness/harness-books/book2-comparing/appendix-b-checklists.md"
     }
   },
   {
@@ -10537,6 +10986,10 @@
           "doc": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/preface.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-024",
+      "chapter": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/preface.md"
     }
   },
   {
@@ -12177,13 +12630,17 @@
           "doc": "Agentic/Memory/mem0/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-025",
+      "chapter": "Agentic/Memory/mem0/README.md"
     }
   },
   {
     "id": "legacy-reading-22-002",
     "title": "mem0 LLM.md（架构总览）",
     "track": "agentic",
-    "stageIds": ["stage-2"],
+    "stageIds": [],
     "summary": "记忆层与多 Agent 框架",
     "learningGoals": [],
     "sourceUrl": null,
@@ -12217,6 +12674,10 @@
           "doc": "Agentic/Memory/mem0/LLM.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-025",
+      "chapter": "Agentic/Memory/mem0/LLM.md"
     }
   },
   {
@@ -12337,6 +12798,10 @@
           "doc": "Agentic/Langchain-ai/deepagents/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-026",
+      "chapter": "Agentic/Harness/deepagents/README.md"
     }
   },
   {
@@ -12377,6 +12842,10 @@
           "doc": "Agentic/Langchain-ai/deepagents/AGENTS.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-reading-31-008",
+      "chapter": "Agentic/Harness/deepagents/AGENTS.md"
     }
   },
   {
@@ -12417,6 +12886,10 @@
           "doc": "Agentic/crewAI/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-027",
+      "chapter": "Agentic/crewAI/README.md"
     }
   },
   {
@@ -12457,6 +12930,10 @@
           "doc": "Agentic/MetaGPT/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-028",
+      "chapter": "Agentic/MetaGPT/README.md"
     }
   },
   {
@@ -12497,6 +12974,10 @@
           "doc": "Agentic/AutoGPT/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-029",
+      "chapter": "Agentic/AutoGPT/README.md"
     }
   },
   {
@@ -12537,6 +13018,10 @@
           "doc": "Agentic/OpenHands/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-030",
+      "chapter": "Agentic/OpenHands/README.md"
     }
   },
   {
@@ -12577,6 +13062,10 @@
           "doc": "Agentic/PI/pi-mono/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-031",
+      "chapter": "Agentic/Harness/PI/pi-mono/README.md"
     }
   },
   {
@@ -12617,6 +13106,10 @@
           "doc": "Agentic/PI/pi-mono/AGENTS.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-031",
+      "chapter": "Agentic/Harness/PI/pi-mono/AGENTS.md"
     }
   },
   {
@@ -12657,6 +13150,10 @@
           "doc": "Agentic/openworker/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-032",
+      "chapter": "Agentic/Harness/openworker/README.md"
     }
   },
   {
@@ -12697,6 +13194,10 @@
           "doc": "Agentic/open-agent-sdk-typescript/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-037",
+      "chapter": "Agentic/open-agent-sdk-typescript/README.md"
     }
   },
   {
@@ -12737,6 +13238,10 @@
           "doc": "Agentic/ai-agent-deep-dive/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-034",
+      "chapter": "Agentic/ai-agent-deep-dive/README.md"
     }
   },
   {
@@ -12777,6 +13282,10 @@
           "doc": "Agentic/ai-agent-deep-dive/docs/00-product-overview.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-034",
+      "chapter": "Agentic/ai-agent-deep-dive/docs/00-product-overview.md"
     }
   },
   {
@@ -12817,6 +13326,10 @@
           "doc": "Agentic/ai-agent-deep-dive/docs/01-system-prompt-and-orchestration.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-034",
+      "chapter": "Agentic/ai-agent-deep-dive/docs/01-system-prompt-and-orchestration.md"
     }
   },
   {
@@ -12857,6 +13370,10 @@
           "doc": "Agentic/ai-agent-deep-dive/docs/02-tools-permissions-and-execution.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-034",
+      "chapter": "Agentic/ai-agent-deep-dive/docs/02-tools-permissions-and-execution.md"
     }
   },
   {
@@ -12897,6 +13414,10 @@
           "doc": "Agentic/ai-agent-deep-dive/docs/03-skills-plugins-mcp.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-034",
+      "chapter": "Agentic/ai-agent-deep-dive/docs/03-skills-plugins-mcp.md"
     }
   },
   {
@@ -12937,6 +13458,10 @@
           "doc": "Agentic/ai-agent-deep-dive/docs/04-memory-and-session.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-034",
+      "chapter": "Agentic/ai-agent-deep-dive/docs/04-memory-and-session.md"
     }
   },
   {
@@ -12977,6 +13502,10 @@
           "doc": "Agentic/ai-agent-deep-dive/docs/05-commands-ui-and-operator-experience.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-034",
+      "chapter": "Agentic/ai-agent-deep-dive/docs/05-commands-ui-and-operator-experience.md"
     }
   },
   {
@@ -13017,6 +13546,10 @@
           "doc": "Agentic/ai-agent-deep-dive/docs/06-verification-and-quality.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-034",
+      "chapter": "Agentic/ai-agent-deep-dive/docs/06-verification-and-quality.md"
     }
   },
   {
@@ -13057,6 +13590,10 @@
           "doc": "Agentic/ai-agent-deep-dive/docs/07-architecture-map.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-034",
+      "chapter": "Agentic/ai-agent-deep-dive/docs/07-architecture-map.md"
     }
   },
   {
@@ -13097,6 +13634,10 @@
           "doc": "Agentic/ai-agent-deep-dive/docs/08-agent-runtime-loop.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-034",
+      "chapter": "Agentic/ai-agent-deep-dive/docs/08-agent-runtime-loop.md"
     }
   },
   {
@@ -13137,6 +13678,10 @@
           "doc": "Agentic/ai-agent-deep-dive/docs/09-message-model-and-state.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-034",
+      "chapter": "Agentic/ai-agent-deep-dive/docs/09-message-model-and-state.md"
     }
   },
   {
@@ -13177,6 +13722,10 @@
           "doc": "Agentic/ai-agent-deep-dive/docs/10-context-management.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-034",
+      "chapter": "Agentic/ai-agent-deep-dive/docs/10-context-management.md"
     }
   },
   {
@@ -13217,6 +13766,10 @@
           "doc": "Agentic/ai-agent-deep-dive/docs/11-task-model.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-034",
+      "chapter": "Agentic/ai-agent-deep-dive/docs/11-task-model.md"
     }
   },
   {
@@ -13257,6 +13810,10 @@
           "doc": "Agentic/ai-agent-deep-dive/docs/12-workspace-and-isolation.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-034",
+      "chapter": "Agentic/ai-agent-deep-dive/docs/12-workspace-and-isolation.md"
     }
   },
   {
@@ -13297,6 +13854,10 @@
           "doc": "Agentic/ai-agent-deep-dive/docs/13-failure-recovery.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-034",
+      "chapter": "Agentic/ai-agent-deep-dive/docs/13-failure-recovery.md"
     }
   },
   {
@@ -13337,6 +13898,10 @@
           "doc": "Agentic/ai-agent-deep-dive/docs/14-configuration-system.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-034",
+      "chapter": "Agentic/ai-agent-deep-dive/docs/14-configuration-system.md"
     }
   },
   {
@@ -13377,6 +13942,10 @@
           "doc": "Agentic/ai-agent-deep-dive/docs/15-mvp-scope.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-034",
+      "chapter": "Agentic/ai-agent-deep-dive/docs/15-mvp-scope.md"
     }
   },
   {
@@ -13417,6 +13986,10 @@
           "doc": "Agentic/ai-agent-deep-dive/docs/16-python-implementation-notes.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-034",
+      "chapter": "Agentic/ai-agent-deep-dive/docs/16-python-implementation-notes.md"
     }
   },
   {
@@ -13457,6 +14030,10 @@
           "doc": "Agentic/smolagents/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-036",
+      "chapter": "Agentic/Harness/smolagents/README.md"
     }
   },
   {
@@ -13537,6 +14114,10 @@
           "doc": "Agentic/smolagents/docs/source/zh/guided_tour.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-036",
+      "chapter": "Agentic/Harness/smolagents/docs/source/zh/guided_tour.md"
     }
   },
   {
@@ -13857,6 +14438,10 @@
           "doc": "Agentic/multica/README.zh-CN.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-035",
+      "chapter": "Agentic/multica/README.zh-CN.md"
     }
   },
   {
@@ -13897,6 +14482,10 @@
           "doc": "Agentic/multica/docs/design.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-035",
+      "chapter": "Agentic/multica/docs/design.md"
     }
   },
   {
@@ -13977,6 +14566,10 @@
           "doc": "Agentic/multica/CLI_AND_DAEMON.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-035",
+      "chapter": "Agentic/multica/CLI_AND_DAEMON.md"
     }
   },
   {
@@ -15537,6 +16130,10 @@
           "doc": "Agentic/AutoGPT/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-029",
+      "chapter": "Agentic/AutoGPT/README.md"
     }
   },
   {
@@ -16857,6 +17454,10 @@
           "doc": "Agentic/Langchain-ai/deepagents/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-026",
+      "chapter": "Agentic/Harness/deepagents/README.md"
     }
   },
   {
@@ -17177,6 +17778,10 @@
           "doc": "Agentic/MetaGPT/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-028",
+      "chapter": "Agentic/MetaGPT/README.md"
     }
   },
   {
@@ -17497,6 +18102,10 @@
           "doc": "Agentic/OpenHands/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-030",
+      "chapter": "Agentic/OpenHands/README.md"
     }
   },
   {
@@ -17697,6 +18306,10 @@
           "doc": "Agentic/openworker/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-032",
+      "chapter": "Agentic/Harness/openworker/README.md"
     }
   },
   {
@@ -17777,6 +18390,10 @@
           "doc": "Agentic/PI/pi-mono/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-031",
+      "chapter": "Agentic/Harness/PI/pi-mono/README.md"
     }
   },
   {
@@ -17817,6 +18434,10 @@
           "doc": "Agentic/PI/pi-mono/AGENTS.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-031",
+      "chapter": "Agentic/Harness/PI/pi-mono/AGENTS.md"
     }
   },
   {
@@ -18257,6 +18878,10 @@
           "doc": "Agentic/openchamber/packages/docs/content/docs/zh-cn/index.mdx"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-033",
+      "chapter": "Agentic/openchamber/packages/docs/content/docs/zh-cn/index.mdx"
     }
   },
   {
@@ -20057,6 +20682,10 @@
           "doc": "Application/cc-switch/README_ZH.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-039",
+      "chapter": "Application/cc-switch/README_ZH.md"
     }
   },
   {
@@ -20097,6 +20726,10 @@
           "doc": "Application/cc-switch/docs/user-manual/zh/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-039",
+      "chapter": "Application/cc-switch/docs/user-manual/zh/README.md"
     }
   },
   {
@@ -20817,6 +21450,10 @@
           "doc": "Application/CodexSwitch/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-040",
+      "chapter": "Application/CodexSwitch/README.md"
     }
   },
   {
@@ -20857,6 +21494,10 @@
           "doc": "Application/CodexSwitch/DESIGN.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-040",
+      "chapter": "Application/CodexSwitch/DESIGN.md"
     }
   },
   {
@@ -20897,6 +21538,10 @@
           "doc": "Application/CodexSwitch/SPEC.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-040",
+      "chapter": "Application/CodexSwitch/SPEC.md"
     }
   },
   {
@@ -21017,6 +21662,10 @@
           "doc": "Application/workany/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-041",
+      "chapter": "Application/workany/README.md"
     }
   },
   {
@@ -21097,6 +21746,10 @@
           "doc": "Application/solon-ai/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-042",
+      "chapter": "Application/solon-ai/README.md"
     }
   },
   {
@@ -21137,6 +21790,10 @@
           "doc": "Application/solon-ai/solon-ai-a2a/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-042",
+      "chapter": "Application/solon-ai/solon-ai-a2a/README.md"
     }
   },
   {
@@ -21217,6 +21874,10 @@
           "doc": "Application/solon-ai/solon-ai-flow/README.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-042",
+      "chapter": "Application/solon-ai/solon-ai-flow/README.md"
     }
   },
   {

@@ -35,10 +35,13 @@ export default async function CoursesPage({
     ? (params.access as LearningItem["accessPolicy"])
     : undefined;
   // Only tags a reader can actually pick are honoured: an unrecognised value
-  // would otherwise be echoed back into the heading and silently empty the grid.
+  // would otherwise be echoed back into the heading and silently empty the
+  // grid. Retired entries keep their old ID resolvable but are not catalog
+  // content, so they contribute neither tags nor cards.
+  const browsableItems = catalog.items.filter((item) => !item.redirect);
   const tags = [
     ...new Set(
-      displayTags(catalog.items.flatMap(({ tags: itemTags }) => itemTags)),
+      displayTags(browsableItems.flatMap(({ tags: itemTags }) => itemTags)),
     ),
   ].sort((left, right) => left.localeCompare(right, "zh-CN"));
   const requestedTag = params.tag?.trim();
@@ -47,7 +50,7 @@ export default async function CoursesPage({
   const stage = catalog.stages.some(({ id }) => id === params.stage)
     ? params.stage
     : undefined;
-  const items = catalog.items
+  const items = browsableItems
     .filter((item) => track === undefined || item.track === track)
     .filter(
       (item) =>

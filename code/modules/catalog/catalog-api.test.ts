@@ -51,13 +51,22 @@ describe("Catalog API", () => {
       accessPolicy: "local-preferred",
     });
 
-    expect(allItems).toHaveLength(515);
+    expect(allItems).toHaveLength(396);
     expect(allItems.map(({ id }) => id)).toEqual(
       [...allItems.map(({ id }) => id)].sort((left, right) =>
         left.localeCompare(right, "en"),
       ),
     );
-    expect(legacyReadingItems).toHaveLength(472);
+    expect(legacyReadingItems).toHaveLength(353);
+    // Retired entries stay resolvable by ID so their old URLs can forward.
+    const retired = catalog.getItem("legacy-reading-02-001");
+    expect(retired?.redirect).toEqual({
+      itemId: "legacy-course-001",
+      chapter: "Learning/hello-agents/README.md",
+    });
+    expect(
+      catalog.listItems().some(({ id }) => id === "legacy-reading-02-001"),
+    ).toBe(false);
     expect(
       legacyReadingItems.every((item) => item.tags.includes("legacy-reading")),
     ).toBe(true);
@@ -123,6 +132,17 @@ describe("Catalog API", () => {
     ) as Array<Record<string, unknown>>;
     importedItem.id = "legacy-course-999";
     importedItem.stageIds = [];
+    // The catalog enforces single ownership per Local Material path, so the
+    // flattened fixture copy gets a path nobody else declares.
+    importedItem.accessPolicy = "local-preferred";
+    importedItem.localPath = "Learning/legacy-import-fixture/README.md";
+    importedItem.references = [
+      {
+        label: "Flattened fixture",
+        sourceUrl: null,
+        localPath: "Learning/legacy-import-fixture/README.md",
+      },
+    ];
     await writeFile(
       join(contentRoot, "courses", "extra-import.json"),
       `${JSON.stringify([importedItem], null, 2)}\n`,

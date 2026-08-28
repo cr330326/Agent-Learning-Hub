@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
+import { itemRedirectHref } from "../../../modules/catalog/item-redirect";
 import { authorLabel, licenseLabel } from "../../components/content-card";
 import { LearningStateControls } from "../../components/learning-state-controls";
 import {
@@ -38,6 +39,8 @@ export default async function ReaderPage({
   const catalog = await loadPublicCatalog();
   const item = catalog.items.find(({ id }) => id === itemId);
   if (!item) notFound();
+  const retiredHref = itemRedirectHref(item);
+  if (retiredHref) redirect(retiredHref);
   const resolved = await getContentResolver().resolve(item);
 
   if (resolved.kind !== "internal-mdx" && resolved.kind !== "local-document") {

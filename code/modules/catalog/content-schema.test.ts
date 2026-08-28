@@ -1,6 +1,10 @@
 import { describe, expect, it } from "vitest";
 
-import { validateContentCatalog } from "./content-schema";
+import {
+  validateContentCatalog,
+  type LearningItem,
+  type Stage,
+} from "./content-schema";
 
 function createValidCatalog() {
   return {
@@ -248,6 +252,160 @@ describe("content catalog schema", () => {
     if (!result.success) {
       expect(result.issues).toContainEqual(
         expect.objectContaining({ path: ["items", 1, "licenseStatus"] }),
+      );
+    }
+  });
+});
+
+describe("chapter content ownership", () => {
+  it("accepts a retired entry that redirects to the entry which owns its content", () => {
+    const catalog = createValidCatalog();
+    catalog.items[0].localPath = "Learning/effective-agents.md";
+    (catalog.items[0] as LearningItem).references = [
+      {
+        label: "本地正文",
+        sourceUrl: null,
+        localPath: "Learning/effective-agents.md",
+      },
+    ];
+    catalog.items[0].accessPolicy = "local-preferred";
+    (catalog.items[1] as LearningItem).redirect = {
+      itemId: "anthropic-effective-agents",
+      chapter: "Learning/effective-agents.md",
+    };
+
+    const result = validateContentCatalog(catalog);
+
+    expect(result).toMatchObject({ success: true });
+    if (result.success) {
+      expect(result.data.items[1].redirect).toEqual({
+        itemId: "anthropic-effective-agents",
+        chapter: "Learning/effective-agents.md",
+      });
+    }
+  });
+
+  it("rejects a redirect whose target entry does not exist", () => {
+    const catalog = createValidCatalog();
+    (catalog.items[1] as LearningItem).redirect = { itemId: "missing-owner" };
+
+    const result = validateContentCatalog(catalog);
+
+    expect(result).toMatchObject({ success: false });
+    if (!result.success) {
+      expect(result.issues).toContainEqual(
+        expect.objectContaining({ path: ["items", 1, "redirect", "itemId"] }),
+      );
+    }
+  });
+
+  it("rejects a redirect chapter that the target does not declare", () => {
+    const catalog = createValidCatalog();
+    (catalog.items[1] as LearningItem).redirect = {
+      itemId: "anthropic-effective-agents",
+      chapter: "Learning/undeclared-chapter.md",
+    };
+
+    const result = validateContentCatalog(catalog);
+
+    expect(result).toMatchObject({ success: false });
+    if (!result.success) {
+      expect(result.issues).toContainEqual(
+        expect.objectContaining({
+          path: ["items", 1, "redirect", "chapter"],
+        }),
+      );
+    }
+  });
+
+  it("rejects an entry redirecting to itself", () => {
+    const catalog = createValidCatalog();
+    (catalog.items[1] as LearningItem).redirect = {
+      itemId: "agent-loop-maintainer-guide",
+    };
+
+    const result = validateContentCatalog(catalog);
+
+    expect(result).toMatchObject({ success: false });
+    if (!result.success) {
+      expect(result.issues).toContainEqual(
+        expect.objectContaining({ path: ["items", 1, "redirect", "itemId"] }),
+      );
+    }
+  });
+
+  it("rejects one Local Material path declared by two active entries", () => {
+    const catalog = createValidCatalog();
+    catalog.items[0].localPath = "Learning/effective-agents.md";
+    (catalog.items[0] as LearningItem).references = [
+      {
+        label: "本地正文",
+        sourceUrl: null,
+        localPath: "Learning/effective-agents.md",
+      },
+    ];
+    catalog.items[0].accessPolicy = "local-preferred";
+    catalog.items[1].localPath = "Learning/effective-agents.md";
+    (catalog.items[1] as LearningItem).references = [
+      {
+        label: "本地正文",
+        sourceUrl: null,
+        localPath: "Learning/effective-agents.md",
+      },
+    ];
+
+    const result = validateContentCatalog(catalog);
+
+    expect(result).toMatchObject({ success: false });
+    if (!result.success) {
+      expect(
+        result.issues.some((issue) =>
+          issue.message.includes("declared by multiple entries"),
+        ),
+      ).toBe(true);
+    }
+  });
+
+  it("lets a retired entry share its owner's path without a duplicate-owner error", () => {
+    const catalog = createValidCatalog();
+    catalog.items[0].localPath = "Learning/effective-agents.md";
+    (catalog.items[0] as LearningItem).references = [
+      {
+        label: "本地正文",
+        sourceUrl: null,
+        localPath: "Learning/effective-agents.md",
+      },
+    ];
+    catalog.items[0].accessPolicy = "local-preferred";
+    catalog.items[1].localPath = "Learning/effective-agents.md";
+    catalog.items[1].accessPolicy = "local-preferred";
+    (catalog.items[1] as LearningItem).redirect = {
+      itemId: "anthropic-effective-agents",
+      chapter: "Learning/effective-agents.md",
+    };
+
+    const result = validateContentCatalog(catalog);
+
+    expect(result).toMatchObject({ success: true });
+  });
+
+  it("rejects a Stage reading list that references a redirected entry", () => {
+    const catalog = createValidCatalog();
+    (catalog.stages[0] as Stage).learningItemIds = [
+      "agent-loop-maintainer-guide",
+    ];
+    (catalog.items[1] as LearningItem).redirect = {
+      itemId: "anthropic-effective-agents",
+    };
+
+    const result = validateContentCatalog(catalog);
+
+    expect(result).toMatchObject({ success: false });
+    if (!result.success) {
+      expect(result.issues).toContainEqual(
+        expect.objectContaining({
+          path: ["stages", 0, "learningItemIds", 0],
+        }),
       );
     }
   });

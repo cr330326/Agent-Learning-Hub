@@ -100,6 +100,11 @@ export function buildSearchIndex(
 
   const bodyByItemId = options.bodyByItemId ?? new Map<string, string>();
   for (const item of catalog.items) {
+    // A redirected entry forwards to its owner; the owner's document already
+    // carries the content, so the retired entry never produces a second row.
+    if (item.redirect) {
+      continue;
+    }
     documents.push({
       id: item.id,
       kind: "item",
@@ -162,6 +167,9 @@ export async function buildRuntimeSearchIndex(
 
   await Promise.all(
     catalog.items.map(async (item) => {
+      if (item.redirect) {
+        return;
+      }
       const resolved = await resolver.resolve(item);
       resolvedAccessByItemId.set(
         item.id,

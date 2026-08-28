@@ -17,7 +17,9 @@ export default async function LearningPage() {
         summary="这里汇总你的阅读进度、任务勾选、收藏、私人 Markdown 笔记和阶段成果。公开目录不读取这些私人正文。"
       />
       <LearningDashboard
-        items={catalog.items.map(({ id, title }) => ({ id, title }))}
+        items={catalog.items
+          .filter((item) => !item.redirect)
+          .map(({ id, title }) => ({ id, title }))}
         stages={catalog.stages
           .slice()
           .sort((left, right) => left.order - right.order)

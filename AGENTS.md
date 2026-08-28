@@ -34,8 +34,9 @@ Agent Learning Hub 是一个以实践成果为主线的 Agent 工程学习网站
 - 所有面向用户的文本使用中文；不要把 `accessPolicy`、`publicationRights`、`licenseStatus`、搜索 `kind`、阶段成果 `kind` 等 schema 枚举值直接渲染到页面上，经各自展示面的标签函数映射为中文（目录卡片走 `app/components/content-card.tsx`，搜索结果与学习面板各有自己的映射表）。
 - 旧站导入把缺失字段写成了字面量 `Unknown`，并把合集名同时写进 summary 和 tag。展示层要把它们收敛为“作者待补 / 许可证待确认”，并过滤 `legacy-reading` 等内部标签，不要在数据层改写导入结果。内部标签同样不能出现在筛选下拉里——`displayTags()` 既管卡片也管 `/courses` 的标签选项。
 - 查询参数只在能对应到目录里真实存在的值时才生效：轨道、阶段、访问方式和标签都要先校验，不匹配就当作没传，绝不把原始值回显到页面上。悄悄清空结果网格或把用户输入打印回结果计数旁边都算缺陷。
-- 任何列出目录条目的页面都必须分页（`app/components/pagination.tsx`，每页 24 条），并且只解析当前页的条目——目录有 500+ 条，全量解析会在 Local Mode 逐条读文件系统。
+- 任何列出目录条目的页面都必须分页（`app/components/pagination.tsx`，每页 24 条），并且只解析当前页的条目——目录有 400+ 条，全量解析会在 Local Mode 逐条读文件系统。
 - 一条结果只代表一个可打开的目标。旧站导入让每个上游章节文件都变成了独立课程条目，其唯一 reference 的 label 就是条目标题；`buildRuntimeSearchIndex()` 因此把**单章条目**的正文并进条目本身，只有多章条目才另外产出逐章结果。给本地素材加索引维度时要保持这个不变量。
+- 不变量另一半在数据层（[ADR 0008](docs/adr/0008-chapter-content-has-a-single-owner.md)）：同一份本地素材正文只能被一个未退场条目声明，schema 会拒绝重复归属。被课程卡章节遮蔽的单章条目已退场并携带 `redirect`（累计 119 条，旧 ID 转发到拥有者）；它们不进目录、搜索、首页计数和学习面板，`getItem()` 仍能找到以便路由转发。为主线课程补章节时，若目标文件已被单章条目拥有，正确做法是让该条目退场 redirect 到课程卡，而不是直接加 reference。
 - 窄屏下 `.primary-nav` 会隐藏，`.compact-nav` 必须留在 DOM 里作为替代导航；不要把导航整体 `display: none`。横向滚动的导航条和路线图要保留右边缘淡出——它们隐藏了滚动条，没有淡出时被裁掉的文字会被读成渲染错误。
 - 顶部导航最后一项随运行模式变化：Local Mode 已经自动签入固定单用户，只能显示“账户”，不能显示与 `/login` 页面内容矛盾的“登录”。
 - 所有页面都必须 `export const dynamic = "force-dynamic"`（或等价地按请求渲染）：header 的模式徽标和末项导航读取运行时 `DEPLOYMENT_MODE`，静态预渲染会把构建期默认值固化进页面——`/content-policy`、`/contribute` 与 404 曾因此在本地 Docker 部署里错误显示“云端模式 + 登录”。`next dev` 按请求渲染、暴露不了这类问题，只有构建产物会。

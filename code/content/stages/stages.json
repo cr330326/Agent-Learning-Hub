@@ -124,7 +124,7 @@
       "trackIds": ["learning", "aicoding", "agentic", "application"],
       "taskIds": ["stage-1-task-1", "stage-1-task-2", "stage-1-task-3"],
       "projectOutcomeIds": ["stage-1-outcome"],
-      "learningItemIds": ["legacy-reading-10-002", "legacy-reading-07-002"],
+      "learningItemIds": ["legacy-reading-10-002", "legacy-course-004"],
       "legacyImport": {
         "source": "learning-site/data.js",
         "kind": "stage",
@@ -238,7 +238,7 @@
       "trackIds": ["learning", "aicoding", "agentic", "application"],
       "taskIds": ["stage-2-task-1", "stage-2-task-2", "stage-2-task-3"],
       "projectOutcomeIds": ["stage-2-outcome"],
-      "learningItemIds": ["legacy-reading-04-001", "legacy-reading-22-002"],
+      "learningItemIds": ["legacy-reading-04-001", "legacy-course-025"],
       "legacyImport": {
         "source": "learning-site/data.js",
         "kind": "stage",
