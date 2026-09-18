@@ -734,7 +734,7 @@ Mode 的只读素材挂载、健康接口、公开路由、学习状态 HTTP 流
 
 - 根 `README.md`：快速启动、目录导航、常用维护命令和安全边界。
 - 根 `USER.md`：本地模式快速上手（跑起来、Docker 里切换模式、构建推送镜像）。
-- 根 `GUIDE.md`：面向学习者和本机维护者的使用指南（模式差异、页面用法和走查命令）。
+- 根 `GUIDE.md`：面向学习者的使用手册（产品介绍、模式差异、上手步骤与页面用法，附界面截图 `docs/images/guide/`）；维护与走查命令归 `docs/deploy/local-manual.md`。
 - 根 `AGENTS.md`：工程协作约束、现役目录、命令事实源和不可突破的安全边界。
 - 根 `CONTEXT.md`：项目通用语言，避免把 Track、Stage、Curated Content 与 Local Material 混用。
 - 本文：架构、内容模型、归属、Docker、备份、恢复和运维边界。

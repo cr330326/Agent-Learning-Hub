@@ -158,4 +158,4 @@ npm run audit:functional --prefix code    # 真实点击：翻页、筛选、切
 
 `audit:functional` 会读取页面上的运行模式徽标并据此断言：本地模式断言章节导航与学习状态读写，云端模式断言匿名访问被拒、本地素材不出正文。给某个模式新增能力时，两个分支都要补断言。
 
-动过登录、学习状态或导出时，还要在一个**构建好并启动**的一次性服务上跑对应模式的端到端测试（`npm run test:e2e:local` / `test:e2e:cloud`）——两条都以删号收尾，`APP_URL` 指向你日常在用的预览会清空学习状态，所以要另起一个带独立 `STATE_DATABASE_PATH` 的服务；备份相关的改动跑一次恢复演练（`npm run drill:restore --prefix code`，需要 `BACKUP_PASSPHRASE`）。三类命令都不进 `npm run check`，详见 [GUIDE 第七节](GUIDE.md#七维护者走查与回归)。
+动过登录、学习状态或导出时，还要在一个**构建好并启动**的一次性服务上跑对应模式的端到端测试（`npm run test:e2e:local` / `test:e2e:cloud`）——两条都以删号收尾，`APP_URL` 指向你日常在用的预览会清空学习状态，所以要另起一个带独立 `STATE_DATABASE_PATH` 的服务；备份相关的改动跑一次恢复演练（`npm run drill:restore --prefix code`，需要 `BACKUP_PASSPHRASE`）。三类命令都不进 `npm run check`，详见 [本机运行手册第 5 节](docs/deploy/local-manual.md#5-改完东西怎么自查)。
