@@ -6,13 +6,27 @@
     {
       "code": "local-path-missing",
       "message": "A declared local path no longer exists; run `materials drift` for repair candidates.",
-      "count": 29,
+      "count": 43,
       "itemIds": [
+        "legacy-course-002",
+        "legacy-course-003",
+        "legacy-course-008",
         "legacy-course-013",
         "legacy-course-020",
         "legacy-course-021",
         "legacy-course-035",
         "legacy-course-042",
+        "legacy-reading-09-001",
+        "legacy-reading-10-001",
+        "legacy-reading-10-002",
+        "legacy-reading-10-003",
+        "legacy-reading-10-004",
+        "legacy-reading-10-005",
+        "legacy-reading-10-006",
+        "legacy-reading-10-007",
+        "legacy-reading-10-008",
+        "legacy-reading-10-009",
+        "legacy-reading-10-010",
         "legacy-reading-10-011",
         "legacy-reading-10-012",
         "legacy-reading-10-013",
@@ -2073,7 +2087,7 @@
   ],
   "summary": {
     "errorCount": 0,
-    "warningCount": 2032
+    "warningCount": 2046
   },
   "network": {
     "status": "not-run",

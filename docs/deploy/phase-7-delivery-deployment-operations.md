@@ -2,7 +2,7 @@
 
 **状态**：本地优先；云端交付规划待本地功能和发布前置条件稳定后执行
 **维护日期**：2026-08-25
-**任务状态入口**：[docs/plans/tasks.md](../plans/tasks.md#10-phase-7-交付部署与运维)  
+**任务状态入口**：[docs/plans/tasks.md](../plans/tasks.md#phase-7交付部署与运维)  
 **执行入口**：[docs/deploy/README.md](./README.md)
 
 ## 1. 文档职责与工作顺序
