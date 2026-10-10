@@ -51,13 +51,13 @@ describe("Catalog API", () => {
       accessPolicy: "local-preferred",
     });
 
-    expect(allItems).toHaveLength(396);
+    expect(allItems).toHaveLength(384);
     expect(allItems.map(({ id }) => id)).toEqual(
       [...allItems.map(({ id }) => id)].sort((left, right) =>
         left.localeCompare(right, "en"),
       ),
     );
-    expect(legacyReadingItems).toHaveLength(353);
+    expect(legacyReadingItems).toHaveLength(334);
     // Retired entries stay resolvable by ID so their old URLs can forward.
     const retired = catalog.getItem("legacy-reading-02-001");
     expect(retired?.redirect).toEqual({

@@ -1,403 +1,20 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-28T01:37:40.870Z",
+  "generatedAt": "2026-10-10T06:57:16.596Z",
   "localMaterialRoot": "/Users/vsh9p8q/AI/Agent-Learning-Hub/local-courses",
   "mounted": true,
   "summary": {
-    "declaredPaths": 475,
-    "missing": 24,
-    "moved": 4,
-    "uncertain": 16,
-    "gone": 4,
-    "uncatalogued": 5,
-    "itemsMissingSourceUrl": 479,
+    "declaredPaths": 434,
+    "missing": 0,
+    "moved": 0,
+    "uncertain": 0,
+    "gone": 0,
+    "uncatalogued": 0,
+    "itemsMissingSourceUrl": 432,
     "upstreamGapRepositories": 52
   },
-  "missingPaths": [
-    {
-      "localPath": "Agentic/multica/docs/design.md",
-      "itemIds": [
-        "legacy-course-035",
-        "legacy-reading-25-002"
-      ],
-      "kind": "gone",
-      "proposedPath": null,
-      "candidateCount": 0,
-      "candidateSample": []
-    },
-    {
-      "localPath": "Agentic/multica/docs/product-overview.md",
-      "itemIds": [
-        "legacy-reading-25-003"
-      ],
-      "kind": "gone",
-      "proposedPath": null,
-      "candidateCount": 0,
-      "candidateSample": []
-    },
-    {
-      "localPath": "Agentic/multica/HANDOFF_ARCHITECTURE_AUDIT.md",
-      "itemIds": [
-        "legacy-reading-25-005"
-      ],
-      "kind": "gone",
-      "proposedPath": null,
-      "candidateCount": 0,
-      "candidateSample": []
-    },
-    {
-      "localPath": "Agentic/multica/README.zh-CN.md",
-      "itemIds": [
-        "legacy-course-035",
-        "legacy-reading-25-001"
-      ],
-      "kind": "uncertain",
-      "proposedPath": null,
-      "candidateCount": 4,
-      "candidateSample": [
-        "AICoding/claude/code/claude-code-haha/README.zh-CN.md",
-        "AICoding/claude/code/claude-code-lens/README.zh-CN.md",
-        "AICoding/hermes/hermes-agent/README.zh-CN.md",
-        "Learning/easy-agent/README.zh-CN.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/claude/document/learn-claude-code/s10_system_prompt/README.md",
-      "itemIds": [
-        "legacy-reading-10-011"
-      ],
-      "kind": "uncertain",
-      "proposedPath": null,
-      "candidateCount": 1014,
-      "candidateSample": [
-        "AICoding/claude/code/awesome-claude-code/README.md",
-        "AICoding/claude/code/claude-code-analysis/README.md",
-        "AICoding/claude/code/claude-code-haha/README.md",
-        "AICoding/claude/code/claude-code-haha/adapters/README.md",
-        "AICoding/claude/code/claude-code-haha/desktop/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/claude/document/learn-claude-code/s11_error_recovery/README.md",
-      "itemIds": [
-        "legacy-reading-10-012"
-      ],
-      "kind": "uncertain",
-      "proposedPath": null,
-      "candidateCount": 1014,
-      "candidateSample": [
-        "AICoding/claude/code/awesome-claude-code/README.md",
-        "AICoding/claude/code/claude-code-analysis/README.md",
-        "AICoding/claude/code/claude-code-haha/README.md",
-        "AICoding/claude/code/claude-code-haha/adapters/README.md",
-        "AICoding/claude/code/claude-code-haha/desktop/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/claude/document/learn-claude-code/s12_task_system/README.md",
-      "itemIds": [
-        "legacy-reading-10-013"
-      ],
-      "kind": "uncertain",
-      "proposedPath": null,
-      "candidateCount": 1014,
-      "candidateSample": [
-        "AICoding/claude/code/awesome-claude-code/README.md",
-        "AICoding/claude/code/claude-code-analysis/README.md",
-        "AICoding/claude/code/claude-code-haha/README.md",
-        "AICoding/claude/code/claude-code-haha/adapters/README.md",
-        "AICoding/claude/code/claude-code-haha/desktop/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/claude/document/learn-claude-code/s13_background_tasks/README.md",
-      "itemIds": [
-        "legacy-reading-10-014"
-      ],
-      "kind": "uncertain",
-      "proposedPath": null,
-      "candidateCount": 1014,
-      "candidateSample": [
-        "AICoding/claude/code/awesome-claude-code/README.md",
-        "AICoding/claude/code/claude-code-analysis/README.md",
-        "AICoding/claude/code/claude-code-haha/README.md",
-        "AICoding/claude/code/claude-code-haha/adapters/README.md",
-        "AICoding/claude/code/claude-code-haha/desktop/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/claude/document/learn-claude-code/s14_cron_scheduler/README.md",
-      "itemIds": [
-        "legacy-reading-10-015"
-      ],
-      "kind": "uncertain",
-      "proposedPath": null,
-      "candidateCount": 1014,
-      "candidateSample": [
-        "AICoding/claude/code/awesome-claude-code/README.md",
-        "AICoding/claude/code/claude-code-analysis/README.md",
-        "AICoding/claude/code/claude-code-haha/README.md",
-        "AICoding/claude/code/claude-code-haha/adapters/README.md",
-        "AICoding/claude/code/claude-code-haha/desktop/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/claude/document/learn-claude-code/s15_agent_teams/README.md",
-      "itemIds": [
-        "legacy-reading-10-016"
-      ],
-      "kind": "uncertain",
-      "proposedPath": null,
-      "candidateCount": 1014,
-      "candidateSample": [
-        "AICoding/claude/code/awesome-claude-code/README.md",
-        "AICoding/claude/code/claude-code-analysis/README.md",
-        "AICoding/claude/code/claude-code-haha/README.md",
-        "AICoding/claude/code/claude-code-haha/adapters/README.md",
-        "AICoding/claude/code/claude-code-haha/desktop/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/claude/document/learn-claude-code/s16_team_protocols/README.md",
-      "itemIds": [
-        "legacy-reading-10-017"
-      ],
-      "kind": "uncertain",
-      "proposedPath": null,
-      "candidateCount": 1014,
-      "candidateSample": [
-        "AICoding/claude/code/awesome-claude-code/README.md",
-        "AICoding/claude/code/claude-code-analysis/README.md",
-        "AICoding/claude/code/claude-code-haha/README.md",
-        "AICoding/claude/code/claude-code-haha/adapters/README.md",
-        "AICoding/claude/code/claude-code-haha/desktop/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/claude/document/learn-claude-code/s17_autonomous_agents/README.md",
-      "itemIds": [
-        "legacy-reading-10-018"
-      ],
-      "kind": "uncertain",
-      "proposedPath": null,
-      "candidateCount": 1014,
-      "candidateSample": [
-        "AICoding/claude/code/awesome-claude-code/README.md",
-        "AICoding/claude/code/claude-code-analysis/README.md",
-        "AICoding/claude/code/claude-code-haha/README.md",
-        "AICoding/claude/code/claude-code-haha/adapters/README.md",
-        "AICoding/claude/code/claude-code-haha/desktop/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/claude/document/learn-claude-code/s18_worktree_isolation/README.md",
-      "itemIds": [
-        "legacy-reading-10-019"
-      ],
-      "kind": "uncertain",
-      "proposedPath": null,
-      "candidateCount": 1014,
-      "candidateSample": [
-        "AICoding/claude/code/awesome-claude-code/README.md",
-        "AICoding/claude/code/claude-code-analysis/README.md",
-        "AICoding/claude/code/claude-code-haha/README.md",
-        "AICoding/claude/code/claude-code-haha/adapters/README.md",
-        "AICoding/claude/code/claude-code-haha/desktop/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/claude/document/learn-claude-code/s19_mcp_plugin/README.md",
-      "itemIds": [
-        "legacy-reading-10-020"
-      ],
-      "kind": "uncertain",
-      "proposedPath": null,
-      "candidateCount": 1014,
-      "candidateSample": [
-        "AICoding/claude/code/awesome-claude-code/README.md",
-        "AICoding/claude/code/claude-code-analysis/README.md",
-        "AICoding/claude/code/claude-code-haha/README.md",
-        "AICoding/claude/code/claude-code-haha/adapters/README.md",
-        "AICoding/claude/code/claude-code-haha/desktop/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/claude/document/learn-claude-code/s20_comprehensive/README.md",
-      "itemIds": [
-        "legacy-reading-10-021"
-      ],
-      "kind": "uncertain",
-      "proposedPath": null,
-      "candidateCount": 1014,
-      "candidateSample": [
-        "AICoding/claude/code/awesome-claude-code/README.md",
-        "AICoding/claude/code/claude-code-analysis/README.md",
-        "AICoding/claude/code/claude-code-haha/README.md",
-        "AICoding/claude/code/claude-code-haha/adapters/README.md",
-        "AICoding/claude/code/claude-code-haha/desktop/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/claude/plugins/claude-auto-mode-unlock/METHODOLOGY.md",
-      "itemIds": [
-        "legacy-course-013",
-        "legacy-reading-12-012"
-      ],
-      "kind": "gone",
-      "proposedPath": null,
-      "candidateCount": 0,
-      "candidateSample": []
-    },
-    {
-      "localPath": "AICoding/claude/plugins/claude-auto-mode-unlock/README.md",
-      "itemIds": [
-        "legacy-reading-12-011"
-      ],
-      "kind": "uncertain",
-      "proposedPath": null,
-      "candidateCount": 1014,
-      "candidateSample": [
-        "AICoding/claude/code/awesome-claude-code/README.md",
-        "AICoding/claude/code/claude-code-analysis/README.md",
-        "AICoding/claude/code/claude-code-haha/README.md",
-        "AICoding/claude/code/claude-code-haha/adapters/README.md",
-        "AICoding/claude/code/claude-code-haha/desktop/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/CyberClaw/docs/LAZY_LOADING_GUIDE.md",
-      "itemIds": [
-        "legacy-course-020",
-        "legacy-reading-15-006"
-      ],
-      "kind": "moved",
-      "proposedPath": "Agentic/Harness/CyberClaw/docs/LAZY_LOADING_GUIDE.md",
-      "candidateCount": 1,
-      "candidateSample": [
-        "Agentic/Harness/CyberClaw/docs/LAZY_LOADING_GUIDE.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/CyberClaw/docs/LAZY_LOADING_QUICKSTART.md",
-      "itemIds": [
-        "legacy-reading-15-007"
-      ],
-      "kind": "moved",
-      "proposedPath": "Agentic/Harness/CyberClaw/docs/LAZY_LOADING_QUICKSTART.md",
-      "candidateCount": 1,
-      "candidateSample": [
-        "Agentic/Harness/CyberClaw/docs/LAZY_LOADING_QUICKSTART.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/CyberClaw/docs/LAZY_LOADING_SUMMARY.md",
-      "itemIds": [
-        "legacy-reading-15-008"
-      ],
-      "kind": "moved",
-      "proposedPath": "Agentic/Harness/CyberClaw/docs/LAZY_LOADING_SUMMARY.md",
-      "candidateCount": 1,
-      "candidateSample": [
-        "Agentic/Harness/CyberClaw/docs/LAZY_LOADING_SUMMARY.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/CyberClaw/README.md",
-      "itemIds": [
-        "legacy-course-020",
-        "legacy-reading-15-005"
-      ],
-      "kind": "moved",
-      "proposedPath": "Agentic/Harness/CyberClaw/README.md",
-      "candidateCount": 1,
-      "candidateSample": [
-        "Agentic/Harness/CyberClaw/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/MiMo-Code/AGENTS.md",
-      "itemIds": [
-        "legacy-course-021",
-        "legacy-reading-15-010"
-      ],
-      "kind": "uncertain",
-      "proposedPath": null,
-      "candidateCount": 169,
-      "candidateSample": [
-        "AICoding/claude/code/claude-code-haha/.github/AGENTS.md",
-        "AICoding/claude/code/claude-code-haha/AGENTS.md",
-        "AICoding/claude/code/claude-code-haha/adapters/AGENTS.md",
-        "AICoding/claude/code/claude-code-haha/desktop/AGENTS.md",
-        "AICoding/claude/code/claude-code-haha/desktop/src/components/AGENTS.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/MiMo-Code/README.zh.md",
-      "itemIds": [
-        "legacy-course-021",
-        "legacy-reading-15-009"
-      ],
-      "kind": "uncertain",
-      "proposedPath": null,
-      "candidateCount": 323,
-      "candidateSample": [
-        "AICoding/claude/document/ClaudeMD/andrej-karpathy-skills/README.zh.md",
-        "AICoding/claude/document/learn-claude-code/s01_agent_loop/README.zh.md",
-        "AICoding/claude/document/learn-claude-code/s02_tool_use/README.zh.md",
-        "AICoding/claude/document/learn-claude-code/s03_permission/README.zh.md",
-        "AICoding/claude/document/learn-claude-code/s04_hooks/README.zh.md"
-      ]
-    },
-    {
-      "localPath": "Application/solon-ai/solon-ai-a2a/README.md",
-      "itemIds": [
-        "legacy-course-042",
-        "legacy-reading-38-009"
-      ],
-      "kind": "uncertain",
-      "proposedPath": null,
-      "candidateCount": 1014,
-      "candidateSample": [
-        "AICoding/claude/code/awesome-claude-code/README.md",
-        "AICoding/claude/code/claude-code-analysis/README.md",
-        "AICoding/claude/code/claude-code-haha/README.md",
-        "AICoding/claude/code/claude-code-haha/adapters/README.md",
-        "AICoding/claude/code/claude-code-haha/desktop/README.md"
-      ]
-    }
-  ],
-  "uncatalogued": [
-    {
-      "repositoryPath": "Agentic/Harness/CyberClaw",
-      "remote": "git@github.com:ttguy0707/CyberClaw.git",
-      "branch": "main",
-      "markdownCount": 5
-    },
-    {
-      "repositoryPath": "Agentic/Harness/deepseek/deepseek-harness",
-      "remote": "https://github.com/deepseek-ai/deepseek-harness.git",
-      "branch": "master",
-      "markdownCount": 2499
-    },
-    {
-      "repositoryPath": "Agentic/HelloAgents",
-      "remote": "git@github.com:jjyaoao/HelloAgents.git",
-      "branch": "learn_version",
-      "markdownCount": 17
-    },
-    {
-      "repositoryPath": "AICoding/opencode/code/openchamber",
-      "remote": "git@github.com:openchamber/openchamber.git",
-      "branch": "main",
-      "markdownCount": 561
-    },
-    {
-      "repositoryPath": "AICoding/opencode/plugins/opencode-goal-plugin",
-      "remote": "git@github.com:prevalentWare/opencode-goal-plugin.git",
-      "branch": "main",
-      "markdownCount": 8
-    }
-  ],
+  "missingPaths": [],
+  "uncatalogued": [],
   "upstreamGaps": [
     {
       "repositoryPath": "Agentic/openchamber",
@@ -633,73 +250,7 @@
       "sampleSourceUrl": "https://github.com/Significant-Gravitas/AutoGPT/blob/HEAD/README.md"
     },
     {
-      "repositoryPath": "Agentic/Harness/harness-books",
-      "remote": "git@github.com:wquguru/harness-books.git",
-      "branch": "main",
-      "webBaseUrl": "https://github.com/wquguru/harness-books",
-      "itemIds": [
-        "legacy-course-023",
-        "legacy-reading-17-001",
-        "legacy-reading-17-002",
-        "legacy-reading-17-003",
-        "legacy-reading-17-004",
-        "legacy-reading-17-005",
-        "legacy-reading-17-006",
-        "legacy-reading-17-007",
-        "legacy-reading-17-008",
-        "legacy-reading-17-009",
-        "legacy-reading-17-010",
-        "legacy-reading-17-011",
-        "legacy-reading-17-012",
-        "legacy-reading-17-013",
-        "legacy-reading-18-001",
-        "legacy-reading-18-002",
-        "legacy-reading-18-003",
-        "legacy-reading-18-004",
-        "legacy-reading-18-005",
-        "legacy-reading-18-006",
-        "legacy-reading-18-007",
-        "legacy-reading-18-008",
-        "legacy-reading-18-009",
-        "legacy-reading-18-010",
-        "legacy-reading-18-011"
-      ],
-      "sampleLocalPath": "Agentic/Harness/harness-books/book1-claude-code/index.md",
-      "sampleSourceUrl": "https://github.com/wquguru/harness-books/blob/HEAD/book1-claude-code/index.md"
-    },
-    {
-      "repositoryPath": "AICoding/claude/document/learn-claude-code",
-      "remote": "git@github.com:shareAI-lab/learn-claude-code.git",
-      "branch": "main",
-      "webBaseUrl": "https://github.com/shareAI-lab/learn-claude-code",
-      "itemIds": [
-        "legacy-reading-10-001",
-        "legacy-reading-10-002",
-        "legacy-reading-10-003",
-        "legacy-reading-10-004",
-        "legacy-reading-10-005",
-        "legacy-reading-10-006",
-        "legacy-reading-10-007",
-        "legacy-reading-10-008",
-        "legacy-reading-10-009",
-        "legacy-reading-10-010",
-        "legacy-reading-10-011",
-        "legacy-reading-10-012",
-        "legacy-reading-10-013",
-        "legacy-reading-10-014",
-        "legacy-reading-10-015",
-        "legacy-reading-10-016",
-        "legacy-reading-10-017",
-        "legacy-reading-10-018",
-        "legacy-reading-10-019",
-        "legacy-reading-10-020",
-        "legacy-reading-10-021"
-      ],
-      "sampleLocalPath": "AICoding/claude/document/learn-claude-code/README-zh.md",
-      "sampleSourceUrl": "https://github.com/shareAI-lab/learn-claude-code/blob/HEAD/README-zh.md"
-    },
-    {
-      "repositoryPath": "Agentic/ai-agent-deep-dive",
+      "repositoryPath": "Learning/ai-agent-deep-dive",
       "remote": "git@github.com:tvytlx/ai-agent-deep-dive.git",
       "branch": "main",
       "webBaseUrl": "https://github.com/tvytlx/ai-agent-deep-dive",
@@ -724,37 +275,8 @@
         "legacy-reading-23-017",
         "legacy-reading-23-018"
       ],
-      "sampleLocalPath": "Agentic/ai-agent-deep-dive/README.md",
+      "sampleLocalPath": "Learning/ai-agent-deep-dive/README.md",
       "sampleSourceUrl": "https://github.com/tvytlx/ai-agent-deep-dive/blob/HEAD/README.md"
-    },
-    {
-      "repositoryPath": "Application/cc-switch",
-      "remote": "git@github.com:farion1231/cc-switch.git",
-      "branch": "main",
-      "webBaseUrl": "https://github.com/farion1231/cc-switch",
-      "itemIds": [
-        "legacy-reading-37-001",
-        "legacy-reading-37-002",
-        "legacy-reading-37-003",
-        "legacy-reading-37-004",
-        "legacy-reading-37-005",
-        "legacy-reading-37-006",
-        "legacy-reading-37-007",
-        "legacy-reading-37-008",
-        "legacy-reading-37-009",
-        "legacy-reading-37-010",
-        "legacy-reading-37-011",
-        "legacy-reading-37-012",
-        "legacy-reading-37-013",
-        "legacy-reading-37-014",
-        "legacy-reading-37-015",
-        "legacy-reading-37-016",
-        "legacy-reading-37-017",
-        "legacy-reading-37-018",
-        "legacy-reading-37-019"
-      ],
-      "sampleLocalPath": "Application/cc-switch/README_ZH.md",
-      "sampleSourceUrl": "https://github.com/farion1231/cc-switch/blob/HEAD/README_ZH.md"
     },
     {
       "repositoryPath": "Learning/claw0",
@@ -786,7 +308,7 @@
       "sampleSourceUrl": "https://github.com/shareAI-lab/claw0/blob/HEAD/README.md"
     },
     {
-      "repositoryPath": "AICoding/openclaw/doc/openclaw_guide",
+      "repositoryPath": "AICoding/openclaw/openclaw_guide",
       "remote": "git@github.com:yeasy/openclaw_guide.git",
       "branch": "main",
       "webBaseUrl": "https://github.com/yeasy/openclaw_guide",
@@ -810,34 +332,36 @@
         "legacy-reading-13-017",
         "legacy-reading-13-018"
       ],
-      "sampleLocalPath": "AICoding/openclaw/doc/openclaw_guide/README.md",
+      "sampleLocalPath": "AICoding/openclaw/openclaw_guide/README.md",
       "sampleSourceUrl": "https://github.com/yeasy/openclaw_guide/blob/HEAD/README.md"
     },
     {
-      "repositoryPath": "",
-      "remote": null,
-      "branch": null,
-      "webBaseUrl": null,
+      "repositoryPath": "Application/cc-switch",
+      "remote": "git@github.com:farion1231/cc-switch.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/farion1231/cc-switch",
       "itemIds": [
-        "legacy-course-002",
-        "legacy-course-006",
-        "legacy-course-007",
-        "legacy-reading-01-002",
-        "legacy-reading-12-002",
-        "legacy-reading-12-003",
-        "legacy-reading-12-011",
-        "legacy-reading-12-012",
-        "legacy-reading-15-003",
-        "legacy-reading-15-004",
-        "legacy-reading-15-005",
-        "legacy-reading-15-006",
-        "legacy-reading-15-007",
-        "legacy-reading-15-008",
-        "legacy-reading-15-009",
-        "legacy-reading-15-010"
+        "legacy-reading-37-001",
+        "legacy-reading-37-002",
+        "legacy-reading-37-003",
+        "legacy-reading-37-004",
+        "legacy-reading-37-005",
+        "legacy-reading-37-006",
+        "legacy-reading-37-007",
+        "legacy-reading-37-008",
+        "legacy-reading-37-009",
+        "legacy-reading-37-010",
+        "legacy-reading-37-011",
+        "legacy-reading-37-012",
+        "legacy-reading-37-013",
+        "legacy-reading-37-014",
+        "legacy-reading-37-015",
+        "legacy-reading-37-016",
+        "legacy-reading-37-017",
+        "legacy-reading-37-019"
       ],
-      "sampleLocalPath": "Learning/Book/Hello-Agents-V1.0.0-20251103.pdf",
-      "sampleSourceUrl": null
+      "sampleLocalPath": "Application/cc-switch/README_ZH.md",
+      "sampleSourceUrl": "https://github.com/farion1231/cc-switch/blob/HEAD/README_ZH.md"
     },
     {
       "repositoryPath": "Agentic/Harness/learn-harness-engineering",
@@ -877,7 +401,6 @@
         "legacy-reading-33-001",
         "legacy-reading-33-002",
         "legacy-reading-33-003",
-        "legacy-reading-33-004",
         "legacy-reading-33-005",
         "legacy-reading-33-006",
         "legacy-reading-33-007",
@@ -915,7 +438,7 @@
       "sampleSourceUrl": "https://github.com/liuup/claude-code-analysis/blob/HEAD/README.md"
     },
     {
-      "repositoryPath": "AICoding/opencode/learn-opencode",
+      "repositoryPath": "Learning/learn-opencode",
       "remote": "git@github.com:vbgate/learn-opencode.git",
       "branch": "main",
       "webBaseUrl": "https://github.com/vbgate/learn-opencode",
@@ -932,7 +455,7 @@
         "legacy-reading-14-010",
         "legacy-reading-14-011"
       ],
-      "sampleLocalPath": "AICoding/opencode/learn-opencode/README.md",
+      "sampleLocalPath": "Learning/learn-opencode/README.md",
       "sampleSourceUrl": "https://github.com/vbgate/learn-opencode/blob/HEAD/README.md"
     },
     {
@@ -976,6 +499,26 @@
       "sampleSourceUrl": "https://github.com/huggingface/smolagents/blob/HEAD/README.md"
     },
     {
+      "repositoryPath": "Learning/learn-claude-code",
+      "remote": "git@github.com:shareAI-lab/learn-claude-code.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/shareAI-lab/learn-claude-code",
+      "itemIds": [
+        "legacy-reading-10-001",
+        "legacy-reading-10-002",
+        "legacy-reading-10-003",
+        "legacy-reading-10-004",
+        "legacy-reading-10-005",
+        "legacy-reading-10-006",
+        "legacy-reading-10-007",
+        "legacy-reading-10-008",
+        "legacy-reading-10-009",
+        "legacy-reading-10-010"
+      ],
+      "sampleLocalPath": "Learning/learn-claude-code/README-zh.md",
+      "sampleSourceUrl": "https://github.com/shareAI-lab/learn-claude-code/blob/HEAD/README-zh.md"
+    },
+    {
       "repositoryPath": "Agentic/MetaGPT",
       "remote": "git@github.com:FoundationAgents/MetaGPT.git",
       "branch": "main",
@@ -995,38 +538,21 @@
       "sampleSourceUrl": "https://github.com/FoundationAgents/MetaGPT/blob/HEAD/README.md"
     },
     {
-      "repositoryPath": "Agentic/multica",
-      "remote": "git@github.com:multica-ai/multica.git",
-      "branch": "main",
-      "webBaseUrl": "https://github.com/multica-ai/multica",
+      "repositoryPath": "",
+      "remote": null,
+      "branch": null,
+      "webBaseUrl": null,
       "itemIds": [
-        "legacy-course-035",
-        "legacy-reading-25-001",
-        "legacy-reading-25-002",
-        "legacy-reading-25-003",
-        "legacy-reading-25-004",
-        "legacy-reading-25-005",
-        "legacy-reading-25-006",
-        "legacy-reading-25-007"
+        "legacy-course-006",
+        "legacy-course-007",
+        "legacy-reading-01-002",
+        "legacy-reading-12-002",
+        "legacy-reading-12-003",
+        "legacy-reading-15-003",
+        "legacy-reading-15-004"
       ],
-      "sampleLocalPath": "Agentic/multica/README.zh-CN.md",
-      "sampleSourceUrl": "https://github.com/multica-ai/multica/blob/HEAD/README.zh-CN.md"
-    },
-    {
-      "repositoryPath": "Agentic/OpenHands",
-      "remote": "git@github.com:OpenHands/OpenHands.git",
-      "branch": "main",
-      "webBaseUrl": "https://github.com/OpenHands/OpenHands",
-      "itemIds": [
-        "legacy-reading-22-010",
-        "legacy-reading-32-009",
-        "legacy-reading-32-010",
-        "legacy-reading-32-011",
-        "legacy-reading-32-012",
-        "legacy-reading-32-013"
-      ],
-      "sampleLocalPath": "Agentic/OpenHands/README.md",
-      "sampleSourceUrl": "https://github.com/OpenHands/OpenHands/blob/HEAD/README.md"
+      "sampleLocalPath": "Learning/Book/LLMBook.pdf",
+      "sampleSourceUrl": null
     },
     {
       "repositoryPath": "Application/CodexSwitch",
@@ -1045,6 +571,21 @@
       "sampleSourceUrl": "https://github.com/guhailin/CodexSwitch/blob/HEAD/README.md"
     },
     {
+      "repositoryPath": "Application/multica",
+      "remote": "git@github.com:multica-ai/multica.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/multica-ai/multica",
+      "itemIds": [
+        "legacy-course-035",
+        "legacy-reading-25-001",
+        "legacy-reading-25-004",
+        "legacy-reading-25-006",
+        "legacy-reading-25-007"
+      ],
+      "sampleLocalPath": "Application/multica/README.zh.md",
+      "sampleSourceUrl": "https://github.com/multica-ai/multica/blob/HEAD/README.zh.md"
+    },
+    {
       "repositoryPath": "Application/solon-ai",
       "remote": "https://gitee.com/opensolon/solon-ai.git",
       "branch": "main",
@@ -1058,6 +599,20 @@
       ],
       "sampleLocalPath": "Application/solon-ai/README.md",
       "sampleSourceUrl": "https://gitee.com/opensolon/solon-ai/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "Agentic/Harness/CyberClaw",
+      "remote": "git@github.com:ttguy0707/CyberClaw.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/ttguy0707/CyberClaw",
+      "itemIds": [
+        "legacy-reading-15-005",
+        "legacy-reading-15-006",
+        "legacy-reading-15-007",
+        "legacy-reading-15-008"
+      ],
+      "sampleLocalPath": "Agentic/Harness/CyberClaw/README.md",
+      "sampleSourceUrl": "https://github.com/ttguy0707/CyberClaw/blob/HEAD/README.md"
     },
     {
       "repositoryPath": "Agentic/Harness/openworker",
@@ -1187,6 +742,18 @@
       "sampleSourceUrl": "https://github.com/zebbern/claude-code-guide/blob/HEAD/README.md"
     },
     {
+      "repositoryPath": "AICoding/minimax-code",
+      "remote": "git@github.com:MiniMax-AI/minimax-code.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/MiniMax-AI/minimax-code",
+      "itemIds": [
+        "legacy-reading-15-009",
+        "legacy-reading-15-010"
+      ],
+      "sampleLocalPath": "AICoding/minimax-code/README_ZH.md",
+      "sampleSourceUrl": "https://github.com/MiniMax-AI/minimax-code/blob/HEAD/README_ZH.md"
+    },
+    {
       "repositoryPath": "AICoding/opencode/code/opencode-supermemory",
       "remote": "git@github.com:supermemoryai/opencode-supermemory.git",
       "branch": "main",
@@ -1211,14 +778,14 @@
       "sampleSourceUrl": "https://github.com/workany-ai/workany/blob/HEAD/README.md"
     },
     {
-      "repositoryPath": "Agentic/open-agent-sdk-typescript",
+      "repositoryPath": "Agentic/sdk/open-agent-sdk-typescript",
       "remote": "git@github.com:codeany-ai/open-agent-sdk-typescript.git",
       "branch": "main",
       "webBaseUrl": "https://github.com/codeany-ai/open-agent-sdk-typescript",
       "itemIds": [
         "legacy-reading-22-014"
       ],
-      "sampleLocalPath": "Agentic/open-agent-sdk-typescript/README.md",
+      "sampleLocalPath": "Agentic/sdk/open-agent-sdk-typescript/README.md",
       "sampleSourceUrl": "https://github.com/codeany-ai/open-agent-sdk-typescript/blob/HEAD/README.md"
     },
     {
@@ -1321,6 +888,17 @@
       "sampleSourceUrl": "https://github.com/openai/codex/blob/HEAD/README.md"
     },
     {
+      "repositoryPath": "AICoding/easy-agent",
+      "remote": "git@github.com:ConardLi/easy-agent.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/ConardLi/easy-agent",
+      "itemIds": [
+        "legacy-reading-09-001"
+      ],
+      "sampleLocalPath": "AICoding/easy-agent/README.zh-CN.md",
+      "sampleSourceUrl": "https://github.com/ConardLi/easy-agent/blob/HEAD/README.zh-CN.md"
+    },
+    {
       "repositoryPath": "AICoding/hermes/hermes-agent",
       "remote": "git@github.com:NousResearch/hermes-agent.git",
       "branch": "main",
@@ -1332,14 +910,14 @@
       "sampleSourceUrl": "https://github.com/NousResearch/hermes-agent/blob/HEAD/README.md"
     },
     {
-      "repositoryPath": "AICoding/openclaw/channels/openclaw-lark",
+      "repositoryPath": "AICoding/openclaw/openclaw-lark",
       "remote": "git@github.com:larksuite/openclaw-lark.git",
       "branch": "main",
       "webBaseUrl": "https://github.com/larksuite/openclaw-lark",
       "itemIds": [
         "legacy-reading-13-019"
       ],
-      "sampleLocalPath": "AICoding/openclaw/channels/openclaw-lark/README.zh.md",
+      "sampleLocalPath": "AICoding/openclaw/openclaw-lark/README.zh.md",
       "sampleSourceUrl": "https://github.com/larksuite/openclaw-lark/blob/HEAD/README.zh.md"
     },
     {
@@ -1354,17 +932,6 @@
       "sampleSourceUrl": "https://github.com/awesome-opencode/awesome-opencode/blob/HEAD/README.md"
     },
     {
-      "repositoryPath": "AICoding/opencode/code/openwork",
-      "remote": "https://github.com/different-ai/openwork.git",
-      "branch": "dev",
-      "webBaseUrl": "https://github.com/different-ai/openwork",
-      "itemIds": [
-        "legacy-reading-14-016"
-      ],
-      "sampleLocalPath": "AICoding/opencode/code/openwork/README_ZH.md",
-      "sampleSourceUrl": "https://github.com/different-ai/openwork/blob/HEAD/README_ZH.md"
-    },
-    {
       "repositoryPath": "AICoding/opencode/plugins/opencode-wakatime",
       "remote": "git@github.com:angristan/opencode-wakatime.git",
       "branch": "master",
@@ -1376,15 +943,15 @@
       "sampleSourceUrl": "https://github.com/angristan/opencode-wakatime/blob/HEAD/README.md"
     },
     {
-      "repositoryPath": "Learning/easy-agent",
-      "remote": "git@github.com:ConardLi/easy-agent.git",
-      "branch": "main",
-      "webBaseUrl": "https://github.com/ConardLi/easy-agent",
+      "repositoryPath": "Application/openwork",
+      "remote": "https://github.com/different-ai/openwork.git",
+      "branch": "dev",
+      "webBaseUrl": "https://github.com/different-ai/openwork",
       "itemIds": [
-        "legacy-reading-09-001"
+        "legacy-reading-14-016"
       ],
-      "sampleLocalPath": "Learning/easy-agent/README.zh-CN.md",
-      "sampleSourceUrl": "https://github.com/ConardLi/easy-agent/blob/HEAD/README.zh-CN.md"
+      "sampleLocalPath": "Application/openwork/README_ZH.md",
+      "sampleSourceUrl": "https://github.com/different-ai/openwork/blob/HEAD/README_ZH.md"
     },
     {
       "repositoryPath": "Learning/easy-learn-ai",

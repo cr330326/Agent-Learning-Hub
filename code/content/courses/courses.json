@@ -64,22 +64,16 @@
     "summary": "Hello-Agents V1.0.0 正式版电子书（2025-11-03），排版完整，适合离线通读。",
     "learningGoals": ["网页阅读器读章节、PDF 通读全书，两者对照使用。"],
     "sourceUrl": null,
-    "localPath": "Learning/Book/Hello-Agents-V1.0.0-20251103.pdf",
-    "accessPolicy": "local-preferred",
+    "localPath": null,
+    "accessPolicy": "unavailable",
     "publicationRights": "third-party",
     "author": "Unknown",
     "license": "Unknown",
     "licenseStatus": "unknown",
     "tags": ["PDF 教材", "pdf"],
     "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "打开 PDF",
-        "sourceUrl": null,
-        "localPath": "Learning/Book/Hello-Agents-V1.0.0-20251103.pdf"
-      }
-    ],
-    "unavailableReason": null,
+    "references": [],
+    "unavailableReason": "本地 PDF 已移除（Learning/Book 下不再保留该文件），条目保留备用；如需重新获取可向上游索取。",
     "legacyImport": {
       "source": "learning-site/data.js",
       "kind": "course-card",
@@ -108,7 +102,7 @@
       "配合 learn-claude-code 对照学习：step 目录逐步从最小 loop 演进到完整 agent。"
     ],
     "sourceUrl": "https://github.com/ConardLi/easy-agent",
-    "localPath": "Learning/easy-agent/README.zh-CN.md",
+    "localPath": "AICoding/easy-agent/README.zh-CN.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -120,7 +114,7 @@
       {
         "label": "本地 README（中文）",
         "sourceUrl": null,
-        "localPath": "Learning/easy-agent/README.zh-CN.md"
+        "localPath": "AICoding/easy-agent/README.zh-CN.md"
       },
       {
         "label": "GitHub",
@@ -349,7 +343,7 @@
       "从 Agent Loop 到 Permission、Hooks、Memory、Teams、MCP，最后 s20 汇总为完整 agent。边读边跑每章 code.py。"
     ],
     "sourceUrl": "https://github.com/shareAI-lab/learn-claude-code",
-    "localPath": "AICoding/claude/document/learn-claude-code/README-zh.md",
+    "localPath": "Learning/learn-claude-code/README-zh.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -361,67 +355,67 @@
       {
         "label": "本地 README（中文）",
         "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/README-zh.md"
+        "localPath": "Learning/learn-claude-code/README-zh.md"
       },
       {
         "label": "s01: The Agent Loop (Agent 循环)",
         "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/docs/zh/s01-the-agent-loop.md"
+        "localPath": "Learning/learn-claude-code/docs/zh/s01-the-agent-loop.md"
       },
       {
         "label": "s02: Tool Use (工具使用)",
         "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/docs/zh/s02-tool-use.md"
+        "localPath": "Learning/learn-claude-code/docs/zh/s02-tool-use.md"
       },
       {
         "label": "s03: TodoWrite (待办写入)",
         "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/docs/zh/s03-todo-write.md"
+        "localPath": "Learning/learn-claude-code/docs/zh/s03-todo-write.md"
       },
       {
         "label": "s04: Subagents (Subagent)",
         "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/docs/zh/s04-subagent.md"
+        "localPath": "Learning/learn-claude-code/docs/zh/s04-subagent.md"
       },
       {
         "label": "s05: Skills (Skill 加载)",
         "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/docs/zh/s05-skill-loading.md"
+        "localPath": "Learning/learn-claude-code/docs/zh/s05-skill-loading.md"
       },
       {
         "label": "s06: Context Compact (上下文压缩)",
         "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/docs/zh/s06-context-compact.md"
+        "localPath": "Learning/learn-claude-code/docs/zh/s06-context-compact.md"
       },
       {
         "label": "s07: Task System (任务系统)",
         "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/docs/zh/s07-task-system.md"
+        "localPath": "Learning/learn-claude-code/docs/zh/s07-task-system.md"
       },
       {
         "label": "s08: Background Tasks (后台任务)",
         "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/docs/zh/s08-background-tasks.md"
+        "localPath": "Learning/learn-claude-code/docs/zh/s08-background-tasks.md"
       },
       {
         "label": "s09: Agent Teams (Agent 团队)",
         "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/docs/zh/s09-agent-teams.md"
+        "localPath": "Learning/learn-claude-code/docs/zh/s09-agent-teams.md"
       },
       {
         "label": "s10: Team Protocols (团队协议)",
         "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/docs/zh/s10-team-protocols.md"
+        "localPath": "Learning/learn-claude-code/docs/zh/s10-team-protocols.md"
       },
       {
         "label": "s11: Autonomous Agents (Autonomous Agent)",
         "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/docs/zh/s11-autonomous-agents.md"
+        "localPath": "Learning/learn-claude-code/docs/zh/s11-autonomous-agents.md"
       },
       {
         "label": "s12: Worktree + Task Isolation (Worktree 任务隔离)",
         "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/docs/zh/s12-worktree-task-isolation.md"
+        "localPath": "Learning/learn-claude-code/docs/zh/s12-worktree-task-isolation.md"
       },
       {
         "label": "GitHub",
@@ -700,7 +694,7 @@
     "title": "Claude 插件生态",
     "track": "aicoding",
     "stageIds": [],
-    "summary": "claude-mem（记忆压缩）、claudian、claude-mermaid、claude-stt、auto-mode-unlock 五个插件源码。",
+    "summary": "claude-mem（记忆压缩）、claudian、claude-mermaid、claude-stt 四个插件源码。",
     "learningGoals": [
       "看 hooks / MCP / 上下文注入这些扩展点在真实插件里怎么落地。auto-mode-unlock 的 METHODOLOGY.md 是一份完整的逆向方法论，26 KB，本身就值得单独读。"
     ],
@@ -728,11 +722,6 @@
         "label": "claude-mermaid",
         "sourceUrl": null,
         "localPath": "AICoding/claude/plugins/claude-mermaid/README.md"
-      },
-      {
-        "label": "auto-mode-unlock 方法论",
-        "sourceUrl": null,
-        "localPath": "AICoding/claude/plugins/claude-auto-mode-unlock/METHODOLOGY.md"
       }
     ],
     "unavailableReason": null,
@@ -882,7 +871,7 @@
       "官方指南 16 章 + 附录；目标是理解 always-on agent 与一次性 workflow 的差异。本体源码在 openclaw-code/，VISION.md 讲清了产品取舍。"
     ],
     "sourceUrl": "https://github.com/openclaw/openclaw",
-    "localPath": "AICoding/openclaw/doc/openclaw_guide/README.md",
+    "localPath": "AICoding/openclaw/openclaw_guide/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -894,7 +883,7 @@
       {
         "label": "官方指南",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/doc/openclaw_guide/README.md"
+        "localPath": "AICoding/openclaw/openclaw_guide/README.md"
       },
       {
         "label": "源码 VISION",
@@ -904,7 +893,7 @@
       {
         "label": "Lark 通道（中文）",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/channels/openclaw-lark/README.zh.md"
+        "localPath": "AICoding/openclaw/openclaw-lark/README.zh.md"
       },
       {
         "label": "GitHub",
@@ -948,7 +937,7 @@
       "适合快速上手 OpenCode 作为 coding agent 工具，重点看 Agent 配置和 MCP 接入。"
     ],
     "sourceUrl": "https://github.com/vbgate/learn-opencode",
-    "localPath": "AICoding/opencode/learn-opencode/README.md",
+    "localPath": "Learning/learn-opencode/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -960,12 +949,12 @@
       {
         "label": "本地 README",
         "sourceUrl": null,
-        "localPath": "AICoding/opencode/learn-opencode/README.md"
+        "localPath": "Learning/learn-opencode/README.md"
       },
       {
         "label": "课程导览",
         "sourceUrl": null,
-        "localPath": "AICoding/opencode/learn-opencode/docs/index.md"
+        "localPath": "Learning/learn-opencode/docs/index.md"
       },
       {
         "label": "GitHub",
@@ -1026,7 +1015,7 @@
       {
         "label": "openwork（中文）",
         "sourceUrl": null,
-        "localPath": "AICoding/opencode/code/openwork/README_ZH.md"
+        "localPath": "Application/openwork/README_ZH.md"
       },
       {
         "label": "supermemory 工程解读",
@@ -1129,7 +1118,7 @@
       "重点学习全行为审计、两段式执行、双水位记忆和透明 agent 架构设计。"
     ],
     "sourceUrl": "https://github.com/ttguy0707/CyberClaw",
-    "localPath": "AICoding/CyberClaw/README.md",
+    "localPath": "Agentic/Harness/CyberClaw/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -1141,12 +1130,12 @@
       {
         "label": "本地 README",
         "sourceUrl": null,
-        "localPath": "AICoding/CyberClaw/README.md"
+        "localPath": "Agentic/Harness/CyberClaw/README.md"
       },
       {
         "label": "Lazy Loading 指南",
         "sourceUrl": null,
-        "localPath": "AICoding/CyberClaw/docs/LAZY_LOADING_GUIDE.md"
+        "localPath": "Agentic/Harness/CyberClaw/docs/LAZY_LOADING_GUIDE.md"
       },
       {
         "label": "GitHub",
@@ -1188,7 +1177,7 @@
       "作为国产开源 coding agent harness 的对照样本，重点看记忆系统与 monorepo 工程组织。"
     ],
     "sourceUrl": "https://github.com/XiaomiMiMo/MiMo-Code",
-    "localPath": "AICoding/MiMo-Code/README.zh.md",
+    "localPath": "AICoding/minimax-code/README_ZH.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -1200,12 +1189,12 @@
       {
         "label": "本地 README（中文）",
         "sourceUrl": null,
-        "localPath": "AICoding/MiMo-Code/README.zh.md"
+        "localPath": "AICoding/minimax-code/README_ZH.md"
       },
       {
         "label": "工程约定 AGENTS.md",
         "sourceUrl": null,
-        "localPath": "AICoding/MiMo-Code/AGENTS.md"
+        "localPath": "AICoding/minimax-code/AGENTS.md"
       },
       {
         "label": "GitHub",
@@ -1285,172 +1274,6 @@
           ["GitHub", "https://github.com/walkinglabs/learn-harness-engineering"]
         ],
         "featured": true
-      }
-    }
-  },
-  {
-    "id": "legacy-course-023",
-    "title": "Harness Books（双册）",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "两本短书：Book 1 从源码视角拆 Claude Code 驾驭工程；Book 2 对比 Claude Code 与 Codex 两种控制平面。",
-    "learningGoals": [
-      "Book 1 看 prompt 控制面、循环心跳、上下文压缩；Book 2 看两家 harness 的收敛与分歧。"
-    ],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/harness-books/book1-claude-code/index.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["双册短书", "local"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "Book 1 导读",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book1-claude-code/index.md"
-      },
-      {
-        "label": "Book 1 · 附录 A：检查清单",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book1-claude-code/appendix-a-checklists.md"
-      },
-      {
-        "label": "Book 1 · 附录 C：源码地图",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book1-claude-code/appendix-c-source-map.md"
-      },
-      {
-        "label": "Book 1 · 第 1 章：为什么是驾驭工程",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-01-why-harness-engineering.md"
-      },
-      {
-        "label": "Book 1 · 第 2 章：Prompt 是控制平面",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-02-prompt-is-control-plane.md"
-      },
-      {
-        "label": "Book 1 · 第 3 章：查询循环与心跳",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-03-query-loop-heartbeat.md"
-      },
-      {
-        "label": "Book 1 · 第 4 章：工具、权限与中断",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-04-tools-permissions-interrupts.md"
-      },
-      {
-        "label": "Book 1 · 第 5 章：上下文、记忆与压缩",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-05-context-memory-compact.md"
-      },
-      {
-        "label": "Book 1 · 第 6 章：错误与恢复",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-06-errors-and-recovery.md"
-      },
-      {
-        "label": "Book 1 · 第 7 章：多 Agent 与验证",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-07-multi-agent-and-verification.md"
-      },
-      {
-        "label": "Book 1 · 第 8 章：团队落地实践",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-08-team-landing-practices.md"
-      },
-      {
-        "label": "Book 1 · 第 9 章：十条原则",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-09-ten-principles.md"
-      },
-      {
-        "label": "Book 1 · 前言",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book1-claude-code/preface.md"
-      },
-      {
-        "label": "Book 2 前言",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book2-comparing/preface.md"
-      },
-      {
-        "label": "Book 2 · 附录 B：检查清单",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book2-comparing/appendix-b-checklists.md"
-      },
-      {
-        "label": "Book 2 · 第 0 章：阅读地图",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-00-reading-map.md"
-      },
-      {
-        "label": "Book 2 · 第 1 章：为什么做这个对比",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-01-why-this-comparison.md"
-      },
-      {
-        "label": "Book 2 · 第 2 章：两个控制平面",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-02-two-control-planes.md"
-      },
-      {
-        "label": "Book 2 · 第 3 章：Loop、Thread 与 Rollout",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-03-loop-thread-and-rollout.md"
-      },
-      {
-        "label": "Book 2 · 第 4 章：工具、沙箱与执行策略",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-04-tools-sandbox-and-exec-policy.md"
-      },
-      {
-        "label": "Book 2 · 第 5 章：Skills、Hooks 与本地治理",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-05-skills-hooks-and-local-governance.md"
-      },
-      {
-        "label": "Book 2 · 第 6 章：委派、验证与状态",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-06-delegation-verification-and-state.md"
-      },
-      {
-        "label": "Book 2 · 第 7 章：收敛与分歧",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-07-convergence-and-divergence.md"
-      },
-      {
-        "label": "Book 2 · 第 8 章：如何选择或自建",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-08-how-to-choose-or-build.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "course-card",
-      "order": 22,
-      "raw": {
-        "title": "Harness Books（双册）",
-        "mono": "HB",
-        "track": "agentic",
-        "kind": "local",
-        "tag": "双册短书",
-        "summary": "两本短书：Book 1 从源码视角拆 Claude Code 驾驭工程；Book 2 对比 Claude Code 与 Codex 两种控制平面。",
-        "focus": "Book 1 看 prompt 控制面、循环心跳、上下文压缩；Book 2 看两家 harness 的收敛与分歧。",
-        "links": [
-          [
-            "Book 1 导读",
-            "Agentic/Document/harness-books/book1-claude-code/index.md"
-          ],
-          [
-            "Book 2 前言",
-            "Agentic/Document/harness-books/book2-comparing/preface.md"
-          ]
-        ]
       }
     }
   },
@@ -1787,28 +1610,17 @@
     "learningGoals": [
       "研究 agent 在容器化运行时里的权限、回放与 e2e 测试组织方式。"
     ],
-    "sourceUrl": "https://github.com/OpenHands/OpenHands",
-    "localPath": "Agentic/OpenHands/README.md",
-    "accessPolicy": "local-preferred",
+    "sourceUrl": null,
+    "localPath": null,
+    "accessPolicy": "unavailable",
     "publicationRights": "third-party",
     "author": "Unknown",
     "license": "Unknown",
     "licenseStatus": "unknown",
     "tags": ["软件工程", "local"],
     "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "本地 README",
-        "sourceUrl": null,
-        "localPath": "Agentic/OpenHands/README.md"
-      },
-      {
-        "label": "GitHub",
-        "sourceUrl": "https://github.com/OpenHands/OpenHands",
-        "localPath": null
-      }
-    ],
-    "unavailableReason": null,
+    "references": [],
+    "unavailableReason": "本地仓库已从磁盘移除（全盘无 OpenHands 副本），可重新克隆 https://github.com/OpenHands/OpenHands 后再启用。",
     "legacyImport": {
       "source": "learning-site/data.js",
       "kind": "course-card",
@@ -1989,7 +1801,7 @@
       "篇幅短、密度高，17 篇每篇 1-4 KB。适合在读大部头之前先用它把 harness 的部件名对齐一遍。"
     ],
     "sourceUrl": null,
-    "localPath": "Agentic/ai-agent-deep-dive/README.md",
+    "localPath": "Learning/ai-agent-deep-dive/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -2001,97 +1813,97 @@
       {
         "label": "本地 README",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/README.md"
+        "localPath": "Learning/ai-agent-deep-dive/README.md"
       },
       {
         "label": "产品总览",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/00-product-overview.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/00-product-overview.md"
       },
       {
         "label": "01 系统提示词与编排",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/01-system-prompt-and-orchestration.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/01-system-prompt-and-orchestration.md"
       },
       {
         "label": "02 工具、权限与执行",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/02-tools-permissions-and-execution.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/02-tools-permissions-and-execution.md"
       },
       {
         "label": "03 Skills、插件与 MCP",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/03-skills-plugins-mcp.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/03-skills-plugins-mcp.md"
       },
       {
         "label": "04 记忆与会话",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/04-memory-and-session.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/04-memory-and-session.md"
       },
       {
         "label": "05 命令、UI 与操作体验",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/05-commands-ui-and-operator-experience.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/05-commands-ui-and-operator-experience.md"
       },
       {
         "label": "06 验证与质量",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/06-verification-and-quality.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/06-verification-and-quality.md"
       },
       {
         "label": "07 架构地图",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/07-architecture-map.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/07-architecture-map.md"
       },
       {
         "label": "08 Agent 运行时循环",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/08-agent-runtime-loop.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/08-agent-runtime-loop.md"
       },
       {
         "label": "09 消息模型与状态",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/09-message-model-and-state.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/09-message-model-and-state.md"
       },
       {
         "label": "10 上下文管理",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/10-context-management.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/10-context-management.md"
       },
       {
         "label": "11 任务模型",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/11-task-model.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/11-task-model.md"
       },
       {
         "label": "12 工作区与隔离",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/12-workspace-and-isolation.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/12-workspace-and-isolation.md"
       },
       {
         "label": "13 失败恢复",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/13-failure-recovery.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/13-failure-recovery.md"
       },
       {
         "label": "14 配置系统",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/14-configuration-system.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/14-configuration-system.md"
       },
       {
         "label": "15 MVP 范围",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/15-mvp-scope.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/15-mvp-scope.md"
       },
       {
         "label": "16 Python 实现笔记",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/16-python-implementation-notes.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/16-python-implementation-notes.md"
       },
       {
         "label": "打开 PDF（v2）",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/ai-agent-deep-dive-v2.pdf"
+        "localPath": "Learning/ai-agent-deep-dive/ai-agent-deep-dive-v2.pdf"
       }
     ],
     "unavailableReason": null,
@@ -2126,12 +1938,12 @@
     "title": "Multica",
     "track": "agentic",
     "stageIds": [],
-    "summary": "人与 AI 并肩工作的多 agent 协作平台：CLI + daemon + Web，带自托管方案和完整的架构交接审计。",
+    "summary": "人与 AI 并肩工作的多 agent 协作平台：CLI + daemon + Web，带自托管方案。",
     "learningGoals": [
       "看它怎么把「多 agent」做成可部署的产品：CLI/daemon 分层、handoff 架构，以及 19 KB 的 CLAUDE.md 如何驱动自身开发。"
     ],
     "sourceUrl": null,
-    "localPath": "Agentic/multica/README.zh-CN.md",
+    "localPath": "Application/multica/README.zh.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -2143,17 +1955,12 @@
       {
         "label": "本地 README（中文）",
         "sourceUrl": null,
-        "localPath": "Agentic/multica/README.zh-CN.md"
-      },
-      {
-        "label": "设计文档",
-        "sourceUrl": null,
-        "localPath": "Agentic/multica/docs/design.md"
+        "localPath": "Application/multica/README.zh.md"
       },
       {
         "label": "CLI 与 Daemon",
         "sourceUrl": null,
-        "localPath": "Agentic/multica/CLI_AND_DAEMON.md"
+        "localPath": "Application/multica/CLI_AND_DAEMON.md"
       }
     ],
     "unavailableReason": null,
@@ -2243,7 +2050,7 @@
       "Stage 8 部署形态的对照样本：同样一个 loop，做成库和做成 CLI 在边界上差在哪。examples/ 可直接跑。"
     ],
     "sourceUrl": "https://github.com/codeany-ai/open-agent-sdk",
-    "localPath": "Agentic/open-agent-sdk-typescript/README.md",
+    "localPath": "Agentic/sdk/open-agent-sdk-typescript/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -2255,7 +2062,7 @@
       {
         "label": "本地 README",
         "sourceUrl": null,
-        "localPath": "Agentic/open-agent-sdk-typescript/README.md"
+        "localPath": "Agentic/sdk/open-agent-sdk-typescript/README.md"
       },
       {
         "label": "GitHub",
@@ -2535,7 +2342,7 @@
       {
         "label": "A2A 模块",
         "sourceUrl": null,
-        "localPath": "Application/solon-ai/solon-ai-a2a/README.md"
+        "localPath": "Application/solon-ai/solon-ai-flow/README.md"
       },
       {
         "label": "Flow 模块",
@@ -4708,7 +4515,7 @@
     "summary": "Easy Agent / Easy AI",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Learning/easy-agent/README.zh-CN.md",
+    "localPath": "AICoding/easy-agent/README.zh-CN.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -4720,7 +4527,7 @@
       {
         "label": "Easy Agent README（中文）",
         "sourceUrl": null,
-        "localPath": "Learning/easy-agent/README.zh-CN.md"
+        "localPath": "AICoding/easy-agent/README.zh-CN.md"
       }
     ],
     "unavailableReason": null,
@@ -4741,7 +4548,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-003",
-      "chapter": "Learning/easy-agent/README.zh-CN.md"
+      "chapter": "AICoding/easy-agent/README.zh-CN.md"
     }
   },
   {
@@ -4796,7 +4603,7 @@
     "summary": "learn-claude-code · 20 章",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/claude/document/learn-claude-code/README-zh.md",
+    "localPath": "Learning/learn-claude-code/README-zh.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -4808,7 +4615,7 @@
       {
         "label": "总览 README（中文）",
         "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/README-zh.md"
+        "localPath": "Learning/learn-claude-code/README-zh.md"
       }
     ],
     "unavailableReason": null,
@@ -4829,7 +4636,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-008",
-      "chapter": "AICoding/claude/document/learn-claude-code/README-zh.md"
+      "chapter": "Learning/learn-claude-code/README-zh.md"
     }
   },
   {
@@ -4840,7 +4647,7 @@
     "summary": "learn-claude-code · 20 章",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/claude/document/learn-claude-code/s01_agent_loop/README.md",
+    "localPath": "Learning/learn-claude-code/s01_agent_loop/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -4852,7 +4659,7 @@
       {
         "label": "s01：Agent Loop — 一个循环就够了",
         "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/s01_agent_loop/README.md"
+        "localPath": "Learning/learn-claude-code/s01_agent_loop/README.md"
       }
     ],
     "unavailableReason": null,
@@ -4880,7 +4687,7 @@
     "summary": "learn-claude-code · 20 章",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/claude/document/learn-claude-code/s02_tool_use/README.md",
+    "localPath": "Learning/learn-claude-code/s02_tool_use/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -4892,7 +4699,7 @@
       {
         "label": "s02：Tool Use — 多加一个工具只加一行",
         "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/s02_tool_use/README.md"
+        "localPath": "Learning/learn-claude-code/s02_tool_use/README.md"
       }
     ],
     "unavailableReason": null,
@@ -4920,7 +4727,7 @@
     "summary": "learn-claude-code · 20 章",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/claude/document/learn-claude-code/s03_permission/README.md",
+    "localPath": "Learning/learn-claude-code/s03_permission/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -4932,7 +4739,7 @@
       {
         "label": "s03：Permission — 执行前做权限判断",
         "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/s03_permission/README.md"
+        "localPath": "Learning/learn-claude-code/s03_permission/README.md"
       }
     ],
     "unavailableReason": null,
@@ -4960,7 +4767,7 @@
     "summary": "learn-claude-code · 20 章",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/claude/document/learn-claude-code/s04_hooks/README.md",
+    "localPath": "Learning/learn-claude-code/s04_hooks/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -4972,7 +4779,7 @@
       {
         "label": "s04：Hooks — 挂在循环上",
         "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/s04_hooks/README.md"
+        "localPath": "Learning/learn-claude-code/s04_hooks/README.md"
       }
     ],
     "unavailableReason": null,
@@ -5000,7 +4807,7 @@
     "summary": "learn-claude-code · 20 章",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/claude/document/learn-claude-code/s05_todo_write/README.md",
+    "localPath": "Learning/learn-claude-code/s05_todo_write/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -5012,7 +4819,7 @@
       {
         "label": "s05：TodoWrite — 有计划才不跑偏",
         "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/s05_todo_write/README.md"
+        "localPath": "Learning/learn-claude-code/s05_todo_write/README.md"
       }
     ],
     "unavailableReason": null,
@@ -5040,7 +4847,7 @@
     "summary": "learn-claude-code · 20 章",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/claude/document/learn-claude-code/s06_subagent/README.md",
+    "localPath": "Learning/learn-claude-code/s06_subagent/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -5052,7 +4859,7 @@
       {
         "label": "s06：Subagent — 干净上下文拆任务",
         "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/s06_subagent/README.md"
+        "localPath": "Learning/learn-claude-code/s06_subagent/README.md"
       }
     ],
     "unavailableReason": null,
@@ -5080,7 +4887,7 @@
     "summary": "learn-claude-code · 20 章",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/claude/document/learn-claude-code/s07_skill_loading/README.md",
+    "localPath": "Learning/learn-claude-code/s07_skill_loading/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -5092,7 +4899,7 @@
       {
         "label": "s07：Skill Loading — 用到才加载",
         "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/s07_skill_loading/README.md"
+        "localPath": "Learning/learn-claude-code/s07_skill_loading/README.md"
       }
     ],
     "unavailableReason": null,
@@ -5120,7 +4927,7 @@
     "summary": "learn-claude-code · 20 章",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/claude/document/learn-claude-code/s08_context_compact/README.md",
+    "localPath": "Learning/learn-claude-code/s08_context_compact/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -5132,7 +4939,7 @@
       {
         "label": "s08：Context Compact — 给上下文腾地方",
         "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/s08_context_compact/README.md"
+        "localPath": "Learning/learn-claude-code/s08_context_compact/README.md"
       }
     ],
     "unavailableReason": null,
@@ -5160,7 +4967,7 @@
     "summary": "learn-claude-code · 20 章",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/claude/document/learn-claude-code/s09_memory/README.md",
+    "localPath": "Learning/learn-claude-code/s09_memory/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -5172,7 +4979,7 @@
       {
         "label": "s09：Memory — 一层不丢的记忆",
         "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/s09_memory/README.md"
+        "localPath": "Learning/learn-claude-code/s09_memory/README.md"
       }
     ],
     "unavailableReason": null,
@@ -5193,206 +5000,6 @@
     }
   },
   {
-    "id": "legacy-reading-10-011",
-    "title": "s10：System Prompt — 运行时组装",
-    "track": "aicoding",
-    "stageIds": [],
-    "summary": "learn-claude-code · 20 章",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "AICoding/claude/document/learn-claude-code/s10_system_prompt/README.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["learn-claude-code · 20 章", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "s10：System Prompt — 运行时组装",
-        "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/s10_system_prompt/README.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 9010,
-      "raw": {
-        "group": {
-          "title": "learn-claude-code · 20 章",
-          "track": "ai-coding"
-        },
-        "item": {
-          "label": "s10：System Prompt — 运行时组装",
-          "doc": "AICoding/claude/document/learn-claude-code/s10_system_prompt/README.md"
-        }
-      }
-    }
-  },
-  {
-    "id": "legacy-reading-10-012",
-    "title": "s11：Error Recovery — 错误是重试的开始",
-    "track": "aicoding",
-    "stageIds": [],
-    "summary": "learn-claude-code · 20 章",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "AICoding/claude/document/learn-claude-code/s11_error_recovery/README.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["learn-claude-code · 20 章", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "s11：Error Recovery — 错误是重试的开始",
-        "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/s11_error_recovery/README.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 9011,
-      "raw": {
-        "group": {
-          "title": "learn-claude-code · 20 章",
-          "track": "ai-coding"
-        },
-        "item": {
-          "label": "s11：Error Recovery — 错误是重试的开始",
-          "doc": "AICoding/claude/document/learn-claude-code/s11_error_recovery/README.md"
-        }
-      }
-    }
-  },
-  {
-    "id": "legacy-reading-10-013",
-    "title": "s12：Task System — 目标拆成小任务",
-    "track": "aicoding",
-    "stageIds": [],
-    "summary": "learn-claude-code · 20 章",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "AICoding/claude/document/learn-claude-code/s12_task_system/README.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["learn-claude-code · 20 章", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "s12：Task System — 目标拆成小任务",
-        "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/s12_task_system/README.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 9012,
-      "raw": {
-        "group": {
-          "title": "learn-claude-code · 20 章",
-          "track": "ai-coding"
-        },
-        "item": {
-          "label": "s12：Task System — 目标拆成小任务",
-          "doc": "AICoding/claude/document/learn-claude-code/s12_task_system/README.md"
-        }
-      }
-    }
-  },
-  {
-    "id": "legacy-reading-10-014",
-    "title": "s13：Background Tasks — 慢操作放后台",
-    "track": "aicoding",
-    "stageIds": [],
-    "summary": "learn-claude-code · 20 章",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "AICoding/claude/document/learn-claude-code/s13_background_tasks/README.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["learn-claude-code · 20 章", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "s13：Background Tasks — 慢操作放后台",
-        "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/s13_background_tasks/README.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 9013,
-      "raw": {
-        "group": {
-          "title": "learn-claude-code · 20 章",
-          "track": "ai-coding"
-        },
-        "item": {
-          "label": "s13：Background Tasks — 慢操作放后台",
-          "doc": "AICoding/claude/document/learn-claude-code/s13_background_tasks/README.md"
-        }
-      }
-    }
-  },
-  {
-    "id": "legacy-reading-10-015",
-    "title": "s14：Cron Scheduler — 按时间表生产工作",
-    "track": "aicoding",
-    "stageIds": [],
-    "summary": "learn-claude-code · 20 章",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "AICoding/claude/document/learn-claude-code/s14_cron_scheduler/README.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["learn-claude-code · 20 章", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "s14：Cron Scheduler — 按时间表生产工作",
-        "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/s14_cron_scheduler/README.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 9014,
-      "raw": {
-        "group": {
-          "title": "learn-claude-code · 20 章",
-          "track": "ai-coding"
-        },
-        "item": {
-          "label": "s14：Cron Scheduler — 按时间表生产工作",
-          "doc": "AICoding/claude/document/learn-claude-code/s14_cron_scheduler/README.md"
-        }
-      }
-    }
-  },
-  {
     "id": "legacy-reading-10-016",
     "title": "s15：Agent Teams — 一个搞不定就组队",
     "track": "aicoding",
@@ -5400,22 +5007,16 @@
     "summary": "learn-claude-code · 20 章",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/claude/document/learn-claude-code/s15_agent_teams/README.md",
-    "accessPolicy": "local-preferred",
+    "localPath": null,
+    "accessPolicy": "unavailable",
     "publicationRights": "third-party",
     "author": "Unknown",
     "license": "Unknown",
     "licenseStatus": "unknown",
     "tags": ["learn-claude-code · 20 章", "legacy-reading"],
     "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "s15：Agent Teams — 一个搞不定就组队",
-        "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/s15_agent_teams/README.md"
-      }
-    ],
-    "unavailableReason": null,
+    "references": [],
+    "unavailableReason": "learn-claude-code 章节已重构为 docs/zh 新结构，旧 s15_agent_teams 路径不再存在；该条目被 stage-4 引用故保留。",
     "legacyImport": {
       "source": "learning-site/data.js",
       "kind": "reading-chapter",
@@ -5428,206 +5029,6 @@
         "item": {
           "label": "s15：Agent Teams — 一个搞不定就组队",
           "doc": "AICoding/claude/document/learn-claude-code/s15_agent_teams/README.md"
-        }
-      }
-    }
-  },
-  {
-    "id": "legacy-reading-10-017",
-    "title": "s16：Team Protocols — 队友间要有约定",
-    "track": "aicoding",
-    "stageIds": [],
-    "summary": "learn-claude-code · 20 章",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "AICoding/claude/document/learn-claude-code/s16_team_protocols/README.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["learn-claude-code · 20 章", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "s16：Team Protocols — 队友间要有约定",
-        "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/s16_team_protocols/README.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 9016,
-      "raw": {
-        "group": {
-          "title": "learn-claude-code · 20 章",
-          "track": "ai-coding"
-        },
-        "item": {
-          "label": "s16：Team Protocols — 队友间要有约定",
-          "doc": "AICoding/claude/document/learn-claude-code/s16_team_protocols/README.md"
-        }
-      }
-    }
-  },
-  {
-    "id": "legacy-reading-10-018",
-    "title": "s17：Autonomous Agents — 自己看板自己认领",
-    "track": "aicoding",
-    "stageIds": [],
-    "summary": "learn-claude-code · 20 章",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "AICoding/claude/document/learn-claude-code/s17_autonomous_agents/README.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["learn-claude-code · 20 章", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "s17：Autonomous Agents — 自己看板自己认领",
-        "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/s17_autonomous_agents/README.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 9017,
-      "raw": {
-        "group": {
-          "title": "learn-claude-code · 20 章",
-          "track": "ai-coding"
-        },
-        "item": {
-          "label": "s17：Autonomous Agents — 自己看板自己认领",
-          "doc": "AICoding/claude/document/learn-claude-code/s17_autonomous_agents/README.md"
-        }
-      }
-    }
-  },
-  {
-    "id": "legacy-reading-10-019",
-    "title": "s18：Worktree Isolation — 各干各的",
-    "track": "aicoding",
-    "stageIds": [],
-    "summary": "learn-claude-code · 20 章",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "AICoding/claude/document/learn-claude-code/s18_worktree_isolation/README.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["learn-claude-code · 20 章", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "s18：Worktree Isolation — 各干各的",
-        "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/s18_worktree_isolation/README.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 9018,
-      "raw": {
-        "group": {
-          "title": "learn-claude-code · 20 章",
-          "track": "ai-coding"
-        },
-        "item": {
-          "label": "s18：Worktree Isolation — 各干各的",
-          "doc": "AICoding/claude/document/learn-claude-code/s18_worktree_isolation/README.md"
-        }
-      }
-    }
-  },
-  {
-    "id": "legacy-reading-10-020",
-    "title": "s19：MCP Tools — 外接工具标准协议",
-    "track": "aicoding",
-    "stageIds": [],
-    "summary": "learn-claude-code · 20 章",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "AICoding/claude/document/learn-claude-code/s19_mcp_plugin/README.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["learn-claude-code · 20 章", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "s19：MCP Tools — 外接工具标准协议",
-        "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/s19_mcp_plugin/README.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 9019,
-      "raw": {
-        "group": {
-          "title": "learn-claude-code · 20 章",
-          "track": "ai-coding"
-        },
-        "item": {
-          "label": "s19：MCP Tools — 外接工具标准协议",
-          "doc": "AICoding/claude/document/learn-claude-code/s19_mcp_plugin/README.md"
-        }
-      }
-    }
-  },
-  {
-    "id": "legacy-reading-10-021",
-    "title": "s20：Comprehensive — 全部机制归到一个循环",
-    "track": "aicoding",
-    "stageIds": [],
-    "summary": "learn-claude-code · 20 章",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "AICoding/claude/document/learn-claude-code/s20_comprehensive/README.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["learn-claude-code · 20 章", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "s20：Comprehensive — 全部机制归到一个循环",
-        "sourceUrl": null,
-        "localPath": "AICoding/claude/document/learn-claude-code/s20_comprehensive/README.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 9020,
-      "raw": {
-        "group": {
-          "title": "learn-claude-code · 20 章",
-          "track": "ai-coding"
-        },
-        "item": {
-          "label": "s20：Comprehensive — 全部机制归到一个循环",
-          "doc": "AICoding/claude/document/learn-claude-code/s20_comprehensive/README.md"
         }
       }
     }
@@ -6585,90 +5986,6 @@
     }
   },
   {
-    "id": "legacy-reading-12-011",
-    "title": "auto-mode-unlock",
-    "track": "aicoding",
-    "stageIds": [],
-    "summary": "Claude 文档 · 插件 · 资源",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "AICoding/claude/plugins/claude-auto-mode-unlock/README.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["Claude 文档 · 插件 · 资源", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "auto-mode-unlock",
-        "sourceUrl": null,
-        "localPath": "AICoding/claude/plugins/claude-auto-mode-unlock/README.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 11010,
-      "raw": {
-        "group": {
-          "title": "Claude 文档 · 插件 · 资源",
-          "track": "ai-coding"
-        },
-        "item": {
-          "label": "auto-mode-unlock",
-          "doc": "AICoding/claude/plugins/claude-auto-mode-unlock/README.md"
-        }
-      }
-    }
-  },
-  {
-    "id": "legacy-reading-12-012",
-    "title": "auto-mode-unlock · 逆向方法论",
-    "track": "aicoding",
-    "stageIds": [],
-    "summary": "Claude 文档 · 插件 · 资源",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "AICoding/claude/plugins/claude-auto-mode-unlock/METHODOLOGY.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["Claude 文档 · 插件 · 资源", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "auto-mode-unlock · 逆向方法论",
-        "sourceUrl": null,
-        "localPath": "AICoding/claude/plugins/claude-auto-mode-unlock/METHODOLOGY.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 11011,
-      "raw": {
-        "group": {
-          "title": "Claude 文档 · 插件 · 资源",
-          "track": "ai-coding"
-        },
-        "item": {
-          "label": "auto-mode-unlock · 逆向方法论",
-          "doc": "AICoding/claude/plugins/claude-auto-mode-unlock/METHODOLOGY.md"
-        }
-      }
-    },
-    "redirect": {
-      "itemId": "legacy-course-013",
-      "chapter": "AICoding/claude/plugins/claude-auto-mode-unlock/METHODOLOGY.md"
-    }
-  },
-  {
     "id": "legacy-reading-12-013",
     "title": "Claude Code Lens（中文）",
     "track": "aicoding",
@@ -7108,7 +6425,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/doc/openclaw_guide/README.md",
+    "localPath": "AICoding/openclaw/openclaw_guide/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -7120,7 +6437,7 @@
       {
         "label": "总览 README",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/doc/openclaw_guide/README.md"
+        "localPath": "AICoding/openclaw/openclaw_guide/README.md"
       }
     ],
     "unavailableReason": null,
@@ -7141,7 +6458,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-016",
-      "chapter": "AICoding/openclaw/doc/openclaw_guide/README.md"
+      "chapter": "AICoding/openclaw/openclaw_guide/README.md"
     }
   },
   {
@@ -7152,7 +6469,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/doc/openclaw_guide/01_overview/README.md",
+    "localPath": "AICoding/openclaw/openclaw_guide/01_overview/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -7164,7 +6481,7 @@
       {
         "label": "01 概述",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/doc/openclaw_guide/01_overview/README.md"
+        "localPath": "AICoding/openclaw/openclaw_guide/01_overview/README.md"
       }
     ],
     "unavailableReason": null,
@@ -7192,7 +6509,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/doc/openclaw_guide/02_setup/README.md",
+    "localPath": "AICoding/openclaw/openclaw_guide/02_setup/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -7204,7 +6521,7 @@
       {
         "label": "02 安装与配置",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/doc/openclaw_guide/02_setup/README.md"
+        "localPath": "AICoding/openclaw/openclaw_guide/02_setup/README.md"
       }
     ],
     "unavailableReason": null,
@@ -7232,7 +6549,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/doc/openclaw_guide/03_minimal_loop/README.md",
+    "localPath": "AICoding/openclaw/openclaw_guide/03_minimal_loop/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -7244,7 +6561,7 @@
       {
         "label": "03 最小循环",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/doc/openclaw_guide/03_minimal_loop/README.md"
+        "localPath": "AICoding/openclaw/openclaw_guide/03_minimal_loop/README.md"
       }
     ],
     "unavailableReason": null,
@@ -7272,7 +6589,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/doc/openclaw_guide/04_config_models/README.md",
+    "localPath": "AICoding/openclaw/openclaw_guide/04_config_models/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -7284,7 +6601,7 @@
       {
         "label": "04 模型配置",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/doc/openclaw_guide/04_config_models/README.md"
+        "localPath": "AICoding/openclaw/openclaw_guide/04_config_models/README.md"
       }
     ],
     "unavailableReason": null,
@@ -7312,7 +6629,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/doc/openclaw_guide/05_tools_skills/README.md",
+    "localPath": "AICoding/openclaw/openclaw_guide/05_tools_skills/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -7324,7 +6641,7 @@
       {
         "label": "05 工具与技能",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/doc/openclaw_guide/05_tools_skills/README.md"
+        "localPath": "AICoding/openclaw/openclaw_guide/05_tools_skills/README.md"
       }
     ],
     "unavailableReason": null,
@@ -7352,7 +6669,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/doc/openclaw_guide/06_context_memory/README.md",
+    "localPath": "AICoding/openclaw/openclaw_guide/06_context_memory/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -7364,7 +6681,7 @@
       {
         "label": "06 上下文与记忆",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/doc/openclaw_guide/06_context_memory/README.md"
+        "localPath": "AICoding/openclaw/openclaw_guide/06_context_memory/README.md"
       }
     ],
     "unavailableReason": null,
@@ -7392,7 +6709,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/doc/openclaw_guide/07_multi_agent/README.md",
+    "localPath": "AICoding/openclaw/openclaw_guide/07_multi_agent/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -7404,7 +6721,7 @@
       {
         "label": "07 多 Agent",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/doc/openclaw_guide/07_multi_agent/README.md"
+        "localPath": "AICoding/openclaw/openclaw_guide/07_multi_agent/README.md"
       }
     ],
     "unavailableReason": null,
@@ -7432,7 +6749,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/doc/openclaw_guide/08_automation_ops/README.md",
+    "localPath": "AICoding/openclaw/openclaw_guide/08_automation_ops/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -7444,7 +6761,7 @@
       {
         "label": "08 自动化运维",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/doc/openclaw_guide/08_automation_ops/README.md"
+        "localPath": "AICoding/openclaw/openclaw_guide/08_automation_ops/README.md"
       }
     ],
     "unavailableReason": null,
@@ -7472,7 +6789,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/doc/openclaw_guide/09_gateway_protocol/README.md",
+    "localPath": "AICoding/openclaw/openclaw_guide/09_gateway_protocol/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -7484,7 +6801,7 @@
       {
         "label": "09 网关协议",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/doc/openclaw_guide/09_gateway_protocol/README.md"
+        "localPath": "AICoding/openclaw/openclaw_guide/09_gateway_protocol/README.md"
       }
     ],
     "unavailableReason": null,
@@ -7512,7 +6829,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/doc/openclaw_guide/10_agent_loop/README.md",
+    "localPath": "AICoding/openclaw/openclaw_guide/10_agent_loop/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -7524,7 +6841,7 @@
       {
         "label": "10 Agent 循环",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/doc/openclaw_guide/10_agent_loop/README.md"
+        "localPath": "AICoding/openclaw/openclaw_guide/10_agent_loop/README.md"
       }
     ],
     "unavailableReason": null,
@@ -7552,7 +6869,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/doc/openclaw_guide/11_reliability_security/README.md",
+    "localPath": "AICoding/openclaw/openclaw_guide/11_reliability_security/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -7564,7 +6881,7 @@
       {
         "label": "11 可靠性与安全",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/doc/openclaw_guide/11_reliability_security/README.md"
+        "localPath": "AICoding/openclaw/openclaw_guide/11_reliability_security/README.md"
       }
     ],
     "unavailableReason": null,
@@ -7592,7 +6909,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/doc/openclaw_guide/12_extension_engineering/README.md",
+    "localPath": "AICoding/openclaw/openclaw_guide/12_extension_engineering/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -7604,7 +6921,7 @@
       {
         "label": "12 扩展工程",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/doc/openclaw_guide/12_extension_engineering/README.md"
+        "localPath": "AICoding/openclaw/openclaw_guide/12_extension_engineering/README.md"
       }
     ],
     "unavailableReason": null,
@@ -7632,7 +6949,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/doc/openclaw_guide/13_practical_cases/README.md",
+    "localPath": "AICoding/openclaw/openclaw_guide/13_practical_cases/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -7644,7 +6961,7 @@
       {
         "label": "13 实战案例",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/doc/openclaw_guide/13_practical_cases/README.md"
+        "localPath": "AICoding/openclaw/openclaw_guide/13_practical_cases/README.md"
       }
     ],
     "unavailableReason": null,
@@ -7672,7 +6989,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/doc/openclaw_guide/14_performance_cost/README.md",
+    "localPath": "AICoding/openclaw/openclaw_guide/14_performance_cost/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -7684,7 +7001,7 @@
       {
         "label": "14 性能与成本",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/doc/openclaw_guide/14_performance_cost/README.md"
+        "localPath": "AICoding/openclaw/openclaw_guide/14_performance_cost/README.md"
       }
     ],
     "unavailableReason": null,
@@ -7712,7 +7029,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/doc/openclaw_guide/15_troubleshooting_trees/README.md",
+    "localPath": "AICoding/openclaw/openclaw_guide/15_troubleshooting_trees/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -7724,7 +7041,7 @@
       {
         "label": "15 故障排查",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/doc/openclaw_guide/15_troubleshooting_trees/README.md"
+        "localPath": "AICoding/openclaw/openclaw_guide/15_troubleshooting_trees/README.md"
       }
     ],
     "unavailableReason": null,
@@ -7752,7 +7069,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/doc/openclaw_guide/16_claude_ecosystem/README.md",
+    "localPath": "AICoding/openclaw/openclaw_guide/16_claude_ecosystem/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -7764,7 +7081,7 @@
       {
         "label": "16 Claude 生态",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/doc/openclaw_guide/16_claude_ecosystem/README.md"
+        "localPath": "AICoding/openclaw/openclaw_guide/16_claude_ecosystem/README.md"
       }
     ],
     "unavailableReason": null,
@@ -7792,7 +7109,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/doc/openclaw_guide/appendix/README.md",
+    "localPath": "AICoding/openclaw/openclaw_guide/appendix/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -7804,7 +7121,7 @@
       {
         "label": "附录",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/doc/openclaw_guide/appendix/README.md"
+        "localPath": "AICoding/openclaw/openclaw_guide/appendix/README.md"
       }
     ],
     "unavailableReason": null,
@@ -7832,7 +7149,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/channels/openclaw-lark/README.zh.md",
+    "localPath": "AICoding/openclaw/openclaw-lark/README.zh.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -7844,7 +7161,7 @@
       {
         "label": "Lark 通道（中文）",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/channels/openclaw-lark/README.zh.md"
+        "localPath": "AICoding/openclaw/openclaw-lark/README.zh.md"
       }
     ],
     "unavailableReason": null,
@@ -7865,7 +7182,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-016",
-      "chapter": "AICoding/openclaw/channels/openclaw-lark/README.zh.md"
+      "chapter": "AICoding/openclaw/openclaw-lark/README.zh.md"
     }
   },
   {
@@ -8040,7 +7357,7 @@
     "summary": "OpenCode 中文实战课",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/opencode/learn-opencode/README.md",
+    "localPath": "Learning/learn-opencode/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -8052,7 +7369,7 @@
       {
         "label": "总览 README",
         "sourceUrl": null,
-        "localPath": "AICoding/opencode/learn-opencode/README.md"
+        "localPath": "Learning/learn-opencode/README.md"
       }
     ],
     "unavailableReason": null,
@@ -8073,7 +7390,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-017",
-      "chapter": "AICoding/opencode/learn-opencode/README.md"
+      "chapter": "Learning/learn-opencode/README.md"
     }
   },
   {
@@ -8084,7 +7401,7 @@
     "summary": "OpenCode 中文实战课",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/opencode/learn-opencode/docs/index.md",
+    "localPath": "Learning/learn-opencode/docs/index.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -8096,7 +7413,7 @@
       {
         "label": "课程导览",
         "sourceUrl": null,
-        "localPath": "AICoding/opencode/learn-opencode/docs/index.md"
+        "localPath": "Learning/learn-opencode/docs/index.md"
       }
     ],
     "unavailableReason": null,
@@ -8117,7 +7434,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-017",
-      "chapter": "AICoding/opencode/learn-opencode/docs/index.md"
+      "chapter": "Learning/learn-opencode/docs/index.md"
     }
   },
   {
@@ -8128,7 +7445,7 @@
     "summary": "OpenCode 中文实战课",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/opencode/learn-opencode/docs/1-start/01-intro.md",
+    "localPath": "Learning/learn-opencode/docs/1-start/01-intro.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -8140,7 +7457,7 @@
       {
         "label": "01 介绍",
         "sourceUrl": null,
-        "localPath": "AICoding/opencode/learn-opencode/docs/1-start/01-intro.md"
+        "localPath": "Learning/learn-opencode/docs/1-start/01-intro.md"
       }
     ],
     "unavailableReason": null,
@@ -8168,7 +7485,7 @@
     "summary": "OpenCode 中文实战课",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/opencode/learn-opencode/docs/1-start/02-install.md",
+    "localPath": "Learning/learn-opencode/docs/1-start/02-install.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -8180,7 +7497,7 @@
       {
         "label": "02 安装",
         "sourceUrl": null,
-        "localPath": "AICoding/opencode/learn-opencode/docs/1-start/02-install.md"
+        "localPath": "Learning/learn-opencode/docs/1-start/02-install.md"
       }
     ],
     "unavailableReason": null,
@@ -8208,7 +7525,7 @@
     "summary": "OpenCode 中文实战课",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/opencode/learn-opencode/docs/1-start/04-connect.md",
+    "localPath": "Learning/learn-opencode/docs/1-start/04-connect.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -8220,7 +7537,7 @@
       {
         "label": "04 连接模型",
         "sourceUrl": null,
-        "localPath": "AICoding/opencode/learn-opencode/docs/1-start/04-connect.md"
+        "localPath": "Learning/learn-opencode/docs/1-start/04-connect.md"
       }
     ],
     "unavailableReason": null,
@@ -8248,7 +7565,7 @@
     "summary": "OpenCode 中文实战课",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/opencode/learn-opencode/docs/2-daily/01-interface.md",
+    "localPath": "Learning/learn-opencode/docs/2-daily/01-interface.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -8260,7 +7577,7 @@
       {
         "label": "日常界面",
         "sourceUrl": null,
-        "localPath": "AICoding/opencode/learn-opencode/docs/2-daily/01-interface.md"
+        "localPath": "Learning/learn-opencode/docs/2-daily/01-interface.md"
       }
     ],
     "unavailableReason": null,
@@ -8288,7 +7605,7 @@
     "summary": "OpenCode 中文实战课",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/opencode/learn-opencode/docs/3-workflow/02-agents.md",
+    "localPath": "Learning/learn-opencode/docs/3-workflow/02-agents.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -8300,7 +7617,7 @@
       {
         "label": "Agent 工作流",
         "sourceUrl": null,
-        "localPath": "AICoding/opencode/learn-opencode/docs/3-workflow/02-agents.md"
+        "localPath": "Learning/learn-opencode/docs/3-workflow/02-agents.md"
       }
     ],
     "unavailableReason": null,
@@ -8328,7 +7645,7 @@
     "summary": "OpenCode 中文实战课",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/opencode/learn-opencode/docs/4-scenarios/coder-daily.md",
+    "localPath": "Learning/learn-opencode/docs/4-scenarios/coder-daily.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -8340,7 +7657,7 @@
       {
         "label": "编码场景",
         "sourceUrl": null,
-        "localPath": "AICoding/opencode/learn-opencode/docs/4-scenarios/coder-daily.md"
+        "localPath": "Learning/learn-opencode/docs/4-scenarios/coder-daily.md"
       }
     ],
     "unavailableReason": null,
@@ -8368,7 +7685,7 @@
     "summary": "OpenCode 中文实战课",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/opencode/learn-opencode/docs/5-advanced/02a-agent-quickstart.md",
+    "localPath": "Learning/learn-opencode/docs/5-advanced/02a-agent-quickstart.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -8380,7 +7697,7 @@
       {
         "label": "Agent 快速开始",
         "sourceUrl": null,
-        "localPath": "AICoding/opencode/learn-opencode/docs/5-advanced/02a-agent-quickstart.md"
+        "localPath": "Learning/learn-opencode/docs/5-advanced/02a-agent-quickstart.md"
       }
     ],
     "unavailableReason": null,
@@ -8408,7 +7725,7 @@
     "summary": "OpenCode 中文实战课",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/opencode/learn-opencode/docs/5-advanced/07a-mcp-basics.md",
+    "localPath": "Learning/learn-opencode/docs/5-advanced/07a-mcp-basics.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -8420,7 +7737,7 @@
       {
         "label": "MCP 基础",
         "sourceUrl": null,
-        "localPath": "AICoding/opencode/learn-opencode/docs/5-advanced/07a-mcp-basics.md"
+        "localPath": "Learning/learn-opencode/docs/5-advanced/07a-mcp-basics.md"
       }
     ],
     "unavailableReason": null,
@@ -8448,7 +7765,7 @@
     "summary": "OpenCode 中文实战课",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/opencode/learn-opencode/docs/appendix/faq.md",
+    "localPath": "Learning/learn-opencode/docs/appendix/faq.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -8460,7 +7777,7 @@
       {
         "label": "FAQ",
         "sourceUrl": null,
-        "localPath": "AICoding/opencode/learn-opencode/docs/appendix/faq.md"
+        "localPath": "Learning/learn-opencode/docs/appendix/faq.md"
       }
     ],
     "unavailableReason": null,
@@ -8660,7 +7977,7 @@
     "summary": "OpenCode 中文实战课",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/opencode/code/openwork/README_ZH.md",
+    "localPath": "Application/openwork/README_ZH.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -8672,7 +7989,7 @@
       {
         "label": "openwork（中文）",
         "sourceUrl": null,
-        "localPath": "AICoding/opencode/code/openwork/README_ZH.md"
+        "localPath": "Application/openwork/README_ZH.md"
       }
     ],
     "unavailableReason": null,
@@ -8693,7 +8010,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-018",
-      "chapter": "AICoding/opencode/code/openwork/README_ZH.md"
+      "chapter": "Application/openwork/README_ZH.md"
     }
   },
   {
@@ -9000,7 +8317,7 @@
     "summary": "Codex · Hermes · CyberClaw · MiMo",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/CyberClaw/README.md",
+    "localPath": "Agentic/Harness/CyberClaw/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9012,7 +8329,7 @@
       {
         "label": "CyberClaw README",
         "sourceUrl": null,
-        "localPath": "AICoding/CyberClaw/README.md"
+        "localPath": "Agentic/Harness/CyberClaw/README.md"
       }
     ],
     "unavailableReason": null,
@@ -9033,7 +8350,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-020",
-      "chapter": "AICoding/CyberClaw/README.md"
+      "chapter": "Agentic/Harness/CyberClaw/README.md"
     }
   },
   {
@@ -9044,7 +8361,7 @@
     "summary": "Codex · Hermes · CyberClaw · MiMo",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/CyberClaw/docs/LAZY_LOADING_GUIDE.md",
+    "localPath": "Agentic/Harness/CyberClaw/docs/LAZY_LOADING_GUIDE.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9056,7 +8373,7 @@
       {
         "label": "CyberClaw · Lazy Loading 指南",
         "sourceUrl": null,
-        "localPath": "AICoding/CyberClaw/docs/LAZY_LOADING_GUIDE.md"
+        "localPath": "Agentic/Harness/CyberClaw/docs/LAZY_LOADING_GUIDE.md"
       }
     ],
     "unavailableReason": null,
@@ -9077,7 +8394,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-020",
-      "chapter": "AICoding/CyberClaw/docs/LAZY_LOADING_GUIDE.md"
+      "chapter": "Agentic/Harness/CyberClaw/docs/LAZY_LOADING_GUIDE.md"
     }
   },
   {
@@ -9088,7 +8405,7 @@
     "summary": "Codex · Hermes · CyberClaw · MiMo",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/CyberClaw/docs/LAZY_LOADING_QUICKSTART.md",
+    "localPath": "Agentic/Harness/CyberClaw/docs/LAZY_LOADING_QUICKSTART.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9100,7 +8417,7 @@
       {
         "label": "CyberClaw · 快速开始",
         "sourceUrl": null,
-        "localPath": "AICoding/CyberClaw/docs/LAZY_LOADING_QUICKSTART.md"
+        "localPath": "Agentic/Harness/CyberClaw/docs/LAZY_LOADING_QUICKSTART.md"
       }
     ],
     "unavailableReason": null,
@@ -9128,7 +8445,7 @@
     "summary": "Codex · Hermes · CyberClaw · MiMo",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/CyberClaw/docs/LAZY_LOADING_SUMMARY.md",
+    "localPath": "Agentic/Harness/CyberClaw/docs/LAZY_LOADING_SUMMARY.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9140,7 +8457,7 @@
       {
         "label": "CyberClaw · 总结",
         "sourceUrl": null,
-        "localPath": "AICoding/CyberClaw/docs/LAZY_LOADING_SUMMARY.md"
+        "localPath": "Agentic/Harness/CyberClaw/docs/LAZY_LOADING_SUMMARY.md"
       }
     ],
     "unavailableReason": null,
@@ -9168,7 +8485,7 @@
     "summary": "Codex · Hermes · CyberClaw · MiMo",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/MiMo-Code/README.zh.md",
+    "localPath": "AICoding/minimax-code/README_ZH.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9180,7 +8497,7 @@
       {
         "label": "MiMo-Code README（中文）",
         "sourceUrl": null,
-        "localPath": "AICoding/MiMo-Code/README.zh.md"
+        "localPath": "AICoding/minimax-code/README_ZH.md"
       }
     ],
     "unavailableReason": null,
@@ -9201,7 +8518,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-021",
-      "chapter": "AICoding/MiMo-Code/README.zh.md"
+      "chapter": "AICoding/minimax-code/README_ZH.md"
     }
   },
   {
@@ -9212,7 +8529,7 @@
     "summary": "Codex · Hermes · CyberClaw · MiMo",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/MiMo-Code/AGENTS.md",
+    "localPath": "AICoding/minimax-code/AGENTS.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -9224,7 +8541,7 @@
       {
         "label": "MiMo-Code AGENTS.md",
         "sourceUrl": null,
-        "localPath": "AICoding/MiMo-Code/AGENTS.md"
+        "localPath": "AICoding/minimax-code/AGENTS.md"
       }
     ],
     "unavailableReason": null,
@@ -9245,7 +8562,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-021",
-      "chapter": "AICoding/MiMo-Code/AGENTS.md"
+      "chapter": "AICoding/minimax-code/AGENTS.md"
     }
   },
   {
@@ -9890,1062 +9207,6 @@
           "doc": "Agentic/Document/learn-harness-engineering/docs/zh/resources/index.md"
         }
       }
-    }
-  },
-  {
-    "id": "legacy-reading-17-001",
-    "title": "导读",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "Harness Books · Book 1：Claude Code 驾驭工程",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/harness-books/book1-claude-code/index.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["Harness Books · Book 1：Claude Code 驾驭工程", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "导读",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book1-claude-code/index.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 16000,
-      "raw": {
-        "group": {
-          "title": "Harness Books · Book 1：Claude Code 驾驭工程",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "导读",
-          "doc": "Agentic/Document/harness-books/book1-claude-code/index.md"
-        }
-      }
-    },
-    "redirect": {
-      "itemId": "legacy-course-023",
-      "chapter": "Agentic/Harness/harness-books/book1-claude-code/index.md"
-    }
-  },
-  {
-    "id": "legacy-reading-17-002",
-    "title": "前言",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "Harness Books · Book 1：Claude Code 驾驭工程",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/harness-books/book1-claude-code/preface.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["Harness Books · Book 1：Claude Code 驾驭工程", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "前言",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book1-claude-code/preface.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 16001,
-      "raw": {
-        "group": {
-          "title": "Harness Books · Book 1：Claude Code 驾驭工程",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "前言",
-          "doc": "Agentic/Document/harness-books/book1-claude-code/preface.md"
-        }
-      }
-    },
-    "redirect": {
-      "itemId": "legacy-course-023",
-      "chapter": "Agentic/Harness/harness-books/book1-claude-code/preface.md"
-    }
-  },
-  {
-    "id": "legacy-reading-17-003",
-    "title": "第 1 章：为什么是驾驭工程",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "Harness Books · Book 1：Claude Code 驾驭工程",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-01-why-harness-engineering.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["Harness Books · Book 1：Claude Code 驾驭工程", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "第 1 章：为什么是驾驭工程",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-01-why-harness-engineering.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 16002,
-      "raw": {
-        "group": {
-          "title": "Harness Books · Book 1：Claude Code 驾驭工程",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "第 1 章：为什么是驾驭工程",
-          "doc": "Agentic/Document/harness-books/book1-claude-code/chapter-01-why-harness-engineering.md"
-        }
-      }
-    },
-    "redirect": {
-      "itemId": "legacy-course-023",
-      "chapter": "Agentic/Harness/harness-books/book1-claude-code/chapter-01-why-harness-engineering.md"
-    }
-  },
-  {
-    "id": "legacy-reading-17-004",
-    "title": "第 2 章：Prompt 是控制平面",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "Harness Books · Book 1：Claude Code 驾驭工程",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-02-prompt-is-control-plane.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["Harness Books · Book 1：Claude Code 驾驭工程", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "第 2 章：Prompt 是控制平面",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-02-prompt-is-control-plane.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 16003,
-      "raw": {
-        "group": {
-          "title": "Harness Books · Book 1：Claude Code 驾驭工程",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "第 2 章：Prompt 是控制平面",
-          "doc": "Agentic/Document/harness-books/book1-claude-code/chapter-02-prompt-is-control-plane.md"
-        }
-      }
-    },
-    "redirect": {
-      "itemId": "legacy-course-023",
-      "chapter": "Agentic/Harness/harness-books/book1-claude-code/chapter-02-prompt-is-control-plane.md"
-    }
-  },
-  {
-    "id": "legacy-reading-17-005",
-    "title": "第 3 章：查询循环与心跳",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "Harness Books · Book 1：Claude Code 驾驭工程",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-03-query-loop-heartbeat.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["Harness Books · Book 1：Claude Code 驾驭工程", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "第 3 章：查询循环与心跳",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-03-query-loop-heartbeat.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 16004,
-      "raw": {
-        "group": {
-          "title": "Harness Books · Book 1：Claude Code 驾驭工程",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "第 3 章：查询循环与心跳",
-          "doc": "Agentic/Document/harness-books/book1-claude-code/chapter-03-query-loop-heartbeat.md"
-        }
-      }
-    },
-    "redirect": {
-      "itemId": "legacy-course-023",
-      "chapter": "Agentic/Harness/harness-books/book1-claude-code/chapter-03-query-loop-heartbeat.md"
-    }
-  },
-  {
-    "id": "legacy-reading-17-006",
-    "title": "第 4 章：工具、权限与中断",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "Harness Books · Book 1：Claude Code 驾驭工程",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-04-tools-permissions-interrupts.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["Harness Books · Book 1：Claude Code 驾驭工程", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "第 4 章：工具、权限与中断",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-04-tools-permissions-interrupts.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 16005,
-      "raw": {
-        "group": {
-          "title": "Harness Books · Book 1：Claude Code 驾驭工程",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "第 4 章：工具、权限与中断",
-          "doc": "Agentic/Document/harness-books/book1-claude-code/chapter-04-tools-permissions-interrupts.md"
-        }
-      }
-    },
-    "redirect": {
-      "itemId": "legacy-course-023",
-      "chapter": "Agentic/Harness/harness-books/book1-claude-code/chapter-04-tools-permissions-interrupts.md"
-    }
-  },
-  {
-    "id": "legacy-reading-17-007",
-    "title": "第 5 章：上下文、记忆与压缩",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "Harness Books · Book 1：Claude Code 驾驭工程",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-05-context-memory-compact.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["Harness Books · Book 1：Claude Code 驾驭工程", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "第 5 章：上下文、记忆与压缩",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-05-context-memory-compact.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 16006,
-      "raw": {
-        "group": {
-          "title": "Harness Books · Book 1：Claude Code 驾驭工程",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "第 5 章：上下文、记忆与压缩",
-          "doc": "Agentic/Document/harness-books/book1-claude-code/chapter-05-context-memory-compact.md"
-        }
-      }
-    },
-    "redirect": {
-      "itemId": "legacy-course-023",
-      "chapter": "Agentic/Harness/harness-books/book1-claude-code/chapter-05-context-memory-compact.md"
-    }
-  },
-  {
-    "id": "legacy-reading-17-008",
-    "title": "第 6 章：错误与恢复",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "Harness Books · Book 1：Claude Code 驾驭工程",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-06-errors-and-recovery.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["Harness Books · Book 1：Claude Code 驾驭工程", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "第 6 章：错误与恢复",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-06-errors-and-recovery.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 16007,
-      "raw": {
-        "group": {
-          "title": "Harness Books · Book 1：Claude Code 驾驭工程",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "第 6 章：错误与恢复",
-          "doc": "Agentic/Document/harness-books/book1-claude-code/chapter-06-errors-and-recovery.md"
-        }
-      }
-    },
-    "redirect": {
-      "itemId": "legacy-course-023",
-      "chapter": "Agentic/Harness/harness-books/book1-claude-code/chapter-06-errors-and-recovery.md"
-    }
-  },
-  {
-    "id": "legacy-reading-17-009",
-    "title": "第 7 章：多 Agent 与验证",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "Harness Books · Book 1：Claude Code 驾驭工程",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-07-multi-agent-and-verification.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["Harness Books · Book 1：Claude Code 驾驭工程", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "第 7 章：多 Agent 与验证",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-07-multi-agent-and-verification.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 16008,
-      "raw": {
-        "group": {
-          "title": "Harness Books · Book 1：Claude Code 驾驭工程",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "第 7 章：多 Agent 与验证",
-          "doc": "Agentic/Document/harness-books/book1-claude-code/chapter-07-multi-agent-and-verification.md"
-        }
-      }
-    },
-    "redirect": {
-      "itemId": "legacy-course-023",
-      "chapter": "Agentic/Harness/harness-books/book1-claude-code/chapter-07-multi-agent-and-verification.md"
-    }
-  },
-  {
-    "id": "legacy-reading-17-010",
-    "title": "第 8 章：团队落地实践",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "Harness Books · Book 1：Claude Code 驾驭工程",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-08-team-landing-practices.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["Harness Books · Book 1：Claude Code 驾驭工程", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "第 8 章：团队落地实践",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-08-team-landing-practices.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 16009,
-      "raw": {
-        "group": {
-          "title": "Harness Books · Book 1：Claude Code 驾驭工程",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "第 8 章：团队落地实践",
-          "doc": "Agentic/Document/harness-books/book1-claude-code/chapter-08-team-landing-practices.md"
-        }
-      }
-    },
-    "redirect": {
-      "itemId": "legacy-course-023",
-      "chapter": "Agentic/Harness/harness-books/book1-claude-code/chapter-08-team-landing-practices.md"
-    }
-  },
-  {
-    "id": "legacy-reading-17-011",
-    "title": "第 9 章：十条原则",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "Harness Books · Book 1：Claude Code 驾驭工程",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-09-ten-principles.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["Harness Books · Book 1：Claude Code 驾驭工程", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "第 9 章：十条原则",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book1-claude-code/chapter-09-ten-principles.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 16010,
-      "raw": {
-        "group": {
-          "title": "Harness Books · Book 1：Claude Code 驾驭工程",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "第 9 章：十条原则",
-          "doc": "Agentic/Document/harness-books/book1-claude-code/chapter-09-ten-principles.md"
-        }
-      }
-    },
-    "redirect": {
-      "itemId": "legacy-course-023",
-      "chapter": "Agentic/Harness/harness-books/book1-claude-code/chapter-09-ten-principles.md"
-    }
-  },
-  {
-    "id": "legacy-reading-17-012",
-    "title": "附录 A：检查清单",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "Harness Books · Book 1：Claude Code 驾驭工程",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/harness-books/book1-claude-code/appendix-a-checklists.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["Harness Books · Book 1：Claude Code 驾驭工程", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "附录 A：检查清单",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book1-claude-code/appendix-a-checklists.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 16011,
-      "raw": {
-        "group": {
-          "title": "Harness Books · Book 1：Claude Code 驾驭工程",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "附录 A：检查清单",
-          "doc": "Agentic/Document/harness-books/book1-claude-code/appendix-a-checklists.md"
-        }
-      }
-    },
-    "redirect": {
-      "itemId": "legacy-course-023",
-      "chapter": "Agentic/Harness/harness-books/book1-claude-code/appendix-a-checklists.md"
-    }
-  },
-  {
-    "id": "legacy-reading-17-013",
-    "title": "附录 C：源码地图",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "Harness Books · Book 1：Claude Code 驾驭工程",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/harness-books/book1-claude-code/appendix-c-source-map.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["Harness Books · Book 1：Claude Code 驾驭工程", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "附录 C：源码地图",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book1-claude-code/appendix-c-source-map.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 16012,
-      "raw": {
-        "group": {
-          "title": "Harness Books · Book 1：Claude Code 驾驭工程",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "附录 C：源码地图",
-          "doc": "Agentic/Document/harness-books/book1-claude-code/appendix-c-source-map.md"
-        }
-      }
-    },
-    "redirect": {
-      "itemId": "legacy-course-023",
-      "chapter": "Agentic/Harness/harness-books/book1-claude-code/appendix-c-source-map.md"
-    }
-  },
-  {
-    "id": "legacy-reading-18-001",
-    "title": "前言",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "Harness Books · Book 2：CC vs Codex",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/harness-books/book2-comparing/preface.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["Harness Books · Book 2：CC vs Codex", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "前言",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book2-comparing/preface.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 17000,
-      "raw": {
-        "group": {
-          "title": "Harness Books · Book 2：CC vs Codex",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "前言",
-          "doc": "Agentic/Document/harness-books/book2-comparing/preface.md"
-        }
-      }
-    },
-    "redirect": {
-      "itemId": "legacy-course-023",
-      "chapter": "Agentic/Harness/harness-books/book2-comparing/preface.md"
-    }
-  },
-  {
-    "id": "legacy-reading-18-002",
-    "title": "第 0 章：阅读地图",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "Harness Books · Book 2：CC vs Codex",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-00-reading-map.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["Harness Books · Book 2：CC vs Codex", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "第 0 章：阅读地图",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-00-reading-map.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 17001,
-      "raw": {
-        "group": {
-          "title": "Harness Books · Book 2：CC vs Codex",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "第 0 章：阅读地图",
-          "doc": "Agentic/Document/harness-books/book2-comparing/chapter-00-reading-map.md"
-        }
-      }
-    },
-    "redirect": {
-      "itemId": "legacy-course-023",
-      "chapter": "Agentic/Harness/harness-books/book2-comparing/chapter-00-reading-map.md"
-    }
-  },
-  {
-    "id": "legacy-reading-18-003",
-    "title": "第 1 章：为什么做这个对比",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "Harness Books · Book 2：CC vs Codex",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-01-why-this-comparison.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["Harness Books · Book 2：CC vs Codex", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "第 1 章：为什么做这个对比",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-01-why-this-comparison.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 17002,
-      "raw": {
-        "group": {
-          "title": "Harness Books · Book 2：CC vs Codex",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "第 1 章：为什么做这个对比",
-          "doc": "Agentic/Document/harness-books/book2-comparing/chapter-01-why-this-comparison.md"
-        }
-      }
-    },
-    "redirect": {
-      "itemId": "legacy-course-023",
-      "chapter": "Agentic/Harness/harness-books/book2-comparing/chapter-01-why-this-comparison.md"
-    }
-  },
-  {
-    "id": "legacy-reading-18-004",
-    "title": "第 2 章：两个控制平面",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "Harness Books · Book 2：CC vs Codex",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-02-two-control-planes.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["Harness Books · Book 2：CC vs Codex", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "第 2 章：两个控制平面",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-02-two-control-planes.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 17003,
-      "raw": {
-        "group": {
-          "title": "Harness Books · Book 2：CC vs Codex",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "第 2 章：两个控制平面",
-          "doc": "Agentic/Document/harness-books/book2-comparing/chapter-02-two-control-planes.md"
-        }
-      }
-    },
-    "redirect": {
-      "itemId": "legacy-course-023",
-      "chapter": "Agentic/Harness/harness-books/book2-comparing/chapter-02-two-control-planes.md"
-    }
-  },
-  {
-    "id": "legacy-reading-18-005",
-    "title": "第 3 章：Loop、Thread 与 Rollout",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "Harness Books · Book 2：CC vs Codex",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-03-loop-thread-and-rollout.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["Harness Books · Book 2：CC vs Codex", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "第 3 章：Loop、Thread 与 Rollout",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-03-loop-thread-and-rollout.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 17004,
-      "raw": {
-        "group": {
-          "title": "Harness Books · Book 2：CC vs Codex",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "第 3 章：Loop、Thread 与 Rollout",
-          "doc": "Agentic/Document/harness-books/book2-comparing/chapter-03-loop-thread-and-rollout.md"
-        }
-      }
-    },
-    "redirect": {
-      "itemId": "legacy-course-023",
-      "chapter": "Agentic/Harness/harness-books/book2-comparing/chapter-03-loop-thread-and-rollout.md"
-    }
-  },
-  {
-    "id": "legacy-reading-18-006",
-    "title": "第 4 章：工具、沙箱与执行策略",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "Harness Books · Book 2：CC vs Codex",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-04-tools-sandbox-and-exec-policy.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["Harness Books · Book 2：CC vs Codex", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "第 4 章：工具、沙箱与执行策略",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-04-tools-sandbox-and-exec-policy.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 17005,
-      "raw": {
-        "group": {
-          "title": "Harness Books · Book 2：CC vs Codex",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "第 4 章：工具、沙箱与执行策略",
-          "doc": "Agentic/Document/harness-books/book2-comparing/chapter-04-tools-sandbox-and-exec-policy.md"
-        }
-      }
-    },
-    "redirect": {
-      "itemId": "legacy-course-023",
-      "chapter": "Agentic/Harness/harness-books/book2-comparing/chapter-04-tools-sandbox-and-exec-policy.md"
-    }
-  },
-  {
-    "id": "legacy-reading-18-007",
-    "title": "第 5 章：Skills、Hooks 与本地治理",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "Harness Books · Book 2：CC vs Codex",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-05-skills-hooks-and-local-governance.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["Harness Books · Book 2：CC vs Codex", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "第 5 章：Skills、Hooks 与本地治理",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-05-skills-hooks-and-local-governance.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 17006,
-      "raw": {
-        "group": {
-          "title": "Harness Books · Book 2：CC vs Codex",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "第 5 章：Skills、Hooks 与本地治理",
-          "doc": "Agentic/Document/harness-books/book2-comparing/chapter-05-skills-hooks-and-local-governance.md"
-        }
-      }
-    },
-    "redirect": {
-      "itemId": "legacy-course-023",
-      "chapter": "Agentic/Harness/harness-books/book2-comparing/chapter-05-skills-hooks-and-local-governance.md"
-    }
-  },
-  {
-    "id": "legacy-reading-18-008",
-    "title": "第 6 章：委派、验证与状态",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "Harness Books · Book 2：CC vs Codex",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-06-delegation-verification-and-state.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["Harness Books · Book 2：CC vs Codex", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "第 6 章：委派、验证与状态",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-06-delegation-verification-and-state.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 17007,
-      "raw": {
-        "group": {
-          "title": "Harness Books · Book 2：CC vs Codex",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "第 6 章：委派、验证与状态",
-          "doc": "Agentic/Document/harness-books/book2-comparing/chapter-06-delegation-verification-and-state.md"
-        }
-      }
-    },
-    "redirect": {
-      "itemId": "legacy-course-023",
-      "chapter": "Agentic/Harness/harness-books/book2-comparing/chapter-06-delegation-verification-and-state.md"
-    }
-  },
-  {
-    "id": "legacy-reading-18-009",
-    "title": "第 7 章：收敛与分歧",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "Harness Books · Book 2：CC vs Codex",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-07-convergence-and-divergence.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["Harness Books · Book 2：CC vs Codex", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "第 7 章：收敛与分歧",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-07-convergence-and-divergence.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 17008,
-      "raw": {
-        "group": {
-          "title": "Harness Books · Book 2：CC vs Codex",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "第 7 章：收敛与分歧",
-          "doc": "Agentic/Document/harness-books/book2-comparing/chapter-07-convergence-and-divergence.md"
-        }
-      }
-    },
-    "redirect": {
-      "itemId": "legacy-course-023",
-      "chapter": "Agentic/Harness/harness-books/book2-comparing/chapter-07-convergence-and-divergence.md"
-    }
-  },
-  {
-    "id": "legacy-reading-18-010",
-    "title": "第 8 章：如何选择或自建",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "Harness Books · Book 2：CC vs Codex",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-08-how-to-choose-or-build.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["Harness Books · Book 2：CC vs Codex", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "第 8 章：如何选择或自建",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book2-comparing/chapter-08-how-to-choose-or-build.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 17009,
-      "raw": {
-        "group": {
-          "title": "Harness Books · Book 2：CC vs Codex",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "第 8 章：如何选择或自建",
-          "doc": "Agentic/Document/harness-books/book2-comparing/chapter-08-how-to-choose-or-build.md"
-        }
-      }
-    },
-    "redirect": {
-      "itemId": "legacy-course-023",
-      "chapter": "Agentic/Harness/harness-books/book2-comparing/chapter-08-how-to-choose-or-build.md"
-    }
-  },
-  {
-    "id": "legacy-reading-18-011",
-    "title": "附录 B：检查清单",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "Harness Books · Book 2：CC vs Codex",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/harness-books/book2-comparing/appendix-b-checklists.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["Harness Books · Book 2：CC vs Codex", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "附录 B：检查清单",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/harness-books/book2-comparing/appendix-b-checklists.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 17010,
-      "raw": {
-        "group": {
-          "title": "Harness Books · Book 2：CC vs Codex",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "附录 B：检查清单",
-          "doc": "Agentic/Document/harness-books/book2-comparing/appendix-b-checklists.md"
-        }
-      }
-    },
-    "redirect": {
-      "itemId": "legacy-course-023",
-      "chapter": "Agentic/Harness/harness-books/book2-comparing/appendix-b-checklists.md"
     }
   },
   {
@@ -12981,50 +11242,6 @@
     }
   },
   {
-    "id": "legacy-reading-22-010",
-    "title": "OpenHands",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "记忆层与多 Agent 框架",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/OpenHands/README.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["记忆层与多 Agent 框架", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "OpenHands",
-        "sourceUrl": null,
-        "localPath": "Agentic/OpenHands/README.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 21009,
-      "raw": {
-        "group": {
-          "title": "记忆层与多 Agent 框架",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "OpenHands",
-          "doc": "Agentic/OpenHands/README.md"
-        }
-      }
-    },
-    "redirect": {
-      "itemId": "legacy-course-030",
-      "chapter": "Agentic/OpenHands/README.md"
-    }
-  },
-  {
     "id": "legacy-reading-22-011",
     "title": "PI（pi-mono）",
     "track": "agentic",
@@ -13164,7 +11381,7 @@
     "summary": "记忆层与多 Agent 框架",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/open-agent-sdk-typescript/README.md",
+    "localPath": "Agentic/sdk/open-agent-sdk-typescript/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -13176,7 +11393,7 @@
       {
         "label": "Open Agent SDK（TypeScript）",
         "sourceUrl": null,
-        "localPath": "Agentic/open-agent-sdk-typescript/README.md"
+        "localPath": "Agentic/sdk/open-agent-sdk-typescript/README.md"
       }
     ],
     "unavailableReason": null,
@@ -13197,7 +11414,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-037",
-      "chapter": "Agentic/open-agent-sdk-typescript/README.md"
+      "chapter": "Agentic/sdk/open-agent-sdk-typescript/README.md"
     }
   },
   {
@@ -13208,7 +11425,7 @@
     "summary": "AI Agent Deep Dive · 17 篇拆解",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/ai-agent-deep-dive/README.md",
+    "localPath": "Learning/ai-agent-deep-dive/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -13220,7 +11437,7 @@
       {
         "label": "总览 README",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/README.md"
+        "localPath": "Learning/ai-agent-deep-dive/README.md"
       }
     ],
     "unavailableReason": null,
@@ -13241,7 +11458,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-034",
-      "chapter": "Agentic/ai-agent-deep-dive/README.md"
+      "chapter": "Learning/ai-agent-deep-dive/README.md"
     }
   },
   {
@@ -13252,7 +11469,7 @@
     "summary": "AI Agent Deep Dive · 17 篇拆解",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/ai-agent-deep-dive/docs/00-product-overview.md",
+    "localPath": "Learning/ai-agent-deep-dive/docs/00-product-overview.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -13264,7 +11481,7 @@
       {
         "label": "00 产品总览",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/00-product-overview.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/00-product-overview.md"
       }
     ],
     "unavailableReason": null,
@@ -13285,7 +11502,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-034",
-      "chapter": "Agentic/ai-agent-deep-dive/docs/00-product-overview.md"
+      "chapter": "Learning/ai-agent-deep-dive/docs/00-product-overview.md"
     }
   },
   {
@@ -13296,7 +11513,7 @@
     "summary": "AI Agent Deep Dive · 17 篇拆解",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/ai-agent-deep-dive/docs/01-system-prompt-and-orchestration.md",
+    "localPath": "Learning/ai-agent-deep-dive/docs/01-system-prompt-and-orchestration.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -13308,7 +11525,7 @@
       {
         "label": "01 系统提示词与编排",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/01-system-prompt-and-orchestration.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/01-system-prompt-and-orchestration.md"
       }
     ],
     "unavailableReason": null,
@@ -13329,7 +11546,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-034",
-      "chapter": "Agentic/ai-agent-deep-dive/docs/01-system-prompt-and-orchestration.md"
+      "chapter": "Learning/ai-agent-deep-dive/docs/01-system-prompt-and-orchestration.md"
     }
   },
   {
@@ -13340,7 +11557,7 @@
     "summary": "AI Agent Deep Dive · 17 篇拆解",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/ai-agent-deep-dive/docs/02-tools-permissions-and-execution.md",
+    "localPath": "Learning/ai-agent-deep-dive/docs/02-tools-permissions-and-execution.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -13352,7 +11569,7 @@
       {
         "label": "02 工具、权限与执行",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/02-tools-permissions-and-execution.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/02-tools-permissions-and-execution.md"
       }
     ],
     "unavailableReason": null,
@@ -13373,7 +11590,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-034",
-      "chapter": "Agentic/ai-agent-deep-dive/docs/02-tools-permissions-and-execution.md"
+      "chapter": "Learning/ai-agent-deep-dive/docs/02-tools-permissions-and-execution.md"
     }
   },
   {
@@ -13384,7 +11601,7 @@
     "summary": "AI Agent Deep Dive · 17 篇拆解",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/ai-agent-deep-dive/docs/03-skills-plugins-mcp.md",
+    "localPath": "Learning/ai-agent-deep-dive/docs/03-skills-plugins-mcp.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -13396,7 +11613,7 @@
       {
         "label": "03 Skills、插件与 MCP",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/03-skills-plugins-mcp.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/03-skills-plugins-mcp.md"
       }
     ],
     "unavailableReason": null,
@@ -13417,7 +11634,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-034",
-      "chapter": "Agentic/ai-agent-deep-dive/docs/03-skills-plugins-mcp.md"
+      "chapter": "Learning/ai-agent-deep-dive/docs/03-skills-plugins-mcp.md"
     }
   },
   {
@@ -13428,7 +11645,7 @@
     "summary": "AI Agent Deep Dive · 17 篇拆解",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/ai-agent-deep-dive/docs/04-memory-and-session.md",
+    "localPath": "Learning/ai-agent-deep-dive/docs/04-memory-and-session.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -13440,7 +11657,7 @@
       {
         "label": "04 记忆与会话",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/04-memory-and-session.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/04-memory-and-session.md"
       }
     ],
     "unavailableReason": null,
@@ -13461,7 +11678,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-034",
-      "chapter": "Agentic/ai-agent-deep-dive/docs/04-memory-and-session.md"
+      "chapter": "Learning/ai-agent-deep-dive/docs/04-memory-and-session.md"
     }
   },
   {
@@ -13472,7 +11689,7 @@
     "summary": "AI Agent Deep Dive · 17 篇拆解",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/ai-agent-deep-dive/docs/05-commands-ui-and-operator-experience.md",
+    "localPath": "Learning/ai-agent-deep-dive/docs/05-commands-ui-and-operator-experience.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -13484,7 +11701,7 @@
       {
         "label": "05 命令、UI 与操作体验",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/05-commands-ui-and-operator-experience.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/05-commands-ui-and-operator-experience.md"
       }
     ],
     "unavailableReason": null,
@@ -13505,7 +11722,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-034",
-      "chapter": "Agentic/ai-agent-deep-dive/docs/05-commands-ui-and-operator-experience.md"
+      "chapter": "Learning/ai-agent-deep-dive/docs/05-commands-ui-and-operator-experience.md"
     }
   },
   {
@@ -13516,7 +11733,7 @@
     "summary": "AI Agent Deep Dive · 17 篇拆解",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/ai-agent-deep-dive/docs/06-verification-and-quality.md",
+    "localPath": "Learning/ai-agent-deep-dive/docs/06-verification-and-quality.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -13528,7 +11745,7 @@
       {
         "label": "06 验证与质量",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/06-verification-and-quality.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/06-verification-and-quality.md"
       }
     ],
     "unavailableReason": null,
@@ -13549,7 +11766,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-034",
-      "chapter": "Agentic/ai-agent-deep-dive/docs/06-verification-and-quality.md"
+      "chapter": "Learning/ai-agent-deep-dive/docs/06-verification-and-quality.md"
     }
   },
   {
@@ -13560,7 +11777,7 @@
     "summary": "AI Agent Deep Dive · 17 篇拆解",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/ai-agent-deep-dive/docs/07-architecture-map.md",
+    "localPath": "Learning/ai-agent-deep-dive/docs/07-architecture-map.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -13572,7 +11789,7 @@
       {
         "label": "07 架构地图",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/07-architecture-map.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/07-architecture-map.md"
       }
     ],
     "unavailableReason": null,
@@ -13593,7 +11810,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-034",
-      "chapter": "Agentic/ai-agent-deep-dive/docs/07-architecture-map.md"
+      "chapter": "Learning/ai-agent-deep-dive/docs/07-architecture-map.md"
     }
   },
   {
@@ -13604,7 +11821,7 @@
     "summary": "AI Agent Deep Dive · 17 篇拆解",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/ai-agent-deep-dive/docs/08-agent-runtime-loop.md",
+    "localPath": "Learning/ai-agent-deep-dive/docs/08-agent-runtime-loop.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -13616,7 +11833,7 @@
       {
         "label": "08 Agent 运行时循环",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/08-agent-runtime-loop.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/08-agent-runtime-loop.md"
       }
     ],
     "unavailableReason": null,
@@ -13637,7 +11854,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-034",
-      "chapter": "Agentic/ai-agent-deep-dive/docs/08-agent-runtime-loop.md"
+      "chapter": "Learning/ai-agent-deep-dive/docs/08-agent-runtime-loop.md"
     }
   },
   {
@@ -13648,7 +11865,7 @@
     "summary": "AI Agent Deep Dive · 17 篇拆解",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/ai-agent-deep-dive/docs/09-message-model-and-state.md",
+    "localPath": "Learning/ai-agent-deep-dive/docs/09-message-model-and-state.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -13660,7 +11877,7 @@
       {
         "label": "09 消息模型与状态",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/09-message-model-and-state.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/09-message-model-and-state.md"
       }
     ],
     "unavailableReason": null,
@@ -13681,7 +11898,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-034",
-      "chapter": "Agentic/ai-agent-deep-dive/docs/09-message-model-and-state.md"
+      "chapter": "Learning/ai-agent-deep-dive/docs/09-message-model-and-state.md"
     }
   },
   {
@@ -13692,7 +11909,7 @@
     "summary": "AI Agent Deep Dive · 17 篇拆解",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/ai-agent-deep-dive/docs/10-context-management.md",
+    "localPath": "Learning/ai-agent-deep-dive/docs/10-context-management.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -13704,7 +11921,7 @@
       {
         "label": "10 上下文管理",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/10-context-management.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/10-context-management.md"
       }
     ],
     "unavailableReason": null,
@@ -13725,7 +11942,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-034",
-      "chapter": "Agentic/ai-agent-deep-dive/docs/10-context-management.md"
+      "chapter": "Learning/ai-agent-deep-dive/docs/10-context-management.md"
     }
   },
   {
@@ -13736,7 +11953,7 @@
     "summary": "AI Agent Deep Dive · 17 篇拆解",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/ai-agent-deep-dive/docs/11-task-model.md",
+    "localPath": "Learning/ai-agent-deep-dive/docs/11-task-model.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -13748,7 +11965,7 @@
       {
         "label": "11 任务模型",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/11-task-model.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/11-task-model.md"
       }
     ],
     "unavailableReason": null,
@@ -13769,7 +11986,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-034",
-      "chapter": "Agentic/ai-agent-deep-dive/docs/11-task-model.md"
+      "chapter": "Learning/ai-agent-deep-dive/docs/11-task-model.md"
     }
   },
   {
@@ -13780,7 +11997,7 @@
     "summary": "AI Agent Deep Dive · 17 篇拆解",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/ai-agent-deep-dive/docs/12-workspace-and-isolation.md",
+    "localPath": "Learning/ai-agent-deep-dive/docs/12-workspace-and-isolation.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -13792,7 +12009,7 @@
       {
         "label": "12 工作区与隔离",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/12-workspace-and-isolation.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/12-workspace-and-isolation.md"
       }
     ],
     "unavailableReason": null,
@@ -13813,7 +12030,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-034",
-      "chapter": "Agentic/ai-agent-deep-dive/docs/12-workspace-and-isolation.md"
+      "chapter": "Learning/ai-agent-deep-dive/docs/12-workspace-and-isolation.md"
     }
   },
   {
@@ -13824,7 +12041,7 @@
     "summary": "AI Agent Deep Dive · 17 篇拆解",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/ai-agent-deep-dive/docs/13-failure-recovery.md",
+    "localPath": "Learning/ai-agent-deep-dive/docs/13-failure-recovery.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -13836,7 +12053,7 @@
       {
         "label": "13 失败恢复",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/13-failure-recovery.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/13-failure-recovery.md"
       }
     ],
     "unavailableReason": null,
@@ -13857,7 +12074,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-034",
-      "chapter": "Agentic/ai-agent-deep-dive/docs/13-failure-recovery.md"
+      "chapter": "Learning/ai-agent-deep-dive/docs/13-failure-recovery.md"
     }
   },
   {
@@ -13868,7 +12085,7 @@
     "summary": "AI Agent Deep Dive · 17 篇拆解",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/ai-agent-deep-dive/docs/14-configuration-system.md",
+    "localPath": "Learning/ai-agent-deep-dive/docs/14-configuration-system.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -13880,7 +12097,7 @@
       {
         "label": "14 配置系统",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/14-configuration-system.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/14-configuration-system.md"
       }
     ],
     "unavailableReason": null,
@@ -13901,7 +12118,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-034",
-      "chapter": "Agentic/ai-agent-deep-dive/docs/14-configuration-system.md"
+      "chapter": "Learning/ai-agent-deep-dive/docs/14-configuration-system.md"
     }
   },
   {
@@ -13912,7 +12129,7 @@
     "summary": "AI Agent Deep Dive · 17 篇拆解",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/ai-agent-deep-dive/docs/15-mvp-scope.md",
+    "localPath": "Learning/ai-agent-deep-dive/docs/15-mvp-scope.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -13924,7 +12141,7 @@
       {
         "label": "15 MVP 范围",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/15-mvp-scope.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/15-mvp-scope.md"
       }
     ],
     "unavailableReason": null,
@@ -13945,7 +12162,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-034",
-      "chapter": "Agentic/ai-agent-deep-dive/docs/15-mvp-scope.md"
+      "chapter": "Learning/ai-agent-deep-dive/docs/15-mvp-scope.md"
     }
   },
   {
@@ -13956,7 +12173,7 @@
     "summary": "AI Agent Deep Dive · 17 篇拆解",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/ai-agent-deep-dive/docs/16-python-implementation-notes.md",
+    "localPath": "Learning/ai-agent-deep-dive/docs/16-python-implementation-notes.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -13968,7 +12185,7 @@
       {
         "label": "16 Python 实现笔记",
         "sourceUrl": null,
-        "localPath": "Agentic/ai-agent-deep-dive/docs/16-python-implementation-notes.md"
+        "localPath": "Learning/ai-agent-deep-dive/docs/16-python-implementation-notes.md"
       }
     ],
     "unavailableReason": null,
@@ -13989,7 +12206,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-034",
-      "chapter": "Agentic/ai-agent-deep-dive/docs/16-python-implementation-notes.md"
+      "chapter": "Learning/ai-agent-deep-dive/docs/16-python-implementation-notes.md"
     }
   },
   {
@@ -14408,7 +12625,7 @@
     "summary": "Multica · 多 Agent 协作平台",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/multica/README.zh-CN.md",
+    "localPath": "Application/multica/README.zh.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -14420,7 +12637,7 @@
       {
         "label": "README（中文）",
         "sourceUrl": null,
-        "localPath": "Agentic/multica/README.zh-CN.md"
+        "localPath": "Application/multica/README.zh.md"
       }
     ],
     "unavailableReason": null,
@@ -14441,91 +12658,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-035",
-      "chapter": "Agentic/multica/README.zh-CN.md"
-    }
-  },
-  {
-    "id": "legacy-reading-25-002",
-    "title": "设计文档",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "Multica · 多 Agent 协作平台",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/multica/docs/design.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["Multica · 多 Agent 协作平台", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "设计文档",
-        "sourceUrl": null,
-        "localPath": "Agentic/multica/docs/design.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 24001,
-      "raw": {
-        "group": {
-          "title": "Multica · 多 Agent 协作平台",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "设计文档",
-          "doc": "Agentic/multica/docs/design.md"
-        }
-      }
-    },
-    "redirect": {
-      "itemId": "legacy-course-035",
-      "chapter": "Agentic/multica/docs/design.md"
-    }
-  },
-  {
-    "id": "legacy-reading-25-003",
-    "title": "产品总览",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "Multica · 多 Agent 协作平台",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/multica/docs/product-overview.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["Multica · 多 Agent 协作平台", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "产品总览",
-        "sourceUrl": null,
-        "localPath": "Agentic/multica/docs/product-overview.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 24002,
-      "raw": {
-        "group": {
-          "title": "Multica · 多 Agent 协作平台",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "产品总览",
-          "doc": "Agentic/multica/docs/product-overview.md"
-        }
-      }
+      "chapter": "Application/multica/README.zh.md"
     }
   },
   {
@@ -14536,7 +12669,7 @@
     "summary": "Multica · 多 Agent 协作平台",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/multica/CLI_AND_DAEMON.md",
+    "localPath": "Application/multica/CLI_AND_DAEMON.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -14548,7 +12681,7 @@
       {
         "label": "CLI 与 Daemon",
         "sourceUrl": null,
-        "localPath": "Agentic/multica/CLI_AND_DAEMON.md"
+        "localPath": "Application/multica/CLI_AND_DAEMON.md"
       }
     ],
     "unavailableReason": null,
@@ -14569,47 +12702,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-035",
-      "chapter": "Agentic/multica/CLI_AND_DAEMON.md"
-    }
-  },
-  {
-    "id": "legacy-reading-25-005",
-    "title": "架构交接审计",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "Multica · 多 Agent 协作平台",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/multica/HANDOFF_ARCHITECTURE_AUDIT.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["Multica · 多 Agent 协作平台", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "架构交接审计",
-        "sourceUrl": null,
-        "localPath": "Agentic/multica/HANDOFF_ARCHITECTURE_AUDIT.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 24004,
-      "raw": {
-        "group": {
-          "title": "Multica · 多 Agent 协作平台",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "架构交接审计",
-          "doc": "Agentic/multica/HANDOFF_ARCHITECTURE_AUDIT.md"
-        }
-      }
+      "chapter": "Application/multica/CLI_AND_DAEMON.md"
     }
   },
   {
@@ -14620,7 +12713,7 @@
     "summary": "Multica · 多 Agent 协作平台",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/multica/SELF_HOSTING.md",
+    "localPath": "Application/multica/SELF_HOSTING.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -14632,7 +12725,7 @@
       {
         "label": "自托管指南",
         "sourceUrl": null,
-        "localPath": "Agentic/multica/SELF_HOSTING.md"
+        "localPath": "Application/multica/SELF_HOSTING.md"
       }
     ],
     "unavailableReason": null,
@@ -14660,7 +12753,7 @@
     "summary": "Multica · 多 Agent 协作平台",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/multica/CLAUDE.md",
+    "localPath": "Application/multica/CLAUDE.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -14672,7 +12765,7 @@
       {
         "label": "工程约定 CLAUDE.md",
         "sourceUrl": null,
-        "localPath": "Agentic/multica/CLAUDE.md"
+        "localPath": "Application/multica/CLAUDE.md"
       }
     ],
     "unavailableReason": null,
@@ -18065,210 +16158,6 @@
     }
   },
   {
-    "id": "legacy-reading-32-009",
-    "title": "OpenHands README",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "MetaGPT · OpenHands · openworker",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/OpenHands/README.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["MetaGPT · OpenHands · openworker", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "OpenHands README",
-        "sourceUrl": null,
-        "localPath": "Agentic/OpenHands/README.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 31008,
-      "raw": {
-        "group": {
-          "title": "MetaGPT · OpenHands · openworker",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "OpenHands README",
-          "doc": "Agentic/OpenHands/README.md"
-        }
-      }
-    },
-    "redirect": {
-      "itemId": "legacy-course-030",
-      "chapter": "Agentic/OpenHands/README.md"
-    }
-  },
-  {
-    "id": "legacy-reading-32-010",
-    "title": "OpenHands 架构",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "MetaGPT · OpenHands · openworker",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/OpenHands/docs/architecture.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["MetaGPT · OpenHands · openworker", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "OpenHands 架构",
-        "sourceUrl": null,
-        "localPath": "Agentic/OpenHands/docs/architecture.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 31009,
-      "raw": {
-        "group": {
-          "title": "MetaGPT · OpenHands · openworker",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "OpenHands 架构",
-          "doc": "Agentic/OpenHands/docs/architecture.md"
-        }
-      }
-    }
-  },
-  {
-    "id": "legacy-reading-32-011",
-    "title": "OpenHands 开发指南",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "MetaGPT · OpenHands · openworker",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/OpenHands/docs/DEVELOPMENT.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["MetaGPT · OpenHands · openworker", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "OpenHands 开发指南",
-        "sourceUrl": null,
-        "localPath": "Agentic/OpenHands/docs/DEVELOPMENT.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 31010,
-      "raw": {
-        "group": {
-          "title": "MetaGPT · OpenHands · openworker",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "OpenHands 开发指南",
-          "doc": "Agentic/OpenHands/docs/DEVELOPMENT.md"
-        }
-      }
-    }
-  },
-  {
-    "id": "legacy-reading-32-012",
-    "title": "OpenHands 自托管",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "MetaGPT · OpenHands · openworker",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/OpenHands/docs/SELF_HOSTING.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["MetaGPT · OpenHands · openworker", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "OpenHands 自托管",
-        "sourceUrl": null,
-        "localPath": "Agentic/OpenHands/docs/SELF_HOSTING.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 31011,
-      "raw": {
-        "group": {
-          "title": "MetaGPT · OpenHands · openworker",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "OpenHands 自托管",
-          "doc": "Agentic/OpenHands/docs/SELF_HOSTING.md"
-        }
-      }
-    }
-  },
-  {
-    "id": "legacy-reading-32-013",
-    "title": "OpenHands ACP Agents",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "MetaGPT · OpenHands · openworker",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/OpenHands/docs/ACP_AGENTS.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["MetaGPT · OpenHands · openworker", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "OpenHands ACP Agents",
-        "sourceUrl": null,
-        "localPath": "Agentic/OpenHands/docs/ACP_AGENTS.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 31012,
-      "raw": {
-        "group": {
-          "title": "MetaGPT · OpenHands · openworker",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "OpenHands ACP Agents",
-          "doc": "Agentic/OpenHands/docs/ACP_AGENTS.md"
-        }
-      }
-    }
-  },
-  {
     "id": "legacy-reading-32-014",
     "title": "openworker README",
     "track": "agentic",
@@ -18476,46 +16365,6 @@
         "item": {
           "label": "贡献指南",
           "doc": "Agentic/PI/pi-mono/CONTRIBUTING.md"
-        }
-      }
-    }
-  },
-  {
-    "id": "legacy-reading-33-004",
-    "title": "TUI 设计方案",
-    "track": "agentic",
-    "stageIds": [],
-    "summary": "PI · pi-mono 工具链",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/PI/pi-mono/tui-plan.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["PI · pi-mono 工具链", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "TUI 设计方案",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/PI/pi-mono/tui-plan.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 32003,
-      "raw": {
-        "group": {
-          "title": "PI · pi-mono 工具链",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "TUI 设计方案",
-          "doc": "Agentic/PI/pi-mono/tui-plan.md"
         }
       }
     }
@@ -21333,46 +19182,6 @@
     }
   },
   {
-    "id": "legacy-reading-37-018",
-    "title": "代理配置指南",
-    "track": "application",
-    "stageIds": [],
-    "summary": "cc-switch · 中文用户手册",
-    "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Application/cc-switch/docs/guides/proxy-guide-zh.md",
-    "accessPolicy": "local-preferred",
-    "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
-    "tags": ["cc-switch · 中文用户手册", "legacy-reading"],
-    "lastReviewedAt": null,
-    "references": [
-      {
-        "label": "代理配置指南",
-        "sourceUrl": null,
-        "localPath": "Application/cc-switch/docs/guides/proxy-guide-zh.md"
-      }
-    ],
-    "unavailableReason": null,
-    "legacyImport": {
-      "source": "learning-site/data.js",
-      "kind": "reading-chapter",
-      "order": 36017,
-      "raw": {
-        "group": {
-          "title": "cc-switch · 中文用户手册",
-          "track": "application"
-        },
-        "item": {
-          "label": "代理配置指南",
-          "doc": "Application/cc-switch/docs/guides/proxy-guide-zh.md"
-        }
-      }
-    }
-  },
-  {
     "id": "legacy-reading-37-019",
     "title": "会话管理器设计",
     "track": "application",
@@ -21760,7 +19569,7 @@
     "summary": "CodexSwitch · WorkAny · Solon-AI",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Application/solon-ai/solon-ai-a2a/README.md",
+    "localPath": "Application/solon-ai/solon-ai-flow/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -21772,7 +19581,7 @@
       {
         "label": "Solon-AI · A2A 模块",
         "sourceUrl": null,
-        "localPath": "Application/solon-ai/solon-ai-a2a/README.md"
+        "localPath": "Application/solon-ai/solon-ai-flow/README.md"
       }
     ],
     "unavailableReason": null,
@@ -21793,7 +19602,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-042",
-      "chapter": "Application/solon-ai/solon-ai-a2a/README.md"
+      "chapter": "Application/solon-ai/solon-ai-flow/README.md"
     }
   },
   {
@@ -21919,5 +19728,207 @@
         }
       }
     }
+  },
+  {
+    "id": "deepseek-harness",
+    "title": "DeepSeek Harness",
+    "track": "agentic",
+    "stageIds": [],
+    "summary": "DeepSeek 官方开源 agent harness（dsh），提供可扩展的 Agent 运行时与工具接入框架。",
+    "learningGoals": ["了解 DeepSeek 官方 harness 的设计与运行方式。"],
+    "sourceUrl": "https://github.com/deepseek-ai/deepseek-harness",
+    "localPath": "Agentic/Harness/deepseek/deepseek-harness/README.md",
+    "accessPolicy": "local-preferred",
+    "publicationRights": "third-party",
+    "author": "DeepSeek AI",
+    "license": "MIT",
+    "licenseStatus": "known",
+    "tags": ["harness", "agentic", "local"],
+    "lastReviewedAt": null,
+    "references": [
+      {
+        "label": "本地 README",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/deepseek/deepseek-harness/README.md"
+      }
+    ],
+    "unavailableReason": null
+  },
+  {
+    "id": "hello-agents-jjyaoao",
+    "title": "HelloAgents（jjyaoao）",
+    "track": "agentic",
+    "stageIds": [],
+    "summary": "从零开始构建多智能体框架的教学项目：轻量、原生、教学友好，覆盖从单 Agent 到多 Agent 协作的实现路径。",
+    "learningGoals": [
+      "跟着动手从零搭一个多智能体框架，理解 Agent 协作的核心机制。"
+    ],
+    "sourceUrl": "https://github.com/jjyaoao/HelloAgents",
+    "localPath": "Agentic/Harness/HelloAgents/README.md",
+    "accessPolicy": "local-preferred",
+    "publicationRights": "third-party",
+    "author": "jjyaoao",
+    "license": "CC BY-NC-SA 4.0",
+    "licenseStatus": "known",
+    "tags": ["多智能体", "教学", "local"],
+    "lastReviewedAt": null,
+    "references": [
+      {
+        "label": "本地 README",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/HelloAgents/README.md"
+      }
+    ],
+    "unavailableReason": null
+  },
+  {
+    "id": "openhanako",
+    "title": "HanaAgent（openhanako）",
+    "track": "agentic",
+    "stageIds": [],
+    "summary": "HanaAgent：一个 Agent 框架/平台实现，提供构建与运行 Agent 的基础能力。",
+    "learningGoals": ["了解 HanaAgent 框架的定位与能力边界。"],
+    "sourceUrl": "https://github.com/liliMozi/openhanako",
+    "localPath": "Agentic/Harness/openhanako/README.md",
+    "accessPolicy": "local-preferred",
+    "publicationRights": "third-party",
+    "author": "liliMozi",
+    "license": "Apache-2.0",
+    "licenseStatus": "known",
+    "tags": ["agent", "框架", "local"],
+    "lastReviewedAt": null,
+    "references": [
+      {
+        "label": "本地 README",
+        "sourceUrl": null,
+        "localPath": "Agentic/Harness/openhanako/README.md"
+      }
+    ],
+    "unavailableReason": null
+  },
+  {
+    "id": "mini-agent",
+    "title": "Mini-Agent（MiniMax）",
+    "track": "aicoding",
+    "stageIds": [],
+    "summary": "MiniMax 官方的极简 Agent 演示项目：基于 M2.5 模型与 Anthropic 兼容 API，展示构建 Agent 的最佳实践。",
+    "learningGoals": ["以最小实现学习基于 M2.5 构建专业 Agent 的工程实践。"],
+    "sourceUrl": "https://github.com/MiniMax-AI/Mini-Agent",
+    "localPath": "AICoding/Mini-Agent/README.md",
+    "accessPolicy": "local-preferred",
+    "publicationRights": "third-party",
+    "author": "MiniMax-AI",
+    "license": "MIT",
+    "licenseStatus": "known",
+    "tags": ["MiniMax", "demo", "local"],
+    "lastReviewedAt": null,
+    "references": [
+      {
+        "label": "本地 README",
+        "sourceUrl": null,
+        "localPath": "AICoding/Mini-Agent/README.md"
+      }
+    ],
+    "unavailableReason": null
+  },
+  {
+    "id": "opencode-goal-plugin",
+    "title": "OpenCode Goal Plugin",
+    "track": "aicoding",
+    "stageIds": [],
+    "summary": "OpenCode 的长时目标模式插件：/goal 命令、持久目标状态、完成证据与空闲续跑，让会话专注单一目标直至完成。",
+    "learningGoals": ["为 OpenCode 会话加装类 Codex 的长期目标执行模式。"],
+    "sourceUrl": "https://github.com/prevalentWare/opencode-goal-plugin",
+    "localPath": "AICoding/opencode/plugins/opencode-goal-plugin/README.md",
+    "accessPolicy": "local-preferred",
+    "publicationRights": "third-party",
+    "author": "prevalentWare",
+    "license": "MIT",
+    "licenseStatus": "known",
+    "tags": ["opencode", "插件", "local"],
+    "lastReviewedAt": null,
+    "references": [
+      {
+        "label": "本地 README",
+        "sourceUrl": null,
+        "localPath": "AICoding/opencode/plugins/opencode-goal-plugin/README.md"
+      }
+    ],
+    "unavailableReason": null
+  },
+  {
+    "id": "zcode",
+    "title": "ZCode",
+    "track": "aicoding",
+    "stageIds": [],
+    "summary": "AI 编程工作台：桌面应用 + 浏览器界面 + 终端 Agent，仓库含客户端、后端服务、共享 UI 与 Agent CLI/运行时源码。",
+    "learningGoals": ["了解 ZCode 全栈 AI 编程工作台的结构与 Agent 运行时。"],
+    "sourceUrl": "https://github.com/zai-org/ZCode",
+    "localPath": "AICoding/ZCode/README.md",
+    "accessPolicy": "local-preferred",
+    "publicationRights": "third-party",
+    "author": "zai-org",
+    "license": "Apache-2.0",
+    "licenseStatus": "known",
+    "tags": ["AI 编程", "工作台", "local"],
+    "lastReviewedAt": null,
+    "references": [
+      {
+        "label": "本地 README",
+        "sourceUrl": null,
+        "localPath": "AICoding/ZCode/README.md"
+      }
+    ],
+    "unavailableReason": null
+  },
+  {
+    "id": "aihot",
+    "title": "AIHOT",
+    "track": "application",
+    "stageIds": [],
+    "summary": "面向各行业的 AI 应用平台：把多路信源汇入精选，分发给法律、人力资源、金融等行业场景。",
+    "learningGoals": ["了解 AIHOT 的平台形态与行业分发模式。"],
+    "sourceUrl": "https://github.com/KKKKhazix/AIHOT",
+    "localPath": "Application/AIHOT/README.md",
+    "accessPolicy": "local-preferred",
+    "publicationRights": "third-party",
+    "author": "KKKKhazix",
+    "license": "MIT",
+    "licenseStatus": "known",
+    "tags": ["行业应用", "平台", "local"],
+    "lastReviewedAt": null,
+    "references": [
+      {
+        "label": "本地 README",
+        "sourceUrl": null,
+        "localPath": "Application/AIHOT/README.md"
+      }
+    ],
+    "unavailableReason": null
+  },
+  {
+    "id": "offer-station",
+    "title": "offer-station（求职工作台）",
+    "track": "application",
+    "stageIds": [],
+    "summary": "求职工作台 MVP：以职业档案为事实底座，通过岗位分析→投递准备→正式投递→面试准备→面试复盘的工作流串联插件、Web 工作台与 Tracker。",
+    "learningGoals": ["了解求职工作台的产品工作流设计与实现状态。"],
+    "sourceUrl": "https://github.com/ChrisZou/offer-station",
+    "localPath": "Application/offer-station/README.md",
+    "accessPolicy": "local-preferred",
+    "publicationRights": "third-party",
+    "author": "ChrisZou",
+    "license": "Unknown",
+    "licenseStatus": "unknown",
+    "tags": ["求职", "工作台", "local"],
+    "lastReviewedAt": null,
+    "references": [
+      {
+        "label": "本地 README",
+        "sourceUrl": null,
+        "localPath": "Application/offer-station/README.md"
+      }
+    ],
+    "unavailableReason": null
   }
 ]
