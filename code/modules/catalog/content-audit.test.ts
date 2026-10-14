@@ -12,7 +12,6 @@ import {
 
 const applicationRoot = fileURLToPath(new URL("../../", import.meta.url));
 const sourceContentRoot = join(applicationRoot, "content");
-const localMaterialRoot = join(applicationRoot, "..", "local-courses");
 const temporaryRoots: string[] = [];
 
 afterEach(async () => {
@@ -32,6 +31,19 @@ async function createTemporaryContentRoot() {
   await cp(sourceContentRoot, contentRoot, { recursive: true });
 
   return contentRoot;
+}
+
+/** Mounted = at least one subdirectory (see isLocalMaterialMounted). */
+async function createMountedLocalMaterialRoot(files: string[] = []) {
+  const root = await mkdtemp(join(tmpdir(), "agent-learning-hub-mounted-"));
+  temporaryRoots.push(root);
+  await mkdir(join(root, "_library"), { recursive: true });
+  for (const relativePath of files) {
+    const absolute = join(root, relativePath);
+    await mkdir(join(absolute, ".."), { recursive: true });
+    await writeFile(absolute, "# fixture\n");
+  }
+  return root;
 }
 
 describe("content audit", () => {
@@ -93,9 +105,12 @@ describe("content audit", () => {
     localItem.localPath = "does-not-exist.md";
     await writeFile(itemPath, `${JSON.stringify(items, null, 2)}\n`);
 
+    // CI checkouts leave local-courses unmounted; these path checks need a
+    // temp mounted library so they are not skipped.
+    const mountedRoot = await createMountedLocalMaterialRoot();
     const report = await auditContentDirectory({
       contentRoot,
-      localMaterialRoot,
+      localMaterialRoot: mountedRoot,
       mode: "local",
     });
 
@@ -137,9 +152,12 @@ describe("content audit", () => {
     chapter.localPath = "chapter-does-not-exist.md";
     await writeFile(itemPath, `${JSON.stringify(items, null, 2)}\n`);
 
+    const mountedRoot = await createMountedLocalMaterialRoot([
+      withChapters.localPath as string,
+    ]);
     const report = await auditContentDirectory({
       contentRoot,
-      localMaterialRoot,
+      localMaterialRoot: mountedRoot,
       mode: "local",
     });
 
