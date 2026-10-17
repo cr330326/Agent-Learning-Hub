@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { StageRoute, TrackTag } from "./components/site-chrome";
 import { loadPublicCatalog } from "../lib/catalog";
+import { summarizeCatalog } from "../modules/catalog/catalog-summary";
 
 export const dynamic = "force-dynamic";
 
@@ -10,15 +11,9 @@ export default async function HomePage() {
   const stages = catalog.stages
     .slice()
     .sort((left, right) => left.order - right.order);
-  // The four counts must account for every entry — otherwise the panel reads
-  // like broken arithmetic (the catalog is overwhelmingly local material).
-  // Retired entries keep their old ID resolvable but are not catalog content.
-  const browsableItems = catalog.items.filter((item) => !item.redirect);
-  const countByPolicy = (policy: string) =>
-    browsableItems.filter(({ accessPolicy }) => accessPolicy === policy).length;
-  const ownedCount = countByPolicy("owned");
-  const upstreamCount = countByPolicy("upstream-only");
-  const localCount = countByPolicy("local-preferred");
+  // Every browsable entry lands in exactly one of these lines — the total and
+  // the breakdown must add up, or the panel reads like broken arithmetic.
+  const summary = summarizeCatalog(catalog.items);
 
   return (
     <main className="page home-page">
@@ -48,19 +43,23 @@ export default async function HomePage() {
           <dl>
             <div>
               <dt>课程条目</dt>
-              <dd>{browsableItems.length}</dd>
+              <dd>{summary.total}</dd>
             </div>
             <div>
               <dt>本地素材</dt>
-              <dd>{localCount}</dd>
+              <dd>{summary.localPreferred}</dd>
             </div>
             <div>
               <dt>站内文章</dt>
-              <dd>{ownedCount}</dd>
+              <dd>{summary.owned}</dd>
             </div>
             <div>
               <dt>上游导览</dt>
-              <dd>{upstreamCount}</dd>
+              <dd>{summary.upstreamOnly}</dd>
+            </div>
+            <div>
+              <dt>待处理</dt>
+              <dd>{summary.unavailable}</dd>
             </div>
           </dl>
         </aside>

@@ -130,7 +130,7 @@ export default async function StagePage({
               section is routinely one card wide; the catalog is the way on. */}
           <p className="section-aside">
             {items.length} 项 ·{" "}
-            <Link className="text-link" href="/courses">
+            <Link className="text-link" href={`/courses?stage=${stage.id}`}>
               到课程目录找更多 →
             </Link>
           </p>

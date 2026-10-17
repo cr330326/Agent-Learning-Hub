@@ -8,7 +8,9 @@ export const dynamic = "force-dynamic";
 
 const RECOVERY_LINKS = [
   { href: "/roadmap", label: "九阶段路线", note: "回到主线" },
-  { href: "/courses", label: "课程目录", note: "515 项资料" },
+  // No hard-coded item count here: the catalog moves and the number silently
+  // goes stale (it read 515 while the catalog held 384).
+  { href: "/courses", label: "课程目录", note: "全部策展资料" },
   { href: "/projects", label: "项目阶梯", note: "动手练习" },
   { href: "/learning", label: "我的学习", note: "继续上次进度" },
 ] as const;

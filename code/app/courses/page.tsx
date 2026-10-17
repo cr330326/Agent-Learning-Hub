@@ -50,13 +50,31 @@ export default async function CoursesPage({
   const stage = catalog.stages.some(({ id }) => id === params.stage)
     ? params.stage
     : undefined;
+  // A stage reaches its reading list two ways: the stage's own learningItemIds
+  // and the item's stageIds. They are not guaranteed to agree, so the filter
+  // takes the union — otherwise following "到课程目录找更多" from a stage page
+  // could hide the very card the visitor just left.
+  const stageItemIds = new Set(
+    catalog.stages.find(({ id }) => id === stage)?.learningItemIds ?? [],
+  );
+  const stagesByOrder = catalog.stages
+    .slice()
+    .sort((left, right) => left.order - right.order);
+  const stageTitle = stage
+    ? stagesByOrder.find(({ id }) => id === stage)?.title
+    : undefined;
   const items = browsableItems
     .filter((item) => track === undefined || item.track === track)
     .filter(
       (item) =>
         accessPolicy === undefined || item.accessPolicy === accessPolicy,
     )
-    .filter((item) => stage === undefined || item.stageIds.includes(stage))
+    .filter(
+      (item) =>
+        stage === undefined ||
+        item.stageIds.includes(stage) ||
+        stageItemIds.has(item.id),
+    )
     .filter((item) => tag === undefined || item.tags.includes(tag))
     .sort((left, right) => left.title.localeCompare(right.title, "zh-CN"));
   const resolver = getContentResolver();
@@ -86,6 +104,17 @@ export default async function CoursesPage({
             {catalog.tracks.map((item) => (
               <option value={item.id} key={item.id}>
                 {item.title}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
+          <span>学习阶段</span>
+          <select name="stage" defaultValue={stage ?? ""}>
+            <option value="">全部阶段</option>
+            {stagesByOrder.map((item) => (
+              <option value={item.id} key={item.id}>
+                {item.order}. {item.title}
               </option>
             ))}
           </select>
@@ -128,6 +157,7 @@ export default async function CoursesPage({
             </span>
           ) : null}
         </p>
+        {stageTitle ? <span>阶段：{stageTitle}</span> : null}
         {tag ? <span>标签：{tag}</span> : null}
       </div>
       <div className="content-grid">

@@ -4,6 +4,12 @@
   "errors": [],
   "warningGroups": [
     {
+      "code": "local-material-root-unavailable",
+      "message": "Local Material is not mounted, so local path existence checks were skipped.",
+      "count": 1,
+      "itemIds": []
+    },
+    {
       "code": "missing-source-url",
       "message": "The Learning Item has no upstream source URL.",
       "count": 432,
@@ -1855,7 +1861,7 @@
   ],
   "summary": {
     "errorCount": 0,
-    "warningCount": 1821
+    "warningCount": 1822
   },
   "network": {
     "status": "not-run",
