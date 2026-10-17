@@ -276,6 +276,14 @@ npm run audit:functional --prefix code    # 真实点击：翻页、筛选、切
 npm run audit:functional --prefix code -- --base-url http://127.0.0.1:3210
 ```
 
+如果自带的 Chromium 下载不下来（约 150MB，国内网络经常卡在半途），可以让脚本改用本机已安装的 Chrome，不必等下载：
+
+```bash
+PLAYWRIGHT_CHANNEL=chrome npm run audit:ui --prefix code
+```
+
+不设这个变量时仍然使用 Playwright 自带的 Chromium，CI 与云端 Runbook 的行为不变。
+
 报告写入 `code/reports/`。
 
 ---
