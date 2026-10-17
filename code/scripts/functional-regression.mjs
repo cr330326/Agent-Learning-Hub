@@ -67,6 +67,16 @@ async function loadPlaywright() {
   }
 }
 
+/**
+ * The bundled Chromium is a ~150MB download and is unobtainable on some
+ * networks. `PLAYWRIGHT_CHANNEL=chrome` runs the installed system Chrome
+ * instead; leaving it unset keeps the default bundled browser.
+ */
+function launchOptions() {
+  const channel = process.env.PLAYWRIGHT_CHANNEL?.trim();
+  return channel ? { channel } : {};
+}
+
 /** Collects named pass/fail results so one failure does not hide the rest. */
 function createRecorder() {
   const results = [];
@@ -138,7 +148,7 @@ async function main() {
   const base = options.baseUrl.replace(/\/$/, "");
   const recorder = createRecorder();
 
-  const browser = await chromium.launch();
+  const browser = await chromium.launch(launchOptions());
   const context = await browser.newContext({
     viewport: { width: 1440, height: 900 },
     locale: "zh-CN",
@@ -313,10 +323,11 @@ async function main() {
     // The combination has to be one the page actually honours: an unknown tag
     // is now dropped rather than applied, so probing with `tag=none` would
     // assert against a full grid instead of an empty one. "Pending" entries
-    // only exist on the learning track, so pairing it with another track is a
-    // real, empty combination.
+    // exist on learning, aicoding and agentic, so `track=application` is the
+    // combination that still yields nothing. Re-check this if the catalog
+    // gains an Application entry awaiting attribution.
     await recorder.run("empty filter combination explains itself", async () => {
-      await goto("/courses?track=aicoding&access=unavailable");
+      await goto("/courses?track=application&access=unavailable");
       const empty = await page.$(".empty-state-wide");
       assert(empty !== null, "no empty state rendered");
       const text = (await empty.textContent()) ?? "";
@@ -344,6 +355,38 @@ async function main() {
       );
       return `${total} items kept; internal tags hidden`;
     });
+
+    // A stage page links into the directory with its stage preselected. Both
+    // halves used to be missing: the link carried no parameter and the filter
+    // bar had no stage control, so "到课程目录找更多" dropped the visitor into
+    // the unfiltered catalog.
+    await recorder.run(
+      "stage filter is reachable and preselected",
+      async () => {
+        await goto("/roadmap/stage-1");
+        const moreLink = await page.$(".stage-reading .section-aside a");
+        assert(moreLink !== null, "stage page has no catalog link");
+        await moreLink.click();
+        await page.waitForURL(/stage=stage-1/, { timeout: 10000 });
+        const selected = await page.inputValue(
+          ".filter-bar select[name='stage']",
+        );
+        assert(
+          selected === "stage-1",
+          `stage filter not preselected (got ${selected || "empty"})`,
+        );
+        const heading = (await page.textContent(".directory-heading")) ?? "";
+        assert(
+          heading.includes("阶段："),
+          `heading does not name the stage: ${heading}`,
+        );
+        const total = Number(
+          (await page.textContent(".directory-heading strong")) ?? "0",
+        );
+        assert(total > 0, "stage filter emptied the catalog");
+        return `${total} items for stage-1, filter preselected`;
+      },
+    );
 
     // ---- Search ------------------------------------------------------------
     await recorder.run("search returns and filters results", async () => {

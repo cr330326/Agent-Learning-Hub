@@ -5,7 +5,7 @@
 
 ## 1. 进度总览
 
-**结论**：核心产品功能已全部实现，并通过本地代码级、原生生产构建和正式本地镜像验收。2026-09-18 列出的五项仓库内待办已清掉四项（T8.13、T8.14、T8.17，以及 T8.15 的漂移对账），只剩 T8.16 需要在云端模式的一次性实例上重跑走查与回归。当前仍不能上线，原因是**仓库外（外部条件阻塞）**的 9 项任务卡在云主机网络、镜像仓库凭据、域名与 OAuth、受保护分支四类条件上。
+**结论**：核心产品功能已全部实现，并通过本地代码级、原生生产构建和正式本地镜像验收。2026-09-18 列出的五项仓库内待办已全部关闭（T8.13、T8.14、T8.15、T8.16、T8.17），仓库内不再有待修项。当前不能上线，原因只剩**仓库外（外部条件阻塞）**的 9 项任务：云主机网络、镜像仓库凭据、域名与 OAuth、受保护分支四类条件。
 
 | Phase                  | 完成        | 状态            |
 | ---------------------- | ----------- | --------------- |
@@ -17,50 +17,49 @@
 | 5 本地 Docker 与阅读器 | 5 / 5       | ✅              |
 | 6 搜索与素材新鲜度     | 7 / 7       | ✅              |
 | 7 交付、部署与运维     | 1 / 7       | ⏳ 外部条件阻塞 |
-| 8 功能对等与正式切换   | 13 / 17     | ⏳ 3 项外部阻塞 |
-| **合计**               | **51 / 61** | 上线门槛 9 / 10 |
+| 8 功能对等与正式切换   | 14 / 17     | ⏳ 3 项外部阻塞 |
+| **合计**               | **52 / 61** | 上线门槛 9 / 10 |
 
 ### 1.1 最新证据
 
-| 层级               | 结果                                                                                                        | 日期          | 证据                                                                                                                                                                        |
-| ------------------ | ----------------------------------------------------------------------------------------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `check:cloud`      | ✅ 158 单测 + 11 工具测试；内容审计 0 errors / 1821 warnings；生产构建通过（6 条非阻塞 Turbopack 警告）     | 2026-10-17    | 本次复核                                                                                                                                                                    |
-| `check:local`      | ✅ 同上；内容审计 0 errors / 1822 warnings（1 条 `local-material-root-unavailable`，本机未挂载素材库）      | 2026-10-17    | [content-audit-local](../../code/reports/content-audit/content-audit-local.md)                                                                                              |
-| 生产依赖审计       | ✅ `npm audit --omit=dev --audit-level=high` 报告 0 vulnerabilities（next 16.4.0）                          | 2026-10-17    | 本次复核；CI 同一命令见 [quality.yml](../../.github/workflows/quality.yml)                                                                                                  |
-| 端到端 · Cloud     | ✅ 29/29，原生文件系统与共享卷容器两种拓扑                                                                  | 2026-08-20    | T8.12                                                                                                                                                                       |
-| 端到端 · Local     | ✅ 状态生命周期、seed/resume/fallback/mobile                                                                | 2026-08-25    | [local-e2e-2026-08-25](../acceptance/local-e2e-2026-08-25.md)                                                                                                               |
-| 界面走查 · Local   | ✅ 48 次抓取 / 0 finding                                                                                    | 2026-08-28    | [ui-review](../../code/reports/ui-review/ui-review.md)                                                                                                                      |
-| 功能回归 · Local   | ✅ 23/23                                                                                                    | 2026-08-28    | [functional-regression](../../code/reports/functional-regression/functional-regression.md)                                                                                  |
-| 走查与回归 · Cloud | ⚠️ 51 / 0 与 22/22，但早于 08-28 目录收敛（报告中目录仍为 515 条），见 T8.16                                | 2026-08-13/14 | [ui-review-cloud](../../code/reports/ui-review-cloud/ui-review.md) · [functional-regression-cloud](../../code/reports/functional-regression-cloud/functional-regression.md) |
-| 正式本地镜像       | ✅ `agent-learning-hub:local-20260825`：命名卷重启、空素材回退、HTTP E2E                                    | 2026-08-25    | [local-e2e-2026-08-25](../acceptance/local-e2e-2026-08-25.md)                                                                                                               |
-| 目标主机           | ✅ 恢复演练 16/16（含三组反向对照）；Cloud Mode 回环运行通过                                                | 2026-08-20    | [restore-drill-host](../../code/reports/restore-drill-host/restore-drill.md) · [cloud-host-verify](../../code/reports/cloud-host-verify/cloud-host-verify.md)               |
-| 目录漂移           | ✅ 0 条失效路径（434 条声明路径：0 可自动搬迁 / 0 待定 / 0 已删除）；⚠️ 432 条目无上游回退、52 个仓库待确认 | 2026-10-10    | [catalog-drift](../../code/reports/materials/catalog-drift.md)                                                                                                              |
+| 层级             | 结果                                                                                                        | 日期       | 证据                                                                                                                                                          |
+| ---------------- | ----------------------------------------------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `check:cloud`    | ✅ 158 单测 + 11 工具测试；内容审计 0 errors / 1821 warnings；生产构建通过（6 条非阻塞 Turbopack 警告）     | 2026-10-17 | 本次复核                                                                                                                                                      |
+| `check:local`    | ✅ 同上；内容审计 0 errors / 1822 warnings（1 条 `local-material-root-unavailable`，本机未挂载素材库）      | 2026-10-17 | [content-audit-local](../../code/reports/content-audit/content-audit-local.md)                                                                                |
+| 生产依赖审计     | ✅ `npm audit --omit=dev --audit-level=high` 报告 0 vulnerabilities（next 16.4.0）                          | 2026-10-17 | 本次复核；CI 同一命令见 [quality.yml](../../.github/workflows/quality.yml)                                                                                    |
+| 端到端 · Cloud   | ✅ 29/29，原生文件系统与共享卷容器两种拓扑                                                                  | 2026-08-20 | T8.12                                                                                                                                                         |
+| 端到端 · Local   | ✅ 状态生命周期、seed/resume/fallback/mobile                                                                | 2026-08-25 | [local-e2e-2026-08-25](../acceptance/local-e2e-2026-08-25.md)                                                                                                 |
+| 界面走查 · Local | ✅ 48 次抓取 / 0 finding                                                                                    | 2026-08-28 | [ui-review](../../code/reports/ui-review/ui-review.md)                                                                                                        |
+| 功能回归 · Local | ✅ 23/23                                                                                                    | 2026-08-28 | [functional-regression](../../code/reports/functional-regression/functional-regression.md)                                                                    |
+| 界面走查 · Cloud | ✅ 48 次抓取 / 0 finding（384 条目录，含 4 列筛选栏后的目录页）                                             | 2026-10-17 | [ui-review-cloud](../../code/reports/ui-review-cloud/ui-review.md)                                                                                            |
+| 功能回归 · Cloud | ✅ 23/23（新增阶段筛选断言；`track=application&access=unavailable` 仍为空组合）                             | 2026-10-17 | [functional-regression-cloud](../../code/reports/functional-regression-cloud/functional-regression.md)                                                        |
+| 正式本地镜像     | ✅ `agent-learning-hub:local-20260825`：命名卷重启、空素材回退、HTTP E2E                                    | 2026-08-25 | [local-e2e-2026-08-25](../acceptance/local-e2e-2026-08-25.md)                                                                                                 |
+| 目标主机         | ✅ 恢复演练 16/16（含三组反向对照）；Cloud Mode 回环运行通过                                                | 2026-08-20 | [restore-drill-host](../../code/reports/restore-drill-host/restore-drill.md) · [cloud-host-verify](../../code/reports/cloud-host-verify/cloud-host-verify.md) |
+| 目录漂移         | ✅ 0 条失效路径（434 条声明路径：0 可自动搬迁 / 0 待定 / 0 已删除）；⚠️ 432 条目无上游回退、52 个仓库待确认 | 2026-10-10 | [catalog-drift](../../code/reports/materials/catalog-drift.md)                                                                                                |
 
 数量类证据都是当日快照；以对应命令重新生成的报告为准。
 
 ## 2. 待办与阻塞
 
-### 2.1 仓库内可立即处理（2026-10-17 复核后仅剩 1 项）
+### 2.1 仓库内可立即处理（2026-10-17 复核后无）
 
-| 优先级 | 任务  | 问题                                                                                                 | 建议处置                                                              |
-| ------ | ----- | ---------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| P2     | T8.16 | Cloud 模式走查与回归证据早于 08-28 目录收敛，未覆盖退场条目转发后的公开页面，也早于 10-10 的目录重写 | 在云端模式一次性实例上重跑 `audit:ui` 与 `audit:functional`，更新报告 |
+2026-09-18 列出的五项已在 2026-10-17 全部关闭：T8.17（next 升到 16.4.0，生产依赖 0 漏洞）、T8.13（首页计数补"待处理"分项）、T8.14（目录补阶段筛选）、T8.15（10-10 目录重写后漂移归零）、T8.16（云端模式重跑走查 48 次抓取 / 0 finding，功能回归 23/23）。证据见第 1.1 节与第 4 节 Phase 8。
 
-2026-09-18 列出的另外四项已在 2026-10-17 关闭：T8.17（next 升到 16.4.0，生产依赖 0 漏洞）、T8.13（首页计数补"待处理"分项）、T8.14（目录补阶段筛选）、T8.15（10-10 目录重写后漂移归零）。证据见第 1.1 节与第 4 节 Phase 8。
+下一步全部取决于 [2.2 外部条件阻塞](#22-外部条件阻塞)。
 
 ### 2.2 外部条件阻塞
 
-| 任务                    | 差的最后一步                                   | 解除条件 |
-| ----------------------- | ---------------------------------------------- | -------- |
-| T7.1 完善 CI 流程       | 受保护分支上的 Actions 结果                    | ④        |
-| T7.2 版本化镜像发布     | 从 GHCR 拉取固定版本并回退                     | ②        |
-| T7.3 云端部署与回滚     | 公网 DNS/TLS 与真实 OAuth                      | ①②③      |
-| T7.4 备份与保留策略     | 定时调度、异地副本                             | ①        |
-| T7.6 隐私优先监控       | 真实部署日志抽查                               | ①        |
-| T7.7 文档与运行手册同步 | 云端流程随 T7.3 实际执行后复核                 | ①        |
-| T8.2 双模式端到端验收   | 真实 GitHub 两用户登录、生产备份恢复与版本回滚 | ①③       |
-| T8.4 安全与隐私发布审查 | 真实部署日志复核                               | ①        |
-| T8.5 切换入口并归档旧站 | 生产冒烟与回滚路径验证（GATE-10）              | ①②③      |
+| 任务                    | 差的最后一步                                                | 解除条件 |
+| ----------------------- | ----------------------------------------------------------- | -------- |
+| T7.1 完善 CI 流程       | 分支保护规则是否启用（CI 本身已在 main 连续通过：#34、#35） | ④        |
+| T7.2 版本化镜像发布     | 从 GHCR 拉取固定版本并回退                                  | ②        |
+| T7.3 云端部署与回滚     | 公网 DNS/TLS 与真实 OAuth                                   | ①②③      |
+| T7.4 备份与保留策略     | 定时调度、异地副本                                          | ①        |
+| T7.6 隐私优先监控       | 真实部署日志抽查                                            | ①        |
+| T7.7 文档与运行手册同步 | 云端流程随 T7.3 实际执行后复核                              | ①        |
+| T8.2 双模式端到端验收   | 真实 GitHub 两用户登录、生产备份恢复与版本回滚              | ①③       |
+| T8.4 安全与隐私发布审查 | 真实部署日志复核                                            | ①        |
+| T8.5 切换入口并归档旧站 | 生产冒烟与回滚路径验证（GATE-10）                           | ①②③      |
 
 四类外部条件（②③④ 按约定由维护者本人操作，自动化脚本不代持凭据，见 [lighthouse-automation 第 1 节](../deploy/lighthouse-automation.md#1-自动化边界)）：
 
@@ -176,25 +175,25 @@
 
 ### Phase 8：功能对等与正式切换
 
-| 任务                                        | 状态 | 规格                                                                       | 实现与证据 / 差的最后一步                                                                                                                                                                               |
-| ------------------------------------------- | ---- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| T8.1 新旧站功能对照                         | ✅   | AC-10                                                                      | [legacy-parity-2026-08-09](../acceptance/legacy-parity-2026-08-09.md)：七项旧站能力逐项映射，无静默删除                                                                                                 |
-| T8.2 双模式端到端验收                       | ⏳   | AC-01~10                                                                   | 本地证据齐全（[08-09](../acceptance/dual-mode-e2e-2026-08-09.md)、[08-11](../acceptance/local-e2e-2026-08-11.md)、[08-25](../acceptance/local-e2e-2026-08-25.md)）；缺真实 OAuth 两用户、生产恢复与回滚 |
-| T8.3 移动端与无障碍验收                     | ✅   | PAGE-008、NFR-001~005、AC-08                                               | [mobile-accessibility-2026-08-09](../acceptance/mobile-accessibility-2026-08-09.md)：390×844 全流程，阻断问题为零                                                                                       |
-| T8.4 安全与隐私发布审查                     | ⏳   | AUTH-005~~007、SEC-001~~005、PRIV-001~004                                  | 越权、CSRF、路径穿越、恶意 Markdown、限流、导出脱敏、镜像边界均已通过；缺真实部署日志复核                                                                                                               |
-| T8.5 切换仓库入口并归档旧站                 | ⏳   | AC-09、AC-10                                                               | 根入口已指向 `code/`，旧站已加归档说明；缺固定版本发布、回滚记录与首轮生产观察                                                                                                                          |
-| T8.6 全站 UI 走查并修复缺陷                 | ✅   | PAGE-007、PAGE-009~~012、READ-009~~011、NFR-009/010                        | 修复 14 项（回环 hydration、HTML 被转义、目录不分页、枚举外泄等）；沉淀 `ui-review.mjs`（`npm run audit:ui`）                                                                                           |
-| T8.7 阅读器章节导航与点击式回归             | ✅   | READ-001、READ-012~014、NFR-011                                            | `resolveDocumentRelativePath()` 消除正文内链 404，补上下章；沉淀 `functional-regression.mjs`（`npm run audit:functional`）                                                                              |
-| T8.8 补齐本地课程的章节声明                 | ✅   | READ-014、CAT-008                                                          | [ADR 0008](../adr/0008-chapter-content-has-a-single-owner.md) 单一归属：119 个单章条目退场并转发，重复声明归零并由 schema 强制                                                                          |
-| T8.9 复查全站界面与交互                     | ✅   | PAGE-002/011/013~019、SEARCH-008/009、READ-014、STATE-004/005、NFR-010/011 | 修复搜索结果重复、参数回显、导航"登录"、路线页无进度等 9 项；`StageProgressProvider` 单次快照；回归扩到 23 项                                                                                           |
-| T8.10 Catalog Drift 对账机制                | ✅   | MAT-010/011、CAT-007、READ-014                                             | [ADR 0006](../adr/0006-catalog-is-hand-maintained.md)、[ADR 0007](../adr/0007-catalog-drift-is-proposed-not-applied.md)；`catalog-drift.ts` + `materials drift`；`catalog-drift.test.ts`                |
-| T8.11 脚本按运行位置分类与三份 Runbook      | ✅   | DEPLOY-016~018                                                             | [docs/deploy/README.md](../deploy/README.md#脚本按运行位置分类)、[local-manual.md](../deploy/local-manual.md)；云端两份 Runbook 逐节对应                                                                |
-| T8.12 Cloud 登录 e2e 与恢复演练命令         | ✅   | NFR-007/012、OPS-006~008                                                   | `cloud-auth-state-http.mts`（29 项，真实登录）；`restore-drill.ts`（16 步，三组反向对照）；`lighthouse-deploy.sh restore-drill`                                                                         |
-| T8.13 修复首页目录规模统计漏计              | ✅   | PAGE-012                                                                   | 计数抽到 `modules/catalog/catalog-summary.ts`，首页补"待处理"分项；`catalog-summary.test.ts` 断言分项之和等于总数。实测 370+1+9+4 = 384                                                                 |
-| T8.14 课程目录筛选栏补阶段选项              | ✅   | PAGE-003                                                                   | `/courses` 增加阶段下拉与"阶段：…"回显；阶段页"到课程目录找更多"带 `?stage=`。筛选取 `item.stageIds` ∪ `stage.learningItemIds`，避免跳转后漏掉刚看过的卡片                                              |
-| T8.15 处理素材库新一轮目录漂移              | ✅   | MAT-010/011、CAT-007、READ-014                                             | 10-10 的目录重写（`c48079b`）后漂移归零：[catalog-drift](../../code/reports/materials/catalog-drift.md) 报 0 失效路径 / 434 条声明路径。本机未挂载素材库                                                |
-| T8.16 在收敛后的目录上重跑 Cloud 走查与回归 | ⏳   | NFR-010、NFR-011                                                           | 见 2.1                                                                                                                                                                                                  |
-| T8.17 升级 Next.js 修复生产依赖安全公告     | ✅   | SEC-001、DEPLOY-002、NFR-006                                               | `next` 16.3.0 → 16.4.0（`3482ab2`）；`npm audit --omit=dev --audit-level=high` 报 0 vulnerabilities，CI 同一命令通过                                                                                    |
+| 任务                                        | 状态 | 规格                                                                       | 实现与证据 / 差的最后一步                                                                                                                                                                                                                                    |
+| ------------------------------------------- | ---- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| T8.1 新旧站功能对照                         | ✅   | AC-10                                                                      | [legacy-parity-2026-08-09](../acceptance/legacy-parity-2026-08-09.md)：七项旧站能力逐项映射，无静默删除                                                                                                                                                      |
+| T8.2 双模式端到端验收                       | ⏳   | AC-01~10                                                                   | 本地证据齐全（[08-09](../acceptance/dual-mode-e2e-2026-08-09.md)、[08-11](../acceptance/local-e2e-2026-08-11.md)、[08-25](../acceptance/local-e2e-2026-08-25.md)）；缺真实 OAuth 两用户、生产恢复与回滚                                                      |
+| T8.3 移动端与无障碍验收                     | ✅   | PAGE-008、NFR-001~005、AC-08                                               | [mobile-accessibility-2026-08-09](../acceptance/mobile-accessibility-2026-08-09.md)：390×844 全流程，阻断问题为零                                                                                                                                            |
+| T8.4 安全与隐私发布审查                     | ⏳   | AUTH-005~~007、SEC-001~~005、PRIV-001~004                                  | 越权、CSRF、路径穿越、恶意 Markdown、限流、导出脱敏、镜像边界均已通过；缺真实部署日志复核                                                                                                                                                                    |
+| T8.5 切换仓库入口并归档旧站                 | ⏳   | AC-09、AC-10                                                               | 根入口已指向 `code/`，旧站已加归档说明；缺固定版本发布、回滚记录与首轮生产观察                                                                                                                                                                               |
+| T8.6 全站 UI 走查并修复缺陷                 | ✅   | PAGE-007、PAGE-009~~012、READ-009~~011、NFR-009/010                        | 修复 14 项（回环 hydration、HTML 被转义、目录不分页、枚举外泄等）；沉淀 `ui-review.mjs`（`npm run audit:ui`）                                                                                                                                                |
+| T8.7 阅读器章节导航与点击式回归             | ✅   | READ-001、READ-012~014、NFR-011                                            | `resolveDocumentRelativePath()` 消除正文内链 404，补上下章；沉淀 `functional-regression.mjs`（`npm run audit:functional`）                                                                                                                                   |
+| T8.8 补齐本地课程的章节声明                 | ✅   | READ-014、CAT-008                                                          | [ADR 0008](../adr/0008-chapter-content-has-a-single-owner.md) 单一归属：119 个单章条目退场并转发，重复声明归零并由 schema 强制                                                                                                                               |
+| T8.9 复查全站界面与交互                     | ✅   | PAGE-002/011/013~019、SEARCH-008/009、READ-014、STATE-004/005、NFR-010/011 | 修复搜索结果重复、参数回显、导航"登录"、路线页无进度等 9 项；`StageProgressProvider` 单次快照；回归扩到 23 项                                                                                                                                                |
+| T8.10 Catalog Drift 对账机制                | ✅   | MAT-010/011、CAT-007、READ-014                                             | [ADR 0006](../adr/0006-catalog-is-hand-maintained.md)、[ADR 0007](../adr/0007-catalog-drift-is-proposed-not-applied.md)；`catalog-drift.ts` + `materials drift`；`catalog-drift.test.ts`                                                                     |
+| T8.11 脚本按运行位置分类与三份 Runbook      | ✅   | DEPLOY-016~018                                                             | [docs/deploy/README.md](../deploy/README.md#脚本按运行位置分类)、[local-manual.md](../deploy/local-manual.md)；云端两份 Runbook 逐节对应                                                                                                                     |
+| T8.12 Cloud 登录 e2e 与恢复演练命令         | ✅   | NFR-007/012、OPS-006~008                                                   | `cloud-auth-state-http.mts`（29 项，真实登录）；`restore-drill.ts`（16 步，三组反向对照）；`lighthouse-deploy.sh restore-drill`                                                                                                                              |
+| T8.13 修复首页目录规模统计漏计              | ✅   | PAGE-012                                                                   | 计数抽到 `modules/catalog/catalog-summary.ts`，首页补"待处理"分项；`catalog-summary.test.ts` 断言分项之和等于总数。实测 370+1+9+4 = 384                                                                                                                      |
+| T8.14 课程目录筛选栏补阶段选项              | ✅   | PAGE-003                                                                   | `/courses` 增加阶段下拉与"阶段：…"回显；阶段页"到课程目录找更多"带 `?stage=`。筛选取 `item.stageIds` ∪ `stage.learningItemIds`，避免跳转后漏掉刚看过的卡片                                                                                                   |
+| T8.15 处理素材库新一轮目录漂移              | ✅   | MAT-010/011、CAT-007、READ-014                                             | 10-10 的目录重写（`c48079b`）后漂移归零：[catalog-drift](../../code/reports/materials/catalog-drift.md) 报 0 失效路径 / 434 条声明路径。本机未挂载素材库                                                                                                     |
+| T8.16 在收敛后的目录上重跑 Cloud 走查与回归 | ✅   | NFR-010、NFR-011                                                           | 384 条目录、cloud 模式一次性实例（`127.0.0.1:3100` + 独立 SQLite）：[走查](../../code/reports/ui-review-cloud/ui-review.md) 48 次抓取 / 0 finding，[回归](../../code/reports/functional-regression-cloud/functional-regression.md) 23/23（新增阶段筛选断言） |
+| T8.17 升级 Next.js 修复生产依赖安全公告     | ✅   | SEC-001、DEPLOY-002、NFR-006                                               | `next` 16.3.0 → 16.4.0（`3482ab2`）；`npm audit --omit=dev --audit-level=high` 报 0 vulnerabilities，CI 同一命令通过                                                                                                                                         |
 
 ## 5. 需求覆盖矩阵
 
@@ -225,7 +224,7 @@
 | NFR-001~005               | T2.1、T8.3                          | 移动端与无障碍验收                                                                             | ✅                                     |
 | NFR-006~007、012          | T0.3、T7.1、T8.12                   | quality.yml 双模式门禁与 e2e                                                                   | ✅ 定义；⏳ 受保护分支结果（T7.1）     |
 | NFR-008                   | T7.6                                | `operator-monitor.test.ts`、`privacy-monitor.test.ts`                                          | ⚠️ 仅本地                              |
-| NFR-009~011               | T8.6、T8.7、T8.9、T8.16             | `audit:ui`、`audit:functional`                                                                 | ✅ Local；⚠️ Cloud 证据待重跑          |
+| NFR-009~011               | T8.6、T8.7、T8.9、T8.16             | `audit:ui`、`audit:functional`                                                                 | ✅ 双模式                              |
 
 | 验收场景 | 任务       | 状态                          | 验收场景 | 任务 | 状态            |
 | -------- | ---------- | ----------------------------- | -------- | ---- | --------------- |

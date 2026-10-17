@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-14T14:28:54.526Z",
-  "baseUrl": "http://127.0.0.1:3000",
-  "total": 22,
+  "generatedAt": "2026-10-17T02:56:11.655Z",
+  "baseUrl": "http://127.0.0.1:3100",
+  "total": 23,
   "failed": 0,
   "results": [
     {
@@ -12,7 +12,7 @@
     {
       "name": "internal links resolve",
       "ok": true,
-      "detail": "76 internal links, all < 400"
+      "detail": "78 internal links, all < 400"
     },
     {
       "name": "header navigation reaches every section",
@@ -37,7 +37,7 @@
     {
       "name": "catalog filters narrow results",
       "ok": true,
-      "detail": "63 of 515 after track=learning"
+      "detail": "57 of 384 after track=learning"
     },
     {
       "name": "empty filter combination explains itself",
@@ -47,7 +47,12 @@
     {
       "name": "unknown filter values are ignored",
       "ok": true,
-      "detail": "515 items kept; internal tags hidden"
+      "detail": "384 items kept; internal tags hidden"
+    },
+    {
+      "name": "stage filter is reachable and preselected",
+      "ok": true,
+      "detail": "2 items for stage-1, filter preselected"
     },
     {
       "name": "search returns and filters results",

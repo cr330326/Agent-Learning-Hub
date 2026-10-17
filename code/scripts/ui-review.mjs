@@ -110,6 +110,16 @@ async function loadPlaywright() {
   }
 }
 
+/**
+ * The bundled Chromium is a ~150MB download and is unobtainable on some
+ * networks. `PLAYWRIGHT_CHANNEL=chrome` runs the installed system Chrome
+ * instead; leaving it unset keeps the default bundled browser.
+ */
+function launchOptions() {
+  const channel = process.env.PLAYWRIGHT_CHANNEL?.trim();
+  return channel ? { channel } : {};
+}
+
 function markdownReport(baseUrl, findings, pages) {
   const lines = [
     "# UI review",
@@ -167,7 +177,7 @@ async function main() {
     ? VIEWPORTS.filter(({ name }) => name === options.viewport)
     : VIEWPORTS;
 
-  const browser = await chromium.launch();
+  const browser = await chromium.launch(launchOptions());
   const findings = [];
   const pages = [];
 
