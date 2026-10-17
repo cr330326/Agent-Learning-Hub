@@ -22,20 +22,21 @@
 
 ### 1.1 最新证据
 
-| 层级             | 结果                                                                                                        | 日期       | 证据                                                                                                                                                          |
-| ---------------- | ----------------------------------------------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `check:cloud`    | ✅ 158 单测 + 11 工具测试；内容审计 0 errors / 1821 warnings；生产构建通过（6 条非阻塞 Turbopack 警告）     | 2026-10-17 | 本次复核                                                                                                                                                      |
-| `check:local`    | ✅ 同上；内容审计 0 errors / 1822 warnings（1 条 `local-material-root-unavailable`，本机未挂载素材库）      | 2026-10-17 | [content-audit-local](../../code/reports/content-audit/content-audit-local.md)                                                                                |
-| 生产依赖审计     | ✅ `npm audit --omit=dev --audit-level=high` 报告 0 vulnerabilities（next 16.4.0）                          | 2026-10-17 | 本次复核；CI 同一命令见 [quality.yml](../../.github/workflows/quality.yml)                                                                                    |
-| 端到端 · Cloud   | ✅ 29/29，原生文件系统与共享卷容器两种拓扑                                                                  | 2026-08-20 | T8.12                                                                                                                                                         |
-| 端到端 · Local   | ✅ 状态生命周期、seed/resume/fallback/mobile                                                                | 2026-08-25 | [local-e2e-2026-08-25](../acceptance/local-e2e-2026-08-25.md)                                                                                                 |
-| 界面走查 · Local | ✅ 48 次抓取 / 0 finding                                                                                    | 2026-08-28 | [ui-review](../../code/reports/ui-review/ui-review.md)                                                                                                        |
-| 功能回归 · Local | ✅ 23/23                                                                                                    | 2026-08-28 | [functional-regression](../../code/reports/functional-regression/functional-regression.md)                                                                    |
-| 界面走查 · Cloud | ✅ 48 次抓取 / 0 finding（384 条目录，含 4 列筛选栏后的目录页）                                             | 2026-10-17 | [ui-review-cloud](../../code/reports/ui-review-cloud/ui-review.md)                                                                                            |
-| 功能回归 · Cloud | ✅ 23/23（新增阶段筛选断言；`track=application&access=unavailable` 仍为空组合）                             | 2026-10-17 | [functional-regression-cloud](../../code/reports/functional-regression-cloud/functional-regression.md)                                                        |
-| 正式本地镜像     | ✅ `agent-learning-hub:local-20260825`：命名卷重启、空素材回退、HTTP E2E                                    | 2026-08-25 | [local-e2e-2026-08-25](../acceptance/local-e2e-2026-08-25.md)                                                                                                 |
-| 目标主机         | ✅ 恢复演练 16/16（含三组反向对照）；Cloud Mode 回环运行通过                                                | 2026-08-20 | [restore-drill-host](../../code/reports/restore-drill-host/restore-drill.md) · [cloud-host-verify](../../code/reports/cloud-host-verify/cloud-host-verify.md) |
-| 目录漂移         | ✅ 0 条失效路径（434 条声明路径：0 可自动搬迁 / 0 待定 / 0 已删除）；⚠️ 432 条目无上游回退、52 个仓库待确认 | 2026-10-10 | [catalog-drift](../../code/reports/materials/catalog-drift.md)                                                                                                |
+| 层级             | 结果                                                                                                          | 日期       | 证据                                                                                                                                                          |
+| ---------------- | ------------------------------------------------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `check:cloud`    | ✅ 158 单测 + 11 工具测试；内容审计 0 errors / 1821 warnings；生产构建通过（6 条非阻塞 Turbopack 警告）       | 2026-10-17 | 本次复核                                                                                                                                                      |
+| `check:local`    | ✅ 同上；内容审计 0 errors / 1822 warnings（1 条 `local-material-root-unavailable`，本机未挂载素材库）        | 2026-10-17 | [content-audit-local](../../code/reports/content-audit/content-audit-local.md)                                                                                |
+| 生产依赖审计     | ✅ `npm audit --omit=dev --audit-level=high` 报告 0 vulnerabilities（next 16.4.0）                            | 2026-10-17 | 本次复核；CI 同一命令见 [quality.yml](../../.github/workflows/quality.yml)                                                                                    |
+| 端到端 · Cloud   | ✅ 29/29，原生文件系统与共享卷容器两种拓扑                                                                    | 2026-08-20 | T8.12                                                                                                                                                         |
+| 端到端 · Local   | ✅ 状态生命周期、seed/resume/fallback/mobile                                                                  | 2026-08-25 | [local-e2e-2026-08-25](../acceptance/local-e2e-2026-08-25.md)                                                                                                 |
+| 界面走查 · Local | ✅ 48 次抓取 / 0 finding                                                                                      | 2026-08-28 | [ui-review](../../code/reports/ui-review/ui-review.md)                                                                                                        |
+| 功能回归 · Local | ✅ 23/23                                                                                                      | 2026-08-28 | [functional-regression](../../code/reports/functional-regression/functional-regression.md)                                                                    |
+| 界面走查 · Cloud | ✅ 48 次抓取 / 0 finding（384 条目录，含 4 列筛选栏后的目录页）                                               | 2026-10-17 | [ui-review-cloud](../../code/reports/ui-review-cloud/ui-review.md)                                                                                            |
+| 功能回归 · Cloud | ✅ 23/23（新增阶段筛选断言；`track=application&access=unavailable` 仍为空组合）                               | 2026-10-17 | [functional-regression-cloud](../../code/reports/functional-regression-cloud/functional-regression.md)                                                        |
+| 正式本地镜像     | ✅ `agent-learning-hub:local-20260825`：命名卷重启、空素材回退、HTTP E2E                                      | 2026-08-25 | [local-e2e-2026-08-25](../acceptance/local-e2e-2026-08-25.md)                                                                                                 |
+| 本地 Docker 全量 | ✅ 镜像构建、走查 48 抓取 / 0 finding、回归 21/24（3 条素材缺失跳过）、local e2e、cloud e2e 29/29、卷重启保留 | 2026-10-17 | [docker-local-2026-10-17](../acceptance/docker-local-2026-10-17.md)                                                                                           |
+| 目标主机         | ✅ 恢复演练 16/16（含三组反向对照）；Cloud Mode 回环运行通过                                                  | 2026-08-20 | [restore-drill-host](../../code/reports/restore-drill-host/restore-drill.md) · [cloud-host-verify](../../code/reports/cloud-host-verify/cloud-host-verify.md) |
+| 目录漂移         | ✅ 0 条失效路径（434 条声明路径：0 可自动搬迁 / 0 待定 / 0 已删除）；⚠️ 432 条目无上游回退、52 个仓库待确认   | 2026-10-10 | [catalog-drift](../../code/reports/materials/catalog-drift.md)                                                                                                |
 
 数量类证据都是当日快照；以对应命令重新生成的报告为准。
 
@@ -70,18 +71,18 @@
 
 ## 3. 上线门槛
 
-| 门槛    | 内容                                              | 状态 | 证据                                                                                           |
-| ------- | ------------------------------------------------- | ---- | ---------------------------------------------------------------------------------------------- |
-| GATE-01 | cloud-clean-room 构建和公开流程通过               | ✅   | CI clean-room 作业；2026-08-11 隔离镜像实测                                                    |
-| GATE-02 | 本地 Docker 阅读、搜索和进度保存通过              | ✅   | 2026-08-11 隔离 Compose；2026-08-25 正式镜像复验                                               |
-| GATE-03 | 云端与本地使用相同课程 ID、schema 和状态规则      | ✅   | 双模式同一构建与测试                                                                           |
-| GATE-04 | 登录、笔记、收藏、成果、导出和删号集成测试通过    | ✅   | `test:e2e:cloud` 29/29 + `test:e2e:local`（T8.12）                                             |
-| GATE-05 | 路径回退、穿越保护和恶意 Markdown 测试通过        | ✅   | `local-file-access.test.ts`、`markdown.test.ts`、`local-content-resolver.test.ts`              |
-| GATE-06 | 手机端核心学习流程通过                            | ✅   | [mobile-accessibility-2026-08-09](../acceptance/mobile-accessibility-2026-08-09.md)            |
-| GATE-07 | SQLite 干净环境恢复演练通过                       | ✅   | 目标主机 16/16（[restore-drill-host](../../code/reports/restore-drill-host/restore-drill.md)） |
-| GATE-08 | 新站覆盖旧站首版核心能力                          | ✅   | [legacy-parity-2026-08-09](../acceptance/legacy-parity-2026-08-09.md)                          |
-| GATE-09 | 云端镜像不含 `local-courses/`、数据库、备份或秘密 | ✅   | CI 镜像扫描；2026-08-11 实测                                                                   |
-| GATE-10 | 部署、回滚、素材维护和故障恢复文档可由他人复现    | ⏳   | 云端流程尚未在真实主机完整执行（T7.3、T8.5）                                                   |
+| 门槛    | 内容                                              | 状态 | 证据                                                                                                                     |
+| ------- | ------------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------ |
+| GATE-01 | cloud-clean-room 构建和公开流程通过               | ✅   | CI clean-room 作业；2026-08-11 隔离镜像实测                                                                              |
+| GATE-02 | 本地 Docker 阅读、搜索和进度保存通过              | ✅   | 2026-08-11 隔离 Compose；2026-08-25 正式镜像复验；2026-10-17 [Docker 全量复验](../acceptance/docker-local-2026-10-17.md) |
+| GATE-03 | 云端与本地使用相同课程 ID、schema 和状态规则      | ✅   | 双模式同一构建与测试                                                                                                     |
+| GATE-04 | 登录、笔记、收藏、成果、导出和删号集成测试通过    | ✅   | `test:e2e:cloud` 29/29 + `test:e2e:local`（T8.12）                                                                       |
+| GATE-05 | 路径回退、穿越保护和恶意 Markdown 测试通过        | ✅   | `local-file-access.test.ts`、`markdown.test.ts`、`local-content-resolver.test.ts`                                        |
+| GATE-06 | 手机端核心学习流程通过                            | ✅   | [mobile-accessibility-2026-08-09](../acceptance/mobile-accessibility-2026-08-09.md)                                      |
+| GATE-07 | SQLite 干净环境恢复演练通过                       | ✅   | 目标主机 16/16（[restore-drill-host](../../code/reports/restore-drill-host/restore-drill.md)）                           |
+| GATE-08 | 新站覆盖旧站首版核心能力                          | ✅   | [legacy-parity-2026-08-09](../acceptance/legacy-parity-2026-08-09.md)                                                    |
+| GATE-09 | 云端镜像不含 `local-courses/`、数据库、备份或秘密 | ✅   | CI 镜像扫描；2026-08-11 实测                                                                                             |
+| GATE-10 | 部署、回滚、素材维护和故障恢复文档可由他人复现    | ⏳   | 云端流程尚未在真实主机完整执行（T7.3、T8.5）                                                                             |
 
 ## 4. 任务清单
 

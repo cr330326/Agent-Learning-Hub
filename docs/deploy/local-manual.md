@@ -284,6 +284,8 @@ PLAYWRIGHT_CHANNEL=chrome npm run audit:ui --prefix code
 
 不设这个变量时仍然使用 Playwright 自带的 Chromium，CI 与云端 Runbook 的行为不变。
 
+素材库没有挂载内容时，Local Mode 的条目会回退到上游链接，`audit:functional` 里三条阅读器正文断言记为 **SKIP**（报告头单列 `skipped` 数），不是失败；页面既没有正文也没有回退时仍然是 FAIL。
+
 报告写入 `code/reports/`。
 
 ---
