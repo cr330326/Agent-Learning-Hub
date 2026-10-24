@@ -7,17 +7,30 @@ on:
 
 permissions:
   contents: read
-  packages: write
-  id-token: write
-  attestations: write
 
 env:
   IMAGE_NAME: ghcr.io/cr330326/agent-learning-hub
 
 jobs:
+  # R02: the release is gated on the full quality workflow (dual-mode checks,
+  # mode e2e, boundary and dependency guards) running against this exact SHA.
+  # `uses: ./.github/workflows/quality.yml` resolves the same commit as this
+  # tag, so the publish job only starts after every gate on that SHA passed.
+  quality:
+    name: Release quality gate
+    uses: ./.github/workflows/quality.yml
+    permissions:
+      contents: read
+
   publish:
     name: Publish immutable release image
+    needs: quality
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+      attestations: write
     steps:
       - uses: actions/checkout@v4
         with:

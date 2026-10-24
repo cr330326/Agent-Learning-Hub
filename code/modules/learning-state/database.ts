@@ -1,4 +1,5 @@
 import Database from "better-sqlite3";
+import { chmodSync, existsSync } from "node:fs";
 
 export const WAL_SAFE_MINIMUM_SQLITE_VERSION = "3.51.3";
 
@@ -232,9 +233,25 @@ function applyMigrations(database: Database.Database): number {
   return finalRow.version;
 }
 
+// R09: a freshly created state database holds private notes and identity rows
+// and must not depend on the operator's umask. Only files this process created
+// are restricted — pre-existing databases keep their operator-managed
+// permissions so volumes shared with maintenance containers stay intact, and
+// in-memory databases never touch the filesystem at all.
+function restrictNewDatabaseToOwner(filename: string): void {
+  chmodSync(filename, 0o600);
+  for (const suffix of ["-wal", "-shm"]) {
+    const sidecar = `${filename}${suffix}`;
+    if (existsSync(sidecar)) chmodSync(sidecar, 0o600);
+  }
+}
+
 export function openLearningDatabase(
   options: LearningDatabaseOptions,
 ): LearningDatabase {
+  const isFileBacked =
+    options.filename !== ":memory:" && options.filename.length > 0;
+  const existedBefore = isFileBacked && existsSync(options.filename);
   const database = new Database(options.filename);
   const sqliteVersion =
     options.sqliteVersionProvider?.() ?? readSQLiteVersion(database);
@@ -256,6 +273,9 @@ export function openLearningDatabase(
       }),
     ).toLowerCase();
     const schemaVersion = applyMigrations(database);
+    if (isFileBacked && !existedBefore && existsSync(options.filename)) {
+      restrictNewDatabaseToOwner(options.filename);
+    }
     const foreignKeysEnabled =
       Number(database.pragma("foreign_keys", { simple: true })) === 1;
 

@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-08-28T15:24:07.487Z",
-  "baseUrl": "http://127.0.0.1:3001",
+  "generatedAt": "2026-10-24T14:48:11.569Z",
+  "baseUrl": "http://127.0.0.1:3417",
   "pages": [
     {
       "path": "/",
       "viewport": "desktop",
       "status": 200,
-      "height": 2032
+      "height": 2061
     },
     {
       "path": "/roadmap",
@@ -54,7 +54,7 @@
       "path": "/search",
       "viewport": "desktop",
       "status": 200,
-      "height": 3914
+      "height": 3924
     },
     {
       "path": "/search?q=agent",
@@ -72,7 +72,7 @@
       "path": "/learning",
       "viewport": "desktop",
       "status": 200,
-      "height": 3132
+      "height": 2960
     },
     {
       "path": "/login",
@@ -102,7 +102,7 @@
       "path": "/",
       "viewport": "tablet",
       "status": 200,
-      "height": 2557
+      "height": 2586
     },
     {
       "path": "/roadmap",
@@ -150,7 +150,7 @@
       "path": "/search",
       "viewport": "tablet",
       "status": 200,
-      "height": 3827
+      "height": 3837
     },
     {
       "path": "/search?q=agent",
@@ -168,7 +168,7 @@
       "path": "/learning",
       "viewport": "tablet",
       "status": 200,
-      "height": 3242
+      "height": 3070
     },
     {
       "path": "/login",
@@ -198,7 +198,7 @@
       "path": "/",
       "viewport": "mobile",
       "status": 200,
-      "height": 3208
+      "height": 3237
     },
     {
       "path": "/roadmap",
@@ -222,37 +222,37 @@
       "path": "/courses",
       "viewport": "mobile",
       "status": 200,
-      "height": 5866
+      "height": 5937
     },
     {
       "path": "/courses?page=2",
       "viewport": "mobile",
       "status": 200,
-      "height": 5866
+      "height": 5937
     },
     {
       "path": "/courses?track=agentic",
       "viewport": "mobile",
       "status": 200,
-      "height": 5894
+      "height": 5965
     },
     {
       "path": "/courses?track=learning&access=owned&tag=none",
       "viewport": "mobile",
       "status": 200,
-      "height": 1288
+      "height": 1359
     },
     {
       "path": "/search",
       "viewport": "mobile",
       "status": 200,
-      "height": 4674
+      "height": 4684
     },
     {
       "path": "/search?q=agent",
       "viewport": "mobile",
       "status": 200,
-      "height": 4885
+      "height": 4919
     },
     {
       "path": "/projects",
@@ -264,7 +264,7 @@
       "path": "/learning",
       "viewport": "mobile",
       "status": 200,
-      "height": 5235
+      "height": 4884
     },
     {
       "path": "/login",

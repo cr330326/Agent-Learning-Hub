@@ -1,6 +1,6 @@
 # Agent Learning Hub 实施任务清单
 
-**最近复核**：2026-10-17（按现役 `code/` 重跑双模式质量门禁，复核 2026-09-18 遗留的五项仓库内待办）
+**最近复核**：2026-10-24（按 [REVIEW.md](../../REVIEW.md) 工程审查清单完成 R01–R10 全部修复，并重跑双模式门禁、e2e、恢复演练、UI 走查与 Docker 镜像验证）
 **配套**：[产品规格](./spec.md) · [技术方案](./plan.md) · [Phase 7 交付文档](../deploy/phase-7-delivery-deployment-operations.md) · [验收报告](../acceptance/)
 
 ## 1. 进度总览
@@ -22,31 +22,30 @@
 
 ### 1.1 最新证据
 
-| 层级             | 结果                                                                                                          | 日期       | 证据                                                                                                                                                          |
-| ---------------- | ------------------------------------------------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `check:cloud`    | ✅ 158 单测 + 11 工具测试；内容审计 0 errors / 1821 warnings；生产构建通过（6 条非阻塞 Turbopack 警告）       | 2026-10-17 | 本次复核                                                                                                                                                      |
-| `check:local`    | ✅ 同上；内容审计 0 errors / 1822 warnings（1 条 `local-material-root-unavailable`，本机未挂载素材库）        | 2026-10-17 | [content-audit-local](../../code/reports/content-audit/content-audit-local.md)                                                                                |
-| 生产依赖审计     | ✅ `npm audit --omit=dev --audit-level=high` 报告 0 vulnerabilities（next 16.4.0）                            | 2026-10-17 | 本次复核；CI 同一命令见 [quality.yml](../../.github/workflows/quality.yml)                                                                                    |
-| 端到端 · Cloud   | ✅ 29/29，原生文件系统与共享卷容器两种拓扑                                                                    | 2026-08-20 | T8.12                                                                                                                                                         |
-| 端到端 · Local   | ✅ 状态生命周期、seed/resume/fallback/mobile                                                                  | 2026-08-25 | [local-e2e-2026-08-25](../acceptance/local-e2e-2026-08-25.md)                                                                                                 |
-| 界面走查 · Local | ✅ 48 次抓取 / 0 finding                                                                                      | 2026-08-28 | [ui-review](../../code/reports/ui-review/ui-review.md)                                                                                                        |
-| 功能回归 · Local | ✅ 23/23                                                                                                      | 2026-08-28 | [functional-regression](../../code/reports/functional-regression/functional-regression.md)                                                                    |
-| 界面走查 · Cloud | ✅ 48 次抓取 / 0 finding（384 条目录，含 4 列筛选栏后的目录页）                                               | 2026-10-17 | [ui-review-cloud](../../code/reports/ui-review-cloud/ui-review.md)                                                                                            |
-| 功能回归 · Cloud | ✅ 23/23（新增阶段筛选断言；`track=application&access=unavailable` 仍为空组合）                               | 2026-10-17 | [functional-regression-cloud](../../code/reports/functional-regression-cloud/functional-regression.md)                                                        |
-| 正式本地镜像     | ✅ `agent-learning-hub:local-20260825`：命名卷重启、空素材回退、HTTP E2E                                      | 2026-08-25 | [local-e2e-2026-08-25](../acceptance/local-e2e-2026-08-25.md)                                                                                                 |
-| 本地 Docker 全量 | ✅ 镜像构建、走查 48 抓取 / 0 finding、回归 21/24（3 条素材缺失跳过）、local e2e、cloud e2e 29/29、卷重启保留 | 2026-10-17 | [docker-local-2026-10-17](../acceptance/docker-local-2026-10-17.md)                                                                                           |
-| 目标主机         | ✅ 恢复演练 16/16（含三组反向对照）；Cloud Mode 回环运行通过                                                  | 2026-08-20 | [restore-drill-host](../../code/reports/restore-drill-host/restore-drill.md) · [cloud-host-verify](../../code/reports/cloud-host-verify/cloud-host-verify.md) |
-| 目录漂移         | ✅ 0 条失效路径（434 条声明路径：0 可自动搬迁 / 0 待定 / 0 已删除）；⚠️ 432 条目无上游回退、52 个仓库待确认   | 2026-10-10 | [catalog-drift](../../code/reports/materials/catalog-drift.md)                                                                                                |
+| 层级             | 结果                                                                                                                                                                                                               | 日期       | 证据                                                                                                                                                          |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `check:cloud`    | ✅ 158 单测 + 11 工具测试；内容审计 0 errors / 1821 warnings；生产构建通过（6 条非阻塞 Turbopack 警告）                                                                                                            | 2026-10-17 | 本次复核                                                                                                                                                      |
+| `check:local`    | ✅ 同上；内容审计 0 errors / 1822 warnings（1 条 `local-material-root-unavailable`，本机未挂载素材库）                                                                                                             | 2026-10-17 | [content-audit-local](../../code/reports/content-audit/content-audit-local.md)                                                                                |
+| 生产依赖审计     | ✅ `npm audit --omit=dev --audit-level=high` 报告 0 vulnerabilities（next 16.4.0）                                                                                                                                 | 2026-10-17 | 本次复核；CI 同一命令见 [quality.yml](../../.github/workflows/quality.yml)                                                                                    |
+| 端到端 · Cloud   | ✅ 29/29，原生文件系统与共享卷容器两种拓扑                                                                                                                                                                         | 2026-08-20 | T8.12                                                                                                                                                         |
+| 端到端 · Local   | ✅ 状态生命周期、seed/resume/fallback/mobile                                                                                                                                                                       | 2026-08-25 | [local-e2e-2026-08-25](../acceptance/local-e2e-2026-08-25.md)                                                                                                 |
+| 界面走查 · Local | ✅ 48 次抓取 / 0 finding                                                                                                                                                                                           | 2026-08-28 | [ui-review](../../code/reports/ui-review/ui-review.md)                                                                                                        |
+| 功能回归 · Local | ✅ 23/23                                                                                                                                                                                                           | 2026-08-28 | [functional-regression](../../code/reports/functional-regression/functional-regression.md)                                                                    |
+| 界面走查 · Cloud | ✅ 48 次抓取 / 0 finding（384 条目录，含 4 列筛选栏后的目录页）                                                                                                                                                    | 2026-10-17 | [ui-review-cloud](../../code/reports/ui-review-cloud/ui-review.md)                                                                                            |
+| 功能回归 · Cloud | ✅ 23/23（新增阶段筛选断言；`track=application&access=unavailable` 仍为空组合）                                                                                                                                    | 2026-10-17 | [functional-regression-cloud](../../code/reports/functional-regression-cloud/functional-regression.md)                                                        |
+| 正式本地镜像     | ✅ `agent-learning-hub:local-20260825`：命名卷重启、空素材回退、HTTP E2E                                                                                                                                           | 2026-08-25 | [local-e2e-2026-08-25](../acceptance/local-e2e-2026-08-25.md)                                                                                                 |
+| 本地 Docker 全量 | ✅ 镜像构建、走查 48 抓取 / 0 finding、回归 21/24（3 条素材缺失跳过）、local e2e、cloud e2e 29/29、卷重启保留                                                                                                      | 2026-10-17 | [docker-local-2026-10-17](../acceptance/docker-local-2026-10-17.md)                                                                                           |
+| 目标主机         | ✅ 恢复演练 16/16（含三组反向对照）；Cloud Mode 回环运行通过                                                                                                                                                       | 2026-08-20 | [restore-drill-host](../../code/reports/restore-drill-host/restore-drill.md) · [cloud-host-verify](../../code/reports/cloud-host-verify/cloud-host-verify.md) |
+| 目录漂移         | ✅ 0 条失效路径（434 条声明路径：0 可自动搬迁 / 0 待定 / 0 已删除）；⚠️ 432 条目无上游回退、52 个仓库待确认                                                                                                        | 2026-10-10 | [catalog-drift](../../code/reports/materials/catalog-drift.md)                                                                                                |
+| 审查修复 R01–R10 | ✅ 双模式 check（177 单测 + 11 工具测试）全绿；Local/Cloud e2e 全过（Cloud 33 项）；`drill:restore` 16/16；audit:ui 48 抓取 / 0 finding；audit:functional 21/24（3 条本机素材缺失跳过）；Docker 镜像构建并回环验证 | 2026-10-24 | 本次修复轮；逐项证据见第 4 节 T8.18 与 [REVIEW.md](../../REVIEW.md) 第 5 节                                                                                   |
 
 数量类证据都是当日快照；以对应命令重新生成的报告为准。
 
 ## 2. 待办与阻塞
 
-### 2.1 仓库内可立即处理（2026-10-17 复核后无）
+### 2.1 仓库内可立即处理（2026-10-24 复核后无）
 
-2026-09-18 列出的五项已在 2026-10-17 全部关闭：T8.17（next 升到 16.4.0，生产依赖 0 漏洞）、T8.13（首页计数补"待处理"分项）、T8.14（目录补阶段筛选）、T8.15（10-10 目录重写后漂移归零）、T8.16（云端模式重跑走查 48 次抓取 / 0 finding，功能回归 23/23）。证据见第 1.1 节与第 4 节 Phase 8。
-
-下一步全部取决于 [2.2 外部条件阻塞](#22-外部条件阻塞)。
+2026-10-17 复核后，2026-10-24 的 [REVIEW.md](../../REVIEW.md) 工程审查指出 10 项高风险/可靠性缺口（R01–R10）。本轮已全部修复并通过本地验证（见 T8.18）。REVIEW.md 第 3 节的 G01–G06 是**条件成立时才处理**的缺口（如补声明图片路径时再评估 SVG 策略、真实代理后验证转发头），未自动扩成新功能；G07 为外部上线门槛，与 GATE 清单一致。下一步全部取决于 [2.2 外部条件阻塞](#22-外部条件阻塞)。
 
 ### 2.2 外部条件阻塞
 
@@ -195,6 +194,22 @@
 | T8.15 处理素材库新一轮目录漂移              | ✅   | MAT-010/011、CAT-007、READ-014                                             | 10-10 的目录重写（`c48079b`）后漂移归零：[catalog-drift](../../code/reports/materials/catalog-drift.md) 报 0 失效路径 / 434 条声明路径。本机未挂载素材库                                                                                                     |
 | T8.16 在收敛后的目录上重跑 Cloud 走查与回归 | ✅   | NFR-010、NFR-011                                                           | 384 条目录、cloud 模式一次性实例（`127.0.0.1:3100` + 独立 SQLite）：[走查](../../code/reports/ui-review-cloud/ui-review.md) 48 次抓取 / 0 finding，[回归](../../code/reports/functional-regression-cloud/functional-regression.md) 23/23（新增阶段筛选断言） |
 | T8.17 升级 Next.js 修复生产依赖安全公告     | ✅   | SEC-001、DEPLOY-002、NFR-006                                               | `next` 16.3.0 → 16.4.0（`3482ab2`）；`npm audit --omit=dev --audit-level=high` 报 0 vulnerabilities，CI 同一命令通过                                                                                                                                         |
+| T8.18 按 REVIEW.md 修复 R01–R10 并复验      | ✅   | SEC-001~~005、STATE-003/007/008、OPS-006、AUTH-004/005、NFR-006/007        | 逐项见下表；回归断言已入各模块测试与 e2e 脚本，验证于 2026-10-24                                                                                                                                                                                             |
+
+#### T8.18 逐项关闭证据（2026-10-24）
+
+| 编号 | 修复                                                                                                                        | 关闭证据                                                                                                                                             |
+| ---- | --------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| R01  | `dev:local` 等开发命令显式 `--hostname 127.0.0.1`；新增 `middleware.ts` 本地模式 Host 门禁 + `request-auth` 请求级回环校验  | `lsof` 仅 `127.0.0.1:3419`；伪造 Host `review.invalid:3419` 被 403、合法回环正常；`request-host.test.ts`、`request-auth.test.ts`、local e2e 原始探测 |
+| R02  | `quality.yml` 增加 `workflow_call`；`release.yml` 发布 job `needs` 同 SHA 质量门禁，写权限收敛到 publish job                | 工作流 YAML 静态验证 + prettier 解析通过；真实 tag 触发需推送 GitHub 后验证（T7.1/外部条件 ④）                                                       |
+| R03  | `next` 16.4.0 → 16.4.3、`zod` 4.1.12 → 4.6.7（精确版本），`playwright` 声明为 devDependency；`npm ci` 重建安装树            | `npm audit --omit=dev` 0 vulnerabilities；`npm ls --omit=dev` 退出 0 无 invalid；双模式 check、e2e、Docker 镜像、演练均在新安装树重跑                |
+| R04  | 适配器实现事务：`BEGIN IMMEDIATE`/`COMMIT`/`ROLLBACK` + AsyncLocalStorage 事务上下文 + 非事务调用排队，嵌套用 SAVEPOINT     | `better-auth-adapter.test.ts`：中途失败零残留、成功全提交、并发失败不回滚他人写入、事务期间外部写在其后执行、嵌套 savepoint 只回滚内层               |
+| R05  | 认证查询下推参数化 SQL（字段白名单映射、token 哈希查找、LIKE 转义），不可映射条件回退 JS 路径                               | `EXPLAIN QUERY PLAN` 命中唯一索引（2,000 会话规模）；`buildAdapterWhereSql` 断言无字段名拼接；会话生命周期测试保持                                   |
+| R06  | 写入对照目录校验（退场 ID 兼容）；笔记 200 条 / 512K 字、成果 100 条 / 256K 字累计预算；请求体 256KiB 流式上限              | `state-route.test.ts`（伪造 ID 400 且不落库、超大请求拒绝）、`repository.test.ts` 预算用例；双模式 e2e 新增伪造 ID 拒绝断言                          |
+| R07  | 备份健康新增年龄/恢复验证阈值（默认 48h / 90 天，`BACKUP_MAX_AGE_HOURS`、`BACKUP_MAX_RESTORE_VERIFICATION_AGE_DAYS` 可调）  | `admin-health.test.ts` 可控时钟覆盖最新/超时/未来/无效时间/无备份/未验证/已验证；admin 页显示中文降级原因                                            |
+| R08  | 恢复安装改为 `link()` 原子 no-clobber；拒绝带 `-wal`/`-shm`/`-journal` 侧车的目标                                           | `backup.test.ts`：并发恢复仅一个成功、被拒目标逐字节不变、侧车目标拒绝；`drill:restore` 16/16（三组反向对照保留）                                    |
+| R09  | 新建状态库目录 0700、库与 WAL/SHM 0600（仅限本进程新建文件，已有库不动）                                                    | `state-store.test.ts` umask 0 下实测 0700/0600；既有库权限不被改写；维护容器同卷备份恢复经演练验证                                                   |
+| R10  | 全局 `nosniff`/`X-Frame-Options: DENY`/CSP `frame-ancestors 'none'`；state/data/session/auth/admin 响应 `private, no-store` | 生产构建实测响应头；public smoke 断言 HTML 三头；双模式 e2e 断言 state 200/401/400 均不可缓存；`next start` 3417/3418 与 Docker 实例复验             |
 
 ## 5. 需求覆盖矩阵
 

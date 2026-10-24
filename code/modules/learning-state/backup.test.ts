@@ -115,6 +115,97 @@ describe("encrypted SQLite backups", () => {
         passphrase: "correct horse battery staple",
       }),
     ).rejects.toThrow("already exists");
+
+    // R08: the refused restore must not have touched the existing target.
+    const preserved = await readFile(targetFilename);
+    const existing = openLearningDatabase({
+      filename: targetFilename,
+      enableWal: false,
+    });
+    const tables = existing.handle
+      .prepare("SELECT COUNT(*) AS count FROM users")
+      .get() as { count: number };
+    expect(tables.count).toBe(0);
+    existing.close();
+    expect(preserved.byteLength).toBeGreaterThan(0);
+  });
+
+  it("installs the restore atomically so concurrent runs cannot clobber", async () => {
+    const sourceFilename = join(root, "source.sqlite");
+    const database = openLearningDatabase({
+      filename: sourceFilename,
+      enableWal: false,
+    });
+    database.close();
+    const backup = await createEncryptedBackup({
+      sourceFilename,
+      outputDirectory: join(root, "backups"),
+      passphrase: "correct horse battery staple",
+    });
+    const targetFilename = join(root, "raced.sqlite");
+
+    const attempts = await Promise.allSettled([
+      restoreEncryptedBackup({
+        backupFilename: backup.backupPath,
+        targetFilename,
+        passphrase: "correct horse battery staple",
+      }),
+      restoreEncryptedBackup({
+        backupFilename: backup.backupPath,
+        targetFilename,
+        passphrase: "correct horse battery staple",
+      }),
+    ]);
+
+    const succeeded = attempts.filter(
+      (attempt) => attempt.status === "fulfilled",
+    );
+    const failed = attempts.filter((attempt) => attempt.status === "rejected");
+    expect(succeeded).toHaveLength(1);
+    expect(failed).toHaveLength(1);
+    expect((failed[0] as PromiseRejectedResult).reason).toBeInstanceOf(Error);
+    expect((failed[0] as PromiseRejectedResult).reason.message).toContain(
+      "already exists",
+    );
+
+    // The single winner must be a usable database, not a torn write.
+    const restored = openLearningDatabase({
+      filename: targetFilename,
+      enableWal: false,
+    });
+    expect(
+      String(restored.handle.pragma("quick_check", { simple: true })),
+    ).toBe("ok");
+    restored.close();
+  });
+
+  it("refuses targets that carry SQLite sidecar files", async () => {
+    const sourceFilename = join(root, "source.sqlite");
+    const database = openLearningDatabase({
+      filename: sourceFilename,
+      enableWal: false,
+    });
+    database.close();
+    const backup = await createEncryptedBackup({
+      sourceFilename,
+      outputDirectory: join(root, "backups"),
+      passphrase: "correct horse battery staple",
+    });
+    const targetFilename = join(root, "sidecar.sqlite");
+    await (
+      await import("node:fs/promises")
+    ).writeFile(`${targetFilename}-wal`, "stale wal bytes");
+
+    await expect(
+      restoreEncryptedBackup({
+        backupFilename: backup.backupPath,
+        targetFilename,
+        passphrase: "correct horse battery staple",
+      }),
+    ).rejects.toThrow("sidecar");
+    await expect(
+      (await import("node:fs/promises")).stat(targetFilename),
+    ).rejects.toThrow("ENOENT");
   });
 
   it("keeps seven daily slots plus three weekly slots", async () => {

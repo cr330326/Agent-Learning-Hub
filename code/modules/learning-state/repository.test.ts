@@ -1,7 +1,10 @@
 import { describe, expect, it } from "vitest";
 
 import { openLearningDatabase } from "./database";
-import { createLearningStateRepository } from "./repository";
+import {
+  createLearningStateRepository,
+  StateValidationError,
+} from "./repository";
 
 describe("learning-state repository", () => {
   it("keeps item progress isolated by user", () => {
@@ -230,6 +233,83 @@ describe("learning-state repository", () => {
       displayName: "New display name",
     });
     expect(repository.getUserByGithubId("new-display-name")).toBeNull();
+    database.close();
+  });
+  it("enforces the per-user note budget without counting updates twice", () => {
+    const database = openLearningDatabase({
+      filename: ":memory:",
+      enableWal: false,
+    });
+    const repository = createLearningStateRepository(database);
+    const user = repository.createUser({
+      id: "user-budget",
+      mode: "cloud",
+      githubId: "8080",
+      displayName: "Budget learner",
+    });
+
+    // R06 regression: cumulative counts and bytes, not just single fields.
+    for (let index = 0; index < 200; index += 1) {
+      repository.saveNote({
+        userId: user.id,
+        scopeType: "item",
+        scopeId: `note-scope-${index}`,
+        body: "short note",
+      });
+    }
+    expect(() =>
+      repository.saveNote({
+        userId: user.id,
+        scopeType: "item",
+        scopeId: "one-note-too-many",
+        body: "this one exceeds the note count budget",
+      }),
+    ).toThrow(StateValidationError);
+
+    // Updating an existing note stays allowed at the cap and must not be
+    // charged its old length a second time.
+    repository.saveNote({
+      userId: user.id,
+      scopeType: "item",
+      scopeId: "note-scope-0",
+      body: "updated body, still one note",
+    });
+    expect(repository.getNote(user.id, "item", "note-scope-0")).toMatchObject({
+      body: "updated body, still one note",
+    });
+    database.close();
+  });
+
+  it("enforces the per-user stage outcome budget", () => {
+    const database = openLearningDatabase({
+      filename: ":memory:",
+      enableWal: false,
+    });
+    const repository = createLearningStateRepository(database);
+    const user = repository.createUser({
+      id: "user-outcomes",
+      mode: "cloud",
+      githubId: "9090",
+      displayName: "Outcome learner",
+    });
+
+    for (let index = 0; index < 100; index += 1) {
+      repository.createStageOutcome({
+        userId: user.id,
+        stageId: "stage-0",
+        kind: "reflection",
+        summary: `reflection ${index}`,
+      });
+    }
+    expect(() =>
+      repository.createStageOutcome({
+        userId: user.id,
+        stageId: "stage-0",
+        kind: "reflection",
+        summary: "one outcome too many",
+      }),
+    ).toThrow(StateValidationError);
+    expect(repository.listStageOutcomes(user.id, "stage-0")).toHaveLength(100);
     database.close();
   });
 });

@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-08-20T13:37:29.291Z",
-  "elapsedMs": 2738,
+  "generatedAt": "2026-10-24T14:46:43.859Z",
+  "elapsedMs": 1179,
   "environment": {
-    "hostname": "CICNBJSMCCD0160",
+    "hostname": "AllenChans-Mac-mini.local",
     "platform": "darwin/arm64",
-    "node": "v24.14.0",
+    "node": "v24.15.0",
     "appVersion": "development",
-    "gitRevision": "a9605c4"
+    "gitRevision": "60abd03"
   },
   "source": "synthetic fixture",
   "backupByteSize": 143437,
@@ -89,7 +89,7 @@
     {
       "name": "the manifest records when the backup was proven restorable",
       "outcome": "pass",
-      "detail": "2026-08-20T13:37:27.481Z"
+      "detail": "2026-10-24T14:46:43.085Z"
     },
     {
       "name": "a wrong passphrase cannot restore the backup",

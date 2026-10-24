@@ -1,4 +1,5 @@
 import { getLearningStateStore } from "../../../lib/learning-state";
+import { loadPublicCatalog } from "../../../lib/catalog";
 import { recordOperationalMetric } from "../../../lib/observability";
 import {
   type DeploymentMode,
@@ -9,6 +10,11 @@ import {
   StateValidationError,
   type LearningStateRepository,
 } from "../../../modules/learning-state/repository";
+import {
+  createStateCatalogGate,
+  type StateCatalogGate,
+} from "../../../modules/learning-state/catalog-gate";
+import { readJsonBodyWithLimit } from "../../../modules/learning-state/request-limits";
 import {
   CSRF_COOKIE,
   getRequestUserAsync,
@@ -38,16 +44,7 @@ function hasValidCsrfToken(request: Request, mode: DeploymentMode): boolean {
 }
 
 async function readPayload(request: Request): Promise<Record<string, unknown>> {
-  try {
-    const payload: unknown = await request.json();
-    if (!payload || typeof payload !== "object" || Array.isArray(payload)) {
-      throw new StateValidationError("请求体必须是 JSON 对象。");
-    }
-    return payload as Record<string, unknown>;
-  } catch (error) {
-    if (error instanceof StateValidationError) throw error;
-    throw new StateValidationError("请求体不是有效 JSON。");
-  }
+  return (await readJsonBodyWithLimit(request)) as Record<string, unknown>;
 }
 
 function asString(payload: Record<string, unknown>, key: string): string {
@@ -93,12 +90,31 @@ function stateResponse(repository: LearningStateRepository, userId: string) {
   return Response.json({ user: state.user, state });
 }
 
+function requireCatalogItem(gate: StateCatalogGate, itemId: string): void {
+  if (!gate.hasItem(itemId)) {
+    throw new StateValidationError("目录中不存在该学习条目，无法记录状态。");
+  }
+}
+
+function requireCatalogStage(gate: StateCatalogGate, stageId: string): void {
+  if (!gate.hasStage(stageId)) {
+    throw new StateValidationError("目录中不存在该阶段，无法记录成果。");
+  }
+}
+
+function requireCatalogStageTask(gate: StateCatalogGate, taskId: string): void {
+  if (!gate.hasStageTask(taskId)) {
+    throw new StateValidationError("目录中不存在该阶段任务，无法勾选。");
+  }
+}
+
 type RequestMonitor = Pick<PrivacyFirstMonitor, "record">;
 
 async function executeStateRequest(
   request: Request,
   repository: LearningStateRepository,
   mode: DeploymentMode,
+  catalogGate?: StateCatalogGate,
 ): Promise<Response> {
   try {
     const user = await getRequestUserAsync(request, repository, mode);
@@ -130,9 +146,11 @@ async function executeStateRequest(
     const action = asString(payload, "action");
 
     if (action === "item-progress") {
+      const itemId = asString(payload, "itemId");
+      if (catalogGate) requireCatalogItem(catalogGate, itemId);
       const itemProgress = repository.saveItemProgress({
         userId: user.id,
-        itemId: asString(payload, "itemId"),
+        itemId,
         status: asString(payload, "status") as
           "not_started" | "in_progress" | "completed",
         position: asOptionalInteger(payload, "position"),
@@ -144,9 +162,11 @@ async function executeStateRequest(
     }
 
     if (action === "task-progress") {
+      const taskId = asString(payload, "taskId");
+      if (catalogGate) requireCatalogStageTask(catalogGate, taskId);
       const taskProgress = repository.saveStageTaskProgress({
         userId: user.id,
-        taskId: asString(payload, "taskId"),
+        taskId,
         completed: asBoolean(payload, "completed"),
       });
       return Response.json({
@@ -157,6 +177,7 @@ async function executeStateRequest(
 
     if (action === "bookmark") {
       const itemId = asString(payload, "itemId");
+      if (catalogGate) requireCatalogItem(catalogGate, itemId);
       const bookmarked = asBoolean(payload, "bookmarked");
       const bookmark = bookmarked
         ? repository.setBookmark({ userId: user.id, itemId })
@@ -169,11 +190,17 @@ async function executeStateRequest(
     }
 
     if (action === "note") {
+      const scopeType = asString(payload, "scopeType") as "item" | "stage";
+      const scopeId = asString(payload, "scopeId");
+      if (catalogGate) {
+        if (scopeType === "item") requireCatalogItem(catalogGate, scopeId);
+        else requireCatalogStage(catalogGate, scopeId);
+      }
       const note = repository.saveNote({
         id: asOptionalString(payload, "id"),
         userId: user.id,
-        scopeType: asString(payload, "scopeType") as "item" | "stage",
-        scopeId: asString(payload, "scopeId"),
+        scopeType,
+        scopeId,
         body: asString(payload, "body"),
       });
       return Response.json({ note });
@@ -188,10 +215,12 @@ async function executeStateRequest(
     }
 
     if (action === "outcome") {
+      const stageId = asString(payload, "stageId");
+      if (catalogGate) requireCatalogStage(catalogGate, stageId);
       const outcome = repository.createStageOutcome({
         id: asOptionalString(payload, "id"),
         userId: user.id,
-        stageId: asString(payload, "stageId"),
+        stageId,
         kind: asString(payload, "kind") as "repository" | "demo" | "reflection",
         url: asOptionalString(payload, "url"),
         summary: asOptionalString(payload, "summary"),
@@ -208,11 +237,10 @@ async function executeStateRequest(
     }
 
     if (action === "confirm-stage") {
+      const stageId = asString(payload, "stageId");
+      if (catalogGate) requireCatalogStage(catalogGate, stageId);
       return Response.json({
-        stage: repository.confirmStageCompletion(
-          user.id,
-          asString(payload, "stageId"),
-        ),
+        stage: repository.confirmStageCompletion(user.id, stageId),
       });
     }
 
@@ -227,8 +255,17 @@ export async function handleStateRequest(
   repository: LearningStateRepository,
   mode: DeploymentMode,
   monitor?: RequestMonitor,
+  catalogGate?: StateCatalogGate,
 ): Promise<Response> {
-  const response = await executeStateRequest(request, repository, mode);
+  const response = await executeStateRequest(
+    request,
+    repository,
+    mode,
+    catalogGate,
+  );
+  // R10: private state must never be cached by any intermediate, including
+  // error responses (they can leak whether an ID exists).
+  response.headers.set("cache-control", "private, no-store");
   if (response.status >= 400) {
     (monitor?.record ?? recordOperationalMetric)({
       event: "request_error",
@@ -251,10 +288,14 @@ export async function GET(request: Request): Promise<Response> {
 
 export async function POST(request: Request): Promise<Response> {
   const store = getLearningStateStore();
+  // Writes are gated on the hand-maintained catalog (R06). A catalog that
+  // cannot be loaded fails closed: unverifiable IDs must not be persisted.
+  const catalogGate = createStateCatalogGate(await loadPublicCatalog());
   return handleStateRequest(
     request,
     store.repository,
     parseRuntimeConfig(process.env).mode,
     undefined,
+    catalogGate,
   );
 }

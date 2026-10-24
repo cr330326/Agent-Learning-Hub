@@ -1,4 +1,4 @@
-import { mkdtemp, rm, writeFile } from "node:fs/promises";
+import { mkdtemp, readdir, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 
@@ -172,19 +172,179 @@ describe("admin health boundary", () => {
           BACKUP_OUTPUT_DIR: backupDirectory,
         },
         contentRoot: resolve(import.meta.dirname, "../../content"),
+        now: () => new Date("2026-08-11T03:00:00.000Z"),
       });
 
-      expect(result.backup).toEqual({
+      expect(result.backup).toMatchObject({
         status: "ok",
         retainedBackups: 1,
         latestCreatedAt: "2026-08-11T01:02:03.000Z",
         latestRestoreVerifiedAt: "2026-08-11T02:03:04.000Z",
         latestByteSize: backup.manifest.byteSize,
+        reasons: [],
       });
+      expect(result.backup).not.toMatchObject({ status: "not-configured" });
+      if (result.backup.status !== "not-configured") {
+        expect(result.backup.latestAgeHours).toBeCloseTo(1.97, 1);
+      }
       expect(JSON.stringify(result.backup)).not.toContain(root);
       expect(JSON.stringify(result.backup)).not.toContain(
         backup.manifest.filename,
       );
+    } finally {
+      database.close();
+      await rm(root, { recursive: true, force: true });
+    }
+  });
+
+  it("degrades backup health when the newest backup exceeds the age threshold", async () => {
+    const root = await mkdtemp(join(tmpdir(), "agent-learning-admin-backup-"));
+    const sourceFilename = join(root, "state.sqlite");
+    const backupDirectory = join(root, "backups");
+    const database = openLearningDatabase({
+      filename: sourceFilename,
+      enableWal: false,
+    });
+
+    try {
+      // R07 regression: a valid backup dated years ago must not read as ok.
+      await createEncryptedBackup({
+        sourceFilename,
+        outputDirectory: backupDirectory,
+        passphrase: "correct horse battery staple",
+        now: () => new Date("2020-01-01T00:00:00.000Z"),
+      });
+
+      const stale = await buildRuntimeAdminHealthSnapshot({
+        mode: "cloud",
+        database,
+        environment: { BACKUP_OUTPUT_DIR: backupDirectory },
+        contentRoot: resolve(import.meta.dirname, "../../content"),
+        now: () => new Date("2026-08-11T03:00:00.000Z"),
+      });
+      expect(stale.backup).toMatchObject({
+        status: "degraded",
+        reasons: expect.arrayContaining(["backup-stale", "restore-unverified"]),
+      });
+
+      // The future guard catches tampered or clock-skewed manifests.
+      await rm(backupDirectory, { recursive: true, force: true });
+      await createEncryptedBackup({
+        sourceFilename,
+        outputDirectory: backupDirectory,
+        passphrase: "correct horse battery staple",
+        now: () => new Date("2099-01-01T00:00:00.000Z"),
+      });
+      const future = await buildRuntimeAdminHealthSnapshot({
+        mode: "cloud",
+        database,
+        environment: { BACKUP_OUTPUT_DIR: backupDirectory },
+        contentRoot: resolve(import.meta.dirname, "../../content"),
+        now: () => new Date("2026-08-11T03:00:00.000Z"),
+      });
+      expect(future.backup).toMatchObject({
+        status: "degraded",
+        reasons: expect.arrayContaining(["backup-future"]),
+      });
+
+      // Deployments can align the thresholds with their own RPO.
+      await rm(backupDirectory, { recursive: true, force: true });
+      await createEncryptedBackup({
+        sourceFilename,
+        outputDirectory: backupDirectory,
+        passphrase: "correct horse battery staple",
+        now: () => new Date("2020-01-01T00:00:00.000Z"),
+      });
+      const relaxed = await buildRuntimeAdminHealthSnapshot({
+        mode: "cloud",
+        database,
+        environment: {
+          BACKUP_OUTPUT_DIR: backupDirectory,
+          BACKUP_MAX_AGE_HOURS: "999999",
+          BACKUP_MAX_RESTORE_VERIFICATION_AGE_DAYS: "999999",
+        },
+        contentRoot: resolve(import.meta.dirname, "../../content"),
+        now: () => new Date("2026-08-11T03:00:00.000Z"),
+      });
+      expect(relaxed.backup).toMatchObject({
+        status: "degraded",
+        reasons: expect.arrayContaining(["restore-unverified"]),
+      });
+    } finally {
+      database.close();
+      await rm(root, { recursive: true, force: true });
+    }
+  });
+
+  it("degrades backup health when no backup exists or restore verification went stale", async () => {
+    const root = await mkdtemp(join(tmpdir(), "agent-learning-admin-backup-"));
+    const sourceFilename = join(root, "state.sqlite");
+    const backupDirectory = join(root, "backups");
+    const database = openLearningDatabase({
+      filename: sourceFilename,
+      enableWal: false,
+    });
+
+    try {
+      const empty = await buildRuntimeAdminHealthSnapshot({
+        mode: "cloud",
+        database,
+        environment: { BACKUP_OUTPUT_DIR: backupDirectory },
+        contentRoot: resolve(import.meta.dirname, "../../content"),
+        now: () => new Date("2026-08-11T03:00:00.000Z"),
+      });
+      expect(empty.backup).toMatchObject({
+        status: "degraded",
+        reasons: ["no-valid-backup"],
+      });
+
+      await createEncryptedBackup({
+        sourceFilename,
+        outputDirectory: backupDirectory,
+        passphrase: "correct horse battery staple",
+        now: () => new Date("2026-08-10T00:00:00.000Z"),
+      });
+      // A restore verified shortly after the backup keeps the summary healthy.
+      const backups = await readdir(backupDirectory);
+      const encryptedBackup = backups.find((name) =>
+        name.endsWith(".sqlite.enc"),
+      );
+      expect(encryptedBackup).toBeDefined();
+      await restoreEncryptedBackup({
+        backupFilename: join(backupDirectory, encryptedBackup!),
+        targetFilename: join(root, "restored.sqlite"),
+        passphrase: "correct horse battery staple",
+        now: () => new Date("2026-08-10T06:00:00.000Z"),
+      });
+
+      const fresh = await buildRuntimeAdminHealthSnapshot({
+        mode: "cloud",
+        database,
+        environment: {
+          BACKUP_OUTPUT_DIR: backupDirectory,
+          BACKUP_MAX_AGE_HOURS: "72",
+        },
+        contentRoot: resolve(import.meta.dirname, "../../content"),
+        now: () => new Date("2026-08-11T03:00:00.000Z"),
+      });
+      expect(fresh.backup).toMatchObject({ status: "ok", reasons: [] });
+
+      // The same verification read beyond the configured window degrades.
+      const staleVerification = await buildRuntimeAdminHealthSnapshot({
+        mode: "cloud",
+        database,
+        environment: {
+          BACKUP_OUTPUT_DIR: backupDirectory,
+          BACKUP_MAX_AGE_HOURS: "72",
+          BACKUP_MAX_RESTORE_VERIFICATION_AGE_DAYS: "1",
+        },
+        contentRoot: resolve(import.meta.dirname, "../../content"),
+        now: () => new Date("2026-08-12T07:00:00.000Z"),
+      });
+      expect(staleVerification.backup).toMatchObject({
+        status: "degraded",
+        reasons: expect.arrayContaining(["restore-stale"]),
+      });
     } finally {
       database.close();
       await rm(root, { recursive: true, force: true });

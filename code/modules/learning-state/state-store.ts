@@ -34,7 +34,9 @@ export function createPersistentLearningStateStore(
   const filename = resolve(
     options.filename ?? getDefaultStateDatabaseFilename(options.environment),
   );
-  mkdirSync(dirname(filename), { recursive: true });
+  // R09: the directory holding the private state database must not depend on
+  // the operator's umask; 0o700 keeps other OS users out on shared hosts.
+  mkdirSync(dirname(filename), { recursive: true, mode: 0o700 });
   const database = openLearningDatabase({
     filename,
     enableWal: options.enableWal ?? true,

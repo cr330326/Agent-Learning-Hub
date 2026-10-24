@@ -1,6 +1,7 @@
 import { createHash, randomBytes } from "node:crypto";
 
 import type { DeploymentMode } from "../runtime/runtime-config";
+import { isTrustedLocalHost } from "../runtime/request-host";
 import type {
   LearningStateRepository,
   UserRecord,
@@ -17,6 +18,15 @@ export function createSessionToken(): string {
 
 export function hashSessionToken(token: string): string {
   return createHash("sha256").update(token).digest("hex");
+}
+
+// Real requests always carry a Host header, but Requests synthesized inside
+// the server (server components) may not; their URL authority is the intended
+// host, and for real traffic Next derives that URL from the Host header anyway.
+function requestHostIsTrusted(request: Request): boolean {
+  return isTrustedLocalHost(
+    request.headers.get("host") ?? new URL(request.url).hostname,
+  );
 }
 
 export function readCookie(request: Request, name: string): string | null {
@@ -38,6 +48,11 @@ export function getRequestUser(
   mode: DeploymentMode,
 ): UserRecord | null {
   if (mode === "local") {
+    // The fixed local identity is handed out on sight, so it must only be
+    // granted through a loopback Host. This is defense in depth next to the
+    // middleware gate: a LAN client or a DNS-rebinding Host gets no identity,
+    // whatever address the server happened to bind.
+    if (!requestHostIsTrusted(request)) return null;
     return ensureLocalUser(repository);
   }
 
@@ -58,6 +73,7 @@ export async function getRequestUserAsync(
   mode: DeploymentMode,
 ): Promise<UserRecord | null> {
   if (mode === "local") {
+    if (!requestHostIsTrusted(request)) return null;
     return ensureLocalUser(repository);
   }
 

@@ -6,6 +6,7 @@ import {
   CLOUD_SESSION_COOKIE,
   createSessionToken,
   getRequestUser,
+  getRequestUserAsync,
   hashSessionToken,
 } from "./request-auth";
 import { handleSessionRequest } from "../../app/api/session/route";
@@ -25,6 +26,28 @@ describe("request authentication context", () => {
     );
 
     expect(user).toMatchObject({ id: "local-user", mode: "local" });
+    database.close();
+  });
+
+  it("refuses the fixed local identity for a non-loopback Host", async () => {
+    const database = openLearningDatabase({
+      filename: ":memory:",
+      enableWal: false,
+    });
+    const repository = createLearningStateRepository(database);
+
+    // R01 regression: a request that reaches the server with an attacker
+    // Host header must not receive the local identity (DNS rebinding / LAN).
+    const rebinding = new Request("http://127.0.0.1/api/session", {
+      headers: { host: "review.invalid:3419" },
+    });
+    expect(getRequestUser(rebinding, repository, "local")).toBeNull();
+
+    const asyncUser = await getRequestUserAsync(rebinding, repository, "local");
+    expect(asyncUser).toBeNull();
+
+    const session = await handleSessionRequest(rebinding, repository, "local");
+    expect(await session.json()).toMatchObject({ authenticated: false });
     database.close();
   });
 

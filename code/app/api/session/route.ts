@@ -63,6 +63,8 @@ export async function handleSessionRequest(
     user,
     csrfToken,
   });
+  // R10: the session probe reveals identity and hands out CSRF material.
+  response.headers.set("cache-control", "private, no-store");
 
   if (mode === "local") {
     // Local mode is deliberately loopback-only and is commonly served over

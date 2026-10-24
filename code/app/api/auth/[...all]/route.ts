@@ -17,7 +17,10 @@ async function handle(request: Request): Promise<Response> {
     const handlers = toNextJsHandler(getBetterAuth());
     const handler = handlers[request.method as keyof typeof handlers];
     if (!handler) return new Response("Method Not Allowed", { status: 405 });
-    return handler(request);
+    const response = await handler(request);
+    // R10: identity endpoints hand out session and CSRF cookies; no cache.
+    response.headers.set("cache-control", "private, no-store");
+    return response;
   } catch {
     return Response.json({ error: "身份服务暂时不可用。" }, { status: 503 });
   }

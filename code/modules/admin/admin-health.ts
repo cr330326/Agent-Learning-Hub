@@ -56,6 +56,8 @@ export type AdminHealthSnapshot = {
         latestCreatedAt: string | null;
         latestRestoreVerifiedAt: string | null;
         latestByteSize: number | null;
+        latestAgeHours: number | null;
+        reasons: BackupHealthReason[];
       };
   observability: OperationalMetricsSnapshot;
   deployment: {
@@ -67,6 +69,30 @@ export type AdminHealthSnapshot = {
 export type AdminHealthEnvironment = Readonly<
   Record<string, string | undefined>
 >;
+
+// R07: a backup whose schedule has silently stopped used to keep reporting
+// "ok" forever, because health only checked manifest structure and checksums.
+// Age thresholds now degrade the summary when the newest backup is too old or
+// no restore verification happened within the window. Defaults assume nightly
+// backups and a quarterly restore drill; deployments align them with their own
+// RPO and drill policy through the environment variables below.
+export type BackupHealthReason =
+  | "no-valid-backup"
+  | "integrity-mismatch"
+  | "backup-stale"
+  | "backup-future"
+  | "restore-unverified"
+  | "restore-stale"
+  | "restore-future";
+
+const DEFAULT_BACKUP_MAX_AGE_HOURS = 48;
+const DEFAULT_BACKUP_MAX_RESTORE_VERIFICATION_AGE_DAYS = 90;
+
+function readThreshold(value: string | undefined, fallback: number): number {
+  if (!value?.trim()) return fallback;
+  const parsed = Number(value);
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
+}
 
 export function isAdminUser(
   user: UserRecord | null,
@@ -171,6 +197,7 @@ function databaseHealth(
 
 async function backupHealth(
   environment: AdminHealthEnvironment,
+  now: () => Date,
 ): Promise<AdminHealthSnapshot["backup"]> {
   const outputDirectory = environment.BACKUP_OUTPUT_DIR?.trim();
   if (!outputDirectory) return { status: "not-configured" };
@@ -226,14 +253,65 @@ async function backupHealth(
         latestCreatedAt: null,
         latestRestoreVerifiedAt: null,
         latestByteSize: null,
+        latestAgeHours: null,
+        reasons: ["no-valid-backup"],
       };
     }
+
+    const current = now();
+    const maxAgeHours = readThreshold(
+      environment.BACKUP_MAX_AGE_HOURS,
+      DEFAULT_BACKUP_MAX_AGE_HOURS,
+    );
+    const maxRestoreVerificationAgeDays = readThreshold(
+      environment.BACKUP_MAX_RESTORE_VERIFICATION_AGE_DAYS,
+      DEFAULT_BACKUP_MAX_RESTORE_VERIFICATION_AGE_DAYS,
+    );
+
+    const reasons: BackupHealthReason[] = [];
+    if (inspected.some(({ valid }) => !valid)) {
+      reasons.push("integrity-mismatch");
+    }
+    const latestAgeHours =
+      Math.round(
+        ((current.getTime() - Date.parse(latest.createdAt)) / 3_600_000) * 10,
+      ) / 10;
+    if (latestAgeHours < 0) {
+      reasons.push("backup-future");
+    } else if (latestAgeHours > maxAgeHours) {
+      reasons.push("backup-stale");
+    }
+
+    const restoreVerifiedAt = manifests
+      .map((manifest) => manifest.restoreVerifiedAt)
+      .filter((value): value is string => Boolean(value))
+      .sort((left, right) => right.localeCompare(left))[0];
+    const restoreVerificationAgeDays =
+      restoreVerifiedAt === undefined
+        ? null
+        : (current.getTime() - Date.parse(restoreVerifiedAt)) / 86_400_000;
+    if (restoreVerifiedAt === undefined) {
+      reasons.push("restore-unverified");
+    } else if (
+      restoreVerificationAgeDays !== null &&
+      restoreVerificationAgeDays < 0
+    ) {
+      reasons.push("restore-future");
+    } else if (
+      restoreVerificationAgeDays !== null &&
+      restoreVerificationAgeDays > maxRestoreVerificationAgeDays
+    ) {
+      reasons.push("restore-stale");
+    }
+
     return {
-      status: inspected.every(({ valid }) => valid) ? "ok" : "degraded",
+      status: reasons.length > 0 ? "degraded" : "ok",
       retainedBackups: manifestEntries.length,
       latestCreatedAt: latest.createdAt,
       latestRestoreVerifiedAt: latest.restoreVerifiedAt,
       latestByteSize: latest.byteSize,
+      latestAgeHours,
+      reasons,
     };
   } catch {
     return {
@@ -242,6 +320,8 @@ async function backupHealth(
       latestCreatedAt: null,
       latestRestoreVerifiedAt: null,
       latestByteSize: null,
+      latestAgeHours: null,
+      reasons: ["no-valid-backup"],
     };
   }
 }
@@ -253,8 +333,10 @@ export async function buildRuntimeAdminHealthSnapshot(options: {
   contentRoot?: string;
   localMaterialRoot?: string;
   operationalMetrics?: OperationalMetricsSnapshot;
+  now?: () => Date;
 }): Promise<AdminHealthSnapshot> {
   const environment = options.environment ?? process.env;
+  const now = options.now ?? (() => new Date());
   const contentRoot = options.contentRoot ?? getDefaultContentRoot(environment);
   const auditReport = await auditContentDirectory({
     contentRoot,
@@ -273,9 +355,9 @@ export async function buildRuntimeAdminHealthSnapshot(options: {
         };
 
   const nodeMajor = Number(process.versions.node.split(".")[0]);
-  const backup = await backupHealth(environment);
+  const backup = await backupHealth(environment, now);
   return {
-    generatedAt: new Date().toISOString(),
+    generatedAt: new Date(now()).toISOString(),
     mode: options.mode,
     catalog: catalogHealth(auditReport),
     materials,

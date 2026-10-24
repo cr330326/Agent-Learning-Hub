@@ -1,5 +1,6 @@
 import Database from "better-sqlite3";
 import {
+  link,
   mkdir,
   mkdtemp,
   readFile,
@@ -241,21 +242,7 @@ export async function restoreEncryptedBackup(options: {
     recursive: true,
     mode: 0o700,
   });
-  try {
-    await stat(options.targetFilename);
-    throw new Error("Target database already exists; choose a new path.");
-  } catch (error) {
-    if (error instanceof Error && error.message.includes("already exists")) {
-      throw error;
-    }
-    if (!(
-      error instanceof Error &&
-      "code" in error &&
-      error.code === "ENOENT"
-    )) {
-      throw error;
-    }
-  }
+  await assertNoSqliteSidecars(options.targetFilename);
 
   const temporaryFilename = join(
     dirname(options.targetFilename),
@@ -274,7 +261,24 @@ export async function restoreEncryptedBackup(options: {
     }
     restored.close();
     restored = null;
-    await rename(temporaryFilename, options.targetFilename);
+
+    // R08: stat-then-rename had a window where another process could create
+    // the target and POSIX rename would silently replace it. A hard-link
+    // install is atomic and never clobbers: it fails with EEXIST when the
+    // target appeared in the meantime, whatever created it.
+    await assertNoSqliteSidecars(options.targetFilename);
+    try {
+      await link(temporaryFilename, options.targetFilename);
+    } catch (error) {
+      if (
+        error instanceof Error &&
+        "code" in error &&
+        error.code === "EEXIST"
+      ) {
+        throw new Error("Target database already exists; choose a new path.");
+      }
+      throw error;
+    }
     try {
       const manifestPath = `${options.backupFilename}.manifest.json`;
       const manifest = JSON.parse(
@@ -297,5 +301,29 @@ export async function restoreEncryptedBackup(options: {
   } finally {
     restored?.close();
     await rm(temporaryFilename, { force: true });
+  }
+}
+
+// A target with live or leftover -wal/-shm/-journal sidecars is dangerous:
+// SQLite may try to recover from a stale WAL on top of the restored database.
+async function assertNoSqliteSidecars(targetFilename: string): Promise<void> {
+  for (const suffix of ["-wal", "-shm", "-journal"]) {
+    try {
+      await stat(`${targetFilename}${suffix}`);
+      throw new Error(
+        `Target database has a SQLite ${suffix} sidecar; refusing to restore over it.`,
+      );
+    } catch (error) {
+      if (error instanceof Error && error.message.includes("sidecar")) {
+        throw error;
+      }
+      if (!(
+        error instanceof Error &&
+        "code" in error &&
+        error.code === "ENOENT"
+      )) {
+        throw error;
+      }
+    }
   }
 }

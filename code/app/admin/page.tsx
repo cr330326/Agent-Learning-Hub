@@ -24,6 +24,16 @@ function statusLabel(status: string) {
         : status;
 }
 
+const backupReasonLabels: Record<string, string> = {
+  "no-valid-backup": "没有有效的加密备份",
+  "integrity-mismatch": "有备份文件与清单不符",
+  "backup-stale": "最新备份已超过允许时限",
+  "backup-future": "备份时间戳来自未来",
+  "restore-unverified": "从未完成恢复验证",
+  "restore-stale": "恢复验证已过期",
+  "restore-future": "恢复验证时间戳来自未来",
+};
+
 export default async function AdminPage() {
   const runtime = parseRuntimeConfig(process.env);
   const store = getLearningStateStore();
@@ -98,14 +108,23 @@ export default async function AdminPage() {
           {snapshot.backup.status === "not-configured" ? (
             <p>设置 BACKUP_OUTPUT_DIR 后显示完整性摘要</p>
           ) : (
-            <p>
-              保留 {snapshot.backup.retainedBackups} 份 · 最新{" "}
-              {snapshot.backup.latestCreatedAt
-                ? new Date(snapshot.backup.latestCreatedAt).toLocaleString(
-                    "zh-CN",
-                  )
-                : "无有效备份"}
-            </p>
+            <>
+              <p>
+                保留 {snapshot.backup.retainedBackups} 份 · 最新{" "}
+                {snapshot.backup.latestCreatedAt
+                  ? new Date(snapshot.backup.latestCreatedAt).toLocaleString(
+                      "zh-CN",
+                    )
+                  : "无有效备份"}
+              </p>
+              {snapshot.backup.reasons.length > 0 ? (
+                <p>
+                  {snapshot.backup.reasons
+                    .map((reason) => backupReasonLabels[reason] ?? reason)
+                    .join(" · ")}
+                </p>
+              ) : null}
+            </>
           )}
         </section>
         <section className="admin-health-card">

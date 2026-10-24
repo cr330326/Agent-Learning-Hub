@@ -8,6 +8,7 @@ import {
   StateValidationError,
   type LearningStateRepository,
 } from "../../../modules/learning-state/repository";
+import { readJsonBodyWithLimit } from "../../../modules/learning-state/request-limits";
 import {
   parseRuntimeConfig,
   type DeploymentMode,
@@ -44,14 +45,14 @@ function clearCookie(name: string): string {
 
 async function readConfirmation(request: Request): Promise<string> {
   try {
-    const payload: unknown = await request.json();
-    if (!payload || typeof payload !== "object" || Array.isArray(payload)) {
-      throw new Error();
-    }
-    const confirmation = (payload as { confirmation?: unknown }).confirmation;
+    const payload = (await readJsonBodyWithLimit(request)) as {
+      confirmation?: unknown;
+    };
+    const confirmation = payload.confirmation;
     if (typeof confirmation !== "string") throw new Error();
     return confirmation;
-  } catch {
+  } catch (error) {
+    if (error instanceof StateValidationError) throw error;
     throw new StateValidationError("删除账户需要明确的确认文本。");
   }
 }
@@ -139,6 +140,9 @@ export async function handleDataRequest(
   monitor?: RequestMonitor,
 ): Promise<Response> {
   const response = await executeDataRequest(request, repository, mode);
+  // R10: exports and deletion responses carry private data or change
+  // identity; no intermediary may cache them.
+  response.headers.set("cache-control", "private, no-store");
   if (response.status >= 400) {
     (monitor?.record ?? recordOperationalMetric)({
       event: "request_error",

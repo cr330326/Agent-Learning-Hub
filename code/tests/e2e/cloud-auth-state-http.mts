@@ -99,6 +99,11 @@ check(
   anonymousState.status === 401,
   `status ${anonymousState.status}`,
 );
+check(
+  "anonymous state refusal is uncacheable",
+  (anonymousState.headers.get("cache-control") ?? "").includes("no-store"),
+  anonymousState.headers.get("cache-control") ?? "missing",
+);
 
 const anonymousWrite = await anonymous("/api/state", {
   method: "POST",
@@ -336,6 +341,32 @@ for (const [label, body] of [
     `${label} write succeeds`,
     response.status === 200,
     `status ${response.status}`,
+  );
+}
+
+// R06: a fabricated directory ID must be refused without touching state, and
+// R10: private state responses (including refusals) must not be cacheable.
+const fabricated = await write({
+  action: "note",
+  scopeType: "item",
+  scopeId: "synthetic-item-that-never-existed",
+  body: "should not persist",
+});
+check(
+  "fabricated directory ID is refused",
+  fabricated.status === 400,
+  `status ${fabricated.status}`,
+);
+const stateRead = await request("/api/state");
+for (const [label, response] of [
+  ["state read", stateRead],
+  ["fabricated refusal", fabricated],
+] as const) {
+  const cacheControl = response.headers.get("cache-control") ?? "";
+  check(
+    `${label} is uncacheable`,
+    cacheControl.includes("no-store"),
+    cacheControl,
   );
 }
 

@@ -158,6 +158,18 @@ export class StateConflictError extends Error {
   }
 }
 
+// R06: single-field limits alone let a client accumulate unbounded rows and
+// bytes (100 fabricated notes reached a 2 MB snapshot in the review probe).
+// These are per-user cumulative budgets, enforced next to the writes so
+// concurrent requests cannot slip past them; the snapshot and export are
+// bounded by construction once they hold.
+export const STATE_BUDGETS = {
+  maxNotes: 200,
+  maxNoteTotalCharacters: 524_288,
+  maxStageOutcomes: 100,
+  maxStageOutcomeTotalCharacters: 262_144,
+} as const;
+
 function now(): string {
   return new Date().toISOString();
 }
@@ -727,6 +739,30 @@ export function createLearningStateRepository(
       if (input.body.length > 20_000) {
         throw new StateValidationError("body exceeds 20000 characters.");
       }
+      const existing = handle
+        .prepare(
+          "SELECT length(body) AS size FROM notes WHERE user_id = ? AND scope_type = ? AND scope_id = ?",
+        )
+        .get(input.userId, input.scopeType, input.scopeId) as
+        { size: number } | undefined;
+      if (!existing) {
+        const usage = handle
+          .prepare(
+            "SELECT COUNT(*) AS rows, COALESCE(SUM(length(body)), 0) AS size FROM notes WHERE user_id = ?",
+          )
+          .get(input.userId) as { rows: number; size: number };
+        if (usage.rows >= STATE_BUDGETS.maxNotes) {
+          throw new StateValidationError(
+            `笔记数量已达上限（${STATE_BUDGETS.maxNotes} 条）。`,
+          );
+        }
+        if (
+          usage.size + input.body.length >
+          STATE_BUDGETS.maxNoteTotalCharacters
+        ) {
+          throw new StateValidationError("笔记总字数已超出个人配额。");
+        }
+      }
       const id = input.id ?? randomUUID();
       const timestamp = now();
       try {
@@ -856,6 +892,25 @@ export function createLearningStateRepository(
         throw new StateValidationError(
           "reflection outcomes require a summary.",
         );
+      }
+      const usage = handle
+        .prepare(
+          `SELECT COUNT(*) AS rows,
+                  COALESCE(SUM(length(COALESCE(url, '')) + length(COALESCE(summary, ''))), 0) AS size
+             FROM stage_outcomes WHERE user_id = ?`,
+        )
+        .get(input.userId) as { rows: number; size: number };
+      const incomingSize = (url?.length ?? 0) + (summary?.length ?? 0);
+      if (usage.rows >= STATE_BUDGETS.maxStageOutcomes) {
+        throw new StateValidationError(
+          `阶段成果数量已达上限（${STATE_BUDGETS.maxStageOutcomes} 条）。`,
+        );
+      }
+      if (
+        usage.size + incomingSize >
+        STATE_BUDGETS.maxStageOutcomeTotalCharacters
+      ) {
+        throw new StateValidationError("阶段成果总字数已超出个人配额。");
       }
       const id = input.id ?? randomUUID();
       const timestamp = now();

@@ -1,5 +1,34 @@
 const baseUrl = process.env.APP_URL ?? "http://127.0.0.1:3218";
 
+import http from "node:http";
+
+// R01 regression: a request that reaches the server with a non-loopback Host
+// must be rejected before it receives the fixed local identity. Node's fetch
+// silently ignores a host override, so this probe uses a raw request.
+const probeUrl = new URL(baseUrl);
+const probeResponse = await new Promise((resolve, reject) => {
+  const request_ = http.request(
+    {
+      host: probeUrl.hostname,
+      port: probeUrl.port || 80,
+      path: "/api/session",
+      headers: { host: "review.invalid:3419" },
+    },
+    (response) => {
+      let body = "";
+      response.on("data", (chunk) => (body += chunk));
+      response.on("end", () => resolve({ status: response.statusCode, body }));
+    },
+  );
+  request_.on("error", reject);
+  request_.end();
+});
+if (probeResponse.status !== 403) {
+  throw new Error(
+    `Non-loopback Host was not rejected by the middleware boundary: ${probeResponse.status}`,
+  );
+}
+
 const cookieJar = new Map();
 
 function updateCookies(response) {
@@ -43,6 +72,18 @@ if (!sessionPayload.authenticated || sessionPayload.user?.id !== "local-user") {
 // nothing there and prevents the only case where this test is destructive.
 const existing = await request("/api/state");
 const existingState = (await existing.json()).state ?? {};
+
+// R10: private state responses must be uncacheable in both directions —
+// success and error — so no intermediary can retain identity-bearing data.
+for (const [label, response] of [
+  ["session", session],
+  ["state read", existing],
+]) {
+  const cacheControl = response.headers.get("cache-control") ?? "";
+  if (!cacheControl.includes("no-store")) {
+    throw new Error(`${label} response is cacheable: "${cacheControl}".`);
+  }
+}
 const occupied = ["itemProgress", "notes", "bookmarks", "stageOutcomes"].filter(
   (key) => (existingState[key] ?? []).length > 0,
 );
@@ -83,6 +124,18 @@ response = await write({
 });
 if (response.status !== 200)
   throw new Error(`Note write failed: ${response.status}`);
+
+// R06: a fabricated directory ID must be refused without touching state.
+response = await write({
+  action: "note",
+  scopeType: "item",
+  scopeId: "synthetic-item-that-never-existed",
+  body: "should not persist",
+});
+if (response.status !== 400)
+  throw new Error(
+    `Fabricated directory ID was not refused: ${response.status}`,
+  );
 
 response = await write({
   action: "bookmark",

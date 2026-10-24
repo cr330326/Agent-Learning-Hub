@@ -24,6 +24,18 @@ for (const [path, expected] of cases) {
       `${path} did not render ${expected}: status ${response.status}.`,
     );
   }
+
+  // R10: HTML pages must refuse to be embedded and never be sniffed.
+  const csp = response.headers.get("content-security-policy") ?? "";
+  if (!csp.includes("frame-ancestors 'none'")) {
+    throw new Error(`${path} is missing the frame-ancestors policy.`);
+  }
+  if (response.headers.get("x-frame-options") !== "DENY") {
+    throw new Error(`${path} is missing the X-Frame-Options DENY header.`);
+  }
+  if (response.headers.get("x-content-type-options") !== "nosniff") {
+    throw new Error(`${path} is missing the nosniff header.`);
+  }
 }
 
 console.log(`Public page smoke test passed for ${cases.length} routes.`);

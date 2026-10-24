@@ -76,6 +76,7 @@ export async function handleGitHubLoginRequest(
 ): Promise<Response> {
   const state = createOAuthState();
   const response = redirectResponse(buildGitHubAuthorizeUrl(config, state));
+  response.headers.set("cache-control", "private, no-store");
   response.headers.append(
     "set-cookie",
     serializeCookie(OAUTH_STATE_COOKIE, state, { httpOnly: true }),
@@ -89,16 +90,25 @@ export async function handleGitHubCallbackRequest(
   config: GitHubOAuthConfig,
   fetcher?: Fetcher,
 ): Promise<Response> {
+  // R10: every callback outcome mints, rejects or rejects-again an identity.
+  const finish = (response: Response): Response => {
+    response.headers.set("cache-control", "private, no-store");
+    return response;
+  };
   const url = new URL(request.url);
   const error = url.searchParams.get("error");
   if (error) {
-    return redirectResponse(`/login?error=${encodeURIComponent(error)}`);
+    return finish(
+      redirectResponse(`/login?error=${encodeURIComponent(error)}`),
+    );
   }
   const code = url.searchParams.get("code");
   const state = url.searchParams.get("state");
   const storedState = readCookie(request, OAUTH_STATE_COOKIE);
   if (!code || !state || !storedState || state !== storedState) {
-    return Response.json({ error: "OAuth state 校验失败。" }, { status: 400 });
+    return finish(
+      Response.json({ error: "OAuth state 校验失败。" }, { status: 400 }),
+    );
   }
 
   try {
@@ -137,11 +147,11 @@ export async function handleGitHubCallbackRequest(
       new URL("/learning", request.url).toString(),
     );
     appendCloudCookies(response, sessionToken, csrfToken);
-    return response;
+    return finish(response);
   } catch (caught) {
     const message =
       caught instanceof GitHubOAuthError ? "github-oauth" : "login-failed";
-    return redirectResponse(`/login?error=${message}`);
+    return finish(redirectResponse(`/login?error=${message}`));
   }
 }
 
@@ -170,6 +180,7 @@ export async function handleLogoutRequest(
     }
   }
   const response = Response.json({ loggedOut: true });
+  response.headers.set("cache-control", "private, no-store");
   for (const cookieName of [
     CLOUD_SESSION_COOKIE,
     LOCAL_SESSION_COOKIE,
@@ -217,12 +228,14 @@ export async function GET(request: Request): Promise<Response> {
       headers: request.headers,
       asResponse: true,
     });
+    response.headers.set("cache-control", "private, no-store");
     const location = response.headers.get("location");
     if (!location) return response;
     const redirect = new Response(null, {
       status: 302,
       headers: { location },
     });
+    redirect.headers.set("cache-control", "private, no-store");
     const setCookie = response.headers.get("set-cookie");
     if (setCookie) redirect.headers.set("set-cookie", setCookie);
     return redirect;
