@@ -1,5 +1,6 @@
 import { betterAuth, type BetterAuthOptions } from "better-auth/minimal";
 import type { OAuth2Tokens } from "better-auth";
+import type { GithubProfile } from "better-auth/social-providers";
 import type Database from "better-sqlite3";
 
 import { getLearningStateStore } from "../../lib/learning-state";
@@ -68,7 +69,6 @@ async function getMinimumGithubUserInfo(token: OAuth2Tokens) {
       : value.login;
   return {
     user: {
-      id: githubId,
       name: displayName.slice(0, 160),
       // The application deliberately does not request or persist GitHub email.
       email: `${githubId}@github.invalid`,
@@ -77,7 +77,10 @@ async function getMinimumGithubUserInfo(token: OAuth2Tokens) {
         ? { image: value.avatar_url }
         : {}),
     },
-    data: { id: githubId, login: value.login },
+    // Better Auth derives accountSubject from data.id. Its provider type also
+    // describes optional GitHub profile fields that this privacy-minimal flow
+    // deliberately discards before handing the profile to the auth library.
+    data: { id: githubId, login: value.login } as GithubProfile,
   };
 }
 
