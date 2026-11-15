@@ -352,7 +352,11 @@
       "trackIds": ["learning", "aicoding", "agentic", "application"],
       "taskIds": ["stage-3-task-1", "stage-3-task-2", "stage-3-task-3"],
       "projectOutcomeIds": ["stage-3-outcome"],
-      "learningItemIds": ["legacy-reading-16-003", "legacy-reading-19-004"],
+      "learningItemIds": [
+        "legacy-reading-16-003",
+        "legacy-reading-19-004",
+        "anthropic-long-running-agent-harness"
+      ],
       "legacyImport": {
         "source": "learning-site/data.js",
         "kind": "stage",
@@ -796,7 +800,11 @@
       "trackIds": ["learning", "aicoding", "agentic", "application"],
       "taskIds": ["stage-7-task-1", "stage-7-task-2", "stage-7-task-3"],
       "projectOutcomeIds": ["stage-7-outcome"],
-      "learningItemIds": ["legacy-reading-04-005", "legacy-reading-16-012"],
+      "learningItemIds": [
+        "legacy-reading-04-005",
+        "legacy-reading-16-012",
+        "anthropic-long-running-agent-harness"
+      ],
       "legacyImport": {
         "source": "learning-site/data.js",
         "kind": "stage",
