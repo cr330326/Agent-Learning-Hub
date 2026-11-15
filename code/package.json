@@ -40,7 +40,7 @@
     "audit:functional": "node scripts/functional-regression.mjs --output-dir reports/functional-regression"
   },
   "dependencies": {
-    "better-auth": "^1.6.26",
+    "better-auth": "^1.7.25",
     "better-sqlite3": "^13.0.3",
     "next": "16.4.3",
     "react": "19.2.8",
