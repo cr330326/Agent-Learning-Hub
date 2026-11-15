@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-15T13:24:06.014Z",
+  "generatedAt": "2026-11-15T14:18:17.744Z",
   "baseUrl": "http://127.0.0.1:3002",
   "total": 28,
   "failed": 0,
@@ -23,7 +23,7 @@
     {
       "name": "internal links resolve",
       "ok": true,
-      "detail": "91 internal links, all < 400"
+      "detail": "92 internal links, all < 400"
     },
     {
       "name": "header navigation reaches every section",

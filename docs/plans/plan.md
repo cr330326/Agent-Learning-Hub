@@ -1,11 +1,11 @@
 # Agent Learning Hub 产品与技术方案
 
-**版本**：1.1（2026-09-18 按现役代码复核）
+**版本**：1.2（2026-11-15 现役工程与双库复核；文档发布 2026.11.15）
 **配套**：[产品规格](./spec.md) · [任务与完成度](./tasks.md) · [架构决策](../adr/) · [部署与运维](../deploy/README.md)
 
 本文描述架构、内容模型、归属和运行边界。需求 ID 与验收场景以 [spec.md](./spec.md) 为准，完成状态以 [tasks.md](./tasks.md) 为准，工作规则以 [AGENTS.md](../../AGENTS.md) 为准。
 
-2026-11-15 云端资讯扩展已通过 Q16 整体确认。本文同时描述既有学习系统与新增资讯目标架构，新增模块、worker 与独立资讯库已进入实现和本地容器验收，真实接入状态由 tasks.md Phase 9 管理。
+2026-11-15 云端资讯扩展已通过 Q16 整体确认。本文同时描述既有学习系统与新增资讯目标架构，资讯模块、worker 与独立资讯库已实现并在本机容器运行，真实接入状态由 tasks.md Phase 9 管理。
 
 ## 1. 方案摘要
 
@@ -31,12 +31,13 @@ Agent Learning Hub 提供每日资讯发现与系统学习双入口，工程实�
 
 端口约定（以 `code/scripts/docker-deploy.sh` 与 `mode-switch.sh` 为准）：
 
-| 场景                           | 地址             |
-| ------------------------------ | ---------------- |
-| 开发服务、本机 Docker Local    | `127.0.0.1:3001` |
-| 本机 Docker Cloud              | `127.0.0.1:3002` |
-| 发布 / 生产实例（反代之后）    | `127.0.0.1:3000` |
-| 端到端测试的一次性实例（示例） | `127.0.0.1:3100` |
+| 场景                            | 地址                                               |
+| ------------------------------- | -------------------------------------------------- |
+| 开发服务、本机 Docker Local     | `127.0.0.1:3001`                                   |
+| 当前 Mac 既有三容器试运行 Local | `127.0.0.1:3003`（`docker-compose.mac-trial.yml`） |
+| 本机 Docker Cloud               | `127.0.0.1:3002`                                   |
+| 发布 / 生产实例（反代之后）     | `127.0.0.1:3000`                                   |
+| 端到端测试的一次性实例（示例）  | `127.0.0.1:3100`                                   |
 
 ## 3. 产品定位
 
@@ -74,6 +75,10 @@ Phase 9 增加发现、资讯详情、主题、历史日报与资讯搜索，学
 
 ## 5. 总体架构
 
+![服务分层架构](./architecture.svg)
+
+前端与后端属于同一个 Next.js Web 服务，学习、认证与资讯是内部模块；worker 为独立进程。Better Auth、SQLite 驱动与持久队列为嵌入能力，不是独立部署的中间件服务。当前不依赖 Redis、MySQL、PostgreSQL、Kafka 或 Java 服务。下图保留内容流转视角；[内部依赖图](./module-deps.svg) 和 [外部依赖图](./external-deps.svg) 补充静态依赖视角。
+
 ```mermaid
 flowchart LR
     U["访问者 / 学习者"] --> W["Next.js 应用"]
@@ -104,6 +109,8 @@ flowchart LR
     H["宿主机素材命令"] --> L
     H --> F["素材状态与漂移报告"]
 ```
+
+依赖图来自 TypeScript AST 的 import、export 与字面量动态 import，范围为 `app/`、`lib/`、`modules/`、`scripts/` 的现役源码，排除测试和外部库；类型引用保留为虚线。按目录聚合后可见 `reader ↔ content-resolver` 及含 `lib/auth/runtime/admin/discovery/search` 的环，不能直接认定为文件运行时循环。文件级运行时环为 `learning-state/discovery-state.ts ↔ repository.ts`；加入类型边后还涉及 `database.ts`，另有 `discovery/adapters.ts ↔ github-results.ts` 的混合环。依赖图用行 → 列的完整矩阵保留全部跨模块关系，并以文件详图区分实际循环；“实 / 型”、虚线框及红色叹号同时表达引用类型与环。完整边表和分析范围见 [扫描证据](../../code/reports/release-2026-11-15/dependencies.json)。本轮记录现状，不为画图改动代码结构。
 
 关键 seam 是 Content Resolver：云端与本地各有一个 adapter，调用方不感知文件挂载、上游链接、回退和安全校验。领域逻辑位于 `code/modules/`，页面和路由只调用模块接口；模块职责表见 [README](../../README.md#架构)。
 
@@ -167,14 +174,14 @@ flowchart LR
 
 扩展在 `code/modules/discovery/` 内实现，App Router 页面与接口复用领域模块，后台入口位于 `code/scripts/discovery-worker.ts`。
 
-| 模块职责   | 输入与输出                                                                        |
-| ---------- | --------------------------------------------------------------------------------- |
-| 信源与同步 | 管理来源和字段映射，调用飞书、RSS/Atom、JSON、HTML 适配器，按分页进度落库输入记录 |
-| 身份与版本 | 原文和平台身份去重，多来源关联、正文版本、指标观测、来源缺失与修订保护            |
-| 内容处理   | 公开原文/字幕提取、归一、摘要与工程价值评估、依据与模型版本、限期清理             |
-| 发布与日报 | 自动/人工发布、公开字段、统一撤下与恢复、固定日报、截止前候选预览与人工选排、修订 |
-| 学习收录   | 建议、目录校验、分支与 PR 幂等创建、合并与真实上线状态                            |
-| 任务与预算 | SQLite 持久化队列、租约、回执、预算预留核销、重试、积压与健康                     |
+| 模块职责   | 输入与输出                                                                                              |
+| ---------- | ------------------------------------------------------------------------------------------------------- |
+| 信源与同步 | 管理来源和字段映射，调用飞书、RSS/Atom、JSON、HTML 与授权 GitHub 结果文件适配器，按分页进度落库输入记录 |
+| 身份与版本 | 原文和平台身份去重，多来源关联、正文版本、指标观测、来源缺失与修订保护                                  |
+| 内容处理   | 公开原文/字幕提取、归一、摘要与工程价值评估、依据与模型版本、限期清理                                   |
+| 发布与日报 | 自动/人工发布、公开字段、统一撤下与恢复、固定日报、截止前候选预览与人工选排、修订                       |
+| 学习收录   | 建议、目录校验、分支与 PR 幂等创建、合并与真实上线状态                                                  |
+| 任务与预算 | SQLite 持久化队列、租约、回执、预算预留核销、重试、积压与健康                                           |
 
 来源记录、处理版本与发布状态独立维护。采集分页读取配置范围并完整对账，通过来源记录与内容版本去重实现增量处理，确认删除按管理员决定下架，缺失证据不足时标记待核对。平台指标变更刷新观测数据，正文变更才触发相应处理版本。跨原文事件合并由维护者确认。
 
@@ -182,7 +189,7 @@ flowchart LR
 
 单 worker 调度持久化任务，网络和模型调用在短事务之外执行。任务唯一键、租约、心跳与阶段结果处理重入和崩溃恢复。模型请求按内容及处理版本复用回执，预留额度在数据库事务中完成，结果不明确的调用先核对。输出上限固定为 2048 token，预算预留与请求一致；`DISCOVERY_MODEL_TOKEN_LIMIT_FIELD` 默认 `max_tokens`，仅在供应商要求时配置 `max_completion_tokens`，非法值使模型保持待配置。
 
-预算按 Asia/Shanghai 每日计量，初始 ¥5，耗尽进入等待预算队列，后台可以调整。日报默认 09:00、最多 10 条；飞书默认每 30 分钟，公开来源默认每 60 分钟。字段、时间、来源、页面和异常流程详见 [已确认设计](./cloud-content-design.md#功能方案)，契约见 spec DISC-001～027。
+预算按 Asia/Shanghai 每日计量，初始 ¥5，耗尽进入等待预算队列，后台可以调整。日报默认 09:00、最多 10 条；来源 schema 默认每 60 分钟；当前聚合预设每 5 分钟，实际以信源配置为准。字段、时间、来源、页面和异常流程详见 [已确认设计](./cloud-content-design.md#功能方案)，契约见 spec DISC-001～027。
 
 生产维护入口 `cloud-maintenance.sh` 从 Compose 应用容器识别实际状态卷、资讯卷与固定版本镜像，在独立维护容器中执行该镜像的双库工具。批次记录两库逐表行数，保留按完整批次执行，健康检查要求两份密文与 manifest 同时有效，完整恢复后才记录批次验证时间。Lighthouse 配置上传包含资讯服务配置及单独的 GitHub App 私钥文件，私钥以只读挂载供网页与 worker 使用。
 
@@ -225,7 +232,7 @@ flowchart LR
 
 ## 8. 数据模型
 
-公开课程不进 SQLite。个人数据表见 [spec §10.2](./spec.md#102-数据表边界)，约束如下：
+完整字段、主外键和 DTO 见 [核心数据模型](../data/data-model.md) 与 [ER 图](../data/data-model-er.svg)。本次新建内存库执行迁移后，学习库 schema v3、资讯库 schema v6。公开课程不进 SQLite。个人数据表见 [spec §10.2](./spec.md#102-数据表边界)，约束如下：
 
 - 所有个人记录按用户隔离；笔记与成果总结上限 20,000 字符，写请求限流。
 - 删除账户级联删除全部个人数据。
@@ -253,7 +260,7 @@ flowchart LR
 
 - Next.js 16 App Router、React 19、TypeScript；自研白名单 Markdown 渲染器。
 - Better Auth + GitHub OAuth；SQLite（better-sqlite3），WAL 仅在 SQLite ≥ 3.51.3 时启用。
-- Zod 内容 schema；Vitest 与 Node test runner；Playwright 驱动的走查脚本（不写入依赖）。
+- Zod 内容 schema；Vitest 与 Node test runner；Playwright 驱动的走查脚本（开发依赖，不进入生产运行依赖）。
 - Docker 多阶段构建；Compose 基础文件加 cloud / local / release / production 覆盖。
 - GitHub Actions：双模式质量门禁、按模式的端到端测试、cloud clean-room 镜像扫描；`v*.*.*` tag 触发带 SBOM 与签名溯源的发布。
 
@@ -317,18 +324,19 @@ Phase 9 将备份与演练扩展到两个数据库，以共同批次、schema �
 
 ADR 0013 延续双 SQLite 与单 worker。指定飞书 Base 的九个子表是主要信源，openspace 采集结果为补充。聚合来源通过映射和链接校验后发布源标题与摘要，模型增强独立执行。相同链接保留多来源身份并以飞书字段优先，URL 修订维护稳定条目与个人引用。worker 每 5 分钟拉取，持久化分页进度并幂等更新。GitHub 通过服务端授权读取明确的采集结果文件并保存路径和提交版本。客户端保留筛选分页并周期刷新，显示最近同步时间及来源错误。实现及证据见 tasks T9.10，需求见 DISC-028～031。
 
-| ADR                                                                   | 决定                                       |
-| --------------------------------------------------------------------- | ------------------------------------------ |
-| [0001](../adr/0001-one-codebase-two-runtime-modes.md)                 | 同一代码库支持云端与本地两种模式           |
-| [0002](../adr/0002-third-party-materials-are-references.md)           | 第三方素材只作为来源引用，不进云端内容包   |
-| [0003](../adr/0003-self-hosted-nextjs-and-sqlite.md)                  | 自托管 Next.js 与单节点 SQLite             |
-| [0004](../adr/0004-cloud-oauth-boundary.md)                           | Better Auth 负责云端 GitHub 身份边界       |
-| [0005](../adr/0005-privacy-first-operational-metrics.md)              | 运营指标只保存匿名聚合                     |
-| [0006](../adr/0006-catalog-is-hand-maintained.md)                     | 目录人手维护，旧站转换器废弃               |
-| [0007](../adr/0007-catalog-drift-is-proposed-not-applied.md)          | 目录漂移由工具提候选、由人确认             |
-| [0008](../adr/0008-chapter-content-has-a-single-owner.md)             | 同一份章节正文只有一个拥有者，退场条目转发 |
-| [0009](../adr/0009-source-publication-and-curated-learning-intake.md) | 信源发布与维护者确认的课程收录 PR          |
-| [0010](../adr/0010-public-source-extraction-for-summaries.md)         | 公开原文与字幕的后台摘要处理及限期存储     |
-| [0011](../adr/0011-single-host-with-separate-discovery-store.md)      | 单机网页与 worker、独立资讯 SQLite         |
+| ADR                                                                      | 决定                                       |
+| ------------------------------------------------------------------------ | ------------------------------------------ |
+| [0001](../adr/0001-one-codebase-two-runtime-modes.md)                    | 同一代码库支持云端与本地两种模式           |
+| [0002](../adr/0002-third-party-materials-are-references.md)              | 第三方素材只作为来源引用，不进云端内容包   |
+| [0003](../adr/0003-self-hosted-nextjs-and-sqlite.md)                     | 自托管 Next.js 与单节点 SQLite             |
+| [0004](../adr/0004-cloud-oauth-boundary.md)                              | Better Auth 负责云端 GitHub 身份边界       |
+| [0005](../adr/0005-privacy-first-operational-metrics.md)                 | 运营指标只保存匿名聚合                     |
+| [0006](../adr/0006-catalog-is-hand-maintained.md)                        | 目录人手维护，旧站转换器废弃               |
+| [0007](../adr/0007-catalog-drift-is-proposed-not-applied.md)             | 目录漂移由工具提候选、由人确认             |
+| [0008](../adr/0008-chapter-content-has-a-single-owner.md)                | 同一份章节正文只有一个拥有者，退场条目转发 |
+| [0009](../adr/0009-source-publication-and-curated-learning-intake.md)    | 信源发布与维护者确认的课程收录 PR          |
+| [0010](../adr/0010-public-source-extraction-for-summaries.md)            | 公开原文与字幕的后台摘要处理及限期存储     |
+| [0011](../adr/0011-single-host-with-separate-discovery-store.md)         | 单机网页与 worker、独立资讯 SQLite         |
+| [0013](../adr/0013-feishu-led-aggregation-with-persistent-read-model.md) | 飞书主导的持久聚合读取                     |
 
 各文档的职责分工见 [AGENTS.md 第 8 节](../../AGENTS.md#8-文档纪律)。分阶段实施计划、上线门槛和下一步工作统一记录在 [tasks.md](./tasks.md)。

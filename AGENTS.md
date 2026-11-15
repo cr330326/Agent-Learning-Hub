@@ -6,16 +6,17 @@
 
 冲突时以事实源为准，不以本文件或 README 的转述为准。
 
-| 问题                         | 事实源                                                                                      |
-| ---------------------------- | ------------------------------------------------------------------------------------------- |
-| 产品范围与验收场景           | [docs/plans/spec.md](docs/plans/spec.md)                                                    |
-| 架构、内容模型、部署运维边界 | [docs/plans/plan.md](docs/plans/plan.md)                                                    |
-| 任务状态、实施证据、需求追踪 | [docs/plans/tasks.md](docs/plans/tasks.md)（以最新复核段为准）                              |
-| 已接受的架构决策             | [docs/adr/](docs/adr/)                                                                      |
-| 命令                         | `code/package.json` 的 `scripts`                                                            |
-| 脚本按运行位置分类           | [docs/deploy/README.md](docs/deploy/README.md#脚本按运行位置分类)                           |
-| 交付边界                     | `.gitignore`、`.dockerignore`、[docs/content-boundaries.json](docs/content-boundaries.json) |
-| 领域术语                     | [CONTEXT.md](CONTEXT.md)                                                                    |
+| 问题                         | 事实源                                                                                                                                                                                         |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 产品范围与验收场景           | [docs/plans/spec.md](docs/plans/spec.md)                                                                                                                                                       |
+| 架构、内容模型、部署运维边界 | [docs/plans/plan.md](docs/plans/plan.md)                                                                                                                                                       |
+| 任务状态、实施证据、需求追踪 | [docs/plans/tasks.md](docs/plans/tasks.md)（以最新复核段为准）                                                                                                                                 |
+| 数据库字段与约束             | `code/modules/learning-state/database.ts`、`code/modules/learning-state/discovery-state.ts`、`code/modules/discovery/database.ts`（说明见 [docs/data/data-model.md](docs/data/data-model.md)） |
+| 已接受的架构决策             | [docs/adr/](docs/adr/)                                                                                                                                                                         |
+| 命令                         | `code/package.json` 的 `scripts`                                                                                                                                                               |
+| 脚本按运行位置分类           | [docs/deploy/README.md](docs/deploy/README.md#脚本按运行位置分类)                                                                                                                              |
+| 交付边界                     | `.gitignore`、`.dockerignore`、[docs/content-boundaries.json](docs/content-boundaries.json)                                                                                                    |
+| 领域术语                     | [CONTEXT.md](CONTEXT.md)                                                                                                                                                                       |
 
 - 运行模式、内容归属、身份或数据库边界有变化时，**先**更新 ADR、spec 和 tasks，再改实现。
 - 不要用当前实现静默改写已接受的 ADR；推翻决定要新写一份 ADR。
@@ -128,6 +129,7 @@
 | `docs/testing-strategy.md` | 测试层次与质量门禁                                      |
 | `docs/adr/`                | 已接受的架构决策                                        |
 
+- 文档版本可独立于应用版本；发布记录须区分仓库文档发布、本机容器验证与远程镜像/公网发布，不以文档发布宣称代码已上线。架构与依赖图更新时以现役 `code/` 为范围，区分类型引用、模块聚合环与文件运行时环。
 - 新规则写进本文件，项目信息写进 README，不要两处各写一遍。
 - 测试数、漂移数、目录条目数等动态事实不写进规则文件；验收结论与证据写进 `tasks.md`，README 只保留带日期的摘要。
 - 云端两份 Runbook（`production-manual.md` 与 `lighthouse-automation.md`）做的是同一件事，必须保持逐节可互相定位。

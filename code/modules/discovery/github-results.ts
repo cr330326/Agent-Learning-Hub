@@ -51,16 +51,30 @@ function resultUrl(row: Record<string, unknown>, path: string): string {
     row["视频链接"],
     row["仓库链接"],
     row["GitHub链接"],
+    row.href,
+    row.skill_url,
+    row.clawhub_url,
+    row.bilibili_url,
+    row["链接"],
+    row["Skill链接"],
+    row["ClawHub链接"],
+    row.github_url,
+    row.youtube_link,
   ].find(
     (value) =>
       (typeof value === "string" && /^https?:\/\//.test(value)) ||
       typeof object(value).link === "string",
   );
   if (value) return text(object(value).link, value);
+  if (path.includes("clawhub") && /^\/[a-zA-Z0-9/_-]+$/.test(text(row.href)))
+    return new URL(text(row.href), "https://clawhub.ai").toString();
   if (/bilibili/.test(path) && /^BV[a-zA-Z0-9]{10}$/.test(text(row.bvid)))
     return `https://www.bilibili.com/video/${row.bvid}`;
-  if (/youtube/.test(path) && /^[a-zA-Z0-9_-]{11}$/.test(text(row.video_id)))
-    return `https://www.youtube.com/watch?v=${row.video_id}`;
+  if (
+    /youtube/.test(path) &&
+    /^[a-zA-Z0-9_-]{11}$/.test(text(row.video_id, row.videoId))
+  )
+    return `https://www.youtube.com/watch?v=${text(row.video_id, row.videoId)}`;
   if (/clawhub/.test(path) && /^[a-zA-Z0-9_-]+$/.test(text(row.slug)))
     return `https://clawhub.ai/skills/${row.slug}`;
   return "";
@@ -72,9 +86,9 @@ export function parseGitHubResults(
   commit: string,
 ): SourcePage {
   const data = object(value);
-  const rows = Array.isArray(value)
-    ? value
-    : ([
+  const groups = [
+    ...new Set(
+      [
         data.skills,
         data.repos,
         data.videos,
@@ -90,18 +104,29 @@ export function parseGitHubResults(
         data.data,
         data.items,
         data.results,
-      ].find(Array.isArray) ??
-      Object.entries(data).find(
-        ([key, value]) =>
-          !/all|candidate|watchlist|extra|raw|pool|failed|history|note|quer/i.test(
-            key,
-          ) &&
-          Array.isArray(value) &&
-          value.some((row) => resultUrl(object(row), path)),
-      )?.[1]);
-  if (!Array.isArray(rows))
+        ...Object.values(object(data.skills)),
+        ...Object.values(object(data.result)),
+        ...Object.values(object(data.data)),
+        ...Object.values(data).filter(
+          (group) =>
+            Array.isArray(group) &&
+            group.some((row) => resultUrl(object(row), path)),
+        ),
+      ].filter((group): group is unknown[] => Array.isArray(group)),
+    ),
+  ];
+  const rows = Array.isArray(value)
+    ? value
+    : groups.length
+      ? groups.flat()
+      : resultUrl(data, path)
+        ? [data]
+        : [];
+  if (!Array.isArray(value) && !groups.length && !rows.length)
     return { records: [], nextCursor: null, rejected: 1 };
   const records: SourceRecord[] = [];
+  const seen = new Set<string>();
+  let rejected = 0;
   for (const value of rows) {
     const row = { ...object(value), ...object(object(value).fields) };
     try {
@@ -117,8 +142,19 @@ export function parseGitHubResults(
         row["仓库名称"],
         row["标题"],
         row["文本"],
+        row.video_title,
+        row.skill_name,
+        row.title_en,
+        row.title_ja,
+        row.repo_name,
+        row.repository_name,
       );
-      if (!title) continue;
+      if (!title) {
+        rejected++;
+        continue;
+      }
+      if (seen.has(url)) continue;
+      seen.add(url);
       const metrics: Record<string, string | number> = {};
       const metricValues = {
         ...object(row.stats),
@@ -136,6 +172,25 @@ export function parseGitHubResults(
           row.duration_label ??
           row.duration ??
           row["时长"],
+        downloads:
+          row.downloads ??
+          row.downloads_total ??
+          row.downloads_all ??
+          row["下载数_int"] ??
+          row["下载数"] ??
+          object(row.stats).downloads,
+        installs:
+          row.installs ??
+          row.installs_total ??
+          row["安装数_int"] ??
+          row["安装数"] ??
+          object(row.stats).installs,
+        stars:
+          row.stars ??
+          row["星标数"] ??
+          row["Star数"] ??
+          object(row.stats).stars,
+        rank: row.rank ?? row["排名"],
       };
       for (const [key, label] of Object.entries({
         views: "播放量",
@@ -162,6 +217,7 @@ export function parseGitHubResults(
           row["频道"],
           row["UP主"],
           row["作者"],
+          row.up_master,
         ),
         summary: text(
           row.summary,
@@ -186,6 +242,17 @@ export function parseGitHubResults(
           row.updated_at,
           row.updated,
           row.created_at,
+          row.updateTime,
+          row.last_updated,
+          row["更新时间"],
+          row.publish_time,
+          row.publishedTime,
+          typeof row.pubdate_ts === "number" && row.pubdate_ts > 0
+            ? new Date(row.pubdate_ts * 1000).toISOString()
+            : undefined,
+          typeof row.publish_timestamp === "number" && row.publish_timestamp > 0
+            ? new Date(row.publish_timestamp * 1000).toISOString()
+            : undefined,
         ),
         contentType: /youtube|bilibili/.test(path)
           ? "video"
@@ -204,10 +271,10 @@ export function parseGitHubResults(
         ),
       });
     } catch {
-      // A malformed result remains visible in the rejected-row count.
+      rejected++;
     }
   }
-  return { records, nextCursor: null, rejected: rows.length - records.length };
+  return { records, nextCursor: null, rejected };
 }
 
 export class GitHubResults {
@@ -252,6 +319,7 @@ export class GitHubResults {
         },
         acceptedTypes: ["application/json"],
         maxBytes: 12_000_000,
+        timeoutMs: 60_000,
       },
     );
     return JSON.parse(response.text);
@@ -292,7 +360,7 @@ export class GitHubResults {
     }
     this.pendingFiles = [];
     const pending: { path: string; sha: string }[] = [];
-    while (index < this.files.length && pending.length < 4) {
+    while (index < this.files.length && pending.length < 8) {
       const file = this.files[index++];
       const saved = repo?.database.handle
         .prepare(
@@ -300,7 +368,7 @@ export class GitHubResults {
         )
         .get(this.source.id, file.path) as
         { sha: string; record_ids: string; parser_version: number } | undefined;
-      if (saved?.sha === file.sha && saved.parser_version === 4) {
+      if (saved?.sha === file.sha && saved.parser_version === 6) {
         if (repo && runId)
           repo.database.handle
             .prepare(
@@ -356,7 +424,7 @@ export class GitHubResults {
     repo.database.handle
       .transaction(() => {
         const save = repo.database.handle.prepare(
-          `INSERT INTO github_result_files(source_id,path,sha,commit_sha,record_ids,parser_version,rejected,error_code) VALUES (?,?,?,?,?,4,?,?) ON CONFLICT(source_id,path) DO UPDATE SET sha=excluded.sha,commit_sha=excluded.commit_sha,record_ids=excluded.record_ids,parser_version=excluded.parser_version,rejected=excluded.rejected,error_code=excluded.error_code`,
+          `INSERT INTO github_result_files(source_id,path,sha,commit_sha,record_ids,parser_version,rejected,error_code) VALUES (?,?,?,?,?,6,?,?) ON CONFLICT(source_id,path) DO UPDATE SET sha=excluded.sha,commit_sha=excluded.commit_sha,record_ids=excluded.record_ids,parser_version=excluded.parser_version,rejected=excluded.rejected,error_code=excluded.error_code`,
         );
         for (const file of this.pendingFiles)
           save.run(

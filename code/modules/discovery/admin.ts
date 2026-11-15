@@ -315,9 +315,12 @@ export async function handleDiscoveryAdminRequest(
         const version = repo.version(action.versionId);
         const row = repo.database.handle
           .prepare(
-            "SELECT source_id FROM source_records WHERE version_id=? LIMIT 1",
+            `SELECT r.source_id FROM source_records r JOIN sources s ON s.id=r.source_id
+             WHERE r.version_id=? OR r.item_id=?
+             ORDER BY (r.version_id=?) DESC,COALESCE(json_extract(s.config,'$.priority'),0) DESC,r.source_id LIMIT 1`,
           )
-          .get(action.versionId) as { source_id: string } | undefined;
+          .get(action.versionId, version?.item_id ?? "", action.versionId) as
+          { source_id: string } | undefined;
         if (!version || !row)
           return respond({ error: "处理版本不存在。" }, 404);
         const reviewId = randomUUID();

@@ -1,0 +1,30 @@
+[
+  {
+    "file": "docs/plans/architecture.svg",
+    "clipped": [],
+    "overflow": [],
+    "textElements": 51,
+    "foreignObjects": 0
+  },
+  {
+    "file": "docs/plans/module-deps.svg",
+    "clipped": [],
+    "overflow": [],
+    "textElements": 163,
+    "foreignObjects": 0
+  },
+  {
+    "file": "docs/plans/external-deps.svg",
+    "clipped": [],
+    "overflow": [],
+    "textElements": 40,
+    "foreignObjects": 0
+  },
+  {
+    "file": "docs/data/data-model-er.svg",
+    "clipped": [],
+    "overflow": [],
+    "textElements": 52,
+    "foreignObjects": 0
+  }
+]

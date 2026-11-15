@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1550" viewBox="0 0 1800 1550" role="img" aria-labelledby="title desc">
+  <title id="title">Agent Learning Hub · 服务分层架构</title>
+  <desc id="desc">服务级架构：前端、Web 业务、嵌入能力、两库与内容、外部服务分层。箭头从调用者指向被调用能力，Local 素材只读，模型可选。</desc>
+  <metadata id="diagram-profile">{"locale": "zh-CN", "readingDirection": "top-to-bottom", "intendedEmbeddedWidth": 1200, "source": ["docs/plans/plan.md", "code/docker/docker-compose.mac-trial.yml", "code/modules/discovery/worker.ts"], "visualProfile": "Existing blue/green/amber/purple category palette; serif headings, system CJK body; manual node geometry", "nodes": ["UI", "ADMINUI", "WEB", "LEARN", "NEWS", "WORKER", "AUTH", "QUEUE", "OPS", "STATE", "GIT", "DISC", "LOCAL", "BACKUP", "TEMP", "GH", "SOURCES", "MODEL"], "relationships": [{"id": "ui-web", "source": "UI", "target": "WEB", "kind": "runtime"}, {"id": "admin-web", "source": "ADMINUI", "target": "WEB", "kind": "runtime"}, {"id": "web-learning", "source": "WEB", "target": "LEARN", "kind": "runtime"}, {"id": "web-news", "source": "WEB", "target": "NEWS", "kind": "runtime"}, {"id": "web-auth", "source": "WEB", "target": "AUTH", "kind": "runtime"}, {"id": "auth-state", "source": "AUTH", "target": "STATE", "kind": "runtime"}, {"id": "learn-state", "source": "LEARN", "target": "STATE", "kind": "runtime"}, {"id": "learn-git", "source": "LEARN", "target": "GIT", "kind": "runtime"}, {"id": "learn-local", "source": "LEARN", "target": "LOCAL", "kind": "runtime"}, {"id": "news-disc", "source": "NEWS", "target": "DISC", "kind": "runtime"}, {"id": "worker-queue", "source": "WORKER", "target": "QUEUE", "kind": "runtime"}, {"id": "queue-disc", "source": "QUEUE", "target": "DISC", "kind": "runtime"}, {"id": "worker-disc", "source": "WORKER", "target": "DISC", "kind": "runtime"}, {"id": "worker-temp", "source": "WORKER", "target": "TEMP", "kind": "runtime"}, {"id": "ops-state", "source": "OPS", "target": "STATE", "kind": "runtime"}, {"id": "ops-disc", "source": "OPS", "target": "DISC", "kind": "runtime"}, {"id": "ops-backup", "source": "OPS", "target": "BACKUP", "kind": "runtime"}, {"id": "auth-github", "source": "AUTH", "target": "GH", "kind": "runtime"}, {"id": "worker-github", "source": "WORKER", "target": "GH", "kind": "runtime"}, {"id": "worker-source", "source": "WORKER", "target": "SOURCES", "kind": "runtime"}, {"id": "worker-model", "source": "WORKER", "target": "MODEL", "kind": "optional"}]}</metadata>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M 0 1 L 9 5 L 0 9 Z" fill="#64748b" />
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M 0 1 L 9 5 L 0 9 Z" fill="#c62828" />
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M 0 1 L 9 5 L 0 9 Z" fill="#2563eb" />
+    </marker>
+    <style>text { font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; fill:#1e293b; }
+.diagram-title { font-family: Georgia,"Songti SC","Noto Serif CJK SC",serif; font-size:38px; font-weight:700; }
+.subtitle { font-size:20px; fill:#526174; }
+.band-title { font-family:Georgia,"Songti SC",serif; font-size:25px; font-weight:700; }
+.card-title { font-size:23px; font-weight:700; }
+.body { font-size:20px; }
+.small { font-size:17px; fill:#526174; }
+.edge-label { font-size:17px; fill:#475569; paint-order:stroke; stroke:white; stroke-width:7; stroke-linejoin:round; }
+.code { font-family:Menlo,Consolas,"PingFang SC",monospace; font-size:19px; }
+.matrix-label { font-family:Menlo,Consolas,monospace; font-size:18px; }
+.matrix-mark { font-size:21px; font-weight:700; }
+</style>
+  </defs>
+  <rect id="background" width="1800" height="1550" fill="white" />
+  <g id="header">
+    <text x="60" y="65" class="diagram-title">
+      <tspan x="60" dy="0">Agent Learning Hub · 服务分层架构</tspan>
+    </text>
+    <text x="60" y="105" class="subtitle">
+      <tspan x="60" dy="0">同一代码库，两种运行模式；Web 与 worker 独立运行，领域模块保留在服务内部。</tspan>
+    </text>
+  </g>
+  <g id="layers">
+    <g id="layer-frontend" data-layer="frontend">
+      <rect x="60" y="145" width="1680" height="165" rx="14" fill="#eff6ff" stroke="#d8e0e9" stroke-width="1.3" />
+      <text x="82" y="181" class="band-title" fill="#2563eb" style="fill:#2563eb">
+        <tspan x="82" dy="0">前端层</tspan>
+      </text>
+      <text x="82" y="211" class="small">
+        <tspan x="82" dy="0">浏览器界面</tspan>
+      </text>
+    </g>
+    <g id="layer-backend" data-layer="backend">
+      <rect x="60" y="350" width="1680" height="280" rx="14" fill="#f0fdf4" stroke="#d8e0e9" stroke-width="1.3" />
+      <text x="82" y="386" class="band-title" fill="#16834a" style="fill:#16834a">
+        <tspan x="82" dy="0">后端层</tspan>
+      </text>
+      <text x="82" y="416" class="small">
+        <tspan x="82" dy="0">Web + 后台进程</tspan>
+      </text>
+    </g>
+    <g id="layer-embedded" data-layer="embedded">
+      <rect x="60" y="670" width="1680" height="160" rx="14" fill="#fffbeb" stroke="#d8e0e9" stroke-width="1.3" />
+      <text x="82" y="706" class="band-title" fill="#c16a0a" style="fill:#c16a0a">
+        <tspan x="82" dy="0">中间件与运维</tspan>
+      </text>
+      <text x="82" y="736" class="small">
+        <tspan x="82" dy="0">认证、队列为嵌入能力</tspan>
+      </text>
+    </g>
+    <g id="layer-data" data-layer="data">
+      <rect x="60" y="870" width="1680" height="305" rx="14" fill="#f5f3ff" stroke="#d8e0e9" stroke-width="1.3" />
+      <text x="82" y="906" class="band-title" fill="#7c3aed" style="fill:#7c3aed">
+        <tspan x="82" dy="0">数据与内容</tspan>
+      </text>
+      <text x="82" y="936" class="small">
+        <tspan x="82" dy="0">两库隔离</tspan>
+        <tspan x="82" dy="29">内容归属明确</tspan>
+      </text>
+    </g>
+    <g id="layer-external" data-layer="external">
+      <rect x="60" y="1215" width="1680" height="175" rx="14" fill="#f8fafc" stroke="#d8e0e9" stroke-width="1.3" />
+      <text x="82" y="1251" class="band-title" fill="#64748b" style="fill:#64748b">
+        <tspan x="82" dy="0">外部服务</tspan>
+      </text>
+      <text x="82" y="1281" class="small">
+        <tspan x="82" dy="0">服务端按配置访问</tspan>
+      </text>
+    </g>
+  </g>
+  <g id="connectors">
+    <g id="edge-ui-web" data-source="UI" data-target="WEB" data-kind="runtime">
+      <path d="M 600 290 L 600 325 L 480 325 L 480 405" fill="none" stroke="#64748b" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)" />
+    </g>
+    <g id="edge-admin-web" data-source="ADMINUI" data-target="WEB" data-kind="runtime">
+      <path d="M 1320 290 L 1320 335 L 440 335 L 440 405" fill="none" stroke="#64748b" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)" />
+    </g>
+    <g id="edge-web-learning" data-source="WEB" data-target="LEARN" data-kind="runtime">
+      <path d="M 690 450 L 750 450" fill="none" stroke="#64748b" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)" />
+    </g>
+    <g id="edge-web-news" data-source="WEB" data-target="NEWS" data-kind="runtime">
+      <path d="M 650 405 L 650 380 L 1440 380 L 1440 405" fill="none" stroke="#64748b" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)" />
+    </g>
+    <g id="edge-web-auth" data-source="WEB" data-target="AUTH" data-kind="runtime">
+      <path d="M 480 495 L 480 720" fill="none" stroke="#64748b" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)" />
+    </g>
+    <g id="edge-auth-state" data-source="AUTH" data-target="STATE" data-kind="runtime">
+      <path d="M 480 810 L 480 925" fill="none" stroke="#64748b" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)" />
+    </g>
+    <g id="edge-learn-state" data-source="LEARN" data-target="STATE" data-kind="runtime">
+      <path d="M 750 435 L 720 435 L 720 975 L 690 975" fill="none" stroke="#64748b" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)" />
+    </g>
+    <g id="edge-learn-git" data-source="LEARN" data-target="GIT" data-kind="runtime">
+      <path d="M 1170 435 L 1195 435 L 1195 975 L 1170 975" fill="none" stroke="#64748b" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)" />
+    </g>
+    <g id="edge-learn-local" data-source="LEARN" data-target="LOCAL" data-kind="runtime">
+      <path d="M 750 470 L 710 470 L 710 1105 L 690 1105" fill="none" stroke="#64748b" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)" />
+    </g>
+    <g id="edge-news-disc" data-source="NEWS" data-target="DISC" data-kind="runtime">
+      <path d="M 1650 445 L 1675 445 L 1675 965 L 1650 965" fill="none" stroke="#64748b" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)" />
+    </g>
+    <g id="edge-worker-queue" data-source="WORKER" data-target="QUEUE" data-kind="runtime">
+      <path d="M 1230 570 L 1205 570 L 1205 765 L 1170 765" fill="none" stroke="#64748b" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)" />
+    </g>
+    <g id="edge-queue-disc" data-source="QUEUE" data-target="DISC" data-kind="runtime">
+      <path d="M 1170 785 L 1210 785 L 1210 900 L 1440 900 L 1440 925" fill="none" stroke="#64748b" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)" />
+    </g>
+    <g id="edge-worker-disc" data-source="WORKER" data-target="DISC" data-kind="runtime">
+      <path d="M 1650 570 L 1690 570 L 1690 995 L 1650 995" fill="none" stroke="#64748b" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)" />
+    </g>
+    <g id="edge-worker-temp" data-source="WORKER" data-target="TEMP" data-kind="runtime">
+      <path d="M 1650 590 L 1705 590 L 1705 1105 L 1650 1105" fill="none" stroke="#64748b" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)" />
+    </g>
+    <g id="edge-ops-state" data-source="OPS" data-target="STATE" data-kind="runtime">
+      <path d="M 1370 810 L 1370 850 L 520 850 L 520 925" fill="none" stroke="#64748b" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)" />
+    </g>
+    <g id="edge-ops-disc" data-source="OPS" data-target="DISC" data-kind="runtime">
+      <path d="M 1530 810 L 1530 925" fill="none" stroke="#64748b" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)" />
+    </g>
+    <g id="edge-ops-backup" data-source="OPS" data-target="BACKUP" data-kind="runtime">
+      <path d="M 1230 780 L 1220 780 L 1220 1105 L 1170 1105" fill="none" stroke="#64748b" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)" />
+    </g>
+    <g id="edge-auth-github" data-source="AUTH" data-target="GH" data-kind="runtime">
+      <path d="M 270 765 L 245 765 L 245 1320 L 270 1320" fill="none" stroke="#64748b" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)" />
+    </g>
+    <g id="edge-worker-github" data-source="WORKER" data-target="GH" data-kind="runtime">
+      <path d="M 1650 545 L 1720 545 L 1720 1190 L 480 1190 L 480 1270" fill="none" stroke="#64748b" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)" />
+    </g>
+    <g id="edge-worker-source" data-source="WORKER" data-target="SOURCES" data-kind="runtime">
+      <path d="M 1650 555 L 1730 555 L 1730 1200 L 960 1200 L 960 1270" fill="none" stroke="#64748b" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)" />
+    </g>
+    <g id="edge-worker-model" data-source="WORKER" data-target="MODEL" data-kind="optional">
+      <path d="M 1650 605 L 1715 605 L 1715 1410 L 1440 1410 L 1440 1370" fill="none" stroke="#64748b" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)" stroke-dasharray="6 5" />
+    </g>
+  </g>
+  <g id="nodes">
+    <g id="UI" data-node="UI">
+      <title>学习与发现界面：浏览路线、课程、资讯与日报，保存个人学习记录。</title>
+      <rect x="270" y="200" width="660" height="90" rx="10" fill="white" stroke="#2563eb" stroke-width="1.7" />
+      <rect x="271" y="212" width="4" height="66" rx="2" fill="#2563eb" />
+      <text x="292" y="234" class="card-title" fill="#2563eb" style="fill:#2563eb">
+        <tspan x="292" dy="0">学习与发现界面</tspan>
+      </text>
+      <text x="292" y="266" class="body">
+        <tspan x="292" dy="0">浏览路线、课程、资讯与日报，保存个人学习记录。</tspan>
+      </text>
+    </g>
+    <g id="ADMINUI" data-node="ADMINUI">
+      <title>管理员界面：管理来源、审核发布与收录建议，查看运行健康。</title>
+      <rect x="990" y="200" width="660" height="90" rx="10" fill="white" stroke="#2563eb" stroke-width="1.7" />
+      <rect x="991" y="212" width="4" height="66" rx="2" fill="#2563eb" />
+      <text x="1012" y="234" class="card-title" fill="#2563eb" style="fill:#2563eb">
+        <tspan x="1012" dy="0">管理员界面</tspan>
+      </text>
+      <text x="1012" y="266" class="body">
+        <tspan x="1012" dy="0">管理来源、审核发布与收录建议，查看运行健康。</tspan>
+      </text>
+    </g>
+    <g id="WEB" data-node="WEB">
+      <title>Next.js Web / API：按请求渲染页面并承接业务请求。</title>
+      <rect x="270" y="405" width="420" height="90" rx="10" fill="white" stroke="#16834a" stroke-width="1.7" />
+      <rect x="271" y="417" width="4" height="66" rx="2" fill="#16834a" />
+      <text x="292" y="439" class="card-title" fill="#16834a" style="fill:#16834a">
+        <tspan x="292" dy="0">Next.js Web / API</tspan>
+      </text>
+      <text x="292" y="471" class="body">
+        <tspan x="292" dy="0">按请求渲染页面并承接业务请求。</tspan>
+      </text>
+    </g>
+    <g id="LEARN" data-node="LEARN">
+      <title>学习服务模块：提供目录、阅读、搜索和个人状态。</title>
+      <rect x="750" y="405" width="420" height="90" rx="10" fill="white" stroke="#16834a" stroke-width="1.7" />
+      <rect x="751" y="417" width="4" height="66" rx="2" fill="#16834a" />
+      <text x="772" y="439" class="card-title" fill="#16834a" style="fill:#16834a">
+        <tspan x="772" dy="0">学习服务模块</tspan>
+      </text>
+      <text x="772" y="471" class="body">
+        <tspan x="772" dy="0">提供目录、阅读、搜索和个人状态。</tspan>
+      </text>
+    </g>
+    <g id="NEWS" data-node="NEWS">
+      <title>资讯服务模块：提供聚合、审核、日报与收录建议。</title>
+      <rect x="1230" y="405" width="420" height="90" rx="10" fill="white" stroke="#16834a" stroke-width="1.7" />
+      <rect x="1231" y="417" width="4" height="66" rx="2" fill="#16834a" />
+      <text x="1252" y="439" class="card-title" fill="#16834a" style="fill:#16834a">
+        <tspan x="1252" dy="0">资讯服务模块</tspan>
+      </text>
+      <text x="1252" y="471" class="body">
+        <tspan x="1252" dy="0">提供聚合、审核、日报与收录建议。</tspan>
+      </text>
+    </g>
+    <g id="WORKER" data-node="WORKER">
+      <title>资讯 worker · 独立进程：定时采集、内容处理并创建收录 PR。</title>
+      <rect x="1230" y="525" width="420" height="90" rx="10" fill="white" stroke="#16834a" stroke-width="1.7" />
+      <rect x="1231" y="537" width="4" height="66" rx="2" fill="#16834a" />
+      <text x="1252" y="559" class="card-title" fill="#16834a" style="fill:#16834a">
+        <tspan x="1252" dy="0">资讯 worker · 独立进程</tspan>
+      </text>
+      <text x="1252" y="591" class="body">
+        <tspan x="1252" dy="0">定时采集、内容处理并创建收录 PR。</tspan>
+      </text>
+    </g>
+    <g id="AUTH" data-node="AUTH">
+      <title>Better Auth · 嵌入 Web：负责 GitHub 登录、会话与身份边界。</title>
+      <rect x="270" y="720" width="420" height="90" rx="10" fill="white" stroke="#c16a0a" stroke-width="1.7" />
+      <rect x="271" y="732" width="4" height="66" rx="2" fill="#c16a0a" />
+      <text x="292" y="754" class="card-title" fill="#c16a0a" style="fill:#c16a0a">
+        <tspan x="292" dy="0">Better Auth · 嵌入 Web</tspan>
+      </text>
+      <text x="292" y="786" class="body">
+        <tspan x="292" dy="0">负责 GitHub 登录、会话与身份边界。</tspan>
+      </text>
+    </g>
+    <g id="QUEUE" data-node="QUEUE">
+      <title>持久任务队列 · 嵌入资讯库：管理租约、重试、心跳和预算回执。</title>
+      <rect x="750" y="720" width="420" height="90" rx="10" fill="white" stroke="#c16a0a" stroke-width="1.7" />
+      <rect x="751" y="732" width="4" height="66" rx="2" fill="#c16a0a" />
+      <text x="772" y="754" class="card-title" fill="#c16a0a" style="fill:#c16a0a">
+        <tspan x="772" dy="0">持久任务队列 · 嵌入资讯库</tspan>
+      </text>
+      <text x="772" y="786" class="body">
+        <tspan x="772" dy="0">管理租约、重试、心跳和预算回执。</tspan>
+      </text>
+    </g>
+    <g id="OPS" data-node="OPS">
+      <title>维护容器 / 宿主机命令：执行在线加密备份和双库恢复演练。</title>
+      <rect x="1230" y="720" width="420" height="90" rx="10" fill="white" stroke="#c16a0a" stroke-width="1.7" />
+      <rect x="1231" y="732" width="4" height="66" rx="2" fill="#c16a0a" />
+      <text x="1252" y="754" class="card-title" fill="#c16a0a" style="fill:#c16a0a">
+        <tspan x="1252" dy="0">维护容器 / 宿主机命令</tspan>
+      </text>
+      <text x="1252" y="786" class="body">
+        <tspan x="1252" dy="0">执行在线加密备份和双库恢复演练。</tspan>
+      </text>
+    </g>
+    <g id="STATE" data-node="STATE">
+      <title>学习状态 SQLite：保存身份、会话与私人学习记录。</title>
+      <rect x="270" y="925" width="420" height="100" rx="10" fill="white" stroke="#7c3aed" stroke-width="1.7" />
+      <rect x="271" y="937" width="4" height="76" rx="2" fill="#7c3aed" />
+      <text x="292" y="959" class="card-title" fill="#7c3aed" style="fill:#7c3aed">
+        <tspan x="292" dy="0">学习状态 SQLite</tspan>
+      </text>
+      <text x="292" y="991" class="body">
+        <tspan x="292" dy="0">保存身份、会话与私人学习记录。</tspan>
+      </text>
+    </g>
+    <g id="GIT" data-node="GIT">
+      <title>Git 内容目录：维护公开课程、阶段与自有文章。</title>
+      <rect x="750" y="925" width="420" height="100" rx="10" fill="white" stroke="#7c3aed" stroke-width="1.7" />
+      <rect x="751" y="937" width="4" height="76" rx="2" fill="#7c3aed" />
+      <text x="772" y="959" class="card-title" fill="#7c3aed" style="fill:#7c3aed">
+        <tspan x="772" dy="0">Git 内容目录</tspan>
+      </text>
+      <text x="772" y="991" class="body">
+        <tspan x="772" dy="0">维护公开课程、阶段与自有文章。</tspan>
+      </text>
+    </g>
+    <g id="DISC" data-node="DISC">
+      <title>独立资讯 SQLite：保存信源、资讯、任务与固定日报。</title>
+      <rect x="1230" y="925" width="420" height="100" rx="10" fill="white" stroke="#7c3aed" stroke-width="1.7" />
+      <rect x="1231" y="937" width="4" height="76" rx="2" fill="#7c3aed" />
+      <text x="1252" y="959" class="card-title" fill="#7c3aed" style="fill:#7c3aed">
+        <tspan x="1252" dy="0">独立资讯 SQLite</tspan>
+      </text>
+      <text x="1252" y="991" class="body">
+        <tspan x="1252" dy="0">保存信源、资讯、任务与固定日报。</tspan>
+      </text>
+    </g>
+    <g id="LOCAL" data-node="LOCAL">
+      <title>本机素材 · Local 只读：仅访问条目明确声明的本地章节。</title>
+      <rect x="270" y="1060" width="420" height="90" rx="10" fill="white" stroke="#7c3aed" stroke-width="1.7" />
+      <rect x="271" y="1072" width="4" height="66" rx="2" fill="#7c3aed" />
+      <text x="292" y="1094" class="card-title" fill="#7c3aed" style="fill:#7c3aed">
+        <tspan x="292" dy="0">本机素材 · Local 只读</tspan>
+      </text>
+      <text x="292" y="1126" class="body">
+        <tspan x="292" dy="0">仅访问条目明确声明的本地章节。</tspan>
+      </text>
+    </g>
+    <g id="BACKUP" data-node="BACKUP">
+      <title>加密备份目录：按共同批次保存两库一致性快照。</title>
+      <rect x="750" y="1060" width="420" height="90" rx="10" fill="white" stroke="#7c3aed" stroke-width="1.7" />
+      <rect x="751" y="1072" width="4" height="66" rx="2" fill="#7c3aed" />
+      <text x="772" y="1094" class="card-title" fill="#7c3aed" style="fill:#7c3aed">
+        <tspan x="772" dy="0">加密备份目录</tspan>
+      </text>
+      <text x="772" y="1126" class="body">
+        <tspan x="772" dy="0">按共同批次保存两库一致性快照。</tspan>
+      </text>
+    </g>
+    <g id="TEMP" data-node="TEMP">
+      <title>临时原文卷：限期保存并清理原文和字幕。</title>
+      <rect x="1230" y="1060" width="420" height="90" rx="10" fill="white" stroke="#7c3aed" stroke-width="1.7" />
+      <rect x="1231" y="1072" width="4" height="66" rx="2" fill="#7c3aed" />
+      <text x="1252" y="1094" class="card-title" fill="#7c3aed" style="fill:#7c3aed">
+        <tspan x="1252" dy="0">临时原文卷</tspan>
+      </text>
+      <text x="1252" y="1126" class="body">
+        <tspan x="1252" dy="0">限期保存并清理原文和字幕。</tspan>
+      </text>
+    </g>
+    <g id="GH" data-node="GH">
+      <title>GitHub：提供身份、授权结果文件与 PR 服务。</title>
+      <rect x="270" y="1270" width="420" height="100" rx="10" fill="white" stroke="#64748b" stroke-width="1.7" />
+      <rect x="271" y="1282" width="4" height="76" rx="2" fill="#64748b" />
+      <text x="292" y="1304" class="card-title" fill="#64748b" style="fill:#64748b">
+        <tspan x="292" dy="0">GitHub</tspan>
+      </text>
+      <text x="292" y="1336" class="body">
+        <tspan x="292" dy="0">提供身份、授权结果文件与 PR 服务。</tspan>
+      </text>
+    </g>
+    <g id="SOURCES" data-node="SOURCES">
+      <title>飞书 / RSS / JSON / HTML：提供配置范围内的资料与元数据。</title>
+      <rect x="750" y="1270" width="420" height="100" rx="10" fill="white" stroke="#64748b" stroke-width="1.7" />
+      <rect x="751" y="1282" width="4" height="76" rx="2" fill="#64748b" />
+      <text x="772" y="1304" class="card-title" fill="#64748b" style="fill:#64748b">
+        <tspan x="772" dy="0">飞书 / RSS / JSON / HTML</tspan>
+      </text>
+      <text x="772" y="1336" class="body">
+        <tspan x="772" dy="0">提供配置范围内的资料与元数据。</tspan>
+      </text>
+    </g>
+    <g id="MODEL" data-node="MODEL">
+      <title>模型 API · 可选增强：按预算生成摘要与工程价值评估。</title>
+      <rect x="1230" y="1270" width="420" height="100" rx="10" fill="white" stroke="#64748b" stroke-width="1.7" stroke-dasharray="8 5" />
+      <rect x="1231" y="1282" width="4" height="76" rx="2" fill="#64748b" />
+      <text x="1252" y="1304" class="card-title" fill="#64748b" style="fill:#64748b">
+        <tspan x="1252" dy="0">模型 API · 可选增强</tspan>
+      </text>
+      <text x="1252" y="1336" class="body">
+        <tspan x="1252" dy="0">按预算生成摘要与工程价值评估。</tspan>
+      </text>
+    </g>
+  </g>
+  <g id="annotations">
+    <text x="750" y="560" class="body">
+      <tspan x="750" dy="0">学习、资讯与认证是 Web 内部模块。</tspan>
+      <tspan x="750" dy="29">worker 独立运行；Local 素材只读。</tspan>
+    </text>
+  </g>
+  <g id="legend">
+    <text x="80" y="1460" class="body">
+      <tspan x="80" dy="0">实线箭头：调用者 → 被调用能力 / 存储；虚线箭头及虚线卡片：可选模型增强。</tspan>
+    </text>
+    <text x="80" y="1498" class="small">
+      <tspan x="80" dy="0">Web 内部模块不是独立微服务；SQLite 和队列无需独立数据库或消息代理容器。来源：plan.md、code/。</tspan>
+    </text>
+  </g>
+</svg>

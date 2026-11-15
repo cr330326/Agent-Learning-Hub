@@ -1,0 +1,2573 @@
+{
+  "learning": {
+    "schemaVersion": 3,
+    "tables": [
+      {
+        "name": "accounts",
+        "sql": "CREATE TABLE accounts (\n  id TEXT PRIMARY KEY,\n  user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,\n  provider TEXT NOT NULL CHECK (length(provider) BETWEEN 1 AND 80),\n  provider_account_id TEXT NOT NULL CHECK (length(provider_account_id) BETWEEN 1 AND 240),\n  created_at TEXT NOT NULL,\n  UNIQUE (provider, provider_account_id)\n)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "user_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "provider",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "provider_account_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "users",
+            "from": "user_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "CASCADE",
+            "match": "NONE"
+          }
+        ],
+        "indexes": [
+          {
+            "seq": 0,
+            "name": "idx_accounts_user_id",
+            "unique": 0,
+            "origin": "c",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 1,
+                "name": "user_id"
+              }
+            ]
+          },
+          {
+            "seq": 1,
+            "name": "sqlite_autoindex_accounts_2",
+            "unique": 1,
+            "origin": "u",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 2,
+                "name": "provider"
+              },
+              {
+                "seqno": 1,
+                "cid": 3,
+                "name": "provider_account_id"
+              }
+            ]
+          },
+          {
+            "seq": 2,
+            "name": "sqlite_autoindex_accounts_1",
+            "unique": 1,
+            "origin": "pk",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 0,
+                "name": "id"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "bookmarks",
+        "sql": "CREATE TABLE bookmarks (\n  user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,\n  item_id TEXT NOT NULL CHECK (length(item_id) BETWEEN 1 AND 200),\n  created_at TEXT NOT NULL,\n  PRIMARY KEY (user_id, item_id)\n)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "user_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "item_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 2
+          },
+          {
+            "cid": 2,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "users",
+            "from": "user_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "CASCADE",
+            "match": "NONE"
+          }
+        ],
+        "indexes": [
+          {
+            "seq": 0,
+            "name": "idx_bookmarks_user_id",
+            "unique": 0,
+            "origin": "c",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 0,
+                "name": "user_id"
+              }
+            ]
+          },
+          {
+            "seq": 1,
+            "name": "sqlite_autoindex_bookmarks_1",
+            "unique": 1,
+            "origin": "pk",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 0,
+                "name": "user_id"
+              },
+              {
+                "seqno": 1,
+                "cid": 1,
+                "name": "item_id"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "discovery_state",
+        "sql": "CREATE TABLE discovery_state (\n  user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,\n  item_id TEXT NOT NULL,\n  target_type TEXT NOT NULL DEFAULT 'news' CHECK(target_type='news'),\n  status TEXT NOT NULL DEFAULT 'not_started' CHECK(status IN ('not_started','in_progress','completed')),\n  bookmarked INTEGER NOT NULL DEFAULT 0 CHECK(bookmarked IN (0,1)),\n  note TEXT NOT NULL DEFAULT '',\n  updated_at TEXT NOT NULL,\n  PRIMARY KEY(user_id,item_id)\n)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "user_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "item_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 2
+          },
+          {
+            "cid": 2,
+            "name": "target_type",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": "'news'",
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "status",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": "'not_started'",
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "bookmarked",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": "0",
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "note",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": "''",
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "updated_at",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "users",
+            "from": "user_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "CASCADE",
+            "match": "NONE"
+          }
+        ],
+        "indexes": [
+          {
+            "seq": 0,
+            "name": "sqlite_autoindex_discovery_state_1",
+            "unique": 1,
+            "origin": "pk",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 0,
+                "name": "user_id"
+              },
+              {
+                "seqno": 1,
+                "cid": 1,
+                "name": "item_id"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "item_progress",
+        "sql": "CREATE TABLE item_progress (\n  user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,\n  item_id TEXT NOT NULL CHECK (length(item_id) BETWEEN 1 AND 200),\n  status TEXT NOT NULL CHECK (status IN ('not_started', 'in_progress', 'completed')),\n  position INTEGER NOT NULL DEFAULT 0 CHECK (position >= 0),\n  updated_at TEXT NOT NULL,\n  PRIMARY KEY (user_id, item_id)\n)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "user_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "item_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 2
+          },
+          {
+            "cid": 2,
+            "name": "status",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "position",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": "0",
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "updated_at",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "users",
+            "from": "user_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "CASCADE",
+            "match": "NONE"
+          }
+        ],
+        "indexes": [
+          {
+            "seq": 0,
+            "name": "idx_item_progress_user_id",
+            "unique": 0,
+            "origin": "c",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 0,
+                "name": "user_id"
+              }
+            ]
+          },
+          {
+            "seq": 1,
+            "name": "sqlite_autoindex_item_progress_1",
+            "unique": 1,
+            "origin": "pk",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 0,
+                "name": "user_id"
+              },
+              {
+                "seqno": 1,
+                "cid": 1,
+                "name": "item_id"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "notes",
+        "sql": "CREATE TABLE notes (\n  id TEXT PRIMARY KEY,\n  user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,\n  scope_type TEXT NOT NULL CHECK (scope_type IN ('item', 'stage')),\n  scope_id TEXT NOT NULL CHECK (length(scope_id) BETWEEN 1 AND 200),\n  body TEXT NOT NULL CHECK (length(body) <= 20000),\n  created_at TEXT NOT NULL,\n  updated_at TEXT NOT NULL,\n  UNIQUE (user_id, scope_type, scope_id)\n)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "user_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "scope_type",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "scope_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "body",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "updated_at",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "users",
+            "from": "user_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "CASCADE",
+            "match": "NONE"
+          }
+        ],
+        "indexes": [
+          {
+            "seq": 0,
+            "name": "idx_notes_user_id",
+            "unique": 0,
+            "origin": "c",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 1,
+                "name": "user_id"
+              }
+            ]
+          },
+          {
+            "seq": 1,
+            "name": "sqlite_autoindex_notes_2",
+            "unique": 1,
+            "origin": "u",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 1,
+                "name": "user_id"
+              },
+              {
+                "seqno": 1,
+                "cid": 2,
+                "name": "scope_type"
+              },
+              {
+                "seqno": 2,
+                "cid": 3,
+                "name": "scope_id"
+              }
+            ]
+          },
+          {
+            "seq": 2,
+            "name": "sqlite_autoindex_notes_1",
+            "unique": 1,
+            "origin": "pk",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 0,
+                "name": "id"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "operational_metrics",
+        "sql": "CREATE TABLE operational_metrics (\n  bucket_started_at TEXT NOT NULL,\n  event TEXT NOT NULL CHECK (event IN (\n    'page_view',\n    'request_error',\n    'login_failure',\n    'health_check',\n    'backup',\n    'restore',\n    'content_audit',\n    'materials_update'\n  )),\n  scope TEXT NOT NULL CHECK (scope IN (\n    'home',\n    'roadmap',\n    'roadmap-stage',\n    'courses',\n    'course-detail',\n    'reader',\n    'search',\n    'projects',\n    'learning',\n    'login',\n    'content-policy',\n    'contribute',\n    'admin',\n    'learning-state',\n    'data-export',\n    'github-login',\n    'readiness',\n    'backup',\n    'restore',\n    'content-audit',\n    'materials-update'\n  )),\n  outcome TEXT NOT NULL CHECK (outcome IN (\n    'observed',\n    'success',\n    'client-error',\n    'server-error',\n    'failure'\n  )),\n  count INTEGER NOT NULL DEFAULT 0 CHECK (count >= 0),\n  last_occurred_at TEXT NOT NULL,\n  PRIMARY KEY (bucket_started_at, event, scope, outcome)\n)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "bucket_started_at",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "event",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 2
+          },
+          {
+            "cid": 2,
+            "name": "scope",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 3
+          },
+          {
+            "cid": 3,
+            "name": "outcome",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 4
+          },
+          {
+            "cid": 4,
+            "name": "count",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": "0",
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "last_occurred_at",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": [
+          {
+            "seq": 0,
+            "name": "idx_operational_metrics_bucket",
+            "unique": 0,
+            "origin": "c",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 0,
+                "name": "bucket_started_at"
+              }
+            ]
+          },
+          {
+            "seq": 1,
+            "name": "sqlite_autoindex_operational_metrics_1",
+            "unique": 1,
+            "origin": "pk",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 0,
+                "name": "bucket_started_at"
+              },
+              {
+                "seqno": 1,
+                "cid": 1,
+                "name": "event"
+              },
+              {
+                "seqno": 2,
+                "cid": 2,
+                "name": "scope"
+              },
+              {
+                "seqno": 3,
+                "cid": 3,
+                "name": "outcome"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "schema_migrations",
+        "sql": "CREATE TABLE schema_migrations (\n      version INTEGER PRIMARY KEY,\n      applied_at TEXT NOT NULL\n    )",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "version",
+            "type": "INTEGER",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "applied_at",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      {
+        "name": "sessions",
+        "sql": "CREATE TABLE sessions (\n  id TEXT PRIMARY KEY,\n  user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,\n  token_hash TEXT NOT NULL UNIQUE CHECK (length(token_hash) BETWEEN 1 AND 256),\n  expires_at TEXT NOT NULL,\n  created_at TEXT NOT NULL\n)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "user_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "token_hash",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "expires_at",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "users",
+            "from": "user_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "CASCADE",
+            "match": "NONE"
+          }
+        ],
+        "indexes": [
+          {
+            "seq": 0,
+            "name": "idx_sessions_user_id",
+            "unique": 0,
+            "origin": "c",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 1,
+                "name": "user_id"
+              }
+            ]
+          },
+          {
+            "seq": 1,
+            "name": "sqlite_autoindex_sessions_2",
+            "unique": 1,
+            "origin": "u",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 2,
+                "name": "token_hash"
+              }
+            ]
+          },
+          {
+            "seq": 2,
+            "name": "sqlite_autoindex_sessions_1",
+            "unique": 1,
+            "origin": "pk",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 0,
+                "name": "id"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "stage_outcomes",
+        "sql": "CREATE TABLE stage_outcomes (\n  id TEXT PRIMARY KEY,\n  user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,\n  stage_id TEXT NOT NULL CHECK (length(stage_id) BETWEEN 1 AND 200),\n  kind TEXT NOT NULL CHECK (kind IN ('repository', 'demo', 'reflection')),\n  url TEXT,\n  summary TEXT CHECK (summary IS NULL OR length(summary) <= 20000),\n  confirmed_at TEXT,\n  created_at TEXT NOT NULL,\n  updated_at TEXT NOT NULL\n)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "user_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "stage_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "kind",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "url",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "summary",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "confirmed_at",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 8,
+            "name": "updated_at",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "users",
+            "from": "user_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "CASCADE",
+            "match": "NONE"
+          }
+        ],
+        "indexes": [
+          {
+            "seq": 0,
+            "name": "idx_stage_outcomes_stage_id",
+            "unique": 0,
+            "origin": "c",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 2,
+                "name": "stage_id"
+              }
+            ]
+          },
+          {
+            "seq": 1,
+            "name": "idx_stage_outcomes_user_id",
+            "unique": 0,
+            "origin": "c",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 1,
+                "name": "user_id"
+              }
+            ]
+          },
+          {
+            "seq": 2,
+            "name": "sqlite_autoindex_stage_outcomes_1",
+            "unique": 1,
+            "origin": "pk",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 0,
+                "name": "id"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "stage_task_progress",
+        "sql": "CREATE TABLE stage_task_progress (\n  user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,\n  task_id TEXT NOT NULL CHECK (length(task_id) BETWEEN 1 AND 200),\n  completed INTEGER NOT NULL DEFAULT 0 CHECK (completed IN (0, 1)),\n  updated_at TEXT NOT NULL,\n  PRIMARY KEY (user_id, task_id)\n)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "user_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "task_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 2
+          },
+          {
+            "cid": 2,
+            "name": "completed",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": "0",
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "updated_at",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "users",
+            "from": "user_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "CASCADE",
+            "match": "NONE"
+          }
+        ],
+        "indexes": [
+          {
+            "seq": 0,
+            "name": "idx_stage_task_progress_user_id",
+            "unique": 0,
+            "origin": "c",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 0,
+                "name": "user_id"
+              }
+            ]
+          },
+          {
+            "seq": 1,
+            "name": "sqlite_autoindex_stage_task_progress_1",
+            "unique": 1,
+            "origin": "pk",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 0,
+                "name": "user_id"
+              },
+              {
+                "seqno": 1,
+                "cid": 1,
+                "name": "task_id"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "users",
+        "sql": "CREATE TABLE users (\n  id TEXT PRIMARY KEY,\n  mode TEXT NOT NULL CHECK (mode IN ('cloud', 'local')),\n  github_id TEXT UNIQUE,\n  display_name TEXT NOT NULL CHECK (length(display_name) BETWEEN 1 AND 160),\n  created_at TEXT NOT NULL,\n  updated_at TEXT NOT NULL\n)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "mode",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "github_id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "display_name",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "created_at",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "updated_at",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": [
+          {
+            "seq": 0,
+            "name": "sqlite_autoindex_users_2",
+            "unique": 1,
+            "origin": "u",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 2,
+                "name": "github_id"
+              }
+            ]
+          },
+          {
+            "seq": 1,
+            "name": "sqlite_autoindex_users_1",
+            "unique": 1,
+            "origin": "pk",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 0,
+                "name": "id"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "discovery": {
+    "schemaVersion": 6,
+    "tables": [
+      {
+        "name": "admin_actions",
+        "sql": "CREATE TABLE admin_actions (\n  id TEXT PRIMARY KEY,\n  actor TEXT NOT NULL,\n  action TEXT NOT NULL,\n  target TEXT NOT NULL,\n  detail TEXT NOT NULL,\n  created_at INTEGER NOT NULL\n)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "actor",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "action",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "target",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "detail",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "created_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": [
+          {
+            "seq": 0,
+            "name": "sqlite_autoindex_admin_actions_1",
+            "unique": 1,
+            "origin": "pk",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 0,
+                "name": "id"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "discovery_migrations",
+        "sql": "CREATE TABLE discovery_migrations (\n  version INTEGER PRIMARY KEY,\n  applied_at INTEGER NOT NULL\n)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "version",
+            "type": "INTEGER",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "applied_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": []
+      },
+      {
+        "name": "editions",
+        "sql": "CREATE TABLE editions (\n  day TEXT PRIMARY KEY,\n  cutoff INTEGER NOT NULL,\n  entries TEXT NOT NULL,\n  created_at INTEGER NOT NULL\n)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "day",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "cutoff",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "entries",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "created_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": [
+          {
+            "seq": 0,
+            "name": "sqlite_autoindex_editions_1",
+            "unique": 1,
+            "origin": "pk",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 0,
+                "name": "day"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "github_result_files",
+        "sql": "CREATE TABLE github_result_files (\n            source_id TEXT NOT NULL REFERENCES sources(id),\n            path TEXT NOT NULL,\n            sha TEXT NOT NULL,\n            commit_sha TEXT NOT NULL, record_ids TEXT NOT NULL DEFAULT '[]', parser_version INTEGER NOT NULL DEFAULT 0, rejected INTEGER NOT NULL DEFAULT 0, error_code TEXT,\n            PRIMARY KEY(source_id,path)\n          )",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "source_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "path",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 2
+          },
+          {
+            "cid": 2,
+            "name": "sha",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "commit_sha",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "record_ids",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": "'[]'",
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "parser_version",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": "0",
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "rejected",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": "0",
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "error_code",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "sources",
+            "from": "source_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "NO ACTION",
+            "match": "NONE"
+          }
+        ],
+        "indexes": [
+          {
+            "seq": 0,
+            "name": "sqlite_autoindex_github_result_files_1",
+            "unique": 1,
+            "origin": "pk",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 0,
+                "name": "source_id"
+              },
+              {
+                "seqno": 1,
+                "cid": 1,
+                "name": "path"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "item_merges",
+        "sql": "CREATE TABLE item_merges (\n            source_id TEXT PRIMARY KEY REFERENCES items(id),\n            target_id TEXT NOT NULL REFERENCES items(id),\n            created_at INTEGER NOT NULL,\n            CHECK(source_id<>target_id)\n          )",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "source_id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "target_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "created_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "items",
+            "from": "target_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "NO ACTION",
+            "match": "NONE"
+          },
+          {
+            "id": 1,
+            "seq": 0,
+            "table": "items",
+            "from": "source_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "NO ACTION",
+            "match": "NONE"
+          }
+        ],
+        "indexes": [
+          {
+            "seq": 0,
+            "name": "sqlite_autoindex_item_merges_1",
+            "unique": 1,
+            "origin": "pk",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 0,
+                "name": "source_id"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "item_urls",
+        "sql": "CREATE TABLE item_urls (\n            url TEXT PRIMARY KEY,\n            item_id TEXT NOT NULL REFERENCES items(id)\n          )",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "url",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "item_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "items",
+            "from": "item_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "NO ACTION",
+            "match": "NONE"
+          }
+        ],
+        "indexes": [
+          {
+            "seq": 0,
+            "name": "sqlite_autoindex_item_urls_1",
+            "unique": 1,
+            "origin": "pk",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 0,
+                "name": "url"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "item_versions",
+        "sql": "CREATE TABLE item_versions (\n  id TEXT PRIMARY KEY,\n  item_id TEXT NOT NULL REFERENCES items(id),\n  content_hash TEXT NOT NULL,\n  input TEXT NOT NULL,\n  processing_state TEXT NOT NULL DEFAULT 'pending',\n  output TEXT,\n  processing_version TEXT,\n  created_at INTEGER NOT NULL,\n  UNIQUE(item_id,content_hash)\n)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "item_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "content_hash",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "input",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "processing_state",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": "'pending'",
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "output",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "processing_version",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "created_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "items",
+            "from": "item_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "NO ACTION",
+            "match": "NONE"
+          }
+        ],
+        "indexes": [
+          {
+            "seq": 0,
+            "name": "sqlite_autoindex_item_versions_2",
+            "unique": 1,
+            "origin": "u",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 1,
+                "name": "item_id"
+              },
+              {
+                "seqno": 1,
+                "cid": 2,
+                "name": "content_hash"
+              }
+            ]
+          },
+          {
+            "seq": 1,
+            "name": "sqlite_autoindex_item_versions_1",
+            "unique": 1,
+            "origin": "pk",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 0,
+                "name": "id"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "items",
+        "sql": "CREATE TABLE items (\n  id TEXT PRIMARY KEY,\n  canonical_url TEXT NOT NULL UNIQUE,\n  published_version TEXT,\n  pending_version TEXT,\n  publication_state TEXT NOT NULL DEFAULT 'draft' CHECK(publication_state IN ('draft','published','withdrawn')),\n  protected_fields TEXT NOT NULL DEFAULT '{}',\n  first_seen_at INTEGER NOT NULL,\n  published_at INTEGER,\n  updated_at INTEGER NOT NULL\n)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "canonical_url",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "published_version",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "pending_version",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "publication_state",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": "'draft'",
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "protected_fields",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": "'{}'",
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "first_seen_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "published_at",
+            "type": "INTEGER",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 8,
+            "name": "updated_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": [
+          {
+            "seq": 0,
+            "name": "sqlite_autoindex_items_2",
+            "unique": 1,
+            "origin": "u",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 1,
+                "name": "canonical_url"
+              }
+            ]
+          },
+          {
+            "seq": 1,
+            "name": "sqlite_autoindex_items_1",
+            "unique": 1,
+            "origin": "pk",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 0,
+                "name": "id"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "jobs",
+        "sql": "CREATE TABLE jobs (\n  id TEXT PRIMARY KEY,\n  unique_key TEXT NOT NULL UNIQUE,\n  kind TEXT NOT NULL,\n  payload TEXT NOT NULL,\n  state TEXT NOT NULL CHECK(state IN ('queued','running','waiting','completed','failed','cancelled')),\n  priority INTEGER NOT NULL DEFAULT 0,\n  available_at INTEGER NOT NULL,\n  attempts INTEGER NOT NULL DEFAULT 0,\n  max_attempts INTEGER NOT NULL,\n  lease_token TEXT,\n  lease_until INTEGER,\n  heartbeat_at INTEGER,\n  checkpoint TEXT NOT NULL DEFAULT '{}',\n  result TEXT,\n  error_code TEXT,\n  created_at INTEGER NOT NULL,\n  updated_at INTEGER NOT NULL\n)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "unique_key",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "kind",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "payload",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "state",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "priority",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": "0",
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "available_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "attempts",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": "0",
+            "pk": 0
+          },
+          {
+            "cid": 8,
+            "name": "max_attempts",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 9,
+            "name": "lease_token",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 10,
+            "name": "lease_until",
+            "type": "INTEGER",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 11,
+            "name": "heartbeat_at",
+            "type": "INTEGER",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 12,
+            "name": "checkpoint",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": "'{}'",
+            "pk": 0
+          },
+          {
+            "cid": 13,
+            "name": "result",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 14,
+            "name": "error_code",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 15,
+            "name": "created_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 16,
+            "name": "updated_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": [
+          {
+            "seq": 0,
+            "name": "jobs_ready",
+            "unique": 0,
+            "origin": "c",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 4,
+                "name": "state"
+              },
+              {
+                "seqno": 1,
+                "cid": 6,
+                "name": "available_at"
+              },
+              {
+                "seqno": 2,
+                "cid": 5,
+                "name": "priority"
+              }
+            ]
+          },
+          {
+            "seq": 1,
+            "name": "sqlite_autoindex_jobs_2",
+            "unique": 1,
+            "origin": "u",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 1,
+                "name": "unique_key"
+              }
+            ]
+          },
+          {
+            "seq": 2,
+            "name": "sqlite_autoindex_jobs_1",
+            "unique": 1,
+            "origin": "pk",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 0,
+                "name": "id"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "metric_observations",
+        "sql": "CREATE TABLE metric_observations (\n  item_id TEXT NOT NULL REFERENCES items(id),\n  source_id TEXT NOT NULL REFERENCES sources(id),\n  observed_at INTEGER NOT NULL,\n  metrics TEXT NOT NULL,\n  PRIMARY KEY(item_id,source_id,observed_at)\n)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "item_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "source_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 2
+          },
+          {
+            "cid": 2,
+            "name": "observed_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 3
+          },
+          {
+            "cid": 3,
+            "name": "metrics",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "sources",
+            "from": "source_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "NO ACTION",
+            "match": "NONE"
+          },
+          {
+            "id": 1,
+            "seq": 0,
+            "table": "items",
+            "from": "item_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "NO ACTION",
+            "match": "NONE"
+          }
+        ],
+        "indexes": [
+          {
+            "seq": 0,
+            "name": "sqlite_autoindex_metric_observations_1",
+            "unique": 1,
+            "origin": "pk",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 0,
+                "name": "item_id"
+              },
+              {
+                "seqno": 1,
+                "cid": 1,
+                "name": "source_id"
+              },
+              {
+                "seqno": 2,
+                "cid": 2,
+                "name": "observed_at"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "model_receipts",
+        "sql": "CREATE TABLE model_receipts (\n  call_key TEXT PRIMARY KEY,\n  budget_day TEXT NOT NULL,\n  state TEXT NOT NULL CHECK(state IN ('reserved','dispatched','succeeded','released','unknown')),\n  reserved_micros INTEGER NOT NULL CHECK(reserved_micros >= 0),\n  actual_micros INTEGER CHECK(actual_micros >= 0),\n  price_version TEXT NOT NULL,\n  currency TEXT NOT NULL,\n  exchange_rate REAL NOT NULL,\n  provider_request_id TEXT,\n  result TEXT,\n  created_at INTEGER NOT NULL,\n  updated_at INTEGER NOT NULL\n)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "call_key",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "budget_day",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "state",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "reserved_micros",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "actual_micros",
+            "type": "INTEGER",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "price_version",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "currency",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "exchange_rate",
+            "type": "REAL",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 8,
+            "name": "provider_request_id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 9,
+            "name": "result",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 10,
+            "name": "created_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 11,
+            "name": "updated_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": [
+          {
+            "seq": 0,
+            "name": "receipts_day",
+            "unique": 0,
+            "origin": "c",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 1,
+                "name": "budget_day"
+              }
+            ]
+          },
+          {
+            "seq": 1,
+            "name": "sqlite_autoindex_model_receipts_1",
+            "unique": 1,
+            "origin": "pk",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 0,
+                "name": "call_key"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "proposals",
+        "sql": "CREATE TABLE proposals (\n  id TEXT PRIMARY KEY,\n  item_id TEXT NOT NULL REFERENCES items(id),\n  config TEXT NOT NULL,\n  branch TEXT NOT NULL UNIQUE,\n  pr_number INTEGER,\n  pr_url TEXT,\n  state TEXT NOT NULL,\n  updated_at INTEGER NOT NULL\n)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "item_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "config",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "branch",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "pr_number",
+            "type": "INTEGER",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "pr_url",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "state",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "updated_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "items",
+            "from": "item_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "NO ACTION",
+            "match": "NONE"
+          }
+        ],
+        "indexes": [
+          {
+            "seq": 0,
+            "name": "sqlite_autoindex_proposals_2",
+            "unique": 1,
+            "origin": "u",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 3,
+                "name": "branch"
+              }
+            ]
+          },
+          {
+            "seq": 1,
+            "name": "sqlite_autoindex_proposals_1",
+            "unique": 1,
+            "origin": "pk",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 0,
+                "name": "id"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "settings",
+        "sql": "CREATE TABLE settings (\n  key TEXT PRIMARY KEY,\n  value TEXT NOT NULL\n)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "key",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "value",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": [
+          {
+            "seq": 0,
+            "name": "sqlite_autoindex_settings_1",
+            "unique": 1,
+            "origin": "pk",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 0,
+                "name": "key"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "source_records",
+        "sql": "CREATE TABLE source_records (\n  source_id TEXT NOT NULL REFERENCES sources(id),\n  record_id TEXT NOT NULL,\n  item_id TEXT NOT NULL REFERENCES items(id),\n  version_id TEXT NOT NULL REFERENCES item_versions(id),\n  last_seen_run TEXT NOT NULL,\n  state TEXT NOT NULL DEFAULT 'present',\n  source_status TEXT,\n  upstream_updated_at INTEGER,\n  PRIMARY KEY(source_id,record_id)\n)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "source_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "record_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 2
+          },
+          {
+            "cid": 2,
+            "name": "item_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "version_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "last_seen_run",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "state",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": "'present'",
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "source_status",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "upstream_updated_at",
+            "type": "INTEGER",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "item_versions",
+            "from": "version_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "NO ACTION",
+            "match": "NONE"
+          },
+          {
+            "id": 1,
+            "seq": 0,
+            "table": "items",
+            "from": "item_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "NO ACTION",
+            "match": "NONE"
+          },
+          {
+            "id": 2,
+            "seq": 0,
+            "table": "sources",
+            "from": "source_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "NO ACTION",
+            "match": "NONE"
+          }
+        ],
+        "indexes": [
+          {
+            "seq": 0,
+            "name": "records_item",
+            "unique": 0,
+            "origin": "c",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 2,
+                "name": "item_id"
+              }
+            ]
+          },
+          {
+            "seq": 1,
+            "name": "sqlite_autoindex_source_records_1",
+            "unique": 1,
+            "origin": "pk",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 0,
+                "name": "source_id"
+              },
+              {
+                "seqno": 1,
+                "cid": 1,
+                "name": "record_id"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "sources",
+        "sql": "CREATE TABLE sources (\n  id TEXT PRIMARY KEY,\n  config TEXT NOT NULL,\n  enabled INTEGER NOT NULL,\n  next_sync_at INTEGER NOT NULL,\n  last_success_at INTEGER,\n  upstream_updated_at INTEGER,\n  last_error TEXT,\n  progress TEXT NOT NULL DEFAULT '{}'\n)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "config",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "enabled",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "next_sync_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "last_success_at",
+            "type": "INTEGER",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "upstream_updated_at",
+            "type": "INTEGER",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "last_error",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "progress",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": "'{}'",
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": [
+          {
+            "seq": 0,
+            "name": "sqlite_autoindex_sources_1",
+            "unique": 1,
+            "origin": "pk",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 0,
+                "name": "id"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "temporary_content",
+        "sql": "CREATE TABLE temporary_content (\n  id TEXT PRIMARY KEY,\n  version_id TEXT NOT NULL REFERENCES item_versions(id),\n  filename TEXT NOT NULL UNIQUE,\n  fetched_at INTEGER NOT NULL,\n  expires_at INTEGER NOT NULL,\n  content_hash TEXT NOT NULL\n)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "version_id",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "filename",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "fetched_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "expires_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "content_hash",
+            "type": "TEXT",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [
+          {
+            "id": 0,
+            "seq": 0,
+            "table": "item_versions",
+            "from": "version_id",
+            "to": "id",
+            "on_update": "NO ACTION",
+            "on_delete": "NO ACTION",
+            "match": "NONE"
+          }
+        ],
+        "indexes": [
+          {
+            "seq": 0,
+            "name": "sqlite_autoindex_temporary_content_2",
+            "unique": 1,
+            "origin": "u",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 2,
+                "name": "filename"
+              }
+            ]
+          },
+          {
+            "seq": 1,
+            "name": "sqlite_autoindex_temporary_content_1",
+            "unique": 1,
+            "origin": "pk",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 0,
+                "name": "id"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "worker_health",
+        "sql": "CREATE TABLE worker_health (\n  id TEXT PRIMARY KEY,\n  heartbeat_at INTEGER NOT NULL,\n  current_job TEXT\n)",
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "heartbeat_at",
+            "type": "INTEGER",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "current_job",
+            "type": "TEXT",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": [
+          {
+            "seq": 0,
+            "name": "sqlite_autoindex_worker_health_1",
+            "unique": 1,
+            "origin": "pk",
+            "partial": 0,
+            "columns": [
+              {
+                "seqno": 0,
+                "cid": 0,
+                "name": "id"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

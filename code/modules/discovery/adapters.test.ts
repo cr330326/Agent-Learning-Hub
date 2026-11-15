@@ -39,6 +39,38 @@ function feishu() {
 }
 
 describe("source adapters", () => {
+  it("preserves Feishu checkbox source status independently from publication", async () => {
+    const source = {
+      ...feishu(),
+      mapping: { ...feishu().mapping, sourceStatus: "fldStatus" },
+    };
+    const adapter = new SourceAdapter(
+      source,
+      async (url) =>
+        json(url, {
+          code: 0,
+          data: {
+            items: [
+              {
+                record_id: "recA",
+                fields: {
+                  新标题: "资料",
+                  链接: "https://example.com/a",
+                  同步状态: true,
+                },
+              },
+            ],
+            has_more: false,
+          },
+        }),
+      { TEST_FEISHU_TOKEN: "private-test-token" },
+    );
+    const page = await adapter.page(null, [
+      ...fields,
+      { field_id: "fldStatus", field_name: "同步状态", type: 7 },
+    ]);
+    expect(page.records[0].sourceStatus).toBe("true");
+  });
   it("resolves stable Feishu fields and passes cursors to record search", async () => {
     const requested: string[] = [];
     const fetcher: PublicFetcher = async (url, options) => {

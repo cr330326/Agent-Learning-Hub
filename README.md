@@ -2,11 +2,11 @@
 
 以实践成果为主线的 Agent 工程学习网站：九阶段路线 × 四条学习轨道，公开学习与本地深读共用同一套站点。
 
-**2026-11-15 开发状态**　[OpenCode 整课修复](docs/acceptance/course-continuity-2026-11-15.md)已在本机新镜像通过双模式各 230 单测及 Docker 验证，110 页连续阅读、上下节与旧链接转发完成，41 个课程入口同类排查已记录。此前本地 r14 双模式 Docker 验证通过，包含飞书九表同步、阅读器、模型限额及日报人工更正冻结修复，见[最新复验](docs/acceptance/edition-editorial-freeze-2026-11-15.md)。[真实六样本质量校准](docs/acceptance/model-quality-and-curation-2026-11-15.md)已完成；GitHub App 已创建[收录 PR #1](https://github.com/cr330326/Agent-Learning-Hub/pull/1)并验证幂等，用户确认后已追加四文件 CI 修复，六文件 PR 的远程五项 CI [全部通过](docs/acceptance/curation-ci-repair-review-2026-11-15.md)。10 条素材副本、供应商账单、合并发布和公网运维仍待完成。[规格](docs/plans/spec.md#20-云端资讯与学习扩展) · [任务与证据](docs/plans/tasks.md#phase-9-云端资讯与学习衔接)
+**文档版本 2026.11.15**　[变更说明](CHANGELOG.md) · [使用手册](GUIDE.md) · [文档发布记录](docs/releases/2026.11.15.md)。当前功能覆盖系统学习、本地阅读与云端资讯聚合；实施证据和未完成验收统一见 [tasks.md](docs/plans/tasks.md)。
 
 Agent Learning Hub 把分散在官方文档、工程博客、论文和开源仓库里的 Agent 工程资料，整理成一条从"理解 Agent 是什么"到"交付真实 Agent"的路线。每个阶段都有学习目标、可验收的实践任务和配套阅读；阶段是否完成，以学习者自己提交的代码仓库、演示或学习总结为准，而不是勾选"已读"。
 
-**当前 Mac 试运行（2026-11-15）**：[Local 学习与素材阅读](http://127.0.0.1:3003) · [Cloud 资讯与 GitHub 登录](http://127.0.0.1:3002)。当前固定镜像 `aggregation-20261115-r7` 运行三个容器，飞书九表与 openspace 采集结果提供聚合资料，后台每 5 分钟同步、页面自动刷新，原账户和学习数据已核验；旧容器、镜像和验收卷已清理并备份。[启动与管理](docs/deploy/local-manual.md#当前-mac直接运行已有镜像) · [清理记录](docs/acceptance/docker-cleanup-and-mac-trial-2026-11-15.md)。
+**当前 Mac 试运行（2026-11-15）**：[Local 学习与素材阅读](http://127.0.0.1:3003) · [Cloud 资讯聚合与 GitHub 登录](http://127.0.0.1:3002/discover)。当前固定镜像 `docs-2026.11.15` 运行三个容器，飞书九表与 openspace 采集结果提供聚合资料，后台每 5 分钟同步、页面自动刷新，原账户和学习数据保留；资讯与个人状态使用独立 SQLite。[聚合验收](docs/acceptance/source-aggregation-local-2026-11-15.md) · [启动与管理](docs/deploy/local-manual.md#当前-mac直接运行已有镜像) · [此前清理记录](docs/acceptance/docker-cleanup-and-mac-trial-2026-11-15.md)。
 
 同一套代码有两种运行方式：
 
@@ -84,45 +84,31 @@ code/scripts/local-preview.sh
 
 - **应用**：Next.js 16（App Router）、React 19、TypeScript；所有页面按请求渲染，运行模式在运行时读取。
 - **身份**：Cloud Mode 用 Better Auth + GitHub OAuth；Local Mode 在回环地址上自动签入固定单用户。
-- **数据**：内容目录用 JSON + Zod schema 校验；身份、会话和学习状态存 SQLite（better-sqlite3），支持加密备份与恢复。
+- **数据**：内容目录用 JSON + Zod schema 校验；身份、会话和学习状态存学习 SQLite，资讯与任务存独立资讯 SQLite（better-sqlite3），支持加密备份与恢复。
 - **测试**：Vitest 与 Node test runner；HTTP 端到端测试；Playwright 驱动的版式走查与点击式功能回归。
 - **交付**：Docker Compose（按 local / cloud / release 叠加覆盖文件）、GHCR 固定版本镜像、GitHub Actions 双模式质量门禁与带 SBOM 的发布流程。
 
 ## 架构
 
-```mermaid
-flowchart LR
-  subgraph git["Git（公开）"]
-    content["code/content<br/>课程目录 · 阶段 · 文章"]
-  end
-  subgraph host["仅本机"]
-    materials["local-courses/<br/>第三方素材（只读）"]
-  end
-  content --> catalog["Catalog"]
-  catalog --> resolver{"Content Resolver"}
-  resolver -- "Cloud" --> upstream["自有文章 + 上游链接"]
-  resolver -- "Local" --> materials
-  resolver --> reader["阅读器 / 搜索"]
-  pages["App Router 页面与 API"] --> catalog
-  pages --> sqlite[("SQLite<br/>身份 · 会话 · 学习状态")]
-```
+![服务分层架构](docs/plans/architecture.svg)
 
-现役课程与策展内容由 Git 管理，身份与个人状态存入学习状态 SQLite。课程通过 Content Resolver 按 Cloud/Local 解析到本地正文、自有文章或上游链接。已确认的 Phase 9 增加独立资讯 SQLite 与后台采集任务，架构和完成状态见 [技术方案](docs/plans/plan.md) 与 [任务清单](docs/plans/tasks.md)。
+现役课程与策展内容由 Git 管理，身份与个人状态存入学习状态 SQLite。课程通过 Content Resolver 按 Cloud/Local 解析到本地正文、自有文章或上游链接。现役 Cloud 服务另有独立资讯 SQLite 与后台 worker，架构和完成状态见 [技术方案](docs/plans/plan.md) 与 [任务清单](docs/plans/tasks.md)。
 
 领域逻辑位于 `code/modules/`，页面和路由只调用模块接口：
 
-| 模块               | 职责                                               |
-| ------------------ | -------------------------------------------------- |
-| `catalog`          | 内容目录加载、schema 校验、查询与内容审计          |
-| `content-resolver` | Cloud/Local 的内容解析边界与安全本地文件访问       |
-| `reader`           | Markdown 消毒渲染、文档内链接解析与章节导航        |
-| `search`           | 统一搜索索引（公开内容与已声明的本地章节）         |
-| `auth`             | GitHub OAuth、本地单用户身份、请求鉴权与限流       |
-| `learning-state`   | 进度、笔记、收藏、阶段成果、导出、删号与数据库备份 |
-| `freshness`        | 素材与上游的新鲜度检查、目录漂移对账               |
-| `observability`    | 不关联用户身份的匿名运营指标                       |
-| `admin`            | 管理员健康摘要                                     |
-| `runtime`          | 运行模式配置                                       |
+| 模块               | 职责                                                         |
+| ------------------ | ------------------------------------------------------------ |
+| `discovery`        | 信源聚合、摘要预算、任务队列、日报、审核、收录 PR 与双库备份 |
+| `catalog`          | 内容目录加载、schema 校验、查询与内容审计                    |
+| `content-resolver` | Cloud/Local 的内容解析边界与安全本地文件访问                 |
+| `reader`           | Markdown 消毒渲染、文档内链接解析与章节导航                  |
+| `search`           | 统一搜索索引（公开内容与已声明的本地章节）                   |
+| `auth`             | GitHub OAuth、本地单用户身份、请求鉴权与限流                 |
+| `learning-state`   | 进度、笔记、收藏、阶段成果、导出、删号与数据库备份           |
+| `freshness`        | 素材与上游的新鲜度检查、目录漂移对账                         |
+| `observability`    | 不关联用户身份的匿名运营指标                                 |
+| `admin`            | 管理员健康摘要                                               |
+| `runtime`          | 运行模式配置                                                 |
 
 ## 仓库结构
 
@@ -173,7 +159,7 @@ npm run check:local --prefix code
 Compose 文件位于 `code/docker/`，统一通过 `code/scripts/docker-deploy.sh <local|cloud|release> <action>` 管理：
 
 - **本机对照两种模式**：`code/scripts/mode-switch.sh <local|cloud|both|status|stop>`，两种模式各用独立的 Compose 项目、端口和 SQLite 卷，只绑回环地址。
-- **Cloud Mode**：从 `.env.example` 创建根目录 `.env`，填入 `BETTER_AUTH_SECRET`、`BETTER_AUTH_URL` 和 GitHub OAuth 凭据，先 `docker-deploy.sh cloud config` 静态检查再 `up`。
+- **Cloud Mode**：在本机将配置保存在 `/Users/vsh9p8q/.agent-learnning/environments/local/.env`，根目录 `.env` 保持符号链接；云主机按 Runbook 创建环境文件。填入 `BETTER_AUTH_SECRET`、`BETTER_AUTH_URL` 和 GitHub OAuth 凭据，先 `docker-deploy.sh cloud config` 静态检查再 `up`。
 - **发布**：镜像只用固定版本或 digest，不用 `latest`。打 `v*.*.*` tag 触发 [release.yml](.github/workflows/release.yml) 构建并附带 SBOM 与签名溯源；`code/scripts/image-release.sh` 是手工推送路径。目标主机只拉取镜像，不重新构建源码。
 
 生产部署从 [部署与运维入口](docs/deploy/README.md) 开始，其中有本机运行、完全手工上线和腾讯云 Lighthouse 脚本化部署三份 Runbook，以及全部脚本按运行位置的分类。
@@ -189,31 +175,29 @@ Compose 文件位于 `code/docker/`，统一通过 `code/scripts/docker-deploy.s
 
 ## 项目状态
 
-2026-11-15 Phase 9 本地功能与 Docker 续验完成，飞书 T9.2 已关闭；其余真实接入和上线条件见任务清单。
+2026-11-15：系统学习、整课阅读、飞书与授权 GitHub 聚合已在本机双模式 Docker 试运行；模型增强、日报与课程收录 PR 已有专项验收。当前模型处理在 Mac 聚合试运行中保持关闭，采集与公开源摘要仍可使用。最新版验证见 [本次交付报告](docs/acceptance/docs-release-2026-11-15.md)。
 
-以下保留截至 2026-10-17 的学习系统验收快照（Phase 0～8 任务 52 / 61，上线门槛 9 / 10）。
-
-- **已完成**：Phase 0–6 全部任务；Phase 8 的功能对等、移动端与无障碍、全站走查与功能回归。双模式质量门禁、原生生产构建的端到端测试和正式本地 Docker 镜像验收均已通过，目标主机上的恢复演练已实跑通过。课程目录已按 [ADR 0008](docs/adr/0008-chapter-content-has-a-single-owner.md) 收敛为单一归属。2026-09-18 遗留的五项仓库内待办已全部关闭：生产依赖审计（`next` 16.4.0，0 漏洞）、首页统计分项、目录阶段筛选、素材库目录漂移和云端模式走查与回归重跑。
-- **当时仓库内待修**：无。`main` 上的 CI 已连续两次通过（#34、#35）。
-- **外部条件阻塞**：依赖仓库外部条件的上线验收——真实 GitHub OAuth、公网 DNS/TLS、GHCR 固定镜像拉取与回滚、受保护分支 CI、异地备份与定时调度、生产日志复核，以及切换入口并归档旧站（T8.5）。本地测试不能替代这些证据。
-
-逐项状态、解除条件和证据见 [tasks.md](docs/plans/tasks.md#1-进度总览)，最新本地及真实模型验证见 [模型校准与收录验收](docs/acceptance/model-quality-and-curation-2026-11-15.md)；飞书字段、个人资讯和前轮界面修复见 [本地功能补全与 Docker 复验](docs/acceptance/local-verification-2026-11-15.md)。
+尚待完成：素材候选的人工策展、模型供应商账单核对、课程 PR 合并及版本上线、公网 DNS/TLS、异地备份调度、正式回滚演练与旧站切换。历史测试结果只证明对应版本及范围，不代表公网服务已经发布。逐项状态、解除条件和历史证据见 [tasks.md](docs/plans/tasks.md)。
 
 ## 文档
 
-| 文档                                                 | 内容                                          |
-| ---------------------------------------------------- | --------------------------------------------- |
-| [USER.md](USER.md)                                   | 本地模式快速上手                              |
-| [GUIDE.md](GUIDE.md)                                 | 使用手册：产品介绍、上手步骤与各页面用法      |
-| [docs/plans/spec.md](docs/plans/spec.md)             | 产品规格与验收场景                            |
-| [docs/plans/plan.md](docs/plans/plan.md)             | 架构、内容模型、部署与数据库运维              |
-| [docs/plans/tasks.md](docs/plans/tasks.md)           | 实施任务、证据与需求追踪                      |
-| [docs/deploy/](docs/deploy/README.md)                | 部署与运维入口、三份 Runbook、脚本分类        |
-| [docs/testing-strategy.md](docs/testing-strategy.md) | 测试层次与质量门禁                            |
-| [docs/adr/](docs/adr/)                               | 架构决策记录                                  |
-| [docs/acceptance/](docs/acceptance/)                 | 历次验收报告                                  |
-| [CONTEXT.md](CONTEXT.md)                             | 领域术语                                      |
-| [AGENTS.md](AGENTS.md)                               | 在本仓库工作的规则与纪律（人和 Agent 都适用） |
+| 文档                                                         | 内容                                          |
+| ------------------------------------------------------------ | --------------------------------------------- |
+| [CHANGELOG.md](CHANGELOG.md)                                 | 按文档版本发布的用户变更与验证边界            |
+| [docs/data/data-model.md](docs/data/data-model.md)           | 两库字段、JSON 模型、DTO 与 ER 图             |
+| [docs/plans/module-deps.svg](docs/plans/module-deps.svg)     | 内部依赖及循环标记                            |
+| [docs/plans/external-deps.svg](docs/plans/external-deps.svg) | 运行库、设施与外部 API                        |
+| [USER.md](USER.md)                                           | 本地模式快速上手                              |
+| [GUIDE.md](GUIDE.md)                                         | 使用手册：产品介绍、上手步骤与各页面用法      |
+| [docs/plans/spec.md](docs/plans/spec.md)                     | 产品规格与验收场景                            |
+| [docs/plans/plan.md](docs/plans/plan.md)                     | 架构、内容模型、部署与数据库运维              |
+| [docs/plans/tasks.md](docs/plans/tasks.md)                   | 实施任务、证据与需求追踪                      |
+| [docs/deploy/](docs/deploy/README.md)                        | 部署与运维入口、三份 Runbook、脚本分类        |
+| [docs/testing-strategy.md](docs/testing-strategy.md)         | 测试层次与质量门禁                            |
+| [docs/adr/](docs/adr/)                                       | 架构决策记录                                  |
+| [docs/acceptance/](docs/acceptance/)                         | 历次验收报告                                  |
+| [CONTEXT.md](CONTEXT.md)                                     | 领域术语                                      |
+| [AGENTS.md](AGENTS.md)                                       | 在本仓库工作的规则与纪律（人和 Agent 都适用） |
 
 ## 许可证
 

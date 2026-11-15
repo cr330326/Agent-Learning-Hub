@@ -31,6 +31,54 @@ function request(body: unknown, csrf = true) {
     body: JSON.stringify(body),
   });
 }
+it("can request model review for a version assembled from multiple aggregation sources", async () => {
+  const repo = setup();
+  const source = repo.saveSource(
+    {
+      id: "primary",
+      name: "主要来源",
+      kind: "json",
+      url: "https://example.com/feed",
+      topics: ["AI 编程"],
+      aggregation: true,
+      publicationMode: "auto",
+      priority: 100,
+    },
+    "test",
+  );
+  const fallback = repo.saveSource(
+    { ...source, id: "secondary", priority: 10 },
+    "test",
+  );
+  const row = {
+    recordId: "one",
+    title: "聚合资料",
+    url: "https://example.com/item",
+  };
+  repo.ingestPage(source, [row], "primary");
+  repo.ingestPage(
+    fallback,
+    [{ ...row, title: "补充来源标题", summary: "补充摘要" }],
+    "secondary",
+  );
+  const item = repo.listPublic().items[0];
+  expect(
+    repo.database.handle
+      .prepare("SELECT 1 FROM source_records WHERE version_id=?")
+      .get(item.versionId),
+  ).toBeUndefined();
+  const response = await handleDiscoveryAdminRequest(
+    request({ action: "process", versionId: item.versionId }),
+    {
+      mode: "cloud",
+      user,
+      repository: () => repo,
+      environment: { ADMIN_GITHUB_IDS: "42" },
+    },
+  );
+  expect(response.status).toBe(200);
+  expect(JSON.parse(repo.jobs.list()[0].payload).sourceId).toBe(source.id);
+});
 describe("discovery administration", () => {
   it("enforces mode, stable GitHub admin identity and CSRF before mutations", async () => {
     const repo = setup();

@@ -2,7 +2,7 @@
 name: agent-learning-hub-trial
 
 x-runtime: &runtime
-  image: agent-learning-hub:aggregation-20261115-r9
+  image: agent-learning-hub:docs-2026.11.15
   pull_policy: never
   restart: unless-stopped
   init: true

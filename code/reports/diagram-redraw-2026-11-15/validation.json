@@ -1,0 +1,22 @@
+[
+  {
+    "file": "docs/plans/architecture.svg",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "file": "docs/plans/module-deps.svg",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "file": "docs/plans/external-deps.svg",
+    "errors": [],
+    "warnings": []
+  },
+  {
+    "file": "docs/data/data-model-er.svg",
+    "errors": [],
+    "warnings": []
+  }
+]

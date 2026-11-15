@@ -1,0 +1,1 @@
+{"timestamp":1794755343312,"sources":{"count":10,"oldest_success":1794755059470,"newest_success":1794755325439},"items":[{"publication_state":"published","count":27017}],"jobs":[{"state":"cancelled","count":4},{"state":"completed","count":226}],"errors":[{"last_error":null,"count":10}]}

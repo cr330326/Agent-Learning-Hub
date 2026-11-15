@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1320" viewBox="0 0 1800 1320" role="img" aria-labelledby="title desc">
+  <title id="title">Agent Learning Hub · 外部依赖</title>
+  <desc id="desc">三类外部依赖：蓝色关键运行库，紫色运行设施，橙色外部 API。本项目没有 Java 工程。模型可选，反向代理由生产部署方提供。</desc>
+  <metadata id="diagram-profile">{"locale": "zh-CN", "readingDirection": "top-to-bottom", "intendedEmbeddedWidth": 1200, "source": ["code/package.json", "code/docker/Dockerfile", "code/modules/discovery/adapters.ts", "code/modules/discovery/processing.ts", "code/modules/discovery/curation.ts"], "visualProfile": "Existing blue/green/amber/purple category palette; serif headings, system CJK body; manual node geometry", "nodes": ["APP", "NEXT", "BA", "SQL", "ZOD", "CHEER", "PRET", "NODE", "DB", "PROXY", "CICD", "OAUTH", "GITHUB", "FEISHU", "PUBLIC", "MODEL"], "relationships": [{"id": "app-runtime-libraries", "source": "APP", "target": "layer-runtime-libraries", "kind": "runtime"}, {"id": "app-middleware", "source": "APP", "target": "layer-middleware", "kind": "runtime"}, {"id": "app-external-apis", "source": "APP", "target": "layer-external-apis", "kind": "runtime"}]}</metadata>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M 0 1 L 9 5 L 0 9 Z" fill="#64748b" />
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M 0 1 L 9 5 L 0 9 Z" fill="#c62828" />
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M 0 1 L 9 5 L 0 9 Z" fill="#2563eb" />
+    </marker>
+    <style>text { font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; fill:#1e293b; }
+.diagram-title { font-family: Georgia,"Songti SC","Noto Serif CJK SC",serif; font-size:38px; font-weight:700; }
+.subtitle { font-size:20px; fill:#526174; }
+.band-title { font-family:Georgia,"Songti SC",serif; font-size:25px; font-weight:700; }
+.card-title { font-size:23px; font-weight:700; }
+.body { font-size:20px; }
+.small { font-size:17px; fill:#526174; }
+.edge-label { font-size:17px; fill:#475569; paint-order:stroke; stroke:white; stroke-width:7; stroke-linejoin:round; }
+.code { font-family:Menlo,Consolas,"PingFang SC",monospace; font-size:19px; }
+.matrix-label { font-family:Menlo,Consolas,monospace; font-size:18px; }
+.matrix-mark { font-size:21px; font-weight:700; }
+</style>
+  </defs>
+  <rect id="background" width="1800" height="1320" fill="white" />
+  <g id="header">
+    <text x="60" y="65" class="diagram-title">
+      <tspan x="60" dy="0">Agent Learning Hub · 外部依赖</tspan>
+    </text>
+    <text x="60" y="105" class="subtitle">
+      <tspan x="60" dy="0">依据现役 package.json、Docker 与服务端接入；保留声明的版本范围。</tspan>
+    </text>
+  </g>
+  <g id="layers">
+    <g id="layer-runtime-libraries" data-layer="runtime-libraries">
+      <rect x="60" y="260" width="520" height="860" rx="14" fill="#eff6ff" stroke="#d8e0e9" stroke-width="1.3" />
+      <text x="82" y="296" class="band-title" fill="#2563eb" style="fill:#2563eb">
+        <tspan x="82" dy="0">关键运行库 · Java 不适用</tspan>
+      </text>
+    </g>
+    <g id="layer-middleware" data-layer="middleware">
+      <rect x="640" y="260" width="520" height="860" rx="14" fill="#f5f3ff" stroke="#d8e0e9" stroke-width="1.3" />
+      <text x="662" y="296" class="band-title" fill="#7c3aed" style="fill:#7c3aed">
+        <tspan x="662" dy="0">中间件与运行设施</tspan>
+      </text>
+    </g>
+    <g id="layer-external-apis" data-layer="external-apis">
+      <rect x="1220" y="260" width="520" height="860" rx="14" fill="#fff7ed" stroke="#d8e0e9" stroke-width="1.3" />
+      <text x="1242" y="296" class="band-title" fill="#dd5b12" style="fill:#dd5b12">
+        <tspan x="1242" dy="0">外部 API</tspan>
+      </text>
+    </g>
+  </g>
+  <g id="connectors">
+    <g id="edge-app-runtime-libraries" data-source="APP" data-target="layer-runtime-libraries" data-kind="runtime">
+      <path d="M 900 225 L 900 240 L 320 240 L 320 260" fill="none" stroke="#64748b" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)" />
+    </g>
+    <g id="edge-app-middleware" data-source="APP" data-target="layer-middleware" data-kind="runtime">
+      <path d="M 900 225 L 900 240 L 900 240 L 900 260" fill="none" stroke="#64748b" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)" />
+    </g>
+    <g id="edge-app-external-apis" data-source="APP" data-target="layer-external-apis" data-kind="runtime">
+      <path d="M 900 225 L 900 240 L 1480 240 L 1480 260" fill="none" stroke="#64748b" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)" />
+    </g>
+  </g>
+  <g id="nodes">
+    <g id="APP" data-node="APP">
+      <title>现役工程 · TypeScript / Next.js：同一镜像运行 Cloud / Local Web 与独立资讯 worker。</title>
+      <rect x="60" y="145" width="1680" height="80" rx="10" fill="white" stroke="#64748b" stroke-width="1.7" />
+      <rect x="61" y="157" width="4" height="56" rx="2" fill="#64748b" />
+      <text x="82" y="179" class="card-title" fill="#64748b" style="fill:#64748b">
+        <tspan x="82" dy="0">现役工程 · TypeScript / Next.js</tspan>
+      </text>
+      <text x="82" y="211" class="body">
+        <tspan x="82" dy="0">同一镜像运行 Cloud / Local Web 与独立资讯 worker。</tspan>
+      </text>
+    </g>
+    <g id="NEXT" data-node="NEXT">
+      <title>Next.js 16.4.3 / React 19.2.8：网页路由、服务端渲染与交互。</title>
+      <rect x="78" y="330" width="484" height="100" rx="10" fill="white" stroke="#2563eb" stroke-width="1.7" />
+      <rect x="79" y="342" width="4" height="76" rx="2" fill="#2563eb" />
+      <text x="100" y="364" class="card-title" fill="#2563eb" style="fill:#2563eb">
+        <tspan x="100" dy="0">Next.js 16.4.3 / React 19.2.8</tspan>
+      </text>
+      <text x="100" y="396" class="body">
+        <tspan x="100" dy="0">网页路由、服务端渲染与交互。</tspan>
+      </text>
+    </g>
+    <g id="BA" data-node="BA">
+      <title>Better Auth ^1.7.25：提供 GitHub OAuth 与会话管理。</title>
+      <rect x="78" y="455" width="484" height="100" rx="10" fill="white" stroke="#2563eb" stroke-width="1.7" />
+      <rect x="79" y="467" width="4" height="76" rx="2" fill="#2563eb" />
+      <text x="100" y="489" class="card-title" fill="#2563eb" style="fill:#2563eb">
+        <tspan x="100" dy="0">Better Auth ^1.7.25</tspan>
+      </text>
+      <text x="100" y="521" class="body">
+        <tspan x="100" dy="0">提供 GitHub OAuth 与会话管理。</tspan>
+      </text>
+    </g>
+    <g id="SQL" data-node="SQL">
+      <title>better-sqlite3 ^13.0.3：提供嵌入式 SQLite 数据访问。</title>
+      <rect x="78" y="580" width="484" height="100" rx="10" fill="white" stroke="#2563eb" stroke-width="1.7" />
+      <rect x="79" y="592" width="4" height="76" rx="2" fill="#2563eb" />
+      <text x="100" y="614" class="card-title" fill="#2563eb" style="fill:#2563eb">
+        <tspan x="100" dy="0">better-sqlite3 ^13.0.3</tspan>
+      </text>
+      <text x="100" y="646" class="body">
+        <tspan x="100" dy="0">提供嵌入式 SQLite 数据访问。</tspan>
+      </text>
+    </g>
+    <g id="ZOD" data-node="ZOD">
+      <title>Zod 4.6.7：校验课程目录与业务输入契约。</title>
+      <rect x="78" y="705" width="484" height="100" rx="10" fill="white" stroke="#2563eb" stroke-width="1.7" />
+      <rect x="79" y="717" width="4" height="76" rx="2" fill="#2563eb" />
+      <text x="100" y="739" class="card-title" fill="#2563eb" style="fill:#2563eb">
+        <tspan x="100" dy="0">Zod 4.6.7</tspan>
+      </text>
+      <text x="100" y="771" class="body">
+        <tspan x="100" dy="0">校验课程目录与业务输入契约。</tspan>
+      </text>
+    </g>
+    <g id="CHEER" data-node="CHEER">
+      <title>Cheerio 1.2.0 / ipaddr.js 2.5.0：解析公开内容并限制出站地址。</title>
+      <rect x="78" y="830" width="484" height="100" rx="10" fill="white" stroke="#2563eb" stroke-width="1.7" />
+      <rect x="79" y="842" width="4" height="76" rx="2" fill="#2563eb" />
+      <text x="100" y="864" class="card-title" fill="#2563eb" style="fill:#2563eb">
+        <tspan x="100" dy="0">Cheerio 1.2.0 / ipaddr.js 2.5.0</tspan>
+      </text>
+      <text x="100" y="896" class="body">
+        <tspan x="100" dy="0">解析公开内容并限制出站地址。</tspan>
+      </text>
+    </g>
+    <g id="PRET" data-node="PRET">
+      <title>Prettier 3.9.6：格式化 worker 生成的目录 JSON。</title>
+      <rect x="78" y="955" width="484" height="100" rx="10" fill="white" stroke="#2563eb" stroke-width="1.7" />
+      <rect x="79" y="967" width="4" height="76" rx="2" fill="#2563eb" />
+      <text x="100" y="989" class="card-title" fill="#2563eb" style="fill:#2563eb">
+        <tspan x="100" dy="0">Prettier 3.9.6</tspan>
+      </text>
+      <text x="100" y="1021" class="body">
+        <tspan x="100" dy="0">格式化 worker 生成的目录 JSON。</tspan>
+      </text>
+    </g>
+    <g id="NODE" data-node="NODE">
+      <title>Node.js 24 / Docker Compose：运行 Web 和独立 worker。</title>
+      <rect x="658" y="330" width="484" height="100" rx="10" fill="white" stroke="#7c3aed" stroke-width="1.7" />
+      <rect x="659" y="342" width="4" height="76" rx="2" fill="#7c3aed" />
+      <text x="680" y="364" class="card-title" fill="#7c3aed" style="fill:#7c3aed">
+        <tspan x="680" dy="0">Node.js 24 / Docker Compose</tspan>
+      </text>
+      <text x="680" y="396" class="body">
+        <tspan x="680" dy="0">运行 Web 和独立 worker。</tspan>
+      </text>
+    </g>
+    <g id="DB" data-node="DB">
+      <title>两个 SQLite 库 + 内置任务队列：持久化业务、租约与预算回执。</title>
+      <rect x="658" y="455" width="484" height="100" rx="10" fill="white" stroke="#7c3aed" stroke-width="1.7" />
+      <rect x="659" y="467" width="4" height="76" rx="2" fill="#7c3aed" />
+      <text x="680" y="489" class="card-title" fill="#7c3aed" style="fill:#7c3aed">
+        <tspan x="680" dy="0">两个 SQLite 库 + 内置任务队列</tspan>
+      </text>
+      <text x="680" y="521" class="body">
+        <tspan x="680" dy="0">持久化业务、租约与预算回执。</tspan>
+      </text>
+    </g>
+    <g id="PROXY" data-node="PROXY">
+      <title>HTTPS 反向代理 · 部署方提供：生产环境终止 TLS 并转发请求。</title>
+      <rect x="658" y="580" width="484" height="100" rx="10" fill="white" stroke="#7c3aed" stroke-width="1.7" />
+      <rect x="659" y="592" width="4" height="76" rx="2" fill="#7c3aed" />
+      <text x="680" y="614" class="card-title" fill="#7c3aed" style="fill:#7c3aed">
+        <tspan x="680" dy="0">HTTPS 反向代理 · 部署方提供</tspan>
+      </text>
+      <text x="680" y="646" class="body">
+        <tspan x="680" dy="0">生产环境终止 TLS 并转发请求。</tspan>
+      </text>
+    </g>
+    <g id="CICD" data-node="CICD">
+      <title>GitHub Actions / GHCR：执行质量门禁与固定版本镜像交付。</title>
+      <rect x="658" y="705" width="484" height="100" rx="10" fill="white" stroke="#7c3aed" stroke-width="1.7" />
+      <rect x="659" y="717" width="4" height="76" rx="2" fill="#7c3aed" />
+      <text x="680" y="739" class="card-title" fill="#7c3aed" style="fill:#7c3aed">
+        <tspan x="680" dy="0">GitHub Actions / GHCR</tspan>
+      </text>
+      <text x="680" y="771" class="body">
+        <tspan x="680" dy="0">执行质量门禁与固定版本镜像交付。</tspan>
+      </text>
+    </g>
+    <g id="OAUTH" data-node="OAUTH">
+      <title>GitHub OAuth：识别登录用户身份。</title>
+      <rect x="1238" y="330" width="484" height="100" rx="10" fill="white" stroke="#dd5b12" stroke-width="1.7" />
+      <rect x="1239" y="342" width="4" height="76" rx="2" fill="#dd5b12" />
+      <text x="1260" y="364" class="card-title" fill="#dd5b12" style="fill:#dd5b12">
+        <tspan x="1260" dy="0">GitHub OAuth</tspan>
+      </text>
+      <text x="1260" y="396" class="body">
+        <tspan x="1260" dy="0">识别登录用户身份。</tspan>
+      </text>
+    </g>
+    <g id="GITHUB" data-node="GITHUB">
+      <title>GitHub REST / GitHub App：读取授权结果文件并创建课程 PR。</title>
+      <rect x="1238" y="455" width="484" height="100" rx="10" fill="white" stroke="#dd5b12" stroke-width="1.7" />
+      <rect x="1239" y="467" width="4" height="76" rx="2" fill="#dd5b12" />
+      <text x="1260" y="489" class="card-title" fill="#dd5b12" style="fill:#dd5b12">
+        <tspan x="1260" dy="0">GitHub REST / GitHub App</tspan>
+      </text>
+      <text x="1260" y="521" class="body">
+        <tspan x="1260" dy="0">读取授权结果文件并创建课程 PR。</tspan>
+      </text>
+    </g>
+    <g id="FEISHU" data-node="FEISHU">
+      <title>飞书开放平台：读取字段元数据与多维表格。</title>
+      <rect x="1238" y="580" width="484" height="100" rx="10" fill="white" stroke="#dd5b12" stroke-width="1.7" />
+      <rect x="1239" y="592" width="4" height="76" rx="2" fill="#dd5b12" />
+      <text x="1260" y="614" class="card-title" fill="#dd5b12" style="fill:#dd5b12">
+        <tspan x="1260" dy="0">飞书开放平台</tspan>
+      </text>
+      <text x="1260" y="646" class="body">
+        <tspan x="1260" dy="0">读取字段元数据与多维表格。</tspan>
+      </text>
+    </g>
+    <g id="PUBLIC" data-node="PUBLIC">
+      <title>RSS / Atom / JSON / HTML：读取配置信源的公开内容。</title>
+      <rect x="1238" y="705" width="484" height="100" rx="10" fill="white" stroke="#dd5b12" stroke-width="1.7" />
+      <rect x="1239" y="717" width="4" height="76" rx="2" fill="#dd5b12" />
+      <text x="1260" y="739" class="card-title" fill="#dd5b12" style="fill:#dd5b12">
+        <tspan x="1260" dy="0">RSS / Atom / JSON / HTML</tspan>
+      </text>
+      <text x="1260" y="771" class="body">
+        <tspan x="1260" dy="0">读取配置信源的公开内容。</tspan>
+      </text>
+    </g>
+    <g id="MODEL" data-node="MODEL">
+      <title>OpenAI 兼容模型接口 · 可选：按预算生成摘要与工程价值评估。</title>
+      <rect x="1238" y="830" width="484" height="100" rx="10" fill="white" stroke="#dd5b12" stroke-width="1.7" stroke-dasharray="8 5" />
+      <rect x="1239" y="842" width="4" height="76" rx="2" fill="#dd5b12" />
+      <text x="1260" y="864" class="card-title" fill="#dd5b12" style="fill:#dd5b12">
+        <tspan x="1260" dy="0">OpenAI 兼容模型接口 · 可选</tspan>
+      </text>
+      <text x="1260" y="896" class="body">
+        <tspan x="1260" dy="0">按预算生成摘要与工程价值评估。</tspan>
+      </text>
+    </g>
+  </g>
+  <g id="annotations" />
+  <g id="legend">
+    <text x="60" y="1180" class="body">
+      <tspan x="60" dy="0">连接线表示工程依赖该类别；虚线卡片表示可选能力。关键 Java 依赖不适用，不添加虚构 Java 服务。</tspan>
+    </text>
+    <text x="60" y="1220" class="body">
+      <tspan x="60" dy="0">Better Auth、SQLite 驱动和任务队列嵌入应用；无需 Redis、MySQL、PostgreSQL 或 Kafka。</tspan>
+    </text>
+    <text x="60" y="1275" class="small">
+      <tspan x="60" dy="0">模型增强是否启用取决于运行配置；生产反向代理不代表本机已部署。来源：code/package.json、code/docker/、discovery 模块。</tspan>
+    </text>
+  </g>
+</svg>

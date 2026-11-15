@@ -115,7 +115,7 @@ npm run dev:local --prefix code -- --port 3210
 
 ### 当前 Mac：直接运行已有镜像
 
-2026-11-15 已将本机实例收敛为 `agent-learning-hub-trial`，当前聚合试运行固定镜像为 `agent-learning-hub:aggregation-20261115-r7`，此前已完成双模式容器和 OpenCode 整课验收，本轮聚合验收见任务 T9.10。Local 阅读入口为 <http://127.0.0.1:3003>，Cloud 资讯与 GitHub 登录入口为 <http://127.0.0.1:3002>。[本次升级与验证](../acceptance/course-continuity-2026-11-15.md)记录了在线备份、数据保留及截图。此 Compose 是当前 Mac 的运行入口，沿用已有的四个外部命名卷；不适用于没有这些卷和凭据的新机器。
+2026-11-15 已将本机实例收敛为 `agent-learning-hub-trial`，当前聚合试运行固定镜像为 `agent-learning-hub:aggregation-20261115-r17`，此前已完成双模式容器和 OpenCode 整课验收，本轮聚合验收见任务 T9.10。Local 阅读入口为 <http://127.0.0.1:3003>，Cloud 资讯与 GitHub 登录入口为 <http://127.0.0.1:3002>。[本次升级与验证](../acceptance/course-continuity-2026-11-15.md)记录了在线备份、数据保留及截图。此 Compose 是当前 Mac 的运行入口，沿用已有的四个外部命名卷；不适用于没有这些卷和凭据的新机器。
 
 在仓库根目录执行：
 

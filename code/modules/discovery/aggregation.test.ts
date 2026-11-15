@@ -100,7 +100,7 @@ it("keeps the newest GitHub observation when importing older result files", () =
   expect(repo.listPublic().items[0].title).toBe(record.title);
 });
 
-it("parses published result groups and counts malformed external links", () => {
+it("aggregates result groups and counts malformed external links", () => {
   const page = parseGitHubResults(
     {
       videos: [
@@ -119,7 +119,7 @@ it("parses published result groups and counts malformed external links", () => {
     "memory/daily/youtube-skill-videos-2026-11-15.json",
     "a".repeat(40),
   );
-  expect(page.records).toHaveLength(1);
+  expect(page.records).toHaveLength(2);
   expect(page.rejected).toBe(1);
   expect(page.records[0].provenance?.path).toContain("youtube-skill-videos");
   expect(
@@ -165,6 +165,47 @@ it("parses published result groups and counts malformed external links", () => {
       "a".repeat(40),
     ).records[0].url,
   ).toBe("https://www.bilibili.com/video/BV1234567890");
+  expect(
+    parseGitHubResults(
+      {
+        repos: [
+          {
+            repo_name: "owner/repo",
+            github_url: "https://github.com/owner/repo",
+          },
+        ],
+      },
+      "github-skill-repos",
+      "a".repeat(40),
+    ).records,
+  ).toHaveLength(1);
+  expect(
+    parseGitHubResults(
+      {
+        records: [
+          {
+            skill_name: "旧格式 Skill",
+            skill_url: "https://clawhub.ai/skills/skill",
+          },
+        ],
+      },
+      "clawhub-skills",
+      "a".repeat(40),
+    ).records,
+  ).toHaveLength(1);
+  expect(
+    parseGitHubResults(
+      {
+        skills: {
+          highlighted: [
+            { name: "Skill", link: "https://clawhub.ai/skills/skill" },
+          ],
+        },
+      },
+      "clawhub-skills",
+      "a".repeat(40),
+    ).records,
+  ).toHaveLength(1);
 });
 
 it("records a malformed historical file and continues importing valid files", async () => {

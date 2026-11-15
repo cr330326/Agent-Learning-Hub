@@ -1,0 +1,4 @@
+interface:
+  display_name: "Layered SVG Diagram"
+  short_description: "Create consistent, editable layered SVG diagrams"
+  default_prompt: "Use $layered-svg-diagram to create an editable layered SVG architecture diagram that follows this repository's visual conventions."

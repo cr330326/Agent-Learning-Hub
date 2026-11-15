@@ -1,0 +1,3 @@
+/agent-learning-hub-trial-cloud-1 agent-learning-hub:aggregation-20261115-r17 healthy 0 {"3000/tcp":[{"HostIp":"127.0.0.1","HostPort":"3002"}]}
+/agent-learning-hub-trial-local-1 agent-learning-hub:aggregation-20261115-r17 healthy 0 {"3000/tcp":[{"HostIp":"127.0.0.1","HostPort":"3003"}]}
+/agent-learning-hub-trial-worker-1 agent-learning-hub:aggregation-20261115-r17 healthy 0 {}

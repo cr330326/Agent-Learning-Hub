@@ -249,7 +249,10 @@ export class SourceAdapter {
           ? (contentType as SourceRecord["contentType"])
           : this.source.contentType,
         metrics: Object.keys(metrics).length ? metrics : undefined,
-        sourceStatus: text(get("sourceStatus")),
+        sourceStatus:
+          typeof get("sourceStatus") === "boolean"
+            ? String(get("sourceStatus"))
+            : text(get("sourceStatus")),
       };
     });
     const result = validRecords(records);

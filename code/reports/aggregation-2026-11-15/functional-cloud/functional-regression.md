@@ -1,7 +1,7 @@
 # Functional regression
 
 - Instance: http://127.0.0.1:3002
-- Generated: 2026-11-15T13:24:06.014Z
+- Generated: 2026-11-15T14:18:17.744Z
 - Checks: 28, failed: 0, skipped: 3
 
 | Result | Check | Detail |
@@ -9,7 +9,7 @@
 | PASS | runtime mode detected | cloud |
 | PASS | discovery follows runtime mode |  |
 | PASS | daily editions follow mode and open frozen summary versions | empty edition explains that no candidates qualified |
-| PASS | internal links resolve | 91 internal links, all < 400 |
+| PASS | internal links resolve | 92 internal links, all < 400 |
 | PASS | header navigation reaches every section | 7 sections reachable |
 | PASS | roadmap rows open their stage | 9 rows; first opens 理解 Agent 是什么 |
 | PASS | stage pages chain prev/next | stage-0 and stage-8 boundaries correct |

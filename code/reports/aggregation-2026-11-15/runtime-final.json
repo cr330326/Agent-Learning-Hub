@@ -1,0 +1,342 @@
+{
+  "at": "2026-11-15T14:27:04.681Z",
+  "schema": {
+    "version": 6
+  },
+  "quickCheck": [
+    {
+      "quick_check": "ok"
+    }
+  ],
+  "foreignKeys": [],
+  "sources": [
+    {
+      "id": "feishu-aihot",
+      "enabled": 1,
+      "intervalMinutes": 5,
+      "last_success_at": 1794752682986,
+      "next_sync_at": 1794752982986,
+      "last_error": null,
+      "progress": "{\"runId\":\"152922db-4857-4cb8-8e25-3be4dcce6f50\",\"added\":0,\"updated\":0,\"records\":97,\"checkpoint\":{\"cursor\":null,\"runId\":\"152922db-4857-4cb8-8e25-3be4dcce6f50\",\"pages\":8,\"rejected\":3,\"seen\":[\"cGFnZVRva2VuOjUwMA==\",\"cGFnZVRva2VuOjEwMDA=\",\"cGFnZVRva2VuOjE1MDA=\",\"cGFnZVRva2VuOjIwMDA=\",\"cGFnZVRva2VuOjI1MDA=\",\"cGFnZVRva2VuOjMwMDA=\",\"cGFnZVRva2VuOjM1MDA=\"],\"finished\":true}}"
+    },
+    {
+      "id": "feishu-experts",
+      "enabled": 1,
+      "intervalMinutes": 5,
+      "last_success_at": 1794752693105,
+      "next_sync_at": 1794752993105,
+      "last_error": null,
+      "progress": "{\"runId\":\"c73296eb-c8ca-481d-b310-3976c7f73682\",\"added\":0,\"updated\":0,\"records\":303,\"checkpoint\":{\"cursor\":null,\"runId\":\"c73296eb-c8ca-481d-b310-3976c7f73682\",\"pages\":5,\"rejected\":31,\"seen\":[\"cGFnZVRva2VuOjUwMA==\",\"cGFnZVRva2VuOjEwMDA=\",\"cGFnZVRva2VuOjE1MDA=\",\"cGFnZVRva2VuOjIwMDA=\"],\"finished\":true}}"
+    },
+    {
+      "id": "feishu-harness-bilibili",
+      "enabled": 1,
+      "intervalMinutes": 5,
+      "last_success_at": 1794752697580,
+      "next_sync_at": 1794752997580,
+      "last_error": null,
+      "progress": "{\"runId\":\"feeaf2a2-f622-4986-8562-c44d6a341cfa\",\"added\":0,\"updated\":0,\"records\":325,\"checkpoint\":{\"cursor\":null,\"runId\":\"feeaf2a2-f622-4986-8562-c44d6a341cfa\",\"pages\":2,\"rejected\":0,\"seen\":[\"cGFnZVRva2VuOjUwMA==\"],\"finished\":true}}"
+    },
+    {
+      "id": "feishu-harness-youtube",
+      "enabled": 1,
+      "intervalMinutes": 5,
+      "last_success_at": 1794752702393,
+      "next_sync_at": 1794753002393,
+      "last_error": null,
+      "progress": "{\"runId\":\"1a56027d-2e14-41d7-b3c0-74cf12fe59cf\",\"added\":0,\"updated\":0,\"records\":155,\"checkpoint\":{\"cursor\":null,\"runId\":\"1a56027d-2e14-41d7-b3c0-74cf12fe59cf\",\"pages\":2,\"rejected\":0,\"seen\":[\"cGFnZVRva2VuOjUwMA==\"],\"finished\":true}}"
+    },
+    {
+      "id": "feishu-skills-bilibili",
+      "enabled": 1,
+      "intervalMinutes": 5,
+      "last_success_at": 1794752809978,
+      "next_sync_at": 1794753109978,
+      "last_error": null,
+      "progress": "{\"runId\":\"6dcac2e2-fe7d-43f7-8f28-50b4aa7b9413\",\"added\":0,\"updated\":0,\"records\":58,\"checkpoint\":{\"cursor\":null,\"runId\":\"6dcac2e2-fe7d-43f7-8f28-50b4aa7b9413\",\"pages\":3,\"rejected\":2,\"seen\":[\"cGFnZVRva2VuOjUwMA==\",\"cGFnZVRva2VuOjEwMDA=\"],\"finished\":true}}"
+    },
+    {
+      "id": "feishu-skills-clawhub",
+      "enabled": 1,
+      "intervalMinutes": 5,
+      "last_success_at": 1794752817374,
+      "next_sync_at": 1794753117374,
+      "last_error": null,
+      "progress": "{\"runId\":\"cadea19d-eb6e-4cd0-9df9-44439cb1bf60\",\"added\":0,\"updated\":0,\"records\":209,\"checkpoint\":{\"cursor\":null,\"runId\":\"cadea19d-eb6e-4cd0-9df9-44439cb1bf60\",\"pages\":2,\"rejected\":13,\"seen\":[\"cGFnZVRva2VuOjUwMA==\"],\"finished\":true}}"
+    },
+    {
+      "id": "feishu-skills-github",
+      "enabled": 1,
+      "intervalMinutes": 5,
+      "last_success_at": 1794752821015,
+      "next_sync_at": 1794753121015,
+      "last_error": null,
+      "progress": "{\"runId\":\"87e382d5-c2fe-496f-a170-8833317364cd\",\"added\":0,\"updated\":0,\"records\":136,\"checkpoint\":{\"cursor\":null,\"runId\":\"87e382d5-c2fe-496f-a170-8833317364cd\",\"pages\":2,\"rejected\":0,\"seen\":[\"cGFnZVRva2VuOjUwMA==\"],\"finished\":true}}"
+    },
+    {
+      "id": "feishu-skills-youtube",
+      "enabled": 1,
+      "intervalMinutes": 5,
+      "last_success_at": 1794752532007,
+      "next_sync_at": 1794752832007,
+      "last_error": null,
+      "progress": "{\"runId\":\"5768c699-e5e2-4ee8-ad57-813c49e0c3b3\",\"added\":0,\"updated\":0,\"records\":187,\"checkpoint\":{\"cursor\":null,\"runId\":\"5768c699-e5e2-4ee8-ad57-813c49e0c3b3\",\"pages\":4,\"rejected\":0,\"seen\":[\"cGFnZVRva2VuOjUwMA==\",\"cGFnZVRva2VuOjEwMDA=\",\"cGFnZVRva2VuOjE1MDA=\"],\"finished\":true}}"
+    },
+    {
+      "id": "feishu-xcom",
+      "enabled": 1,
+      "intervalMinutes": 5,
+      "last_success_at": 1794752536988,
+      "next_sync_at": 1794752836988,
+      "last_error": null,
+      "progress": "{\"runId\":\"ef4b8a4b-5a87-417b-8ac8-dfab811da500\",\"added\":0,\"updated\":0,\"records\":42,\"checkpoint\":{\"cursor\":null,\"runId\":\"ef4b8a4b-5a87-417b-8ac8-dfab811da500\",\"pages\":3,\"rejected\":2,\"seen\":[\"cGFnZVRva2VuOjUwMA==\",\"cGFnZVRva2VuOjEwMDA=\"],\"finished\":true}}"
+    },
+    {
+      "id": "openspace-results",
+      "enabled": 1,
+      "intervalMinutes": 5,
+      "last_success_at": 1794752813949,
+      "next_sync_at": 1794753113949,
+      "last_error": null,
+      "progress": "{\"runId\":\"6ec7147d-d019-49ad-8aaa-3d9d3725240e\",\"added\":0,\"updated\":0,\"records\":0,\"checkpoint\":{\"cursor\":null,\"runId\":\"6ec7147d-d019-49ad-8aaa-3d9d3725240e\",\"pages\":1,\"rejected\":0,\"seen\":[],\"finished\":true}}"
+    }
+  ],
+  "records": [
+    {
+      "source_id": "feishu-aihot",
+      "state": "present",
+      "count": 3594
+    },
+    {
+      "source_id": "feishu-experts",
+      "state": "present",
+      "count": 2272
+    },
+    {
+      "source_id": "feishu-harness-bilibili",
+      "state": "present",
+      "count": 825
+    },
+    {
+      "source_id": "feishu-harness-youtube",
+      "state": "present",
+      "count": 655
+    },
+    {
+      "source_id": "feishu-skills-bilibili",
+      "state": "present",
+      "count": 1056
+    },
+    {
+      "source_id": "feishu-skills-clawhub",
+      "state": "present",
+      "count": 696
+    },
+    {
+      "source_id": "feishu-skills-github",
+      "state": "present",
+      "count": 636
+    },
+    {
+      "source_id": "feishu-skills-youtube",
+      "state": "present",
+      "count": 1687
+    },
+    {
+      "source_id": "feishu-xcom",
+      "state": "present",
+      "count": 1040
+    },
+    {
+      "source_id": "openspace-results",
+      "state": "present",
+      "count": 21981
+    },
+    {
+      "source_id": "openspace-results",
+      "state": "unverified-missing",
+      "count": 334
+    }
+  ],
+  "published": {
+    "count": 26872
+  },
+  "totals": {
+    "items": 26872,
+    "versions": 39217,
+    "observations": 43004
+  },
+  "files": [
+    {
+      "parser_version": 6,
+      "error_code": null,
+      "count": 1210,
+      "rejected": 27,
+      "records": 254781
+    },
+    {
+      "parser_version": 6,
+      "error_code": "invalid-result-json",
+      "count": 9,
+      "rejected": 9,
+      "records": 0
+    },
+    {
+      "parser_version": 6,
+      "error_code": "no-valid-result-links",
+      "count": 7,
+      "rejected": 78,
+      "records": 0
+    }
+  ],
+  "duplicatePublishedUrls": [],
+  "jobs": [],
+  "recentRuns": [
+    {
+      "source": "feishu-skills-github",
+      "created_at": 1794752817374,
+      "updated_at": 1794752821015,
+      "checkpoint": "{\"cursor\":null,\"runId\":\"87e382d5-c2fe-496f-a170-8833317364cd\",\"pages\":2,\"rejected\":0,\"seen\":[\"cGFnZVRva2VuOjUwMA==\"],\"finished\":true}",
+      "result": "{\"pages\":2,\"rejected\":0}"
+    },
+    {
+      "source": "feishu-skills-clawhub",
+      "created_at": 1794752813950,
+      "updated_at": 1794752817374,
+      "checkpoint": "{\"cursor\":null,\"runId\":\"cadea19d-eb6e-4cd0-9df9-44439cb1bf60\",\"pages\":2,\"rejected\":13,\"seen\":[\"cGFnZVRva2VuOjUwMA==\"],\"finished\":true}",
+      "result": "{\"pages\":2,\"rejected\":13}"
+    },
+    {
+      "source": "openspace-results",
+      "created_at": 1794752810983,
+      "updated_at": 1794752813949,
+      "checkpoint": "{\"cursor\":null,\"runId\":\"6ec7147d-d019-49ad-8aaa-3d9d3725240e\",\"pages\":1,\"rejected\":0,\"seen\":[],\"finished\":true}",
+      "result": "{\"pages\":1,\"rejected\":0}"
+    },
+    {
+      "source": "feishu-skills-bilibili",
+      "created_at": 1794752804878,
+      "updated_at": 1794752809978,
+      "checkpoint": "{\"cursor\":null,\"runId\":\"6dcac2e2-fe7d-43f7-8f28-50b4aa7b9413\",\"pages\":3,\"rejected\":2,\"seen\":[\"cGFnZVRva2VuOjUwMA==\",\"cGFnZVRva2VuOjEwMDA=\"],\"finished\":true}",
+      "result": "{\"pages\":3,\"rejected\":2}"
+    },
+    {
+      "source": "feishu-harness-youtube",
+      "created_at": 1794752693107,
+      "updated_at": 1794752702393,
+      "checkpoint": "{\"cursor\":null,\"runId\":\"1a56027d-2e14-41d7-b3c0-74cf12fe59cf\",\"pages\":2,\"rejected\":0,\"seen\":[\"cGFnZVRva2VuOjUwMA==\"],\"finished\":true}",
+      "result": "{\"pages\":2,\"rejected\":0}"
+    },
+    {
+      "source": "feishu-harness-bilibili",
+      "created_at": 1794752682987,
+      "updated_at": 1794752697580,
+      "checkpoint": "{\"cursor\":null,\"runId\":\"feeaf2a2-f622-4986-8562-c44d6a341cfa\",\"pages\":2,\"rejected\":0,\"seen\":[\"cGFnZVRva2VuOjUwMA==\"],\"finished\":true}",
+      "result": "{\"pages\":2,\"rejected\":0}"
+    },
+    {
+      "source": "feishu-experts",
+      "created_at": 1794752682987,
+      "updated_at": 1794752693105,
+      "checkpoint": "{\"cursor\":null,\"runId\":\"c73296eb-c8ca-481d-b310-3976c7f73682\",\"pages\":5,\"rejected\":31,\"seen\":[\"cGFnZVRva2VuOjUwMA==\",\"cGFnZVRva2VuOjEwMDA=\",\"cGFnZVRva2VuOjE1MDA=\",\"cGFnZVRva2VuOjIwMDA=\"],\"finished\":true}",
+      "result": "{\"pages\":5,\"rejected\":31}"
+    },
+    {
+      "source": "feishu-aihot",
+      "created_at": 1794752668813,
+      "updated_at": 1794752682986,
+      "checkpoint": "{\"cursor\":null,\"runId\":\"152922db-4857-4cb8-8e25-3be4dcce6f50\",\"pages\":8,\"rejected\":3,\"seen\":[\"cGFnZVRva2VuOjUwMA==\",\"cGFnZVRva2VuOjEwMDA=\",\"cGFnZVRva2VuOjE1MDA=\",\"cGFnZVRva2VuOjIwMDA=\",\"cGFnZVRva2VuOjI1MDA=\",\"cGFnZVRva2VuOjMwMDA=\",\"cGFnZVRva2VuOjM1MDA=\"],\"finished\":true}",
+      "result": "{\"pages\":8,\"rejected\":3}"
+    },
+    {
+      "source": "feishu-xcom",
+      "created_at": 1794752532008,
+      "updated_at": 1794752536988,
+      "checkpoint": "{\"cursor\":null,\"runId\":\"ef4b8a4b-5a87-417b-8ac8-dfab811da500\",\"pages\":3,\"rejected\":2,\"seen\":[\"cGFnZVRva2VuOjUwMA==\",\"cGFnZVRva2VuOjEwMDA=\"],\"finished\":true}",
+      "result": "{\"pages\":3,\"rejected\":2}"
+    },
+    {
+      "source": "feishu-skills-youtube",
+      "created_at": 1794752525963,
+      "updated_at": 1794752532007,
+      "checkpoint": "{\"cursor\":null,\"runId\":\"5768c699-e5e2-4ee8-ad57-813c49e0c3b3\",\"pages\":4,\"rejected\":0,\"seen\":[\"cGFnZVRva2VuOjUwMA==\",\"cGFnZVRva2VuOjEwMDA=\",\"cGFnZVRva2VuOjE1MDA=\"],\"finished\":true}",
+      "result": "{\"pages\":4,\"rejected\":0}"
+    },
+    {
+      "source": "feishu-skills-github",
+      "created_at": 1794752513661,
+      "updated_at": 1794752516912,
+      "checkpoint": "{\"cursor\":null,\"runId\":\"4838a083-3e56-4b3d-84af-3b5c698c5956\",\"pages\":2,\"rejected\":0,\"seen\":[\"cGFnZVRva2VuOjUwMA==\"],\"finished\":true}",
+      "result": "{\"pages\":2,\"rejected\":0}"
+    },
+    {
+      "source": "feishu-skills-clawhub",
+      "created_at": 1794752510183,
+      "updated_at": 1794752513661,
+      "checkpoint": "{\"cursor\":null,\"runId\":\"54a09522-eeb4-4298-b72c-d6ed52e9e48d\",\"pages\":2,\"rejected\":13,\"seen\":[\"cGFnZVRva2VuOjUwMA==\"],\"finished\":true}",
+      "result": "{\"pages\":2,\"rejected\":13}"
+    },
+    {
+      "source": "openspace-results",
+      "created_at": 1794751720934,
+      "updated_at": 1794752510182,
+      "checkpoint": "{\"cursor\":null,\"runId\":\"e604630a-6e49-4f6a-a674-e47271b1d3e6\",\"pages\":154,\"rejected\":114,\"seen\":[\"8609255894c529f99ea796b2d607bd5cc82df1fd:8\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:16\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:24\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:32\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:40\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:48\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:56\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:64\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:72\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:80\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:88\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:96\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:104\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:112\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:120\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:128\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:136\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:144\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:152\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:160\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:168\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:176\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:184\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:192\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:200\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:208\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:216\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:224\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:232\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:240\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:248\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:256\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:264\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:272\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:280\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:288\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:296\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:304\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:312\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:320\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:328\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:336\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:344\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:352\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:360\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:368\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:376\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:384\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:392\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:400\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:408\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:416\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:424\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:432\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:440\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:448\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:456\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:464\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:472\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:480\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:488\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:496\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:504\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:512\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:520\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:528\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:536\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:544\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:552\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:560\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:568\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:576\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:584\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:592\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:600\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:608\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:616\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:624\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:632\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:640\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:648\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:656\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:664\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:672\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:680\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:688\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:696\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:704\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:712\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:720\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:728\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:736\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:744\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:752\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:760\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:768\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:776\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:784\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:792\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:800\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:808\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:816\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:824\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:832\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:840\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:848\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:856\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:864\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:872\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:880\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:888\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:896\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:904\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:912\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:920\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:928\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:936\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:944\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:952\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:960\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:968\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:976\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:984\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:992\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:1000\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:1008\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:1016\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:1024\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:1032\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:1040\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:1048\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:1056\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:1064\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:1072\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:1080\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:1088\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:1096\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:1104\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:1112\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:1120\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:1128\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:1136\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:1144\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:1152\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:1160\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:1168\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:1176\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:1184\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:1192\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:1200\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:1208\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:1216\",\"8609255894c529f99ea796b2d607bd5cc82df1fd:1224\"],\"finished\":true}",
+      "result": "{\"pages\":154,\"rejected\":114}"
+    },
+    {
+      "source": "feishu-skills-bilibili",
+      "created_at": 1794752500149,
+      "updated_at": 1794752504796,
+      "checkpoint": "{\"cursor\":null,\"runId\":\"d63171f9-0fdd-4bd6-8660-41cd72fa5ecc\",\"pages\":3,\"rejected\":2,\"seen\":[\"cGFnZVRva2VuOjUwMA==\",\"cGFnZVRva2VuOjEwMDA=\"],\"finished\":true}",
+      "result": "{\"pages\":3,\"rejected\":2}"
+    },
+    {
+      "source": "feishu-harness-youtube",
+      "created_at": 1794752376722,
+      "updated_at": 1794752384129,
+      "checkpoint": "{\"cursor\":null,\"runId\":\"3748baed-fc81-419c-bdf6-a9fd79f48201\",\"pages\":2,\"rejected\":0,\"seen\":[\"cGFnZVRva2VuOjUwMA==\"],\"finished\":true}",
+      "result": "{\"pages\":2,\"rejected\":0}"
+    },
+    {
+      "source": "feishu-harness-bilibili",
+      "created_at": 1794752368134,
+      "updated_at": 1794752380391,
+      "checkpoint": "{\"cursor\":null,\"runId\":\"85c0d6a1-d6c3-43e8-accd-c609ac9b5454\",\"pages\":2,\"rejected\":0,\"seen\":[\"cGFnZVRva2VuOjUwMA==\"],\"finished\":true}",
+      "result": "{\"pages\":2,\"rejected\":0}"
+    },
+    {
+      "source": "feishu-experts",
+      "created_at": 1794752368134,
+      "updated_at": 1794752376721,
+      "checkpoint": "{\"cursor\":null,\"runId\":\"d5ebdcb3-21c6-445d-91e1-cd01f835d470\",\"pages\":5,\"rejected\":31,\"seen\":[\"cGFnZVRva2VuOjUwMA==\",\"cGFnZVRva2VuOjEwMDA=\",\"cGFnZVRva2VuOjE1MDA=\",\"cGFnZVRva2VuOjIwMDA=\"],\"finished\":true}",
+      "result": "{\"pages\":5,\"rejected\":31}"
+    },
+    {
+      "source": "feishu-aihot",
+      "created_at": 1794752355617,
+      "updated_at": 1794752368134,
+      "checkpoint": "{\"cursor\":null,\"runId\":\"4ece9a5d-88ee-4dde-9e2b-8e3907c74156\",\"pages\":8,\"rejected\":3,\"seen\":[\"cGFnZVRva2VuOjUwMA==\",\"cGFnZVRva2VuOjEwMDA=\",\"cGFnZVRva2VuOjE1MDA=\",\"cGFnZVRva2VuOjIwMDA=\",\"cGFnZVRva2VuOjI1MDA=\",\"cGFnZVRva2VuOjMwMDA=\",\"cGFnZVRva2VuOjM1MDA=\"],\"finished\":true}",
+      "result": "{\"pages\":8,\"rejected\":3}"
+    },
+    {
+      "source": "feishu-xcom",
+      "created_at": 1794752186034,
+      "updated_at": 1794752231461,
+      "checkpoint": "{\"cursor\":null,\"runId\":\"e6e11fea-515c-4145-9a37-8131f78d7064\",\"pages\":3,\"rejected\":2,\"seen\":[\"cGFnZVRva2VuOjUwMA==\",\"cGFnZVRva2VuOjEwMDA=\"],\"finished\":true}",
+      "result": "{\"pages\":3,\"rejected\":2}"
+    },
+    {
+      "source": "feishu-skills-youtube",
+      "created_at": 1794752186024,
+      "updated_at": 1794752224991,
+      "checkpoint": "{\"cursor\":null,\"runId\":\"f56b5f74-2b7a-4ddc-abe7-d83476e62fda\",\"pages\":4,\"rejected\":0,\"seen\":[\"cGFnZVRva2VuOjUwMA==\",\"cGFnZVRva2VuOjEwMDA=\",\"cGFnZVRva2VuOjE1MDA=\"],\"finished\":true}",
+      "result": "{\"pages\":4,\"rejected\":0}"
+    }
+  ],
+  "githubState": {
+    "recordDigest": "adaa0fefa4a16445807ca312d48f3638a0996eaa6096cadf8a7b0d14ecb0f023",
+    "observations": {
+      "count": 29351
+    }
+  }
+}

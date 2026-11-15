@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-11-15T13:23:44.562Z",
+  "generatedAt": "2026-11-15T14:18:20.184Z",
   "baseUrl": "http://127.0.0.1:3002",
   "pages": [
     {
       "path": "/",
       "viewport": "desktop",
       "status": 200,
-      "height": 2531
+      "height": 2559
     },
     {
       "path": "/roadmap",
@@ -54,13 +54,13 @@
       "path": "/search",
       "viewport": "desktop",
       "status": 200,
-      "height": 4332
+      "height": 4089
     },
     {
       "path": "/search?q=agent",
       "viewport": "desktop",
       "status": 200,
-      "height": 4943
+      "height": 4501
     },
     {
       "path": "/projects",
@@ -102,7 +102,7 @@
       "path": "/discover",
       "viewport": "desktop",
       "status": 200,
-      "height": 3857
+      "height": 4072
     },
     {
       "path": "/editions",
@@ -114,13 +114,13 @@
       "path": "/topics/Harness%20Engineering",
       "viewport": "desktop",
       "status": 200,
-      "height": 3887
+      "height": 3933
     },
     {
       "path": "/",
       "viewport": "tablet",
       "status": 200,
-      "height": 3392
+      "height": 3476
     },
     {
       "path": "/roadmap",
@@ -168,13 +168,13 @@
       "path": "/search",
       "viewport": "tablet",
       "status": 200,
-      "height": 4842
+      "height": 4429
     },
     {
       "path": "/search?q=agent",
       "viewport": "tablet",
       "status": 200,
-      "height": 5670
+      "height": 4858
     },
     {
       "path": "/projects",
@@ -216,7 +216,7 @@
       "path": "/discover",
       "viewport": "tablet",
       "status": 200,
-      "height": 5368
+      "height": 5774
     },
     {
       "path": "/editions",
@@ -228,13 +228,13 @@
       "path": "/topics/Harness%20Engineering",
       "viewport": "tablet",
       "status": 200,
-      "height": 5270
+      "height": 5344
     },
     {
       "path": "/",
       "viewport": "mobile",
       "status": 200,
-      "height": 4491
+      "height": 4625
     },
     {
       "path": "/roadmap",
@@ -282,13 +282,13 @@
       "path": "/search",
       "viewport": "mobile",
       "status": 200,
-      "height": 7360
+      "height": 6430
     },
     {
       "path": "/search?q=agent",
       "viewport": "mobile",
       "status": 200,
-      "height": 9223
+      "height": 7340
     },
     {
       "path": "/projects",
@@ -330,7 +330,7 @@
       "path": "/discover",
       "viewport": "mobile",
       "status": 200,
-      "height": 10093
+      "height": 11019
     },
     {
       "path": "/editions",
@@ -342,7 +342,7 @@
       "path": "/topics/Harness%20Engineering",
       "viewport": "mobile",
       "status": 200,
-      "height": 9673
+      "height": 9810
     }
   ],
   "findings": []

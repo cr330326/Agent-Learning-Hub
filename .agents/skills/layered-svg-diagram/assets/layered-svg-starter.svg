@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="diagram-title diagram-desc" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', 'Noto Sans CJK SC', sans-serif">
+  <title id="diagram-title">Layered system diagram starter</title>
+  <desc id="diagram-desc">Actors call an application layer, which writes to a data layer and integrates with an external system.</desc>
+  <defs>
+    <marker id="arrow-default" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect id="canvas" width="1200" height="760" fill="#f8fafc"/>
+  <g id="header">
+    <text x="600" y="42" text-anchor="middle" font-size="24" font-weight="700" fill="#0f172a">Layered System Diagram</text>
+    <text x="600" y="66" text-anchor="middle" font-size="13" fill="#64748b">Replace labels and tokens with repository-owned facts and conventions</text>
+  </g>
+  <g id="layer-bands">
+    <rect id="band-actors" x="24" y="94" width="840" height="120" rx="12" fill="#eff6ff"/>
+    <rect id="band-application" x="24" y="236" width="840" height="178" rx="12" fill="#f0fdfa"/>
+    <rect id="band-data" x="24" y="436" width="840" height="120" rx="12" fill="#fffbeb"/>
+    <rect id="boundary-external" x="888" y="94" width="288" height="462" rx="12" fill="#faf5ff" stroke="#c4b5fd" stroke-width="1.5"/>
+  </g>
+  <g id="connectors" fill="none" stroke="#64748b" stroke-width="1.8" marker-end="url(#arrow-default)">
+    <path id="edge-actor-application" d="M444 190 V280"/>
+    <path id="edge-application-data" d="M444 370 V478"/>
+    <path id="edge-application-external" d="M644 325 H944" stroke-dasharray="7 5"/>
+  </g>
+  <g id="nodes">
+    <g id="node-actor">
+      <rect x="304" y="126" width="280" height="64" rx="9" fill="#ffffff" stroke="#2563eb" stroke-width="1.8"/>
+      <text x="444" y="153" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">Actor or Client</text>
+      <text x="444" y="174" text-anchor="middle" font-size="12" fill="#475569">State the user-visible responsibility</text>
+    </g>
+    <g id="node-application">
+      <rect x="244" y="280" width="400" height="90" rx="9" fill="#ffffff" stroke="#0d9488" stroke-width="1.8"/>
+      <text x="444" y="316" text-anchor="middle" font-size="14" font-weight="700" fill="#115e59">Application Boundary</text>
+      <text x="444" y="340" text-anchor="middle" font-size="12" fill="#475569">Keep scope and ownership explicit</text>
+    </g>
+    <g id="node-data">
+      <rect x="304" y="478" width="280" height="64" rx="9" fill="#ffffff" stroke="#d97706" stroke-width="1.8"/>
+      <text x="444" y="505" text-anchor="middle" font-size="14" font-weight="700" fill="#92400e">Data or Messaging</text>
+      <text x="444" y="526" text-anchor="middle" font-size="12" fill="#475569">Name the persisted or queued fact</text>
+    </g>
+    <g id="node-external">
+      <rect x="944" y="284" width="176" height="82" rx="9" fill="#ffffff" stroke="#7c3aed" stroke-width="1.8"/>
+      <text x="1032" y="316" text-anchor="middle" font-size="14" font-weight="700" fill="#5b21b6">External System</text>
+      <text x="1032" y="340" text-anchor="middle" font-size="12" fill="#475569">Dashed integration</text>
+    </g>
+  </g>
+  <g id="layer-labels" font-size="13" font-weight="700">
+    <text x="42" y="119" fill="#1e3a8a">Actors / Channels</text>
+    <text x="42" y="261" fill="#115e59">Application</text>
+    <text x="42" y="461" fill="#92400e">Data / Messaging</text>
+    <text x="906" y="119" fill="#5b21b6">External Boundary</text>
+  </g>
+  <g id="legend">
+    <rect x="24" y="586" width="1152" height="142" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="44" y="616" font-size="13" font-weight="700" fill="#334155">Legend and reading contract</text>
+    <text x="44" y="644" font-size="12" fill="#475569">Solid arrow · primary flow from consumer to dependency</text>
+    <text x="44" y="668" font-size="12" fill="#475569">Dashed arrow · external or optional integration</text>
+    <text x="44" y="692" font-size="12" fill="#475569">Replace every label, layer and token with verified repository context before delivery</text>
+  </g>
+</svg>

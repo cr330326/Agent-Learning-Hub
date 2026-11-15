@@ -1,0 +1,124 @@
+{
+  "generatedAt": "2026-11-15T15:06:35.428Z",
+  "elapsedMs": 4247,
+  "environment": {
+    "hostIdentity": "macOS-arm64-DockerDesktop",
+    "containerHostname": "c96392e4e16a",
+    "platform": "linux/arm64",
+    "node": "v24.22.3",
+    "appVersion": "docs-2026.11.15"
+  },
+  "batchId": "f75720c6-1d14-4c59-b33c-21b8be5fab63",
+  "expectedCounts": {
+    "state": {
+      "accounts": 1,
+      "bookmarks": 0,
+      "discovery_state": 0,
+      "item_progress": 1,
+      "notes": 0,
+      "operational_metrics": 63,
+      "schema_migrations": 3,
+      "sessions": 4,
+      "stage_outcomes": 0,
+      "stage_task_progress": 0,
+      "users": 1
+    },
+    "discovery": {
+      "admin_actions": 37841,
+      "discovery_migrations": 6,
+      "editions": 1,
+      "github_result_files": 1229,
+      "item_merges": 0,
+      "item_urls": 27017,
+      "item_versions": 39410,
+      "items": 27017,
+      "jobs": 223,
+      "metric_observations": 47124,
+      "model_receipts": 0,
+      "proposals": 0,
+      "settings": 3,
+      "source_records": 34986,
+      "sources": 10,
+      "temporary_content": 0,
+      "worker_health": 16
+    }
+  },
+  "restoredCounts": {
+    "state": {
+      "accounts": 1,
+      "bookmarks": 0,
+      "discovery_state": 0,
+      "item_progress": 1,
+      "notes": 0,
+      "operational_metrics": 63,
+      "schema_migrations": 3,
+      "sessions": 4,
+      "stage_outcomes": 0,
+      "stage_task_progress": 0,
+      "users": 1
+    },
+    "discovery": {
+      "admin_actions": 37841,
+      "discovery_migrations": 6,
+      "editions": 1,
+      "github_result_files": 1229,
+      "item_merges": 0,
+      "item_urls": 27017,
+      "item_versions": 39410,
+      "items": 27017,
+      "jobs": 223,
+      "metric_observations": 47124,
+      "model_receipts": 0,
+      "proposals": 0,
+      "settings": 3,
+      "source_records": 34986,
+      "sources": 10,
+      "temporary_content": 0,
+      "worker_health": 0
+    }
+  },
+  "checks": [
+    {
+      "name": "共同批次记录两个库的全部业务表行数",
+      "passed": true
+    },
+    {
+      "name": "两个恢复库均通过完整性检查",
+      "passed": true
+    },
+    {
+      "name": "全部个人表与业务表按批次恢复，临时引用与心跳按恢复规则清空",
+      "passed": true
+    },
+    {
+      "name": "运行中任务租约已复位",
+      "passed": true
+    },
+    {
+      "name": "付费在途回执转为待核对",
+      "passed": true
+    },
+    {
+      "name": "两库外键和个人资讯引用完整",
+      "passed": true
+    },
+    {
+      "name": "错误口令必须拒绝",
+      "passed": true
+    },
+    {
+      "name": "篡改密文必须拒绝",
+      "passed": true
+    },
+    {
+      "name": "覆盖已有目标必须拒绝",
+      "passed": true
+    },
+    {
+      "name": "完整恢复与反向对照通过后才记录共同批次验证时间",
+      "passed": true
+    }
+  ],
+  "passed": 10,
+  "failed": 0
+}

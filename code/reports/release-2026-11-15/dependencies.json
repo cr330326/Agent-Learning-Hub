@@ -1,0 +1,2527 @@
+{
+  "scope": "modules/lib/app/scripts; production source; static imports, re-exports and literal dynamic imports; type-only included",
+  "files": 112,
+  "edges": 297,
+  "groups": [
+    "app/api",
+    "app/components",
+    "app/pages",
+    "lib",
+    "modules/admin",
+    "modules/auth",
+    "modules/catalog",
+    "modules/content-resolver",
+    "modules/discovery",
+    "modules/freshness",
+    "modules/learning-state",
+    "modules/observability",
+    "modules/reader",
+    "modules/runtime",
+    "modules/search",
+    "scripts"
+  ],
+  "grouped": [
+    {
+      "source": "modules/admin",
+      "target": "modules/catalog",
+      "typeOnly": false,
+      "count": 2
+    },
+    {
+      "source": "modules/admin",
+      "target": "modules/freshness",
+      "typeOnly": false,
+      "count": 1
+    },
+    {
+      "source": "modules/admin",
+      "target": "modules/learning-state",
+      "typeOnly": true,
+      "count": 3
+    },
+    {
+      "source": "modules/admin",
+      "target": "modules/observability",
+      "typeOnly": false,
+      "count": 1
+    },
+    {
+      "source": "modules/admin",
+      "target": "modules/discovery",
+      "typeOnly": false,
+      "count": 1
+    },
+    {
+      "source": "modules/admin",
+      "target": "modules/runtime",
+      "typeOnly": true,
+      "count": 1
+    },
+    {
+      "source": "modules/auth",
+      "target": "lib",
+      "typeOnly": false,
+      "count": 1
+    },
+    {
+      "source": "modules/auth",
+      "target": "modules/learning-state",
+      "typeOnly": true,
+      "count": 2
+    },
+    {
+      "source": "modules/auth",
+      "target": "modules/runtime",
+      "typeOnly": false,
+      "count": 2
+    },
+    {
+      "source": "modules/content-resolver",
+      "target": "modules/catalog",
+      "typeOnly": true,
+      "count": 1
+    },
+    {
+      "source": "modules/content-resolver",
+      "target": "modules/reader",
+      "typeOnly": false,
+      "count": 1
+    },
+    {
+      "source": "modules/discovery",
+      "target": "modules/catalog",
+      "typeOnly": false,
+      "count": 3
+    },
+    {
+      "source": "modules/discovery",
+      "target": "modules/admin",
+      "typeOnly": false,
+      "count": 1
+    },
+    {
+      "source": "modules/discovery",
+      "target": "modules/auth",
+      "typeOnly": false,
+      "count": 2
+    },
+    {
+      "source": "modules/discovery",
+      "target": "modules/learning-state",
+      "typeOnly": false,
+      "count": 5
+    },
+    {
+      "source": "modules/discovery",
+      "target": "modules/search",
+      "typeOnly": true,
+      "count": 1
+    },
+    {
+      "source": "modules/freshness",
+      "target": "modules/catalog",
+      "typeOnly": false,
+      "count": 3
+    },
+    {
+      "source": "modules/learning-state",
+      "target": "modules/catalog",
+      "typeOnly": true,
+      "count": 1
+    },
+    {
+      "source": "modules/observability",
+      "target": "modules/learning-state",
+      "typeOnly": false,
+      "count": 2
+    },
+    {
+      "source": "modules/reader",
+      "target": "modules/catalog",
+      "typeOnly": false,
+      "count": 2
+    },
+    {
+      "source": "modules/reader",
+      "target": "modules/content-resolver",
+      "typeOnly": false,
+      "count": 1
+    },
+    {
+      "source": "modules/runtime",
+      "target": "modules/auth",
+      "typeOnly": false,
+      "count": 1
+    },
+    {
+      "source": "modules/search",
+      "target": "modules/catalog",
+      "typeOnly": true,
+      "count": 1
+    },
+    {
+      "source": "modules/search",
+      "target": "modules/reader",
+      "typeOnly": false,
+      "count": 1
+    },
+    {
+      "source": "modules/search",
+      "target": "modules/runtime",
+      "typeOnly": true,
+      "count": 1
+    },
+    {
+      "source": "modules/search",
+      "target": "modules/content-resolver",
+      "typeOnly": false,
+      "count": 1
+    },
+    {
+      "source": "lib",
+      "target": "modules/catalog",
+      "typeOnly": false,
+      "count": 1
+    },
+    {
+      "source": "lib",
+      "target": "modules/content-resolver",
+      "typeOnly": false,
+      "count": 1
+    },
+    {
+      "source": "lib",
+      "target": "modules/runtime",
+      "typeOnly": false,
+      "count": 2
+    },
+    {
+      "source": "lib",
+      "target": "modules/discovery",
+      "typeOnly": false,
+      "count": 2
+    },
+    {
+      "source": "lib",
+      "target": "modules/learning-state",
+      "typeOnly": false,
+      "count": 1
+    },
+    {
+      "source": "lib",
+      "target": "modules/observability",
+      "typeOnly": false,
+      "count": 1
+    },
+    {
+      "source": "app/pages",
+      "target": "modules/admin",
+      "typeOnly": false,
+      "count": 2
+    },
+    {
+      "source": "app/pages",
+      "target": "modules/auth",
+      "typeOnly": false,
+      "count": 2
+    },
+    {
+      "source": "app/pages",
+      "target": "lib",
+      "typeOnly": false,
+      "count": 25
+    },
+    {
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false,
+      "count": 36
+    },
+    {
+      "source": "app/pages",
+      "target": "modules/catalog",
+      "typeOnly": false,
+      "count": 6
+    },
+    {
+      "source": "app/pages",
+      "target": "modules/runtime",
+      "typeOnly": false,
+      "count": 1
+    },
+    {
+      "source": "app/api",
+      "target": "lib",
+      "typeOnly": false,
+      "count": 19
+    },
+    {
+      "source": "app/api",
+      "target": "modules/auth",
+      "typeOnly": false,
+      "count": 18
+    },
+    {
+      "source": "app/api",
+      "target": "modules/runtime",
+      "typeOnly": false,
+      "count": 9
+    },
+    {
+      "source": "app/api",
+      "target": "modules/discovery",
+      "typeOnly": false,
+      "count": 1
+    },
+    {
+      "source": "app/api",
+      "target": "modules/catalog",
+      "typeOnly": false,
+      "count": 2
+    },
+    {
+      "source": "app/api",
+      "target": "modules/admin",
+      "typeOnly": false,
+      "count": 1
+    },
+    {
+      "source": "app/api",
+      "target": "modules/learning-state",
+      "typeOnly": false,
+      "count": 10
+    },
+    {
+      "source": "app/api",
+      "target": "modules/observability",
+      "typeOnly": false,
+      "count": 4
+    },
+    {
+      "source": "app/api",
+      "target": "modules/content-resolver",
+      "typeOnly": false,
+      "count": 1
+    },
+    {
+      "source": "app/components",
+      "target": "modules/catalog",
+      "typeOnly": true,
+      "count": 2
+    },
+    {
+      "source": "app/components",
+      "target": "modules/content-resolver",
+      "typeOnly": true,
+      "count": 1
+    },
+    {
+      "source": "app/components",
+      "target": "modules/reader",
+      "typeOnly": true,
+      "count": 1
+    },
+    {
+      "source": "app/components",
+      "target": "modules/discovery",
+      "typeOnly": false,
+      "count": 7
+    },
+    {
+      "source": "app/components",
+      "target": "lib",
+      "typeOnly": false,
+      "count": 1
+    },
+    {
+      "source": "app/components",
+      "target": "modules/learning-state",
+      "typeOnly": true,
+      "count": 1
+    },
+    {
+      "source": "app/components",
+      "target": "modules/observability",
+      "typeOnly": false,
+      "count": 1
+    },
+    {
+      "source": "app/components",
+      "target": "modules/runtime",
+      "typeOnly": true,
+      "count": 1
+    },
+    {
+      "source": "app/pages",
+      "target": "modules/reader",
+      "typeOnly": false,
+      "count": 2
+    },
+    {
+      "source": "app/pages",
+      "target": "modules/content-resolver",
+      "typeOnly": false,
+      "count": 1
+    },
+    {
+      "source": "app/pages",
+      "target": "modules/search",
+      "typeOnly": false,
+      "count": 1
+    },
+    {
+      "source": "app/pages",
+      "target": "modules/discovery",
+      "typeOnly": false,
+      "count": 1
+    },
+    {
+      "source": "scripts",
+      "target": "modules/catalog",
+      "typeOnly": false,
+      "count": 4
+    },
+    {
+      "source": "scripts",
+      "target": "modules/observability",
+      "typeOnly": false,
+      "count": 3
+    },
+    {
+      "source": "scripts",
+      "target": "modules/learning-state",
+      "typeOnly": false,
+      "count": 4
+    },
+    {
+      "source": "scripts",
+      "target": "modules/discovery",
+      "typeOnly": false,
+      "count": 6
+    },
+    {
+      "source": "scripts",
+      "target": "modules/freshness",
+      "typeOnly": false,
+      "count": 2
+    },
+    {
+      "source": "scripts",
+      "target": "modules/search",
+      "typeOnly": false,
+      "count": 1
+    }
+  ],
+  "moduleCycles": [
+    [
+      "modules/content-resolver",
+      "modules/reader"
+    ],
+    [
+      "lib",
+      "modules/admin",
+      "modules/auth",
+      "modules/discovery",
+      "modules/runtime",
+      "modules/search"
+    ]
+  ],
+  "fileCycles": [
+    [
+      "modules/learning-state/database.ts",
+      "modules/learning-state/discovery-state.ts",
+      "modules/learning-state/repository.ts"
+    ],
+    [
+      "modules/discovery/adapters.ts",
+      "modules/discovery/github-results.ts"
+    ]
+  ],
+  "runtimeFileCycles": [
+    [
+      "modules/learning-state/discovery-state.ts",
+      "modules/learning-state/repository.ts"
+    ]
+  ],
+  "fileEdges": [
+    {
+      "from": "modules/admin/admin-health.ts",
+      "to": "modules/catalog/catalog-api.ts",
+      "source": "modules/admin",
+      "target": "modules/catalog",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/admin/admin-health.ts",
+      "to": "modules/catalog/content-audit.ts",
+      "source": "modules/admin",
+      "target": "modules/catalog",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/admin/admin-health.ts",
+      "to": "modules/freshness/materials-check.ts",
+      "source": "modules/admin",
+      "target": "modules/freshness",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/admin/admin-health.ts",
+      "to": "modules/learning-state/database.ts",
+      "source": "modules/admin",
+      "target": "modules/learning-state",
+      "typeOnly": true
+    },
+    {
+      "from": "modules/admin/admin-health.ts",
+      "to": "modules/learning-state/backup.ts",
+      "source": "modules/admin",
+      "target": "modules/learning-state",
+      "typeOnly": true
+    },
+    {
+      "from": "modules/admin/admin-health.ts",
+      "to": "modules/learning-state/repository.ts",
+      "source": "modules/admin",
+      "target": "modules/learning-state",
+      "typeOnly": true
+    },
+    {
+      "from": "modules/admin/admin-health.ts",
+      "to": "modules/observability/privacy-monitor.ts",
+      "source": "modules/admin",
+      "target": "modules/observability",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/admin/admin-health.ts",
+      "to": "modules/discovery/backup.ts",
+      "source": "modules/admin",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/admin/admin-health.ts",
+      "to": "modules/runtime/runtime-config.ts",
+      "source": "modules/admin",
+      "target": "modules/runtime",
+      "typeOnly": true
+    },
+    {
+      "from": "modules/auth/better-auth.ts",
+      "to": "lib/learning-state.ts",
+      "source": "modules/auth",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/auth/better-auth.ts",
+      "to": "modules/auth/auth-constants.ts",
+      "source": "modules/auth",
+      "target": "modules/auth",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/auth/better-auth.ts",
+      "to": "modules/auth/better-auth-adapter.ts",
+      "source": "modules/auth",
+      "target": "modules/auth",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/auth/local-auth.ts",
+      "to": "modules/learning-state/repository.ts",
+      "source": "modules/auth",
+      "target": "modules/learning-state",
+      "typeOnly": true
+    },
+    {
+      "from": "modules/auth/request-auth.ts",
+      "to": "modules/runtime/runtime-config.ts",
+      "source": "modules/auth",
+      "target": "modules/runtime",
+      "typeOnly": true
+    },
+    {
+      "from": "modules/auth/request-auth.ts",
+      "to": "modules/runtime/request-host.ts",
+      "source": "modules/auth",
+      "target": "modules/runtime",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/auth/request-auth.ts",
+      "to": "modules/learning-state/repository.ts",
+      "source": "modules/auth",
+      "target": "modules/learning-state",
+      "typeOnly": true
+    },
+    {
+      "from": "modules/auth/request-auth.ts",
+      "to": "modules/auth/better-auth.ts",
+      "source": "modules/auth",
+      "target": "modules/auth",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/auth/request-auth.ts",
+      "to": "modules/auth/local-auth.ts",
+      "source": "modules/auth",
+      "target": "modules/auth",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/auth/request-auth.ts",
+      "to": "modules/auth/auth-constants.ts",
+      "source": "modules/auth",
+      "target": "modules/auth",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/auth/request-auth.ts",
+      "to": "modules/auth/auth-constants.ts",
+      "source": "modules/auth",
+      "target": "modules/auth",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/catalog/catalog-api.ts",
+      "to": "modules/catalog/content-schema.ts",
+      "source": "modules/catalog",
+      "target": "modules/catalog",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/catalog/catalog-summary.ts",
+      "to": "modules/catalog/content-schema.ts",
+      "source": "modules/catalog",
+      "target": "modules/catalog",
+      "typeOnly": true
+    },
+    {
+      "from": "modules/catalog/content-audit.ts",
+      "to": "modules/catalog/content-schema.ts",
+      "source": "modules/catalog",
+      "target": "modules/catalog",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/catalog/content-audit.ts",
+      "to": "modules/catalog/catalog-api.ts",
+      "source": "modules/catalog",
+      "target": "modules/catalog",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/catalog/item-redirect.ts",
+      "to": "modules/catalog/content-schema.ts",
+      "source": "modules/catalog",
+      "target": "modules/catalog",
+      "typeOnly": true
+    },
+    {
+      "from": "modules/content-resolver/content-resolver.ts",
+      "to": "modules/catalog/content-schema.ts",
+      "source": "modules/content-resolver",
+      "target": "modules/catalog",
+      "typeOnly": true
+    },
+    {
+      "from": "modules/content-resolver/content-resolver.ts",
+      "to": "modules/reader/document-source.ts",
+      "source": "modules/content-resolver",
+      "target": "modules/reader",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/content-resolver/content-resolver.ts",
+      "to": "modules/content-resolver/local-file-access.ts",
+      "source": "modules/content-resolver",
+      "target": "modules/content-resolver",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/adapters.ts",
+      "to": "modules/discovery/public-fetch.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/adapters.ts",
+      "to": "modules/discovery/repository.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/adapters.ts",
+      "to": "modules/discovery/schema.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": true
+    },
+    {
+      "from": "modules/discovery/adapters.ts",
+      "to": "modules/discovery/jobs.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": true
+    },
+    {
+      "from": "modules/discovery/adapters.ts",
+      "to": "modules/discovery/github-results.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/admin.ts",
+      "to": "modules/discovery/merging.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/admin.ts",
+      "to": "modules/discovery/curation.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/admin.ts",
+      "to": "modules/catalog/catalog-api.ts",
+      "source": "modules/discovery",
+      "target": "modules/catalog",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/admin.ts",
+      "to": "modules/admin/admin-health.ts",
+      "source": "modules/discovery",
+      "target": "modules/admin",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/admin.ts",
+      "to": "modules/auth/request-auth.ts",
+      "source": "modules/discovery",
+      "target": "modules/auth",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/admin.ts",
+      "to": "modules/auth/rate-limit.ts",
+      "source": "modules/discovery",
+      "target": "modules/auth",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/admin.ts",
+      "to": "modules/learning-state/repository.ts",
+      "source": "modules/discovery",
+      "target": "modules/learning-state",
+      "typeOnly": true
+    },
+    {
+      "from": "modules/discovery/admin.ts",
+      "to": "modules/learning-state/repository.ts",
+      "source": "modules/discovery",
+      "target": "modules/learning-state",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/admin.ts",
+      "to": "modules/learning-state/request-limits.ts",
+      "source": "modules/discovery",
+      "target": "modules/learning-state",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/admin.ts",
+      "to": "modules/discovery/adapters.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/admin.ts",
+      "to": "modules/discovery/budget.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/admin.ts",
+      "to": "modules/discovery/public-fetch.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/admin.ts",
+      "to": "modules/discovery/repository.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/admin.ts",
+      "to": "modules/discovery/schema.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/aggregation-sources.ts",
+      "to": "modules/discovery/schema.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/backup.ts",
+      "to": "modules/learning-state/backup.ts",
+      "source": "modules/discovery",
+      "target": "modules/learning-state",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/budget.ts",
+      "to": "modules/discovery/database.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": true
+    },
+    {
+      "from": "modules/discovery/curation.ts",
+      "to": "modules/catalog/catalog-api.ts",
+      "source": "modules/discovery",
+      "target": "modules/catalog",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/curation.ts",
+      "to": "modules/catalog/content-schema.ts",
+      "source": "modules/discovery",
+      "target": "modules/catalog",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/curation.ts",
+      "to": "modules/discovery/public-fetch.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/curation.ts",
+      "to": "modules/discovery/repository.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/database.ts",
+      "to": "modules/learning-state/database.ts",
+      "source": "modules/discovery",
+      "target": "modules/learning-state",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/github-results.ts",
+      "to": "modules/discovery/public-fetch.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/github-results.ts",
+      "to": "modules/discovery/repository.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/github-results.ts",
+      "to": "modules/discovery/schema.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": true
+    },
+    {
+      "from": "modules/discovery/github-results.ts",
+      "to": "modules/discovery/adapters.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": true
+    },
+    {
+      "from": "modules/discovery/jobs.ts",
+      "to": "modules/discovery/database.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": true
+    },
+    {
+      "from": "modules/discovery/merging.ts",
+      "to": "modules/discovery/repository.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/processing.ts",
+      "to": "modules/discovery/budget.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/processing.ts",
+      "to": "modules/discovery/public-fetch.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/processing.ts",
+      "to": "modules/discovery/repository.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/processing.ts",
+      "to": "modules/discovery/schema.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/processing.ts",
+      "to": "modules/discovery/jobs.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": true
+    },
+    {
+      "from": "modules/discovery/repository.ts",
+      "to": "modules/discovery/database.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": true
+    },
+    {
+      "from": "modules/discovery/repository.ts",
+      "to": "modules/search/search-index.ts",
+      "source": "modules/discovery",
+      "target": "modules/search",
+      "typeOnly": true
+    },
+    {
+      "from": "modules/discovery/repository.ts",
+      "to": "modules/discovery/jobs.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/repository.ts",
+      "to": "modules/discovery/budget.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/repository.ts",
+      "to": "modules/discovery/schema.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/restore-drill.ts",
+      "to": "modules/discovery/backup.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/source-presets.ts",
+      "to": "modules/discovery/schema.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/worker.ts",
+      "to": "modules/discovery/curation.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/worker.ts",
+      "to": "modules/discovery/budget.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/worker.ts",
+      "to": "modules/discovery/public-fetch.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/worker.ts",
+      "to": "modules/discovery/adapters.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/worker.ts",
+      "to": "modules/discovery/processing.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/worker.ts",
+      "to": "modules/discovery/repository.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/discovery/worker.ts",
+      "to": "modules/discovery/jobs.ts",
+      "source": "modules/discovery",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/freshness/catalog-drift.ts",
+      "to": "modules/catalog/content-audit.ts",
+      "source": "modules/freshness",
+      "target": "modules/catalog",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/freshness/catalog-drift.ts",
+      "to": "modules/catalog/content-schema.ts",
+      "source": "modules/freshness",
+      "target": "modules/catalog",
+      "typeOnly": true
+    },
+    {
+      "from": "modules/freshness/catalog-drift.ts",
+      "to": "modules/freshness/materials-check.ts",
+      "source": "modules/freshness",
+      "target": "modules/freshness",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/freshness/materials-check.ts",
+      "to": "modules/catalog/content-schema.ts",
+      "source": "modules/freshness",
+      "target": "modules/catalog",
+      "typeOnly": true
+    },
+    {
+      "from": "modules/learning-state/catalog-gate.ts",
+      "to": "modules/catalog/content-schema.ts",
+      "source": "modules/learning-state",
+      "target": "modules/catalog",
+      "typeOnly": true
+    },
+    {
+      "from": "modules/learning-state/data-export.ts",
+      "to": "modules/learning-state/repository.ts",
+      "source": "modules/learning-state",
+      "target": "modules/learning-state",
+      "typeOnly": true
+    },
+    {
+      "from": "modules/learning-state/database.ts",
+      "to": "modules/learning-state/discovery-state.ts",
+      "source": "modules/learning-state",
+      "target": "modules/learning-state",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/learning-state/discovery-state.ts",
+      "to": "modules/learning-state/database.ts",
+      "source": "modules/learning-state",
+      "target": "modules/learning-state",
+      "typeOnly": true
+    },
+    {
+      "from": "modules/learning-state/discovery-state.ts",
+      "to": "modules/learning-state/repository.ts",
+      "source": "modules/learning-state",
+      "target": "modules/learning-state",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/learning-state/repository.ts",
+      "to": "modules/learning-state/discovery-state.ts",
+      "source": "modules/learning-state",
+      "target": "modules/learning-state",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/learning-state/repository.ts",
+      "to": "modules/learning-state/database.ts",
+      "source": "modules/learning-state",
+      "target": "modules/learning-state",
+      "typeOnly": true
+    },
+    {
+      "from": "modules/learning-state/request-limits.ts",
+      "to": "modules/learning-state/repository.ts",
+      "source": "modules/learning-state",
+      "target": "modules/learning-state",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/learning-state/state-store.ts",
+      "to": "modules/learning-state/database.ts",
+      "source": "modules/learning-state",
+      "target": "modules/learning-state",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/learning-state/state-store.ts",
+      "to": "modules/learning-state/repository.ts",
+      "source": "modules/learning-state",
+      "target": "modules/learning-state",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/observability/operator-monitor.ts",
+      "to": "modules/learning-state/database.ts",
+      "source": "modules/observability",
+      "target": "modules/learning-state",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/observability/operator-monitor.ts",
+      "to": "modules/observability/privacy-monitor.ts",
+      "source": "modules/observability",
+      "target": "modules/observability",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/observability/privacy-monitor.ts",
+      "to": "modules/learning-state/database.ts",
+      "source": "modules/observability",
+      "target": "modules/learning-state",
+      "typeOnly": true
+    },
+    {
+      "from": "modules/reader/document-source.ts",
+      "to": "modules/catalog/content-schema.ts",
+      "source": "modules/reader",
+      "target": "modules/catalog",
+      "typeOnly": true
+    },
+    {
+      "from": "modules/reader/document-source.ts",
+      "to": "modules/catalog/catalog-api.ts",
+      "source": "modules/reader",
+      "target": "modules/catalog",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/reader/document-source.ts",
+      "to": "modules/content-resolver/local-file-access.ts",
+      "source": "modules/reader",
+      "target": "modules/content-resolver",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/runtime/runtime-config.ts",
+      "to": "modules/auth/local-auth.ts",
+      "source": "modules/runtime",
+      "target": "modules/auth",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/search/search-index.ts",
+      "to": "modules/catalog/content-schema.ts",
+      "source": "modules/search",
+      "target": "modules/catalog",
+      "typeOnly": true
+    },
+    {
+      "from": "modules/search/search-index.ts",
+      "to": "modules/reader/document-source.ts",
+      "source": "modules/search",
+      "target": "modules/reader",
+      "typeOnly": false
+    },
+    {
+      "from": "modules/search/search-index.ts",
+      "to": "modules/runtime/runtime-config.ts",
+      "source": "modules/search",
+      "target": "modules/runtime",
+      "typeOnly": true
+    },
+    {
+      "from": "modules/search/search-index.ts",
+      "to": "modules/content-resolver/content-resolver.ts",
+      "source": "modules/search",
+      "target": "modules/content-resolver",
+      "typeOnly": false
+    },
+    {
+      "from": "lib/catalog.ts",
+      "to": "modules/catalog/catalog-api.ts",
+      "source": "lib",
+      "target": "modules/catalog",
+      "typeOnly": false
+    },
+    {
+      "from": "lib/catalog.ts",
+      "to": "modules/content-resolver/content-resolver.ts",
+      "source": "lib",
+      "target": "modules/content-resolver",
+      "typeOnly": false
+    },
+    {
+      "from": "lib/catalog.ts",
+      "to": "modules/runtime/runtime-config.ts",
+      "source": "lib",
+      "target": "modules/runtime",
+      "typeOnly": false
+    },
+    {
+      "from": "lib/discovery.ts",
+      "to": "modules/discovery/database.ts",
+      "source": "lib",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "lib/discovery.ts",
+      "to": "modules/discovery/repository.ts",
+      "source": "lib",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "lib/discovery.ts",
+      "to": "modules/runtime/runtime-config.ts",
+      "source": "lib",
+      "target": "modules/runtime",
+      "typeOnly": false
+    },
+    {
+      "from": "lib/learning-state.ts",
+      "to": "modules/learning-state/state-store.ts",
+      "source": "lib",
+      "target": "modules/learning-state",
+      "typeOnly": false
+    },
+    {
+      "from": "lib/observability.ts",
+      "to": "modules/observability/privacy-monitor.ts",
+      "source": "lib",
+      "target": "modules/observability",
+      "typeOnly": false
+    },
+    {
+      "from": "lib/observability.ts",
+      "to": "lib/learning-state.ts",
+      "source": "lib",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/admin/discovery/page.tsx",
+      "to": "modules/admin/admin-health.ts",
+      "source": "app/pages",
+      "target": "modules/admin",
+      "typeOnly": false
+    },
+    {
+      "from": "app/admin/discovery/page.tsx",
+      "to": "modules/auth/request-auth.ts",
+      "source": "app/pages",
+      "target": "modules/auth",
+      "typeOnly": false
+    },
+    {
+      "from": "app/admin/discovery/page.tsx",
+      "to": "lib/learning-state.ts",
+      "source": "app/pages",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/admin/discovery/page.tsx",
+      "to": "lib/discovery.ts",
+      "source": "app/pages",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/admin/discovery/page.tsx",
+      "to": "app/components/discovery-admin.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/admin/page.tsx",
+      "to": "modules/catalog/catalog-api.ts",
+      "source": "app/pages",
+      "target": "modules/catalog",
+      "typeOnly": false
+    },
+    {
+      "from": "app/admin/page.tsx",
+      "to": "modules/admin/admin-health.ts",
+      "source": "app/pages",
+      "target": "modules/admin",
+      "typeOnly": false
+    },
+    {
+      "from": "app/admin/page.tsx",
+      "to": "lib/learning-state.ts",
+      "source": "app/pages",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/admin/page.tsx",
+      "to": "lib/catalog.ts",
+      "source": "app/pages",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/admin/page.tsx",
+      "to": "lib/observability.ts",
+      "source": "app/pages",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/admin/page.tsx",
+      "to": "modules/auth/request-auth.ts",
+      "source": "app/pages",
+      "target": "modules/auth",
+      "typeOnly": false
+    },
+    {
+      "from": "app/admin/page.tsx",
+      "to": "modules/runtime/runtime-config.ts",
+      "source": "app/pages",
+      "target": "modules/runtime",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/admin/discovery/route.ts",
+      "to": "lib/learning-state.ts",
+      "source": "app/api",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/admin/discovery/route.ts",
+      "to": "lib/discovery.ts",
+      "source": "app/api",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/admin/discovery/route.ts",
+      "to": "modules/auth/request-auth.ts",
+      "source": "app/api",
+      "target": "modules/auth",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/admin/discovery/route.ts",
+      "to": "modules/runtime/runtime-config.ts",
+      "source": "app/api",
+      "target": "modules/runtime",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/admin/discovery/route.ts",
+      "to": "modules/discovery/admin.ts",
+      "source": "app/api",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/admin/health/route.ts",
+      "to": "modules/catalog/catalog-api.ts",
+      "source": "app/api",
+      "target": "modules/catalog",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/admin/health/route.ts",
+      "to": "modules/admin/admin-health.ts",
+      "source": "app/api",
+      "target": "modules/admin",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/admin/health/route.ts",
+      "to": "lib/learning-state.ts",
+      "source": "app/api",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/admin/health/route.ts",
+      "to": "lib/catalog.ts",
+      "source": "app/api",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/admin/health/route.ts",
+      "to": "lib/observability.ts",
+      "source": "app/api",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/admin/health/route.ts",
+      "to": "modules/auth/request-auth.ts",
+      "source": "app/api",
+      "target": "modules/auth",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/admin/health/route.ts",
+      "to": "modules/runtime/runtime-config.ts",
+      "source": "app/api",
+      "target": "modules/runtime",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/auth/[...all]/route.ts",
+      "to": "modules/auth/better-auth.ts",
+      "source": "app/api",
+      "target": "modules/auth",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/auth/[...all]/route.ts",
+      "to": "modules/runtime/runtime-config.ts",
+      "source": "app/api",
+      "target": "modules/runtime",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/auth/github/route.ts",
+      "to": "modules/auth/better-auth.ts",
+      "source": "app/api",
+      "target": "modules/auth",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/auth/github/route.ts",
+      "to": "lib/observability.ts",
+      "source": "app/api",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/auth/github/route.ts",
+      "to": "modules/auth/local-auth.ts",
+      "source": "app/api",
+      "target": "modules/auth",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/auth/github/route.ts",
+      "to": "modules/auth/request-auth.ts",
+      "source": "app/api",
+      "target": "modules/auth",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/auth/github/route.ts",
+      "to": "modules/auth/github-oauth.ts",
+      "source": "app/api",
+      "target": "modules/auth",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/auth/github/route.ts",
+      "to": "modules/learning-state/repository.ts",
+      "source": "app/api",
+      "target": "modules/learning-state",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/auth/github/route.ts",
+      "to": "modules/auth/rate-limit.ts",
+      "source": "app/api",
+      "target": "modules/auth",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/auth/github/route.ts",
+      "to": "modules/runtime/runtime-config.ts",
+      "source": "app/api",
+      "target": "modules/runtime",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/data/route.ts",
+      "to": "lib/learning-state.ts",
+      "source": "app/api",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/data/route.ts",
+      "to": "lib/observability.ts",
+      "source": "app/api",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/data/route.ts",
+      "to": "modules/learning-state/data-export.ts",
+      "source": "app/api",
+      "target": "modules/learning-state",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/data/route.ts",
+      "to": "modules/learning-state/repository.ts",
+      "source": "app/api",
+      "target": "modules/learning-state",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/data/route.ts",
+      "to": "modules/learning-state/request-limits.ts",
+      "source": "app/api",
+      "target": "modules/learning-state",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/data/route.ts",
+      "to": "modules/runtime/runtime-config.ts",
+      "source": "app/api",
+      "target": "modules/runtime",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/data/route.ts",
+      "to": "modules/auth/request-auth.ts",
+      "source": "app/api",
+      "target": "modules/auth",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/data/route.ts",
+      "to": "modules/auth/local-auth.ts",
+      "source": "app/api",
+      "target": "modules/auth",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/data/route.ts",
+      "to": "modules/auth/rate-limit.ts",
+      "source": "app/api",
+      "target": "modules/auth",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/data/route.ts",
+      "to": "modules/observability/privacy-monitor.ts",
+      "source": "app/api",
+      "target": "modules/observability",
+      "typeOnly": true
+    },
+    {
+      "from": "app/api/health/route.ts",
+      "to": "lib/learning-state.ts",
+      "source": "app/api",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/health/route.ts",
+      "to": "lib/observability.ts",
+      "source": "app/api",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/health/route.ts",
+      "to": "lib/catalog.ts",
+      "source": "app/api",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/health/route.ts",
+      "to": "modules/runtime/runtime-config.ts",
+      "source": "app/api",
+      "target": "modules/runtime",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/health/route.ts",
+      "to": "modules/observability/privacy-monitor.ts",
+      "source": "app/api",
+      "target": "modules/observability",
+      "typeOnly": true
+    },
+    {
+      "from": "app/api/local-image/route.ts",
+      "to": "lib/catalog.ts",
+      "source": "app/api",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/local-image/route.ts",
+      "to": "modules/catalog/content-schema.ts",
+      "source": "app/api",
+      "target": "modules/catalog",
+      "typeOnly": true
+    },
+    {
+      "from": "app/api/local-image/route.ts",
+      "to": "modules/content-resolver/local-file-access.ts",
+      "source": "app/api",
+      "target": "modules/content-resolver",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/session/route.ts",
+      "to": "lib/learning-state.ts",
+      "source": "app/api",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/session/route.ts",
+      "to": "modules/runtime/runtime-config.ts",
+      "source": "app/api",
+      "target": "modules/runtime",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/session/route.ts",
+      "to": "modules/auth/request-auth.ts",
+      "source": "app/api",
+      "target": "modules/auth",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/session/route.ts",
+      "to": "modules/auth/local-auth.ts",
+      "source": "app/api",
+      "target": "modules/auth",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/session/route.ts",
+      "to": "modules/learning-state/repository.ts",
+      "source": "app/api",
+      "target": "modules/learning-state",
+      "typeOnly": true
+    },
+    {
+      "from": "app/api/state/discovery/route.ts",
+      "to": "lib/learning-state.ts",
+      "source": "app/api",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/state/discovery/route.ts",
+      "to": "lib/discovery.ts",
+      "source": "app/api",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/state/discovery/route.ts",
+      "to": "modules/auth/request-auth.ts",
+      "source": "app/api",
+      "target": "modules/auth",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/state/discovery/route.ts",
+      "to": "modules/auth/rate-limit.ts",
+      "source": "app/api",
+      "target": "modules/auth",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/state/discovery/route.ts",
+      "to": "modules/runtime/runtime-config.ts",
+      "source": "app/api",
+      "target": "modules/runtime",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/state/discovery/route.ts",
+      "to": "modules/learning-state/request-limits.ts",
+      "source": "app/api",
+      "target": "modules/learning-state",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/state/discovery/route.ts",
+      "to": "modules/learning-state/discovery-state.ts",
+      "source": "app/api",
+      "target": "modules/learning-state",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/state/route.ts",
+      "to": "lib/learning-state.ts",
+      "source": "app/api",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/state/route.ts",
+      "to": "lib/catalog.ts",
+      "source": "app/api",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/state/route.ts",
+      "to": "lib/observability.ts",
+      "source": "app/api",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/state/route.ts",
+      "to": "modules/runtime/runtime-config.ts",
+      "source": "app/api",
+      "target": "modules/runtime",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/state/route.ts",
+      "to": "modules/learning-state/repository.ts",
+      "source": "app/api",
+      "target": "modules/learning-state",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/state/route.ts",
+      "to": "modules/learning-state/catalog-gate.ts",
+      "source": "app/api",
+      "target": "modules/learning-state",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/state/route.ts",
+      "to": "modules/learning-state/request-limits.ts",
+      "source": "app/api",
+      "target": "modules/learning-state",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/state/route.ts",
+      "to": "modules/auth/request-auth.ts",
+      "source": "app/api",
+      "target": "modules/auth",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/state/route.ts",
+      "to": "modules/auth/local-auth.ts",
+      "source": "app/api",
+      "target": "modules/auth",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/state/route.ts",
+      "to": "modules/auth/rate-limit.ts",
+      "source": "app/api",
+      "target": "modules/auth",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/state/route.ts",
+      "to": "modules/observability/privacy-monitor.ts",
+      "source": "app/api",
+      "target": "modules/observability",
+      "typeOnly": true
+    },
+    {
+      "from": "app/api/telemetry/page-view/route.ts",
+      "to": "lib/observability.ts",
+      "source": "app/api",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/api/telemetry/page-view/route.ts",
+      "to": "modules/observability/privacy-monitor.ts",
+      "source": "app/api",
+      "target": "modules/observability",
+      "typeOnly": false
+    },
+    {
+      "from": "app/components/content-card.tsx",
+      "to": "modules/catalog/content-schema.ts",
+      "source": "app/components",
+      "target": "modules/catalog",
+      "typeOnly": true
+    },
+    {
+      "from": "app/components/content-card.tsx",
+      "to": "modules/content-resolver/content-resolver.ts",
+      "source": "app/components",
+      "target": "modules/content-resolver",
+      "typeOnly": true
+    },
+    {
+      "from": "app/components/content-card.tsx",
+      "to": "app/components/site-chrome.tsx",
+      "source": "app/components",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/components/course-chapter-navigation.tsx",
+      "to": "modules/reader/document-source.ts",
+      "source": "app/components",
+      "target": "modules/reader",
+      "typeOnly": true
+    },
+    {
+      "from": "app/components/discovery-admin.tsx",
+      "to": "modules/discovery/source-presets.ts",
+      "source": "app/components",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "app/components/discovery-admin.tsx",
+      "to": "modules/discovery/admin.ts",
+      "source": "app/components",
+      "target": "modules/discovery",
+      "typeOnly": true
+    },
+    {
+      "from": "app/components/discovery-admin.tsx",
+      "to": "modules/discovery/schema.ts",
+      "source": "app/components",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "app/components/discovery-admin.tsx",
+      "to": "app/components/pagination.tsx",
+      "source": "app/components",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/components/discovery-admin.tsx",
+      "to": "modules/discovery/curation-suggestion.ts",
+      "source": "app/components",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "app/components/discovery-admin.tsx",
+      "to": "app/components/discovery-card.tsx",
+      "source": "app/components",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/components/discovery-admin.tsx",
+      "to": "modules/discovery/adapters.ts",
+      "source": "app/components",
+      "target": "modules/discovery",
+      "typeOnly": true
+    },
+    {
+      "from": "app/components/discovery-card.tsx",
+      "to": "modules/discovery/repository.ts",
+      "source": "app/components",
+      "target": "modules/discovery",
+      "typeOnly": true
+    },
+    {
+      "from": "app/components/discovery-list.tsx",
+      "to": "lib/discovery.ts",
+      "source": "app/components",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/components/discovery-list.tsx",
+      "to": "modules/discovery/schema.ts",
+      "source": "app/components",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "app/components/discovery-list.tsx",
+      "to": "app/components/pagination.tsx",
+      "source": "app/components",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/components/discovery-list.tsx",
+      "to": "app/components/discovery-card.tsx",
+      "source": "app/components",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/components/discovery-list.tsx",
+      "to": "app/components/discovery-auto-refresh.tsx",
+      "source": "app/components",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/components/discovery-personal.tsx",
+      "to": "modules/learning-state/discovery-state.ts",
+      "source": "app/components",
+      "target": "modules/learning-state",
+      "typeOnly": true
+    },
+    {
+      "from": "app/components/page-view-telemetry.tsx",
+      "to": "modules/observability/privacy-monitor.ts",
+      "source": "app/components",
+      "target": "modules/observability",
+      "typeOnly": false
+    },
+    {
+      "from": "app/components/site-chrome.tsx",
+      "to": "modules/catalog/content-schema.ts",
+      "source": "app/components",
+      "target": "modules/catalog",
+      "typeOnly": true
+    },
+    {
+      "from": "app/components/site-chrome.tsx",
+      "to": "modules/runtime/runtime-config.ts",
+      "source": "app/components",
+      "target": "modules/runtime",
+      "typeOnly": true
+    },
+    {
+      "from": "app/courses/[itemId]/page.tsx",
+      "to": "modules/catalog/item-redirect.ts",
+      "source": "app/pages",
+      "target": "modules/catalog",
+      "typeOnly": false
+    },
+    {
+      "from": "app/courses/[itemId]/page.tsx",
+      "to": "app/components/content-card.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/courses/[itemId]/page.tsx",
+      "to": "app/components/learning-state-controls.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/courses/[itemId]/page.tsx",
+      "to": "app/components/site-chrome.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/courses/[itemId]/page.tsx",
+      "to": "lib/catalog.ts",
+      "source": "app/pages",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/courses/page.tsx",
+      "to": "app/components/content-card.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/courses/page.tsx",
+      "to": "app/components/pagination.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/courses/page.tsx",
+      "to": "app/components/site-chrome.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/courses/page.tsx",
+      "to": "lib/catalog.ts",
+      "source": "app/pages",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/courses/page.tsx",
+      "to": "modules/catalog/content-schema.ts",
+      "source": "app/pages",
+      "target": "modules/catalog",
+      "typeOnly": true
+    },
+    {
+      "from": "app/discover/[id]/page.tsx",
+      "to": "app/components/discovery-personal.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/discover/[id]/page.tsx",
+      "to": "lib/discovery.ts",
+      "source": "app/pages",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/discover/[id]/page.tsx",
+      "to": "app/components/discovery-card.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/discover/page.tsx",
+      "to": "lib/discovery.ts",
+      "source": "app/pages",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/discover/page.tsx",
+      "to": "app/components/site-chrome.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/discover/page.tsx",
+      "to": "app/components/discovery-list.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/editions/[day]/page.tsx",
+      "to": "lib/discovery.ts",
+      "source": "app/pages",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/editions/[day]/page.tsx",
+      "to": "app/components/discovery-card.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/editions/[day]/page.tsx",
+      "to": "app/components/site-chrome.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/editions/page.tsx",
+      "to": "lib/discovery.ts",
+      "source": "app/pages",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/editions/page.tsx",
+      "to": "app/components/site-chrome.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/layout.tsx",
+      "to": "app/components/page-view-telemetry.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/layout.tsx",
+      "to": "app/components/site-chrome.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/learning/page.tsx",
+      "to": "app/components/discovery-personal.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/learning/page.tsx",
+      "to": "lib/catalog.ts",
+      "source": "app/pages",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/learning/page.tsx",
+      "to": "app/components/learning-dashboard.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/learning/page.tsx",
+      "to": "app/components/site-chrome.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/learning/page.tsx",
+      "to": "lib/catalog.ts",
+      "source": "app/pages",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/login/page.tsx",
+      "to": "app/components/site-chrome.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/login/page.tsx",
+      "to": "lib/catalog.ts",
+      "source": "app/pages",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/not-found.tsx",
+      "to": "app/components/not-found-path.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/page.tsx",
+      "to": "app/components/site-chrome.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/page.tsx",
+      "to": "lib/catalog.ts",
+      "source": "app/pages",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/page.tsx",
+      "to": "modules/catalog/catalog-summary.ts",
+      "source": "app/pages",
+      "target": "modules/catalog",
+      "typeOnly": false
+    },
+    {
+      "from": "app/page.tsx",
+      "to": "lib/catalog.ts",
+      "source": "app/pages",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/page.tsx",
+      "to": "lib/discovery.ts",
+      "source": "app/pages",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/page.tsx",
+      "to": "app/components/discovery-card.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/page.tsx",
+      "to": "app/components/discovery-auto-refresh.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/projects/page.tsx",
+      "to": "app/components/site-chrome.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/projects/page.tsx",
+      "to": "lib/catalog.ts",
+      "source": "app/pages",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/read/[itemId]/page.tsx",
+      "to": "modules/catalog/item-redirect.ts",
+      "source": "app/pages",
+      "target": "modules/catalog",
+      "typeOnly": false
+    },
+    {
+      "from": "app/read/[itemId]/page.tsx",
+      "to": "app/components/content-card.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/read/[itemId]/page.tsx",
+      "to": "app/components/course-chapter-navigation.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/read/[itemId]/page.tsx",
+      "to": "app/components/learning-state-controls.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/read/[itemId]/page.tsx",
+      "to": "lib/catalog.ts",
+      "source": "app/pages",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/read/[itemId]/page.tsx",
+      "to": "modules/reader/document-source.ts",
+      "source": "app/pages",
+      "target": "modules/reader",
+      "typeOnly": false
+    },
+    {
+      "from": "app/read/[itemId]/page.tsx",
+      "to": "modules/content-resolver/local-file-access.ts",
+      "source": "app/pages",
+      "target": "modules/content-resolver",
+      "typeOnly": false
+    },
+    {
+      "from": "app/read/[itemId]/page.tsx",
+      "to": "modules/reader/markdown.ts",
+      "source": "app/pages",
+      "target": "modules/reader",
+      "typeOnly": false
+    },
+    {
+      "from": "app/roadmap/[stageId]/page.tsx",
+      "to": "app/components/content-card.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/roadmap/[stageId]/page.tsx",
+      "to": "app/components/stage-progress.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/roadmap/[stageId]/page.tsx",
+      "to": "lib/catalog.ts",
+      "source": "app/pages",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/roadmap/page.tsx",
+      "to": "app/components/site-chrome.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/roadmap/page.tsx",
+      "to": "app/components/stage-progress.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/roadmap/page.tsx",
+      "to": "lib/catalog.ts",
+      "source": "app/pages",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/search/page.tsx",
+      "to": "lib/discovery.ts",
+      "source": "app/pages",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/search/page.tsx",
+      "to": "app/components/pagination.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/search/page.tsx",
+      "to": "app/components/site-chrome.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/search/page.tsx",
+      "to": "lib/catalog.ts",
+      "source": "app/pages",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/search/page.tsx",
+      "to": "modules/catalog/catalog-api.ts",
+      "source": "app/pages",
+      "target": "modules/catalog",
+      "typeOnly": false
+    },
+    {
+      "from": "app/search/page.tsx",
+      "to": "modules/search/search-index.ts",
+      "source": "app/pages",
+      "target": "modules/search",
+      "typeOnly": false
+    },
+    {
+      "from": "app/topics/[topic]/page.tsx",
+      "to": "lib/discovery.ts",
+      "source": "app/pages",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/topics/[topic]/page.tsx",
+      "to": "lib/catalog.ts",
+      "source": "app/pages",
+      "target": "lib",
+      "typeOnly": false
+    },
+    {
+      "from": "app/topics/[topic]/page.tsx",
+      "to": "modules/discovery/schema.ts",
+      "source": "app/pages",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "app/topics/[topic]/page.tsx",
+      "to": "app/components/discovery-list.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "app/topics/[topic]/page.tsx",
+      "to": "app/components/site-chrome.tsx",
+      "source": "app/pages",
+      "target": "app/components",
+      "typeOnly": false
+    },
+    {
+      "from": "scripts/audit-content.ts",
+      "to": "modules/catalog/content-audit.ts",
+      "source": "scripts",
+      "target": "modules/catalog",
+      "typeOnly": false
+    },
+    {
+      "from": "scripts/audit-content.ts",
+      "to": "modules/observability/operator-monitor.ts",
+      "source": "scripts",
+      "target": "modules/observability",
+      "typeOnly": false
+    },
+    {
+      "from": "scripts/database.ts",
+      "to": "modules/learning-state/backup.ts",
+      "source": "scripts",
+      "target": "modules/learning-state",
+      "typeOnly": false
+    },
+    {
+      "from": "scripts/database.ts",
+      "to": "modules/learning-state/state-store.ts",
+      "source": "scripts",
+      "target": "modules/learning-state",
+      "typeOnly": false
+    },
+    {
+      "from": "scripts/database.ts",
+      "to": "modules/observability/operator-monitor.ts",
+      "source": "scripts",
+      "target": "modules/observability",
+      "typeOnly": false
+    },
+    {
+      "from": "scripts/discovery-backup.ts",
+      "to": "modules/discovery/backup.ts",
+      "source": "scripts",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "scripts/discovery-backup.ts",
+      "to": "modules/discovery/restore-drill.ts",
+      "source": "scripts",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "scripts/discovery-worker.ts",
+      "to": "modules/discovery/database.ts",
+      "source": "scripts",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "scripts/discovery-worker.ts",
+      "to": "modules/discovery/repository.ts",
+      "source": "scripts",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "scripts/discovery-worker.ts",
+      "to": "modules/discovery/worker.ts",
+      "source": "scripts",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "scripts/discovery-worker.ts",
+      "to": "modules/discovery/aggregation-sources.ts",
+      "source": "scripts",
+      "target": "modules/discovery",
+      "typeOnly": false
+    },
+    {
+      "from": "scripts/materials.ts",
+      "to": "modules/catalog/catalog-api.ts",
+      "source": "scripts",
+      "target": "modules/catalog",
+      "typeOnly": false
+    },
+    {
+      "from": "scripts/materials.ts",
+      "to": "modules/catalog/content-schema.ts",
+      "source": "scripts",
+      "target": "modules/catalog",
+      "typeOnly": false
+    },
+    {
+      "from": "scripts/materials.ts",
+      "to": "modules/catalog/content-audit.ts",
+      "source": "scripts",
+      "target": "modules/catalog",
+      "typeOnly": false
+    },
+    {
+      "from": "scripts/materials.ts",
+      "to": "modules/freshness/catalog-drift.ts",
+      "source": "scripts",
+      "target": "modules/freshness",
+      "typeOnly": false
+    },
+    {
+      "from": "scripts/materials.ts",
+      "to": "modules/freshness/materials-check.ts",
+      "source": "scripts",
+      "target": "modules/freshness",
+      "typeOnly": false
+    },
+    {
+      "from": "scripts/materials.ts",
+      "to": "modules/search/search-index.ts",
+      "source": "scripts",
+      "target": "modules/search",
+      "typeOnly": false
+    },
+    {
+      "from": "scripts/materials.ts",
+      "to": "modules/observability/operator-monitor.ts",
+      "source": "scripts",
+      "target": "modules/observability",
+      "typeOnly": false
+    },
+    {
+      "from": "scripts/restore-drill.ts",
+      "to": "modules/learning-state/database.ts",
+      "source": "scripts",
+      "target": "modules/learning-state",
+      "typeOnly": false
+    },
+    {
+      "from": "scripts/restore-drill.ts",
+      "to": "modules/learning-state/repository.ts",
+      "source": "scripts",
+      "target": "modules/learning-state",
+      "typeOnly": false
+    }
+  ]
+}

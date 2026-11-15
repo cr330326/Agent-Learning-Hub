@@ -1,0 +1,87 @@
+[
+  {
+    "image": "agent-learning-hub:aggregation-20261115-r16",
+    "exitCode": 0,
+    "output": "Untagged: agent-learning-hub:aggregation-20261115-r16\nDeleted: sha256:645d5cc615fbaf26b0393820d0910b4b2c3ef368bebe1a7cdf74b1d2285b5589\n"
+  },
+  {
+    "image": "agent-learning-hub:aggregation-20261115-r15",
+    "exitCode": 0,
+    "output": "Untagged: agent-learning-hub:aggregation-20261115-r15\nDeleted: sha256:fc2d33af4e099f4c24d43b66b7b2662ee108396e92aef805bcc3a7a5f97b5bdf\n"
+  },
+  {
+    "image": "agent-learning-hub:aggregation-20261115-r14",
+    "exitCode": 0,
+    "output": "Untagged: agent-learning-hub:aggregation-20261115-r14\nDeleted: sha256:3553d8dfb39202413d7fb3b993f59a5e9c0ddc051ee788fb9039ea0bced20b9e\n"
+  },
+  {
+    "image": "agent-learning-hub:aggregation-20261115-r13",
+    "exitCode": 0,
+    "output": "Untagged: agent-learning-hub:aggregation-20261115-r13\nDeleted: sha256:54559f6ee7a74ed1f6ab808b5b571eca9b72bb1aa9d0d27209940e2cceaf7239\n"
+  },
+  {
+    "image": "agent-learning-hub:aggregation-20261115-r12",
+    "exitCode": 0,
+    "output": "Untagged: agent-learning-hub:aggregation-20261115-r12\nDeleted: sha256:00e8a64aece6f76de330cb5a02a2b51df62875adc977d009c9d85c8065a2e14c\n"
+  },
+  {
+    "image": "agent-learning-hub:aggregation-20261115-r11",
+    "exitCode": 0,
+    "output": "Untagged: agent-learning-hub:aggregation-20261115-r11\nDeleted: sha256:231f706ec42f139b640fd804be33464bbc27058b5abd3e2462576d2863d4b91d\n"
+  },
+  {
+    "image": "agent-learning-hub:aggregation-20261115-r10",
+    "exitCode": 0,
+    "output": "Untagged: agent-learning-hub:aggregation-20261115-r10\nDeleted: sha256:e4880d121fcefa232c1233ceedacd1f2a70e4d5814b082003c5a090841abc29f\n"
+  },
+  {
+    "image": "agent-learning-hub:aggregation-20261115-r9",
+    "exitCode": 0,
+    "output": "Untagged: agent-learning-hub:aggregation-20261115-r9\nDeleted: sha256:5cfc7a5445fdb52a464bd6798028e5cd2bd59a339378734f89518436f4a51ae8\n"
+  },
+  {
+    "image": "agent-learning-hub:aggregation-20261115-r8",
+    "exitCode": 0,
+    "output": "Untagged: agent-learning-hub:aggregation-20261115-r8\nDeleted: sha256:828d4df3e95f1a1eef957ef4ce122104c96a7205b64c6cc54d75f04bcea057ae\n"
+  },
+  {
+    "image": "agent-learning-hub:aggregation-20261115-r7",
+    "exitCode": 0,
+    "output": "Untagged: agent-learning-hub:aggregation-20261115-r7\nDeleted: sha256:8a3ff3ad17927faa0f882f9309111a7280d9091272454fe47e425fd6be697372\n"
+  },
+  {
+    "image": "agent-learning-hub:aggregation-20261115-r6",
+    "exitCode": 0,
+    "output": "Untagged: agent-learning-hub:aggregation-20261115-r6\nDeleted: sha256:2e51fc1225592ac5d50a964c3a68b0c3b4ffd14c4cc6fcd510d58bb4a4065f8a\n"
+  },
+  {
+    "image": "agent-learning-hub:aggregation-20261115-r5",
+    "exitCode": 0,
+    "output": "Untagged: agent-learning-hub:aggregation-20261115-r5\nDeleted: sha256:a8b34bb9f89f13ba649cb8f542e6e1afc43e000ecdd43353e030d3c496598077\n"
+  },
+  {
+    "image": "agent-learning-hub:aggregation-test-builder",
+    "exitCode": 0,
+    "output": "Untagged: agent-learning-hub:aggregation-test-builder\nDeleted: sha256:add86a4433b49e0521bae25e2acdb11ae7622ae9291deaec8a32cf984a12dfc1\n"
+  },
+  {
+    "image": "agent-learning-hub:aggregation-20261115-r4",
+    "exitCode": 0,
+    "output": "Untagged: agent-learning-hub:aggregation-20261115-r4\nDeleted: sha256:39134d30e9d2060d47c89529edb20a58b405c03831cb72e1e1472bc85a42f32a\n"
+  },
+  {
+    "image": "agent-learning-hub:aggregation-20261115-r3",
+    "exitCode": 0,
+    "output": "Untagged: agent-learning-hub:aggregation-20261115-r3\nDeleted: sha256:be0a1b1dfbd030995d183f853860d27a958bce68c4248cdb3fdc9f95bd1cdfbc\n"
+  },
+  {
+    "image": "agent-learning-hub:aggregation-20261115-r1",
+    "exitCode": 0,
+    "output": "Untagged: agent-learning-hub:aggregation-20261115-r1\nDeleted: sha256:39b14fb52d0bf97d4b5854651d903791c3e0367445cfa4ca18f1b5a0d29acdab\n"
+  },
+  {
+    "image": "agent-learning-hub:course-navigation-20261115-r2",
+    "exitCode": 0,
+    "output": "Untagged: agent-learning-hub:course-navigation-20261115-r2\nDeleted: sha256:989bf028be73d77ab2a5910e1317d80c0f469f82660f0e685935de98352742f3\n"
+  }
+]

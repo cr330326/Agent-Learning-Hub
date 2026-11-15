@@ -1,0 +1,1146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1900" viewBox="0 0 1800 1900" role="img" aria-labelledby="title desc">
+  <title id="title">Agent Learning Hub · 内部模块依赖</title>
+  <desc id="desc">依赖矩阵展示十六个内部模块和六十六组跨模块依赖。红色加叹号表示模块聚合环；实表示包含运行时引用，型表示仅类型引用。下方分别画出学习状态运行时环和含类型引用的循环。</desc>
+  <metadata id="diagram-profile">{"locale": "zh-CN", "readingDirection": "top-to-bottom", "intendedEmbeddedWidth": 1200, "source": ["code/reports/diagram-redraw-2026-11-15/dependencies.json"], "visualProfile": "Existing blue/green/amber/purple category palette; serif headings, system CJK body; manual node geometry", "nodes": ["app/pages", "app/components", "app/api", "scripts", "lib", "modules/admin", "modules/discovery", "modules/auth", "modules/runtime", "modules/search", "modules/reader", "modules/content-resolver", "modules/catalog", "modules/freshness", "modules/observability", "modules/learning-state", "f1", "f2", "f3", "f4", "f5"], "relationships": [{"source": "app/pages", "target": "app/components", "kind": "runtime", "aggregateCycle": false}, {"source": "app/pages", "target": "lib", "kind": "runtime", "aggregateCycle": false}, {"source": "app/pages", "target": "modules/admin", "kind": "runtime", "aggregateCycle": false}, {"source": "app/pages", "target": "modules/discovery", "kind": "runtime", "aggregateCycle": false}, {"source": "app/pages", "target": "modules/auth", "kind": "runtime", "aggregateCycle": false}, {"source": "app/pages", "target": "modules/runtime", "kind": "runtime", "aggregateCycle": false}, {"source": "app/pages", "target": "modules/search", "kind": "runtime", "aggregateCycle": false}, {"source": "app/pages", "target": "modules/reader", "kind": "runtime", "aggregateCycle": false}, {"source": "app/pages", "target": "modules/content-resolver", "kind": "runtime", "aggregateCycle": false}, {"source": "app/pages", "target": "modules/catalog", "kind": "runtime", "aggregateCycle": false}, {"source": "app/components", "target": "lib", "kind": "runtime", "aggregateCycle": false}, {"source": "app/components", "target": "modules/discovery", "kind": "runtime", "aggregateCycle": false}, {"source": "app/components", "target": "modules/runtime", "kind": "type", "aggregateCycle": false}, {"source": "app/components", "target": "modules/reader", "kind": "type", "aggregateCycle": false}, {"source": "app/components", "target": "modules/content-resolver", "kind": "type", "aggregateCycle": false}, {"source": "app/components", "target": "modules/catalog", "kind": "type", "aggregateCycle": false}, {"source": "app/components", "target": "modules/observability", "kind": "runtime", "aggregateCycle": false}, {"source": "app/components", "target": "modules/learning-state", "kind": "type", "aggregateCycle": false}, {"source": "app/api", "target": "lib", "kind": "runtime", "aggregateCycle": false}, {"source": "app/api", "target": "modules/admin", "kind": "runtime", "aggregateCycle": false}, {"source": "app/api", "target": "modules/discovery", "kind": "runtime", "aggregateCycle": false}, {"source": "app/api", "target": "modules/auth", "kind": "runtime", "aggregateCycle": false}, {"source": "app/api", "target": "modules/runtime", "kind": "runtime", "aggregateCycle": false}, {"source": "app/api", "target": "modules/content-resolver", "kind": "runtime", "aggregateCycle": false}, {"source": "app/api", "target": "modules/catalog", "kind": "runtime", "aggregateCycle": false}, {"source": "app/api", "target": "modules/observability", "kind": "runtime", "aggregateCycle": false}, {"source": "app/api", "target": "modules/learning-state", "kind": "runtime", "aggregateCycle": false}, {"source": "scripts", "target": "modules/discovery", "kind": "runtime", "aggregateCycle": false}, {"source": "scripts", "target": "modules/search", "kind": "runtime", "aggregateCycle": false}, {"source": "scripts", "target": "modules/catalog", "kind": "runtime", "aggregateCycle": false}, {"source": "scripts", "target": "modules/freshness", "kind": "runtime", "aggregateCycle": false}, {"source": "scripts", "target": "modules/observability", "kind": "runtime", "aggregateCycle": false}, {"source": "scripts", "target": "modules/learning-state", "kind": "runtime", "aggregateCycle": false}, {"source": "lib", "target": "modules/discovery", "kind": "runtime", "aggregateCycle": true}, {"source": "lib", "target": "modules/runtime", "kind": "runtime", "aggregateCycle": true}, {"source": "lib", "target": "modules/content-resolver", "kind": "runtime", "aggregateCycle": false}, {"source": "lib", "target": "modules/catalog", "kind": "runtime", "aggregateCycle": false}, {"source": "lib", "target": "modules/observability", "kind": "runtime", "aggregateCycle": false}, {"source": "lib", "target": "modules/learning-state", "kind": "runtime", "aggregateCycle": false}, {"source": "modules/admin", "target": "modules/discovery", "kind": "runtime", "aggregateCycle": true}, {"source": "modules/admin", "target": "modules/runtime", "kind": "type", "aggregateCycle": true}, {"source": "modules/admin", "target": "modules/catalog", "kind": "runtime", "aggregateCycle": false}, {"source": "modules/admin", "target": "modules/freshness", "kind": "runtime", "aggregateCycle": false}, {"source": "modules/admin", "target": "modules/observability", "kind": "runtime", "aggregateCycle": false}, {"source": "modules/admin", "target": "modules/learning-state", "kind": "type", "aggregateCycle": false}, {"source": "modules/discovery", "target": "modules/admin", "kind": "runtime", "aggregateCycle": true}, {"source": "modules/discovery", "target": "modules/auth", "kind": "runtime", "aggregateCycle": true}, {"source": "modules/discovery", "target": "modules/search", "kind": "type", "aggregateCycle": true}, {"source": "modules/discovery", "target": "modules/catalog", "kind": "runtime", "aggregateCycle": false}, {"source": "modules/discovery", "target": "modules/learning-state", "kind": "runtime", "aggregateCycle": false}, {"source": "modules/auth", "target": "lib", "kind": "runtime", "aggregateCycle": true}, {"source": "modules/auth", "target": "modules/runtime", "kind": "runtime", "aggregateCycle": true}, {"source": "modules/auth", "target": "modules/learning-state", "kind": "type", "aggregateCycle": false}, {"source": "modules/runtime", "target": "modules/auth", "kind": "runtime", "aggregateCycle": true}, {"source": "modules/search", "target": "modules/runtime", "kind": "type", "aggregateCycle": true}, {"source": "modules/search", "target": "modules/reader", "kind": "runtime", "aggregateCycle": false}, {"source": "modules/search", "target": "modules/content-resolver", "kind": "runtime", "aggregateCycle": false}, {"source": "modules/search", "target": "modules/catalog", "kind": "type", "aggregateCycle": false}, {"source": "modules/reader", "target": "modules/content-resolver", "kind": "runtime", "aggregateCycle": true}, {"source": "modules/reader", "target": "modules/catalog", "kind": "runtime", "aggregateCycle": false}, {"source": "modules/content-resolver", "target": "modules/reader", "kind": "runtime", "aggregateCycle": true}, {"source": "modules/content-resolver", "target": "modules/catalog", "kind": "type", "aggregateCycle": false}, {"source": "modules/freshness", "target": "modules/catalog", "kind": "runtime", "aggregateCycle": false}, {"source": "modules/observability", "target": "modules/learning-state", "kind": "runtime", "aggregateCycle": false}, {"source": "modules/learning-state", "target": "modules/catalog", "kind": "type", "aggregateCycle": false}, {"id": "state-to-repository", "source": "f1", "target": "f2", "kind": "runtime"}, {"id": "repository-to-state", "source": "f2", "target": "f1", "kind": "runtime"}, {"id": "database-to-state", "source": "f3", "target": "f1", "kind": "runtime"}, {"id": "state-to-database", "source": "f1", "target": "f3", "kind": "type"}, {"id": "repository-to-database", "source": "f2", "target": "f3", "kind": "type"}, {"id": "adapters-to-github", "source": "f4", "target": "f5", "kind": "runtime"}, {"id": "github-to-adapters", "source": "f5", "target": "f4", "kind": "type"}], "moduleCycles": [["modules/content-resolver", "modules/reader"], ["lib", "modules/admin", "modules/auth", "modules/discovery", "modules/runtime", "modules/search"]], "runtimeFileCycles": [["modules/learning-state/discovery-state.ts", "modules/learning-state/repository.ts"]], "matrixDirection": "row consumer -&gt; column dependency"}</metadata>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M 0 1 L 9 5 L 0 9 Z" fill="#64748b" />
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M 0 1 L 9 5 L 0 9 Z" fill="#c62828" />
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+      <path d="M 0 1 L 9 5 L 0 9 Z" fill="#2563eb" />
+    </marker>
+    <style>text { font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; fill:#1e293b; }
+.diagram-title { font-family: Georgia,"Songti SC","Noto Serif CJK SC",serif; font-size:38px; font-weight:700; }
+.subtitle { font-size:20px; fill:#526174; }
+.band-title { font-family:Georgia,"Songti SC",serif; font-size:25px; font-weight:700; }
+.card-title { font-size:23px; font-weight:700; }
+.body { font-size:20px; }
+.small { font-size:17px; fill:#526174; }
+.edge-label { font-size:17px; fill:#475569; paint-order:stroke; stroke:white; stroke-width:7; stroke-linejoin:round; }
+.code { font-family:Menlo,Consolas,"PingFang SC",monospace; font-size:19px; }
+.matrix-label { font-family:Menlo,Consolas,monospace; font-size:18px; }
+.matrix-mark { font-size:21px; font-weight:700; }
+</style>
+  </defs>
+  <rect id="background" width="1800" height="1900" fill="white" />
+  <g id="header">
+    <text x="60" y="65" class="diagram-title">
+      <tspan x="60" dy="0">Agent Learning Hub · 内部模块依赖</tspan>
+    </text>
+    <text x="60" y="105" class="subtitle">
+      <tspan x="60" dy="0">先按行找调用模块，再按列定位依赖目标；完整矩阵保留全部跨模块关系，循环在下方展开。</tspan>
+    </text>
+  </g>
+  <g id="layers">
+    <g id="layer-matrix" data-layer="matrix">
+      <rect x="60" y="150" width="1250" height="1030" rx="14" fill="#f8fafc" stroke="#d8e0e9" stroke-width="1.3" />
+      <text x="82" y="186" class="band-title" fill="#64748b" style="fill:#64748b">
+        <tspan x="82" dy="0">01  完整依赖矩阵</tspan>
+      </text>
+      <text x="82" y="216" class="small">
+        <tspan x="82" dy="0">方向：行模块 → 列模块；编号在行与列一致。</tspan>
+      </text>
+    </g>
+    <g id="layer-reading" data-layer="reading">
+      <rect x="1340" y="150" width="400" height="1030" rx="14" fill="#f8fafc" stroke="#d8e0e9" stroke-width="1.3" />
+      <text x="1362" y="186" class="band-title" fill="#64748b" style="fill:#64748b">
+        <tspan x="1362" dy="0">阅读与边界</tspan>
+      </text>
+      <text x="1362" y="216" class="small">
+        <tspan x="1362" dy="0">仅包含现役工程的内部依赖。</tspan>
+      </text>
+    </g>
+    <g id="layer-state-cycle" data-layer="state-cycle">
+      <rect x="60" y="1220" width="1030" height="480" rx="14" fill="#fff1f2" stroke="#d8e0e9" stroke-width="1.3" />
+      <text x="82" y="1256" class="band-title" fill="#c62828" style="fill:#c62828">
+        <tspan x="82" dy="0">02  学习状态文件环</tspan>
+      </text>
+      <text x="82" y="1286" class="small">
+        <tspan x="82" dy="0">实线：运行时依赖；虚线：仅类型引用。红色同时配“循环”标签。</tspan>
+      </text>
+    </g>
+    <g id="layer-adapter-cycle" data-layer="adapter-cycle">
+      <rect x="1120" y="1220" width="620" height="480" rx="14" fill="#fff1f2" stroke="#d8e0e9" stroke-width="1.3" />
+      <text x="1142" y="1256" class="band-title" fill="#c62828" style="fill:#c62828">
+        <tspan x="1142" dy="0">03  适配器文件环</tspan>
+      </text>
+      <text x="1142" y="1286" class="small">
+        <tspan x="1142" dy="0">包含类型边，不能当作运行时循环。</tspan>
+      </text>
+    </g>
+  </g>
+  <g id="connectors">
+    <g id="edge-state-to-repository" data-source="f1" data-target="f2" data-kind="runtime">
+      <path d="M 530 1375 L 590 1375" fill="none" stroke="#c62828" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow-red)" />
+    </g>
+    <g id="edge-repository-to-state" data-source="f2" data-target="f1" data-kind="runtime">
+      <path d="M 590 1420 L 530 1420" fill="none" stroke="#c62828" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow-red)" />
+    </g>
+    <g id="edge-database-to-state" data-source="f3" data-target="f1" data-kind="runtime">
+      <path d="M 350 1595 L 300 1595 L 300 1450" fill="none" stroke="#c62828" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow-red)" />
+    </g>
+    <g id="edge-state-to-database" data-source="f1" data-target="f3" data-kind="type">
+      <path d="M 470 1450 L 470 1550" fill="none" stroke="#c62828" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow-red)" stroke-dasharray="6 5" />
+    </g>
+    <g id="edge-repository-to-database" data-source="f2" data-target="f3" data-kind="type">
+      <path d="M 800 1450 L 800 1595 L 770 1595" fill="none" stroke="#c62828" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow-red)" stroke-dasharray="6 5" />
+    </g>
+    <g id="edge-adapters-to-github" data-source="f4" data-target="f5" data-kind="runtime">
+      <path d="M 1350 1435 L 1350 1550" fill="none" stroke="#c62828" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow-red)" />
+    </g>
+    <g id="edge-github-to-adapters" data-source="f5" data-target="f4" data-kind="type">
+      <path d="M 1520 1550 L 1520 1435" fill="none" stroke="#c62828" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow-red)" stroke-dasharray="6 5" />
+    </g>
+  </g>
+  <g id="nodes">
+    <g id="module-app-pages" data-module="app/pages">
+      <text x="86" y="331" class="matrix-label">
+        <tspan x="86" dy="0">01  app/pages</tspan>
+      </text>
+    </g>
+    <rect x="475" y="300" width="48" height="48" fill="#eef2f6" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="523" y="300" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-app-pages--app-components" data-source="app/pages" data-target="app/components">
+      <title>app/pages → app/components：含运行时引用</title>
+      <rect x="530" y="307" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="547" y="331" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="547" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="571" y="300" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="619" y="300" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="667" y="300" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-app-pages--lib" data-source="app/pages" data-target="lib">
+      <title>app/pages → lib：含运行时引用</title>
+      <rect x="674" y="307" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="691" y="331" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="691" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="715" y="300" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-app-pages--modules-admin" data-source="app/pages" data-target="modules/admin">
+      <title>app/pages → modules/admin：含运行时引用</title>
+      <rect x="722" y="307" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="739" y="331" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="739" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="763" y="300" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-app-pages--modules-discovery" data-source="app/pages" data-target="modules/discovery">
+      <title>app/pages → modules/discovery：含运行时引用</title>
+      <rect x="770" y="307" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="787" y="331" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="787" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="811" y="300" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-app-pages--modules-auth" data-source="app/pages" data-target="modules/auth">
+      <title>app/pages → modules/auth：含运行时引用</title>
+      <rect x="818" y="307" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="835" y="331" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="835" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="859" y="300" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-app-pages--modules-runtime" data-source="app/pages" data-target="modules/runtime">
+      <title>app/pages → modules/runtime：含运行时引用</title>
+      <rect x="866" y="307" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="883" y="331" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="883" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="907" y="300" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-app-pages--modules-search" data-source="app/pages" data-target="modules/search">
+      <title>app/pages → modules/search：含运行时引用</title>
+      <rect x="914" y="307" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="931" y="331" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="931" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="955" y="300" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-app-pages--modules-reader" data-source="app/pages" data-target="modules/reader">
+      <title>app/pages → modules/reader：含运行时引用</title>
+      <rect x="962" y="307" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="979" y="331" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="979" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="1003" y="300" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-app-pages--modules-content-resolver" data-source="app/pages" data-target="modules/content-resolver">
+      <title>app/pages → modules/content-resolver：含运行时引用</title>
+      <rect x="1010" y="307" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="1027" y="331" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="1027" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="1051" y="300" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-app-pages--modules-catalog" data-source="app/pages" data-target="modules/catalog">
+      <title>app/pages → modules/catalog：含运行时引用</title>
+      <rect x="1058" y="307" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="1075" y="331" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="1075" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="1099" y="300" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1147" y="300" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1195" y="300" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="module-app-components" data-module="app/components">
+      <text x="86" y="379" class="matrix-label">
+        <tspan x="86" dy="0">02  app/components</tspan>
+      </text>
+    </g>
+    <rect x="475" y="348" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="523" y="348" width="48" height="48" fill="#eef2f6" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="571" y="348" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="619" y="348" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="667" y="348" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-app-components--lib" data-source="app/components" data-target="lib">
+      <title>app/components → lib：含运行时引用</title>
+      <rect x="674" y="355" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="691" y="379" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="691" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="715" y="348" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="763" y="348" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-app-components--modules-discovery" data-source="app/components" data-target="modules/discovery">
+      <title>app/components → modules/discovery：含运行时引用</title>
+      <rect x="770" y="355" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="787" y="379" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="787" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="811" y="348" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="859" y="348" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-app-components--modules-runtime" data-source="app/components" data-target="modules/runtime">
+      <title>app/components → modules/runtime：仅类型引用</title>
+      <rect x="866" y="355" width="34" height="34" rx="6" fill="white" stroke="#475569" stroke-width="1.5" stroke-dasharray="3 2" />
+      <text x="883" y="379" class="matrix-mark" text-anchor="middle" fill="#475569" style="fill:#475569">
+        <tspan x="883" dy="0">型</tspan>
+      </text>
+    </g>
+    <rect x="907" y="348" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="955" y="348" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-app-components--modules-reader" data-source="app/components" data-target="modules/reader">
+      <title>app/components → modules/reader：仅类型引用</title>
+      <rect x="962" y="355" width="34" height="34" rx="6" fill="white" stroke="#475569" stroke-width="1.5" stroke-dasharray="3 2" />
+      <text x="979" y="379" class="matrix-mark" text-anchor="middle" fill="#475569" style="fill:#475569">
+        <tspan x="979" dy="0">型</tspan>
+      </text>
+    </g>
+    <rect x="1003" y="348" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-app-components--modules-content-resolver" data-source="app/components" data-target="modules/content-resolver">
+      <title>app/components → modules/content-resolver：仅类型引用</title>
+      <rect x="1010" y="355" width="34" height="34" rx="6" fill="white" stroke="#475569" stroke-width="1.5" stroke-dasharray="3 2" />
+      <text x="1027" y="379" class="matrix-mark" text-anchor="middle" fill="#475569" style="fill:#475569">
+        <tspan x="1027" dy="0">型</tspan>
+      </text>
+    </g>
+    <rect x="1051" y="348" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-app-components--modules-catalog" data-source="app/components" data-target="modules/catalog">
+      <title>app/components → modules/catalog：仅类型引用</title>
+      <rect x="1058" y="355" width="34" height="34" rx="6" fill="white" stroke="#475569" stroke-width="1.5" stroke-dasharray="3 2" />
+      <text x="1075" y="379" class="matrix-mark" text-anchor="middle" fill="#475569" style="fill:#475569">
+        <tspan x="1075" dy="0">型</tspan>
+      </text>
+    </g>
+    <rect x="1099" y="348" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1147" y="348" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-app-components--modules-observability" data-source="app/components" data-target="modules/observability">
+      <title>app/components → modules/observability：含运行时引用</title>
+      <rect x="1154" y="355" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="1171" y="379" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="1171" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="1195" y="348" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-app-components--modules-learning-state" data-source="app/components" data-target="modules/learning-state">
+      <title>app/components → modules/learning-state：仅类型引用</title>
+      <rect x="1202" y="355" width="34" height="34" rx="6" fill="white" stroke="#475569" stroke-width="1.5" stroke-dasharray="3 2" />
+      <text x="1219" y="379" class="matrix-mark" text-anchor="middle" fill="#475569" style="fill:#475569">
+        <tspan x="1219" dy="0">型</tspan>
+      </text>
+    </g>
+    <g id="module-app-api" data-module="app/api">
+      <text x="86" y="427" class="matrix-label">
+        <tspan x="86" dy="0">03  app/api</tspan>
+      </text>
+    </g>
+    <rect x="475" y="396" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="523" y="396" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="571" y="396" width="48" height="48" fill="#eef2f6" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="619" y="396" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="667" y="396" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-app-api--lib" data-source="app/api" data-target="lib">
+      <title>app/api → lib：含运行时引用</title>
+      <rect x="674" y="403" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="691" y="427" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="691" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="715" y="396" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-app-api--modules-admin" data-source="app/api" data-target="modules/admin">
+      <title>app/api → modules/admin：含运行时引用</title>
+      <rect x="722" y="403" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="739" y="427" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="739" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="763" y="396" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-app-api--modules-discovery" data-source="app/api" data-target="modules/discovery">
+      <title>app/api → modules/discovery：含运行时引用</title>
+      <rect x="770" y="403" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="787" y="427" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="787" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="811" y="396" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-app-api--modules-auth" data-source="app/api" data-target="modules/auth">
+      <title>app/api → modules/auth：含运行时引用</title>
+      <rect x="818" y="403" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="835" y="427" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="835" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="859" y="396" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-app-api--modules-runtime" data-source="app/api" data-target="modules/runtime">
+      <title>app/api → modules/runtime：含运行时引用</title>
+      <rect x="866" y="403" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="883" y="427" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="883" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="907" y="396" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="955" y="396" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1003" y="396" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-app-api--modules-content-resolver" data-source="app/api" data-target="modules/content-resolver">
+      <title>app/api → modules/content-resolver：含运行时引用</title>
+      <rect x="1010" y="403" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="1027" y="427" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="1027" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="1051" y="396" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-app-api--modules-catalog" data-source="app/api" data-target="modules/catalog">
+      <title>app/api → modules/catalog：含运行时引用</title>
+      <rect x="1058" y="403" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="1075" y="427" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="1075" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="1099" y="396" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1147" y="396" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-app-api--modules-observability" data-source="app/api" data-target="modules/observability">
+      <title>app/api → modules/observability：含运行时引用</title>
+      <rect x="1154" y="403" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="1171" y="427" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="1171" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="1195" y="396" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-app-api--modules-learning-state" data-source="app/api" data-target="modules/learning-state">
+      <title>app/api → modules/learning-state：含运行时引用</title>
+      <rect x="1202" y="403" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="1219" y="427" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="1219" dy="0">实</tspan>
+      </text>
+    </g>
+    <g id="module-scripts" data-module="scripts">
+      <text x="86" y="475" class="matrix-label">
+        <tspan x="86" dy="0">04  scripts</tspan>
+      </text>
+    </g>
+    <rect x="475" y="444" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="523" y="444" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="571" y="444" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="619" y="444" width="48" height="48" fill="#eef2f6" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="667" y="444" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="715" y="444" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="763" y="444" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-scripts--modules-discovery" data-source="scripts" data-target="modules/discovery">
+      <title>scripts → modules/discovery：含运行时引用</title>
+      <rect x="770" y="451" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="787" y="475" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="787" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="811" y="444" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="859" y="444" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="907" y="444" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-scripts--modules-search" data-source="scripts" data-target="modules/search">
+      <title>scripts → modules/search：含运行时引用</title>
+      <rect x="914" y="451" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="931" y="475" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="931" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="955" y="444" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1003" y="444" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1051" y="444" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-scripts--modules-catalog" data-source="scripts" data-target="modules/catalog">
+      <title>scripts → modules/catalog：含运行时引用</title>
+      <rect x="1058" y="451" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="1075" y="475" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="1075" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="1099" y="444" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-scripts--modules-freshness" data-source="scripts" data-target="modules/freshness">
+      <title>scripts → modules/freshness：含运行时引用</title>
+      <rect x="1106" y="451" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="1123" y="475" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="1123" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="1147" y="444" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-scripts--modules-observability" data-source="scripts" data-target="modules/observability">
+      <title>scripts → modules/observability：含运行时引用</title>
+      <rect x="1154" y="451" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="1171" y="475" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="1171" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="1195" y="444" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-scripts--modules-learning-state" data-source="scripts" data-target="modules/learning-state">
+      <title>scripts → modules/learning-state：含运行时引用</title>
+      <rect x="1202" y="451" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="1219" y="475" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="1219" dy="0">实</tspan>
+      </text>
+    </g>
+    <g id="module-lib" data-module="lib">
+      <text x="86" y="523" class="matrix-label">
+        <tspan x="86" dy="0">05  lib</tspan>
+      </text>
+    </g>
+    <rect x="475" y="492" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="523" y="492" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="571" y="492" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="619" y="492" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="667" y="492" width="48" height="48" fill="#eef2f6" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="715" y="492" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="763" y="492" width="48" height="48" fill="#fff1f2" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-lib--modules-discovery" data-source="lib" data-target="modules/discovery">
+      <title>lib → modules/discovery：含运行时引用；位于模块聚合环中</title>
+      <rect x="770" y="499" width="34" height="34" rx="6" fill="#c62828" stroke="#c62828" stroke-width="1.5" />
+      <text x="787" y="523" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="787" dy="0">实</tspan>
+      </text>
+      <text x="805" y="505" class="small" text-anchor="middle" fill="#c62828" style="fill:#c62828">
+        <tspan x="805" dy="0">!</tspan>
+      </text>
+    </g>
+    <rect x="811" y="492" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="859" y="492" width="48" height="48" fill="#fff1f2" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-lib--modules-runtime" data-source="lib" data-target="modules/runtime">
+      <title>lib → modules/runtime：含运行时引用；位于模块聚合环中</title>
+      <rect x="866" y="499" width="34" height="34" rx="6" fill="#c62828" stroke="#c62828" stroke-width="1.5" />
+      <text x="883" y="523" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="883" dy="0">实</tspan>
+      </text>
+      <text x="901" y="505" class="small" text-anchor="middle" fill="#c62828" style="fill:#c62828">
+        <tspan x="901" dy="0">!</tspan>
+      </text>
+    </g>
+    <rect x="907" y="492" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="955" y="492" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1003" y="492" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-lib--modules-content-resolver" data-source="lib" data-target="modules/content-resolver">
+      <title>lib → modules/content-resolver：含运行时引用</title>
+      <rect x="1010" y="499" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="1027" y="523" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="1027" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="1051" y="492" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-lib--modules-catalog" data-source="lib" data-target="modules/catalog">
+      <title>lib → modules/catalog：含运行时引用</title>
+      <rect x="1058" y="499" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="1075" y="523" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="1075" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="1099" y="492" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1147" y="492" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-lib--modules-observability" data-source="lib" data-target="modules/observability">
+      <title>lib → modules/observability：含运行时引用</title>
+      <rect x="1154" y="499" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="1171" y="523" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="1171" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="1195" y="492" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-lib--modules-learning-state" data-source="lib" data-target="modules/learning-state">
+      <title>lib → modules/learning-state：含运行时引用</title>
+      <rect x="1202" y="499" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="1219" y="523" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="1219" dy="0">实</tspan>
+      </text>
+    </g>
+    <g id="module-modules-admin" data-module="modules/admin">
+      <text x="86" y="571" class="matrix-label">
+        <tspan x="86" dy="0">06  modules/admin</tspan>
+      </text>
+    </g>
+    <rect x="475" y="540" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="523" y="540" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="571" y="540" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="619" y="540" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="667" y="540" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="715" y="540" width="48" height="48" fill="#eef2f6" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="763" y="540" width="48" height="48" fill="#fff1f2" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-modules-admin--modules-discovery" data-source="modules/admin" data-target="modules/discovery">
+      <title>modules/admin → modules/discovery：含运行时引用；位于模块聚合环中</title>
+      <rect x="770" y="547" width="34" height="34" rx="6" fill="#c62828" stroke="#c62828" stroke-width="1.5" />
+      <text x="787" y="571" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="787" dy="0">实</tspan>
+      </text>
+      <text x="805" y="553" class="small" text-anchor="middle" fill="#c62828" style="fill:#c62828">
+        <tspan x="805" dy="0">!</tspan>
+      </text>
+    </g>
+    <rect x="811" y="540" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="859" y="540" width="48" height="48" fill="#fff1f2" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-modules-admin--modules-runtime" data-source="modules/admin" data-target="modules/runtime">
+      <title>modules/admin → modules/runtime：仅类型引用；位于模块聚合环中</title>
+      <rect x="866" y="547" width="34" height="34" rx="6" fill="white" stroke="#c62828" stroke-width="1.5" stroke-dasharray="3 2" />
+      <text x="883" y="571" class="matrix-mark" text-anchor="middle" fill="#c62828" style="fill:#c62828">
+        <tspan x="883" dy="0">型</tspan>
+      </text>
+      <text x="901" y="553" class="small" text-anchor="middle" fill="#c62828" style="fill:#c62828">
+        <tspan x="901" dy="0">!</tspan>
+      </text>
+    </g>
+    <rect x="907" y="540" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="955" y="540" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1003" y="540" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1051" y="540" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-modules-admin--modules-catalog" data-source="modules/admin" data-target="modules/catalog">
+      <title>modules/admin → modules/catalog：含运行时引用</title>
+      <rect x="1058" y="547" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="1075" y="571" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="1075" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="1099" y="540" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-modules-admin--modules-freshness" data-source="modules/admin" data-target="modules/freshness">
+      <title>modules/admin → modules/freshness：含运行时引用</title>
+      <rect x="1106" y="547" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="1123" y="571" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="1123" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="1147" y="540" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-modules-admin--modules-observability" data-source="modules/admin" data-target="modules/observability">
+      <title>modules/admin → modules/observability：含运行时引用</title>
+      <rect x="1154" y="547" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="1171" y="571" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="1171" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="1195" y="540" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-modules-admin--modules-learning-state" data-source="modules/admin" data-target="modules/learning-state">
+      <title>modules/admin → modules/learning-state：仅类型引用</title>
+      <rect x="1202" y="547" width="34" height="34" rx="6" fill="white" stroke="#475569" stroke-width="1.5" stroke-dasharray="3 2" />
+      <text x="1219" y="571" class="matrix-mark" text-anchor="middle" fill="#475569" style="fill:#475569">
+        <tspan x="1219" dy="0">型</tspan>
+      </text>
+    </g>
+    <g id="module-modules-discovery" data-module="modules/discovery">
+      <text x="86" y="619" class="matrix-label">
+        <tspan x="86" dy="0">07  modules/discovery</tspan>
+      </text>
+    </g>
+    <rect x="475" y="588" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="523" y="588" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="571" y="588" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="619" y="588" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="667" y="588" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="715" y="588" width="48" height="48" fill="#fff1f2" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-modules-discovery--modules-admin" data-source="modules/discovery" data-target="modules/admin">
+      <title>modules/discovery → modules/admin：含运行时引用；位于模块聚合环中</title>
+      <rect x="722" y="595" width="34" height="34" rx="6" fill="#c62828" stroke="#c62828" stroke-width="1.5" />
+      <text x="739" y="619" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="739" dy="0">实</tspan>
+      </text>
+      <text x="757" y="601" class="small" text-anchor="middle" fill="#c62828" style="fill:#c62828">
+        <tspan x="757" dy="0">!</tspan>
+      </text>
+    </g>
+    <rect x="763" y="588" width="48" height="48" fill="#eef2f6" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="811" y="588" width="48" height="48" fill="#fff1f2" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-modules-discovery--modules-auth" data-source="modules/discovery" data-target="modules/auth">
+      <title>modules/discovery → modules/auth：含运行时引用；位于模块聚合环中</title>
+      <rect x="818" y="595" width="34" height="34" rx="6" fill="#c62828" stroke="#c62828" stroke-width="1.5" />
+      <text x="835" y="619" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="835" dy="0">实</tspan>
+      </text>
+      <text x="853" y="601" class="small" text-anchor="middle" fill="#c62828" style="fill:#c62828">
+        <tspan x="853" dy="0">!</tspan>
+      </text>
+    </g>
+    <rect x="859" y="588" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="907" y="588" width="48" height="48" fill="#fff1f2" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-modules-discovery--modules-search" data-source="modules/discovery" data-target="modules/search">
+      <title>modules/discovery → modules/search：仅类型引用；位于模块聚合环中</title>
+      <rect x="914" y="595" width="34" height="34" rx="6" fill="white" stroke="#c62828" stroke-width="1.5" stroke-dasharray="3 2" />
+      <text x="931" y="619" class="matrix-mark" text-anchor="middle" fill="#c62828" style="fill:#c62828">
+        <tspan x="931" dy="0">型</tspan>
+      </text>
+      <text x="949" y="601" class="small" text-anchor="middle" fill="#c62828" style="fill:#c62828">
+        <tspan x="949" dy="0">!</tspan>
+      </text>
+    </g>
+    <rect x="955" y="588" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1003" y="588" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1051" y="588" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-modules-discovery--modules-catalog" data-source="modules/discovery" data-target="modules/catalog">
+      <title>modules/discovery → modules/catalog：含运行时引用</title>
+      <rect x="1058" y="595" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="1075" y="619" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="1075" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="1099" y="588" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1147" y="588" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1195" y="588" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-modules-discovery--modules-learning-state" data-source="modules/discovery" data-target="modules/learning-state">
+      <title>modules/discovery → modules/learning-state：含运行时引用</title>
+      <rect x="1202" y="595" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="1219" y="619" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="1219" dy="0">实</tspan>
+      </text>
+    </g>
+    <g id="module-modules-auth" data-module="modules/auth">
+      <text x="86" y="667" class="matrix-label">
+        <tspan x="86" dy="0">08  modules/auth</tspan>
+      </text>
+    </g>
+    <rect x="475" y="636" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="523" y="636" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="571" y="636" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="619" y="636" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="667" y="636" width="48" height="48" fill="#fff1f2" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-modules-auth--lib" data-source="modules/auth" data-target="lib">
+      <title>modules/auth → lib：含运行时引用；位于模块聚合环中</title>
+      <rect x="674" y="643" width="34" height="34" rx="6" fill="#c62828" stroke="#c62828" stroke-width="1.5" />
+      <text x="691" y="667" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="691" dy="0">实</tspan>
+      </text>
+      <text x="709" y="649" class="small" text-anchor="middle" fill="#c62828" style="fill:#c62828">
+        <tspan x="709" dy="0">!</tspan>
+      </text>
+    </g>
+    <rect x="715" y="636" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="763" y="636" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="811" y="636" width="48" height="48" fill="#eef2f6" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="859" y="636" width="48" height="48" fill="#fff1f2" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-modules-auth--modules-runtime" data-source="modules/auth" data-target="modules/runtime">
+      <title>modules/auth → modules/runtime：含运行时引用；位于模块聚合环中</title>
+      <rect x="866" y="643" width="34" height="34" rx="6" fill="#c62828" stroke="#c62828" stroke-width="1.5" />
+      <text x="883" y="667" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="883" dy="0">实</tspan>
+      </text>
+      <text x="901" y="649" class="small" text-anchor="middle" fill="#c62828" style="fill:#c62828">
+        <tspan x="901" dy="0">!</tspan>
+      </text>
+    </g>
+    <rect x="907" y="636" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="955" y="636" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1003" y="636" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1051" y="636" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1099" y="636" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1147" y="636" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1195" y="636" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-modules-auth--modules-learning-state" data-source="modules/auth" data-target="modules/learning-state">
+      <title>modules/auth → modules/learning-state：仅类型引用</title>
+      <rect x="1202" y="643" width="34" height="34" rx="6" fill="white" stroke="#475569" stroke-width="1.5" stroke-dasharray="3 2" />
+      <text x="1219" y="667" class="matrix-mark" text-anchor="middle" fill="#475569" style="fill:#475569">
+        <tspan x="1219" dy="0">型</tspan>
+      </text>
+    </g>
+    <g id="module-modules-runtime" data-module="modules/runtime">
+      <text x="86" y="715" class="matrix-label">
+        <tspan x="86" dy="0">09  modules/runtime</tspan>
+      </text>
+    </g>
+    <rect x="475" y="684" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="523" y="684" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="571" y="684" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="619" y="684" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="667" y="684" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="715" y="684" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="763" y="684" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="811" y="684" width="48" height="48" fill="#fff1f2" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-modules-runtime--modules-auth" data-source="modules/runtime" data-target="modules/auth">
+      <title>modules/runtime → modules/auth：含运行时引用；位于模块聚合环中</title>
+      <rect x="818" y="691" width="34" height="34" rx="6" fill="#c62828" stroke="#c62828" stroke-width="1.5" />
+      <text x="835" y="715" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="835" dy="0">实</tspan>
+      </text>
+      <text x="853" y="697" class="small" text-anchor="middle" fill="#c62828" style="fill:#c62828">
+        <tspan x="853" dy="0">!</tspan>
+      </text>
+    </g>
+    <rect x="859" y="684" width="48" height="48" fill="#eef2f6" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="907" y="684" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="955" y="684" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1003" y="684" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1051" y="684" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1099" y="684" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1147" y="684" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1195" y="684" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="module-modules-search" data-module="modules/search">
+      <text x="86" y="763" class="matrix-label">
+        <tspan x="86" dy="0">10  modules/search</tspan>
+      </text>
+    </g>
+    <rect x="475" y="732" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="523" y="732" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="571" y="732" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="619" y="732" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="667" y="732" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="715" y="732" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="763" y="732" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="811" y="732" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="859" y="732" width="48" height="48" fill="#fff1f2" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-modules-search--modules-runtime" data-source="modules/search" data-target="modules/runtime">
+      <title>modules/search → modules/runtime：仅类型引用；位于模块聚合环中</title>
+      <rect x="866" y="739" width="34" height="34" rx="6" fill="white" stroke="#c62828" stroke-width="1.5" stroke-dasharray="3 2" />
+      <text x="883" y="763" class="matrix-mark" text-anchor="middle" fill="#c62828" style="fill:#c62828">
+        <tspan x="883" dy="0">型</tspan>
+      </text>
+      <text x="901" y="745" class="small" text-anchor="middle" fill="#c62828" style="fill:#c62828">
+        <tspan x="901" dy="0">!</tspan>
+      </text>
+    </g>
+    <rect x="907" y="732" width="48" height="48" fill="#eef2f6" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="955" y="732" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-modules-search--modules-reader" data-source="modules/search" data-target="modules/reader">
+      <title>modules/search → modules/reader：含运行时引用</title>
+      <rect x="962" y="739" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="979" y="763" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="979" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="1003" y="732" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-modules-search--modules-content-resolver" data-source="modules/search" data-target="modules/content-resolver">
+      <title>modules/search → modules/content-resolver：含运行时引用</title>
+      <rect x="1010" y="739" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="1027" y="763" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="1027" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="1051" y="732" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-modules-search--modules-catalog" data-source="modules/search" data-target="modules/catalog">
+      <title>modules/search → modules/catalog：仅类型引用</title>
+      <rect x="1058" y="739" width="34" height="34" rx="6" fill="white" stroke="#475569" stroke-width="1.5" stroke-dasharray="3 2" />
+      <text x="1075" y="763" class="matrix-mark" text-anchor="middle" fill="#475569" style="fill:#475569">
+        <tspan x="1075" dy="0">型</tspan>
+      </text>
+    </g>
+    <rect x="1099" y="732" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1147" y="732" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1195" y="732" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="module-modules-reader" data-module="modules/reader">
+      <text x="86" y="811" class="matrix-label">
+        <tspan x="86" dy="0">11  modules/reader</tspan>
+      </text>
+    </g>
+    <rect x="475" y="780" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="523" y="780" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="571" y="780" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="619" y="780" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="667" y="780" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="715" y="780" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="763" y="780" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="811" y="780" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="859" y="780" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="907" y="780" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="955" y="780" width="48" height="48" fill="#eef2f6" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1003" y="780" width="48" height="48" fill="#fff1f2" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-modules-reader--modules-content-resolver" data-source="modules/reader" data-target="modules/content-resolver">
+      <title>modules/reader → modules/content-resolver：含运行时引用；位于模块聚合环中</title>
+      <rect x="1010" y="787" width="34" height="34" rx="6" fill="#c62828" stroke="#c62828" stroke-width="1.5" />
+      <text x="1027" y="811" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="1027" dy="0">实</tspan>
+      </text>
+      <text x="1045" y="793" class="small" text-anchor="middle" fill="#c62828" style="fill:#c62828">
+        <tspan x="1045" dy="0">!</tspan>
+      </text>
+    </g>
+    <rect x="1051" y="780" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-modules-reader--modules-catalog" data-source="modules/reader" data-target="modules/catalog">
+      <title>modules/reader → modules/catalog：含运行时引用</title>
+      <rect x="1058" y="787" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="1075" y="811" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="1075" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="1099" y="780" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1147" y="780" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1195" y="780" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="module-modules-content-resolver" data-module="modules/content-resolver">
+      <text x="86" y="859" class="matrix-label">
+        <tspan x="86" dy="0">12  modules/content-resolver</tspan>
+      </text>
+    </g>
+    <rect x="475" y="828" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="523" y="828" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="571" y="828" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="619" y="828" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="667" y="828" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="715" y="828" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="763" y="828" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="811" y="828" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="859" y="828" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="907" y="828" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="955" y="828" width="48" height="48" fill="#fff1f2" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-modules-content-resolver--modules-reader" data-source="modules/content-resolver" data-target="modules/reader">
+      <title>modules/content-resolver → modules/reader：含运行时引用；位于模块聚合环中</title>
+      <rect x="962" y="835" width="34" height="34" rx="6" fill="#c62828" stroke="#c62828" stroke-width="1.5" />
+      <text x="979" y="859" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="979" dy="0">实</tspan>
+      </text>
+      <text x="997" y="841" class="small" text-anchor="middle" fill="#c62828" style="fill:#c62828">
+        <tspan x="997" dy="0">!</tspan>
+      </text>
+    </g>
+    <rect x="1003" y="828" width="48" height="48" fill="#eef2f6" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1051" y="828" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-modules-content-resolver--modules-catalog" data-source="modules/content-resolver" data-target="modules/catalog">
+      <title>modules/content-resolver → modules/catalog：仅类型引用</title>
+      <rect x="1058" y="835" width="34" height="34" rx="6" fill="white" stroke="#475569" stroke-width="1.5" stroke-dasharray="3 2" />
+      <text x="1075" y="859" class="matrix-mark" text-anchor="middle" fill="#475569" style="fill:#475569">
+        <tspan x="1075" dy="0">型</tspan>
+      </text>
+    </g>
+    <rect x="1099" y="828" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1147" y="828" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1195" y="828" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="module-modules-catalog" data-module="modules/catalog">
+      <text x="86" y="907" class="matrix-label">
+        <tspan x="86" dy="0">13  modules/catalog</tspan>
+      </text>
+    </g>
+    <rect x="475" y="876" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="523" y="876" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="571" y="876" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="619" y="876" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="667" y="876" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="715" y="876" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="763" y="876" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="811" y="876" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="859" y="876" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="907" y="876" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="955" y="876" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1003" y="876" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1051" y="876" width="48" height="48" fill="#eef2f6" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1099" y="876" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1147" y="876" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1195" y="876" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="module-modules-freshness" data-module="modules/freshness">
+      <text x="86" y="955" class="matrix-label">
+        <tspan x="86" dy="0">14  modules/freshness</tspan>
+      </text>
+    </g>
+    <rect x="475" y="924" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="523" y="924" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="571" y="924" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="619" y="924" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="667" y="924" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="715" y="924" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="763" y="924" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="811" y="924" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="859" y="924" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="907" y="924" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="955" y="924" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1003" y="924" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1051" y="924" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-modules-freshness--modules-catalog" data-source="modules/freshness" data-target="modules/catalog">
+      <title>modules/freshness → modules/catalog：含运行时引用</title>
+      <rect x="1058" y="931" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="1075" y="955" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="1075" dy="0">实</tspan>
+      </text>
+    </g>
+    <rect x="1099" y="924" width="48" height="48" fill="#eef2f6" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1147" y="924" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1195" y="924" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="module-modules-observability" data-module="modules/observability">
+      <text x="86" y="1003" class="matrix-label">
+        <tspan x="86" dy="0">15  modules/observability</tspan>
+      </text>
+    </g>
+    <rect x="475" y="972" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="523" y="972" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="571" y="972" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="619" y="972" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="667" y="972" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="715" y="972" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="763" y="972" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="811" y="972" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="859" y="972" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="907" y="972" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="955" y="972" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1003" y="972" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1051" y="972" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1099" y="972" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1147" y="972" width="48" height="48" fill="#eef2f6" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1195" y="972" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-modules-observability--modules-learning-state" data-source="modules/observability" data-target="modules/learning-state">
+      <title>modules/observability → modules/learning-state：含运行时引用</title>
+      <rect x="1202" y="979" width="34" height="34" rx="6" fill="#475569" stroke="#475569" stroke-width="1.5" />
+      <text x="1219" y="1003" class="matrix-mark" text-anchor="middle" fill="white" style="fill:white">
+        <tspan x="1219" dy="0">实</tspan>
+      </text>
+    </g>
+    <g id="module-modules-learning-state" data-module="modules/learning-state">
+      <text x="86" y="1051" class="matrix-label">
+        <tspan x="86" dy="0">16  modules/learning-state</tspan>
+      </text>
+    </g>
+    <rect x="475" y="1020" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="523" y="1020" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="571" y="1020" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="619" y="1020" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="667" y="1020" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="715" y="1020" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="763" y="1020" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="811" y="1020" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="859" y="1020" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="907" y="1020" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="955" y="1020" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1003" y="1020" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1051" y="1020" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <g id="dependency-modules-learning-state--modules-catalog" data-source="modules/learning-state" data-target="modules/catalog">
+      <title>modules/learning-state → modules/catalog：仅类型引用</title>
+      <rect x="1058" y="1027" width="34" height="34" rx="6" fill="white" stroke="#475569" stroke-width="1.5" stroke-dasharray="3 2" />
+      <text x="1075" y="1051" class="matrix-mark" text-anchor="middle" fill="#475569" style="fill:#475569">
+        <tspan x="1075" dy="0">型</tspan>
+      </text>
+    </g>
+    <rect x="1099" y="1020" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1147" y="1020" width="48" height="48" fill="white" stroke="#d9e1eb" stroke-width="1" />
+    <rect x="1195" y="1020" width="48" height="48" fill="#eef2f6" stroke="#d9e1eb" stroke-width="1" />
+    <g id="f1" data-node="f1">
+      <title>discovery-state.ts：保存个人资讯状态；；复用 repository 的校验异常类。</title>
+      <rect x="110" y="1340" width="420" height="110" rx="10" fill="white" stroke="#c62828" stroke-width="1.7" />
+      <rect x="111" y="1352" width="4" height="86" rx="2" fill="#c62828" />
+      <text x="132" y="1374" class="card-title" fill="#c62828" style="fill:#c62828">
+        <tspan x="132" dy="0">discovery-state.ts</tspan>
+      </text>
+      <text x="132" y="1406" class="body">
+        <tspan x="132" dy="0">保存个人资讯状态；</tspan>
+        <tspan x="132" dy="29">复用 repository 的校验异常类。</tspan>
+      </text>
+    </g>
+    <g id="f2" data-node="f2">
+      <title>repository.ts：读取学习状态快照；；调用 discovery-state 组装资讯状态。</title>
+      <rect x="590" y="1340" width="420" height="110" rx="10" fill="white" stroke="#c62828" stroke-width="1.7" />
+      <rect x="591" y="1352" width="4" height="86" rx="2" fill="#c62828" />
+      <text x="612" y="1374" class="card-title" fill="#c62828" style="fill:#c62828">
+        <tspan x="612" dy="0">repository.ts</tspan>
+      </text>
+      <text x="612" y="1406" class="body">
+        <tspan x="612" dy="0">读取学习状态快照；</tspan>
+        <tspan x="612" dy="29">调用 discovery-state 组装资讯状态。</tspan>
+      </text>
+    </g>
+    <g id="f3" data-node="f3">
+      <title>database.ts：应用迁移并建立学习数据库。</title>
+      <rect x="350" y="1550" width="420" height="95" rx="10" fill="white" stroke="#c62828" stroke-width="1.7" />
+      <rect x="351" y="1562" width="4" height="71" rx="2" fill="#c62828" />
+      <text x="372" y="1584" class="card-title" fill="#c62828" style="fill:#c62828">
+        <tspan x="372" dy="0">database.ts</tspan>
+      </text>
+      <text x="372" y="1616" class="body">
+        <tspan x="372" dy="0">应用迁移并建立学习数据库。</tspan>
+      </text>
+    </g>
+    <g id="f4" data-node="f4">
+      <title>adapters.ts：调用 GitHubResults 读取授权结果文件。</title>
+      <rect x="1165" y="1340" width="530" height="95" rx="10" fill="white" stroke="#c62828" stroke-width="1.7" />
+      <rect x="1166" y="1352" width="4" height="71" rx="2" fill="#c62828" />
+      <text x="1187" y="1374" class="card-title" fill="#c62828" style="fill:#c62828">
+        <tspan x="1187" dy="0">adapters.ts</tspan>
+      </text>
+      <text x="1187" y="1406" class="body">
+        <tspan x="1187" dy="0">调用 GitHubResults 读取授权结果文件。</tspan>
+      </text>
+    </g>
+    <g id="f5" data-node="f5">
+      <title>github-results.ts：复用 SourcePage 类型作为返回契约。</title>
+      <rect x="1165" y="1550" width="530" height="95" rx="10" fill="white" stroke="#c62828" stroke-width="1.7" />
+      <rect x="1166" y="1562" width="4" height="71" rx="2" fill="#c62828" />
+      <text x="1187" y="1584" class="card-title" fill="#c62828" style="fill:#c62828">
+        <tspan x="1187" dy="0">github-results.ts</tspan>
+      </text>
+      <text x="1187" y="1616" class="body">
+        <tspan x="1187" dy="0">复用 SourcePage 类型作为返回契约。</tspan>
+      </text>
+    </g>
+  </g>
+  <g id="annotations">
+    <text x="499.0" y="275" class="code" text-anchor="middle">
+      <tspan x="499.0" dy="0">01</tspan>
+    </text>
+    <text x="547.0" y="275" class="code" text-anchor="middle">
+      <tspan x="547.0" dy="0">02</tspan>
+    </text>
+    <text x="595.0" y="275" class="code" text-anchor="middle">
+      <tspan x="595.0" dy="0">03</tspan>
+    </text>
+    <text x="643.0" y="275" class="code" text-anchor="middle">
+      <tspan x="643.0" dy="0">04</tspan>
+    </text>
+    <text x="691.0" y="275" class="code" text-anchor="middle">
+      <tspan x="691.0" dy="0">05</tspan>
+    </text>
+    <text x="739.0" y="275" class="code" text-anchor="middle">
+      <tspan x="739.0" dy="0">06</tspan>
+    </text>
+    <text x="787.0" y="275" class="code" text-anchor="middle">
+      <tspan x="787.0" dy="0">07</tspan>
+    </text>
+    <text x="835.0" y="275" class="code" text-anchor="middle">
+      <tspan x="835.0" dy="0">08</tspan>
+    </text>
+    <text x="883.0" y="275" class="code" text-anchor="middle">
+      <tspan x="883.0" dy="0">09</tspan>
+    </text>
+    <text x="931.0" y="275" class="code" text-anchor="middle">
+      <tspan x="931.0" dy="0">10</tspan>
+    </text>
+    <text x="979.0" y="275" class="code" text-anchor="middle">
+      <tspan x="979.0" dy="0">11</tspan>
+    </text>
+    <text x="1027.0" y="275" class="code" text-anchor="middle">
+      <tspan x="1027.0" dy="0">12</tspan>
+    </text>
+    <text x="1075.0" y="275" class="code" text-anchor="middle">
+      <tspan x="1075.0" dy="0">13</tspan>
+    </text>
+    <text x="1123.0" y="275" class="code" text-anchor="middle">
+      <tspan x="1123.0" dy="0">14</tspan>
+    </text>
+    <text x="1171.0" y="275" class="code" text-anchor="middle">
+      <tspan x="1171.0" dy="0">15</tspan>
+    </text>
+    <text x="1219.0" y="275" class="code" text-anchor="middle">
+      <tspan x="1219.0" dy="0">16</tspan>
+    </text>
+    <text x="499" y="331" class="small" text-anchor="middle">
+      <tspan x="499" dy="0">—</tspan>
+    </text>
+    <text x="547" y="379" class="small" text-anchor="middle">
+      <tspan x="547" dy="0">—</tspan>
+    </text>
+    <text x="595" y="427" class="small" text-anchor="middle">
+      <tspan x="595" dy="0">—</tspan>
+    </text>
+    <text x="643" y="475" class="small" text-anchor="middle">
+      <tspan x="643" dy="0">—</tspan>
+    </text>
+    <text x="691" y="523" class="small" text-anchor="middle">
+      <tspan x="691" dy="0">—</tspan>
+    </text>
+    <text x="739" y="571" class="small" text-anchor="middle">
+      <tspan x="739" dy="0">—</tspan>
+    </text>
+    <text x="787" y="619" class="small" text-anchor="middle">
+      <tspan x="787" dy="0">—</tspan>
+    </text>
+    <text x="835" y="667" class="small" text-anchor="middle">
+      <tspan x="835" dy="0">—</tspan>
+    </text>
+    <text x="883" y="715" class="small" text-anchor="middle">
+      <tspan x="883" dy="0">—</tspan>
+    </text>
+    <text x="931" y="763" class="small" text-anchor="middle">
+      <tspan x="931" dy="0">—</tspan>
+    </text>
+    <text x="979" y="811" class="small" text-anchor="middle">
+      <tspan x="979" dy="0">—</tspan>
+    </text>
+    <text x="1027" y="859" class="small" text-anchor="middle">
+      <tspan x="1027" dy="0">—</tspan>
+    </text>
+    <text x="1075" y="907" class="small" text-anchor="middle">
+      <tspan x="1075" dy="0">—</tspan>
+    </text>
+    <text x="1123" y="955" class="small" text-anchor="middle">
+      <tspan x="1123" dy="0">—</tspan>
+    </text>
+    <text x="1171" y="1003" class="small" text-anchor="middle">
+      <tspan x="1171" dy="0">—</tspan>
+    </text>
+    <text x="1219" y="1051" class="small" text-anchor="middle">
+      <tspan x="1219" dy="0">—</tspan>
+    </text>
+    <text x="1365" y="270" class="card-title" fill="#64748b" style="fill:#64748b">
+      <tspan x="1365" dy="0">实 · 含运行时引用</tspan>
+    </text>
+    <text x="1365" y="308" class="small">
+      <tspan x="1365" dy="0">该方向至少存在一条运行时依赖，</tspan>
+      <tspan x="1365" dy="29">可能同时包含类型引用。</tspan>
+    </text>
+    <text x="1365" y="390" class="card-title" fill="#64748b" style="fill:#64748b">
+      <tspan x="1365" dy="0">型 · 仅类型引用</tspan>
+    </text>
+    <text x="1365" y="428" class="small">
+      <tspan x="1365" dy="0">虚线框内的引用会被编译擦除，</tspan>
+      <tspan x="1365" dy="29">不直接构成运行时加载环。</tspan>
+    </text>
+    <text x="1365" y="510" class="card-title" fill="#c62828" style="fill:#c62828">
+      <tspan x="1365" dy="0">! · 模块聚合环</tspan>
+    </text>
+    <text x="1365" y="548" class="small">
+      <tspan x="1365" dy="0">红色及叹号标识环中关系；</tspan>
+      <tspan x="1365" dy="29">同目录不同文件可形成聚合环。</tspan>
+    </text>
+    <text x="1365" y="650" class="card-title" fill="#64748b" style="fill:#64748b">
+      <tspan x="1365" dy="0">读取范围</tspan>
+    </text>
+    <text x="1365" y="688" class="small">
+      <tspan x="1365" dy="0">app / lib / modules / scripts；</tspan>
+      <tspan x="1365" dy="29">排除测试文件及外部库。</tspan>
+    </text>
+    <text x="1365" y="795" class="small">
+      <tspan x="1365" dy="0">16 个模块 · 66 组跨模块依赖</tspan>
+      <tspan x="1365" dy="29">112 个源码文件 · 297 条文件边</tspan>
+    </text>
+    <text x="1365" y="900" class="small">
+      <tspan x="1365" dy="0">空格：无跨模块引用。</tspan>
+      <tspan x="1365" dy="29">对角线：本图不展开模块内部关系。</tspan>
+      <tspan x="1365" dy="29">聚合环不等于文件运行时故障。</tspan>
+    </text>
+    <text x="86" y="1120" class="body">
+      <tspan x="86" dy="0">矩阵记录所有 66 组跨模块关系；下方仅展开文件级循环。</tspan>
+    </text>
+    <text x="535" y="1324" class="edge-label">
+      <tspan x="535" dy="0">运行时循环</tspan>
+    </text>
+    <text x="1260" y="1500" class="edge-label">
+      <tspan x="1260" dy="0">运行时</tspan>
+    </text>
+    <text x="1540" y="1500" class="edge-label">
+      <tspan x="1540" dy="0">仅类型</tspan>
+    </text>
+  </g>
+  <g id="legend">
+    <text x="60" y="1760" class="body">
+      <tspan x="60" dy="0">文件详图箭头同样表示调用方 → 依赖目标。外部库、测试与同模块内非循环文件未在详图重复绘制。</tspan>
+    </text>
+    <text x="60" y="1800" class="body">
+      <tspan x="60" dy="0">模块聚合环：reader ↔ content-resolver，以及 lib / admin / discovery / auth / runtime / search 构成的连通组。</tspan>
+    </text>
+    <text x="60" y="1850" class="small">
+      <tspan x="60" dy="0">来源：现役 TypeScript AST 的 import、export 与字面量动态 import；完整边表见 code/reports/diagram-redraw-2026-11-15/dependencies.json。</tspan>
+    </text>
+  </g>
+</svg>
