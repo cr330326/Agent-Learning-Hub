@@ -12,7 +12,7 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
-  serverExternalPackages: ["better-sqlite3"],
+  serverExternalPackages: ["better-sqlite3", "prettier"],
   // Local mode binds to the loopback host, and the runbooks hand out
   // http://127.0.0.1:<port>. Without this, `next dev` rejects the static
   // chunks for that origin and the client never hydrates.

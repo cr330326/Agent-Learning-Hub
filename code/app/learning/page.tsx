@@ -1,3 +1,5 @@
+import { DiscoveryPersonal } from "../components/discovery-personal";
+import { getRuntimeConfig } from "../../lib/catalog";
 import { LearningDashboard } from "../components/learning-dashboard";
 import { SectionIntro } from "../components/site-chrome";
 import { loadPublicCatalog } from "../../lib/catalog";
@@ -33,6 +35,7 @@ export default async function LearningPage() {
             })),
           }))}
       />
+      {getRuntimeConfig().mode === "cloud" ? <DiscoveryPersonal /> : null}
     </main>
   );
 }

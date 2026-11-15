@@ -15,11 +15,11 @@ Actions:
   bootstrap   Install Docker Engine/Compose and Caddy on a dedicated Ubuntu host.
   configure   Upload root-owned application and optional backup environment files.
   deploy      Back up an existing database, stage a release bundle, and deploy it.
-  backup      Create an application-native encrypted SQLite backup on the server.
+  backup      Back up the deployed SQLite database pair as one encrypted batch.
   restore-drill
               Prove a fresh backup of live production data restores into a clean
               environment, with wrong-passphrase and tamper controls. Reads the
-              state volume read-only and never touches the running release.
+              deployed database pair without changing business records or switching the release.
   rollback    Start the previous pinned application release; never restores data.
   verify      Check the internal health endpoint and public HTTPS endpoint.
   status      Show the release, Compose, Docker, Caddy, and disk status.
@@ -39,7 +39,7 @@ Optional environment:
   LIGHTHOUSE_APP_PORT          Loopback application port (default: 3000).
   LIGHTHOUSE_COMPOSE_PROJECT   Compose project (default: agent-learning-hub-production).
   LIGHTHOUSE_WAIT_TIMEOUT      Container health timeout in seconds (default: 180).
-  LIGHTHOUSE_MAINTENANCE_IMAGE Pinned Node image for backup tooling
+  LIGHTHOUSE_MAINTENANCE_IMAGE Pinned Node image for legacy backup tooling
                                (default: node:24.18.0-bookworm).
   LIGHTHOUSE_DRY_RUN=1         Validate and print the intended action without SSH writes.
   LIGHTHOUSE_ALLOW_NO_BACKUP=1 Break-glass upgrade/rollback without a pre-action backup.
@@ -137,6 +137,23 @@ validate_application_environment() {
     state_volume_name=$(environment_value "$environment_file" STATE_VOLUME_NAME)
     [[ $state_volume_name =~ ^[A-Za-z0-9][A-Za-z0-9_.-]*$ ]] ||
       fail "STATE_VOLUME_NAME contains unsupported characters."
+  fi
+  for variable in DISCOVERY_VOLUME_NAME DISCOVERY_TEMP_VOLUME_NAME; do
+    if grep -qE "^${variable}=" "$environment_file"; then
+      local volume_name
+      volume_name=$(environment_value "$environment_file" "$variable")
+      [[ -z $volume_name || $volume_name =~ ^[A-Za-z0-9][A-Za-z0-9_.-]*$ ]] || fail "Invalid discovery volume name."
+    fi
+  done
+  if grep -qE '^GITHUB_APP_ID=.+$' "$environment_file"; then
+    local app_id
+    app_id=$(environment_value "$environment_file" GITHUB_APP_ID)
+    if [[ -n $app_id ]]; then
+      [[ $app_id =~ ^[0-9]+$ ]] || fail "GITHUB_APP_ID must be numeric."
+      [[ $(environment_value "$environment_file" GITHUB_APP_INSTALLATION_ID) =~ ^[0-9]+$ ]] || fail "GitHub App installation ID must be numeric."
+      [[ $(environment_value "$environment_file" GITHUB_REPOSITORY) =~ ^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$ ]] || fail "GitHub App needs one owner/repository."
+      [[ -n $(environment_value "$environment_file" GITHUB_APP_PRIVATE_KEY_FILE) ]] || fail "GitHub App requires a private key file."
+    fi
   fi
 }
 
@@ -429,11 +446,30 @@ configure_remote_secrets() {
       sub(/=.*/, "", key)
       if (key == "BETTER_AUTH_SECRET" || key == "BETTER_AUTH_URL" ||
           key == "GITHUB_CLIENT_ID" || key == "GITHUB_CLIENT_SECRET" ||
-          key == "ADMIN_GITHUB_IDS" || key == "STATE_VOLUME_NAME") print
+          key == "ADMIN_GITHUB_IDS" || key == "STATE_VOLUME_NAME" ||
+          key == "DISCOVERY_VOLUME_NAME" || key == "DISCOVERY_TEMP_VOLUME_NAME" ||
+          key == "FEISHU_ACCESS_TOKEN" || key == "FEISHU_APP_ID" || key == "FEISHU_APP_SECRET" ||
+          key == "DISCOVERY_MODEL_URL" || key == "DISCOVERY_MODEL_KEY" || key == "DISCOVERY_MODEL_NAME" ||
+          key == "DISCOVERY_MODEL_TOKEN_LIMIT_FIELD" ||
+          key == "DISCOVERY_INPUT_PRICE" || key == "DISCOVERY_OUTPUT_PRICE" ||
+          key == "DISCOVERY_PRICE_CURRENCY" || key == "DISCOVERY_EXCHANGE_RATE" ||
+          key == "GITHUB_APP_ID" || key == "GITHUB_APP_INSTALLATION_ID" ||
+          key == "GITHUB_REPOSITORY" || key == "GITHUB_BASE_BRANCH") print
       next
     }
     /^[[:space:]]*(#|$)/ { print }
   ' "$lighthouse_env_file" > "$sanitized_environment/application.env"
+  if grep -qE '^GITHUB_APP_PRIVATE_KEY_FILE=.' "$lighthouse_env_file"; then
+    local github_key_file
+    github_key_file=$(environment_value "$lighthouse_env_file" GITHUB_APP_PRIVATE_KEY_FILE)
+    if [[ -n $github_key_file ]]; then
+      [[ $github_key_file == /* && -f $github_key_file ]] || fail "GITHUB_APP_PRIVATE_KEY_FILE must name an existing absolute path."
+      check_secret_file_permissions "$github_key_file"
+      upload_sensitive_file "$github_key_file" "$lighthouse_config_root/github-app.pem"
+      printf '%s\n' 'GITHUB_APP_PRIVATE_KEY_FILE=/etc/agent-learning-hub/github-app.pem' \
+        'GITHUB_APP_PRIVATE_KEY_PATH=/run/secrets/github-app.pem' >> "$sanitized_environment/application.env"
+    fi
+  fi
   upload_sensitive_file "$sanitized_environment/application.env" \
     "$lighthouse_config_root/application.env"
 
@@ -475,6 +511,7 @@ build_release_bundle() {
   fi
   cp -R "$application_root/modules" "$bundle_root/code/modules"
   cp "$application_root/scripts/database.ts" "$bundle_root/code/scripts/database.ts"
+  cp "$application_root/scripts/discovery-backup.ts" "$application_root/scripts/cloud-maintenance.sh" "$bundle_root/code/scripts/"
   # The drill shells out to the db:backup / db:restore npm scripts, so it has to
   # travel with them: a release whose backups cannot be proven restorable on the
   # host itself is the state GATE-07 exists to prevent.
@@ -485,8 +522,9 @@ build_release_bundle() {
     "$application_root/docker/docker-compose.cloud.yml" \
     "$application_root/docker/docker-compose.release.yml" \
     "$application_root/docker/docker-compose.production.yml" \
+    "$application_root/docker/docker-compose.github-app.yml" \
     "$bundle_root/code/docker/"
-  chmod 0755 "$bundle_root/code/scripts/docker-deploy.sh"
+  chmod 0755 "$bundle_root/code/scripts/docker-deploy.sh" "$bundle_root/code/scripts/cloud-maintenance.sh"
   printf 'git_revision=%s\nimage=%s\nstaged_at=%s\n' \
     "$git_revision" "$lighthouse_image" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" > \
     "$bundle_root/DEPLOYMENT-METADATA"
@@ -516,6 +554,13 @@ compose_project=$4
 maintenance_image=$5
 current_release=$(sudo -n readlink -f "$remote_root/current")
 [[ -n $current_release && -d $current_release ]] || { printf '%s\n' 'Current release is missing.' >&2; exit 1; }
+
+if [[ -f $current_release/code/scripts/cloud-maintenance.sh ]]; then
+  sudo -n env COMPOSE_PROJECT_NAME="$compose_project" \
+    BACKUP_ENV_FILE="$config_root/backup.env" BACKUP_HOST_PATH="$backup_root" \
+    bash "$current_release/code/scripts/cloud-maintenance.sh" backup
+  exit 0
+fi
 
 state_volume=$(sudo -n awk -F= '$1 == "STATE_VOLUME_NAME" { print substr($0, index($0, "=") + 1) }' \
   "$current_release/.env" | tail -n 1)
@@ -573,6 +618,13 @@ compose_project=$4
 maintenance_image=$5
 current_release=$(sudo -n readlink -f "$remote_root/current")
 [[ -n $current_release && -d $current_release ]] || { printf '%s\n' 'Current release is missing.' >&2; exit 1; }
+
+if [[ -f $current_release/code/scripts/cloud-maintenance.sh ]]; then
+  sudo -n env COMPOSE_PROJECT_NAME="$compose_project" \
+    BACKUP_ENV_FILE="$config_root/backup.env" BACKUP_HOST_PATH="$backup_root" \
+    bash "$current_release/code/scripts/cloud-maintenance.sh" drill
+  exit 0
+fi
 
 state_volume=$(sudo -n awk -F= '$1 == "STATE_VOLUME_NAME" { print substr($0, index($0, "=") + 1) }' \
   "$current_release/.env" | tail -n 1)
@@ -683,7 +735,7 @@ sudo -n test ! -e "$release_root"
 sudo -n install -d -m 0755 -o root -g root "$release_root"
 sudo -n cp -a "$staging_root/." "$release_root/"
 sudo -n chown -R root:root "$release_root"
-sudo -n chmod 0755 "$release_root/code/scripts/docker-deploy.sh"
+sudo -n chmod 0755 "$release_root/code/scripts/docker-deploy.sh" "$release_root/code/scripts/cloud-maintenance.sh"
 sudo -n cp "$config_root/application.env" "$release_root/.env"
 printf '%s\n' \
   "APP_IMAGE=$image" \
@@ -698,13 +750,18 @@ fi
 sudo -n chmod 0600 "$release_root/.env"
 
 extra_compose="$release_root/code/docker/docker-compose.production.yml"
+compose_config_files=(-f "$extra_compose")
+if sudo -n grep -qE '^GITHUB_APP_PRIVATE_KEY_FILE=.+$' "$release_root/.env"; then
+  extra_compose+=":$release_root/code/docker/docker-compose.github-app.yml"
+  compose_config_files+=(-f "$release_root/code/docker/docker-compose.github-app.yml")
+fi
 cd "$release_root"
 sudo -n env COMPOSE_PROJECT_NAME="$compose_project" \
   docker compose --env-file .env \
   -f code/docker/docker-compose.yml \
   -f code/docker/docker-compose.cloud.yml \
   -f code/docker/docker-compose.release.yml \
-  -f "$extra_compose" config --quiet
+  "${compose_config_files[@]}" config --quiet
 
 if sudo -n test -s /etc/caddy/Caddyfile &&
   ! sudo -n grep -qF "$managed_marker" /etc/caddy/Caddyfile &&
@@ -783,6 +840,9 @@ compose_project=$2
 helper_action=$3
 current_release=$(sudo -n readlink -f "$remote_root/current")
 extra_compose="$current_release/code/docker/docker-compose.production.yml"
+if sudo -n grep -qE '^GITHUB_APP_PRIVATE_KEY_FILE=.+$' "$current_release/.env"; then
+  extra_compose+=":$current_release/code/docker/docker-compose.github-app.yml"
+fi
 sudo -n env COMPOSE_PROJECT_NAME="$compose_project" COMPOSE_EXTRA_FILES="$extra_compose" \
   "$current_release/code/scripts/docker-deploy.sh" release "$helper_action"
 REMOTE
@@ -837,7 +897,20 @@ previous_volume=$(sudo -n awk -F= '$1 == "STATE_VOLUME_NAME" { print substr($0, 
   printf '%s\n' 'Current and previous releases reference different state volumes; use the manual recovery runbook.' >&2
   exit 1
 }
+discovery_volume_for_release() {
+  local value
+  value=$(sudo -n awk -F= '$1 == "DISCOVERY_VOLUME_NAME" { print substr($0, index($0, "=") + 1) }' "$1/.env" | tail -n 1)
+  value=${value#\"}; value=${value%\"}; value=${value#\'}; value=${value%\'}
+  printf '%s' "${value:-${compose_project}_discovery}"
+}
+[[ $(discovery_volume_for_release "$current_release") == $(discovery_volume_for_release "$previous_release") ]] || {
+  printf '%s\n' 'Current and previous releases reference different discovery volumes; use the paired recovery runbook.' >&2
+  exit 1
+}
 extra_compose="$previous_release/code/docker/docker-compose.production.yml"
+if sudo -n grep -qE '^GITHUB_APP_PRIVATE_KEY_FILE=.+$' "$previous_release/.env"; then
+  extra_compose+=":$previous_release/code/docker/docker-compose.github-app.yml"
+fi
 sudo -n env \
   COMPOSE_PROJECT_NAME="$compose_project" \
   COMPOSE_EXTRA_FILES="$extra_compose" \

@@ -1,0 +1,94 @@
+# This Mac's image-only trial. Existing data volumes are deliberately external.
+name: agent-learning-hub-trial
+
+x-runtime: &runtime
+  image: agent-learning-hub:aggregation-20261115-r9
+  pull_policy: never
+  restart: unless-stopped
+  init: true
+
+x-discovery-environment: &discovery-environment
+  DEPLOYMENT_MODE: cloud
+  DISCOVERY_DATABASE_PATH: /data/discovery/discovery.sqlite
+  DISCOVERY_TEMP_DIR: /data/discovery-temp
+  FEISHU_APP_ID: ${FEISHU_APP_ID:-}
+  FEISHU_APP_SECRET: ${FEISHU_APP_SECRET:-}
+  FEISHU_ACCESS_TOKEN: ${FEISHU_ACCESS_TOKEN:-}
+  OPENSPACE_GITHUB_TOKEN: ${OPENSPACE_GITHUB_TOKEN:-}
+  DISCOVERY_AGGREGATION_PRESETS: "1"
+  GITHUB_APP_ID: ${GITHUB_APP_ID:-}
+  GITHUB_APP_INSTALLATION_ID: ${GITHUB_APP_INSTALLATION_ID:-}
+  GITHUB_REPOSITORY: ${GITHUB_REPOSITORY:-}
+  GITHUB_BASE_BRANCH: ${GITHUB_BASE_BRANCH:-main}
+  GITHUB_APP_PRIVATE_KEY_PATH: /run/secrets/github-app.pem
+
+services:
+  local:
+    <<: *runtime
+    environment:
+      DEPLOYMENT_MODE: local
+      LOCAL_BIND_HOST: 127.0.0.1
+      LOCAL_MATERIAL_ROOT: /data/local-courses
+      STATE_DATABASE_PATH: /data/state/learning-state.sqlite
+    ports:
+      - "127.0.0.1:3003:3000"
+    volumes:
+      - local-state:/data/state
+      - ../../local-courses:/data/local-courses:ro
+
+  cloud:
+    <<: *runtime
+    environment:
+      <<: *discovery-environment
+      STATE_DATABASE_PATH: /data/state/learning-state.sqlite
+      BETTER_AUTH_URL: http://127.0.0.1:3002
+      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:?BETTER_AUTH_SECRET is required}
+      GITHUB_CLIENT_ID: ${GITHUB_CLIENT_ID:?GITHUB_CLIENT_ID is required}
+      GITHUB_CLIENT_SECRET: ${GITHUB_CLIENT_SECRET:?GITHUB_CLIENT_SECRET is required}
+      ADMIN_GITHUB_IDS: ${ADMIN_GITHUB_IDS:-}
+    ports:
+      - "127.0.0.1:3002:3000"
+    volumes:
+      - cloud-state:/data/state
+      - discovery:/data/discovery
+      - discovery-temp:/data/discovery-temp
+      - ${GITHUB_APP_PRIVATE_KEY_FILE:?GITHUB_APP_PRIVATE_KEY_FILE is required}:/run/secrets/github-app.pem:ro
+
+  worker:
+    <<: *runtime
+    command: ["npm", "run", "worker"]
+    environment:
+      <<: *discovery-environment
+      # Preserve the previous local trial's disabled model processing.
+      DISCOVERY_MODEL_NAME: ""
+    volumes:
+      - discovery:/data/discovery
+      - discovery-temp:/data/discovery-temp
+      - ${GITHUB_APP_PRIVATE_KEY_FILE:?GITHUB_APP_PRIVATE_KEY_FILE is required}:/run/secrets/github-app.pem:ro
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "--input-type=module",
+          "-e",
+          "import Database from 'better-sqlite3'; const db=new Database(process.env.DISCOVERY_DATABASE_PATH,{readonly:true}); const row=db.prepare('SELECT MAX(heartbeat_at) AS t FROM worker_health').get(); db.close(); process.exit(row.t && Date.now()-row.t<90000 ? 0 : 1)",
+        ]
+      interval: 10s
+      timeout: 5s
+      start_period: 20s
+      retries: 3
+
+volumes:
+  local-state:
+    external: true
+    name: agent-learning-hub-local_learning-state
+  cloud-state:
+    external: true
+    name: alh-cloud-real_learning-state
+  discovery:
+    external: true
+    name: alh-cloud-real_discovery
+  discovery-temp:
+    external: true
+    name: alh-cloud-real_discovery-temp

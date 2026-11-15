@@ -1,0 +1,31 @@
+
+> agent-learning-hub@0.1.0 check:cloud
+> DEPLOYMENT_MODE=cloud npm run check
+
+
+> agent-learning-hub@0.1.0 check
+> npm run format:check && npm run lint && npm run typecheck && npm run audit:content && npm run test && npm run build
+
+
+> agent-learning-hub@0.1.0 format:check
+> prettier --check .
+
+Checking formatting...
+All matched files use Prettier code style!
+
+> agent-learning-hub@0.1.0 lint
+> eslint . --max-warnings=0
+
+
+> agent-learning-hub@0.1.0 typecheck
+> tsc --noEmit
+
+modules/auth/better-auth.ts(136,9): error TS2322: Type '(token: OAuth2Tokens) => Promise<{ user: { image?: string | undefined; id: string; name: string; email: string; emailVerified: boolean; }; data: { id: string; login: string; }; } | null>' is not assignable to type '(token: OAuth2Tokens) => Promise<{ user: OAuth2UserInfo & Record<string, unknown>; data: GithubProfile; } | null>'.
+  Type 'Promise<{ user: { image?: string | undefined; id: string; name: string; email: string; emailVerified: boolean; }; data: { id: string; login: string; }; } | null>' is not assignable to type 'Promise<{ user: OAuth2UserInfo & Record<string, unknown>; data: GithubProfile; } | null>'.
+    Type '{ user: { image?: string | undefined; id: string; name: string; email: string; emailVerified: boolean; }; data: { id: string; login: string; }; } | null' is not assignable to type '{ user: OAuth2UserInfo & Record<string, unknown>; data: GithubProfile; } | null'.
+      Type '{ user: { image?: string | undefined; id: string; name: string; email: string; emailVerified: boolean; }; data: { id: string; login: string; }; }' is not assignable to type '{ user: OAuth2UserInfo & Record<string, unknown>; data: GithubProfile; }'.
+        Types of property 'user' are incompatible.
+          Type '{ image?: string | undefined; id: string; name: string; email: string; emailVerified: boolean; }' is not assignable to type 'OAuth2UserInfo & Record<string, unknown>'.
+            Type '{ image?: string | undefined; id: string; name: string; email: string; emailVerified: boolean; }' is not assignable to type 'OAuth2UserInfo'.
+              Types of property 'id' are incompatible.
+                Type 'string' is not assignable to type 'undefined'.

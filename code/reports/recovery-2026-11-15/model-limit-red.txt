@@ -1,0 +1,33 @@
+
+ RUN  v4.1.10 /Users/vsh9p8q/AI/Agent-Learning-Hub/code
+
+ ❯ modules/discovery/processing.test.ts (6 tests | 1 failed) 50ms
+   × sends DeepSeek a supported output cap matching the budget reservation 6ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  modules/discovery/processing.test.ts > sends DeepSeek a supported output cap matching the budget reservation
+AssertionError: expected undefined to be 2048 // Object.is equality
+
+- Expected:
+2048
+
++ Received:
+undefined
+
+ ❯ modules/discovery/processing.test.ts:218:26
+    216|     },
+    217|   });
+    218|   expect(requestedLimit).toBe(2048);
+       |                          ^
+    219| });
+    220|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 5 passed (6)
+   Start at  15:32:26
+   Duration  866ms (transform 257ms, setup 0ms, import 646ms, tests 50ms, environment 0ms)
+

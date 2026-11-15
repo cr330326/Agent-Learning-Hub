@@ -1,0 +1,6 @@
+cloud desktop: 21 screenshots; route overview visually reviewed.
+cloud tablet: 21 screenshots; route overview visually reviewed.
+cloud mobile: 21 screenshots; route overview visually reviewed.
+local desktop: 18 screenshots; route overview visually reviewed.
+local tablet: 18 screenshots; route overview visually reviewed.
+local mobile: 18 screenshots; route overview visually reviewed.

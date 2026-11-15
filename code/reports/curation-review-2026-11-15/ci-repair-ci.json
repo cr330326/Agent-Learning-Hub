@@ -1,0 +1,75 @@
+{
+  "repository": "cr330326/Agent-Learning-Hub",
+  "pullNumber": 1,
+  "headSha": "a803bb717454a2c344665ff036cf62759d3154b2",
+  "runId": 43707283649,
+  "allChecksPassed": true,
+  "checks": [
+    {
+      "id": 132790978078,
+      "name": "Repository guards",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/cr330326/Agent-Learning-Hub/actions/runs/43707283649/job/132790978078",
+      "details_url": "https://github.com/cr330326/Agent-Learning-Hub/actions/runs/43707283649/job/132790978078",
+      "started_at": "2026-11-15T11:06:22Z",
+      "completed_at": "2026-11-15T11:06:28Z"
+    },
+    {
+      "id": 132790978034,
+      "name": "dependency and secret guards",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/cr330326/Agent-Learning-Hub/actions/runs/43707283649/job/132790978034",
+      "details_url": "https://github.com/cr330326/Agent-Learning-Hub/actions/runs/43707283649/job/132790978034",
+      "started_at": "2026-11-15T11:06:21Z",
+      "completed_at": "2026-11-15T11:07:15Z"
+    },
+    {
+      "id": 132790978003,
+      "name": "cloud quality",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/cr330326/Agent-Learning-Hub/actions/runs/43707283649/job/132790978003",
+      "details_url": "https://github.com/cr330326/Agent-Learning-Hub/actions/runs/43707283649/job/132790978003",
+      "started_at": "2026-11-15T11:06:21Z",
+      "completed_at": "2026-11-15T11:07:47Z"
+    },
+    {
+      "id": 132790977994,
+      "name": "local quality",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/cr330326/Agent-Learning-Hub/actions/runs/43707283649/job/132790977994",
+      "details_url": "https://github.com/cr330326/Agent-Learning-Hub/actions/runs/43707283649/job/132790977994",
+      "started_at": "2026-11-15T11:06:21Z",
+      "completed_at": "2026-11-15T11:08:00Z"
+    },
+    {
+      "id": 132790977793,
+      "name": "cloud clean-room image",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/cr330326/Agent-Learning-Hub/actions/runs/43707283649/job/132790977793",
+      "details_url": "https://github.com/cr330326/Agent-Learning-Hub/actions/runs/43707283649/job/132790977793",
+      "started_at": "2026-11-15T11:06:21Z",
+      "completed_at": "2026-11-15T11:08:23Z"
+    }
+  ],
+  "changedFiles": 6,
+  "merged": false,
+  "released": false,
+  "scopeConfirmed": true,
+  "testedPullRequestMergeSha": "f9476045433a5954790412d4adb3ff70ed27dcfd",
+  "cloudUnitTests": 177,
+  "localUnitTests": 177,
+  "toolTestsPerMode": 11,
+  "cloudE2EChecks": 33,
+  "localE2EPassed": true,
+  "productionAuditVulnerabilities": 0,
+  "fullInstallTreeAlerts": {
+    "total": 10,
+    "moderate": 9,
+    "high": 1
+  }
+}

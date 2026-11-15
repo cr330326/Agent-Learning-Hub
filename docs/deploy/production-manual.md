@@ -465,6 +465,19 @@ sudo docker system df
 
 ### 12.2 创建原生一致性加密备份
 
+当前资讯版本使用部署镜像内的双库工具，自动识别运行实例的学习状态卷和资讯卷；两库短暂取得写锁后分别调用在线备份 API，不复制数据库文件，也不更改业务记录。无需在服务器下载构建依赖。
+
+```bash
+sudo env COMPOSE_PROJECT_NAME=agent-learning-hub-production \
+  BACKUP_ENV_FILE=/etc/agent-learning-hub/backup.env \
+  BACKUP_HOST_PATH=/var/backups/agent-learning-hub \
+  /opt/agent-learning-hub/current/code/scripts/cloud-maintenance.sh backup
+```
+
+输出按 UUID 批次组织，包含 `batch.json`、两份密文及各自 manifest；按完整批次保留 7 daily/3 weekly，并额外保留最近已验证批次，避免新备份清掉恢复证据。后台校验整对备份，单库备份不能满足资讯版本的健康检查。两份密文和批次元数据必须一起复制出服务器。
+
+以下原 Node 维护容器流程仅保留给资讯扩展前的单库版本；当前双库使用上述入口。
+
 生产应用可以保持运行。维护容器从 SQLite 只读连接调用 backup API，生成 AES-256-GCM 文件和 SHA-256 manifest；不要用 `cp` 复制运行中的主数据库。
 
 ```bash
@@ -548,6 +561,19 @@ sudo env COMPOSE_PROJECT_NAME="$ALH_PROJECT" \
 健康检查失败、未知 schema 兼容性或用户状态异常时，不要反复重启旧镜像，转入数据库恢复。
 
 ### 14.2 在新卷执行恢复演练
+
+当前资讯版本使用双库演练入口，读取实际部署镜像与命名卷，在临时目录生成并恢复共同批次；保留两个库全部业务表的行数对照，检查跨库引用、租约、付费回执与清理规则，运行错误口令、密文篡改、已有目标三组反向对照。源库不修改业务数据，写锁用于共同备份边界。
+
+```bash
+sudo env COMPOSE_PROJECT_NAME=agent-learning-hub-production \
+  BACKUP_ENV_FILE=/etc/agent-learning-hub/backup.env \
+  BACKUP_HOST_PATH=/var/backups/agent-learning-hub \
+  /opt/agent-learning-hub/current/code/scripts/cloud-maintenance.sh drill
+```
+
+证据位于备份根目录的 `restore-drill/discovery-restore-drill.json` 与 `.md`，记录宿主机、维护容器、应用/Node 版本和耗时；任一反向对照未按预期失败，命令非零退出。演练不切换生产卷。
+
+以下为旧单库版本的兼容演练流程。
 
 演练分两件事，别混在一起：
 
@@ -637,6 +663,8 @@ sudo docker stop agent-learning-hub-restore-drill
 
 ### 14.3 将已验证的新卷切入生产
 
+资讯版本必须同时准备两个恢复卷并核对共同批次。`db:restore:all` 将库对恢复到全新目录的 `data/` 中；向两个新命名卷安装时仍使用 SQLite 在线备份 API，不能把文件拷贝当作安装步骤。具体操作见[资讯库对恢复与切卷](#资讯库对恢复与切卷)。以下旧单库步骤只适用于资讯扩展前的版本。
+
 1. 再创建一份当前生产数据备份并完成异地复制。
 2. 停止写入：
 
@@ -687,7 +715,7 @@ sudo docker stop agent-learning-hub-restore-drill
 | 第 11 节 上线验收        | `verify`                 | 只覆盖内部健康 + 公网 HTTPS；**OAuth、多用户隔离、移动端仍需人工验收** |
 | 第 12.1 节 状态与日志    | `status` / `logs`        | 全自动                                                                 |
 | 第 12.2 节 加密备份      | `backup`                 | 全自动；**服务器外复制仍需手工**                                       |
-| 第 14.2 节 备份可恢复性  | `restore-drill`          | 全自动，含三组反向对照；只读挂载状态卷，不动运行中的发布               |
+| 第 14.2 节 备份可恢复性  | `restore-drill`          | 全自动，含三组反向对照；资讯版本验证库对，不切换运行中的发布           |
 | 第 13 节 版本升级        | `deploy`                 | 自动含升级前备份                                                       |
 | 第 14.1 节 回滚应用镜像  | `rollback`               | 需 `LIGHTHOUSE_ROLLBACK_CONFIRMED=1`                                   |
 | 第 14.2 节 切卷前的验证  | —                        | **完全手工**。启动候选卷、抽查数据                                     |
@@ -709,3 +737,76 @@ sudo docker stop agent-learning-hub-restore-drill
 - [docs/deploy/README.md](./README.md) — Phase 7 入口、三条路径的选择与脚本运行位置分类
 - [plan.md 第 13 节](../plans/plan.md#13-运行隐私备份与监控) — 运行、隐私、备份与监控的架构约定
 - [spec.md 第 15 节](../plans/spec.md#15-部署规格) — 部署规格与验收要求
+
+## 云端资讯 worker 接入
+
+Cloud Compose 同时运行网页与 worker，共享独立资讯卷和临时提取卷。网页与 worker 使用同一固定镜像，状态库与资讯库分别持久化。`npm run build` 会生成网页及 `.next/discovery-worker.mjs`，worker 通过 `npm run worker` 启动。
+
+模型连接配置位于根目录 `.env.example` 的 `DISCOVERY_MODEL_*` 与计价字段。输入、输出价格按每百万 token 的原币价格配置，预算使用人民币微元核算，美元计价需要填写人民币汇率。价格缺失时摘要任务显示待配置并保留队列。输出限额字段 `DISCOVERY_MODEL_TOKEN_LIMIT_FIELD` 默认 `max_tokens`（DeepSeek 使用此字段）；仅在供应商明确要求时改为 `max_completion_tokens`。请求与预算预留共用 2048 token 输出上限，非法字段值不发起付费调用。
+
+飞书来源在网站的“资讯管理”中配置 Base、子表、可选视图及字段映射。Compose 将 `FEISHU_ACCESS_TOKEN`、`FEISHU_APP_ID` 与 `FEISHU_APP_SECRET` 传给 worker，使用应用身份时会请求租户令牌。每个表需实际验证 API 权限与字段 ID。网页试抓使用相同的服务端凭据引用。
+
+部署后分别检查网页健康和 worker 心跳，核对来源上游更新时间、同步时间、分页覆盖及失败任务。两库一致性备份和 GitHub App 收录流程的验收状态以 tasks.md 的 T9.7～T9.9 为准。
+
+### 资讯配置与仓库私钥
+
+`lighthouse-deploy.sh configure` 保留飞书、模型、计价与 GitHub App 配置。`GITHUB_APP_PRIVATE_KEY_FILE` 是本机绝对路径，文件权限须为 `0600`；脚本单独上传到服务器配置目录并重写服务器文件路径，发布、状态和回滚时自动添加私钥只读挂载。配置上传不输出秘密值。自定义来源凭据须另行通过 Compose 注入实际服务进程，只写进本机 `.env` 不会自动暴露给容器。
+
+### 两库共同批次备份与恢复
+
+云端资讯启用后，维护环境设置学习状态库与资讯库路径，执行 `npm run db:backup:all --prefix code -- --output-dir <备份目录>`。该命令同时取得两库写锁，再分别通过在线备份 API 生成加密快照。批次目录中的 `batch.json` 记录应用版本、两个 schema 版本与加密文件名。
+
+恢复使用 `npm run db:restore:all --prefix code -- --batch <批次目录>/batch.json --target-dir <全新目录> --yes`。口令经 `BACKUP_PASSPHRASE` 提供。恢复后的两个库位于目标目录的 `data/`，运行账户与资讯关联检查，清理临时提取引用和失效 worker 心跳，重置运行中任务租约，已发送且结果未知的付费回执保留核对状态。恢复目标已存在时拒绝覆盖。
+
+正式镜像提供构建后的维护入口 `node .next/discovery-backup.mjs backup|restore|drill`，参数与上述命令一致。两库与维护容器共享同一主机命名卷。恢复完成后将两个路径指向新卷并核对版本和健康，异地备份与真实恢复演练按任务清单逐项保留证据。
+
+### 仓库 GitHub App 私钥挂载
+
+配置 `GITHUB_APP_ID`、`GITHUB_APP_INSTALLATION_ID`、`GITHUB_REPOSITORY` 与 `GITHUB_BASE_BRANCH`。将受控私钥路径写入 `GITHUB_APP_PRIVATE_KEY_FILE`，通过 `COMPOSE_EXTRA_FILES=code/docker/docker-compose.github-app.yml` 添加只读私钥挂载，容器内路径为 `/run/secrets/github-app.pem`。已有生产附加 Compose 文件时以冒号连接该路径。后台用户通过 GitHub OAuth 登录，仓库操作由这个独立 App 身份执行。
+
+### 资讯库对恢复与切卷
+
+先确认备份批次、兼容的固定镜像、目标域名及两个新卷名。在正式切换窗口停止 app 和 worker，保留旧卷；下列命令只准备新卷，不替换运行中的数据。
+
+```bash
+export ALH_RECOVERY_IMAGE='<兼容备份的固定版本或 digest>'
+export ALH_BATCH_ID='<已核验的 UUID 批次>'
+export ALH_RESTORE_PREFIX="alh-recovery-$(date -u +%Y%m%dT%H%M%SZ)"
+export ALH_PAIR_VOLUME="$ALH_RESTORE_PREFIX-pair"
+export ALH_STATE_VOLUME="$ALH_RESTORE_PREFIX-state"
+export ALH_DISCOVERY_VOLUME="$ALH_RESTORE_PREFIX-discovery"
+sudo docker volume create "$ALH_PAIR_VOLUME"
+sudo docker volume create "$ALH_STATE_VOLUME"
+sudo docker volume create "$ALH_DISCOVERY_VOLUME"
+
+sudo docker run --rm --network none \
+  --mount type=bind,src=/var/backups/agent-learning-hub,dst=/secure/backups,readonly \
+  --mount "type=volume,src=$ALH_PAIR_VOLUME,dst=/recovery" \
+  --env-file /etc/agent-learning-hub/backup.env \
+  "$ALH_RECOVERY_IMAGE" node .next/discovery-backup.mjs restore \
+  --batch "/secure/backups/$ALH_BATCH_ID/batch.json" \
+  --target-dir /recovery/pair --yes
+
+sudo docker run --rm --network none \
+  --mount "type=volume,src=$ALH_PAIR_VOLUME,dst=/recovery" \
+  --mount "type=volume,src=$ALH_STATE_VOLUME,dst=/destination/state" \
+  --mount "type=volume,src=$ALH_DISCOVERY_VOLUME,dst=/destination/discovery" \
+  "$ALH_RECOVERY_IMAGE" node --input-type=module -e '
+    import Database from "better-sqlite3";
+    import { readdir } from "node:fs/promises";
+    process.umask(0o077);
+    for (const dir of ["state", "discovery"]) {
+      if ((await readdir(`/destination/${dir}`)).length) throw new Error("Target volume is not empty");
+    }
+    for (const [dir, filename] of [["state", "learning-state.sqlite"], ["discovery", "discovery.sqlite"]]) {
+      const db = new Database(`/recovery/pair/data/${filename}`, {readonly:true,fileMustExist:true});
+      try { await db.backup(`/destination/${dir}/${filename}`); } finally { db.close(); }
+    }
+  '
+```
+
+恢复暂存卷可写挂载，让 SQLite 初始化自身 WAL/SHM；连接按只读方式读取恢复库，源加密备份仍只读挂载。
+
+用独立 Compose 项目和回环端口启动候选镜像，显式指定 `STATE_VOLUME_NAME` 与 `DISCOVERY_VOLUME_NAME` 为两个新卷；核对相同资讯 ID、个人状态、原文引用、队列与预算回执，并验证网页及 worker 健康。确认后再将生产配置的两个卷名一起切换，重新启动 app 和 worker；保留切换前两个旧卷及恢复批次供回退。迁移期间不能让两个站点同时接受业务写入。
+
+自动化脚本不执行这次人工切卷。`rollback` 会核对当前与上一发布的状态卷和资讯卷名，卷对不一致时拒绝自动回滚。私钥挂载、来源服务配置与临时卷生命周期另按前述配置核对；源备份以只读方式恢复时不会回写验证标记，正式演练命令会生成并验证可追踪的新批次。

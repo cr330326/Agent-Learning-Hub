@@ -1,0 +1,24 @@
+ Container alh-course-navigation-20261115-cloud-1 Stopping 
+ Container alh-course-navigation-20261115-local-1 Stopping 
+ Container alh-course-navigation-20261115-local-1 Stopped 
+ Container alh-course-navigation-20261115-local-1 Removing 
+ Container alh-course-navigation-20261115-cloud-1 Stopped 
+ Container alh-course-navigation-20261115-cloud-1 Removing 
+ Container alh-course-navigation-20261115-local-1 Removed 
+ Container alh-course-navigation-20261115-cloud-1 Removed 
+ Network alh-course-navigation-20261115_default Removing 
+ Network alh-course-navigation-20261115_default Removed 
+alh-course-navigation-20261115-r2_cloud-state
+alh-course-navigation-20261115-r2_discovery
+alh-course-navigation-20261115-r2_local-state
+alh-course-navigation-20261115_cloud-state
+alh-course-navigation-20261115_discovery
+alh-course-navigation-20261115_local-state
+Untagged: agent-learning-hub:course-navigation-20261115-r1
+Deleted: sha256:7e2f4a25163eda7beef8f735b695339567dcbe55b13651e76c5c9fb542038788
+Untagged: agent-learning-hub:course-navigation-builder-20261115-r1
+Deleted: sha256:39eeca21cb1749115e8d1653c630752051fb3311aeef423ba1997c9a005bb951
+Untagged: agent-learning-hub:course-navigation-builder-20261115-r2
+Deleted: sha256:ee24c35ba5edeef6190cd6759f10b8e535597e9876ae5681599c5206d9e1f528
+Untagged: agent-learning-hub:verification-20261115-r14
+Deleted: sha256:4b1f03a36a44c20d66c302faa30a21eddffeb5c25093ddb433a97086ab4637c7

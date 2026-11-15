@@ -1,0 +1,16 @@
+[
+  {
+    "viewport": "desktop",
+    "editorialSnapshot": true,
+    "subsequentCorrection": true,
+    "horizontalOverflow": false,
+    "errors": []
+  },
+  {
+    "viewport": "mobile",
+    "editorialSnapshot": true,
+    "subsequentCorrection": true,
+    "horizontalOverflow": false,
+    "errors": []
+  }
+]

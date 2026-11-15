@@ -1,0 +1,14 @@
+{
+  "generatedAt": "2026-11-15T05:40:58.011Z",
+  "status": 200,
+  "backup": {
+    "status": "ok",
+    "retainedBackups": 2,
+    "latestCreatedAt": "2026-11-15T05:40:57.696Z",
+    "latestRestoreVerifiedAt": "2026-11-15T05:40:57.058Z",
+    "latestByteSize": 450714,
+    "latestAgeHours": 0,
+    "reasons": []
+  },
+  "check": "new unverified backup retains the latest verified pair and health remains accurate"
+}

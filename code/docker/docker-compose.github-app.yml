@@ -1,0 +1,7 @@
+services:
+  app:
+    volumes:
+      - ${GITHUB_APP_PRIVATE_KEY_FILE:?GITHUB_APP_PRIVATE_KEY_FILE is required}:/run/secrets/github-app.pem:ro
+  worker:
+    volumes:
+      - ${GITHUB_APP_PRIVATE_KEY_FILE:?GITHUB_APP_PRIVATE_KEY_FILE is required}:/run/secrets/github-app.pem:ro

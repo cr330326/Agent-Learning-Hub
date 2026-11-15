@@ -9,7 +9,7 @@ Agent Learning Hub 将公开的 Agent 工程学习路线、经过策展的资料
 _Avoid_: Root-level app, second web app
 
 **Learning Hub**:
-由学习路线、策展资料和个人学习状态组成的完整学习环境。
+由每日资讯发现、学习路线、策展资料和个人学习状态组成的完整学习环境。
 _Avoid_: Link collection, resource dump
 
 **Learning Track**:
@@ -32,6 +32,14 @@ _Avoid_: Stage Outcome, completion checkbox
 被课程清单收录、可以纳入路线或搜索的一项学习资料。
 _Avoid_: File, repository, link
 
+**Course（课程）**:
+围绕一个学习主题组织的完整学习资料，包含由作者或维护者明确排列的课节，供学习者连续阅读。
+_Avoid_: Learning Stage, isolated chapter, repository dump
+
+**Course Chapter（课节）**:
+课程中的一个有序阅读单元；“上一节 / 下一节”表示同一课程阅读顺序中的相邻单元。
+_Avoid_: Learning Stage, Stage Task, next search result
+
 **Curated Content**:
 由维护者整理并作为本项目公开内容发布的路线、导览、文章和任务。
 _Avoid_: Local Material, upstream content
@@ -39,6 +47,22 @@ _Avoid_: Local Material, upstream content
 **Upstream Source**:
 第三方学习资料的权威原始发布位置。
 _Avoid_: Mirror, local copy
+
+**Collection Source（采集信源）**
+网站接收资讯的指定输入来源，具有可配置的自动发布或人工确认方式。采集信源可以汇集多个原始出处的内容。
+_Avoid_: Upstream Source, Learning Track
+
+**Discovery Item（资讯条目）**
+围绕一份原始内容组织的资讯，包含出处、摘要和发布状态，可关联多个采集信源，供阅读、收藏和推荐收录。
+_Avoid_: Learning Item, source record
+
+**Daily Edition（精选日报）**
+每天形成的一份固定资讯精选，面向集中阅读与按日期回看。
+_Avoid_: Rolling feed, Learning Stage
+
+**Curation Proposal（学习收录建议）**
+系统为具有长期学习价值的资讯提出的公共目录收录建议，包含推荐理由和适用阶段，由维护者审阅决定。
+_Avoid_: Bookmark, published Learning Item
 
 **Local Material**:
 保存在本机素材库中的第三方资料副本，可以在本地模式下阅读。
@@ -57,7 +81,7 @@ _Avoid_: Directory scan, local-courses tree
 _Avoid_: Raw path, source URL
 
 **Cloud Mode**:
-不依赖 Local Material Library、通过自有内容和 Upstream Source 提供学习体验的运行模式。
+不依赖 Local Material Library、通过资讯发现、自有内容和 Upstream Source 提供学习体验的运行模式。
 _Avoid_: Hosted local mode
 
 **Local Mode**:

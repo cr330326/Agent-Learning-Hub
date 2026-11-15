@@ -1,0 +1,60 @@
+
+ RUN  v4.1.10 /Users/vsh9p8q/AI/Agent-Learning-Hub/code
+
+ ❯ modules/catalog/course-navigation.test.ts (2 tests | 2 failed) 69ms
+     × keeps the old OpenCode lesson ID while routing into its complete ordered course 48ms
+     × uses the same readable declaration order for navigation, filtering unavailable files 21ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  modules/catalog/course-navigation.test.ts > curated course continuity > keeps the old OpenCode lesson ID while routing into its complete ordered course
+AssertionError: expected undefined to deeply equal { itemId: 'legacy-course-017', …(1) }
+
+- Expected:
+{
+  "chapter": "Learning/learn-opencode/docs/1-start/01-intro.md",
+  "itemId": "legacy-course-017",
+}
+
++ Received:
+undefined
+
+ ❯ modules/catalog/course-navigation.test.ts:16:26
+     14|     const api=await loadCatalogApi();
+     15|     const old=api.getItem("legacy-reading-14-003")!;
+     16|     expect(old.redirect).toEqual({itemId:"legacy-course-017",chapter:"…
+       |                          ^
+     17|     expect(itemRedirectHref(old,"read")).toContain("legacy-course-017"…
+     18|     expect(api.listItems().some(item=>item.id===old.id)).toBe(false);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  modules/catalog/course-navigation.test.ts > curated course continuity > uses the same readable declaration order for navigation, filtering unavailable files
+AssertionError: expected [] to deeply equal [ …(3) ]
+
+- Expected
++ Received
+
+- [
+-   "Learning/learn-opencode/docs/1-start/01-intro.md",
+-   "Learning/learn-opencode/docs/1-start/02-install.md",
+-   "Learning/learn-opencode/docs/1-start/03-network.md",
+- ]
++ []
+
+ ❯ modules/catalog/course-navigation.test.ts:35:93
+     33|     const expected=["Learning/learn-opencode/docs/1-start/01-intro.md"…
+     34|     for(const path of expected){await mkdir(dirname(join(localRoot,pat…
+     35|     expect((await listLocalChapters(owner,{localRoot})).map(chapter=>c…
+       |                                                                                             ^
+     36|   });
+     37| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed (2)
+   Start at  19:35:06
+   Duration  382ms (transform 59ms, setup 0ms, import 147ms, tests 69ms, environment 0ms)
+

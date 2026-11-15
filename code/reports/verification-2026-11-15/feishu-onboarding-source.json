@@ -1,0 +1,27 @@
+{
+  "id": "verification-onboarding",
+  "name": "验收映射：Skills GitHub",
+  "kind": "feishu",
+  "contentType": "tool",
+  "url": "https://my.feishu.cn/base/W5TBbp65Iac5tuschwpc1cZPngd?table=tbl4Iw14iu5lAZTF",
+  "enabled": false,
+  "publicationMode": "manual",
+  "intervalMinutes": 30,
+  "topics": [
+    "工具与 Skills"
+  ],
+  "mapping": {
+    "title": "fldWUudzAV",
+    "url": "fldl5rGMvG",
+    "author": "fldeq4lqif",
+    "summary": "fldH5tSdmI",
+    "sourceStatus": "fldLiyO3X1",
+    "metric.stars": "fldxszZM7x"
+  },
+  "appToken": "W5TBbp65Iac5tuschwpc1cZPngd",
+  "tableId": "tbl4Iw14iu5lAZTF",
+  "appIdEnv": "FEISHU_APP_ID",
+  "appSecretEnv": "FEISHU_APP_SECRET",
+  "listPath": "",
+  "linkPattern": ""
+}

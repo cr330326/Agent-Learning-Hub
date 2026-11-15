@@ -1,0 +1,1514 @@
+[
+  {
+    "name": "agent-learning-hub-local_learning-state",
+    "bytes": 4296160,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "bytes": 143360,
+        "counts": {
+          "accounts": 0,
+          "bookmarks": 0,
+          "item_progress": 0,
+          "notes": 0,
+          "operational_metrics": 26,
+          "schema_migrations": 2,
+          "sessions": 0,
+          "stage_outcomes": 0,
+          "stage_task_progress": 0,
+          "users": 0
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-cloud-real_discovery",
+    "bytes": 4316640,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "bytes": 163840,
+        "counts": {
+          "admin_actions": 0,
+          "discovery_migrations": 3,
+          "editions": 1,
+          "item_merges": 0,
+          "item_versions": 0,
+          "items": 0,
+          "jobs": 1,
+          "metric_observations": 0,
+          "model_receipts": 0,
+          "proposals": 0,
+          "settings": 3,
+          "source_records": 0,
+          "sources": 0,
+          "temporary_content": 0,
+          "worker_health": 1
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-cloud-real_discovery-temp",
+    "bytes": 0,
+    "fileCount": 0,
+    "databases": [],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-cloud-real_learning-state",
+    "bytes": 2990936,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "bytes": 4096,
+        "counts": {
+          "accounts": 1,
+          "bookmarks": 0,
+          "discovery_state": 0,
+          "item_progress": 1,
+          "notes": 0,
+          "operational_metrics": 22,
+          "schema_migrations": 3,
+          "sessions": 3,
+          "stage_outcomes": 0,
+          "stage_task_progress": 0,
+          "users": 1
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-curation-live-20261115",
+    "bytes": 167936,
+    "fileCount": 1,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "bytes": 167936,
+        "counts": {
+          "admin_actions": 4,
+          "discovery_migrations": 3,
+          "editions": 0,
+          "item_merges": 0,
+          "item_versions": 1,
+          "items": 1,
+          "jobs": 1,
+          "metric_observations": 0,
+          "model_receipts": 0,
+          "proposals": 1,
+          "settings": 3,
+          "source_records": 1,
+          "sources": 1,
+          "temporary_content": 0,
+          "worker_health": 0
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-model-quality-20261115",
+    "bytes": 192512,
+    "fileCount": 1,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "bytes": 192512,
+        "counts": {
+          "admin_actions": 14,
+          "discovery_migrations": 3,
+          "editions": 0,
+          "item_merges": 0,
+          "item_versions": 6,
+          "items": 6,
+          "jobs": 10,
+          "metric_observations": 0,
+          "model_receipts": 7,
+          "proposals": 0,
+          "settings": 3,
+          "source_records": 6,
+          "sources": 6,
+          "temporary_content": 3,
+          "worker_health": 0
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-model-quality-20261115-v2",
+    "bytes": 208896,
+    "fileCount": 1,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "bytes": 208896,
+        "counts": {
+          "admin_actions": 14,
+          "discovery_migrations": 3,
+          "editions": 0,
+          "item_merges": 0,
+          "item_versions": 6,
+          "items": 6,
+          "jobs": 12,
+          "metric_observations": 0,
+          "model_receipts": 6,
+          "proposals": 0,
+          "settings": 3,
+          "source_records": 6,
+          "sources": 6,
+          "temporary_content": 3,
+          "worker_health": 0
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-phase9-cloud_discovery",
+    "bytes": 4525848,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "bytes": 319488,
+        "counts": {
+          "admin_actions": 104,
+          "discovery_migrations": 3,
+          "editions": 1,
+          "item_merges": 0,
+          "item_versions": 72,
+          "items": 71,
+          "jobs": 68,
+          "metric_observations": 0,
+          "model_receipts": 0,
+          "proposals": 0,
+          "settings": 3,
+          "source_records": 71,
+          "sources": 10,
+          "temporary_content": 16,
+          "worker_health": 8
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-phase9-cloud_discovery-temp",
+    "bytes": 158088,
+    "fileCount": 16,
+    "databases": [],
+    "otherFileExtensions": [
+      "txt"
+    ]
+  },
+  {
+    "name": "alh-phase9-cloud_learning-state",
+    "bytes": 3451512,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "bytes": 151552,
+        "counts": {
+          "accounts": 0,
+          "bookmarks": 0,
+          "discovery_state": 0,
+          "item_progress": 0,
+          "notes": 0,
+          "operational_metrics": 43,
+          "schema_migrations": 3,
+          "sessions": 0,
+          "stage_outcomes": 0,
+          "stage_task_progress": 0,
+          "users": 0
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-phase9-local_learning-state",
+    "bytes": 4304352,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "bytes": 151552,
+        "counts": {
+          "accounts": 0,
+          "bookmarks": 0,
+          "discovery_state": 0,
+          "item_progress": 0,
+          "notes": 0,
+          "operational_metrics": 35,
+          "schema_migrations": 3,
+          "sessions": 0,
+          "stage_outcomes": 0,
+          "stage_task_progress": 0,
+          "users": 1
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-phase9-recovery-1794721146-discovery",
+    "bytes": 0,
+    "fileCount": 0,
+    "databases": [],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-phase9-recovery-1794721146-pair",
+    "bytes": 517160,
+    "fileCount": 7,
+    "databases": [
+      {
+        "path": "pair/data/discovery.sqlite",
+        "bytes": 299008,
+        "counts": {
+          "admin_actions": 98,
+          "discovery_migrations": 3,
+          "editions": 1,
+          "item_merges": 0,
+          "item_versions": 71,
+          "items": 70,
+          "jobs": 57,
+          "metric_observations": 0,
+          "model_receipts": 0,
+          "proposals": 0,
+          "settings": 3,
+          "source_records": 70,
+          "sources": 9,
+          "temporary_content": 0,
+          "worker_health": 0
+        },
+        "quickCheck": "ok"
+      },
+      {
+        "path": "pair/data/learning-state.sqlite",
+        "bytes": 151552,
+        "counts": {
+          "accounts": 1,
+          "bookmarks": 0,
+          "discovery_state": 1,
+          "item_progress": 0,
+          "notes": 0,
+          "operational_metrics": 30,
+          "schema_migrations": 3,
+          "sessions": 1,
+          "stage_outcomes": 0,
+          "stage_task_progress": 0,
+          "users": 1
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": [
+      "restore-8d5996f6daa5-shm",
+      "restore-8d5996f6daa5-wal",
+      "restore-225a71e7678d-shm",
+      "restore-225a71e7678d-wal",
+      "json"
+    ]
+  },
+  {
+    "name": "alh-phase9-recovery-1794721146-state",
+    "bytes": 0,
+    "fileCount": 0,
+    "databases": [],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-phase9-recovery-1794721201-discovery",
+    "bytes": 830328,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "bytes": 299008,
+        "counts": {
+          "admin_actions": 98,
+          "discovery_migrations": 3,
+          "editions": 1,
+          "item_merges": 0,
+          "item_versions": 71,
+          "items": 70,
+          "jobs": 57,
+          "metric_observations": 0,
+          "model_receipts": 0,
+          "proposals": 0,
+          "settings": 3,
+          "source_records": 70,
+          "sources": 9,
+          "temporary_content": 0,
+          "worker_health": 1
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-phase9-recovery-1794721201-pair",
+    "bytes": 582696,
+    "fileCount": 11,
+    "databases": [
+      {
+        "path": "pair/data/discovery.sqlite",
+        "bytes": 299008,
+        "counts": {
+          "admin_actions": 98,
+          "discovery_migrations": 3,
+          "editions": 1,
+          "item_merges": 0,
+          "item_versions": 71,
+          "items": 70,
+          "jobs": 57,
+          "metric_observations": 0,
+          "model_receipts": 0,
+          "proposals": 0,
+          "settings": 3,
+          "source_records": 70,
+          "sources": 9,
+          "temporary_content": 0,
+          "worker_health": 0
+        },
+        "quickCheck": "ok"
+      },
+      {
+        "path": "pair/data/learning-state.sqlite",
+        "bytes": 151552,
+        "counts": {
+          "accounts": 1,
+          "bookmarks": 0,
+          "discovery_state": 1,
+          "item_progress": 0,
+          "notes": 0,
+          "operational_metrics": 30,
+          "schema_migrations": 3,
+          "sessions": 1,
+          "stage_outcomes": 0,
+          "stage_task_progress": 0,
+          "users": 1
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": [
+      "restore-a7f1e3b1520d-shm",
+      "restore-a7f1e3b1520d-wal",
+      "restore-c7dfb9a5a2f8-shm",
+      "restore-c7dfb9a5a2f8-wal",
+      "json"
+    ]
+  },
+  {
+    "name": "alh-phase9-recovery-1794721201-state",
+    "bytes": 204952,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "bytes": 151552,
+        "counts": {
+          "accounts": 1,
+          "bookmarks": 0,
+          "discovery_state": 1,
+          "item_progress": 0,
+          "notes": 0,
+          "operational_metrics": 30,
+          "schema_migrations": 3,
+          "sessions": 1,
+          "stage_outcomes": 0,
+          "stage_task_progress": 0,
+          "users": 1
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-phase9-recovery-1794721322-discovery",
+    "bytes": 4464144,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "bytes": 303104,
+        "counts": {
+          "admin_actions": 98,
+          "discovery_migrations": 3,
+          "editions": 1,
+          "item_merges": 0,
+          "item_versions": 71,
+          "items": 70,
+          "jobs": 67,
+          "metric_observations": 0,
+          "model_receipts": 0,
+          "proposals": 0,
+          "settings": 3,
+          "source_records": 70,
+          "sources": 9,
+          "temporary_content": 16,
+          "worker_health": 1
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-phase9-recovery-1794721322-pair",
+    "bytes": 582696,
+    "fileCount": 11,
+    "databases": [
+      {
+        "path": "pair/data/discovery.sqlite",
+        "bytes": 299008,
+        "counts": {
+          "admin_actions": 98,
+          "discovery_migrations": 3,
+          "editions": 1,
+          "item_merges": 0,
+          "item_versions": 71,
+          "items": 70,
+          "jobs": 57,
+          "metric_observations": 0,
+          "model_receipts": 0,
+          "proposals": 0,
+          "settings": 3,
+          "source_records": 70,
+          "sources": 9,
+          "temporary_content": 0,
+          "worker_health": 0
+        },
+        "quickCheck": "ok"
+      },
+      {
+        "path": "pair/data/learning-state.sqlite",
+        "bytes": 151552,
+        "counts": {
+          "accounts": 1,
+          "bookmarks": 0,
+          "discovery_state": 1,
+          "item_progress": 0,
+          "notes": 0,
+          "operational_metrics": 30,
+          "schema_migrations": 3,
+          "sessions": 1,
+          "stage_outcomes": 0,
+          "stage_task_progress": 0,
+          "users": 1
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": [
+      "restore-11a87e452263-shm",
+      "restore-11a87e452263-wal",
+      "restore-1bd45fe37f83-shm",
+      "restore-1bd45fe37f83-wal",
+      "json"
+    ]
+  },
+  {
+    "name": "alh-phase9-recovery-1794721322-state",
+    "bytes": 3006552,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "bytes": 151552,
+        "counts": {
+          "accounts": 1,
+          "bookmarks": 0,
+          "discovery_state": 1,
+          "item_progress": 0,
+          "notes": 0,
+          "operational_metrics": 36,
+          "schema_migrations": 3,
+          "sessions": 1,
+          "stage_outcomes": 0,
+          "stage_task_progress": 0,
+          "users": 1
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-phase9-recovery_discovery-temp",
+    "bytes": 158088,
+    "fileCount": 16,
+    "databases": [],
+    "otherFileExtensions": [
+      "txt"
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_cloud-e2e-r6-state",
+    "bytes": 556016,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "bytes": 4096,
+        "counts": {
+          "accounts": 0,
+          "bookmarks": 0,
+          "discovery_state": 0,
+          "item_progress": 0,
+          "notes": 0,
+          "operational_metrics": 3,
+          "schema_migrations": 3,
+          "sessions": 0,
+          "stage_outcomes": 0,
+          "stage_task_progress": 0,
+          "users": 0
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_cloud-e2e-r7-state",
+    "bytes": 584856,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "bytes": 4096,
+        "counts": {
+          "accounts": 0,
+          "bookmarks": 0,
+          "discovery_state": 0,
+          "item_progress": 0,
+          "notes": 0,
+          "operational_metrics": 3,
+          "schema_migrations": 3,
+          "sessions": 0,
+          "stage_outcomes": 0,
+          "stage_task_progress": 0,
+          "users": 0
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_cloud-e2e-r8-state",
+    "bytes": 560136,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "bytes": 4096,
+        "counts": {
+          "accounts": 0,
+          "bookmarks": 0,
+          "discovery_state": 0,
+          "item_progress": 0,
+          "notes": 0,
+          "operational_metrics": 3,
+          "schema_migrations": 3,
+          "sessions": 0,
+          "stage_outcomes": 0,
+          "stage_task_progress": 0,
+          "users": 0
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_cloud-e2e-r9-state",
+    "bytes": 560136,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "bytes": 4096,
+        "counts": {
+          "accounts": 0,
+          "bookmarks": 0,
+          "discovery_state": 0,
+          "item_progress": 0,
+          "notes": 0,
+          "operational_metrics": 3,
+          "schema_migrations": 3,
+          "sessions": 0,
+          "stage_outcomes": 0,
+          "stage_task_progress": 0,
+          "users": 0
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_cloud-e2e-r10-state",
+    "bytes": 700216,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "bytes": 4096,
+        "counts": {
+          "accounts": 0,
+          "bookmarks": 0,
+          "discovery_state": 0,
+          "item_progress": 0,
+          "notes": 0,
+          "operational_metrics": 3,
+          "schema_migrations": 3,
+          "sessions": 0,
+          "stage_outcomes": 0,
+          "stage_task_progress": 0,
+          "users": 0
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_cloud-e2e-r12-state",
+    "bytes": 737296,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "bytes": 4096,
+        "counts": {
+          "accounts": 0,
+          "bookmarks": 0,
+          "discovery_state": 0,
+          "item_progress": 0,
+          "notes": 0,
+          "operational_metrics": 3,
+          "schema_migrations": 3,
+          "sessions": 0,
+          "stage_outcomes": 0,
+          "stage_task_progress": 0,
+          "users": 0
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_cloud-e2e-r13-state",
+    "bytes": 535416,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "bytes": 4096,
+        "counts": {
+          "accounts": 0,
+          "bookmarks": 0,
+          "discovery_state": 0,
+          "item_progress": 0,
+          "notes": 0,
+          "operational_metrics": 3,
+          "schema_migrations": 3,
+          "sessions": 0,
+          "stage_outcomes": 0,
+          "stage_task_progress": 0,
+          "users": 0
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_cloud-e2e-r14-state",
+    "bytes": 543656,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "bytes": 4096,
+        "counts": {
+          "accounts": 0,
+          "bookmarks": 0,
+          "discovery_state": 0,
+          "item_progress": 0,
+          "notes": 0,
+          "operational_metrics": 3,
+          "schema_migrations": 3,
+          "sessions": 0,
+          "stage_outcomes": 0,
+          "stage_task_progress": 0,
+          "users": 0
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_cloud-e2e-state",
+    "bytes": 572496,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "bytes": 4096,
+        "counts": {
+          "accounts": 0,
+          "bookmarks": 0,
+          "discovery_state": 0,
+          "item_progress": 0,
+          "notes": 0,
+          "operational_metrics": 3,
+          "schema_migrations": 3,
+          "sessions": 0,
+          "stage_outcomes": 0,
+          "stage_task_progress": 0,
+          "users": 0
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_cloud-state",
+    "bytes": 4304352,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "bytes": 151552,
+        "counts": {
+          "accounts": 1,
+          "bookmarks": 0,
+          "discovery_state": 1,
+          "item_progress": 0,
+          "notes": 0,
+          "operational_metrics": 27,
+          "schema_migrations": 3,
+          "sessions": 2,
+          "stage_outcomes": 0,
+          "stage_task_progress": 0,
+          "users": 1
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_cloud-state-r10",
+    "bytes": 4197232,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "bytes": 151552,
+        "counts": {
+          "accounts": 1,
+          "bookmarks": 0,
+          "discovery_state": 2,
+          "item_progress": 0,
+          "notes": 0,
+          "operational_metrics": 32,
+          "schema_migrations": 3,
+          "sessions": 4,
+          "stage_outcomes": 0,
+          "stage_task_progress": 0,
+          "users": 1
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_discovery",
+    "bytes": 4386272,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "bytes": 233472,
+        "counts": {
+          "admin_actions": 68,
+          "discovery_migrations": 3,
+          "editions": 1,
+          "item_merges": 0,
+          "item_versions": 28,
+          "items": 28,
+          "jobs": 29,
+          "metric_observations": 0,
+          "model_receipts": 0,
+          "proposals": 0,
+          "settings": 3,
+          "source_records": 28,
+          "sources": 3,
+          "temporary_content": 0,
+          "worker_health": 7
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_discovery-e2e",
+    "bytes": 325296,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "bytes": 4096,
+        "counts": {
+          "admin_actions": 6,
+          "discovery_migrations": 3,
+          "editions": 0,
+          "item_merges": 0,
+          "item_versions": 1,
+          "items": 1,
+          "jobs": 1,
+          "metric_observations": 0,
+          "model_receipts": 0,
+          "proposals": 0,
+          "settings": 3,
+          "source_records": 1,
+          "sources": 1,
+          "temporary_content": 0,
+          "worker_health": 0
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_discovery-e2e-r6",
+    "bytes": 325296,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "bytes": 4096,
+        "counts": {
+          "admin_actions": 6,
+          "discovery_migrations": 3,
+          "editions": 0,
+          "item_merges": 0,
+          "item_versions": 1,
+          "items": 1,
+          "jobs": 1,
+          "metric_observations": 0,
+          "model_receipts": 0,
+          "proposals": 0,
+          "settings": 3,
+          "source_records": 1,
+          "sources": 1,
+          "temporary_content": 0,
+          "worker_health": 0
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_discovery-e2e-r7",
+    "bytes": 325296,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "bytes": 4096,
+        "counts": {
+          "admin_actions": 6,
+          "discovery_migrations": 3,
+          "editions": 0,
+          "item_merges": 0,
+          "item_versions": 1,
+          "items": 1,
+          "jobs": 1,
+          "metric_observations": 0,
+          "model_receipts": 0,
+          "proposals": 0,
+          "settings": 3,
+          "source_records": 1,
+          "sources": 1,
+          "temporary_content": 0,
+          "worker_health": 0
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_discovery-e2e-r8",
+    "bytes": 325296,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "bytes": 4096,
+        "counts": {
+          "admin_actions": 6,
+          "discovery_migrations": 3,
+          "editions": 0,
+          "item_merges": 0,
+          "item_versions": 1,
+          "items": 1,
+          "jobs": 1,
+          "metric_observations": 0,
+          "model_receipts": 0,
+          "proposals": 0,
+          "settings": 3,
+          "source_records": 1,
+          "sources": 1,
+          "temporary_content": 0,
+          "worker_health": 0
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_discovery-e2e-r9",
+    "bytes": 325296,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "bytes": 4096,
+        "counts": {
+          "admin_actions": 6,
+          "discovery_migrations": 3,
+          "editions": 0,
+          "item_merges": 0,
+          "item_versions": 1,
+          "items": 1,
+          "jobs": 1,
+          "metric_observations": 0,
+          "model_receipts": 0,
+          "proposals": 0,
+          "settings": 3,
+          "source_records": 1,
+          "sources": 1,
+          "temporary_content": 0,
+          "worker_health": 0
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_discovery-e2e-r10",
+    "bytes": 325296,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "bytes": 4096,
+        "counts": {
+          "admin_actions": 6,
+          "discovery_migrations": 3,
+          "editions": 0,
+          "item_merges": 0,
+          "item_versions": 1,
+          "items": 1,
+          "jobs": 1,
+          "metric_observations": 0,
+          "model_receipts": 0,
+          "proposals": 0,
+          "settings": 3,
+          "source_records": 1,
+          "sources": 1,
+          "temporary_content": 0,
+          "worker_health": 0
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_discovery-e2e-r12",
+    "bytes": 325296,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "bytes": 4096,
+        "counts": {
+          "admin_actions": 6,
+          "discovery_migrations": 3,
+          "editions": 0,
+          "item_merges": 0,
+          "item_versions": 1,
+          "items": 1,
+          "jobs": 1,
+          "metric_observations": 0,
+          "model_receipts": 0,
+          "proposals": 0,
+          "settings": 3,
+          "source_records": 1,
+          "sources": 1,
+          "temporary_content": 0,
+          "worker_health": 0
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_discovery-e2e-r13",
+    "bytes": 325296,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "bytes": 4096,
+        "counts": {
+          "admin_actions": 6,
+          "discovery_migrations": 3,
+          "editions": 0,
+          "item_merges": 0,
+          "item_versions": 1,
+          "items": 1,
+          "jobs": 1,
+          "metric_observations": 0,
+          "model_receipts": 0,
+          "proposals": 0,
+          "settings": 3,
+          "source_records": 1,
+          "sources": 1,
+          "temporary_content": 0,
+          "worker_health": 0
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_discovery-e2e-r14",
+    "bytes": 325296,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "bytes": 4096,
+        "counts": {
+          "admin_actions": 6,
+          "discovery_migrations": 3,
+          "editions": 0,
+          "item_merges": 0,
+          "item_versions": 1,
+          "items": 1,
+          "jobs": 1,
+          "metric_observations": 0,
+          "model_receipts": 0,
+          "proposals": 0,
+          "settings": 3,
+          "source_records": 1,
+          "sources": 1,
+          "temporary_content": 0,
+          "worker_health": 0
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_discovery-r10",
+    "bytes": 4431328,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "bytes": 278528,
+        "counts": {
+          "admin_actions": 64,
+          "discovery_migrations": 3,
+          "editions": 2,
+          "item_merges": 0,
+          "item_versions": 35,
+          "items": 35,
+          "jobs": 36,
+          "metric_observations": 0,
+          "model_receipts": 0,
+          "proposals": 0,
+          "settings": 3,
+          "source_records": 35,
+          "sources": 10,
+          "temporary_content": 0,
+          "worker_health": 5
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_feishu",
+    "bytes": 21204992,
+    "fileCount": 1,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "bytes": 21204992,
+        "counts": {
+          "admin_actions": 19,
+          "discovery_migrations": 3,
+          "editions": 0,
+          "item_merges": 0,
+          "item_versions": 11416,
+          "items": 10816,
+          "jobs": 2667,
+          "metric_observations": 13187,
+          "model_receipts": 0,
+          "proposals": 0,
+          "settings": 3,
+          "source_records": 11419,
+          "sources": 9,
+          "temporary_content": 0,
+          "worker_health": 0
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_local-e2e-r6-state",
+    "bytes": 436536,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "bytes": 4096,
+        "counts": {
+          "accounts": 0,
+          "bookmarks": 0,
+          "discovery_state": 0,
+          "item_progress": 0,
+          "notes": 0,
+          "operational_metrics": 2,
+          "schema_migrations": 3,
+          "sessions": 0,
+          "stage_outcomes": 0,
+          "stage_task_progress": 0,
+          "users": 1
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_local-e2e-r7-state",
+    "bytes": 465376,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "bytes": 4096,
+        "counts": {
+          "accounts": 0,
+          "bookmarks": 0,
+          "discovery_state": 0,
+          "item_progress": 0,
+          "notes": 0,
+          "operational_metrics": 2,
+          "schema_migrations": 3,
+          "sessions": 0,
+          "stage_outcomes": 0,
+          "stage_task_progress": 0,
+          "users": 1
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_local-e2e-r8-state",
+    "bytes": 440656,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "bytes": 4096,
+        "counts": {
+          "accounts": 0,
+          "bookmarks": 0,
+          "discovery_state": 0,
+          "item_progress": 0,
+          "notes": 0,
+          "operational_metrics": 2,
+          "schema_migrations": 3,
+          "sessions": 0,
+          "stage_outcomes": 0,
+          "stage_task_progress": 0,
+          "users": 1
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_local-e2e-r9-state",
+    "bytes": 440656,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "bytes": 4096,
+        "counts": {
+          "accounts": 0,
+          "bookmarks": 0,
+          "discovery_state": 0,
+          "item_progress": 0,
+          "notes": 0,
+          "operational_metrics": 2,
+          "schema_migrations": 3,
+          "sessions": 0,
+          "stage_outcomes": 0,
+          "stage_task_progress": 0,
+          "users": 1
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_local-e2e-r10-state",
+    "bytes": 576616,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "bytes": 4096,
+        "counts": {
+          "accounts": 0,
+          "bookmarks": 0,
+          "discovery_state": 0,
+          "item_progress": 0,
+          "notes": 0,
+          "operational_metrics": 2,
+          "schema_migrations": 3,
+          "sessions": 0,
+          "stage_outcomes": 0,
+          "stage_task_progress": 0,
+          "users": 1
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_local-e2e-r12-state",
+    "bytes": 617816,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "bytes": 4096,
+        "counts": {
+          "accounts": 0,
+          "bookmarks": 0,
+          "discovery_state": 0,
+          "item_progress": 0,
+          "notes": 0,
+          "operational_metrics": 2,
+          "schema_migrations": 3,
+          "sessions": 0,
+          "stage_outcomes": 0,
+          "stage_task_progress": 0,
+          "users": 1
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_local-e2e-r13-state",
+    "bytes": 415936,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "bytes": 4096,
+        "counts": {
+          "accounts": 0,
+          "bookmarks": 0,
+          "discovery_state": 0,
+          "item_progress": 0,
+          "notes": 0,
+          "operational_metrics": 2,
+          "schema_migrations": 3,
+          "sessions": 0,
+          "stage_outcomes": 0,
+          "stage_task_progress": 0,
+          "users": 1
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_local-e2e-r14-state",
+    "bytes": 424176,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "bytes": 4096,
+        "counts": {
+          "accounts": 0,
+          "bookmarks": 0,
+          "discovery_state": 0,
+          "item_progress": 0,
+          "notes": 0,
+          "operational_metrics": 2,
+          "schema_migrations": 3,
+          "sessions": 0,
+          "stage_outcomes": 0,
+          "stage_task_progress": 0,
+          "users": 1
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_local-e2e-state",
+    "bytes": 453016,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "bytes": 4096,
+        "counts": {
+          "accounts": 0,
+          "bookmarks": 0,
+          "discovery_state": 0,
+          "item_progress": 0,
+          "notes": 0,
+          "operational_metrics": 2,
+          "schema_migrations": 3,
+          "sessions": 0,
+          "stage_outcomes": 0,
+          "stage_task_progress": 0,
+          "users": 1
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_local-state",
+    "bytes": 4304352,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "bytes": 151552,
+        "counts": {
+          "accounts": 0,
+          "bookmarks": 0,
+          "discovery_state": 0,
+          "item_progress": 7,
+          "notes": 0,
+          "operational_metrics": 17,
+          "schema_migrations": 3,
+          "sessions": 0,
+          "stage_outcomes": 0,
+          "stage_task_progress": 1,
+          "users": 1
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_local-state-r10",
+    "bytes": 4304352,
+    "fileCount": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "bytes": 151552,
+        "counts": {
+          "accounts": 0,
+          "bookmarks": 0,
+          "discovery_state": 0,
+          "item_progress": 2,
+          "notes": 0,
+          "operational_metrics": 30,
+          "schema_migrations": 3,
+          "sessions": 0,
+          "stage_outcomes": 0,
+          "stage_task_progress": 1,
+          "users": 1
+        },
+        "quickCheck": "ok"
+      }
+    ],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_temp",
+    "bytes": 0,
+    "fileCount": 0,
+    "databases": [],
+    "otherFileExtensions": []
+  },
+  {
+    "name": "alh-verification-20261115_temp-r10",
+    "bytes": 0,
+    "fileCount": 0,
+    "databases": [],
+    "otherFileExtensions": []
+  }
+]

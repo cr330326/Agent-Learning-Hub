@@ -3,6 +3,7 @@ import { notFound, redirect } from "next/navigation";
 
 import { itemRedirectHref } from "../../../modules/catalog/item-redirect";
 import { authorLabel, licenseLabel } from "../../components/content-card";
+import { CourseChapterNavigation } from "../../components/course-chapter-navigation";
 import { LearningStateControls } from "../../components/learning-state-controls";
 import {
   getContentResolver,
@@ -13,6 +14,7 @@ import {
   readLocalDocument,
   listLocalChapters,
   resolveDocumentRelativePath,
+  resolveDeclaredDocumentPath,
   LocalChapterNotAllowlistedError,
   readOwnedDocument,
   readLocalDocumentSource,
@@ -41,7 +43,9 @@ export default async function ReaderPage({
   if (!item) notFound();
   const retiredHref = itemRedirectHref(item);
   if (retiredHref) redirect(retiredHref);
-  const resolved = await getContentResolver().resolve(item);
+  const resolved = await getContentResolver().resolve(item, {
+    chapter: requestedChapter,
+  });
 
   if (resolved.kind !== "internal-mdx" && resolved.kind !== "local-document") {
     return (
@@ -68,13 +72,15 @@ export default async function ReaderPage({
     );
   }
 
+  const sourceUrl =
+    resolved.kind === "local-document" ? resolved.sourceUrl : item.sourceUrl;
   let document;
   try {
     document =
       resolved.kind === "local-document"
         ? await readLocalDocument(item, {
             localRoot: getLocalMaterialRoot(),
-            relativePath: requestedChapter,
+            relativePath: resolved.chapter ?? requestedChapter,
           })
         : await readOwnedDocument(item);
   } catch (error) {
@@ -89,7 +95,10 @@ export default async function ReaderPage({
         error instanceof UnsupportedLocalDocumentError
           ? await readLocalDocumentSource(item, {
               localRoot: getLocalMaterialRoot(),
-              relativePath: requestedChapter,
+              relativePath:
+                resolved.kind === "local-document"
+                  ? (resolved.chapter ?? requestedChapter)
+                  : requestedChapter,
             }).catch(() => null)
           : null;
       return (
@@ -127,10 +136,10 @@ export default async function ReaderPage({
               </pre>
             </section>
           ) : null}
-          {item.sourceUrl ? (
+          {sourceUrl ? (
             <a
               className="button button-primary"
-              href={item.sourceUrl}
+              href={sourceUrl}
               target="_blank"
               rel="noreferrer"
             >
@@ -174,12 +183,19 @@ export default async function ReaderPage({
         ? `/api/local-image?itemId=${encodeURIComponent(item.id)}&path=${encodeURIComponent(target)}`
         : null;
     },
-    resolveDocumentHref: (source) => {
-      const target = resolveAgainstDocument(source);
-      return target !== null && readableChapters.has(target)
-        ? `/read/${item.id}?chapter=${encodeURIComponent(target)}`
-        : null;
-    },
+    resolveDocumentHref: isLocal
+      ? (source) => {
+          const target = resolveDeclaredDocumentPath(
+            document.sourcePath,
+            source,
+            readableChapters,
+            item.documentRoot,
+          );
+          return target !== null
+            ? `/read/${item.id}?chapter=${encodeURIComponent(target)}`
+            : null;
+        }
+      : undefined,
   });
 
   // READ-001 requires previous/next chapter navigation, not just a chapter list.
@@ -211,10 +227,10 @@ export default async function ReaderPage({
             <p className="reader-attribution">
               第三方素材，仅在本地模式只读渲染。作者：{authorLabel(item.author)}
               ；许可证：{licenseLabel(item.license, item.licenseStatus)}。
-              {item.sourceUrl ? (
+              {sourceUrl ? (
                 <>
                   {" "}
-                  <a href={item.sourceUrl} target="_blank" rel="noreferrer">
+                  <a href={sourceUrl} target="_blank" rel="noreferrer">
                     查看上游 ↗
                   </a>
                 </>
@@ -223,6 +239,11 @@ export default async function ReaderPage({
           ) : null}
         </div>
       </div>
+      <CourseChapterNavigation
+        itemId={item.id}
+        chapters={localChapters}
+        currentPath={document.sourcePath}
+      />
       {rendered.headings.length > 0 ? (
         <nav className="reader-toc" aria-label="文章目录">
           <span className="eyebrow">ON THIS PAGE</span>
@@ -234,24 +255,6 @@ export default async function ReaderPage({
             >
               {heading.text}
             </a>
-          ))}
-        </nav>
-      ) : null}
-      {localChapters.length > 0 ? (
-        <nav className="reader-chapters" aria-label="本地章节导航">
-          <span className="eyebrow">LOCAL CHAPTERS</span>
-          {localChapters.map((localChapter) => (
-            <Link
-              href={`/read/${item.id}?chapter=${encodeURIComponent(localChapter.relativePath)}`}
-              key={localChapter.relativePath}
-              aria-current={
-                document.sourcePath === localChapter.relativePath
-                  ? "page"
-                  : undefined
-              }
-            >
-              {localChapter.label}
-            </Link>
           ))}
         </nav>
       ) : null}
@@ -267,7 +270,7 @@ export default async function ReaderPage({
               href={`/read/${item.id}?chapter=${encodeURIComponent(previousChapter.relativePath)}`}
               rel="prev"
             >
-              <span>← 上一章</span>
+              <span>← 上一节</span>
               <strong>{previousChapter.label}</strong>
             </Link>
           ) : (
@@ -279,7 +282,7 @@ export default async function ReaderPage({
               href={`/read/${item.id}?chapter=${encodeURIComponent(nextChapter.relativePath)}`}
               rel="next"
             >
-              <span>下一章 →</span>
+              <span>下一节 →</span>
               <strong>{nextChapter.label}</strong>
             </Link>
           ) : (

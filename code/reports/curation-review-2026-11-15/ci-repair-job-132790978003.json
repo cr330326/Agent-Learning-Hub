@@ -1,0 +1,6 @@
+{
+  "jobId": 132790978003,
+  "runId": 43707283649,
+  "url": "https://github.com/cr330326/Agent-Learning-Hub/actions/runs/43707283649/job/132790978003",
+  "excerpt": "2026-11-15T11:07:14.1307211Z 10 vulnerabilities (9 moderate, 1 high)\n2026-11-15T11:07:17.0050639Z All matched files use Prettier code style!\n2026-11-15T11:07:25.7028773Z Content audit passed: 0 errors, 1822 warnings.\n2026-11-15T11:07:26.7738662Z ℹ tests 11\n2026-11-15T11:07:32.3781885Z \u001b[2m Test Files \u001b[22m \u001b[1m\u001b[32m38 passed\u001b[39m\u001b[22m\u001b[90m (38)\u001b[39m\n2026-11-15T11:07:32.3783038Z \u001b[2m      Tests \u001b[22m \u001b[1m\u001b[32m177 passed\u001b[39m\u001b[22m\u001b[90m (177)\u001b[39m\n2026-11-15T11:07:32.3784971Z \u001b[2m   Duration \u001b[22m 5.26s\u001b[2m (transform 699ms, setup 0ms, import 3.87s, tests 6.55s, environment 4ms)\u001b[22m\n2026-11-15T11:07:44.3466949Z Home page smoke test passed for cloud mode.\n2026-11-15T11:07:44.7083835Z Public page smoke test passed for 9 routes.\n2026-11-15T11:07:44.7908735Z Health HTTP smoke test passed for cloud mode.\n2026-11-15T11:07:45.8074997Z Cloud auth + learning-state HTTP E2E passed (33 checks)."
+}

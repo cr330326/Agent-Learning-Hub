@@ -1,4 +1,4 @@
-import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, rm, symlink, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -7,7 +7,10 @@ import { beforeAll, beforeEach, afterEach, describe, expect, it } from "vitest";
 
 import { loadContentCatalogFromDirectory } from "../catalog/catalog-api";
 import type { LearningItem } from "../catalog/content-schema";
-import { createLocalContentResolver } from "./content-resolver";
+import {
+  createCloudContentResolver,
+  createLocalContentResolver,
+} from "./content-resolver";
 
 const applicationRoot = fileURLToPath(new URL("../../", import.meta.url));
 
@@ -132,4 +135,125 @@ describe("Local Content Resolver", () => {
     expect(result.kind).toBe("unavailable");
     expect("reason" in result ? result.reason : "").toContain("安全");
   });
+});
+
+it("keeps a multi-chapter course readable when only its main file is missing", async () => {
+  const base = itemWhere(
+    ({ accessPolicy }) => accessPolicy === "local-preferred",
+  );
+  const item = {
+    ...base,
+    localPath: "missing/main.md",
+    sourceUrl: "https://example.com/unrelated-main",
+    references: [
+      { label: "第二章", localPath: "chapters/second.md", sourceUrl: null },
+      { label: "第三章", localPath: "chapters/third.md", sourceUrl: null },
+    ],
+  };
+  await mkdir(join(localRoot, "chapters"));
+  await writeFile(join(localRoot, "chapters/second.md"), "# 第二章");
+  await writeFile(join(localRoot, "chapters/third.md"), "# 第三章");
+  expect(
+    await createLocalContentResolver({ localRoot }).resolve(item),
+  ).toMatchObject({
+    kind: "local-document",
+    chapter: "chapters/second.md",
+    href: `/read/${item.id}`,
+    sourceUrl: null,
+  });
+});
+
+it("resolves an explicit missing chapter to that chapter's source, not another project", async () => {
+  const base = itemWhere(
+    ({ accessPolicy }) => accessPolicy === "local-preferred",
+  );
+  const item = {
+    ...base,
+    localPath: "main.md",
+    sourceUrl: "https://example.com/course",
+    references: [
+      {
+        label: "外部章节",
+        localPath: "missing/chapter.md",
+        sourceUrl: "https://example.org/correct-chapter",
+      },
+    ],
+  };
+  await addLocalFixture(item);
+  expect(
+    await createLocalContentResolver({ localRoot }).resolve(item, {
+      chapter: "missing/chapter.md",
+    }),
+  ).toMatchObject({
+    kind: "external-link",
+    href: "https://example.org/correct-chapter",
+  });
+  expect(
+    (
+      await createLocalContentResolver({ localRoot }).resolve(item, {
+        chapter: "undeclared.md",
+      })
+    ).kind,
+  ).toBe("unavailable");
+});
+
+it("uses a declared chapter's exact upstream in Cloud mode without consulting local files", async () => {
+  const base = itemWhere(
+    ({ accessPolicy }) => accessPolicy === "local-preferred",
+  );
+  const item = {
+    ...base,
+    sourceUrl: "https://example.com/course",
+    references: [
+      {
+        label: "章节",
+        localPath: "chapter.md",
+        sourceUrl: "https://example.org/chapter",
+      },
+    ],
+  };
+  const resolver = createCloudContentResolver();
+  expect(await resolver.resolve(item, { chapter: "chapter.md" })).toMatchObject(
+    { kind: "external-link", href: "https://example.org/chapter" },
+  );
+  expect(
+    (await resolver.resolve(item, { chapter: "undeclared.md" })).kind,
+  ).toBe("unavailable");
+  expect(
+    (
+      await resolver.resolve(
+        { ...item, references: [{ ...item.references[0], sourceUrl: null }] },
+        { chapter: "chapter.md" },
+      )
+    ).kind,
+  ).toBe("unavailable");
+});
+
+it("does not use an escaping chapter symlink or silently open another chapter", async () => {
+  const base = itemWhere(
+    ({ accessPolicy }) => accessPolicy === "local-preferred",
+  );
+  const item = {
+    ...base,
+    localPath: "missing.md",
+    sourceUrl: null,
+    references: [
+      {
+        label: "逃逸",
+        localPath: "escape.md",
+        sourceUrl: "https://example.org/escape",
+      },
+      { label: "可读", localPath: "safe.md", sourceUrl: null },
+    ],
+  };
+  await symlink(join(localRoot, ".."), join(localRoot, "escape.md"));
+  await writeFile(join(localRoot, "safe.md"), "# 可读");
+  const resolver = createLocalContentResolver({ localRoot });
+  expect(await resolver.resolve(item)).toMatchObject({
+    kind: "local-document",
+    chapter: "safe.md",
+  });
+  expect((await resolver.resolve(item, { chapter: "escape.md" })).kind).toBe(
+    "unavailable",
+  );
 });

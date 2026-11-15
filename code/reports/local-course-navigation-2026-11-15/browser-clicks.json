@@ -1,0 +1,146 @@
+[
+  {
+    "id": "legacy-course-001",
+    "title": "Hello-Agents",
+    "chapters": 2,
+    "nextAndBack": true
+  },
+  {
+    "id": "legacy-course-004",
+    "title": "claw0",
+    "chapters": 2,
+    "nextAndBack": true
+  },
+  {
+    "id": "legacy-course-008",
+    "title": "learn-claude-code",
+    "chapters": 13,
+    "nextAndBack": true
+  },
+  {
+    "id": "legacy-course-009",
+    "title": "Claude Code 源码逆向分析",
+    "chapters": 2,
+    "nextAndBack": true
+  },
+  {
+    "id": "legacy-course-010",
+    "title": "Claude Code 源码合集",
+    "chapters": 4,
+    "nextAndBack": true
+  },
+  {
+    "id": "legacy-course-012",
+    "title": "Claude 文档与范例",
+    "chapters": 3,
+    "nextAndBack": true
+  },
+  {
+    "id": "legacy-course-013",
+    "title": "Claude 插件生态",
+    "chapters": 2,
+    "nextAndBack": true
+  },
+  {
+    "id": "legacy-course-014",
+    "title": "awesome-claude-code",
+    "chapters": 3,
+    "nextAndBack": true
+  },
+  {
+    "id": "legacy-course-017",
+    "title": "OpenCode 中文实战课",
+    "chapters": 110,
+    "nextAndBack": true
+  },
+  {
+    "id": "legacy-course-018",
+    "title": "OpenCode 生态",
+    "chapters": 4,
+    "nextAndBack": true
+  },
+  {
+    "id": "legacy-course-019",
+    "title": "Hermes Agent",
+    "chapters": 2,
+    "nextAndBack": true
+  },
+  {
+    "id": "legacy-course-020",
+    "title": "CyberClaw",
+    "chapters": 2,
+    "nextAndBack": true
+  },
+  {
+    "id": "legacy-course-021",
+    "title": "MiMo-Code",
+    "chapters": 2,
+    "nextAndBack": true
+  },
+  {
+    "id": "legacy-course-024",
+    "title": "驾驭工程：从 CC 到 AI Coding",
+    "chapters": 2,
+    "nextAndBack": true
+  },
+  {
+    "id": "legacy-course-025",
+    "title": "mem0",
+    "chapters": 2,
+    "nextAndBack": true
+  },
+  {
+    "id": "legacy-course-031",
+    "title": "PI（pi-mono）",
+    "chapters": 2,
+    "nextAndBack": true
+  },
+  {
+    "id": "legacy-course-033",
+    "title": "OpenChamber",
+    "chapters": 2,
+    "nextAndBack": true
+  },
+  {
+    "id": "legacy-course-034",
+    "title": "AI Agent Deep Dive",
+    "chapters": 18,
+    "nextAndBack": true
+  },
+  {
+    "id": "legacy-course-035",
+    "title": "Multica",
+    "chapters": 2,
+    "nextAndBack": true
+  },
+  {
+    "id": "legacy-course-036",
+    "title": "smolagents",
+    "chapters": 2,
+    "nextAndBack": true
+  },
+  {
+    "id": "legacy-course-039",
+    "title": "cc-switch",
+    "chapters": 5,
+    "nextAndBack": true
+  },
+  {
+    "id": "legacy-course-040",
+    "title": "CodexSwitch",
+    "chapters": 3,
+    "nextAndBack": true
+  },
+  {
+    "id": "legacy-course-042",
+    "title": "Solon-AI",
+    "chapters": 2,
+    "nextAndBack": true
+  },
+  {
+    "id": "legacy-reading-31-014",
+    "title": "工程：开发发布与测试",
+    "chapters": 2,
+    "nextAndBack": true
+  }
+]

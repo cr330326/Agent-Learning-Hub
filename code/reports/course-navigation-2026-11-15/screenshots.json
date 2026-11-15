@@ -1,0 +1,18 @@
+[
+  {
+    "viewport": "desktop",
+    "oldUrlRedirect": true,
+    "chapters": 110,
+    "nextInstall": true,
+    "bodyExtensionlessLink": true,
+    "errors": []
+  },
+  {
+    "viewport": "mobile",
+    "oldUrlRedirect": true,
+    "chapters": 110,
+    "nextInstall": true,
+    "bodyExtensionlessLink": true,
+    "errors": []
+  }
+]

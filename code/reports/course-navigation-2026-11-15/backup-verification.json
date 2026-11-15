@@ -1,0 +1,18 @@
+{
+  "pairs": [
+    {
+      "label": "daily-cloud",
+      "batchId": "cadedd0d-9e8c-4476-826c-b3fc5579f0c6",
+      "verified": true
+    }
+  ],
+  "singles": [
+    {
+      "label": "daily-local",
+      "backup": "learning-state-2026-11-15T11-51-50-497Z-207ba3cb4e15.sqlite.enc",
+      "verified": true
+    }
+  ],
+  "totalDatabases": 3,
+  "allVerified": true
+}

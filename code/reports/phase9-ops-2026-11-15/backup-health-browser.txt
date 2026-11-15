@@ -1,0 +1,1 @@
+Paired backup health card renders 正常 and retained 2 batches at desktop/mobile widths

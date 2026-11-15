@@ -1,0 +1,63 @@
+--- a/code/content/courses/courses.json
++++ b/code/content/courses/courses.json
+@@ -19930,5 +19930,32 @@
+       }
+     ],
+     "unavailableReason": null
++  },
++  {
++    "id": "anthropic-long-running-agent-harness",
++    "title": "Anthropic 长时运行 Agent 的 Harness 设计：初始化 Agent 与增量编码 Agent",
++    "track": "agentic",
++    "stageIds": ["stage-3", "stage-7"],
++    "summary": "文章以初始化 Agent、功能清单、进度文件、增量提交和浏览器端到端测试串联跨会话工作，分析长时编码任务的失败模式与工程应对。方案主要来自内部网页开发实践，未提供完整量化评测，适合对照自己的工作流验证。",
++    "learningGoals": [
++      "学习用初始化 Agent、功能清单、进度文件和增量编码会话串联跨上下文工作，并通过端到端验证控制过早完成和交接失败。"
++    ],
++    "sourceUrl": "https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents",
++    "localPath": null,
++    "accessPolicy": "upstream-only",
++    "publicationRights": "third-party",
++    "author": "Anthropic Engineering",
++    "license": "Unknown",
++    "licenseStatus": "unknown",
++    "tags": [
++      "Harness Engineering",
++      "Agent 架构",
++      "上下文与记忆",
++      "评测与生产实践",
++      "AI 编程"
++    ],
++    "lastReviewedAt": "2026-11-15",
++    "references": [],
++    "unavailableReason": null
+   }
+ ]
+--- a/code/content/stages/stages.json
++++ b/code/content/stages/stages.json
+@@ -352,7 +352,11 @@
+       "trackIds": ["learning", "aicoding", "agentic", "application"],
+       "taskIds": ["stage-3-task-1", "stage-3-task-2", "stage-3-task-3"],
+       "projectOutcomeIds": ["stage-3-outcome"],
+-      "learningItemIds": ["legacy-reading-16-003", "legacy-reading-19-004"],
++      "learningItemIds": [
++        "legacy-reading-16-003",
++        "legacy-reading-19-004",
++        "anthropic-long-running-agent-harness"
++      ],
+       "legacyImport": {
+         "source": "learning-site/data.js",
+         "kind": "stage",
+@@ -796,7 +800,11 @@
+       "trackIds": ["learning", "aicoding", "agentic", "application"],
+       "taskIds": ["stage-7-task-1", "stage-7-task-2", "stage-7-task-3"],
+       "projectOutcomeIds": ["stage-7-outcome"],
+-      "learningItemIds": ["legacy-reading-04-005", "legacy-reading-16-012"],
++      "learningItemIds": [
++        "legacy-reading-04-005",
++        "legacy-reading-16-012",
++        "anthropic-long-running-agent-harness"
++      ],
+       "legacyImport": {
+         "source": "learning-site/data.js",
+         "kind": "stage",

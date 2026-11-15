@@ -7,6 +7,7 @@ import { loadContentCatalogFromDirectory } from "../catalog/catalog-api";
 import {
   readOwnedDocument,
   resolveDocumentRelativePath,
+  resolveDeclaredDocumentPath,
 } from "./document-source";
 
 const applicationRoot = fileURLToPath(new URL("../../", import.meta.url));
@@ -67,5 +68,47 @@ describe("document-relative path resolution", () => {
     expect(resolveDocumentRelativePath(readme, "/etc/passwd")).toBe(null);
     expect(resolveDocumentRelativePath(readme, "..\\windows")).toBe(null);
     expect(resolveDocumentRelativePath(readme, "")).toBe(null);
+  });
+});
+
+describe("declared course document links", () => {
+  const root = "Learning/learn-opencode/docs";
+  const current = root + "/1-start/01-intro.md";
+  const paths = new Set([
+    current,
+    root + "/1-start/index.md",
+    root + "/1-start/02-install.md",
+    root + "/appendix/faq.md",
+  ]);
+  it("resolves extensionless and directory links only to a declared readable chapter", () => {
+    expect(
+      resolveDeclaredDocumentPath(current, "./02-install#安装", paths),
+    ).toBe(root + "/1-start/02-install.md");
+    expect(resolveDeclaredDocumentPath(current, "../1-start/", paths)).toBe(
+      root + "/1-start/index.md",
+    );
+    expect(
+      resolveDeclaredDocumentPath(current, "./03-network", paths),
+    ).toBeNull();
+  });
+  it("requires an explicit route root and the same whitelist for site-relative course links", () => {
+    expect(
+      resolveDeclaredDocumentPath(current, "/appendix/faq", paths, root),
+    ).toBe(root + "/appendix/faq.md");
+    expect(
+      resolveDeclaredDocumentPath(current, "/appendix/faq", paths),
+    ).toBeNull();
+    for (const link of [
+      "/../../etc/passwd",
+      "//example.com/appendix/faq",
+      "/appendix/missing",
+      "/1-start/%2e%2e/%2e%2e/secrets",
+      "\\windows",
+      "javascript:alert(1)",
+    ]) {
+      expect(
+        resolveDeclaredDocumentPath(current, link, paths, root),
+      ).toBeNull();
+    }
   });
 });

@@ -1,0 +1,7 @@
+
+> agent-learning-hub@0.1.0 audit:materials
+> tsx scripts/materials.ts drift
+
+Catalog drift: 10 missing paths (0 corroborated moves, 9 uncertain, 1 gone), 8 uncatalogued repositories, 412 items without an upstream fallback.
+JSON: /Users/vsh9p8q/AI/Agent-Learning-Hub/code/reports/materials/catalog-drift.json
+Markdown: /Users/vsh9p8q/AI/Agent-Learning-Hub/code/reports/materials/catalog-drift.md

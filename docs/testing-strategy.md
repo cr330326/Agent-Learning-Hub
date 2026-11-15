@@ -4,6 +4,19 @@ This strategy implements T0.3 and is intentionally lightweight at the start of
 the project. It grows with the implementation tasks in
 [docs/plans/tasks.md](./plans/tasks.md), rather than adding speculative tests.
 
+## 云端资讯扩展的计划验证
+
+2026-11-15 已确认 Phase 9，以下为实施与验收范围，需求与场景以 [spec 第 20 节](./plans/spec.md#20-云端资讯与学习扩展) 和 AC-11～AC-23 为准。
+
+- 模块与集成测试覆盖多页导入、游标恢复、记录和 URL 去重、修订保护、平台指标、来源缺失、模型结构校验、来源发布方式及固定日报版本。
+- 可控时钟与服务替身覆盖任务租约、重启、并发预算预留、跨日核销、结果未知回执、临时原文清理和迟到内容。
+- 两种模式的独立实例 e2e 覆盖旧学习数据兼容、资讯个人状态、两用户隔离、导出与删号，以及云端专属能力的模式边界。实例还需独立资讯库与任务配置。
+- `audit:ui`、`audit:functional` 扩展双入口、筛选分页、来源状态、审核与重试、日报和收录 PR；逐屏检查截图，修复问题时加入对应断言。
+- 两库恢复演练验证批次与版本、跨库引用、任务租约及回执，保留错误口令、篡改密文、覆盖已有目标三组反向对照。
+- 真实接入单独验证三份飞书 Base 及九个子表映射、公开来源解析、模型用量、GitHub 登录与 PR、单域名 TLS 和 worker。代码级门禁与真实接入各记录证据。
+
+命令以 `code/package.json` 为准，新增命令随 T9.8 实现登记到部署脚本分类和两份云端 Runbook。当前新增覆盖包括 `modules/discovery/*.test.ts`、Cloud e2e 的资讯流程、双模式功能脚本与 Cloud 资讯页面走查，实际通过结果见 tasks.md。
+
 ## Test layers and locations
 
 | Layer                       | Location                                     | Tool                 | Purpose                                                             |
@@ -112,6 +125,22 @@ errors, horizontal overflow, listing pages past the height budget, and console
 errors. `functional-regression.mjs` operates the site — links, paging, filters,
 chapter navigation, and the learning-state write/read/delete cycle — and branches
 its assertions on the runtime mode badge.
+
+整课连续阅读以 OpenCode 旧单节 ID 为固定回归入口。Local 分支验证转发后的当前节、作者顺序、上下节目标、首尾边界及手机目录位置和键盘展开；Cloud 分支验证同一旧 ID 的对应章节原站入口。目录单元测试固定归属与顺序，正文链接测试覆盖无扩展名、目录路由和显式文档根，未知或歧义目标必须降级。
+
+Cloud 管理界面与资讯个人交互可另传一次性管理员会话及停用的飞书信源 JSON：
+
+```bash
+npm run audit:functional --prefix code -- --base-url <disposable-cloud-url> \
+  --admin-storage-state /tmp/private-test/admin-session.json \
+  --feishu-source /tmp/private-test/disabled-feishu-source.json
+```
+
+两项参数须一起提供；来源必须 `enabled: false`、`publicationMode: manual`，包含已验证的 Base、子表与标题/原文链接字段 ID。脚本通过真实 API 验证首次读取字段、下拉映射、预览与保存，切换子表后旧选项消失；另验证笔记/收藏清空保留阅读完成状态，明确重新阅读才恢复为阅读中。测试恢复个人字段，但会保存停用的测试来源，必须指向独立实例。会话只由 Better Auth 或真实 OAuth 签发，保存在仓库外权限受限的临时目录，不进入报告或 Git。
+
+日报编辑快照另支持 `--edition-fixture <json>`，仅用于独立实例的已播种合成记录。文件包含 `day`、`id`、`versionId`，以及 `frozen` / `current` 的标题、摘要、理由和主题。Cloud 分支验证冻结卡片和详情包含出刊前更正，跳转当前版本后显示出刊后更正；Local 分支验证同一日报入口返回 404。单测另覆盖模型重算、处理失败、撤下、旧两字段日报兼容和同版本跨期去重。该参数不触发模型请求或创建日报，播种必须在隔离库另行完成，不可拿日常实例演示。
+
+版式工具使用实际无结果的筛选组合覆盖空状态；完整页面截图先回到顶部，避免阅读位置恢复后固定导航出现在长截图中段。最终仍需查看截图。
 
 **A clean run from both is a floor, not a verdict.** T8.9 found six defects
 behind two green reports, including duplicated search results and a filter bar

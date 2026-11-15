@@ -1,0 +1,27 @@
+[
+  {
+    "viewport": "desktop",
+    "entries": 3,
+    "titles": [
+      "Anthropic 长时运行 Agent 的 Harness 设计：初始化 Agent 与增量编码 Agent",
+      "Anthropic 总结构建高效 Agent 的简单可组合模式",
+      "LangChain 梳理 Agent 上下文工程：写入、选择、压缩与隔离"
+    ],
+    "frozenVersion": true
+  },
+  {
+    "viewport": "mobile",
+    "entries": 3,
+    "titles": [
+      "Anthropic 长时运行 Agent 的 Harness 设计：初始化 Agent 与增量编码 Agent",
+      "Anthropic 总结构建高效 Agent 的简单可组合模式",
+      "LangChain 梳理 Agent 上下文工程：写入、选择、压缩与隔离"
+    ],
+    "frozenVersion": true
+  },
+  {
+    "adminCandidates": 27,
+    "lowEvidenceExcluded": true,
+    "controlWithinPublicationWindow": true
+  }
+]

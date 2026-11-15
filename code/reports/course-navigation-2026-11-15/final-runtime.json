@@ -1,0 +1,109 @@
+{
+  "services": [
+    {
+      "name": "local",
+      "image": "agent-learning-hub:course-navigation-20261115-r2",
+      "imageId": "sha256:989bf028be73d77ab2a5910e1317d80c0f469f82660f0e685935de98352742f3",
+      "health": "healthy",
+      "bindings": {
+        "3000/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "3003"
+          }
+        ]
+      },
+      "volumes": [
+        {
+          "name": "agent-learning-hub-local_learning-state",
+          "destination": "/data/state",
+          "writable": true
+        },
+        {
+          "name": null,
+          "destination": "/data/local-courses",
+          "writable": false
+        }
+      ]
+    },
+    {
+      "name": "cloud",
+      "image": "agent-learning-hub:course-navigation-20261115-r2",
+      "imageId": "sha256:989bf028be73d77ab2a5910e1317d80c0f469f82660f0e685935de98352742f3",
+      "health": "healthy",
+      "bindings": {
+        "3000/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "3002"
+          }
+        ]
+      },
+      "volumes": [
+        {
+          "name": "alh-cloud-real_learning-state",
+          "destination": "/data/state",
+          "writable": true
+        },
+        {
+          "name": "alh-cloud-real_discovery",
+          "destination": "/data/discovery",
+          "writable": true
+        },
+        {
+          "name": "alh-cloud-real_discovery-temp",
+          "destination": "/data/discovery-temp",
+          "writable": true
+        },
+        {
+          "name": null,
+          "destination": "/run/secrets/github-app.pem",
+          "writable": false
+        }
+      ]
+    },
+    {
+      "name": "worker",
+      "image": "agent-learning-hub:course-navigation-20261115-r2",
+      "imageId": "sha256:989bf028be73d77ab2a5910e1317d80c0f469f82660f0e685935de98352742f3",
+      "health": "healthy",
+      "bindings": {},
+      "volumes": [
+        {
+          "name": null,
+          "destination": "/run/secrets/github-app.pem",
+          "writable": false
+        },
+        {
+          "name": "alh-cloud-real_discovery",
+          "destination": "/data/discovery",
+          "writable": true
+        },
+        {
+          "name": "alh-cloud-real_discovery-temp",
+          "destination": "/data/discovery-temp",
+          "writable": true
+        }
+      ]
+    }
+  ],
+  "health": {
+    "local": {
+      "status": "ok",
+      "mode": "local",
+      "checks": {
+        "catalog": "ok",
+        "database": "ok"
+      }
+    },
+    "cloud": {
+      "status": "ok",
+      "mode": "cloud",
+      "checks": {
+        "catalog": "ok",
+        "database": "ok"
+      }
+    }
+  },
+  "testVolumesRemaining": []
+}

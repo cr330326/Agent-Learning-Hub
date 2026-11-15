@@ -1,0 +1,183 @@
+{
+  "pairs": [
+    {
+      "label": "cloud-real",
+      "batchId": "0cdae4ed-22fa-4ac1-99e4-7c3428da85be",
+      "verified": true
+    },
+    {
+      "label": "phase9-cloud",
+      "batchId": "c3f76bdd-34b1-4a33-9a3a-28ae8cda5bd1",
+      "verified": true
+    },
+    {
+      "label": "alh-phase9-recovery-1794721146-pair",
+      "batchId": "4a387944-a105-43b9-b2a3-3c5e50f2f67f",
+      "verified": true
+    },
+    {
+      "label": "alh-phase9-recovery-1794721201",
+      "batchId": "be411698-b8b9-42ad-96f5-5dc50ac4f943",
+      "verified": true
+    },
+    {
+      "label": "alh-phase9-recovery-1794721201-pair",
+      "batchId": "08f3dbcf-69e1-4e7d-9907-06723a34c6ea",
+      "verified": true
+    },
+    {
+      "label": "alh-phase9-recovery-1794721322",
+      "batchId": "65a58ad9-01c2-4084-97ad-aaa37096fb3e",
+      "verified": true
+    },
+    {
+      "label": "alh-phase9-recovery-1794721322-pair",
+      "batchId": "c7f6cb5b-e2f5-4bb5-a183-4624247185ea",
+      "verified": true
+    },
+    {
+      "label": "verification",
+      "batchId": "b9c89063-072b-401e-a7c1-e678c8bb4a63",
+      "verified": true
+    },
+    {
+      "label": "verification-r10",
+      "batchId": "77f351e1-8358-44ca-8200-c737797a9beb",
+      "verified": true
+    },
+    {
+      "label": "e2e",
+      "batchId": "5d365f33-f73b-4a9c-81e9-8abdc8ba1f1b",
+      "verified": true
+    },
+    {
+      "label": "e2e-r6",
+      "batchId": "b6febb6e-0538-45de-b6f5-4a9ada973790",
+      "verified": true
+    },
+    {
+      "label": "e2e-r7",
+      "batchId": "8a0c2d21-8cf4-46f0-bee6-206aaa1aa890",
+      "verified": true
+    },
+    {
+      "label": "e2e-r8",
+      "batchId": "f71ca956-eaff-46d2-8ad6-b76bb98fa422",
+      "verified": true
+    },
+    {
+      "label": "e2e-r9",
+      "batchId": "ee61b00c-4bcc-4b4e-b8c5-1f4dc3e19151",
+      "verified": true
+    },
+    {
+      "label": "e2e-r10",
+      "batchId": "8fdf0da7-a2a5-42a8-ac10-d66d78e4396c",
+      "verified": true
+    },
+    {
+      "label": "e2e-r12",
+      "batchId": "c0f2141b-3995-41df-bf56-a26461e69fb0",
+      "verified": true
+    },
+    {
+      "label": "e2e-r13",
+      "batchId": "61234498-3bd2-4f8f-b936-f869b751bfe7",
+      "verified": true
+    },
+    {
+      "label": "e2e-r14",
+      "batchId": "a09da89f-71f2-4c8d-8d0a-097000ff58dd",
+      "verified": true
+    }
+  ],
+  "singles": [
+    {
+      "label": "agent-learning-hub-local_learning-state-0",
+      "backup": "learning-state-2026-11-15T11-23-01-220Z-05256820b287.sqlite.enc",
+      "verified": true
+    },
+    {
+      "label": "alh-curation-live-20261115-0",
+      "backup": "learning-state-2026-11-15T11-23-01-361Z-10995fff79aa.sqlite.enc",
+      "verified": true
+    },
+    {
+      "label": "alh-model-quality-20261115-0",
+      "backup": "learning-state-2026-11-15T11-23-01-503Z-8fe602ba85c2.sqlite.enc",
+      "verified": true
+    },
+    {
+      "label": "alh-model-quality-20261115-v2-0",
+      "backup": "learning-state-2026-11-15T11-23-01-643Z-f5e4e34f092b.sqlite.enc",
+      "verified": true
+    },
+    {
+      "label": "alh-phase9-local_learning-state-0",
+      "backup": "learning-state-2026-11-15T11-23-01-786Z-fae6d67ec450.sqlite.enc",
+      "verified": true
+    },
+    {
+      "label": "alh-verification-20261115_feishu-0",
+      "backup": "learning-state-2026-11-15T11-23-01-956Z-a669d27208fd.sqlite.enc",
+      "verified": true
+    },
+    {
+      "label": "alh-verification-20261115_local-e2e-r6-state-0",
+      "backup": "learning-state-2026-11-15T11-23-02-926Z-4c5425374b46.sqlite.enc",
+      "verified": true
+    },
+    {
+      "label": "alh-verification-20261115_local-e2e-r7-state-0",
+      "backup": "learning-state-2026-11-15T11-23-03-045Z-5e69743aee36.sqlite.enc",
+      "verified": true
+    },
+    {
+      "label": "alh-verification-20261115_local-e2e-r8-state-0",
+      "backup": "learning-state-2026-11-15T11-23-03-159Z-29f0b83dbe74.sqlite.enc",
+      "verified": true
+    },
+    {
+      "label": "alh-verification-20261115_local-e2e-r9-state-0",
+      "backup": "learning-state-2026-11-15T11-23-03-280Z-a238ed791637.sqlite.enc",
+      "verified": true
+    },
+    {
+      "label": "alh-verification-20261115_local-e2e-r10-state-0",
+      "backup": "learning-state-2026-11-15T11-23-03-397Z-f391055b7081.sqlite.enc",
+      "verified": true
+    },
+    {
+      "label": "alh-verification-20261115_local-e2e-r12-state-0",
+      "backup": "learning-state-2026-11-15T11-23-03-538Z-1cde91983c74.sqlite.enc",
+      "verified": true
+    },
+    {
+      "label": "alh-verification-20261115_local-e2e-r13-state-0",
+      "backup": "learning-state-2026-11-15T11-23-03-652Z-3b40adb9bd55.sqlite.enc",
+      "verified": true
+    },
+    {
+      "label": "alh-verification-20261115_local-e2e-r14-state-0",
+      "backup": "learning-state-2026-11-15T11-23-03-769Z-e622140776ed.sqlite.enc",
+      "verified": true
+    },
+    {
+      "label": "alh-verification-20261115_local-e2e-state-0",
+      "backup": "learning-state-2026-11-15T11-23-03-888Z-521618a9f4a1.sqlite.enc",
+      "verified": true
+    },
+    {
+      "label": "alh-verification-20261115_local-state-0",
+      "backup": "learning-state-2026-11-15T11-23-04-006Z-d46de6767fd4.sqlite.enc",
+      "verified": true
+    },
+    {
+      "label": "alh-verification-20261115_local-state-r10-0",
+      "backup": "learning-state-2026-11-15T11-23-04-121Z-f65400b413a3.sqlite.enc",
+      "verified": true
+    }
+  ],
+  "totalDatabases": 53,
+  "allVerified": true
+}

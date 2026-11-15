@@ -1,0 +1,22 @@
+import { writeFileSync } from 'node:fs';
+import { openDiscoveryDatabase } from '/workspace/code/modules/discovery/database';
+import { DiscoveryRepository } from '/workspace/code/modules/discovery/repository';
+const db = openDiscoveryDatabase(process.env.DISCOVERY_DATABASE_PATH!);
+let clock=Date.parse('2026-11-14T08:30:00+08:00');
+const repo=new DiscoveryRepository(db,()=>clock);
+try {
+ if(repo.edition('2026-11-14')) throw new Error('fixture date already occupied; refusing to replace a frozen edition');
+ const source=repo.saveSource({id:'editorial-freeze-fixture',name:'隔离验收 · 人工更正冻结',kind:'json',url:'https://example.com/editorial-freeze-fixture',enabled:false,publicationMode:'manual',topics:['Harness Engineering']},'isolated-editorial-fixture');
+ repo.ingestPage(source,[{recordId:'editorial-freeze',title:'验收示例：模型初稿',url:'https://example.com/editorial-freeze-fixture',author:'合成验收样本',summary:'模型初稿，仅用于验证日报冻结。',publishedAt:'2026-11-14T08:00:00+08:00'}],'editorial-fixture');
+ const row=db.handle.prepare('SELECT item_id,version_id FROM source_records WHERE source_id=?').get(source.id) as {item_id:string;version_id:string};
+ for(const job of repo.jobs.list())if(['queued','waiting'].includes(job.state)&&JSON.stringify(job.payload).includes(row.version_id))repo.jobs.cancel(job.id);
+ const output={title:'验收示例：模型初稿',summary:'模型初稿，仅用于验证日报冻结。',reason:'模型初稿推荐理由。',topics:['Harness Engineering'],scores:{actionability:5,verifiability:5,relevance:5,impact:3},scoreReasons:{actionability:'合成可操作对照',verifiability:'合成证据对照',relevance:'合成主题对照',impact:'合成影响对照'}};
+ repo.saveOutput(row.version_id,'ready',output,'isolated-editorial-fixture');repo.publishVersion(row.version_id,'isolated-editorial-fixture');
+ const frozen={title:'验收示例：冻结前已更正的摘要',summary:'冻结前由维护者核对的方法说明，仅用于独立容器验收。',reason:'冻结时已确认有可复现方法，仅为测试样本。',topics:['评测与生产实践']};repo.correct(row.item_id,frozen,'isolated-editorial-fixture');
+ clock=Date.parse('2026-11-14T09:01:00+08:00');const edition=repo.createEdition('2026-11-14')!;if(edition.entries.length!==1)throw new Error('expected one editorial fixture');
+ const current={title:'验收示例：出刊后的更正',summary:'出刊后当前摘要已经更新，历史日报保持出刊时的更正。',reason:'新的修订理由只展示在当前版本。',topics:['Agent 架构']};repo.correct(row.item_id,current,'isolated-editorial-fixture');
+ repo.saveOutput(row.version_id,'ready',{...output,summary:'重新生成的模型摘要。',scores:{...output.scores,impact:5}},'isolated-editorial-fixture-v2');
+ if(repo.publicItem(row.item_id,row.version_id)?.summary!==frozen.summary)throw new Error('frozen correction lost');
+ writeFileSync('/browser/editorial-freeze-fixture.json',JSON.stringify({day:'2026-11-14',id:row.item_id,versionId:row.version_id,frozen,current,edition,syntheticClock:true,syntheticContent:true,externalRequests:0},null,2)+'\n');
+ console.log('Seeded one synthetic editorial snapshot in isolated preview; no external requests.');
+} finally {db.close();}

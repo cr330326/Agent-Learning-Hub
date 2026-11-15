@@ -113,6 +113,32 @@ npm run dev:local --prefix code -- --port 3210
 
 ## 3. 路径 B：本机 Docker
 
+### 当前 Mac：直接运行已有镜像
+
+2026-11-15 已将本机实例收敛为 `agent-learning-hub-trial`，当前聚合试运行固定镜像为 `agent-learning-hub:aggregation-20261115-r7`，此前已完成双模式容器和 OpenCode 整课验收，本轮聚合验收见任务 T9.10。Local 阅读入口为 <http://127.0.0.1:3003>，Cloud 资讯与 GitHub 登录入口为 <http://127.0.0.1:3002>。[本次升级与验证](../acceptance/course-continuity-2026-11-15.md)记录了在线备份、数据保留及截图。此 Compose 是当前 Mac 的运行入口，沿用已有的四个外部命名卷；不适用于没有这些卷和凭据的新机器。
+
+在仓库根目录执行：
+
+```bash
+docker compose --env-file /Users/vsh9p8q/.agent-learnning/environments/local/.env \
+  -f code/docker/docker-compose.mac-trial.yml up -d --no-build --wait
+```
+
+同一入口管理状态、日志和停止：
+
+```bash
+docker compose --env-file /Users/vsh9p8q/.agent-learnning/environments/local/.env \
+  -f code/docker/docker-compose.mac-trial.yml ps
+docker compose --env-file /Users/vsh9p8q/.agent-learnning/environments/local/.env \
+  -f code/docker/docker-compose.mac-trial.yml logs --tail 100 -f
+docker compose --env-file /Users/vsh9p8q/.agent-learnning/environments/local/.env \
+  -f code/docker/docker-compose.mac-trial.yml down
+```
+
+`down` 保留全部外部数据卷。容器设置 `unless-stopped`，Docker Desktop 启动后可恢复运行；手动执行过 `down` 后需再次执行 `up`。Local 素材只读挂载；Cloud 沿用原账户和资讯库，不混入验收样本。聚合 worker 通过 `DISCOVERY_AGGREGATION_PRESETS=1` 首次初始化飞书九表与 openspace 结果来源，每 5 分钟检查更新，页面每 30 秒刷新当前筛选。私有 openspace 读取引用环境文件中的 `OPENSPACE_GITHUB_TOKEN`，本机沿用现有已授权 GitHub CLI 读取凭据，续期后更新真实环境文件并重建容器。模型处理保持旧实例的未启用状态，本机环境文件中即使配置了模型名称，也不会自动启用这个试运行 worker。
+
+清理前对数据库逐一做加密在线备份和恢复核对，备份位于 `/Users/vsh9p8q/.agent-learnning/backups/docker-cleanup-20261115/`，口令配置为该目录的 `backup.env`，不进入仓库。清理与运行证据见[本机 Docker 收敛记录](../acceptance/docker-cleanup-and-mac-trial-2026-11-15.md)。下文仍保留从工作区重新构建的通用路径。
+
 ### 3.1 启动
 
 ```bash

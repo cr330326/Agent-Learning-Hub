@@ -280,3 +280,35 @@ describe("catalog drift", () => {
     expect(buildBlobUrl(null, "README.md")).toBeNull();
   });
 });
+
+it("keeps retired chapter redirects valid when their owner's material moves", () => {
+  const items = [
+    { id: "owner", localPath: "old/guide.md", references: [] },
+    {
+      id: "retired",
+      localPath: "old/guide.md",
+      redirect: { itemId: "owner", chapter: "old/guide.md" },
+    },
+    {
+      id: "unrelated",
+      redirect: { itemId: "another", chapter: "unchanged/guide.md" },
+    },
+  ];
+  const applied = applyMovedPaths(items, {
+    missingPaths: [
+      {
+        localPath: "old/guide.md",
+        itemIds: ["owner", "retired"],
+        kind: "moved",
+        proposedPath: "new/guide.md",
+        candidateCount: 1,
+        candidateSample: ["new/guide.md"],
+      },
+    ],
+  });
+  expect(applied.items[1]).toMatchObject({
+    redirect: { itemId: "owner", chapter: "new/guide.md" },
+  });
+  expect(applied.items[2]).toBe(items[2]);
+  expect(items[1].redirect?.chapter).toBe("old/guide.md");
+});

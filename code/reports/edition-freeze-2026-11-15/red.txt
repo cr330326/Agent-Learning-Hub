@@ -1,0 +1,64 @@
+
+ RUN  v4.1.10 /Users/vsh9p8q/AI/Agent-Learning-Hub/code
+
+ ❯ modules/discovery/repository.test.ts (12 tests | 2 failed) 111ms
+     × freezes the effective editorial fields before publication and isolates later changes 20ms
+     × allows updated editions but does not reissue an already frozen source version 4ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  modules/discovery/repository.test.ts > discovery ingestion and publication > freezes the effective editorial fields before publication and isolates later changes
+AssertionError: expected { …(18) } to match object { title: '冻结前更正标题', …(3) }
+(14 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "reason": "冻结前已核实的推荐理由",
+-   "summary": "冻结前已核实的摘要",
+-   "title": "冻结前更正标题",
++   "reason": "提供可复现代码与评测方法。",
++   "summary": "使用隔离工作区与评测验证 Agent 的执行结果。",
++   "title": "Harness 工程实践",
+    "topics": [
+-     "Agent 架构",
++     "Harness Engineering",
+    ],
+  }
+
+ ❯ modules/discovery/repository.test.ts:179:68
+    177|     advance(30 * 60_000);
+    178|     const edition = repo.createEdition("2026-11-15")!;
+    179|     expect(repo.publicItem(item.id, edition.entries[0].versionId)).toM…
+       |                                                                    ^
+    180|     repo.correct(item.id, { title: "出刊后的新标题", summary: "出刊后的新摘要" }, "a…
+    181|     repo.saveOutput(item.pending_version, "ready", { ...output, summar…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  modules/discovery/repository.test.ts > discovery ingestion and publication > allows updated editions but does not reissue an already frozen source version
+AssertionError: expected [ { …(18) } ] to have a length of +0 but got 1
+
+- Expected
++ Received
+
+- 0
++ 1
+
+ ❯ modules/discovery/repository.test.ts:204:58
+    202|     advance(86_400_000);
+    203|     repo.publishVersion(item.pending_version, "admin");
+    204|     expect(repo.previewEdition("2026-11-17").candidates).toHaveLength(…
+       |                                                          ^
+    205|     expect(repo.createEdition("2026-11-17")?.entries).toEqual([]);
+    206|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 10 passed (12)
+   Start at  17:12:03
+   Duration  1.07s (transform 253ms, setup 0ms, import 556ms, tests 111ms, environment 0ms)
+

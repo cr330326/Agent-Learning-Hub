@@ -1,0 +1,20 @@
+{
+  "dryRun": true,
+  "baseCommit": "9bfeb9798b4a141c71ed173de502f7ad657f7742",
+  "proposal": {
+    "itemId": "news-7f7a70a6764975801eea23bab1b78e6c",
+    "learningId": "anthropic-long-running-agent-harness",
+    "stageIds": [
+      "stage-3",
+      "stage-7"
+    ],
+    "track": "agentic",
+    "reason": "学习用初始化 Agent、功能清单、进度文件和增量编码会话串联跨上下文工作，并通过端到端验证控制过早完成和交接失败。",
+    "prerequisites": "理解 Agent Loop、JSON、Git 提交与工具调用；能阅读基础脚本，并了解浏览器端到端测试。"
+  },
+  "files": [
+    "code/content/courses/courses.json",
+    "code/content/stages/stages.json"
+  ],
+  "networkWrites": 0
+}

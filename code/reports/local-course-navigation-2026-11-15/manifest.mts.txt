@@ -1,0 +1,12 @@
+import {writeFile} from 'node:fs/promises';
+import {loadContentCatalogFromDirectory,createCatalogApi} from '/Users/vsh9p8q/AI/Agent-Learning-Hub/code/modules/catalog/catalog-api.ts';
+import {listLocalChapters} from '/Users/vsh9p8q/AI/Agent-Learning-Hub/code/modules/reader/document-source.ts';
+const root='/Users/vsh9p8q/AI/Agent-Learning-Hub';
+const api=createCatalogApi(await loadContentCatalogFromDirectory(root+'/code/content'));
+const items=[];
+for(const item of api.listItems().filter(item=>item.accessPolicy==='local-preferred'||item.legacyImport?.kind==='course-card')){
+ items.push({id:item.id,title:item.title,localPath:item.localPath,accessPolicy:item.accessPolicy,isCourseCard:item.legacyImport?.kind==='course-card',chapters:await listLocalChapters(item,{localRoot:root+'/local-courses'})});
+}
+const result={generatedAt:new Date().toISOString(),items};
+await writeFile(root+'/code/reports/local-course-navigation-2026-11-15/manifest.json',JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify({activeLocalItems:items.length,courseCards:items.filter(i=>i.isCourseCard).length,declaredReadablePages:items.reduce((n,i)=>n+i.chapters.length,0)}));

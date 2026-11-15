@@ -1,0 +1,171 @@
+{
+  "at": "2026-11-15T13:16:37.921Z",
+  "schema": {
+    "version": 5
+  },
+  "sources": [
+    {
+      "id": "feishu-aihot",
+      "enabled": 1,
+      "intervalMinutes": 5,
+      "last_success_at": 1794748343097,
+      "next_sync_at": 1794748643097,
+      "last_error": null,
+      "pages": 8,
+      "rejected": 3
+    },
+    {
+      "id": "feishu-experts",
+      "enabled": 1,
+      "intervalMinutes": 5,
+      "last_success_at": 1794748482328,
+      "next_sync_at": 1794748782328,
+      "last_error": null,
+      "pages": 5,
+      "rejected": 31
+    },
+    {
+      "id": "feishu-harness-bilibili",
+      "enabled": 1,
+      "intervalMinutes": 5,
+      "last_success_at": 1794748495623,
+      "next_sync_at": 1794748795623,
+      "last_error": null,
+      "pages": 2,
+      "rejected": 0
+    },
+    {
+      "id": "feishu-harness-youtube",
+      "enabled": 1,
+      "intervalMinutes": 5,
+      "last_success_at": 1794748504306,
+      "next_sync_at": 1794748804306,
+      "last_error": null,
+      "pages": 2,
+      "rejected": 0
+    },
+    {
+      "id": "feishu-skills-bilibili",
+      "enabled": 1,
+      "intervalMinutes": 5,
+      "last_success_at": 1794748363685,
+      "next_sync_at": 1794748663685,
+      "last_error": null,
+      "pages": 3,
+      "rejected": 2
+    },
+    {
+      "id": "feishu-skills-clawhub",
+      "enabled": 1,
+      "intervalMinutes": 5,
+      "last_success_at": 1794748510532,
+      "next_sync_at": 1794748810532,
+      "last_error": null,
+      "pages": 2,
+      "rejected": 13
+    },
+    {
+      "id": "feishu-skills-github",
+      "enabled": 1,
+      "intervalMinutes": 5,
+      "last_success_at": 1794748374362,
+      "next_sync_at": 1794748674362,
+      "last_error": null,
+      "pages": 2,
+      "rejected": 0
+    },
+    {
+      "id": "feishu-skills-youtube",
+      "enabled": 1,
+      "intervalMinutes": 5,
+      "last_success_at": 1794748519809,
+      "next_sync_at": 1794748819809,
+      "last_error": null,
+      "pages": 4,
+      "rejected": 0
+    },
+    {
+      "id": "feishu-xcom",
+      "enabled": 1,
+      "intervalMinutes": 5,
+      "last_success_at": 1794748527446,
+      "next_sync_at": 1794748827446,
+      "last_error": null,
+      "pages": 3,
+      "rejected": 2
+    },
+    {
+      "id": "openspace-results",
+      "enabled": 1,
+      "intervalMinutes": 5,
+      "last_success_at": null,
+      "next_sync_at": 1794748253173,
+      "last_error": null,
+      "pages": 21,
+      "rejected": 0
+    }
+  ],
+  "records": [
+    {
+      "source_id": "feishu-aihot",
+      "count": 3568
+    },
+    {
+      "source_id": "feishu-experts",
+      "count": 2222
+    },
+    {
+      "source_id": "feishu-harness-bilibili",
+      "count": 825
+    },
+    {
+      "source_id": "feishu-harness-youtube",
+      "count": 655
+    },
+    {
+      "source_id": "feishu-skills-bilibili",
+      "count": 1056
+    },
+    {
+      "source_id": "feishu-skills-clawhub",
+      "count": 696
+    },
+    {
+      "source_id": "feishu-skills-github",
+      "count": 636
+    },
+    {
+      "source_id": "feishu-skills-youtube",
+      "count": 1687
+    },
+    {
+      "source_id": "feishu-xcom",
+      "count": 1040
+    },
+    {
+      "source_id": "openspace-results",
+      "count": 5078
+    }
+  ],
+  "published": {
+    "count": 15359
+  },
+  "files": [
+    {
+      "parser_version": 0,
+      "count": 84
+    },
+    {
+      "parser_version": 2,
+      "count": 21
+    }
+  ],
+  "jobs": [
+    {
+      "source": "openspace-results",
+      "state": "running",
+      "error_code": null,
+      "pages": 21
+    }
+  ]
+}

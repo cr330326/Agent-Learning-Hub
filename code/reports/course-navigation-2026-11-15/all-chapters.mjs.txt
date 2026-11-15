@@ -1,0 +1,11 @@
+import {load} from '/Users/vsh9p8q/AI/Agent-Learning-Hub/code/node_modules/cheerio/dist/esm/index.js';
+import {writeFile} from 'node:fs/promises';
+const base=process.env.APP_URL || 'http://127.0.0.1:3343';
+const initial=await fetch(base+'/read/legacy-reading-14-003');
+const root=load(await initial.text());
+const links=root('.reader-chapters a').map((_,a)=>root(a).attr('href')).get();
+if(links.length!==110)throw new Error('Expected 110 readable chapters');
+const results=[];let cursor=0;
+await Promise.all(Array.from({length:4},async()=>{while(cursor<links.length){const index=cursor++;const response=await fetch(base+links[index]);const $=load(await response.text());const previous=$('.reader-pager a[rel=prev]').attr('href')??null;const next=$('.reader-pager a[rel=next]').attr('href')??null;const ok=response.status===200&&$('.reader-body').length===1&&previous===(links[index-1]??null)&&next===(links[index+1]??null)&&$('.reader-chapters a[aria-current=page]').attr('href')===links[index];results[index]={index:index+1,chapter:new URL(links[index],base).searchParams.get('chapter'),status:response.status,previous,next,ok};}}));
+await writeFile('/Users/vsh9p8q/AI/Agent-Learning-Hub/code/reports/course-navigation-2026-11-15/all-chapters.json',JSON.stringify({base,checked:results.length,failed:results.filter(r=>!r.ok).length,results},null,2)+'\n');
+if(results.some(r=>!r.ok))throw new Error('Course continuity check failed');console.log('All 110 chapters render and match the course order, current chapter and both pager boundaries.');

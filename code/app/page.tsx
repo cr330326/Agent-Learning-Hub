@@ -3,6 +3,10 @@ import Link from "next/link";
 import { StageRoute, TrackTag } from "./components/site-chrome";
 import { loadPublicCatalog } from "../lib/catalog";
 import { summarizeCatalog } from "../modules/catalog/catalog-summary";
+import { getRuntimeConfig } from "../lib/catalog";
+import { getDiscoveryRepository } from "../lib/discovery";
+import { DiscoveryCard } from "./components/discovery-card";
+import { DiscoveryAutoRefresh } from "./components/discovery-auto-refresh";
 
 export const dynamic = "force-dynamic";
 
@@ -14,9 +18,14 @@ export default async function HomePage() {
   // Every browsable entry lands in exactly one of these lines — the total and
   // the breakdown must add up, or the panel reads like broken arithmetic.
   const summary = summarizeCatalog(catalog.items);
+  const news =
+    getRuntimeConfig().mode === "cloud"
+      ? getDiscoveryRepository().listPublic().items.slice(0, 3)
+      : null;
 
   return (
     <main className="page home-page">
+      {news ? <DiscoveryAutoRefresh /> : null}
       <section className="hero-grid page-width">
         <div className="hero-copy">
           <p className="eyebrow">AGENT LEARNING HUB / 2026 FIELD EDITION</p>
@@ -27,6 +36,11 @@ export default async function HomePage() {
             一条以实践产出为终点的九阶段路线。每一站都有目标、资料、动作和验收提示，今天就知道下一步该做什么。
           </p>
           <div className="hero-actions">
+            {news ? (
+              <Link className="button button-primary" href="/discover">
+                今日发现 →
+              </Link>
+            ) : null}
             <Link className="button button-primary" href="/roadmap">
               开始走路线 <span aria-hidden="true">→</span>
             </Link>
@@ -64,6 +78,29 @@ export default async function HomePage() {
           </dl>
         </aside>
       </section>
+
+      {news ? (
+        <section
+          className="page-width discovery-home"
+          aria-labelledby="discovery-title"
+        >
+          <div className="section-bar">
+            <h2 id="discovery-title">AI 开发精选</h2>
+            <Link className="text-link" href="/discover">
+              浏览全部资讯 →
+            </Link>
+          </div>
+          {news.length ? (
+            <div className="content-grid">
+              {news.map((item) => (
+                <DiscoveryCard key={item.id} item={item} />
+              ))}
+            </div>
+          ) : (
+            <p>等待信源采集完成。你也可以先沿九阶段路线开始系统学习。</p>
+          )}
+        </section>
+      ) : null}
 
       <section
         className="route-section page-width"

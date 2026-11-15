@@ -1,0 +1,117 @@
+{
+  "date": "2026-11-15T08:31:22.676Z",
+  "repository": "cr330326/Agent-Learning-Hub",
+  "approvedBase": "9bfeb9798b4a141c71ed173de502f7ad657f7742",
+  "branch": "codex/learning-news-7f7a70a6764975801eea23bab1b78e6c",
+  "appIdentity": true,
+  "events": [
+    {
+      "method": "POST",
+      "path": "/app/installations/182134115/access_tokens",
+      "status": 201
+    },
+    {
+      "method": "GET",
+      "path": "/repos/cr330326/Agent-Learning-Hub/git/ref/heads/main",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/repos/cr330326/Agent-Learning-Hub/pulls",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/repos/cr330326/Agent-Learning-Hub/git/ref/heads/main",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/repos/cr330326/Agent-Learning-Hub/git/commits/9bfeb9798b4a141c71ed173de502f7ad657f7742",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/repos/cr330326/Agent-Learning-Hub/contents/code/content/courses/courses.json",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/repos/cr330326/Agent-Learning-Hub/contents/code/content/stages/stages.json",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/repos/cr330326/Agent-Learning-Hub/git/trees",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/repos/cr330326/Agent-Learning-Hub/git/commits",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/repos/cr330326/Agent-Learning-Hub/git/refs",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/repos/cr330326/Agent-Learning-Hub/pulls",
+      "status": 201
+    },
+    {
+      "method": "GET",
+      "path": "/repos/cr330326/Agent-Learning-Hub/pulls",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/repos/cr330326/Agent-Learning-Hub/pulls/1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/repos/cr330326/Agent-Learning-Hub/pulls/1/files",
+      "status": 200
+    }
+  ],
+  "merged": false,
+  "released": false,
+  "pullRequest": {
+    "number": 1,
+    "html_url": "https://github.com/cr330326/Agent-Learning-Hub/pull/1"
+  },
+  "reusedSamePullRequest": true,
+  "secondRunCreatedPullRequests": 0,
+  "headSha": "8e007d71c1a0bb458839252cbc62f73149f43cd0",
+  "base": "main",
+  "draft": false,
+  "changedFiles": 2,
+  "additions": 37,
+  "deletions": 2,
+  "files": [
+    {
+      "path": "code/content/courses/courses.json",
+      "status": "modified",
+      "additions": 27,
+      "deletions": 0
+    },
+    {
+      "path": "code/content/stages/stages.json",
+      "status": "modified",
+      "additions": 10,
+      "deletions": 2
+    }
+  ],
+  "installationTokenRevoked": true,
+  "actorVerifiedByGitHub": "agent-learning-hub-cr330326[bot]",
+  "initialChecks": {
+    "runId": 43694919525,
+    "repositoryGuards": "success",
+    "cloudCleanRoom": "success",
+    "cloudQuality": "failure: hardcoded catalog count",
+    "localQuality": "failure: hardcoded catalog count",
+    "dependencyGuards": "failure: older Better Auth dependencies"
+  }
+}

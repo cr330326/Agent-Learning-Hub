@@ -1,0 +1,133 @@
+{
+  "generatedAt": "2026-11-15T09:21:13.247Z",
+  "baseUrl": "http://127.0.0.1:3322",
+  "pages": [
+    {
+      "path": "/",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 4421
+    },
+    {
+      "path": "/roadmap",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 2556
+    },
+    {
+      "path": "/roadmap/stage-0",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 2036
+    },
+    {
+      "path": "/roadmap/stage-8",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 2417
+    },
+    {
+      "path": "/courses",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 5937
+    },
+    {
+      "path": "/courses?page=2",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 5937
+    },
+    {
+      "path": "/courses?track=agentic",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 5965
+    },
+    {
+      "path": "/courses?track=application&access=unavailable",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 1359
+    },
+    {
+      "path": "/search",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 4684
+    },
+    {
+      "path": "/search?q=agent",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 5040
+    },
+    {
+      "path": "/projects",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 4905
+    },
+    {
+      "path": "/learning",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 958
+    },
+    {
+      "path": "/login",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 900
+    },
+    {
+      "path": "/content-policy",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 1478
+    },
+    {
+      "path": "/contribute",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 1216
+    },
+    {
+      "path": "/no-such-page",
+      "viewport": "mobile",
+      "status": 404,
+      "height": 1327
+    },
+    {
+      "path": "/discover",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 9007
+    },
+    {
+      "path": "/editions",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 900
+    },
+    {
+      "path": "/topics/Harness%20Engineering",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 8960
+    },
+    {
+      "path": "/courses/legacy-course-001",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 1893
+    },
+    {
+      "path": "/read/legacy-course-001",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 900
+    }
+  ],
+  "findings": []
+}

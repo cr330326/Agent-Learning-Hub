@@ -1,0 +1,32 @@
+name: alh-course-navigation-20261115
+services:
+  local:
+    image: agent-learning-hub:course-navigation-20261115-r2
+    environment:
+      DEPLOYMENT_MODE: local
+      LOCAL_BIND_HOST: 127.0.0.1
+      LOCAL_MATERIAL_ROOT: /data/local-courses
+    ports: ["127.0.0.1:3343:3000"]
+    volumes:
+      - local-state:/data/state
+      - /Users/vsh9p8q/AI/Agent-Learning-Hub/local-courses:/data/local-courses:ro
+  cloud:
+    image: agent-learning-hub:course-navigation-20261115-r2
+    environment:
+      DEPLOYMENT_MODE: cloud
+      BETTER_AUTH_SECRET: isolated-course-navigation-20261115-not-for-deployment
+      BETTER_AUTH_URL: http://127.0.0.1:3342
+      GITHUB_CLIENT_ID: course-navigation-fixture
+      GITHUB_CLIENT_SECRET: course-navigation-fixture
+      ADMIN_GITHUB_IDS: "4242"
+    ports: ["127.0.0.1:3342:3000"]
+    volumes:
+      - cloud-state:/data/state
+      - discovery:/data/discovery
+volumes:
+  local-state:
+    name: alh-course-navigation-20261115-r2_local-state
+  cloud-state:
+    name: alh-course-navigation-20261115-r2_cloud-state
+  discovery:
+    name: alh-course-navigation-20261115-r2_discovery

@@ -1,0 +1,11 @@
+
+> agent-learning-hub@0.1.0 lint
+> eslint . --max-warnings=0
+
+
+/Users/vsh9p8q/AI/Agent-Learning-Hub/code/reports/verification-2026-11-15/sync-feishu.mts
+   2:10  warning  'SourceAdapter' is defined but never used  @typescript-eslint/no-unused-vars
+  21:83  error    Unexpected any. Specify a different type   @typescript-eslint/no-explicit-any
+
+✖ 2 problems (1 error, 1 warning)
+

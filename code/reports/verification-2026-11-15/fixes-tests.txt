@@ -1,0 +1,9 @@
+
+ RUN  v4.1.10 /Users/vsh9p8q/AI/Agent-Learning-Hub/code
+
+
+ Test Files  2 passed (2)
+      Tests  15 passed (15)
+   Start at  15:10:06
+   Duration  2.48s (transform 1.27s, setup 0ms, import 2.22s, tests 807ms, environment 0ms)
+

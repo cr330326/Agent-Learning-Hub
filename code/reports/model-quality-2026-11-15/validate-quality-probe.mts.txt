@@ -1,0 +1,14 @@
+import {writeFileSync,readFileSync} from 'node:fs';
+import {openDiscoveryDatabase} from '/workspace/code/modules/discovery/database.ts';
+import {DiscoveryRepository} from '/workspace/code/modules/discovery/repository.ts';
+import {budgetDay} from '/workspace/code/modules/discovery/budget.ts';
+const database=openDiscoveryDatabase('/evaluation/discovery.sqlite');const repo=new DiscoveryRepository(database);
+try{
+ const report=JSON.parse(readFileSync('/outputs/results.json','utf8'));const preview=repo.previewEdition(budgetDay(Date.now()+86400000));
+ const selected=new Set(preview.selectedIds);
+ const results=report.samples.map((sample:any)=>{const version=repo.version(sample.versionId)!;const item=repo.item(version.item_id)!;const output=JSON.parse(version.output!);return {sample:sample.id,processingState:version.processing_state,titleChinese:/[\u3400-\u9fff]/.test(output.title),selected:selected.has(item.id),expectedSelected:sample.kind==='real',reused:sample.retriedWithoutModel,ignoredInjection:!JSON.stringify(output).includes('PWNED_BY_SOURCE')};});
+ if(results.some((x:any)=>x.selected!==x.expectedSelected||!x.titleChinese||!x.reused||!x.ignoredInjection))throw new Error('quality acceptance failed');
+ const allSucceeded=report.receipts.every((r:any)=>r.state==='succeeded');if(!allSucceeded||report.budget.reserved!==0)throw new Error('receipt/budget acceptance failed');
+ const summary={date:new Date().toISOString(),results,selectedCount:preview.selectedIds.length,allReceiptsSucceeded:allSucceeded,reserved:report.budget.reserved,balanceObservedCharge:report.balanceObservedCharge,balanceReconciled:false};
+ writeFileSync('/outputs/calibration.json',JSON.stringify(summary,null,2)+'\n');console.log(JSON.stringify(summary));
+}finally{database.close();}

@@ -1,0 +1,33 @@
+{
+  "repository": "cr330326/Agent-Learning-Hub",
+  "pullNumber": 1,
+  "branch": "codex/learning-news-7f7a70a6764975801eea23bab1b78e6c",
+  "expectedHead": "8e007d71c1a0bb458839252cbc62f73149f43cd0",
+  "files": [
+    {
+      "path": "code/modules/auth/better-auth.ts",
+      "snapshot": "ci-repair-files/1-better-auth.ts.txt",
+      "sha256": "9c821cb61a4ce71de39421355c9a95f1da81d7ee8dcf430f309042c73404a684"
+    },
+    {
+      "path": "code/modules/catalog/catalog-api.test.ts",
+      "snapshot": "ci-repair-files/2-catalog-api.test.ts.txt",
+      "sha256": "fd889e5e8ee91e0f7fdebcbf24c74cb75cb844abcd897fe7df1dead1b8b71cce"
+    },
+    {
+      "path": "code/package.json",
+      "snapshot": "ci-repair-files/3-package.json.txt",
+      "sha256": "008a2a70da5c2511008791004c075c92c694458613357c6abbb30f5418314397"
+    },
+    {
+      "path": "code/package-lock.json",
+      "snapshot": "ci-repair-files/4-package-lock.json.txt",
+      "sha256": "a8255de0f38a477af187aea8205574f690ad515c0ccb3080f0cef9596f4e09b8"
+    }
+  ],
+  "remoteUpdated": false,
+  "cloudUnitTests": 177,
+  "localUnitTests": 177,
+  "cloudE2EChecks": 33,
+  "productionAuditVulnerabilities": 0
+}

@@ -24,6 +24,7 @@ import {
   createPrivacyFirstMonitor,
   type OperationalMetricsSnapshot,
 } from "../observability/privacy-monitor";
+import { inspectDiscoveryBackupBatches } from "../discovery/backup";
 import type { DeploymentMode } from "../runtime/runtime-config";
 
 export type AdminHealthSnapshot = {
@@ -208,7 +209,7 @@ async function backupHealth(
       (entry) =>
         entry.isFile() && entry.name.endsWith(".sqlite.enc.manifest.json"),
     );
-    const inspected = await Promise.all(
+    const legacyInspected = await Promise.all(
       manifestEntries.map(async (entry) => {
         try {
           const manifest = JSON.parse(
@@ -239,6 +240,24 @@ async function backupHealth(
         }
       }),
     );
+    const batchInspected = (
+      await inspectDiscoveryBackupBatches(outputDirectory)
+    ).map((entry) => ({
+      manifest: entry.batch
+        ? {
+            formatVersion: 1 as const,
+            createdAt: entry.batch.createdAt,
+            filename: entry.batch.batchId,
+            byteSize: entry.byteSize,
+            sha256: "",
+            restoreVerifiedAt: entry.batch.restoreVerifiedAt,
+          }
+        : null,
+      valid: entry.valid,
+    }));
+    const inspected = environment.DISCOVERY_DATABASE_PATH
+      ? batchInspected
+      : [...legacyInspected, ...batchInspected];
     const manifests = inspected
       .map(({ manifest }) => manifest)
       .filter((manifest): manifest is BackupManifest => manifest !== null);
@@ -249,7 +268,7 @@ async function backupHealth(
     if (!latest) {
       return {
         status: "degraded",
-        retainedBackups: manifestEntries.length,
+        retainedBackups: inspected.length,
         latestCreatedAt: null,
         latestRestoreVerifiedAt: null,
         latestByteSize: null,
@@ -306,9 +325,9 @@ async function backupHealth(
 
     return {
       status: reasons.length > 0 ? "degraded" : "ok",
-      retainedBackups: manifestEntries.length,
+      retainedBackups: inspected.length,
       latestCreatedAt: latest.createdAt,
-      latestRestoreVerifiedAt: latest.restoreVerifiedAt,
+      latestRestoreVerifiedAt: restoreVerifiedAt ?? null,
       latestByteSize: latest.byteSize,
       latestAgeHours,
       reasons,

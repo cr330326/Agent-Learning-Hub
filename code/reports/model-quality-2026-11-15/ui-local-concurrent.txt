@@ -1,0 +1,9 @@
+
+> agent-learning-hub@0.1.0 audit:ui
+> node scripts/ui-review.mjs --output-dir reports/ui-review --base-url http://127.0.0.1:3323 --item-id legacy-course-013 --output-dir reports/model-quality-2026-11-15/ui-local
+
+UI review: 53 captures, 1 findings -> /Users/vsh9p8q/AI/Agent-Learning-Hub/code/reports/model-quality-2026-11-15/ui-local
+  tablet /search?q=agent: navigation failed: page.goto: Timeout 30000ms exceeded.
+Call log:
+[2m  - navigating to "http://127.0.0.1:3323/search?q=agent", waiting until "domcontentloaded"[22m
+

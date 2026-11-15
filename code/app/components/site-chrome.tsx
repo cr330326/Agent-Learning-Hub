@@ -14,6 +14,7 @@ const trackColors: Record<Track["id"], string> = {
 // last entry "登录" contradicted the page it opens ("你不需要登录").
 function navigationLinks(mode: DeploymentMode) {
   return [
+    ...(mode === "cloud" ? [{ href: "/discover", label: "发现" }] : []),
     { href: "/roadmap", label: "九阶段路线" },
     { href: "/courses", label: "课程目录" },
     { href: "/search", label: "搜索" },

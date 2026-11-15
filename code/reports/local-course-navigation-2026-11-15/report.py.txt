@@ -1,0 +1,66 @@
+from pathlib import Path
+import json,shutil
+root=Path('/Users/vsh9p8q/AI/Agent-Learning-Hub');out=root/'code/reports/local-course-navigation-2026-11-15'
+audit=json.loads((out/'http-audit.json').read_text());results=audit['results'];by={r['id']:r for r in results}
+previous=json.loads((root/'code/reports/course-navigation-2026-11-15/other-course-audit.json').read_text())['courses'];authors=json.loads((out/'author-outline-findings.json').read_text());authorBy={r['id']:r for r in authors}
+base='../../code/reports/local-course-navigation-2026-11-15/'
+lines=['# 其他本地课程上下节导航验证','', '2026-11-15，针对正在运行的 Mac Docker Local 实例 `http://127.0.0.1:3003`。应用镜像为 `agent-learning-hub:course-navigation-20261115-r2`。','',
+'## 验证结论','',
+'40 个其他课程入口中，22 个接入了多页目录，12 个只接入一页，6 个当前没有可在站内渲染的正文。另将已修复的 OpenCode 作为对照，总计检查 41 个课程入口。现有目录内的上下节目标均正确，课程完整性核对确认了五门主线课程的缺口。','',
+'现有多页条目从首节进入第二节再返回的浏览器点击全部通过。Hello-Agents 的正文第一章、第二章均没有翻页按钮，claw0 的第一节只有返回 README 的上一节，Learn Harness Engineering 的课程入口只显示 README。learn-claude-code 的旧 12 节可以翻页，作者当前 17 节目录还未接入。','',
+'## 验证范围与方法','',
+'- HTTP 覆盖全部 358 个有效 `local-preferred` 条目，以及另外 3 个课程回退入口，共 361 个入口、518 个可读页面。除 OpenCode 外的可读页面有 408 个。',
+'- 通过实际 `listLocalChapters()` 生成安全可读清单，对照运行实例的目录、当前节、上一节和下一节。每个已声明可读页面都验证正文与 HTTP 状态，首节要求无上一节，末节要求无下一节。',
+'- 24 个多页条目全部执行真实浏览器“下一节 → 上一节”点击，包含 23 个课程卡及一个多页资料条目。为避免自动写入日常学习记录，浏览器禁用页面脚本，使用阅读器服务端输出的普通链接导航。',
+'- 针对有按钮、缺少按钮、首尾边界和旧课程目录截取 8 张桌面截图，已逐张查看。截图中的学习状态停留在加载占位，与本轮禁用脚本的浏览器配置一致。',
+'- 对五门主线课程另查作者 README 或 SUMMARY，核对教学正文是否声明进整课。作者目录检查返回失败，现有链路和作者目录覆盖率的结果分别记录。','',
+f'[HTTP 明细]({base}http-audit.json) · [浏览器点击与截图清单]({base}browser-audit.json) · [作者目录失败明细]({base}author-outline-findings.json)','',
+'## 已确认的主线缺口','',
+'| 课程 | 当前课程可读页 | 作者主线 | 主线仍在整课之外 | 现状 |','| --- | ---: | ---: | ---: | --- |']
+for r in authors:
+ lines.append(f"| {r['title']} | {r['currentReadablePages']} | {r['authorMainPages']} | {len(r['mainPagesOutsideCourse'])} | {r['note']} |")
+lines+=['',
+'所有上述作者主线文件均存在于本地磁盘。Hello-Agents 的 16 章和 claw0 剩余 9 节已经作为独立条目存在，但独立条目没有课程上下节。learn-claude-code 的当前中文 17 节、Harness 新增 2 讲、《驾驭工程》新增 4 页尚未被当前阅读目录声明，需按作者当前目录策展并处理旧版归属。','',
+'本轮完成验证与缺陷记录，上述五门的补齐工作仍待实施。AI Agent Deep Dive 当前接入的 18 页全部通过已有目录的前后翻页验证。','',
+'## 全部课程入口的实际按钮','',
+'下表记录默认阅读页的按钮。首节只有下一节、末节只有上一节符合边界规则。两页课程无法展示同时拥有前后节的中间页，三页及以上课程才存在这种中间页。','',
+'| 课程 | 可读页 | 默认上一节 | 默认下一节 | 目录覆盖核对 |','| --- | ---: | --- | --- | --- |']
+for r in results:
+ if not r['isCourseCard']:continue
+ if r['id'] in authorBy:note='已确认主线缺口'
+ elif r['id']=='legacy-course-017':note='OpenCode 已修复，对照项'
+ elif r['readableChapters']==0:note='当前无站内正文'
+ elif r['readableChapters']==1:note='单页无翻页，作者完整目录待逐门核对'
+ else:note='已接入页面翻页通过，作者完整目录待逐门核对'
+ lines.append(f"| {r['title']}（{r['id']}） | {r['readableChapters']} | {'有' if r['entry'].get('previous') else '无'} | {'有' if r['entry'].get('next') else '无'} | {note} |")
+lines+=['','## 同仓库独立资料的进一步核验','',
+'此前 20 个同仓库归属候选已与实际页面对应。部分内容为项目说明、工作区模板或旧版文档，课程归属需结合作者目录裁定。下表展示仍作为独立目标打开的内容及其按钮现状。','',
+'| 课程入口 | 已接入页 | 同仓库独立条目 | 独立可读条目中无翻页按钮 |','| --- | ---: | ---: | ---: |']
+for c in previous:
+ if c['category']!='independent-course-lessons':continue
+ separate=[by[i['id']] for i in c['separateLessons'] if i['id'] in by]
+ noPager=sum(s['entry'].get('body',False) and not s['entry'].get('previous') and not s['entry'].get('next') for s in separate)
+ lines.append(f"| {c['title']} | {by[c['id']]['readableChapters']} | {len(separate)} | {noPager} |")
+lines+=['','## 当前没有站内正文的课程入口','']
+for r in results:
+ if r['isCourseCard'] and not r['readableChapters']:
+  reason=r['entry'].get('fallback','')
+  for prefix in ['READER / SAFE FALLBACK','READER / LOCAL CONTENT MISSING']:reason=reason.replace(prefix,'')
+  lines.append(f"- {r['title']}（{r['id']}）页面提示“{reason}”。")
+lines+=['','## 截图与复现','',
+f'- [Hello-Agents 前言末尾只有上一节]({base}screenshots/hello-course-preface.png)',
+f'- [Hello-Agents 第一章末尾没有上下节]({base}screenshots/hello-lesson-1.png)',
+f'- [Hello-Agents 第二章末尾没有上下节]({base}screenshots/hello-lesson-2.png)',
+f'- [claw0 第一节末尾只有返回 README]({base}screenshots/claw0-course.png)',
+f'- [learn-claude-code 旧目录的中间节双向按钮]({base}screenshots/claude-middle.png)',
+f'- [AI Agent Deep Dive 中间节双向按钮]({base}screenshots/agent-deep-dive-middle.png)','',
+'脚本副本和完整执行日志保存在同一报告目录。HTTP 和浏览器链路检查通过，作者目录覆盖检查为失败，五项缺口仍开放。','',
+'```bash',
+'node --import ./code/node_modules/tsx/dist/loader.mjs /tmp/alh-local-course-navigation-20261115/manifest.mts',
+'node /tmp/alh-local-course-navigation-20261115/audit.mjs',
+'node /tmp/alh-local-course-navigation-20261115/browser.mjs',
+'python3 /tmp/alh-local-course-navigation-20261115/author-outlines.py',
+'```','']
+(root/'docs/acceptance/local-course-navigation-audit-2026-11-15.md').write_text('\n'.join(lines))
+for file in ['manifest.mts','audit.mjs','browser.mjs','bottom-shots.mjs','author-outlines.py','report.py']:
+ shutil.copyfile(Path('/tmp/alh-local-course-navigation-20261115')/file,out/(file+'.txt'))

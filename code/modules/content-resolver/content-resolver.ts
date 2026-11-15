@@ -1,4 +1,5 @@
 import type { LearningItem } from "../catalog/content-schema";
+import { listLocalChapters } from "../reader/document-source";
 import {
   createLocalFileAccess,
   UnsafeLocalPathError,
@@ -14,6 +15,8 @@ export type ResolvedContent =
       kind: "local-document";
       href: string;
       label: string;
+      chapter?: string;
+      sourceUrl: string | null;
     }
   | {
       kind: "external-link";
@@ -27,7 +30,10 @@ export type ResolvedContent =
     };
 
 export type ContentResolver = {
-  resolve(item: LearningItem): Promise<ResolvedContent>;
+  resolve(
+    item: LearningItem,
+    options?: { chapter?: string },
+  ): Promise<ResolvedContent>;
 };
 
 function internalContent(item: LearningItem): ResolvedContent {
@@ -38,11 +44,40 @@ function internalContent(item: LearningItem): ResolvedContent {
   };
 }
 
-function localContent(item: LearningItem): ResolvedContent {
+function localContent(
+  item: LearningItem,
+  chapter?: string,
+  explicit = false,
+): ResolvedContent {
   return {
     kind: "local-document",
-    href: `/read/${encodeURIComponent(item.id)}`,
+    href: `/read/${encodeURIComponent(item.id)}${explicit && chapter ? `?chapter=${encodeURIComponent(chapter)}` : ""}`,
     label: "在站内阅读（本地）",
+    ...(chapter ? { chapter } : {}),
+    sourceUrl:
+      chapter && chapter !== item.localPath
+        ? (item.references.find((reference) => reference.localPath === chapter)
+            ?.sourceUrl ?? null)
+        : item.sourceUrl,
+  };
+}
+
+function chapterTarget(
+  item: LearningItem,
+  chapter?: string,
+): LearningItem | null {
+  if (chapter === undefined || item.accessPolicy === "owned") return item;
+  if (item.accessPolicy !== "local-preferred") return null;
+  if (chapter === item.localPath) return { ...item, references: [] };
+  const reference = item.references.find(
+    (value) => value.localPath === chapter,
+  );
+  if (!reference) return null;
+  return {
+    ...item,
+    localPath: chapter,
+    sourceUrl: reference.sourceUrl,
+    references: [],
   };
 }
 
@@ -71,7 +106,13 @@ function unavailableContent(
 
 export function createCloudContentResolver(): ContentResolver {
   return {
-    async resolve(item) {
+    async resolve(original, options) {
+      const item = chapterTarget(original, options?.chapter);
+      if (!item)
+        return unavailableContent(
+          original,
+          "这个章节不在课程清单允许的本地路径中。",
+        );
       if (item.accessPolicy === "owned") {
         return internalContent(item);
       }
@@ -89,10 +130,17 @@ export function createCloudContentResolver(): ContentResolver {
 export function createLocalContentResolver(options: {
   localRoot: string;
 }): ContentResolver {
-  const fileAccess = createLocalFileAccess(options.localRoot);
+  const localRoot = options.localRoot;
+  const fileAccess = createLocalFileAccess(localRoot);
 
   return {
-    async resolve(item) {
+    async resolve(original, options) {
+      const item = chapterTarget(original, options?.chapter);
+      if (!item)
+        return unavailableContent(
+          original,
+          "这个章节不在课程清单允许的本地路径中。",
+        );
       if (item.accessPolicy === "owned") {
         return internalContent(item);
       }
@@ -100,7 +148,11 @@ export function createLocalContentResolver(options: {
       if (item.accessPolicy === "local-preferred" && item.localPath !== null) {
         try {
           if (await fileAccess.resolve(item.localPath)) {
-            return localContent(item);
+            return localContent(
+              item,
+              options?.chapter,
+              options?.chapter !== undefined,
+            );
           }
         } catch (error) {
           if (error instanceof UnsafeLocalPathError) {
@@ -110,6 +162,10 @@ export function createLocalContentResolver(options: {
           return unavailableContent(item, "本地素材暂时不可访问。");
         }
 
+        if (options?.chapter === undefined) {
+          const [chapter] = await listLocalChapters(item, { localRoot });
+          if (chapter) return localContent(item, chapter.relativePath);
+        }
         const upstream = externalContent(item);
         if (upstream !== null) {
           return upstream;

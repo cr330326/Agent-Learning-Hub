@@ -1,0 +1,5 @@
+time="2026-11-15T16:08:13+08:00" level=warning msg="volume \"alh-verification-20261115_discovery-r10\" already exists but was not created by Docker Compose. Use `external: true` to use an existing volume"
+ Container alh-verification-20261115-worker-1 Starting 
+ Container alh-verification-20261115-worker-1 Started 
+ Container alh-verification-20261115-worker-1 Waiting 
+ Container alh-verification-20261115-worker-1 Healthy 

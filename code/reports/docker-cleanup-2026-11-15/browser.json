@@ -1,0 +1,22 @@
+[
+  {
+    "mode": "local",
+    "homeStatus": 200,
+    "modeBadge": "本地模式",
+    "pagination": 24,
+    "localReader": true,
+    "loginEntry": false,
+    "mobileOverflow": false,
+    "errors": []
+  },
+  {
+    "mode": "cloud",
+    "homeStatus": 200,
+    "modeBadge": "云端模式",
+    "pagination": 24,
+    "localReader": false,
+    "loginEntry": true,
+    "mobileOverflow": false,
+    "errors": []
+  }
+]

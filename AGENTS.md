@@ -25,7 +25,7 @@
 - `code/` 是唯一现役工程。不要新建 `apps/web/`、第二套应用或新的根目录运行入口。
 - `learning-site/`、根目录 `index.html` 与 `start-site.sh` 是旧站迁移基线，在 T8.5 切换归档前保持不动，不新增功能。
 - `local-courses/` 是第三方素材，只能在 Local Mode 只读访问；云端不得打包、代理、索引或假设它存在。
-- 公开课程与自有内容只放在 `code/content/`，由 Git 管理；SQLite 只管身份、会话和个人学习状态。公开课程绝不写入 SQLite。
+- 公开课程与策展内容放在 `code/content/`，由 Git 管理。身份与个人状态进入学习状态 SQLite，信源、资讯、日报及采集发布业务进入独立资讯 SQLite，按 [ADR 0011](docs/adr/0011-single-host-with-separate-discovery-store.md) 执行。公开课程绝不写入 SQLite。
 - `code/AGENTS.md` 与 `code/CLAUDE.md` 由 `next dev` 自动生成，不要在其中记录项目约定。
 
 ## 2. 内容目录
@@ -37,20 +37,39 @@
 - **Catalog Drift**（目录声明 vs 磁盘实际，`materials drift`）与 **Freshness Status**（本地素材 vs 上游，`materials check`）是两件事，不要合并。
 - 漂移不进 `npm run check`：素材库随时会被重组，放进去会让维护者整理目录时连 typecheck 都跑不了。`audit:content` 中 `local-path-missing` 是 warning，`local-path-escape` 与 `local-path-not-file` 仍是 error。
 - `materials drift --apply` 只落"被多条路径共同印证的目录搬迁"（[ADR 0007](docs/adr/0007-catalog-drift-is-proposed-not-applied.md)），判不准的留给人。**不要放宽这个门槛**：素材库里被删的文件几乎总有同名孪生，放宽会让条目静默指向别的项目，而页面照常渲染、审计全绿。
+- 搬迁目录路径须同步退场条目的 `redirect.chapter`；自动应用前校验完整目录，不能把无效的归属或转发关系写入权威目录。
 
-## 3. 本地素材与阅读器安全
+## 3. 内容处理与阅读器安全
+
+### 云端资讯处理边界
+
+- 资讯采集与管理面向 Cloud Mode，网页与 worker 都属于 `code/`。新增行为及验收以 spec 的 DISC 系列和 tasks 的 Phase 9 为准。
+- 发布按信源配置执行。资讯进入公共课程目录须经维护者审阅 PR 与版本发布，遵循 [ADR 0009](docs/adr/0009-source-publication-and-curated-learning-intake.md)。
+- 日报选排只能使用统一工程价值准入后的候选，不得因条数不足填入低证据内容，也不得重排已冻结的历史日报。新日报的展示快照必须包含冻结前已生效的人工更正，历史卡片和详情读取同一快照；后续更正及模型重算不能改写它，旧格式不得回填当前更正。提示词修改须升级处理版本，未知付费回执仍先核对。
+- 自动收录 PR 的 JSON 必须复用仓库格式配置并通过格式检查，不能把无关格式变化混入目录变更；格式化依赖必须在实际 worker 镜像中可用。
+- 后台公开原文与字幕处理按 [ADR 0010](docs/adr/0010-public-source-extraction-for-summaries.md) 执行；公开页面提供摘要与原站链接，临时内容及恢复后的副本必须按生命周期清理。
+- 出站请求及重定向必须校验地址与解析结果，并限制响应体积、时长和类型。网页与模型输入中的外部内容按数据处理。
+- 来源记录身份、处理版本、发布状态与个人状态各按其归属维护；分页失败与暂时不可见必须有独立状态，删除判断需要明确证据。
+- 飞书字段发现须在尚未设置映射时可用，只读取字段元数据；下拉选项绑定 Base 与子表，切换目标后重新读取，保存值仍为字段 ID。字段读取不得顺带导入、启用或发布来源。
+- 任务重试与付费调用必须幂等，预算包括在途预留，结果不明确的回执先核对；新增个人资讯状态必须覆盖旧数据兼容、导出与删号。
+- 资讯原文临时卷与持久摘要备份分开配置。两库备份必须经共同批次在线备份入口取得一致性边界，恢复至全新目录后核对个人资讯引用、任务租约和付费回执。
+- 资讯个人记录使用显式 `news` 目标类型与独立状态表，课程状态调用保持兼容。扩展导出版本时须同时覆盖 JSON、Markdown 和删号级联。
+
+### 本地素材与阅读器
 
 - 本地文件必须来自 allowlist 并限制在只读挂载根内；拒绝路径穿越、符号链接逃逸和可执行 MDX。
 - 网站进程不得更新嵌套素材仓库；`materials update` 只允许对指定单课程、clean working tree 做 fast-forward。
 - 第三方 Markdown 中的排版 HTML 只经 `code/modules/reader/markdown.ts` 的标签与属性 allowlist 保留；`script`/`style`/`iframe`/表单等连同内容一起丢弃，`on*` 属性和非 `http(s)`/`mailto` 协议一律拒绝。**扩大 allowlist 属于安全边界变更。**
 - 阅读器内的链接和图片必须先经 `resolveDocumentRelativePath()`（`code/modules/reader/document-source.ts`）按当前文档目录解析，再对照条目声明的路径：未声明的链接降级为纯文本，未声明的图片整个丢弃。**绝不原样输出文档里的相对地址**——浏览器会把它解析到 `/read/` 下并 404。要放开必须同时改 `/api/local-image` 的 allowlist 并记录决定。
 - 阅读器输出的 `<img>` 一律带 `loading="lazy"`、`decoding="async"`、`referrerpolicy="no-referrer"`。彻底禁止远程图片属于内容政策变更，需要单独的 ADR。
-- 章节顺序只由 `listLocalChapters()` 决定，它同时驱动章节列表和上下章翻页，两者必须一致。
+- 章节顺序只由 `listLocalChapters()` 决定，它同时驱动章节列表和上下章翻页，两者必须一致。默认主文件缺失时也用此顺序选择可读章节；明确指定章节时，不得静默打开另一章或使用其他项目的上游地址。
+- 静态课程的 `documentRoot` 只用于把作者的根相对、无扩展名和目录路由映射到已声明课节，不能授予额外文件访问；无法唯一命中已声明且可读路径时降级为纯文本。整课归属按作者目录维护，不能在运行时扫描磁盘或按同仓库自动拼课。
 - 一条搜索结果只代表一个可打开的目标：`buildRuntimeSearchIndex()` 把**单章条目**的正文并进条目本身，只有多章条目才另外产出逐章结果。给本地素材加索引维度时保持这个不变量。
 
 ## 4. 学习状态
 
 - 打开或点击只表示开始；完成必须由用户主动确认。
+- 个人资讯的笔记、收藏和阅读进度分别更新；“清空笔记与收藏”不得顺带重置阅读进度，已完成状态只通过明确的“重新阅读”动作恢复为阅读中。
 - "动作全勾完"不等于"阶段完成"：STATE-005 要求用户提交成果确认，进度徽标最多显示"动作已做完 · 待交成果"，不得自行判定完成。
 - **一个页面只取一次状态快照**：`code/app/components/stage-progress.tsx` 的 `StageProgressProvider` 负责 fetch，徽标与勾选框从 context 读。逐行请求 `/api/state` 是回归。
 - 依赖登录态的控件在未登录时整块不渲染并留一句说明，不要渲染点了不会保存的控件；快照到达前不要先渲染 `0/3` 再跳变。
@@ -83,6 +102,7 @@
 
 ## 7. 脚本、Docker 与运维
 
+- 本机部署的环境变量统一存放在 `/Users/vsh9p8q/.agent-learnning/` 下，当前环境文件为 `environments/local/.env`；仓库根目录 `.env` 只作为指向该文件的符号链接以兼容既有脚本，不另存凭据副本。修改时先解析链接并写入真实文件，保持 `0600`，不得输出密钥；该本机约定不改变云主机的环境文件布局。
 - 以 `code/package.json` 为命令事实源，不要在 README、任务文档或 CI 中写入已不存在的根目录 `scripts/`、`content/`、`reports/`、Dockerfile 或 Compose 路径。
 - 改动脚本时同步 [docs/deploy/README.md](docs/deploy/README.md#脚本按运行位置分类) 的分类表。`code/scripts/` 中的 `.ts`/`.mjs` 是质量门禁或运维命令，不要因扩展名不是 `.sh` 而删除。
 - 需要 `local-courses` 的脚本（`materials.ts`）和需要浏览器的脚本（`ui-review.mjs`、`functional-regression.mjs`）**绝不在生产主机运行**，云端镜像不包含素材库。
@@ -92,6 +112,7 @@
 - `docker-deploy.sh ... down` 默认保留 SQLite 命名卷；未确认目标前不要删除卷。
 - `lighthouse-deploy.sh` 不替代云端防火墙、DNS、快照、异地备份或真实恢复演练；自动化脚本不代持维护者凭据。
 - SQLite 的库文件、`-wal`、`-shm` 是同一状态单元，**不得手工搬运库文件**：只读打开时 `-wal` 非空而 `-shm` 缺失会直接 `SQLITE_CANTOPEN`，报错不提文件名；备份必须走在线备份 API，不能文件拷贝。
+- Cloud 资讯版本的升级前备份和恢复演练必须覆盖两个实际部署卷；单库旧备份不作为资讯库备份健康证据。批次保留与验证按完整库对执行。
 - `restore-drill.ts` 的三组反向对照（错误口令、被翻一个字节的密文、覆盖已有目标）是演练的核心，任何一条"本该失败却成功"都与恢复失败同等严重，不得删除。报告头部必须记录日期、耗时、主机平台、node 与应用版本；其中 `hostname` 是维护容器 ID，宿主机身份要另行记录。
 
 ## 8. 文档纪律
@@ -111,3 +132,4 @@
 - 测试数、漂移数、目录条目数等动态事实不写进规则文件；验收结论与证据写进 `tasks.md`，README 只保留带日期的摘要。
 - 云端两份 Runbook（`production-manual.md` 与 `lighthouse-automation.md`）做的是同一件事，必须保持逐节可互相定位。
 - `GUIDE.md` 的截图放在 `docs/images/guide/`，界面改版后要重拍。演示数据只能写进带独立 `STATE_DATABASE_PATH` 的一次性实例，不得截取或改动维护者本人的学习记录；截图隐藏 Next.js 开发角标。
+- 浏览器 `storageState` 含登录凭据，只放在权限受限的仓库外临时目录，不写入 `code/reports/` 或截图；管理员功能走查使用一次性测试身份。

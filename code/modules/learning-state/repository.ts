@@ -1,3 +1,7 @@
+import {
+  listDiscoveryState,
+  type DiscoveryPersonalState,
+} from "./discovery-state";
 import { randomUUID } from "node:crypto";
 
 import type { LearningDatabase } from "./database";
@@ -142,6 +146,7 @@ export type LearningStateSnapshot = {
   notes: NoteRecord[];
   bookmarks: BookmarkRecord[];
   stageOutcomes: StageOutcomeRecord[];
+  discoveryState?: DiscoveryPersonalState[];
 };
 
 export class StateValidationError extends Error {
@@ -1002,6 +1007,7 @@ export function createLearningStateRepository(
         notes: this.listNotes(userId),
         bookmarks: this.listBookmarks(userId),
         stageOutcomes: this.listStageOutcomes(userId),
+        discoveryState: listDiscoveryState(database, userId),
       };
     },
   };

@@ -1,0 +1,55 @@
+{
+  "day": "2026-11-15",
+  "syntheticPublicationClock": true,
+  "items": [
+    {
+      "sample": "harness",
+      "id": "news-7f7a70a6764975801eea23bab1b78e6c",
+      "state": "ready"
+    },
+    {
+      "sample": "patterns",
+      "id": "news-ffc229d83891918f82064b92e6624a3d",
+      "state": "ready"
+    },
+    {
+      "sample": "context",
+      "id": "news-5afc409141ecc9b7d6c53393199ee282",
+      "state": "ready"
+    },
+    {
+      "sample": "marketing",
+      "id": "news-f931d6cd543c9544295cbef94b335dde",
+      "state": "off-topic"
+    },
+    {
+      "sample": "off-topic",
+      "id": "news-af7c2f191f85f7371d2f9adcfe5c4357",
+      "state": "off-topic"
+    },
+    {
+      "sample": "injection",
+      "id": "news-9e4ec8f9a454164865aacf91ddd4c2e2",
+      "state": "ready"
+    }
+  ],
+  "edition": {
+    "day": "2026-11-15",
+    "cutoff": 1794704400000,
+    "entries": [
+      {
+        "id": "news-7f7a70a6764975801eea23bab1b78e6c",
+        "versionId": "version-e0a8e9f1f3ea9755fc40a08589bb0dc3"
+      },
+      {
+        "id": "news-ffc229d83891918f82064b92e6624a3d",
+        "versionId": "version-c77a68ca6916c55afc028c6e4da40646"
+      },
+      {
+        "id": "news-5afc409141ecc9b7d6c53393199ee282",
+        "versionId": "version-adbc98e02f50740a53b76eaa1118a500"
+      }
+    ],
+    "created_at": 1794704460000
+  }
+}

@@ -122,3 +122,19 @@ describe("safe Markdown reader", () => {
     expect(result.html).toContain('width="100%"');
   });
 });
+
+it("routes course site-absolute links through the declared-document resolver", () => {
+  const result = renderMarkdownDocument(
+    "[课程](/1-start/) [未声明](/secret) [站内](https://example.com)",
+    {
+      resolveDocumentHref: (source) =>
+        source === "/1-start/" ? "/read/course?chapter=intro" : null,
+    },
+  );
+  expect(result.html).toContain('href="/read/course?chapter=intro"');
+  expect(result.html).not.toContain('href="/secret"');
+  expect(result.html).toContain('href="https://example.com"');
+  expect(renderMarkdownDocument("[路线](/roadmap)").html).toContain(
+    'href="/roadmap"',
+  );
+});

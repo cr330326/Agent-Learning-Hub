@@ -1,0 +1,21 @@
+{
+  "generatedAt": "2026-11-15T05:42:53.863Z",
+  "volumes": {
+    "pair": "alh-phase9-recovery-1794721322-pair",
+    "state": "alh-phase9-recovery-1794721322-state",
+    "discovery": "alh-phase9-recovery-1794721322-discovery"
+  },
+  "batchId": "cdd147f8-7585-4667-abb6-d30546d9b9e9",
+  "image": "agent-learning-hub:phase9-20261115-r14",
+  "project": "alh-phase9-recovery",
+  "url": "http://127.0.0.1:3314",
+  "privateRecordsRestored": 1,
+  "checks": [
+    "private notes, bookmark and explicit completion match source",
+    "stable discovery targets return public detail",
+    "restored GitHub session resolves through Better Auth",
+    "version two export includes restored discovery state",
+    "restored app and worker are healthy",
+    "fresh destination database modes are 0600; occupied volumes reject reinstall"
+  ]
+}

@@ -165,6 +165,7 @@ export const learningItemSchema = z
     learningGoals: z.array(requiredTextSchema),
     sourceUrl: httpUrlSchema.nullable(),
     localPath: localPathSchema.nullable().optional().default(null),
+    documentRoot: localPathSchema.optional(),
     accessPolicy: z.enum(accessPolicies),
     publicationRights: z.enum(publicationRights),
     author: requiredTextSchema,

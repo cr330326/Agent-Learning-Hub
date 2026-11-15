@@ -1,0 +1,31 @@
+Checked 40/361 entries
+Checked 60/361 entries
+Checked 80/361 entries
+Checked 100/361 entries
+Checked 120/361 entries
+Checked 140/361 entries
+Checked 160/361 entries
+Checked 180/361 entries
+Checked 200/361 entries
+Checked 220/361 entries
+Checked 240/361 entries
+Checked 260/361 entries
+Checked 280/361 entries
+Checked 300/361 entries
+Checked 320/361 entries
+Checked 340/361 entries
+Checked 360/361 entries
+Checked 20/361 entries
+{
+  "base": "http://127.0.0.1:3003",
+  "generatedAt": "2026-11-15T12:01:25.447Z",
+  "elapsedSeconds": 23,
+  "entries": 361,
+  "courseCards": 41,
+  "localItems": 358,
+  "readablePages": 518,
+  "multiChapterItems": 24,
+  "singleChapterItems": 325,
+  "noReadableChapterItems": 12,
+  "failures": []
+}

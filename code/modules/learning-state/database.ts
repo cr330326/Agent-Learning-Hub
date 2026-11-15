@@ -1,4 +1,5 @@
 import Database from "better-sqlite3";
+import { DISCOVERY_STATE_SCHEMA } from "./discovery-state";
 import { chmodSync, existsSync } from "node:fs";
 
 export const WAL_SAFE_MINIMUM_SQLITE_VERSION = "3.51.3";
@@ -171,7 +172,7 @@ export class UnsupportedWalSQLiteVersionError extends Error {
   }
 }
 
-function compareSQLiteVersions(left: string, right: string): number {
+export function compareSQLiteVersions(left: string, right: string): number {
   const leftParts = left.split(".").map(Number);
   const rightParts = right.split(".").map(Number);
 
@@ -210,6 +211,7 @@ function applyMigrations(database: Database.Database): number {
       version: OPERATIONAL_METRICS_SCHEMA_VERSION,
       sql: OPERATIONAL_METRICS_SCHEMA_SQL,
     },
+    { version: 3, sql: DISCOVERY_STATE_SCHEMA },
   ];
 
   for (const migration of migrations) {

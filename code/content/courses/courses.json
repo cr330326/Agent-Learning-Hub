@@ -698,7 +698,7 @@
     "learningGoals": [
       "看 hooks / MCP / 上下文注入这些扩展点在真实插件里怎么落地。auto-mode-unlock 的 METHODOLOGY.md 是一份完整的逆向方法论，26 KB，本身就值得单独读。"
     ],
-    "sourceUrl": null,
+    "sourceUrl": "https://github.com/thedotmack/claude-mem/blob/866a0ca3b34cddd8aa4c5fba72b9ad2b3a5621fe/README.md",
     "localPath": "AICoding/claude/plugins/claude-mem/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
@@ -706,11 +706,11 @@
     "license": "Unknown",
     "licenseStatus": "unknown",
     "tags": ["插件 ×5", "local"],
-    "lastReviewedAt": null,
+    "lastReviewedAt": "2026-11-15",
     "references": [
       {
         "label": "claude-mem",
-        "sourceUrl": null,
+        "sourceUrl": "https://github.com/thedotmack/claude-mem/blob/866a0ca3b34cddd8aa4c5fba72b9ad2b3a5621fe/README.md",
         "localPath": "AICoding/claude/plugins/claude-mem/README.md"
       },
       {
@@ -871,7 +871,7 @@
       "官方指南 16 章 + 附录；目标是理解 always-on agent 与一次性 workflow 的差异。本体源码在 openclaw-code/，VISION.md 讲清了产品取舍。"
     ],
     "sourceUrl": "https://github.com/openclaw/openclaw",
-    "localPath": "AICoding/openclaw/openclaw_guide/README.md",
+    "localPath": "AICoding/openclaw_guide/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -883,16 +883,16 @@
       {
         "label": "官方指南",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/openclaw_guide/README.md"
+        "localPath": "AICoding/openclaw_guide/README.md"
       },
       {
         "label": "源码 VISION",
-        "sourceUrl": null,
+        "sourceUrl": "https://github.com/openclaw/openclaw/blob/d9a6928692948fdeeb28ed4914a9405d4eb8f0ed/VISION.md",
         "localPath": "AICoding/openclaw/openclaw-code/VISION.md"
       },
       {
         "label": "Lark 通道（中文）",
-        "sourceUrl": null,
+        "sourceUrl": "https://github.com/larksuite/openclaw-lark/blob/dde0be3680d6fd5443cab426c8f4b3216266346a/README.zh.md",
         "localPath": "AICoding/openclaw/openclaw-lark/README.zh.md"
       },
       {
@@ -940,11 +940,11 @@
     "localPath": "Learning/learn-opencode/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
-    "author": "Unknown",
-    "license": "Unknown",
-    "licenseStatus": "unknown",
+    "author": "LearnOpenCode",
+    "license": "CC BY-NC-SA 4.0",
+    "licenseStatus": "known",
     "tags": ["中文实战", "local"],
-    "lastReviewedAt": null,
+    "lastReviewedAt": "2026-11-15",
     "references": [
       {
         "label": "本地 README",
@@ -955,6 +955,546 @@
         "label": "课程导览",
         "sourceUrl": null,
         "localPath": "Learning/learn-opencode/docs/index.md"
+      },
+      {
+        "label": "快速起步 · 阶段导读",
+        "localPath": "Learning/learn-opencode/docs/1-start/index.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/index.md"
+      },
+      {
+        "label": "快速起步 · 1.1 这是什么",
+        "localPath": "Learning/learn-opencode/docs/1-start/01-intro.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/01-intro.md"
+      },
+      {
+        "label": "快速起步 · 安装：5 分钟搞定",
+        "localPath": "Learning/learn-opencode/docs/1-start/02-install.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/02-install.md"
+      },
+      {
+        "label": "快速起步 · 备用安装方式",
+        "localPath": "Learning/learn-opencode/docs/1-start/02a-install-alternatives.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/02a-install-alternatives.md"
+      },
+      {
+        "label": "快速起步 · 装不上怎么办？",
+        "localPath": "Learning/learn-opencode/docs/1-start/02b-install-troubleshoot.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/02b-install-troubleshoot.md"
+      },
+      {
+        "label": "快速起步 · 1.3 网络配置",
+        "localPath": "Learning/learn-opencode/docs/1-start/03-network.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/03-network.md"
+      },
+      {
+        "label": "快速起步 · 总览：第一次对话",
+        "localPath": "Learning/learn-opencode/docs/1-start/04-connect.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/04-connect.md"
+      },
+      {
+        "label": "快速起步 · [推荐] MiniMax（M2.7）",
+        "localPath": "Learning/learn-opencode/docs/1-start/04d-minimax.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/04d-minimax.md"
+      },
+      {
+        "label": "快速起步 · 免费模型（OpenCode Zen）",
+        "localPath": "Learning/learn-opencode/docs/1-start/04a-free-models.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/04a-free-models.md"
+      },
+      {
+        "label": "快速起步 · 智谱 GLM-5",
+        "localPath": "Learning/learn-opencode/docs/1-start/04c-zhipu.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/04c-zhipu.md"
+      },
+      {
+        "label": "快速起步 · DeepSeek",
+        "localPath": "Learning/learn-opencode/docs/1-start/04b-deepseek.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/04b-deepseek.md"
+      },
+      {
+        "label": "快速起步 · Claude（Anthropic）",
+        "localPath": "Learning/learn-opencode/docs/1-start/04e-claude.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/04e-claude.md"
+      },
+      {
+        "label": "快速起步 · Claude Code 中转",
+        "localPath": "Learning/learn-opencode/docs/1-start/04f-claudecode-relay.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/04f-claudecode-relay.md"
+      },
+      {
+        "label": "快速起步 · Ollama（本地）",
+        "localPath": "Learning/learn-opencode/docs/1-start/04g-ollama.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/04g-ollama.md"
+      },
+      {
+        "label": "快速起步 · OpenAI（GPT / Codex）",
+        "localPath": "Learning/learn-opencode/docs/1-start/04h-openai.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/04h-openai.md"
+      },
+      {
+        "label": "快速起步 · 通义千问",
+        "localPath": "Learning/learn-opencode/docs/1-start/04i-alibaba.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/04i-alibaba.md"
+      },
+      {
+        "label": "快速起步 · GitHub Copilot",
+        "localPath": "Learning/learn-opencode/docs/1-start/04j-github-copilot.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/04j-github-copilot.md"
+      },
+      {
+        "label": "快速起步 · 1.5 自动更新",
+        "localPath": "Learning/learn-opencode/docs/1-start/05-update.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/05-update.md"
+      },
+      {
+        "label": "日常使用 · 阶段导读",
+        "localPath": "Learning/learn-opencode/docs/2-daily/index.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/2-daily/index.md"
+      },
+      {
+        "label": "日常使用 · 2.1 界面与操作",
+        "localPath": "Learning/learn-opencode/docs/2-daily/01-interface.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/2-daily/01-interface.md"
+      },
+      {
+        "label": "日常使用 · 2.1b 如何复制内容",
+        "localPath": "Learning/learn-opencode/docs/2-daily/01b-copy-paste.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/2-daily/01b-copy-paste.md"
+      },
+      {
+        "label": "日常使用 · 2.1c AI 的基础工具",
+        "localPath": "Learning/learn-opencode/docs/2-daily/01c-basic-tools.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/2-daily/01c-basic-tools.md"
+      },
+      {
+        "label": "日常使用 · 2.1d 使用图片与 AI 对话",
+        "localPath": "Learning/learn-opencode/docs/2-daily/01d-images.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/2-daily/01d-images.md"
+      },
+      {
+        "label": "日常使用 · 2.2 管理对话",
+        "localPath": "Learning/learn-opencode/docs/2-daily/02-sessions.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/2-daily/02-sessions.md"
+      },
+      {
+        "label": "日常使用 · 2.3 常用快捷键",
+        "localPath": "Learning/learn-opencode/docs/2-daily/03-shortcuts.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/2-daily/03-shortcuts.md"
+      },
+      {
+        "label": "日常使用 · 2.4 全局提示词",
+        "localPath": "Learning/learn-opencode/docs/2-daily/04-global-rules.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/2-daily/04-global-rules.md"
+      },
+      {
+        "label": "日常使用 · 2.5 环境管理",
+        "localPath": "Learning/learn-opencode/docs/2-daily/05-env-management.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/2-daily/05-env-management.md"
+      },
+      {
+        "label": "日常使用 · 2.6 Git 入门",
+        "localPath": "Learning/learn-opencode/docs/2-daily/06-git-basics.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/2-daily/06-git-basics.md"
+      },
+      {
+        "label": "高效工作流 · 阶段导读",
+        "localPath": "Learning/learn-opencode/docs/3-workflow/index.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/3-workflow/index.md"
+      },
+      {
+        "label": "高效工作流 · 3.1 Plan vs Build",
+        "localPath": "Learning/learn-opencode/docs/3-workflow/01-plan-build.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/3-workflow/01-plan-build.md"
+      },
+      {
+        "label": "高效工作流 · 3.2 认识 Agent",
+        "localPath": "Learning/learn-opencode/docs/3-workflow/02-agents.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/3-workflow/02-agents.md"
+      },
+      {
+        "label": "高效工作流 · 3.3 项目初始化",
+        "localPath": "Learning/learn-opencode/docs/3-workflow/03-init.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/3-workflow/03-init.md"
+      },
+      {
+        "label": "场景实战 · 选择你的路线",
+        "localPath": "Learning/learn-opencode/docs/4-scenarios/index.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/index.md"
+      },
+      {
+        "label": "场景实战 · A1 创作工作流",
+        "localPath": "Learning/learn-opencode/docs/4-scenarios/writer-workflow.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/writer-workflow.md"
+      },
+      {
+        "label": "场景实战 · A2 公众号创作",
+        "localPath": "Learning/learn-opencode/docs/4-scenarios/writer-wechat.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/writer-wechat.md"
+      },
+      {
+        "label": "场景实战 · A3 小红书运营",
+        "localPath": "Learning/learn-opencode/docs/4-scenarios/writer-xiaohongshu.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/writer-xiaohongshu.md"
+      },
+      {
+        "label": "场景实战 · A4 营销文案",
+        "localPath": "Learning/learn-opencode/docs/4-scenarios/writer-copywriting.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/writer-copywriting.md"
+      },
+      {
+        "label": "场景实战 · A5 翻译润色",
+        "localPath": "Learning/learn-opencode/docs/4-scenarios/writer-translate.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/writer-translate.md"
+      },
+      {
+        "label": "场景实战 · A6 小说创作",
+        "localPath": "Learning/learn-opencode/docs/4-scenarios/writer-novel.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/writer-novel.md"
+      },
+      {
+        "label": "场景实战 · A7 剧本写作",
+        "localPath": "Learning/learn-opencode/docs/4-scenarios/writer-script.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/writer-script.md"
+      },
+      {
+        "label": "场景实战 · A8 网文创作",
+        "localPath": "Learning/learn-opencode/docs/4-scenarios/writer-webnovel.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/writer-webnovel.md"
+      },
+      {
+        "label": "场景实战 · A9 创作工作站",
+        "localPath": "Learning/learn-opencode/docs/4-scenarios/writer-workstation.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/writer-workstation.md"
+      },
+      {
+        "label": "场景实战 · B1 开发日常",
+        "localPath": "Learning/learn-opencode/docs/4-scenarios/coder-daily.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/coder-daily.md"
+      },
+      {
+        "label": "场景实战 · B2 重构与测试",
+        "localPath": "Learning/learn-opencode/docs/4-scenarios/coder-refactor.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/coder-refactor.md"
+      },
+      {
+        "label": "场景实战 · B3 文档与 Git",
+        "localPath": "Learning/learn-opencode/docs/4-scenarios/coder-docs-git.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/coder-docs-git.md"
+      },
+      {
+        "label": "场景实战 · B4 CI/CD 集成",
+        "localPath": "Learning/learn-opencode/docs/4-scenarios/coder-cicd.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/coder-cicd.md"
+      },
+      {
+        "label": "场景实战 · B5 专属 Agent",
+        "localPath": "Learning/learn-opencode/docs/4-scenarios/coder-agents.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/coder-agents.md"
+      },
+      {
+        "label": "场景实战 · B6 内网/离线部署",
+        "localPath": "Learning/learn-opencode/docs/4-scenarios/coder-intranet.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/coder-intranet.md"
+      },
+      {
+        "label": "场景实战 · C1 文件整理",
+        "localPath": "Learning/learn-opencode/docs/4-scenarios/office-files.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/office-files.md"
+      },
+      {
+        "label": "场景实战 · C2 数据处理",
+        "localPath": "Learning/learn-opencode/docs/4-scenarios/office-data.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/office-data.md"
+      },
+      {
+        "label": "场景实战 · C3 AI 学编程",
+        "localPath": "Learning/learn-opencode/docs/4-scenarios/office-learn.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/office-learn.md"
+      },
+      {
+        "label": "场景实战 · C4 自动化脚本",
+        "localPath": "Learning/learn-opencode/docs/4-scenarios/office-automation.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/office-automation.md"
+      },
+      {
+        "label": "场景实战 · C5 网页画图自动化",
+        "localPath": "Learning/learn-opencode/docs/4-scenarios/mcp-web-image-gen.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/mcp-web-image-gen.md"
+      },
+      {
+        "label": "进阶手册 · 阶段导读",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/index.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/index.md"
+      },
+      {
+        "label": "进阶手册 · 5.1a 配置基础",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/01a-config-basics.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/01a-config-basics.md"
+      },
+      {
+        "label": "进阶手册 · 5.1b 配置进阶",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/01b-config-advanced.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/01b-config-advanced.md"
+      },
+      {
+        "label": "进阶手册 · 5.2a 快速入门",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/02a-agent-quickstart.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/02a-agent-quickstart.md"
+      },
+      {
+        "label": "进阶手册 · 5.2b 设计模式",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/02b-agent-patterns.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/02b-agent-patterns.md"
+      },
+      {
+        "label": "进阶手册 · 5.2c 权限与安全",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/02c-agent-permissions.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/02c-agent-permissions.md"
+      },
+      {
+        "label": "进阶手册 · 5.2d 高级技巧",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/02d-agent-advanced.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/02d-agent-advanced.md"
+      },
+      {
+        "label": "进阶手册 · 5.3a Skill 基础",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/03a-skills-basics.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/03a-skills-basics.md"
+      },
+      {
+        "label": "进阶手册 · 5.3b Skill 进阶",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/03b-skills-advanced.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/03b-skills-advanced.md"
+      },
+      {
+        "label": "进阶手册 · 5.3c 高级模式",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/03c-skills-patterns.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/03c-skills-patterns.md"
+      },
+      {
+        "label": "进阶手册 · 5.4 快捷命令",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/04-commands.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/04-commands.md"
+      },
+      {
+        "label": "进阶手册 · 5.5 权限管控",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/05-permissions.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/05-permissions.md"
+      },
+      {
+        "label": "进阶手册 · 5.6a 主题系统",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/06a-themes.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/06a-themes.md"
+      },
+      {
+        "label": "进阶手册 · 5.6b 快捷键",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/06b-keybinds.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/06b-keybinds.md"
+      },
+      {
+        "label": "进阶手册 · 5.7a MCP 基础",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/07a-mcp-basics.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/07a-mcp-basics.md"
+      },
+      {
+        "label": "进阶手册 · 5.7b MCP 进阶",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/07b-mcp-advanced.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/07b-mcp-advanced.md"
+      },
+      {
+        "label": "进阶手册 · 5.7c AI 控制浏览器",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/07c-mcp-chrome-devtools.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/07c-mcp-chrome-devtools.md"
+      },
+      {
+        "label": "进阶手册 · 5.8a VS Code 扩展",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/08a-ide-vscode.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/08a-ide-vscode.md"
+      },
+      {
+        "label": "进阶手册 · 5.8b ACP 协议",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/08b-acp.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/08b-acp.md"
+      },
+      {
+        "label": "进阶手册 · 5.9a 远程基础",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/09a-remote-basics.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/09a-remote-basics.md"
+      },
+      {
+        "label": "进阶手册 · 5.9b API 参考",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/09b-remote-api.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/09b-remote-api.md"
+      },
+      {
+        "label": "进阶手册 · 5.10a SDK 基础",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/10a-sdk-basics.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/10a-sdk-basics.md"
+      },
+      {
+        "label": "进阶手册 · 5.10b API 参考",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/10b-sdk-reference.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/10b-sdk-reference.md"
+      },
+      {
+        "label": "进阶手册 · 5.10c SDK V2 下一代 API",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/10c-sdk-v2.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/10c-sdk-v2.md"
+      },
+      {
+        "label": "进阶手册 · 5.11 企业版",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/11-enterprise.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/11-enterprise.md"
+      },
+      {
+        "label": "进阶手册 · 5.11a 企业认证集成",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/11a-enterprise-auth.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/11a-enterprise-auth.md"
+      },
+      {
+        "label": "进阶手册 · 5.12a 插件基础",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/12a-plugins-basics.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/12a-plugins-basics.md"
+      },
+      {
+        "label": "进阶手册 · 5.12b 插件进阶",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/12b-plugins-advanced.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/12b-plugins-advanced.md"
+      },
+      {
+        "label": "进阶手册 · 5.12c Hook 教程",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/12c-hooks.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/12c-hooks.md"
+      },
+      {
+        "label": "进阶手册 · 5.13 自定义工具",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/13-custom-tools.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/13-custom-tools.md"
+      },
+      {
+        "label": "进阶手册 · 5.14 GitHub 集成",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/14-github.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/14-github.md"
+      },
+      {
+        "label": "进阶手册 · 5.15 GitLab 集成",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/15-gitlab.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/15-gitlab.md"
+      },
+      {
+        "label": "进阶手册 · 5.16 会话分享",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/16-share.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/16-share.md"
+      },
+      {
+        "label": "进阶手册 · 5.17 内置工具",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/17-tools.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/17-tools.md"
+      },
+      {
+        "label": "进阶手册 · 5.18 代码格式化器",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/18-formatters.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/18-formatters.md"
+      },
+      {
+        "label": "进阶手册 · 5.19 LSP 代码智能",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/19-lsp.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/19-lsp.md"
+      },
+      {
+        "label": "进阶手册 · 5.20 上下文压缩",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/20-compaction.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/20-compaction.md"
+      },
+      {
+        "label": "进阶手册 · 5.21 思考深度配置",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/21-thinking-depth.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/21-thinking-depth.md"
+      },
+      {
+        "label": "进阶手册 · 5.22 调试与诊断",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/22-debugging.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/22-debugging.md"
+      },
+      {
+        "label": "进阶手册 · 5.23 网络搜索与获取",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/23-web-search.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/23-web-search.md"
+      },
+      {
+        "label": "进阶手册 · 5.24 CLI 自动化",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/24-cli-automation.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/24-cli-automation.md"
+      },
+      {
+        "label": "进阶手册 · 5.25 Git Worktree",
+        "localPath": "Learning/learn-opencode/docs/5-advanced/25-git-worktree.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/25-git-worktree.md"
+      },
+      {
+        "label": "速查手册 · 速查总览",
+        "localPath": "Learning/learn-opencode/docs/appendix/index.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/appendix/index.md"
+      },
+      {
+        "label": "速查手册 · A. 快捷键速查",
+        "localPath": "Learning/learn-opencode/docs/appendix/keybinds.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/appendix/keybinds.md"
+      },
+      {
+        "label": "速查手册 · B. 斜杠命令",
+        "localPath": "Learning/learn-opencode/docs/appendix/commands.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/appendix/commands.md"
+      },
+      {
+        "label": "速查手册 · C. CLI 参考",
+        "localPath": "Learning/learn-opencode/docs/appendix/cli.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/appendix/cli.md"
+      },
+      {
+        "label": "速查手册 · D. 配置选项",
+        "localPath": "Learning/learn-opencode/docs/appendix/config-ref.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/appendix/config-ref.md"
+      },
+      {
+        "label": "速查手册 · E. 模型提供商",
+        "localPath": "Learning/learn-opencode/docs/appendix/providers.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/appendix/providers.md"
+      },
+      {
+        "label": "速查手册 · F. Prompt 模板库",
+        "localPath": "Learning/learn-opencode/docs/appendix/prompts.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/appendix/prompts.md"
+      },
+      {
+        "label": "速查手册 · G. 常见问题",
+        "localPath": "Learning/learn-opencode/docs/appendix/faq.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/appendix/faq.md"
+      },
+      {
+        "label": "速查手册 · H. 故障排除",
+        "localPath": "Learning/learn-opencode/docs/appendix/troubleshoot.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/appendix/troubleshoot.md"
+      },
+      {
+        "label": "速查手册 · I. 生态系统",
+        "localPath": "Learning/learn-opencode/docs/appendix/ecosystem.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/appendix/ecosystem.md"
+      },
+      {
+        "label": "速查手册 · J. 迁移指南",
+        "localPath": "Learning/learn-opencode/docs/appendix/migration.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/appendix/migration.md"
+      },
+      {
+        "label": "速查手册 · K. OpenCode Zen",
+        "localPath": "Learning/learn-opencode/docs/appendix/zen.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/appendix/zen.md"
+      },
+      {
+        "label": "速查手册 · L. 实验性功能",
+        "localPath": "Learning/learn-opencode/docs/appendix/experimental-features.md",
+        "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/appendix/experimental-features.md"
       },
       {
         "label": "GitHub",
@@ -981,7 +1521,8 @@
           ["GitHub", "https://github.com/vbgate/learn-opencode"]
         ]
       }
-    }
+    },
+    "documentRoot": "Learning/learn-opencode/docs"
   },
   {
     "id": "legacy-course-018",
@@ -1699,7 +2240,7 @@
     "learningGoals": [
       "关注 connectors + personas 的分层，是长运行个人 agent 的另一种产品形态。"
     ],
-    "sourceUrl": null,
+    "sourceUrl": "https://github.com/andrewyng/openworker/blob/ecb445490fc054d52b8ea610d97ba947f57033d2/README.md",
     "localPath": "Agentic/Harness/openworker/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
@@ -1707,11 +2248,11 @@
     "license": "Unknown",
     "licenseStatus": "unknown",
     "tags": ["数字同事", "local"],
-    "lastReviewedAt": null,
+    "lastReviewedAt": "2026-11-15",
     "references": [
       {
         "label": "本地 README",
-        "sourceUrl": null,
+        "sourceUrl": "https://github.com/andrewyng/openworker/blob/ecb445490fc054d52b8ea610d97ba947f57033d2/README.md",
         "localPath": "Agentic/Harness/openworker/README.md"
       }
     ],
@@ -2289,11 +2830,7 @@
         "sourceUrl": null,
         "localPath": "Application/workany/README.md"
       },
-      {
-        "label": "官网",
-        "sourceUrl": "https://workany.ai",
-        "localPath": null
-      }
+      { "label": "官网", "sourceUrl": "https://workany.ai", "localPath": null }
     ],
     "unavailableReason": null,
     "legacyImport": {
@@ -2400,10 +2937,7 @@
       "kind": "reading-chapter",
       "order": 0,
       "raw": {
-        "group": {
-          "title": "项目导览",
-          "track": "learning"
-        },
+        "group": { "title": "项目导览", "track": "learning" },
         "item": {
           "label": "Agent Learning Hub README",
           "doc": "@root/README.md"
@@ -2428,11 +2962,7 @@
     "tags": ["项目导览", "legacy-reading"],
     "lastReviewedAt": null,
     "references": [
-      {
-        "label": "本地课程总览",
-        "sourceUrl": null,
-        "localPath": "README.md"
-      }
+      { "label": "本地课程总览", "sourceUrl": null, "localPath": "README.md" }
     ],
     "unavailableReason": null,
     "legacyImport": {
@@ -2440,14 +2970,8 @@
       "kind": "reading-chapter",
       "order": 1,
       "raw": {
-        "group": {
-          "title": "项目导览",
-          "track": "learning"
-        },
-        "item": {
-          "label": "本地课程总览",
-          "doc": "README.md"
-        }
+        "group": { "title": "项目导览", "track": "learning" },
+        "item": { "label": "本地课程总览", "doc": "README.md" }
       }
     }
   },
@@ -2480,10 +3004,7 @@
       "kind": "reading-chapter",
       "order": 1000,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 前言与基础",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 前言与基础", "track": "learning" },
         "item": {
           "label": "总览 README",
           "doc": "Learning/hello-agents/README.md"
@@ -2524,14 +3045,8 @@
       "kind": "reading-chapter",
       "order": 1001,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 前言与基础",
-          "track": "learning"
-        },
-        "item": {
-          "label": "前言",
-          "doc": "Learning/hello-agents/docs/前言.md"
-        }
+        "group": { "title": "Hello-Agents · 前言与基础", "track": "learning" },
+        "item": { "label": "前言", "doc": "Learning/hello-agents/docs/前言.md" }
       }
     },
     "redirect": {
@@ -2568,10 +3083,7 @@
       "kind": "reading-chapter",
       "order": 1002,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 前言与基础",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 前言与基础", "track": "learning" },
         "item": {
           "label": "第 1 章：初识智能体",
           "doc": "Learning/hello-agents/docs/chapter1/第一章 初识智能体.md"
@@ -2608,10 +3120,7 @@
       "kind": "reading-chapter",
       "order": 1003,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 前言与基础",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 前言与基础", "track": "learning" },
         "item": {
           "label": "第 2 章：智能体发展史",
           "doc": "Learning/hello-agents/docs/chapter2/第二章 智能体发展史.md"
@@ -2648,10 +3157,7 @@
       "kind": "reading-chapter",
       "order": 1004,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 前言与基础",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 前言与基础", "track": "learning" },
         "item": {
           "label": "第 3 章：大语言模型基础",
           "doc": "Learning/hello-agents/docs/chapter3/第三章 大语言模型基础.md"
@@ -2688,10 +3194,7 @@
       "kind": "reading-chapter",
       "order": 2000,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 构建",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 构建", "track": "learning" },
         "item": {
           "label": "第 4 章：智能体经典范式构建",
           "doc": "Learning/hello-agents/docs/chapter4/第四章 智能体经典范式构建.md"
@@ -2728,10 +3231,7 @@
       "kind": "reading-chapter",
       "order": 2001,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 构建",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 构建", "track": "learning" },
         "item": {
           "label": "第 5 章：低代码平台搭建",
           "doc": "Learning/hello-agents/docs/chapter5/第五章 基于低代码平台的智能体搭建.md"
@@ -2768,10 +3268,7 @@
       "kind": "reading-chapter",
       "order": 2002,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 构建",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 构建", "track": "learning" },
         "item": {
           "label": "第 6 章：框架开发实践",
           "doc": "Learning/hello-agents/docs/chapter6/第六章 框架开发实践.md"
@@ -2808,10 +3305,7 @@
       "kind": "reading-chapter",
       "order": 2003,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 构建",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 构建", "track": "learning" },
         "item": {
           "label": "第 7 章：构建你的 Agent 框架",
           "doc": "Learning/hello-agents/docs/chapter7/第七章 构建你的Agent框架.md"
@@ -2848,10 +3342,7 @@
       "kind": "reading-chapter",
       "order": 3000,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 高级",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 高级", "track": "learning" },
         "item": {
           "label": "第 8 章：记忆与检索",
           "doc": "Learning/hello-agents/docs/chapter8/第八章 记忆与检索.md"
@@ -2888,10 +3379,7 @@
       "kind": "reading-chapter",
       "order": 3001,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 高级",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 高级", "track": "learning" },
         "item": {
           "label": "第 9 章：上下文工程",
           "doc": "Learning/hello-agents/docs/chapter9/第九章 上下文工程.md"
@@ -2928,10 +3416,7 @@
       "kind": "reading-chapter",
       "order": 3002,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 高级",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 高级", "track": "learning" },
         "item": {
           "label": "第 10 章：智能体通信协议",
           "doc": "Learning/hello-agents/docs/chapter10/第十章 智能体通信协议.md"
@@ -2968,10 +3453,7 @@
       "kind": "reading-chapter",
       "order": 3003,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 高级",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 高级", "track": "learning" },
         "item": {
           "label": "第 11 章：Agentic-RL",
           "doc": "Learning/hello-agents/docs/chapter11/第十一章 Agentic-RL.md"
@@ -3008,10 +3490,7 @@
       "kind": "reading-chapter",
       "order": 3004,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 高级",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 高级", "track": "learning" },
         "item": {
           "label": "第 12 章：智能体性能评估",
           "doc": "Learning/hello-agents/docs/chapter12/第十二章 智能体性能评估.md"
@@ -3048,10 +3527,7 @@
       "kind": "reading-chapter",
       "order": 4000,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 实战与展望",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 实战与展望", "track": "learning" },
         "item": {
           "label": "第 13 章：智能旅行助手",
           "doc": "Learning/hello-agents/docs/chapter13/第十三章 智能旅行助手.md"
@@ -3088,10 +3564,7 @@
       "kind": "reading-chapter",
       "order": 4001,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 实战与展望",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 实战与展望", "track": "learning" },
         "item": {
           "label": "第 14 章：自动化深度研究智能体",
           "doc": "Learning/hello-agents/docs/chapter14/第十四章 自动化深度研究智能体.md"
@@ -3128,10 +3601,7 @@
       "kind": "reading-chapter",
       "order": 4002,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 实战与展望",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 实战与展望", "track": "learning" },
         "item": {
           "label": "第 15 章：构建赛博小镇",
           "doc": "Learning/hello-agents/docs/chapter15/第十五章 构建赛博小镇.md"
@@ -3168,10 +3638,7 @@
       "kind": "reading-chapter",
       "order": 4003,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 实战与展望",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 实战与展望", "track": "learning" },
         "item": {
           "label": "第 16 章：毕业设计",
           "doc": "Learning/hello-agents/docs/chapter16/第十六章 毕业设计.md"
@@ -3208,10 +3675,7 @@
       "kind": "reading-chapter",
       "order": 5000,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 扩展章节",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 扩展章节", "track": "learning" },
         "item": {
           "label": "扩展 01：面试问题总结",
           "doc": "Learning/hello-agents/Extra-Chapter/Extra01-面试问题总结.md"
@@ -3248,10 +3712,7 @@
       "kind": "reading-chapter",
       "order": 5001,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 扩展章节",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 扩展章节", "track": "learning" },
         "item": {
           "label": "扩展 02：上下文工程补充",
           "doc": "Learning/hello-agents/Extra-Chapter/Extra02-上下文工程补充知识.md"
@@ -3288,10 +3749,7 @@
       "kind": "reading-chapter",
       "order": 5002,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 扩展章节",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 扩展章节", "track": "learning" },
         "item": {
           "label": "扩展 03：Dify 智能体创建",
           "doc": "Learning/hello-agents/Extra-Chapter/Extra03-Dify智能体创建保姆级操作流程.md"
@@ -3328,10 +3786,7 @@
       "kind": "reading-chapter",
       "order": 5003,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 扩展章节",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 扩展章节", "track": "learning" },
         "item": {
           "label": "扩展 04：Datawhale FAQ",
           "doc": "Learning/hello-agents/Extra-Chapter/Extra04-DatawhaleFAQ.md"
@@ -3368,10 +3823,7 @@
       "kind": "reading-chapter",
       "order": 5004,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 扩展章节",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 扩展章节", "track": "learning" },
         "item": {
           "label": "扩展 05：Agent Skills 解读",
           "doc": "Learning/hello-agents/Extra-Chapter/Extra05-AgentSkills解读.md"
@@ -3408,10 +3860,7 @@
       "kind": "reading-chapter",
       "order": 5005,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 扩展章节",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 扩展章节", "track": "learning" },
         "item": {
           "label": "扩展 06：GUI Agent 科普与实战",
           "doc": "Learning/hello-agents/Extra-Chapter/Extra06-GUIAgent科普与实战.md"
@@ -3448,10 +3897,7 @@
       "kind": "reading-chapter",
       "order": 5006,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 扩展章节",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 扩展章节", "track": "learning" },
         "item": {
           "label": "扩展 07：环境配置",
           "doc": "Learning/hello-agents/Extra-Chapter/Extra07-环境配置.md"
@@ -3488,10 +3934,7 @@
       "kind": "reading-chapter",
       "order": 5007,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 扩展章节",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 扩展章节", "track": "learning" },
         "item": {
           "label": "扩展 08：如何写出好的 Skill",
           "doc": "Learning/hello-agents/Extra-Chapter/Extra08-如何写出好的Skill.md"
@@ -3528,10 +3971,7 @@
       "kind": "reading-chapter",
       "order": 5008,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 扩展章节",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 扩展章节", "track": "learning" },
         "item": {
           "label": "扩展 09：开发踩坑与经验",
           "doc": "Learning/hello-agents/Extra-Chapter/Extra09-Agent应用开发实践踩坑与经验分享.md"
@@ -3568,10 +4008,7 @@
       "kind": "reading-chapter",
       "order": 5009,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 扩展章节",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 扩展章节", "track": "learning" },
         "item": {
           "label": "扩展 10：Agent 自进化",
           "doc": "Learning/hello-agents/Extra-Chapter/Extra10-Agent自进化.md"
@@ -3608,10 +4045,7 @@
       "kind": "reading-chapter",
       "order": 5010,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 扩展章节",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 扩展章节", "track": "learning" },
         "item": {
           "label": "扩展 11：Web Agent 科普与实战",
           "doc": "Learning/hello-agents/Extra-Chapter/Extra11-WebAgent科普与实战.md"
@@ -3648,10 +4082,7 @@
       "kind": "reading-chapter",
       "order": 5011,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 扩展章节",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 扩展章节", "track": "learning" },
         "item": {
           "label": "扩展 12：旅行助手后训练",
           "doc": "Learning/hello-agents/Extra-Chapter/Extra12-旅行助手后训练实战.md"
@@ -3688,10 +4119,7 @@
       "kind": "reading-chapter",
       "order": 5012,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 扩展章节",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 扩展章节", "track": "learning" },
         "item": {
           "label": "附加：N8N 安装指南",
           "doc": "Learning/hello-agents/Additional-Chapter/N8N_INSTALL_GUIDE.md"
@@ -3728,10 +4156,7 @@
       "kind": "reading-chapter",
       "order": 5013,
       "raw": {
-        "group": {
-          "title": "Hello-Agents · 扩展章节",
-          "track": "learning"
-        },
+        "group": { "title": "Hello-Agents · 扩展章节", "track": "learning" },
         "item": {
           "label": "附加：Node.js 安装指南",
           "doc": "Learning/hello-agents/Additional-Chapter/NODEJS_INSTALL_GUIDE.md"
@@ -3768,14 +4193,8 @@
       "kind": "reading-chapter",
       "order": 6000,
       "raw": {
-        "group": {
-          "title": "claw0 · 10 章中文讲义",
-          "track": "learning"
-        },
-        "item": {
-          "label": "总览 README",
-          "doc": "Learning/claw0/README.md"
-        }
+        "group": { "title": "claw0 · 10 章中文讲义", "track": "learning" },
+        "item": { "label": "总览 README", "doc": "Learning/claw0/README.md" }
       }
     },
     "redirect": {
@@ -3812,10 +4231,7 @@
       "kind": "reading-chapter",
       "order": 6001,
       "raw": {
-        "group": {
-          "title": "claw0 · 10 章中文讲义",
-          "track": "learning"
-        },
+        "group": { "title": "claw0 · 10 章中文讲义", "track": "learning" },
         "item": {
           "label": "s01：Agent Loop",
           "doc": "Learning/claw0/sessions/zh/s01_agent_loop.md"
@@ -3856,10 +4272,7 @@
       "kind": "reading-chapter",
       "order": 6002,
       "raw": {
-        "group": {
-          "title": "claw0 · 10 章中文讲义",
-          "track": "learning"
-        },
+        "group": { "title": "claw0 · 10 章中文讲义", "track": "learning" },
         "item": {
           "label": "s02：Tool Use",
           "doc": "Learning/claw0/sessions/zh/s02_tool_use.md"
@@ -3896,10 +4309,7 @@
       "kind": "reading-chapter",
       "order": 6003,
       "raw": {
-        "group": {
-          "title": "claw0 · 10 章中文讲义",
-          "track": "learning"
-        },
+        "group": { "title": "claw0 · 10 章中文讲义", "track": "learning" },
         "item": {
           "label": "s03：Sessions",
           "doc": "Learning/claw0/sessions/zh/s03_sessions.md"
@@ -3936,10 +4346,7 @@
       "kind": "reading-chapter",
       "order": 6004,
       "raw": {
-        "group": {
-          "title": "claw0 · 10 章中文讲义",
-          "track": "learning"
-        },
+        "group": { "title": "claw0 · 10 章中文讲义", "track": "learning" },
         "item": {
           "label": "s04：Channels",
           "doc": "Learning/claw0/sessions/zh/s04_channels.md"
@@ -3976,10 +4383,7 @@
       "kind": "reading-chapter",
       "order": 6005,
       "raw": {
-        "group": {
-          "title": "claw0 · 10 章中文讲义",
-          "track": "learning"
-        },
+        "group": { "title": "claw0 · 10 章中文讲义", "track": "learning" },
         "item": {
           "label": "s05：Gateway Routing",
           "doc": "Learning/claw0/sessions/zh/s05_gateway_routing.md"
@@ -4016,10 +4420,7 @@
       "kind": "reading-chapter",
       "order": 6006,
       "raw": {
-        "group": {
-          "title": "claw0 · 10 章中文讲义",
-          "track": "learning"
-        },
+        "group": { "title": "claw0 · 10 章中文讲义", "track": "learning" },
         "item": {
           "label": "s06：Intelligence",
           "doc": "Learning/claw0/sessions/zh/s06_intelligence.md"
@@ -4056,10 +4457,7 @@
       "kind": "reading-chapter",
       "order": 6007,
       "raw": {
-        "group": {
-          "title": "claw0 · 10 章中文讲义",
-          "track": "learning"
-        },
+        "group": { "title": "claw0 · 10 章中文讲义", "track": "learning" },
         "item": {
           "label": "s07：Heartbeat & Cron",
           "doc": "Learning/claw0/sessions/zh/s07_heartbeat_cron.md"
@@ -4096,10 +4494,7 @@
       "kind": "reading-chapter",
       "order": 6008,
       "raw": {
-        "group": {
-          "title": "claw0 · 10 章中文讲义",
-          "track": "learning"
-        },
+        "group": { "title": "claw0 · 10 章中文讲义", "track": "learning" },
         "item": {
           "label": "s08：Delivery",
           "doc": "Learning/claw0/sessions/zh/s08_delivery.md"
@@ -4136,10 +4531,7 @@
       "kind": "reading-chapter",
       "order": 6009,
       "raw": {
-        "group": {
-          "title": "claw0 · 10 章中文讲义",
-          "track": "learning"
-        },
+        "group": { "title": "claw0 · 10 章中文讲义", "track": "learning" },
         "item": {
           "label": "s09：Resilience",
           "doc": "Learning/claw0/sessions/zh/s09_resilience.md"
@@ -4176,10 +4568,7 @@
       "kind": "reading-chapter",
       "order": 6010,
       "raw": {
-        "group": {
-          "title": "claw0 · 10 章中文讲义",
-          "track": "learning"
-        },
+        "group": { "title": "claw0 · 10 章中文讲义", "track": "learning" },
         "item": {
           "label": "s10：Concurrency",
           "doc": "Learning/claw0/sessions/zh/s10_concurrency.md"
@@ -4216,10 +4605,7 @@
       "kind": "reading-chapter",
       "order": 7000,
       "raw": {
-        "group": {
-          "title": "claw0 · workspace 约定",
-          "track": "learning"
-        },
+        "group": { "title": "claw0 · workspace 约定", "track": "learning" },
         "item": {
           "label": "AGENTS.md",
           "doc": "Learning/claw0/workspace/AGENTS.md"
@@ -4256,10 +4642,7 @@
       "kind": "reading-chapter",
       "order": 7001,
       "raw": {
-        "group": {
-          "title": "claw0 · workspace 约定",
-          "track": "learning"
-        },
+        "group": { "title": "claw0 · workspace 约定", "track": "learning" },
         "item": {
           "label": "BOOTSTRAP.md",
           "doc": "Learning/claw0/workspace/BOOTSTRAP.md"
@@ -4296,10 +4679,7 @@
       "kind": "reading-chapter",
       "order": 7002,
       "raw": {
-        "group": {
-          "title": "claw0 · workspace 约定",
-          "track": "learning"
-        },
+        "group": { "title": "claw0 · workspace 约定", "track": "learning" },
         "item": {
           "label": "HEARTBEAT.md",
           "doc": "Learning/claw0/workspace/HEARTBEAT.md"
@@ -4336,10 +4716,7 @@
       "kind": "reading-chapter",
       "order": 7003,
       "raw": {
-        "group": {
-          "title": "claw0 · workspace 约定",
-          "track": "learning"
-        },
+        "group": { "title": "claw0 · workspace 约定", "track": "learning" },
         "item": {
           "label": "IDENTITY.md",
           "doc": "Learning/claw0/workspace/IDENTITY.md"
@@ -4376,10 +4753,7 @@
       "kind": "reading-chapter",
       "order": 7004,
       "raw": {
-        "group": {
-          "title": "claw0 · workspace 约定",
-          "track": "learning"
-        },
+        "group": { "title": "claw0 · workspace 约定", "track": "learning" },
         "item": {
           "label": "MEMORY.md",
           "doc": "Learning/claw0/workspace/MEMORY.md"
@@ -4416,10 +4790,7 @@
       "kind": "reading-chapter",
       "order": 7005,
       "raw": {
-        "group": {
-          "title": "claw0 · workspace 约定",
-          "track": "learning"
-        },
+        "group": { "title": "claw0 · workspace 约定", "track": "learning" },
         "item": {
           "label": "SOUL.md",
           "doc": "Learning/claw0/workspace/SOUL.md"
@@ -4456,10 +4827,7 @@
       "kind": "reading-chapter",
       "order": 7006,
       "raw": {
-        "group": {
-          "title": "claw0 · workspace 约定",
-          "track": "learning"
-        },
+        "group": { "title": "claw0 · workspace 约定", "track": "learning" },
         "item": {
           "label": "TOOLS.md",
           "doc": "Learning/claw0/workspace/TOOLS.md"
@@ -4496,10 +4864,7 @@
       "kind": "reading-chapter",
       "order": 7007,
       "raw": {
-        "group": {
-          "title": "claw0 · workspace 约定",
-          "track": "learning"
-        },
+        "group": { "title": "claw0 · workspace 约定", "track": "learning" },
         "item": {
           "label": "USER.md",
           "doc": "Learning/claw0/workspace/USER.md"
@@ -4536,10 +4901,7 @@
       "kind": "reading-chapter",
       "order": 8000,
       "raw": {
-        "group": {
-          "title": "Easy Agent / Easy AI",
-          "track": "learning"
-        },
+        "group": { "title": "Easy Agent / Easy AI", "track": "learning" },
         "item": {
           "label": "Easy Agent README（中文）",
           "doc": "Learning/easy-agent/README.zh-CN.md"
@@ -4580,10 +4942,7 @@
       "kind": "reading-chapter",
       "order": 8001,
       "raw": {
-        "group": {
-          "title": "Easy Agent / Easy AI",
-          "track": "learning"
-        },
+        "group": { "title": "Easy Agent / Easy AI", "track": "learning" },
         "item": {
           "label": "Easy AI README",
           "doc": "Learning/easy-learn-ai/readme.md"
@@ -4624,10 +4983,7 @@
       "kind": "reading-chapter",
       "order": 9000,
       "raw": {
-        "group": {
-          "title": "learn-claude-code · 20 章",
-          "track": "ai-coding"
-        },
+        "group": { "title": "learn-claude-code · 20 章", "track": "ai-coding" },
         "item": {
           "label": "总览 README（中文）",
           "doc": "AICoding/claude/document/learn-claude-code/README-zh.md"
@@ -4668,10 +5024,7 @@
       "kind": "reading-chapter",
       "order": 9001,
       "raw": {
-        "group": {
-          "title": "learn-claude-code · 20 章",
-          "track": "ai-coding"
-        },
+        "group": { "title": "learn-claude-code · 20 章", "track": "ai-coding" },
         "item": {
           "label": "s01：Agent Loop — 一个循环就够了",
           "doc": "AICoding/claude/document/learn-claude-code/s01_agent_loop/README.md"
@@ -4708,10 +5061,7 @@
       "kind": "reading-chapter",
       "order": 9002,
       "raw": {
-        "group": {
-          "title": "learn-claude-code · 20 章",
-          "track": "ai-coding"
-        },
+        "group": { "title": "learn-claude-code · 20 章", "track": "ai-coding" },
         "item": {
           "label": "s02：Tool Use — 多加一个工具只加一行",
           "doc": "AICoding/claude/document/learn-claude-code/s02_tool_use/README.md"
@@ -4748,10 +5098,7 @@
       "kind": "reading-chapter",
       "order": 9003,
       "raw": {
-        "group": {
-          "title": "learn-claude-code · 20 章",
-          "track": "ai-coding"
-        },
+        "group": { "title": "learn-claude-code · 20 章", "track": "ai-coding" },
         "item": {
           "label": "s03：Permission — 执行前做权限判断",
           "doc": "AICoding/claude/document/learn-claude-code/s03_permission/README.md"
@@ -4788,10 +5135,7 @@
       "kind": "reading-chapter",
       "order": 9004,
       "raw": {
-        "group": {
-          "title": "learn-claude-code · 20 章",
-          "track": "ai-coding"
-        },
+        "group": { "title": "learn-claude-code · 20 章", "track": "ai-coding" },
         "item": {
           "label": "s04：Hooks — 挂在循环上",
           "doc": "AICoding/claude/document/learn-claude-code/s04_hooks/README.md"
@@ -4828,10 +5172,7 @@
       "kind": "reading-chapter",
       "order": 9005,
       "raw": {
-        "group": {
-          "title": "learn-claude-code · 20 章",
-          "track": "ai-coding"
-        },
+        "group": { "title": "learn-claude-code · 20 章", "track": "ai-coding" },
         "item": {
           "label": "s05：TodoWrite — 有计划才不跑偏",
           "doc": "AICoding/claude/document/learn-claude-code/s05_todo_write/README.md"
@@ -4868,10 +5209,7 @@
       "kind": "reading-chapter",
       "order": 9006,
       "raw": {
-        "group": {
-          "title": "learn-claude-code · 20 章",
-          "track": "ai-coding"
-        },
+        "group": { "title": "learn-claude-code · 20 章", "track": "ai-coding" },
         "item": {
           "label": "s06：Subagent — 干净上下文拆任务",
           "doc": "AICoding/claude/document/learn-claude-code/s06_subagent/README.md"
@@ -4908,10 +5246,7 @@
       "kind": "reading-chapter",
       "order": 9007,
       "raw": {
-        "group": {
-          "title": "learn-claude-code · 20 章",
-          "track": "ai-coding"
-        },
+        "group": { "title": "learn-claude-code · 20 章", "track": "ai-coding" },
         "item": {
           "label": "s07：Skill Loading — 用到才加载",
           "doc": "AICoding/claude/document/learn-claude-code/s07_skill_loading/README.md"
@@ -4948,10 +5283,7 @@
       "kind": "reading-chapter",
       "order": 9008,
       "raw": {
-        "group": {
-          "title": "learn-claude-code · 20 章",
-          "track": "ai-coding"
-        },
+        "group": { "title": "learn-claude-code · 20 章", "track": "ai-coding" },
         "item": {
           "label": "s08：Context Compact — 给上下文腾地方",
           "doc": "AICoding/claude/document/learn-claude-code/s08_context_compact/README.md"
@@ -4988,10 +5320,7 @@
       "kind": "reading-chapter",
       "order": 9009,
       "raw": {
-        "group": {
-          "title": "learn-claude-code · 20 章",
-          "track": "ai-coding"
-        },
+        "group": { "title": "learn-claude-code · 20 章", "track": "ai-coding" },
         "item": {
           "label": "s09：Memory — 一层不丢的记忆",
           "doc": "AICoding/claude/document/learn-claude-code/s09_memory/README.md"
@@ -5022,10 +5351,7 @@
       "kind": "reading-chapter",
       "order": 9015,
       "raw": {
-        "group": {
-          "title": "learn-claude-code · 20 章",
-          "track": "ai-coding"
-        },
+        "group": { "title": "learn-claude-code · 20 章", "track": "ai-coding" },
         "item": {
           "label": "s15：Agent Teams — 一个搞不定就组队",
           "doc": "AICoding/claude/document/learn-claude-code/s15_agent_teams/README.md"
@@ -5062,10 +5388,7 @@
       "kind": "reading-chapter",
       "order": 10000,
       "raw": {
-        "group": {
-          "title": "Claude Code 源码逆向分析",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude Code 源码逆向分析", "track": "ai-coding" },
         "item": {
           "label": "分析总览 README",
           "doc": "AICoding/claude/code/claude-code-analysis/README.md"
@@ -5106,10 +5429,7 @@
       "kind": "reading-chapter",
       "order": 10001,
       "raw": {
-        "group": {
-          "title": "Claude Code 源码逆向分析",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude Code 源码逆向分析", "track": "ai-coding" },
         "item": {
           "label": "01 架构总览",
           "doc": "AICoding/claude/code/claude-code-analysis/analysis/01-architecture-overview.md"
@@ -5150,10 +5470,7 @@
       "kind": "reading-chapter",
       "order": 10002,
       "raw": {
-        "group": {
-          "title": "Claude Code 源码逆向分析",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude Code 源码逆向分析", "track": "ai-coding" },
         "item": {
           "label": "02 安全分析",
           "doc": "AICoding/claude/code/claude-code-analysis/analysis/02-security-analysis.md"
@@ -5190,10 +5507,7 @@
       "kind": "reading-chapter",
       "order": 10003,
       "raw": {
-        "group": {
-          "title": "Claude Code 源码逆向分析",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude Code 源码逆向分析", "track": "ai-coding" },
         "item": {
           "label": "04 Agent 记忆",
           "doc": "AICoding/claude/code/claude-code-analysis/analysis/04-agent-memory.md"
@@ -5230,10 +5544,7 @@
       "kind": "reading-chapter",
       "order": 10004,
       "raw": {
-        "group": {
-          "title": "Claude Code 源码逆向分析",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude Code 源码逆向分析", "track": "ai-coding" },
         "item": {
           "label": "04b 工具调用实现",
           "doc": "AICoding/claude/code/claude-code-analysis/analysis/04b-tool-call-implementation.md"
@@ -5270,10 +5581,7 @@
       "kind": "reading-chapter",
       "order": 10005,
       "raw": {
-        "group": {
-          "title": "Claude Code 源码逆向分析",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude Code 源码逆向分析", "track": "ai-coding" },
         "item": {
           "label": "04c Skills 实现",
           "doc": "AICoding/claude/code/claude-code-analysis/analysis/04c-skills-implementation.md"
@@ -5310,10 +5618,7 @@
       "kind": "reading-chapter",
       "order": 10006,
       "raw": {
-        "group": {
-          "title": "Claude Code 源码逆向分析",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude Code 源码逆向分析", "track": "ai-coding" },
         "item": {
           "label": "04d MCP 实现",
           "doc": "AICoding/claude/code/claude-code-analysis/analysis/04d-mcp-implementation.md"
@@ -5350,10 +5655,7 @@
       "kind": "reading-chapter",
       "order": 10007,
       "raw": {
-        "group": {
-          "title": "Claude Code 源码逆向分析",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude Code 源码逆向分析", "track": "ai-coding" },
         "item": {
           "label": "04e 沙箱实现",
           "doc": "AICoding/claude/code/claude-code-analysis/analysis/04e-sandbox-implementation.md"
@@ -5390,10 +5692,7 @@
       "kind": "reading-chapter",
       "order": 10008,
       "raw": {
-        "group": {
-          "title": "Claude Code 源码逆向分析",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude Code 源码逆向分析", "track": "ai-coding" },
         "item": {
           "label": "04f 上下文管理",
           "doc": "AICoding/claude/code/claude-code-analysis/analysis/04f-context-management.md"
@@ -5430,10 +5729,7 @@
       "kind": "reading-chapter",
       "order": 10009,
       "raw": {
-        "group": {
-          "title": "Claude Code 源码逆向分析",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude Code 源码逆向分析", "track": "ai-coding" },
         "item": {
           "label": "04g 提示词管理",
           "doc": "AICoding/claude/code/claude-code-analysis/analysis/04g-prompt-management.md"
@@ -5470,10 +5766,7 @@
       "kind": "reading-chapter",
       "order": 10010,
       "raw": {
-        "group": {
-          "title": "Claude Code 源码逆向分析",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude Code 源码逆向分析", "track": "ai-coding" },
         "item": {
           "label": "04h 多 Agent",
           "doc": "AICoding/claude/code/claude-code-analysis/analysis/04h-multi-agent.md"
@@ -5510,10 +5803,7 @@
       "kind": "reading-chapter",
       "order": 10011,
       "raw": {
-        "group": {
-          "title": "Claude Code 源码逆向分析",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude Code 源码逆向分析", "track": "ai-coding" },
         "item": {
           "label": "04i 会话存储与恢复",
           "doc": "AICoding/claude/code/claude-code-analysis/analysis/04i-session-storage-resume.md"
@@ -5550,10 +5840,7 @@
       "kind": "reading-chapter",
       "order": 10012,
       "raw": {
-        "group": {
-          "title": "Claude Code 源码逆向分析",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude Code 源码逆向分析", "track": "ai-coding" },
         "item": {
           "label": "07 代码证据索引",
           "doc": "AICoding/claude/code/claude-code-analysis/analysis/07-code-evidence-index.md"
@@ -5590,10 +5877,7 @@
       "kind": "reading-chapter",
       "order": 11000,
       "raw": {
-        "group": {
-          "title": "Claude 文档 · 插件 · 资源",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude 文档 · 插件 · 资源", "track": "ai-coding" },
         "item": {
           "label": "Claude Code Guide",
           "doc": "AICoding/claude/document/claude-code-guide/README.md"
@@ -5634,10 +5918,7 @@
       "kind": "reading-chapter",
       "order": 11001,
       "raw": {
-        "group": {
-          "title": "Claude 文档 · 插件 · 资源",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude 文档 · 插件 · 资源", "track": "ai-coding" },
         "item": {
           "label": "CLAUDE.md 范例：App",
           "doc": "AICoding/claude/document/ClaudeMD/App/claude.md"
@@ -5678,10 +5959,7 @@
       "kind": "reading-chapter",
       "order": 11002,
       "raw": {
-        "group": {
-          "title": "Claude 文档 · 插件 · 资源",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude 文档 · 插件 · 资源", "track": "ai-coding" },
         "item": {
           "label": "CLAUDE.md 范例：Constitution",
           "doc": "AICoding/claude/document/ClaudeMD/App/constitution.md"
@@ -5718,10 +5996,7 @@
       "kind": "reading-chapter",
       "order": 11003,
       "raw": {
-        "group": {
-          "title": "Claude 文档 · 插件 · 资源",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude 文档 · 插件 · 资源", "track": "ai-coding" },
         "item": {
           "label": "Karpathy Skills（中文）",
           "doc": "AICoding/claude/document/ClaudeMD/andrej-karpathy-skills/README.zh.md"
@@ -5740,7 +6015,7 @@
     "stageIds": [],
     "summary": "Claude 文档 · 插件 · 资源",
     "learningGoals": [],
-    "sourceUrl": null,
+    "sourceUrl": "https://github.com/thedotmack/claude-mem/blob/866a0ca3b34cddd8aa4c5fba72b9ad2b3a5621fe/README.md",
     "localPath": "AICoding/claude/plugins/claude-mem/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
@@ -5748,11 +6023,11 @@
     "license": "Unknown",
     "licenseStatus": "unknown",
     "tags": ["Claude 文档 · 插件 · 资源", "legacy-reading"],
-    "lastReviewedAt": null,
+    "lastReviewedAt": "2026-11-15",
     "references": [
       {
         "label": "claude-mem 记忆压缩",
-        "sourceUrl": null,
+        "sourceUrl": "https://github.com/thedotmack/claude-mem/blob/866a0ca3b34cddd8aa4c5fba72b9ad2b3a5621fe/README.md",
         "localPath": "AICoding/claude/plugins/claude-mem/README.md"
       }
     ],
@@ -5762,10 +6037,7 @@
       "kind": "reading-chapter",
       "order": 11004,
       "raw": {
-        "group": {
-          "title": "Claude 文档 · 插件 · 资源",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude 文档 · 插件 · 资源", "track": "ai-coding" },
         "item": {
           "label": "claude-mem 记忆压缩",
           "doc": "AICoding/claude/plugins/claude-mem/README.md"
@@ -5779,12 +6051,12 @@
   },
   {
     "id": "legacy-reading-12-006",
-    "title": "claude-mem · Cursor Hooks",
+    "title": "claude-mem · Cursor Hooks（历史版本）",
     "track": "aicoding",
     "stageIds": [],
-    "summary": "Claude 文档 · 插件 · 资源",
+    "summary": "固定到 2026-11-14 已核实的历史提交；当前上游已不含 cursor-hooks，本地副本缺失时可查看该历史版本。",
     "learningGoals": [],
-    "sourceUrl": null,
+    "sourceUrl": "https://github.com/thedotmack/claude-mem/blob/866a0ca3b34cddd8aa4c5fba72b9ad2b3a5621fe/cursor-hooks/README.md",
     "localPath": "AICoding/claude/plugins/claude-mem/cursor-hooks/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
@@ -5792,11 +6064,11 @@
     "license": "Unknown",
     "licenseStatus": "unknown",
     "tags": ["Claude 文档 · 插件 · 资源", "legacy-reading"],
-    "lastReviewedAt": null,
+    "lastReviewedAt": "2026-11-15",
     "references": [
       {
         "label": "claude-mem · Cursor Hooks",
-        "sourceUrl": null,
+        "sourceUrl": "https://github.com/thedotmack/claude-mem/blob/866a0ca3b34cddd8aa4c5fba72b9ad2b3a5621fe/cursor-hooks/README.md",
         "localPath": "AICoding/claude/plugins/claude-mem/cursor-hooks/README.md"
       }
     ],
@@ -5806,10 +6078,7 @@
       "kind": "reading-chapter",
       "order": 11005,
       "raw": {
-        "group": {
-          "title": "Claude 文档 · 插件 · 资源",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude 文档 · 插件 · 资源", "track": "ai-coding" },
         "item": {
           "label": "claude-mem · Cursor Hooks",
           "doc": "AICoding/claude/plugins/claude-mem/cursor-hooks/README.md"
@@ -5819,12 +6088,12 @@
   },
   {
     "id": "legacy-reading-12-007",
-    "title": "claude-mem · 上下文注入",
+    "title": "claude-mem · 上下文注入（历史版本）",
     "track": "aicoding",
     "stageIds": [],
-    "summary": "Claude 文档 · 插件 · 资源",
+    "summary": "固定到 2026-11-14 已核实的历史提交；当前上游已不含 cursor-hooks，本地副本缺失时可查看该历史版本。",
     "learningGoals": [],
-    "sourceUrl": null,
+    "sourceUrl": "https://github.com/thedotmack/claude-mem/blob/866a0ca3b34cddd8aa4c5fba72b9ad2b3a5621fe/cursor-hooks/CONTEXT-INJECTION.md",
     "localPath": "AICoding/claude/plugins/claude-mem/cursor-hooks/CONTEXT-INJECTION.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
@@ -5832,11 +6101,11 @@
     "license": "Unknown",
     "licenseStatus": "unknown",
     "tags": ["Claude 文档 · 插件 · 资源", "legacy-reading"],
-    "lastReviewedAt": null,
+    "lastReviewedAt": "2026-11-15",
     "references": [
       {
         "label": "claude-mem · 上下文注入",
-        "sourceUrl": null,
+        "sourceUrl": "https://github.com/thedotmack/claude-mem/blob/866a0ca3b34cddd8aa4c5fba72b9ad2b3a5621fe/cursor-hooks/CONTEXT-INJECTION.md",
         "localPath": "AICoding/claude/plugins/claude-mem/cursor-hooks/CONTEXT-INJECTION.md"
       }
     ],
@@ -5846,10 +6115,7 @@
       "kind": "reading-chapter",
       "order": 11006,
       "raw": {
-        "group": {
-          "title": "Claude 文档 · 插件 · 资源",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude 文档 · 插件 · 资源", "track": "ai-coding" },
         "item": {
           "label": "claude-mem · 上下文注入",
           "doc": "AICoding/claude/plugins/claude-mem/cursor-hooks/CONTEXT-INJECTION.md"
@@ -5886,10 +6152,7 @@
       "kind": "reading-chapter",
       "order": 11007,
       "raw": {
-        "group": {
-          "title": "Claude 文档 · 插件 · 资源",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude 文档 · 插件 · 资源", "track": "ai-coding" },
         "item": {
           "label": "claudian",
           "doc": "AICoding/claude/plugins/claudian/README.md"
@@ -5930,10 +6193,7 @@
       "kind": "reading-chapter",
       "order": 11008,
       "raw": {
-        "group": {
-          "title": "Claude 文档 · 插件 · 资源",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude 文档 · 插件 · 资源", "track": "ai-coding" },
         "item": {
           "label": "claude-mermaid",
           "doc": "AICoding/claude/plugins/claude-mermaid/README.md"
@@ -5974,10 +6234,7 @@
       "kind": "reading-chapter",
       "order": 11009,
       "raw": {
-        "group": {
-          "title": "Claude 文档 · 插件 · 资源",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude 文档 · 插件 · 资源", "track": "ai-coding" },
         "item": {
           "label": "claude-stt",
           "doc": "AICoding/claude/plugins/claude-stt/README.md"
@@ -6014,10 +6271,7 @@
       "kind": "reading-chapter",
       "order": 11012,
       "raw": {
-        "group": {
-          "title": "Claude 文档 · 插件 · 资源",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude 文档 · 插件 · 资源", "track": "ai-coding" },
         "item": {
           "label": "Claude Code Lens（中文）",
           "doc": "AICoding/claude/code/claude-code-lens/README.zh-CN.md"
@@ -6058,10 +6312,7 @@
       "kind": "reading-chapter",
       "order": 11013,
       "raw": {
-        "group": {
-          "title": "Claude 文档 · 插件 · 资源",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude 文档 · 插件 · 资源", "track": "ai-coding" },
         "item": {
           "label": "源码合集（中文）",
           "doc": "AICoding/claude/code/collection-claude-code-source-code/README-CN.md"
@@ -6102,10 +6353,7 @@
       "kind": "reading-chapter",
       "order": 11014,
       "raw": {
-        "group": {
-          "title": "Claude 文档 · 插件 · 资源",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude 文档 · 插件 · 资源", "track": "ai-coding" },
         "item": {
           "label": "源码解读（中文）",
           "doc": "AICoding/claude/code/claude-code-source-code/README_CN.md"
@@ -6146,10 +6394,7 @@
       "kind": "reading-chapter",
       "order": 11015,
       "raw": {
-        "group": {
-          "title": "Claude 文档 · 插件 · 资源",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude 文档 · 插件 · 资源", "track": "ai-coding" },
         "item": {
           "label": "claude-code-haha（重实现）",
           "doc": "AICoding/claude/code/claude-code-haha/README.md"
@@ -6190,10 +6435,7 @@
       "kind": "reading-chapter",
       "order": 11016,
       "raw": {
-        "group": {
-          "title": "Claude 文档 · 插件 · 资源",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude 文档 · 插件 · 资源", "track": "ai-coding" },
         "item": {
           "label": "claude-code-rev（逆向实验）",
           "doc": "AICoding/claude/code/claude-code-rev/README.md"
@@ -6234,10 +6476,7 @@
       "kind": "reading-chapter",
       "order": 11017,
       "raw": {
-        "group": {
-          "title": "Claude 文档 · 插件 · 资源",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude 文档 · 插件 · 资源", "track": "ai-coding" },
         "item": {
           "label": "claude-code-rev AGENTS.md",
           "doc": "AICoding/claude/code/claude-code-rev/AGENTS.md"
@@ -6274,10 +6513,7 @@
       "kind": "reading-chapter",
       "order": 11018,
       "raw": {
-        "group": {
-          "title": "Claude 文档 · 插件 · 资源",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude 文档 · 插件 · 资源", "track": "ai-coding" },
         "item": {
           "label": "awesome-claude-code",
           "doc": "AICoding/claude/code/awesome-claude-code/README.md"
@@ -6318,10 +6554,7 @@
       "kind": "reading-chapter",
       "order": 11019,
       "raw": {
-        "group": {
-          "title": "Claude 文档 · 插件 · 资源",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude 文档 · 插件 · 资源", "track": "ai-coding" },
         "item": {
           "label": "claude-init",
           "doc": "AICoding/claude/code/claude-init/README.md"
@@ -6362,10 +6595,7 @@
       "kind": "reading-chapter",
       "order": 11020,
       "raw": {
-        "group": {
-          "title": "Claude 文档 · 插件 · 资源",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude 文档 · 插件 · 资源", "track": "ai-coding" },
         "item": {
           "label": "claude-code-templates",
           "doc": "AICoding/claude/code/claude-code-templates/README.md"
@@ -6406,10 +6636,7 @@
       "kind": "reading-chapter",
       "order": 11021,
       "raw": {
-        "group": {
-          "title": "Claude 文档 · 插件 · 资源",
-          "track": "ai-coding"
-        },
+        "group": { "title": "Claude 文档 · 插件 · 资源", "track": "ai-coding" },
         "item": {
           "label": "claude-code-templates · CLAUDE.md",
           "doc": "AICoding/claude/code/claude-code-templates/CLAUDE.md"
@@ -6425,7 +6652,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/openclaw_guide/README.md",
+    "localPath": "AICoding/openclaw_guide/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -6437,7 +6664,7 @@
       {
         "label": "总览 README",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/openclaw_guide/README.md"
+        "localPath": "AICoding/openclaw_guide/README.md"
       }
     ],
     "unavailableReason": null,
@@ -6446,10 +6673,7 @@
       "kind": "reading-chapter",
       "order": 12000,
       "raw": {
-        "group": {
-          "title": "OpenClaw · 16 章指南",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenClaw · 16 章指南", "track": "ai-coding" },
         "item": {
           "label": "总览 README",
           "doc": "AICoding/openclaw/doc/openclaw_guide/README.md"
@@ -6458,7 +6682,7 @@
     },
     "redirect": {
       "itemId": "legacy-course-016",
-      "chapter": "AICoding/openclaw/openclaw_guide/README.md"
+      "chapter": "AICoding/openclaw_guide/README.md"
     }
   },
   {
@@ -6469,7 +6693,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/openclaw_guide/01_overview/README.md",
+    "localPath": "AICoding/openclaw_guide/01_overview/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -6481,7 +6705,7 @@
       {
         "label": "01 概述",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/openclaw_guide/01_overview/README.md"
+        "localPath": "AICoding/openclaw_guide/01_overview/README.md"
       }
     ],
     "unavailableReason": null,
@@ -6490,10 +6714,7 @@
       "kind": "reading-chapter",
       "order": 12001,
       "raw": {
-        "group": {
-          "title": "OpenClaw · 16 章指南",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenClaw · 16 章指南", "track": "ai-coding" },
         "item": {
           "label": "01 概述",
           "doc": "AICoding/openclaw/doc/openclaw_guide/01_overview/README.md"
@@ -6509,7 +6730,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/openclaw_guide/02_setup/README.md",
+    "localPath": "AICoding/openclaw_guide/02_setup/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -6521,7 +6742,7 @@
       {
         "label": "02 安装与配置",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/openclaw_guide/02_setup/README.md"
+        "localPath": "AICoding/openclaw_guide/02_setup/README.md"
       }
     ],
     "unavailableReason": null,
@@ -6530,10 +6751,7 @@
       "kind": "reading-chapter",
       "order": 12002,
       "raw": {
-        "group": {
-          "title": "OpenClaw · 16 章指南",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenClaw · 16 章指南", "track": "ai-coding" },
         "item": {
           "label": "02 安装与配置",
           "doc": "AICoding/openclaw/doc/openclaw_guide/02_setup/README.md"
@@ -6549,7 +6767,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/openclaw_guide/03_minimal_loop/README.md",
+    "localPath": "AICoding/openclaw_guide/03_minimal_loop/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -6561,7 +6779,7 @@
       {
         "label": "03 最小循环",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/openclaw_guide/03_minimal_loop/README.md"
+        "localPath": "AICoding/openclaw_guide/03_minimal_loop/README.md"
       }
     ],
     "unavailableReason": null,
@@ -6570,10 +6788,7 @@
       "kind": "reading-chapter",
       "order": 12003,
       "raw": {
-        "group": {
-          "title": "OpenClaw · 16 章指南",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenClaw · 16 章指南", "track": "ai-coding" },
         "item": {
           "label": "03 最小循环",
           "doc": "AICoding/openclaw/doc/openclaw_guide/03_minimal_loop/README.md"
@@ -6589,7 +6804,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/openclaw_guide/04_config_models/README.md",
+    "localPath": "AICoding/openclaw_guide/04_config_models/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -6601,7 +6816,7 @@
       {
         "label": "04 模型配置",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/openclaw_guide/04_config_models/README.md"
+        "localPath": "AICoding/openclaw_guide/04_config_models/README.md"
       }
     ],
     "unavailableReason": null,
@@ -6610,10 +6825,7 @@
       "kind": "reading-chapter",
       "order": 12004,
       "raw": {
-        "group": {
-          "title": "OpenClaw · 16 章指南",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenClaw · 16 章指南", "track": "ai-coding" },
         "item": {
           "label": "04 模型配置",
           "doc": "AICoding/openclaw/doc/openclaw_guide/04_config_models/README.md"
@@ -6629,7 +6841,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/openclaw_guide/05_tools_skills/README.md",
+    "localPath": "AICoding/openclaw_guide/05_tools_skills/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -6641,7 +6853,7 @@
       {
         "label": "05 工具与技能",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/openclaw_guide/05_tools_skills/README.md"
+        "localPath": "AICoding/openclaw_guide/05_tools_skills/README.md"
       }
     ],
     "unavailableReason": null,
@@ -6650,10 +6862,7 @@
       "kind": "reading-chapter",
       "order": 12005,
       "raw": {
-        "group": {
-          "title": "OpenClaw · 16 章指南",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenClaw · 16 章指南", "track": "ai-coding" },
         "item": {
           "label": "05 工具与技能",
           "doc": "AICoding/openclaw/doc/openclaw_guide/05_tools_skills/README.md"
@@ -6669,7 +6878,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/openclaw_guide/06_context_memory/README.md",
+    "localPath": "AICoding/openclaw_guide/06_context_memory/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -6681,7 +6890,7 @@
       {
         "label": "06 上下文与记忆",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/openclaw_guide/06_context_memory/README.md"
+        "localPath": "AICoding/openclaw_guide/06_context_memory/README.md"
       }
     ],
     "unavailableReason": null,
@@ -6690,10 +6899,7 @@
       "kind": "reading-chapter",
       "order": 12006,
       "raw": {
-        "group": {
-          "title": "OpenClaw · 16 章指南",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenClaw · 16 章指南", "track": "ai-coding" },
         "item": {
           "label": "06 上下文与记忆",
           "doc": "AICoding/openclaw/doc/openclaw_guide/06_context_memory/README.md"
@@ -6709,7 +6915,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/openclaw_guide/07_multi_agent/README.md",
+    "localPath": "AICoding/openclaw_guide/07_multi_agent/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -6721,7 +6927,7 @@
       {
         "label": "07 多 Agent",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/openclaw_guide/07_multi_agent/README.md"
+        "localPath": "AICoding/openclaw_guide/07_multi_agent/README.md"
       }
     ],
     "unavailableReason": null,
@@ -6730,10 +6936,7 @@
       "kind": "reading-chapter",
       "order": 12007,
       "raw": {
-        "group": {
-          "title": "OpenClaw · 16 章指南",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenClaw · 16 章指南", "track": "ai-coding" },
         "item": {
           "label": "07 多 Agent",
           "doc": "AICoding/openclaw/doc/openclaw_guide/07_multi_agent/README.md"
@@ -6749,7 +6952,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/openclaw_guide/08_automation_ops/README.md",
+    "localPath": "AICoding/openclaw_guide/08_automation_ops/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -6761,7 +6964,7 @@
       {
         "label": "08 自动化运维",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/openclaw_guide/08_automation_ops/README.md"
+        "localPath": "AICoding/openclaw_guide/08_automation_ops/README.md"
       }
     ],
     "unavailableReason": null,
@@ -6770,10 +6973,7 @@
       "kind": "reading-chapter",
       "order": 12008,
       "raw": {
-        "group": {
-          "title": "OpenClaw · 16 章指南",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenClaw · 16 章指南", "track": "ai-coding" },
         "item": {
           "label": "08 自动化运维",
           "doc": "AICoding/openclaw/doc/openclaw_guide/08_automation_ops/README.md"
@@ -6789,7 +6989,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/openclaw_guide/09_gateway_protocol/README.md",
+    "localPath": "AICoding/openclaw_guide/09_gateway_protocol/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -6801,7 +7001,7 @@
       {
         "label": "09 网关协议",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/openclaw_guide/09_gateway_protocol/README.md"
+        "localPath": "AICoding/openclaw_guide/09_gateway_protocol/README.md"
       }
     ],
     "unavailableReason": null,
@@ -6810,10 +7010,7 @@
       "kind": "reading-chapter",
       "order": 12009,
       "raw": {
-        "group": {
-          "title": "OpenClaw · 16 章指南",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenClaw · 16 章指南", "track": "ai-coding" },
         "item": {
           "label": "09 网关协议",
           "doc": "AICoding/openclaw/doc/openclaw_guide/09_gateway_protocol/README.md"
@@ -6829,7 +7026,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/openclaw_guide/10_agent_loop/README.md",
+    "localPath": "AICoding/openclaw_guide/10_agent_loop/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -6841,7 +7038,7 @@
       {
         "label": "10 Agent 循环",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/openclaw_guide/10_agent_loop/README.md"
+        "localPath": "AICoding/openclaw_guide/10_agent_loop/README.md"
       }
     ],
     "unavailableReason": null,
@@ -6850,10 +7047,7 @@
       "kind": "reading-chapter",
       "order": 12010,
       "raw": {
-        "group": {
-          "title": "OpenClaw · 16 章指南",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenClaw · 16 章指南", "track": "ai-coding" },
         "item": {
           "label": "10 Agent 循环",
           "doc": "AICoding/openclaw/doc/openclaw_guide/10_agent_loop/README.md"
@@ -6869,7 +7063,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/openclaw_guide/11_reliability_security/README.md",
+    "localPath": "AICoding/openclaw_guide/11_reliability_security/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -6881,7 +7075,7 @@
       {
         "label": "11 可靠性与安全",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/openclaw_guide/11_reliability_security/README.md"
+        "localPath": "AICoding/openclaw_guide/11_reliability_security/README.md"
       }
     ],
     "unavailableReason": null,
@@ -6890,10 +7084,7 @@
       "kind": "reading-chapter",
       "order": 12011,
       "raw": {
-        "group": {
-          "title": "OpenClaw · 16 章指南",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenClaw · 16 章指南", "track": "ai-coding" },
         "item": {
           "label": "11 可靠性与安全",
           "doc": "AICoding/openclaw/doc/openclaw_guide/11_reliability_security/README.md"
@@ -6909,7 +7100,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/openclaw_guide/12_extension_engineering/README.md",
+    "localPath": "AICoding/openclaw_guide/12_extension_engineering/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -6921,7 +7112,7 @@
       {
         "label": "12 扩展工程",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/openclaw_guide/12_extension_engineering/README.md"
+        "localPath": "AICoding/openclaw_guide/12_extension_engineering/README.md"
       }
     ],
     "unavailableReason": null,
@@ -6930,10 +7121,7 @@
       "kind": "reading-chapter",
       "order": 12012,
       "raw": {
-        "group": {
-          "title": "OpenClaw · 16 章指南",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenClaw · 16 章指南", "track": "ai-coding" },
         "item": {
           "label": "12 扩展工程",
           "doc": "AICoding/openclaw/doc/openclaw_guide/12_extension_engineering/README.md"
@@ -6949,7 +7137,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/openclaw_guide/13_practical_cases/README.md",
+    "localPath": "AICoding/openclaw_guide/13_practical_cases/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -6961,7 +7149,7 @@
       {
         "label": "13 实战案例",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/openclaw_guide/13_practical_cases/README.md"
+        "localPath": "AICoding/openclaw_guide/13_practical_cases/README.md"
       }
     ],
     "unavailableReason": null,
@@ -6970,10 +7158,7 @@
       "kind": "reading-chapter",
       "order": 12013,
       "raw": {
-        "group": {
-          "title": "OpenClaw · 16 章指南",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenClaw · 16 章指南", "track": "ai-coding" },
         "item": {
           "label": "13 实战案例",
           "doc": "AICoding/openclaw/doc/openclaw_guide/13_practical_cases/README.md"
@@ -6989,7 +7174,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/openclaw_guide/14_performance_cost/README.md",
+    "localPath": "AICoding/openclaw_guide/14_performance_cost/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -7001,7 +7186,7 @@
       {
         "label": "14 性能与成本",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/openclaw_guide/14_performance_cost/README.md"
+        "localPath": "AICoding/openclaw_guide/14_performance_cost/README.md"
       }
     ],
     "unavailableReason": null,
@@ -7010,10 +7195,7 @@
       "kind": "reading-chapter",
       "order": 12014,
       "raw": {
-        "group": {
-          "title": "OpenClaw · 16 章指南",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenClaw · 16 章指南", "track": "ai-coding" },
         "item": {
           "label": "14 性能与成本",
           "doc": "AICoding/openclaw/doc/openclaw_guide/14_performance_cost/README.md"
@@ -7029,7 +7211,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/openclaw_guide/15_troubleshooting_trees/README.md",
+    "localPath": "AICoding/openclaw_guide/15_troubleshooting_trees/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -7041,7 +7223,7 @@
       {
         "label": "15 故障排查",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/openclaw_guide/15_troubleshooting_trees/README.md"
+        "localPath": "AICoding/openclaw_guide/15_troubleshooting_trees/README.md"
       }
     ],
     "unavailableReason": null,
@@ -7050,10 +7232,7 @@
       "kind": "reading-chapter",
       "order": 12015,
       "raw": {
-        "group": {
-          "title": "OpenClaw · 16 章指南",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenClaw · 16 章指南", "track": "ai-coding" },
         "item": {
           "label": "15 故障排查",
           "doc": "AICoding/openclaw/doc/openclaw_guide/15_troubleshooting_trees/README.md"
@@ -7069,7 +7248,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/openclaw_guide/16_claude_ecosystem/README.md",
+    "localPath": "AICoding/openclaw_guide/16_claude_ecosystem/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -7081,7 +7260,7 @@
       {
         "label": "16 Claude 生态",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/openclaw_guide/16_claude_ecosystem/README.md"
+        "localPath": "AICoding/openclaw_guide/16_claude_ecosystem/README.md"
       }
     ],
     "unavailableReason": null,
@@ -7090,10 +7269,7 @@
       "kind": "reading-chapter",
       "order": 12016,
       "raw": {
-        "group": {
-          "title": "OpenClaw · 16 章指南",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenClaw · 16 章指南", "track": "ai-coding" },
         "item": {
           "label": "16 Claude 生态",
           "doc": "AICoding/openclaw/doc/openclaw_guide/16_claude_ecosystem/README.md"
@@ -7109,7 +7285,7 @@
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "AICoding/openclaw/openclaw_guide/appendix/README.md",
+    "localPath": "AICoding/openclaw_guide/appendix/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -7121,7 +7297,7 @@
       {
         "label": "附录",
         "sourceUrl": null,
-        "localPath": "AICoding/openclaw/openclaw_guide/appendix/README.md"
+        "localPath": "AICoding/openclaw_guide/appendix/README.md"
       }
     ],
     "unavailableReason": null,
@@ -7130,10 +7306,7 @@
       "kind": "reading-chapter",
       "order": 12017,
       "raw": {
-        "group": {
-          "title": "OpenClaw · 16 章指南",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenClaw · 16 章指南", "track": "ai-coding" },
         "item": {
           "label": "附录",
           "doc": "AICoding/openclaw/doc/openclaw_guide/appendix/README.md"
@@ -7148,7 +7321,7 @@
     "stageIds": [],
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
-    "sourceUrl": null,
+    "sourceUrl": "https://github.com/larksuite/openclaw-lark/blob/dde0be3680d6fd5443cab426c8f4b3216266346a/README.zh.md",
     "localPath": "AICoding/openclaw/openclaw-lark/README.zh.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
@@ -7160,7 +7333,7 @@
     "references": [
       {
         "label": "Lark 通道（中文）",
-        "sourceUrl": null,
+        "sourceUrl": "https://github.com/larksuite/openclaw-lark/blob/dde0be3680d6fd5443cab426c8f4b3216266346a/README.zh.md",
         "localPath": "AICoding/openclaw/openclaw-lark/README.zh.md"
       }
     ],
@@ -7170,10 +7343,7 @@
       "kind": "reading-chapter",
       "order": 12018,
       "raw": {
-        "group": {
-          "title": "OpenClaw · 16 章指南",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenClaw · 16 章指南", "track": "ai-coding" },
         "item": {
           "label": "Lark 通道（中文）",
           "doc": "AICoding/openclaw/channels/openclaw-lark/README.zh.md"
@@ -7192,7 +7362,7 @@
     "stageIds": [],
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
-    "sourceUrl": null,
+    "sourceUrl": "https://github.com/openclaw/openclaw/blob/d9a6928692948fdeeb28ed4914a9405d4eb8f0ed/VISION.md",
     "localPath": "AICoding/openclaw/openclaw-code/VISION.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
@@ -7204,7 +7374,7 @@
     "references": [
       {
         "label": "源码 · VISION",
-        "sourceUrl": null,
+        "sourceUrl": "https://github.com/openclaw/openclaw/blob/d9a6928692948fdeeb28ed4914a9405d4eb8f0ed/VISION.md",
         "localPath": "AICoding/openclaw/openclaw-code/VISION.md"
       }
     ],
@@ -7214,10 +7384,7 @@
       "kind": "reading-chapter",
       "order": 12019,
       "raw": {
-        "group": {
-          "title": "OpenClaw · 16 章指南",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenClaw · 16 章指南", "track": "ai-coding" },
         "item": {
           "label": "源码 · VISION",
           "doc": "AICoding/openclaw/openclaw-code/VISION.md"
@@ -7236,7 +7403,7 @@
     "stageIds": [],
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
-    "sourceUrl": null,
+    "sourceUrl": "https://github.com/openclaw/openclaw/blob/d9a6928692948fdeeb28ed4914a9405d4eb8f0ed/AGENTS.md",
     "localPath": "AICoding/openclaw/openclaw-code/AGENTS.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
@@ -7248,7 +7415,7 @@
     "references": [
       {
         "label": "源码 · AGENTS.md",
-        "sourceUrl": null,
+        "sourceUrl": "https://github.com/openclaw/openclaw/blob/d9a6928692948fdeeb28ed4914a9405d4eb8f0ed/AGENTS.md",
         "localPath": "AICoding/openclaw/openclaw-code/AGENTS.md"
       }
     ],
@@ -7258,10 +7425,7 @@
       "kind": "reading-chapter",
       "order": 12020,
       "raw": {
-        "group": {
-          "title": "OpenClaw · 16 章指南",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenClaw · 16 章指南", "track": "ai-coding" },
         "item": {
           "label": "源码 · AGENTS.md",
           "doc": "AICoding/openclaw/openclaw-code/AGENTS.md"
@@ -7276,20 +7440,20 @@
     "stageIds": [],
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "AICoding/openclaw/openclaw-code/docs.acp.md",
+    "sourceUrl": "https://github.com/openclaw/openclaw/blob/d9a6928692948fdeeb28ed4914a9405d4eb8f0ed/docs/cli/acp.md",
+    "localPath": "AICoding/openclaw/openclaw-code/docs/cli/acp.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
     "license": "Unknown",
     "licenseStatus": "unknown",
     "tags": ["OpenClaw · 16 章指南", "legacy-reading"],
-    "lastReviewedAt": null,
+    "lastReviewedAt": "2026-11-15",
     "references": [
       {
-        "label": "源码 · ACP 协议",
-        "sourceUrl": null,
-        "localPath": "AICoding/openclaw/openclaw-code/docs.acp.md"
+        "label": "ACP 桥接指南",
+        "localPath": "AICoding/openclaw/openclaw-code/docs/cli/acp.md",
+        "sourceUrl": "https://github.com/openclaw/openclaw/blob/d9a6928692948fdeeb28ed4914a9405d4eb8f0ed/docs/cli/acp.md"
       }
     ],
     "unavailableReason": null,
@@ -7298,10 +7462,7 @@
       "kind": "reading-chapter",
       "order": 12021,
       "raw": {
-        "group": {
-          "title": "OpenClaw · 16 章指南",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenClaw · 16 章指南", "track": "ai-coding" },
         "item": {
           "label": "源码 · ACP 协议",
           "doc": "AICoding/openclaw/openclaw-code/docs.acp.md"
@@ -7316,7 +7477,7 @@
     "stageIds": [],
     "summary": "OpenClaw · 16 章指南",
     "learningGoals": [],
-    "sourceUrl": null,
+    "sourceUrl": "https://github.com/openclaw/openclaw/blob/d9a6928692948fdeeb28ed4914a9405d4eb8f0ed/SECURITY.md",
     "localPath": "AICoding/openclaw/openclaw-code/SECURITY.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
@@ -7328,7 +7489,7 @@
     "references": [
       {
         "label": "源码 · 安全模型",
-        "sourceUrl": null,
+        "sourceUrl": "https://github.com/openclaw/openclaw/blob/d9a6928692948fdeeb28ed4914a9405d4eb8f0ed/SECURITY.md",
         "localPath": "AICoding/openclaw/openclaw-code/SECURITY.md"
       }
     ],
@@ -7338,10 +7499,7 @@
       "kind": "reading-chapter",
       "order": 12022,
       "raw": {
-        "group": {
-          "title": "OpenClaw · 16 章指南",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenClaw · 16 章指南", "track": "ai-coding" },
         "item": {
           "label": "源码 · 安全模型",
           "doc": "AICoding/openclaw/openclaw-code/SECURITY.md"
@@ -7378,10 +7536,7 @@
       "kind": "reading-chapter",
       "order": 13000,
       "raw": {
-        "group": {
-          "title": "OpenCode 中文实战课",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenCode 中文实战课", "track": "ai-coding" },
         "item": {
           "label": "总览 README",
           "doc": "AICoding/opencode/learn-opencode/README.md"
@@ -7422,10 +7577,7 @@
       "kind": "reading-chapter",
       "order": 13001,
       "raw": {
-        "group": {
-          "title": "OpenCode 中文实战课",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenCode 中文实战课", "track": "ai-coding" },
         "item": {
           "label": "课程导览",
           "doc": "AICoding/opencode/learn-opencode/docs/index.md"
@@ -7466,15 +7618,16 @@
       "kind": "reading-chapter",
       "order": 13002,
       "raw": {
-        "group": {
-          "title": "OpenCode 中文实战课",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenCode 中文实战课", "track": "ai-coding" },
         "item": {
           "label": "01 介绍",
           "doc": "AICoding/opencode/learn-opencode/docs/1-start/01-intro.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-017",
+      "chapter": "Learning/learn-opencode/docs/1-start/01-intro.md"
     }
   },
   {
@@ -7506,15 +7659,16 @@
       "kind": "reading-chapter",
       "order": 13003,
       "raw": {
-        "group": {
-          "title": "OpenCode 中文实战课",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenCode 中文实战课", "track": "ai-coding" },
         "item": {
           "label": "02 安装",
           "doc": "AICoding/opencode/learn-opencode/docs/1-start/02-install.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-017",
+      "chapter": "Learning/learn-opencode/docs/1-start/02-install.md"
     }
   },
   {
@@ -7546,15 +7700,16 @@
       "kind": "reading-chapter",
       "order": 13004,
       "raw": {
-        "group": {
-          "title": "OpenCode 中文实战课",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenCode 中文实战课", "track": "ai-coding" },
         "item": {
           "label": "04 连接模型",
           "doc": "AICoding/opencode/learn-opencode/docs/1-start/04-connect.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-017",
+      "chapter": "Learning/learn-opencode/docs/1-start/04-connect.md"
     }
   },
   {
@@ -7586,15 +7741,16 @@
       "kind": "reading-chapter",
       "order": 13005,
       "raw": {
-        "group": {
-          "title": "OpenCode 中文实战课",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenCode 中文实战课", "track": "ai-coding" },
         "item": {
           "label": "日常界面",
           "doc": "AICoding/opencode/learn-opencode/docs/2-daily/01-interface.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-017",
+      "chapter": "Learning/learn-opencode/docs/2-daily/01-interface.md"
     }
   },
   {
@@ -7626,15 +7782,16 @@
       "kind": "reading-chapter",
       "order": 13006,
       "raw": {
-        "group": {
-          "title": "OpenCode 中文实战课",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenCode 中文实战课", "track": "ai-coding" },
         "item": {
           "label": "Agent 工作流",
           "doc": "AICoding/opencode/learn-opencode/docs/3-workflow/02-agents.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-017",
+      "chapter": "Learning/learn-opencode/docs/3-workflow/02-agents.md"
     }
   },
   {
@@ -7666,15 +7823,16 @@
       "kind": "reading-chapter",
       "order": 13007,
       "raw": {
-        "group": {
-          "title": "OpenCode 中文实战课",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenCode 中文实战课", "track": "ai-coding" },
         "item": {
           "label": "编码场景",
           "doc": "AICoding/opencode/learn-opencode/docs/4-scenarios/coder-daily.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-017",
+      "chapter": "Learning/learn-opencode/docs/4-scenarios/coder-daily.md"
     }
   },
   {
@@ -7706,15 +7864,16 @@
       "kind": "reading-chapter",
       "order": 13008,
       "raw": {
-        "group": {
-          "title": "OpenCode 中文实战课",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenCode 中文实战课", "track": "ai-coding" },
         "item": {
           "label": "Agent 快速开始",
           "doc": "AICoding/opencode/learn-opencode/docs/5-advanced/02a-agent-quickstart.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-017",
+      "chapter": "Learning/learn-opencode/docs/5-advanced/02a-agent-quickstart.md"
     }
   },
   {
@@ -7746,15 +7905,16 @@
       "kind": "reading-chapter",
       "order": 13009,
       "raw": {
-        "group": {
-          "title": "OpenCode 中文实战课",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenCode 中文实战课", "track": "ai-coding" },
         "item": {
           "label": "MCP 基础",
           "doc": "AICoding/opencode/learn-opencode/docs/5-advanced/07a-mcp-basics.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-017",
+      "chapter": "Learning/learn-opencode/docs/5-advanced/07a-mcp-basics.md"
     }
   },
   {
@@ -7786,15 +7946,16 @@
       "kind": "reading-chapter",
       "order": 13010,
       "raw": {
-        "group": {
-          "title": "OpenCode 中文实战课",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenCode 中文实战课", "track": "ai-coding" },
         "item": {
           "label": "FAQ",
           "doc": "AICoding/opencode/learn-opencode/docs/appendix/faq.md"
         }
       }
+    },
+    "redirect": {
+      "itemId": "legacy-course-017",
+      "chapter": "Learning/learn-opencode/docs/appendix/faq.md"
     }
   },
   {
@@ -7826,10 +7987,7 @@
       "kind": "reading-chapter",
       "order": 13011,
       "raw": {
-        "group": {
-          "title": "OpenCode 中文实战课",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenCode 中文实战课", "track": "ai-coding" },
         "item": {
           "label": "OpenCode 本体 README",
           "doc": "AICoding/opencode/code/opencode/README.md"
@@ -7870,10 +8028,7 @@
       "kind": "reading-chapter",
       "order": 13012,
       "raw": {
-        "group": {
-          "title": "OpenCode 中文实战课",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenCode 中文实战课", "track": "ai-coding" },
         "item": {
           "label": "OpenCode 本体 AGENTS.md",
           "doc": "AICoding/opencode/code/opencode/AGENTS.md"
@@ -7910,10 +8065,7 @@
       "kind": "reading-chapter",
       "order": 13013,
       "raw": {
-        "group": {
-          "title": "OpenCode 中文实战课",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenCode 中文实战课", "track": "ai-coding" },
         "item": {
           "label": "awesome-opencode 索引",
           "doc": "AICoding/opencode/awesome-opencode/README.md"
@@ -7954,10 +8106,7 @@
       "kind": "reading-chapter",
       "order": 13014,
       "raw": {
-        "group": {
-          "title": "OpenCode 中文实战课",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenCode 中文实战课", "track": "ai-coding" },
         "item": {
           "label": "openchamber（见 Agentic 轨道）",
           "doc": "Agentic/openchamber/README.md"
@@ -7998,10 +8147,7 @@
       "kind": "reading-chapter",
       "order": 13015,
       "raw": {
-        "group": {
-          "title": "OpenCode 中文实战课",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenCode 中文实战课", "track": "ai-coding" },
         "item": {
           "label": "openwork（中文）",
           "doc": "AICoding/opencode/code/openwork/README_ZH.md"
@@ -8042,10 +8188,7 @@
       "kind": "reading-chapter",
       "order": 13016,
       "raw": {
-        "group": {
-          "title": "OpenCode 中文实战课",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenCode 中文实战课", "track": "ai-coding" },
         "item": {
           "label": "opencode-supermemory",
           "doc": "AICoding/opencode/code/opencode-supermemory/README.md"
@@ -8082,10 +8225,7 @@
       "kind": "reading-chapter",
       "order": 13017,
       "raw": {
-        "group": {
-          "title": "OpenCode 中文实战课",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenCode 中文实战课", "track": "ai-coding" },
         "item": {
           "label": "supermemory 工程解读报告",
           "doc": "AICoding/opencode/code/opencode-supermemory/工程解读报告.md"
@@ -8126,10 +8266,7 @@
       "kind": "reading-chapter",
       "order": 13018,
       "raw": {
-        "group": {
-          "title": "OpenCode 中文实战课",
-          "track": "ai-coding"
-        },
+        "group": { "title": "OpenCode 中文实战课", "track": "ai-coding" },
         "item": {
           "label": "opencode-wakatime 插件",
           "doc": "AICoding/opencode/plugins/opencode-wakatime/README.md"
@@ -9238,10 +9375,7 @@
       "kind": "reading-chapter",
       "order": 18000,
       "raw": {
-        "group": {
-          "title": "驾驭工程书 · 架构与提示工程",
-          "track": "agentic"
-        },
+        "group": { "title": "驾驭工程书 · 架构与提示工程", "track": "agentic" },
         "item": {
           "label": "前言",
           "doc": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/preface.md"
@@ -9282,10 +9416,7 @@
       "kind": "reading-chapter",
       "order": 18001,
       "raw": {
-        "group": {
-          "title": "驾驭工程书 · 架构与提示工程",
-          "track": "agentic"
-        },
+        "group": { "title": "驾驭工程书 · 架构与提示工程", "track": "agentic" },
         "item": {
           "label": "第 1 章：AI 编码 Agent 的完整技术栈",
           "doc": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch01.md"
@@ -9322,10 +9453,7 @@
       "kind": "reading-chapter",
       "order": 18002,
       "raw": {
-        "group": {
-          "title": "驾驭工程书 · 架构与提示工程",
-          "track": "agentic"
-        },
+        "group": { "title": "驾驭工程书 · 架构与提示工程", "track": "agentic" },
         "item": {
           "label": "第 2 章：工具系统 — 40+ 工具",
           "doc": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch02.md"
@@ -9362,10 +9490,7 @@
       "kind": "reading-chapter",
       "order": 18003,
       "raw": {
-        "group": {
-          "title": "驾驭工程书 · 架构与提示工程",
-          "track": "agentic"
-        },
+        "group": { "title": "驾驭工程书 · 架构与提示工程", "track": "agentic" },
         "item": {
           "label": "第 3 章：Agent Loop 完整生命周期",
           "doc": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch03.md"
@@ -9402,10 +9527,7 @@
       "kind": "reading-chapter",
       "order": 18004,
       "raw": {
-        "group": {
-          "title": "驾驭工程书 · 架构与提示工程",
-          "track": "agentic"
-        },
+        "group": { "title": "驾驭工程书 · 架构与提示工程", "track": "agentic" },
         "item": {
           "label": "第 4 章：工具执行编排",
           "doc": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch04.md"
@@ -9442,10 +9564,7 @@
       "kind": "reading-chapter",
       "order": 18005,
       "raw": {
-        "group": {
-          "title": "驾驭工程书 · 架构与提示工程",
-          "track": "agentic"
-        },
+        "group": { "title": "驾驭工程书 · 架构与提示工程", "track": "agentic" },
         "item": {
           "label": "第 4b 章：计划模式",
           "doc": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part1/ch04b.md"
@@ -9482,10 +9601,7 @@
       "kind": "reading-chapter",
       "order": 18006,
       "raw": {
-        "group": {
-          "title": "驾驭工程书 · 架构与提示工程",
-          "track": "agentic"
-        },
+        "group": { "title": "驾驭工程书 · 架构与提示工程", "track": "agentic" },
         "item": {
           "label": "第 5 章：系统提示词架构",
           "doc": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch05.md"
@@ -9522,10 +9638,7 @@
       "kind": "reading-chapter",
       "order": 18007,
       "raw": {
-        "group": {
-          "title": "驾驭工程书 · 架构与提示工程",
-          "track": "agentic"
-        },
+        "group": { "title": "驾驭工程书 · 架构与提示工程", "track": "agentic" },
         "item": {
           "label": "第 6 章：通过提示词引导行为",
           "doc": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch06.md"
@@ -9562,10 +9675,7 @@
       "kind": "reading-chapter",
       "order": 18008,
       "raw": {
-        "group": {
-          "title": "驾驭工程书 · 架构与提示工程",
-          "track": "agentic"
-        },
+        "group": { "title": "驾驭工程书 · 架构与提示工程", "track": "agentic" },
         "item": {
           "label": "第 6b 章：API 通信层",
           "doc": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch06b.md"
@@ -9602,10 +9712,7 @@
       "kind": "reading-chapter",
       "order": 18009,
       "raw": {
-        "group": {
-          "title": "驾驭工程书 · 架构与提示工程",
-          "track": "agentic"
-        },
+        "group": { "title": "驾驭工程书 · 架构与提示工程", "track": "agentic" },
         "item": {
           "label": "第 7 章：模型特定调优与 A/B 测试",
           "doc": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch07.md"
@@ -9642,10 +9749,7 @@
       "kind": "reading-chapter",
       "order": 18010,
       "raw": {
-        "group": {
-          "title": "驾驭工程书 · 架构与提示工程",
-          "track": "agentic"
-        },
+        "group": { "title": "驾驭工程书 · 架构与提示工程", "track": "agentic" },
         "item": {
           "label": "第 8 章：工具提示词作为微型驾驭器",
           "doc": "Agentic/Document/harness-engineering-from-cc-to-ai-coding/book/src/part2/ch08.md"
@@ -10882,10 +10986,7 @@
       "kind": "reading-chapter",
       "order": 21000,
       "raw": {
-        "group": {
-          "title": "记忆层与多 Agent 框架",
-          "track": "agentic"
-        },
+        "group": { "title": "记忆层与多 Agent 框架", "track": "agentic" },
         "item": {
           "label": "mem0 README",
           "doc": "Agentic/Memory/mem0/README.md"
@@ -10926,10 +11027,7 @@
       "kind": "reading-chapter",
       "order": 21001,
       "raw": {
-        "group": {
-          "title": "记忆层与多 Agent 框架",
-          "track": "agentic"
-        },
+        "group": { "title": "记忆层与多 Agent 框架", "track": "agentic" },
         "item": {
           "label": "mem0 LLM.md（架构总览）",
           "doc": "Agentic/Memory/mem0/LLM.md"
@@ -10970,10 +11068,7 @@
       "kind": "reading-chapter",
       "order": 21002,
       "raw": {
-        "group": {
-          "title": "记忆层与多 Agent 框架",
-          "track": "agentic"
-        },
+        "group": { "title": "记忆层与多 Agent 框架", "track": "agentic" },
         "item": {
           "label": "LangChain",
           "doc": "Agentic/Langchain-ai/langchain/README.md"
@@ -11010,10 +11105,7 @@
       "kind": "reading-chapter",
       "order": 21003,
       "raw": {
-        "group": {
-          "title": "记忆层与多 Agent 框架",
-          "track": "agentic"
-        },
+        "group": { "title": "记忆层与多 Agent 框架", "track": "agentic" },
         "item": {
           "label": "LangGraph",
           "doc": "Agentic/Langchain-ai/langgraph/README.md"
@@ -11050,10 +11142,7 @@
       "kind": "reading-chapter",
       "order": 21004,
       "raw": {
-        "group": {
-          "title": "记忆层与多 Agent 框架",
-          "track": "agentic"
-        },
+        "group": { "title": "记忆层与多 Agent 框架", "track": "agentic" },
         "item": {
           "label": "DeepAgents",
           "doc": "Agentic/Langchain-ai/deepagents/README.md"
@@ -11094,10 +11183,7 @@
       "kind": "reading-chapter",
       "order": 21005,
       "raw": {
-        "group": {
-          "title": "记忆层与多 Agent 框架",
-          "track": "agentic"
-        },
+        "group": { "title": "记忆层与多 Agent 框架", "track": "agentic" },
         "item": {
           "label": "DeepAgents AGENTS.md",
           "doc": "Agentic/Langchain-ai/deepagents/AGENTS.md"
@@ -11138,14 +11224,8 @@
       "kind": "reading-chapter",
       "order": 21006,
       "raw": {
-        "group": {
-          "title": "记忆层与多 Agent 框架",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "CrewAI",
-          "doc": "Agentic/crewAI/README.md"
-        }
+        "group": { "title": "记忆层与多 Agent 框架", "track": "agentic" },
+        "item": { "label": "CrewAI", "doc": "Agentic/crewAI/README.md" }
       }
     },
     "redirect": {
@@ -11182,14 +11262,8 @@
       "kind": "reading-chapter",
       "order": 21007,
       "raw": {
-        "group": {
-          "title": "记忆层与多 Agent 框架",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "MetaGPT",
-          "doc": "Agentic/MetaGPT/README.md"
-        }
+        "group": { "title": "记忆层与多 Agent 框架", "track": "agentic" },
+        "item": { "label": "MetaGPT", "doc": "Agentic/MetaGPT/README.md" }
       }
     },
     "redirect": {
@@ -11226,14 +11300,8 @@
       "kind": "reading-chapter",
       "order": 21008,
       "raw": {
-        "group": {
-          "title": "记忆层与多 Agent 框架",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "AutoGPT",
-          "doc": "Agentic/AutoGPT/README.md"
-        }
+        "group": { "title": "记忆层与多 Agent 框架", "track": "agentic" },
+        "item": { "label": "AutoGPT", "doc": "Agentic/AutoGPT/README.md" }
       }
     },
     "redirect": {
@@ -11270,10 +11338,7 @@
       "kind": "reading-chapter",
       "order": 21010,
       "raw": {
-        "group": {
-          "title": "记忆层与多 Agent 框架",
-          "track": "agentic"
-        },
+        "group": { "title": "记忆层与多 Agent 框架", "track": "agentic" },
         "item": {
           "label": "PI（pi-mono）",
           "doc": "Agentic/PI/pi-mono/README.md"
@@ -11314,10 +11379,7 @@
       "kind": "reading-chapter",
       "order": 21011,
       "raw": {
-        "group": {
-          "title": "记忆层与多 Agent 框架",
-          "track": "agentic"
-        },
+        "group": { "title": "记忆层与多 Agent 框架", "track": "agentic" },
         "item": {
           "label": "PI AGENTS.md",
           "doc": "Agentic/PI/pi-mono/AGENTS.md"
@@ -11336,7 +11398,7 @@
     "stageIds": [],
     "summary": "记忆层与多 Agent 框架",
     "learningGoals": [],
-    "sourceUrl": null,
+    "sourceUrl": "https://github.com/andrewyng/openworker/blob/ecb445490fc054d52b8ea610d97ba947f57033d2/README.md",
     "localPath": "Agentic/Harness/openworker/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
@@ -11344,11 +11406,11 @@
     "license": "Unknown",
     "licenseStatus": "unknown",
     "tags": ["记忆层与多 Agent 框架", "legacy-reading"],
-    "lastReviewedAt": null,
+    "lastReviewedAt": "2026-11-15",
     "references": [
       {
         "label": "openworker",
-        "sourceUrl": null,
+        "sourceUrl": "https://github.com/andrewyng/openworker/blob/ecb445490fc054d52b8ea610d97ba947f57033d2/README.md",
         "localPath": "Agentic/Harness/openworker/README.md"
       }
     ],
@@ -11358,14 +11420,8 @@
       "kind": "reading-chapter",
       "order": 21012,
       "raw": {
-        "group": {
-          "title": "记忆层与多 Agent 框架",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "openworker",
-          "doc": "Agentic/openworker/README.md"
-        }
+        "group": { "title": "记忆层与多 Agent 框架", "track": "agentic" },
+        "item": { "label": "openworker", "doc": "Agentic/openworker/README.md" }
       }
     },
     "redirect": {
@@ -11402,10 +11458,7 @@
       "kind": "reading-chapter",
       "order": 21013,
       "raw": {
-        "group": {
-          "title": "记忆层与多 Agent 框架",
-          "track": "agentic"
-        },
+        "group": { "title": "记忆层与多 Agent 框架", "track": "agentic" },
         "item": {
           "label": "Open Agent SDK（TypeScript）",
           "doc": "Agentic/open-agent-sdk-typescript/README.md"
@@ -12238,10 +12291,7 @@
       "kind": "reading-chapter",
       "order": 23000,
       "raw": {
-        "group": {
-          "title": "smolagents · 中文文档",
-          "track": "agentic"
-        },
+        "group": { "title": "smolagents · 中文文档", "track": "agentic" },
         "item": {
           "label": "总览 README",
           "doc": "Agentic/smolagents/README.md"
@@ -12282,10 +12332,7 @@
       "kind": "reading-chapter",
       "order": 23001,
       "raw": {
-        "group": {
-          "title": "smolagents · 中文文档",
-          "track": "agentic"
-        },
+        "group": { "title": "smolagents · 中文文档", "track": "agentic" },
         "item": {
           "label": "文档首页",
           "doc": "Agentic/smolagents/docs/source/zh/index.md"
@@ -12322,10 +12369,7 @@
       "kind": "reading-chapter",
       "order": 23002,
       "raw": {
-        "group": {
-          "title": "smolagents · 中文文档",
-          "track": "agentic"
-        },
+        "group": { "title": "smolagents · 中文文档", "track": "agentic" },
         "item": {
           "label": "导览：上手 smolagents",
           "doc": "Agentic/smolagents/docs/source/zh/guided_tour.md"
@@ -12366,10 +12410,7 @@
       "kind": "reading-chapter",
       "order": 23003,
       "raw": {
-        "group": {
-          "title": "smolagents · 中文文档",
-          "track": "agentic"
-        },
+        "group": { "title": "smolagents · 中文文档", "track": "agentic" },
         "item": {
           "label": "教程：Agent 入门",
           "doc": "Agentic/smolagents/docs/source/zh/conceptual_guides/intro_agents.md"
@@ -12406,10 +12447,7 @@
       "kind": "reading-chapter",
       "order": 23004,
       "raw": {
-        "group": {
-          "title": "smolagents · 中文文档",
-          "track": "agentic"
-        },
+        "group": { "title": "smolagents · 中文文档", "track": "agentic" },
         "item": {
           "label": "教程：ReAct 范式",
           "doc": "Agentic/smolagents/docs/source/zh/conceptual_guides/react.md"
@@ -12446,10 +12484,7 @@
       "kind": "reading-chapter",
       "order": 23005,
       "raw": {
-        "group": {
-          "title": "smolagents · 中文文档",
-          "track": "agentic"
-        },
+        "group": { "title": "smolagents · 中文文档", "track": "agentic" },
         "item": {
           "label": "教程：写出好的 Agent",
           "doc": "Agentic/smolagents/docs/source/zh/tutorials/building_good_agents.md"
@@ -12486,10 +12521,7 @@
       "kind": "reading-chapter",
       "order": 23006,
       "raw": {
-        "group": {
-          "title": "smolagents · 中文文档",
-          "track": "agentic"
-        },
+        "group": { "title": "smolagents · 中文文档", "track": "agentic" },
         "item": {
           "label": "教程：工具",
           "doc": "Agentic/smolagents/docs/source/zh/tutorials/tools.md"
@@ -12526,10 +12558,7 @@
       "kind": "reading-chapter",
       "order": 23007,
       "raw": {
-        "group": {
-          "title": "smolagents · 中文文档",
-          "track": "agentic"
-        },
+        "group": { "title": "smolagents · 中文文档", "track": "agentic" },
         "item": {
           "label": "教程：记忆",
           "doc": "Agentic/smolagents/docs/source/zh/tutorials/memory.md"
@@ -12566,10 +12595,7 @@
       "kind": "reading-chapter",
       "order": 23008,
       "raw": {
-        "group": {
-          "title": "smolagents · 中文文档",
-          "track": "agentic"
-        },
+        "group": { "title": "smolagents · 中文文档", "track": "agentic" },
         "item": {
           "label": "教程：安全代码执行",
           "doc": "Agentic/smolagents/docs/source/zh/tutorials/secure_code_execution.md"
@@ -12606,10 +12632,7 @@
       "kind": "reading-chapter",
       "order": 23009,
       "raw": {
-        "group": {
-          "title": "smolagents · 中文文档",
-          "track": "agentic"
-        },
+        "group": { "title": "smolagents · 中文文档", "track": "agentic" },
         "item": {
           "label": "教程：检查运行过程",
           "doc": "Agentic/smolagents/docs/source/zh/tutorials/inspect_runs.md"
@@ -12646,10 +12669,7 @@
       "kind": "reading-chapter",
       "order": 24000,
       "raw": {
-        "group": {
-          "title": "Multica · 多 Agent 协作平台",
-          "track": "agentic"
-        },
+        "group": { "title": "Multica · 多 Agent 协作平台", "track": "agentic" },
         "item": {
           "label": "README（中文）",
           "doc": "Agentic/multica/README.zh-CN.md"
@@ -12690,10 +12710,7 @@
       "kind": "reading-chapter",
       "order": 24003,
       "raw": {
-        "group": {
-          "title": "Multica · 多 Agent 协作平台",
-          "track": "agentic"
-        },
+        "group": { "title": "Multica · 多 Agent 协作平台", "track": "agentic" },
         "item": {
           "label": "CLI 与 Daemon",
           "doc": "Agentic/multica/CLI_AND_DAEMON.md"
@@ -12734,10 +12751,7 @@
       "kind": "reading-chapter",
       "order": 24005,
       "raw": {
-        "group": {
-          "title": "Multica · 多 Agent 协作平台",
-          "track": "agentic"
-        },
+        "group": { "title": "Multica · 多 Agent 协作平台", "track": "agentic" },
         "item": {
           "label": "自托管指南",
           "doc": "Agentic/multica/SELF_HOSTING.md"
@@ -12774,10 +12788,7 @@
       "kind": "reading-chapter",
       "order": 24006,
       "raw": {
-        "group": {
-          "title": "Multica · 多 Agent 协作平台",
-          "track": "agentic"
-        },
+        "group": { "title": "Multica · 多 Agent 协作平台", "track": "agentic" },
         "item": {
           "label": "工程约定 CLAUDE.md",
           "doc": "Agentic/multica/CLAUDE.md"
@@ -12814,10 +12825,7 @@
       "kind": "reading-chapter",
       "order": 25000,
       "raw": {
-        "group": {
-          "title": "CrewAI · 上手与核心概念",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 上手与核心概念", "track": "agentic" },
         "item": {
           "label": "介绍",
           "doc": "Agentic/crewAI/docs/edge/en/introduction.mdx"
@@ -12854,10 +12862,7 @@
       "kind": "reading-chapter",
       "order": 25001,
       "raw": {
-        "group": {
-          "title": "CrewAI · 上手与核心概念",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 上手与核心概念", "track": "agentic" },
         "item": {
           "label": "安装",
           "doc": "Agentic/crewAI/docs/edge/en/installation.mdx"
@@ -12894,10 +12899,7 @@
       "kind": "reading-chapter",
       "order": 25002,
       "raw": {
-        "group": {
-          "title": "CrewAI · 上手与核心概念",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 上手与核心概念", "track": "agentic" },
         "item": {
           "label": "快速开始：第一个 Flow",
           "doc": "Agentic/crewAI/docs/edge/en/quickstart.mdx"
@@ -12934,10 +12936,7 @@
       "kind": "reading-chapter",
       "order": 25003,
       "raw": {
-        "group": {
-          "title": "CrewAI · 上手与核心概念",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 上手与核心概念", "track": "agentic" },
         "item": {
           "label": "Agents：角色与能力",
           "doc": "Agentic/crewAI/docs/edge/en/concepts/agents.mdx"
@@ -12974,10 +12973,7 @@
       "kind": "reading-chapter",
       "order": 25004,
       "raw": {
-        "group": {
-          "title": "CrewAI · 上手与核心概念",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 上手与核心概念", "track": "agentic" },
         "item": {
           "label": "Tasks：任务定义与产出",
           "doc": "Agentic/crewAI/docs/edge/en/concepts/tasks.mdx"
@@ -13014,10 +13010,7 @@
       "kind": "reading-chapter",
       "order": 25005,
       "raw": {
-        "group": {
-          "title": "CrewAI · 上手与核心概念",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 上手与核心概念", "track": "agentic" },
         "item": {
           "label": "Crews：团队编排",
           "doc": "Agentic/crewAI/docs/edge/en/concepts/crews.mdx"
@@ -13054,10 +13047,7 @@
       "kind": "reading-chapter",
       "order": 25006,
       "raw": {
-        "group": {
-          "title": "CrewAI · 上手与核心概念",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 上手与核心概念", "track": "agentic" },
         "item": {
           "label": "Processes：串行与层级",
           "doc": "Agentic/crewAI/docs/edge/en/concepts/processes.mdx"
@@ -13094,10 +13084,7 @@
       "kind": "reading-chapter",
       "order": 25007,
       "raw": {
-        "group": {
-          "title": "CrewAI · 上手与核心概念",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 上手与核心概念", "track": "agentic" },
         "item": {
           "label": "Flows：状态与执行顺序",
           "doc": "Agentic/crewAI/docs/edge/en/concepts/flows.mdx"
@@ -13134,10 +13121,7 @@
       "kind": "reading-chapter",
       "order": 25008,
       "raw": {
-        "group": {
-          "title": "CrewAI · 上手与核心概念",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 上手与核心概念", "track": "agentic" },
         "item": {
           "label": "Collaboration：协作与交接",
           "doc": "Agentic/crewAI/docs/edge/en/concepts/collaboration.mdx"
@@ -13174,10 +13158,7 @@
       "kind": "reading-chapter",
       "order": 25009,
       "raw": {
-        "group": {
-          "title": "CrewAI · 上手与核心概念",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 上手与核心概念", "track": "agentic" },
         "item": {
           "label": "Agent 能力面板",
           "doc": "Agentic/crewAI/docs/edge/en/concepts/agent-capabilities.mdx"
@@ -13214,10 +13195,7 @@
       "kind": "reading-chapter",
       "order": 25010,
       "raw": {
-        "group": {
-          "title": "CrewAI · 上手与核心概念",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 上手与核心概念", "track": "agentic" },
         "item": {
           "label": "生产架构",
           "doc": "Agentic/crewAI/docs/edge/en/concepts/production-architecture.mdx"
@@ -13254,10 +13232,7 @@
       "kind": "reading-chapter",
       "order": 26000,
       "raw": {
-        "group": {
-          "title": "CrewAI · 记忆、知识与运行时",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 记忆、知识与运行时", "track": "agentic" },
         "item": {
           "label": "Memory：记忆系统",
           "doc": "Agentic/crewAI/docs/edge/en/concepts/memory.mdx"
@@ -13294,10 +13269,7 @@
       "kind": "reading-chapter",
       "order": 26001,
       "raw": {
-        "group": {
-          "title": "CrewAI · 记忆、知识与运行时",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 记忆、知识与运行时", "track": "agentic" },
         "item": {
           "label": "Knowledge：知识库",
           "doc": "Agentic/crewAI/docs/edge/en/concepts/knowledge.mdx"
@@ -13334,10 +13306,7 @@
       "kind": "reading-chapter",
       "order": 26002,
       "raw": {
-        "group": {
-          "title": "CrewAI · 记忆、知识与运行时",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 记忆、知识与运行时", "track": "agentic" },
         "item": {
           "label": "Tools：工具集成",
           "doc": "Agentic/crewAI/docs/edge/en/concepts/tools.mdx"
@@ -13374,10 +13343,7 @@
       "kind": "reading-chapter",
       "order": 26003,
       "raw": {
-        "group": {
-          "title": "CrewAI · 记忆、知识与运行时",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 记忆、知识与运行时", "track": "agentic" },
         "item": {
           "label": "LLMs：模型接入",
           "doc": "Agentic/crewAI/docs/edge/en/concepts/llms.mdx"
@@ -13414,10 +13380,7 @@
       "kind": "reading-chapter",
       "order": 26004,
       "raw": {
-        "group": {
-          "title": "CrewAI · 记忆、知识与运行时",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 记忆、知识与运行时", "track": "agentic" },
         "item": {
           "label": "Planning：规划",
           "doc": "Agentic/crewAI/docs/edge/en/concepts/planning.mdx"
@@ -13454,10 +13417,7 @@
       "kind": "reading-chapter",
       "order": 26005,
       "raw": {
-        "group": {
-          "title": "CrewAI · 记忆、知识与运行时",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 记忆、知识与运行时", "track": "agentic" },
         "item": {
           "label": "Reasoning：推理",
           "doc": "Agentic/crewAI/docs/edge/en/concepts/reasoning.mdx"
@@ -13494,10 +13454,7 @@
       "kind": "reading-chapter",
       "order": 26006,
       "raw": {
-        "group": {
-          "title": "CrewAI · 记忆、知识与运行时",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 记忆、知识与运行时", "track": "agentic" },
         "item": {
           "label": "Training：训练与反馈",
           "doc": "Agentic/crewAI/docs/edge/en/concepts/training.mdx"
@@ -13534,10 +13491,7 @@
       "kind": "reading-chapter",
       "order": 26007,
       "raw": {
-        "group": {
-          "title": "CrewAI · 记忆、知识与运行时",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 记忆、知识与运行时", "track": "agentic" },
         "item": {
           "label": "Testing：评估",
           "doc": "Agentic/crewAI/docs/edge/en/concepts/testing.mdx"
@@ -13574,10 +13528,7 @@
       "kind": "reading-chapter",
       "order": 26008,
       "raw": {
-        "group": {
-          "title": "CrewAI · 记忆、知识与运行时",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 记忆、知识与运行时", "track": "agentic" },
         "item": {
           "label": "Skills：技能",
           "doc": "Agentic/crewAI/docs/edge/en/concepts/skills.mdx"
@@ -13614,10 +13565,7 @@
       "kind": "reading-chapter",
       "order": 26009,
       "raw": {
-        "group": {
-          "title": "CrewAI · 记忆、知识与运行时",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 记忆、知识与运行时", "track": "agentic" },
         "item": {
           "label": "Streaming：流式输出",
           "doc": "Agentic/crewAI/docs/edge/en/concepts/streaming.mdx"
@@ -13654,10 +13602,7 @@
       "kind": "reading-chapter",
       "order": 26010,
       "raw": {
-        "group": {
-          "title": "CrewAI · 记忆、知识与运行时",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 记忆、知识与运行时", "track": "agentic" },
         "item": {
           "label": "Checkpointing：断点续跑",
           "doc": "Agentic/crewAI/docs/edge/en/concepts/checkpointing.mdx"
@@ -13694,10 +13639,7 @@
       "kind": "reading-chapter",
       "order": 26011,
       "raw": {
-        "group": {
-          "title": "CrewAI · 记忆、知识与运行时",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 记忆、知识与运行时", "track": "agentic" },
         "item": {
           "label": "Event Listener：事件总线",
           "doc": "Agentic/crewAI/docs/edge/en/concepts/event-listener.mdx"
@@ -13734,10 +13676,7 @@
       "kind": "reading-chapter",
       "order": 26012,
       "raw": {
-        "group": {
-          "title": "CrewAI · 记忆、知识与运行时",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 记忆、知识与运行时", "track": "agentic" },
         "item": {
           "label": "Files：文件处理",
           "doc": "Agentic/crewAI/docs/edge/en/concepts/files.mdx"
@@ -13774,10 +13713,7 @@
       "kind": "reading-chapter",
       "order": 26013,
       "raw": {
-        "group": {
-          "title": "CrewAI · 记忆、知识与运行时",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 记忆、知识与运行时", "track": "agentic" },
         "item": {
           "label": "CLI 参考",
           "doc": "Agentic/crewAI/docs/edge/en/concepts/cli.mdx"
@@ -13814,10 +13750,7 @@
       "kind": "reading-chapter",
       "order": 27000,
       "raw": {
-        "group": {
-          "title": "CrewAI · 实战指南",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 实战指南", "track": "agentic" },
         "item": {
           "label": "指南总览",
           "doc": "Agentic/crewAI/docs/edge/en/learn/overview.mdx"
@@ -13854,10 +13787,7 @@
       "kind": "reading-chapter",
       "order": 27001,
       "raw": {
-        "group": {
-          "title": "CrewAI · 实战指南",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 实战指南", "track": "agentic" },
         "item": {
           "label": "串行流程",
           "doc": "Agentic/crewAI/docs/edge/en/learn/sequential-process.mdx"
@@ -13894,10 +13824,7 @@
       "kind": "reading-chapter",
       "order": 27002,
       "raw": {
-        "group": {
-          "title": "CrewAI · 实战指南",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 实战指南", "track": "agentic" },
         "item": {
           "label": "层级流程",
           "doc": "Agentic/crewAI/docs/edge/en/learn/hierarchical-process.mdx"
@@ -13934,10 +13861,7 @@
       "kind": "reading-chapter",
       "order": 27003,
       "raw": {
-        "group": {
-          "title": "CrewAI · 实战指南",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 实战指南", "track": "agentic" },
         "item": {
           "label": "自定义 Manager Agent",
           "doc": "Agentic/crewAI/docs/edge/en/learn/custom-manager-agent.mdx"
@@ -13974,10 +13898,7 @@
       "kind": "reading-chapter",
       "order": 27004,
       "raw": {
-        "group": {
-          "title": "CrewAI · 实战指南",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 实战指南", "track": "agentic" },
         "item": {
           "label": "人类在环",
           "doc": "Agentic/crewAI/docs/edge/en/learn/human-in-the-loop.mdx"
@@ -14014,10 +13935,7 @@
       "kind": "reading-chapter",
       "order": 27005,
       "raw": {
-        "group": {
-          "title": "CrewAI · 实战指南",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 实战指南", "track": "agentic" },
         "item": {
           "label": "自定义工具",
           "doc": "Agentic/crewAI/docs/edge/en/learn/create-custom-tools.mdx"
@@ -14054,10 +13972,7 @@
       "kind": "reading-chapter",
       "order": 27006,
       "raw": {
-        "group": {
-          "title": "CrewAI · 实战指南",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 实战指南", "track": "agentic" },
         "item": {
           "label": "接入自己的 Agent",
           "doc": "Agentic/crewAI/docs/edge/en/learn/bring-your-own-agent.mdx"
@@ -14094,10 +14009,7 @@
       "kind": "reading-chapter",
       "order": 27007,
       "raw": {
-        "group": {
-          "title": "CrewAI · 实战指南",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 实战指南", "track": "agentic" },
         "item": {
           "label": "模型选型指南",
           "doc": "Agentic/crewAI/docs/edge/en/learn/llm-selection-guide.mdx"
@@ -14134,10 +14046,7 @@
       "kind": "reading-chapter",
       "order": 27008,
       "raw": {
-        "group": {
-          "title": "CrewAI · 实战指南",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 实战指南", "track": "agentic" },
         "item": {
           "label": "Coding Agents",
           "doc": "Agentic/crewAI/docs/edge/en/learn/coding-agents.mdx"
@@ -14174,10 +14083,7 @@
       "kind": "reading-chapter",
       "order": 27009,
       "raw": {
-        "group": {
-          "title": "CrewAI · 实战指南",
-          "track": "agentic"
-        },
+        "group": { "title": "CrewAI · 实战指南", "track": "agentic" },
         "item": {
           "label": "多模态 Agent",
           "doc": "Agentic/crewAI/docs/edge/en/learn/multimodal-agents.mdx"
@@ -14214,14 +14120,8 @@
       "kind": "reading-chapter",
       "order": 28000,
       "raw": {
-        "group": {
-          "title": "AutoGPT · 平台与 Blocks",
-          "track": "agentic"
-        },
-        "item": {
-          "label": "总览 README",
-          "doc": "Agentic/AutoGPT/README.md"
-        }
+        "group": { "title": "AutoGPT · 平台与 Blocks", "track": "agentic" },
+        "item": { "label": "总览 README", "doc": "Agentic/AutoGPT/README.md" }
       }
     },
     "redirect": {
@@ -14258,10 +14158,7 @@
       "kind": "reading-chapter",
       "order": 28001,
       "raw": {
-        "group": {
-          "title": "AutoGPT · 平台与 Blocks",
-          "track": "agentic"
-        },
+        "group": { "title": "AutoGPT · 平台与 Blocks", "track": "agentic" },
         "item": {
           "label": "文档首页",
           "doc": "Agentic/AutoGPT/docs/content/index.md"
@@ -14298,10 +14195,7 @@
       "kind": "reading-chapter",
       "order": 28002,
       "raw": {
-        "group": {
-          "title": "AutoGPT · 平台与 Blocks",
-          "track": "agentic"
-        },
+        "group": { "title": "AutoGPT · 平台与 Blocks", "track": "agentic" },
         "item": {
           "label": "什么是 AutoGPT Platform",
           "doc": "Agentic/AutoGPT/docs/platform/what-is-autogpt-platform.md"
@@ -14338,10 +14232,7 @@
       "kind": "reading-chapter",
       "order": 28003,
       "raw": {
-        "group": {
-          "title": "AutoGPT · 平台与 Blocks",
-          "track": "agentic"
-        },
+        "group": { "title": "AutoGPT · 平台与 Blocks", "track": "agentic" },
         "item": {
           "label": "上手指南",
           "doc": "Agentic/AutoGPT/docs/platform/getting-started.md"
@@ -14378,10 +14269,7 @@
       "kind": "reading-chapter",
       "order": 28004,
       "raw": {
-        "group": {
-          "title": "AutoGPT · 平台与 Blocks",
-          "track": "agentic"
-        },
+        "group": { "title": "AutoGPT · 平台与 Blocks", "track": "agentic" },
         "item": {
           "label": "做第一个 Agent",
           "doc": "Agentic/AutoGPT/docs/platform/create-basic-agent.md"
@@ -14418,10 +14306,7 @@
       "kind": "reading-chapter",
       "order": 28005,
       "raw": {
-        "group": {
-          "title": "AutoGPT · 平台与 Blocks",
-          "track": "agentic"
-        },
+        "group": { "title": "AutoGPT · 平台与 Blocks", "track": "agentic" },
         "item": {
           "label": "Agent Blocks",
           "doc": "Agentic/AutoGPT/docs/platform/agent-blocks.md"
@@ -14458,10 +14343,7 @@
       "kind": "reading-chapter",
       "order": 28006,
       "raw": {
-        "group": {
-          "title": "AutoGPT · 平台与 Blocks",
-          "track": "agentic"
-        },
+        "group": { "title": "AutoGPT · 平台与 Blocks", "track": "agentic" },
         "item": {
           "label": "Block SDK 指南",
           "doc": "Agentic/AutoGPT/docs/platform/block-sdk-guide.md"
@@ -14498,10 +14380,7 @@
       "kind": "reading-chapter",
       "order": 28007,
       "raw": {
-        "group": {
-          "title": "AutoGPT · 平台与 Blocks",
-          "track": "agentic"
-        },
+        "group": { "title": "AutoGPT · 平台与 Blocks", "track": "agentic" },
         "item": {
           "label": "新建 Block",
           "doc": "Agentic/AutoGPT/docs/platform/new_blocks.md"
@@ -14538,10 +14417,7 @@
       "kind": "reading-chapter",
       "order": 28008,
       "raw": {
-        "group": {
-          "title": "AutoGPT · 平台与 Blocks",
-          "track": "agentic"
-        },
+        "group": { "title": "AutoGPT · 平台与 Blocks", "track": "agentic" },
         "item": {
           "label": "进阶部署",
           "doc": "Agentic/AutoGPT/docs/platform/advanced_setup.md"
@@ -14578,10 +14454,7 @@
       "kind": "reading-chapter",
       "order": 28009,
       "raw": {
-        "group": {
-          "title": "AutoGPT · 平台与 Blocks",
-          "track": "agentic"
-        },
+        "group": { "title": "AutoGPT · 平台与 Blocks", "track": "agentic" },
         "item": {
           "label": "本地模型：Ollama",
           "doc": "Agentic/AutoGPT/docs/platform/ollama.md"
@@ -14618,10 +14491,7 @@
       "kind": "reading-chapter",
       "order": 28010,
       "raw": {
-        "group": {
-          "title": "AutoGPT · 平台与 Blocks",
-          "track": "agentic"
-        },
+        "group": { "title": "AutoGPT · 平台与 Blocks", "track": "agentic" },
         "item": {
           "label": "Copilot 接本地 LLM",
           "doc": "Agentic/AutoGPT/docs/platform/copilot-local-llm.md"
@@ -14637,7 +14507,7 @@
     "summary": "AutoGPT · 平台与 Blocks",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/AutoGPT/docs/platform/workspace-media-architecture.md",
+    "localPath": "Agentic/AutoGPT/docs/engineering/workspace-media-architecture.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -14649,7 +14519,7 @@
       {
         "label": "工作区与媒体架构",
         "sourceUrl": null,
-        "localPath": "Agentic/AutoGPT/docs/platform/workspace-media-architecture.md"
+        "localPath": "Agentic/AutoGPT/docs/engineering/workspace-media-architecture.md"
       }
     ],
     "unavailableReason": null,
@@ -14658,10 +14528,7 @@
       "kind": "reading-chapter",
       "order": 28011,
       "raw": {
-        "group": {
-          "title": "AutoGPT · 平台与 Blocks",
-          "track": "agentic"
-        },
+        "group": { "title": "AutoGPT · 平台与 Blocks", "track": "agentic" },
         "item": {
           "label": "工作区与媒体架构",
           "doc": "Agentic/AutoGPT/docs/platform/workspace-media-architecture.md"
@@ -14677,7 +14544,7 @@
     "summary": "AutoGPT · 平台与 Blocks",
     "learningGoals": [],
     "sourceUrl": null,
-    "localPath": "Agentic/AutoGPT/docs/platform/org-feature-map.md",
+    "localPath": "Agentic/AutoGPT/docs/engineering/org-feature-map.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
@@ -14689,7 +14556,7 @@
       {
         "label": "组织功能矩阵",
         "sourceUrl": null,
-        "localPath": "Agentic/AutoGPT/docs/platform/org-feature-map.md"
+        "localPath": "Agentic/AutoGPT/docs/engineering/org-feature-map.md"
       }
     ],
     "unavailableReason": null,
@@ -14698,10 +14565,7 @@
       "kind": "reading-chapter",
       "order": 28012,
       "raw": {
-        "group": {
-          "title": "AutoGPT · 平台与 Blocks",
-          "track": "agentic"
-        },
+        "group": { "title": "AutoGPT · 平台与 Blocks", "track": "agentic" },
         "item": {
           "label": "组织功能矩阵",
           "doc": "Agentic/AutoGPT/docs/platform/org-feature-map.md"
@@ -14738,10 +14602,7 @@
       "kind": "reading-chapter",
       "order": 28013,
       "raw": {
-        "group": {
-          "title": "AutoGPT · 平台与 Blocks",
-          "track": "agentic"
-        },
+        "group": { "title": "AutoGPT · 平台与 Blocks", "track": "agentic" },
         "item": {
           "label": "工程约定 AGENTS.md",
           "doc": "Agentic/AutoGPT/AGENTS.md"
@@ -14778,10 +14639,7 @@
       "kind": "reading-chapter",
       "order": 29000,
       "raw": {
-        "group": {
-          "title": "AutoGPT · Classic 与 Forge",
-          "track": "agentic"
-        },
+        "group": { "title": "AutoGPT · Classic 与 Forge", "track": "agentic" },
         "item": {
           "label": "Classic 首页",
           "doc": "Agentic/AutoGPT/docs/content/classic/index.md"
@@ -14818,10 +14676,7 @@
       "kind": "reading-chapter",
       "order": 29001,
       "raw": {
-        "group": {
-          "title": "AutoGPT · Classic 与 Forge",
-          "track": "agentic"
-        },
+        "group": { "title": "AutoGPT · Classic 与 Forge", "track": "agentic" },
         "item": {
           "label": "Classic 用法",
           "doc": "Agentic/AutoGPT/docs/content/classic/usage.md"
@@ -14858,10 +14713,7 @@
       "kind": "reading-chapter",
       "order": 29002,
       "raw": {
-        "group": {
-          "title": "AutoGPT · Classic 与 Forge",
-          "track": "agentic"
-        },
+        "group": { "title": "AutoGPT · Classic 与 Forge", "track": "agentic" },
         "item": {
           "label": "Classic 安装",
           "doc": "Agentic/AutoGPT/docs/content/classic/setup/index.md"
@@ -14898,10 +14750,7 @@
       "kind": "reading-chapter",
       "order": 29003,
       "raw": {
-        "group": {
-          "title": "AutoGPT · Classic 与 Forge",
-          "track": "agentic"
-        },
+        "group": { "title": "AutoGPT · Classic 与 Forge", "track": "agentic" },
         "item": {
           "label": "Docker 部署",
           "doc": "Agentic/AutoGPT/docs/content/classic/setup/docker.md"
@@ -14938,10 +14787,7 @@
       "kind": "reading-chapter",
       "order": 29004,
       "raw": {
-        "group": {
-          "title": "AutoGPT · Classic 与 Forge",
-          "track": "agentic"
-        },
+        "group": { "title": "AutoGPT · Classic 与 Forge", "track": "agentic" },
         "item": {
           "label": "配置项",
           "doc": "Agentic/AutoGPT/docs/content/classic/configuration/options.md"
@@ -14978,10 +14824,7 @@
       "kind": "reading-chapter",
       "order": 29005,
       "raw": {
-        "group": {
-          "title": "AutoGPT · Classic 与 Forge",
-          "track": "agentic"
-        },
+        "group": { "title": "AutoGPT · Classic 与 Forge", "track": "agentic" },
         "item": {
           "label": "Forge 上手",
           "doc": "Agentic/AutoGPT/docs/content/forge/get-started.md"
@@ -15018,10 +14861,7 @@
       "kind": "reading-chapter",
       "order": 29006,
       "raw": {
-        "group": {
-          "title": "AutoGPT · Classic 与 Forge",
-          "track": "agentic"
-        },
+        "group": { "title": "AutoGPT · Classic 与 Forge", "track": "agentic" },
         "item": {
           "label": "组件化：introduction",
           "doc": "Agentic/AutoGPT/docs/content/forge/components/introduction.md"
@@ -15058,10 +14898,7 @@
       "kind": "reading-chapter",
       "order": 29007,
       "raw": {
-        "group": {
-          "title": "AutoGPT · Classic 与 Forge",
-          "track": "agentic"
-        },
+        "group": { "title": "AutoGPT · Classic 与 Forge", "track": "agentic" },
         "item": {
           "label": "内置组件",
           "doc": "Agentic/AutoGPT/docs/content/forge/components/built-in-components.md"
@@ -15098,10 +14935,7 @@
       "kind": "reading-chapter",
       "order": 29008,
       "raw": {
-        "group": {
-          "title": "AutoGPT · Classic 与 Forge",
-          "track": "agentic"
-        },
+        "group": { "title": "AutoGPT · Classic 与 Forge", "track": "agentic" },
         "item": {
           "label": "自己写组件",
           "doc": "Agentic/AutoGPT/docs/content/forge/components/creating-components.md"
@@ -15138,10 +14972,7 @@
       "kind": "reading-chapter",
       "order": 29009,
       "raw": {
-        "group": {
-          "title": "AutoGPT · Classic 与 Forge",
-          "track": "agentic"
-        },
+        "group": { "title": "AutoGPT · Classic 与 Forge", "track": "agentic" },
         "item": {
           "label": "Commands",
           "doc": "Agentic/AutoGPT/docs/content/forge/components/commands.md"
@@ -15178,10 +15009,7 @@
       "kind": "reading-chapter",
       "order": 29010,
       "raw": {
-        "group": {
-          "title": "AutoGPT · Classic 与 Forge",
-          "track": "agentic"
-        },
+        "group": { "title": "AutoGPT · Classic 与 Forge", "track": "agentic" },
         "item": {
           "label": "Protocols",
           "doc": "Agentic/AutoGPT/docs/content/forge/components/protocols.md"
@@ -15218,10 +15046,7 @@
       "kind": "reading-chapter",
       "order": 29011,
       "raw": {
-        "group": {
-          "title": "AutoGPT · Classic 与 Forge",
-          "track": "agentic"
-        },
+        "group": { "title": "AutoGPT · Classic 与 Forge", "track": "agentic" },
         "item": {
           "label": "挑战集：introduction",
           "doc": "Agentic/AutoGPT/docs/content/challenges/introduction.md"
@@ -15258,10 +15083,7 @@
       "kind": "reading-chapter",
       "order": 29012,
       "raw": {
-        "group": {
-          "title": "AutoGPT · Classic 与 Forge",
-          "track": "agentic"
-        },
+        "group": { "title": "AutoGPT · Classic 与 Forge", "track": "agentic" },
         "item": {
           "label": "挑战集：怎么出题",
           "doc": "Agentic/AutoGPT/docs/content/challenges/building_challenges.md"
@@ -15715,25 +15537,25 @@
   },
   {
     "id": "legacy-reading-31-012",
-    "title": "工作流：deep-agents-code",
+    "title": "工作流：运行 dcode 会话",
     "track": "agentic",
     "stageIds": [],
-    "summary": "LangChain · LangGraph · DeepAgents",
+    "summary": "上游 openwiki 重组后的现行指南；按原仓库提交与文档正文人工复核。",
     "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/deepagents/openwiki/workflows/deep-agents-code.md",
+    "sourceUrl": "https://github.com/langchain-ai/deepagents/blob/a93aed4bca3a5e4d45bff393e16092222767e6c3/openwiki/workflows/run-dcode-session.md",
+    "localPath": "Agentic/Harness/deepagents/openwiki/workflows/run-dcode-session.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
     "license": "Unknown",
     "licenseStatus": "unknown",
     "tags": ["LangChain · LangGraph · DeepAgents", "legacy-reading"],
-    "lastReviewedAt": null,
+    "lastReviewedAt": "2026-11-15",
     "references": [
       {
-        "label": "工作流：deep-agents-code",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/deepagents/openwiki/workflows/deep-agents-code.md"
+        "label": "工作流：运行 dcode 会话",
+        "localPath": "Agentic/Harness/deepagents/openwiki/workflows/run-dcode-session.md",
+        "sourceUrl": "https://github.com/langchain-ai/deepagents/blob/a93aed4bca3a5e4d45bff393e16092222767e6c3/openwiki/workflows/run-dcode-session.md"
       }
     ],
     "unavailableReason": null,
@@ -15755,25 +15577,25 @@
   },
   {
     "id": "legacy-reading-31-013",
-    "title": "工作流：评估与发布",
+    "title": "工作流：运行评估",
     "track": "agentic",
     "stageIds": [],
-    "summary": "LangChain · LangGraph · DeepAgents",
+    "summary": "上游 openwiki 重组后的现行指南；按原仓库提交与文档正文人工复核。",
     "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/deepagents/openwiki/workflows/evaluation-and-release.md",
+    "sourceUrl": "https://github.com/langchain-ai/deepagents/blob/a93aed4bca3a5e4d45bff393e16092222767e6c3/openwiki/workflows/run-evals.md",
+    "localPath": "Agentic/Harness/deepagents/openwiki/workflows/run-evals.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
     "license": "Unknown",
     "licenseStatus": "unknown",
     "tags": ["LangChain · LangGraph · DeepAgents", "legacy-reading"],
-    "lastReviewedAt": null,
+    "lastReviewedAt": "2026-11-15",
     "references": [
       {
-        "label": "工作流：评估与发布",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/deepagents/openwiki/workflows/evaluation-and-release.md"
+        "label": "工作流：运行评估",
+        "localPath": "Agentic/Harness/deepagents/openwiki/workflows/run-evals.md",
+        "sourceUrl": "https://github.com/langchain-ai/deepagents/blob/a93aed4bca3a5e4d45bff393e16092222767e6c3/openwiki/workflows/run-evals.md"
       }
     ],
     "unavailableReason": null,
@@ -15795,25 +15617,30 @@
   },
   {
     "id": "legacy-reading-31-014",
-    "title": "工程：运维与测试",
+    "title": "工程：开发发布与测试",
     "track": "agentic",
     "stageIds": [],
-    "summary": "LangChain · LangGraph · DeepAgents",
+    "summary": "上游 openwiki 重组后的现行指南；按原仓库提交与文档正文人工复核。",
     "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/deepagents/openwiki/engineering/operations-and-testing.md",
+    "sourceUrl": "https://github.com/langchain-ai/deepagents/blob/a93aed4bca3a5e4d45bff393e16092222767e6c3/openwiki/operations/development.md",
+    "localPath": "Agentic/Harness/deepagents/openwiki/operations/development.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
     "license": "Unknown",
     "licenseStatus": "unknown",
     "tags": ["LangChain · LangGraph · DeepAgents", "legacy-reading"],
-    "lastReviewedAt": null,
+    "lastReviewedAt": "2026-11-15",
     "references": [
       {
-        "label": "工程：运维与测试",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/deepagents/openwiki/engineering/operations-and-testing.md"
+        "label": "工程：开发发布与测试",
+        "localPath": "Agentic/Harness/deepagents/openwiki/operations/development.md",
+        "sourceUrl": "https://github.com/langchain-ai/deepagents/blob/a93aed4bca3a5e4d45bff393e16092222767e6c3/openwiki/operations/development.md"
+      },
+      {
+        "label": "测试指南",
+        "localPath": "Agentic/Harness/deepagents/openwiki/testing/testing-guide.md",
+        "sourceUrl": "https://github.com/langchain-ai/deepagents/blob/a93aed4bca3a5e4d45bff393e16092222767e6c3/openwiki/testing/testing-guide.md"
       }
     ],
     "unavailableReason": null,
@@ -16164,7 +15991,7 @@
     "stageIds": [],
     "summary": "MetaGPT · OpenHands · openworker",
     "learningGoals": [],
-    "sourceUrl": null,
+    "sourceUrl": "https://github.com/andrewyng/openworker/blob/ecb445490fc054d52b8ea610d97ba947f57033d2/README.md",
     "localPath": "Agentic/Harness/openworker/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
@@ -16172,11 +15999,11 @@
     "license": "Unknown",
     "licenseStatus": "unknown",
     "tags": ["MetaGPT · OpenHands · openworker", "legacy-reading"],
-    "lastReviewedAt": null,
+    "lastReviewedAt": "2026-11-15",
     "references": [
       {
         "label": "openworker README",
-        "sourceUrl": null,
+        "sourceUrl": "https://github.com/andrewyng/openworker/blob/ecb445490fc054d52b8ea610d97ba947f57033d2/README.md",
         "localPath": "Agentic/Harness/openworker/README.md"
       }
     ],
@@ -16208,7 +16035,7 @@
     "stageIds": [],
     "summary": "MetaGPT · OpenHands · openworker",
     "learningGoals": [],
-    "sourceUrl": null,
+    "sourceUrl": "https://github.com/andrewyng/openworker/blob/ecb445490fc054d52b8ea610d97ba947f57033d2/surfaces/gui/README.md",
     "localPath": "Agentic/Harness/openworker/surfaces/gui/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
@@ -16216,11 +16043,11 @@
     "license": "Unknown",
     "licenseStatus": "unknown",
     "tags": ["MetaGPT · OpenHands · openworker", "legacy-reading"],
-    "lastReviewedAt": null,
+    "lastReviewedAt": "2026-11-15",
     "references": [
       {
         "label": "openworker GUI",
-        "sourceUrl": null,
+        "sourceUrl": "https://github.com/andrewyng/openworker/blob/ecb445490fc054d52b8ea610d97ba947f57033d2/surfaces/gui/README.md",
         "localPath": "Agentic/Harness/openworker/surfaces/gui/README.md"
       }
     ],
@@ -16270,10 +16097,7 @@
       "kind": "reading-chapter",
       "order": 32000,
       "raw": {
-        "group": {
-          "title": "PI · pi-mono 工具链",
-          "track": "agentic"
-        },
+        "group": { "title": "PI · pi-mono 工具链", "track": "agentic" },
         "item": {
           "label": "总览 README",
           "doc": "Agentic/PI/pi-mono/README.md"
@@ -16314,10 +16138,7 @@
       "kind": "reading-chapter",
       "order": 32001,
       "raw": {
-        "group": {
-          "title": "PI · pi-mono 工具链",
-          "track": "agentic"
-        },
+        "group": { "title": "PI · pi-mono 工具链", "track": "agentic" },
         "item": {
           "label": "工程约定 AGENTS.md",
           "doc": "Agentic/PI/pi-mono/AGENTS.md"
@@ -16358,10 +16179,7 @@
       "kind": "reading-chapter",
       "order": 32002,
       "raw": {
-        "group": {
-          "title": "PI · pi-mono 工具链",
-          "track": "agentic"
-        },
+        "group": { "title": "PI · pi-mono 工具链", "track": "agentic" },
         "item": {
           "label": "贡献指南",
           "doc": "Agentic/PI/pi-mono/CONTRIBUTING.md"
@@ -16398,10 +16216,7 @@
       "kind": "reading-chapter",
       "order": 32004,
       "raw": {
-        "group": {
-          "title": "PI · pi-mono 工具链",
-          "track": "agentic"
-        },
+        "group": { "title": "PI · pi-mono 工具链", "track": "agentic" },
         "item": {
           "label": "包：agent",
           "doc": "Agentic/PI/pi-mono/packages/agent/README.md"
@@ -16438,10 +16253,7 @@
       "kind": "reading-chapter",
       "order": 32005,
       "raw": {
-        "group": {
-          "title": "PI · pi-mono 工具链",
-          "track": "agentic"
-        },
+        "group": { "title": "PI · pi-mono 工具链", "track": "agentic" },
         "item": {
           "label": "包：coding-agent",
           "doc": "Agentic/PI/pi-mono/packages/coding-agent/README.md"
@@ -16451,25 +16263,25 @@
   },
   {
     "id": "legacy-reading-33-007",
-    "title": "包：protocol",
+    "title": "历史实验包：protocol",
     "track": "agentic",
     "stageIds": [],
-    "summary": "PI · pi-mono 工具链",
+    "summary": "上游已于 2026-10-12 移除该实验包；此入口固定到删除前版本，供历史研究，不代表当前工具链。",
     "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/PI/pi-mono/packages/protocol/README.md",
-    "accessPolicy": "local-preferred",
+    "sourceUrl": "https://github.com/earendil-works/pi/blob/2ee5c1e56d51694d113c3f1f1c9c2d7386cbfacd/packages/protocol/README.md",
+    "localPath": null,
+    "accessPolicy": "upstream-only",
     "publicationRights": "third-party",
     "author": "Unknown",
     "license": "Unknown",
     "licenseStatus": "unknown",
-    "tags": ["PI · pi-mono 工具链", "legacy-reading"],
-    "lastReviewedAt": null,
+    "tags": ["PI · pi-mono 工具链", "legacy-reading", "历史版本"],
+    "lastReviewedAt": "2026-11-15",
     "references": [
       {
-        "label": "包：protocol",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/PI/pi-mono/packages/protocol/README.md"
+        "label": "删除前版本（历史）",
+        "localPath": null,
+        "sourceUrl": "https://github.com/earendil-works/pi/blob/2ee5c1e56d51694d113c3f1f1c9c2d7386cbfacd/packages/protocol/README.md"
       }
     ],
     "unavailableReason": null,
@@ -16478,10 +16290,7 @@
       "kind": "reading-chapter",
       "order": 32006,
       "raw": {
-        "group": {
-          "title": "PI · pi-mono 工具链",
-          "track": "agentic"
-        },
+        "group": { "title": "PI · pi-mono 工具链", "track": "agentic" },
         "item": {
           "label": "包：protocol",
           "doc": "Agentic/PI/pi-mono/packages/protocol/README.md"
@@ -16491,25 +16300,25 @@
   },
   {
     "id": "legacy-reading-33-008",
-    "title": "包：server",
+    "title": "历史实验包：server",
     "track": "agentic",
     "stageIds": [],
-    "summary": "PI · pi-mono 工具链",
+    "summary": "上游已于 2026-10-12 移除该实验包；此入口固定到删除前版本，供历史研究，不代表当前工具链。",
     "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/PI/pi-mono/packages/server/README.md",
-    "accessPolicy": "local-preferred",
+    "sourceUrl": "https://github.com/earendil-works/pi/blob/2ee5c1e56d51694d113c3f1f1c9c2d7386cbfacd/packages/server/README.md",
+    "localPath": null,
+    "accessPolicy": "upstream-only",
     "publicationRights": "third-party",
     "author": "Unknown",
     "license": "Unknown",
     "licenseStatus": "unknown",
-    "tags": ["PI · pi-mono 工具链", "legacy-reading"],
-    "lastReviewedAt": null,
+    "tags": ["PI · pi-mono 工具链", "legacy-reading", "历史版本"],
+    "lastReviewedAt": "2026-11-15",
     "references": [
       {
-        "label": "包：server",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/PI/pi-mono/packages/server/README.md"
+        "label": "删除前版本（历史）",
+        "localPath": null,
+        "sourceUrl": "https://github.com/earendil-works/pi/blob/2ee5c1e56d51694d113c3f1f1c9c2d7386cbfacd/packages/server/README.md"
       }
     ],
     "unavailableReason": null,
@@ -16518,10 +16327,7 @@
       "kind": "reading-chapter",
       "order": 32007,
       "raw": {
-        "group": {
-          "title": "PI · pi-mono 工具链",
-          "track": "agentic"
-        },
+        "group": { "title": "PI · pi-mono 工具链", "track": "agentic" },
         "item": {
           "label": "包：server",
           "doc": "Agentic/PI/pi-mono/packages/server/README.md"
@@ -16531,25 +16337,25 @@
   },
   {
     "id": "legacy-reading-33-009",
-    "title": "包：client",
+    "title": "历史实验包：client",
     "track": "agentic",
     "stageIds": [],
-    "summary": "PI · pi-mono 工具链",
+    "summary": "上游已于 2026-10-12 移除该实验包；此入口固定到删除前版本，供历史研究，不代表当前工具链。",
     "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/Harness/PI/pi-mono/packages/client/README.md",
-    "accessPolicy": "local-preferred",
+    "sourceUrl": "https://github.com/earendil-works/pi/blob/2ee5c1e56d51694d113c3f1f1c9c2d7386cbfacd/packages/client/README.md",
+    "localPath": null,
+    "accessPolicy": "upstream-only",
     "publicationRights": "third-party",
     "author": "Unknown",
     "license": "Unknown",
     "licenseStatus": "unknown",
-    "tags": ["PI · pi-mono 工具链", "legacy-reading"],
-    "lastReviewedAt": null,
+    "tags": ["PI · pi-mono 工具链", "legacy-reading", "历史版本"],
+    "lastReviewedAt": "2026-11-15",
     "references": [
       {
-        "label": "包：client",
-        "sourceUrl": null,
-        "localPath": "Agentic/Harness/PI/pi-mono/packages/client/README.md"
+        "label": "删除前版本（历史）",
+        "localPath": null,
+        "sourceUrl": "https://github.com/earendil-works/pi/blob/2ee5c1e56d51694d113c3f1f1c9c2d7386cbfacd/packages/client/README.md"
       }
     ],
     "unavailableReason": null,
@@ -16558,10 +16364,7 @@
       "kind": "reading-chapter",
       "order": 32008,
       "raw": {
-        "group": {
-          "title": "PI · pi-mono 工具链",
-          "track": "agentic"
-        },
+        "group": { "title": "PI · pi-mono 工具链", "track": "agentic" },
         "item": {
           "label": "包：client",
           "doc": "Agentic/PI/pi-mono/packages/client/README.md"
@@ -16598,10 +16401,7 @@
       "kind": "reading-chapter",
       "order": 32009,
       "raw": {
-        "group": {
-          "title": "PI · pi-mono 工具链",
-          "track": "agentic"
-        },
+        "group": { "title": "PI · pi-mono 工具链", "track": "agentic" },
         "item": {
           "label": "包：tui",
           "doc": "Agentic/PI/pi-mono/packages/tui/README.md"
@@ -16638,10 +16438,7 @@
       "kind": "reading-chapter",
       "order": 32010,
       "raw": {
-        "group": {
-          "title": "PI · pi-mono 工具链",
-          "track": "agentic"
-        },
+        "group": { "title": "PI · pi-mono 工具链", "track": "agentic" },
         "item": {
           "label": "包：ai",
           "doc": "Agentic/PI/pi-mono/packages/ai/README.md"
@@ -16678,10 +16475,7 @@
       "kind": "reading-chapter",
       "order": 32011,
       "raw": {
-        "group": {
-          "title": "PI · pi-mono 工具链",
-          "track": "agentic"
-        },
+        "group": { "title": "PI · pi-mono 工具链", "track": "agentic" },
         "item": {
           "label": "包：evals",
           "doc": "Agentic/PI/pi-mono/packages/evals/README.md"
@@ -16718,10 +16512,7 @@
       "kind": "reading-chapter",
       "order": 33000,
       "raw": {
-        "group": {
-          "title": "OpenChamber · 上手与工作流",
-          "track": "agentic"
-        },
+        "group": { "title": "OpenChamber · 上手与工作流", "track": "agentic" },
         "item": {
           "label": "概览",
           "doc": "Agentic/openchamber/packages/docs/content/docs/zh-cn/index.mdx"
@@ -16762,10 +16553,7 @@
       "kind": "reading-chapter",
       "order": 33001,
       "raw": {
-        "group": {
-          "title": "OpenChamber · 上手与工作流",
-          "track": "agentic"
-        },
+        "group": { "title": "OpenChamber · 上手与工作流", "track": "agentic" },
         "item": {
           "label": "安装",
           "doc": "Agentic/openchamber/packages/docs/content/docs/zh-cn/install.mdx"
@@ -16802,10 +16590,7 @@
       "kind": "reading-chapter",
       "order": 33002,
       "raw": {
-        "group": {
-          "title": "OpenChamber · 上手与工作流",
-          "track": "agentic"
-        },
+        "group": { "title": "OpenChamber · 上手与工作流", "track": "agentic" },
         "item": {
           "label": "快速开始",
           "doc": "Agentic/openchamber/packages/docs/content/docs/zh-cn/quickstart.mdx"
@@ -16842,10 +16627,7 @@
       "kind": "reading-chapter",
       "order": 33003,
       "raw": {
-        "group": {
-          "title": "OpenChamber · 上手与工作流",
-          "track": "agentic"
-        },
+        "group": { "title": "OpenChamber · 上手与工作流", "track": "agentic" },
         "item": {
           "label": "OpenCode 服务器",
           "doc": "Agentic/openchamber/packages/docs/content/docs/zh-cn/opencode-server.mdx"
@@ -16882,10 +16664,7 @@
       "kind": "reading-chapter",
       "order": 33004,
       "raw": {
-        "group": {
-          "title": "OpenChamber · 上手与工作流",
-          "track": "agentic"
-        },
+        "group": { "title": "OpenChamber · 上手与工作流", "track": "agentic" },
         "item": {
           "label": "环境变量",
           "doc": "Agentic/openchamber/packages/docs/content/docs/zh-cn/environment.mdx"
@@ -16922,10 +16701,7 @@
       "kind": "reading-chapter",
       "order": 33005,
       "raw": {
-        "group": {
-          "title": "OpenChamber · 上手与工作流",
-          "track": "agentic"
-        },
+        "group": { "title": "OpenChamber · 上手与工作流", "track": "agentic" },
         "item": {
           "label": "项目",
           "doc": "Agentic/openchamber/packages/docs/content/docs/zh-cn/projects.mdx"
@@ -16962,10 +16738,7 @@
       "kind": "reading-chapter",
       "order": 33006,
       "raw": {
-        "group": {
-          "title": "OpenChamber · 上手与工作流",
-          "track": "agentic"
-        },
+        "group": { "title": "OpenChamber · 上手与工作流", "track": "agentic" },
         "item": {
           "label": "上下文",
           "doc": "Agentic/openchamber/packages/docs/content/docs/zh-cn/context.mdx"
@@ -17002,10 +16775,7 @@
       "kind": "reading-chapter",
       "order": 33007,
       "raw": {
-        "group": {
-          "title": "OpenChamber · 上手与工作流",
-          "track": "agentic"
-        },
+        "group": { "title": "OpenChamber · 上手与工作流", "track": "agentic" },
         "item": {
           "label": "笔记、待办与计划",
           "doc": "Agentic/openchamber/packages/docs/content/docs/zh-cn/notes-todos-plans.mdx"
@@ -17042,10 +16812,7 @@
       "kind": "reading-chapter",
       "order": 33008,
       "raw": {
-        "group": {
-          "title": "OpenChamber · 上手与工作流",
-          "track": "agentic"
-        },
+        "group": { "title": "OpenChamber · 上手与工作流", "track": "agentic" },
         "item": {
           "label": "计划任务",
           "doc": "Agentic/openchamber/packages/docs/content/docs/zh-cn/scheduled-tasks.mdx"
@@ -17082,10 +16849,7 @@
       "kind": "reading-chapter",
       "order": 33009,
       "raw": {
-        "group": {
-          "title": "OpenChamber · 上手与工作流",
-          "track": "agentic"
-        },
+        "group": { "title": "OpenChamber · 上手与工作流", "track": "agentic" },
         "item": {
           "label": "智能体控制工具",
           "doc": "Agentic/openchamber/packages/docs/content/docs/zh-cn/agent-control-tool.mdx"
@@ -17122,10 +16886,7 @@
       "kind": "reading-chapter",
       "order": 33010,
       "raw": {
-        "group": {
-          "title": "OpenChamber · 上手与工作流",
-          "track": "agentic"
-        },
+        "group": { "title": "OpenChamber · 上手与工作流", "track": "agentic" },
         "item": {
           "label": "会话目标",
           "doc": "Agentic/openchamber/packages/docs/content/docs/zh-cn/session-goals.mdx"
@@ -17162,10 +16923,7 @@
       "kind": "reading-chapter",
       "order": 33011,
       "raw": {
-        "group": {
-          "title": "OpenChamber · 上手与工作流",
-          "track": "agentic"
-        },
+        "group": { "title": "OpenChamber · 上手与工作流", "track": "agentic" },
         "item": {
           "label": "项目操作",
           "doc": "Agentic/openchamber/packages/docs/content/docs/zh-cn/project-actions.mdx"
@@ -17202,10 +16960,7 @@
       "kind": "reading-chapter",
       "order": 33012,
       "raw": {
-        "group": {
-          "title": "OpenChamber · 上手与工作流",
-          "track": "agentic"
-        },
+        "group": { "title": "OpenChamber · 上手与工作流", "track": "agentic" },
         "item": {
           "label": "预览与开发服务器",
           "doc": "Agentic/openchamber/packages/docs/content/docs/zh-cn/preview.mdx"
@@ -17242,10 +16997,7 @@
       "kind": "reading-chapter",
       "order": 33013,
       "raw": {
-        "group": {
-          "title": "OpenChamber · 上手与工作流",
-          "track": "agentic"
-        },
+        "group": { "title": "OpenChamber · 上手与工作流", "track": "agentic" },
         "item": {
           "label": "Worktree 会话",
           "doc": "Agentic/openchamber/packages/docs/content/docs/zh-cn/worktrees.mdx"
@@ -17282,10 +17034,7 @@
       "kind": "reading-chapter",
       "order": 33014,
       "raw": {
-        "group": {
-          "title": "OpenChamber · 上手与工作流",
-          "track": "agentic"
-        },
+        "group": { "title": "OpenChamber · 上手与工作流", "track": "agentic" },
         "item": {
           "label": "Multi-run",
           "doc": "Agentic/openchamber/packages/docs/content/docs/zh-cn/multi-run.mdx"
@@ -17322,10 +17071,7 @@
       "kind": "reading-chapter",
       "order": 33015,
       "raw": {
-        "group": {
-          "title": "OpenChamber · 上手与工作流",
-          "track": "agentic"
-        },
+        "group": { "title": "OpenChamber · 上手与工作流", "track": "agentic" },
         "item": {
           "label": "Git & GitHub",
           "doc": "Agentic/openchamber/packages/docs/content/docs/zh-cn/git.mdx"
@@ -17362,10 +17108,7 @@
       "kind": "reading-chapter",
       "order": 33016,
       "raw": {
-        "group": {
-          "title": "OpenChamber · 上手与工作流",
-          "track": "agentic"
-        },
+        "group": { "title": "OpenChamber · 上手与工作流", "track": "agentic" },
         "item": {
           "label": "改动导读",
           "doc": "Agentic/openchamber/packages/docs/content/docs/zh-cn/walkthrough.mdx"
@@ -17402,10 +17145,7 @@
       "kind": "reading-chapter",
       "order": 33017,
       "raw": {
-        "group": {
-          "title": "OpenChamber · 上手与工作流",
-          "track": "agentic"
-        },
+        "group": { "title": "OpenChamber · 上手与工作流", "track": "agentic" },
         "item": {
           "label": "GitHub 工单与 PR",
           "doc": "Agentic/openchamber/packages/docs/content/docs/zh-cn/github.mdx"
@@ -17442,10 +17182,7 @@
       "kind": "reading-chapter",
       "order": 33018,
       "raw": {
-        "group": {
-          "title": "OpenChamber · 上手与工作流",
-          "track": "agentic"
-        },
+        "group": { "title": "OpenChamber · 上手与工作流", "track": "agentic" },
         "item": {
           "label": "魔法提示词",
           "doc": "Agentic/openchamber/packages/docs/content/docs/zh-cn/magic-prompts.mdx"
@@ -17482,10 +17219,7 @@
       "kind": "reading-chapter",
       "order": 33019,
       "raw": {
-        "group": {
-          "title": "OpenChamber · 上手与工作流",
-          "track": "agentic"
-        },
+        "group": { "title": "OpenChamber · 上手与工作流", "track": "agentic" },
         "item": {
           "label": "Git 身份",
           "doc": "Agentic/openchamber/packages/docs/content/docs/zh-cn/git-identities.mdx"
@@ -17655,25 +17389,25 @@
   },
   {
     "id": "legacy-reading-35-005",
-    "title": "命令与代码片段",
+    "title": "聊天输入：命令、技能与代码片段",
     "track": "agentic",
     "stageIds": [],
     "summary": "OpenChamber · OpenCode 配置与远程访问",
     "learningGoals": [],
-    "sourceUrl": null,
-    "localPath": "Agentic/openchamber/packages/docs/content/docs/zh-cn/commands-snippets.mdx",
+    "sourceUrl": "https://github.com/openchamber/openchamber/blob/aa1031fcc3e742803beeaa96d568407b6f543554/packages/docs/content/docs/zh-cn/chat-input.mdx",
+    "localPath": "Agentic/openchamber/packages/docs/content/docs/zh-cn/chat-input.mdx",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "Unknown",
     "license": "Unknown",
     "licenseStatus": "unknown",
     "tags": ["OpenChamber · OpenCode 配置与远程访问", "legacy-reading"],
-    "lastReviewedAt": null,
+    "lastReviewedAt": "2026-11-15",
     "references": [
       {
-        "label": "命令与代码片段",
-        "sourceUrl": null,
-        "localPath": "Agentic/openchamber/packages/docs/content/docs/zh-cn/commands-snippets.mdx"
+        "label": "聊天输入：命令、技能与代码片段",
+        "localPath": "Agentic/openchamber/packages/docs/content/docs/zh-cn/chat-input.mdx",
+        "sourceUrl": "https://github.com/openchamber/openchamber/blob/aa1031fcc3e742803beeaa96d568407b6f543554/packages/docs/content/docs/zh-cn/chat-input.mdx"
       }
     ],
     "unavailableReason": null,
@@ -19789,7 +19523,7 @@
     "summary": "HanaAgent：一个 Agent 框架/平台实现，提供构建与运行 Agent 的基础能力。",
     "learningGoals": ["了解 HanaAgent 框架的定位与能力边界。"],
     "sourceUrl": "https://github.com/liliMozi/openhanako",
-    "localPath": "Agentic/Harness/openhanako/README.md",
+    "localPath": "Agentic/Harness/PI/openhanako/README.md",
     "accessPolicy": "local-preferred",
     "publicationRights": "third-party",
     "author": "liliMozi",
@@ -19801,7 +19535,7 @@
       {
         "label": "本地 README",
         "sourceUrl": null,
-        "localPath": "Agentic/Harness/openhanako/README.md"
+        "localPath": "Agentic/Harness/PI/openhanako/README.md"
       }
     ],
     "unavailableReason": null

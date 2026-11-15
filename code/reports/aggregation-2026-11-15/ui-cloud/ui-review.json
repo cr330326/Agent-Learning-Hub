@@ -1,0 +1,349 @@
+{
+  "generatedAt": "2026-11-15T13:23:44.562Z",
+  "baseUrl": "http://127.0.0.1:3002",
+  "pages": [
+    {
+      "path": "/",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 2531
+    },
+    {
+      "path": "/roadmap",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 2448
+    },
+    {
+      "path": "/roadmap/stage-0",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 1492
+    },
+    {
+      "path": "/roadmap/stage-8",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 1461
+    },
+    {
+      "path": "/courses",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 2497
+    },
+    {
+      "path": "/courses?page=2",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 2497
+    },
+    {
+      "path": "/courses?track=agentic",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 2525
+    },
+    {
+      "path": "/courses?track=application&access=unavailable",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 1033
+    },
+    {
+      "path": "/search",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 4332
+    },
+    {
+      "path": "/search?q=agent",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 4943
+    },
+    {
+      "path": "/projects",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 4182
+    },
+    {
+      "path": "/learning",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 1026
+    },
+    {
+      "path": "/login",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 903
+    },
+    {
+      "path": "/content-policy",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 1083
+    },
+    {
+      "path": "/contribute",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 985
+    },
+    {
+      "path": "/no-such-page",
+      "viewport": "desktop",
+      "status": 404,
+      "height": 903
+    },
+    {
+      "path": "/discover",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 3857
+    },
+    {
+      "path": "/editions",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 903
+    },
+    {
+      "path": "/topics/Harness%20Engineering",
+      "viewport": "desktop",
+      "status": 200,
+      "height": 3887
+    },
+    {
+      "path": "/",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 3392
+    },
+    {
+      "path": "/roadmap",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 2493
+    },
+    {
+      "path": "/roadmap/stage-0",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 1886
+    },
+    {
+      "path": "/roadmap/stage-8",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 2052
+    },
+    {
+      "path": "/courses",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 3248
+    },
+    {
+      "path": "/courses?page=2",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 3248
+    },
+    {
+      "path": "/courses?track=agentic",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 3276
+    },
+    {
+      "path": "/courses?track=application&access=unavailable",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 1134
+    },
+    {
+      "path": "/search",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 4842
+    },
+    {
+      "path": "/search?q=agent",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 5670
+    },
+    {
+      "path": "/projects",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 4624
+    },
+    {
+      "path": "/learning",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 1134
+    },
+    {
+      "path": "/login",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 1134
+    },
+    {
+      "path": "/content-policy",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 1134
+    },
+    {
+      "path": "/contribute",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 1134
+    },
+    {
+      "path": "/no-such-page",
+      "viewport": "tablet",
+      "status": 404,
+      "height": 1256
+    },
+    {
+      "path": "/discover",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 5368
+    },
+    {
+      "path": "/editions",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 1134
+    },
+    {
+      "path": "/topics/Harness%20Engineering",
+      "viewport": "tablet",
+      "status": 200,
+      "height": 5270
+    },
+    {
+      "path": "/",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 4491
+    },
+    {
+      "path": "/roadmap",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 2556
+    },
+    {
+      "path": "/roadmap/stage-0",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 2036
+    },
+    {
+      "path": "/roadmap/stage-8",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 2417
+    },
+    {
+      "path": "/courses",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 5937
+    },
+    {
+      "path": "/courses?page=2",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 5937
+    },
+    {
+      "path": "/courses?track=agentic",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 5965
+    },
+    {
+      "path": "/courses?track=application&access=unavailable",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 1359
+    },
+    {
+      "path": "/search",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 7360
+    },
+    {
+      "path": "/search?q=agent",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 9223
+    },
+    {
+      "path": "/projects",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 4905
+    },
+    {
+      "path": "/learning",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 958
+    },
+    {
+      "path": "/login",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 900
+    },
+    {
+      "path": "/content-policy",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 1478
+    },
+    {
+      "path": "/contribute",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 1216
+    },
+    {
+      "path": "/no-such-page",
+      "viewport": "mobile",
+      "status": 404,
+      "height": 1327
+    },
+    {
+      "path": "/discover",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 10093
+    },
+    {
+      "path": "/editions",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 900
+    },
+    {
+      "path": "/topics/Harness%20Engineering",
+      "viewport": "mobile",
+      "status": 200,
+      "height": 9673
+    }
+  ],
+  "findings": []
+}

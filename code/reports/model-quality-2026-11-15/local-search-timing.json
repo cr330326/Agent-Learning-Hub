@@ -1,0 +1,23 @@
+[
+  {
+    "attempt": 1,
+    "status": 200,
+    "headersMs": 477,
+    "completeMs": 480,
+    "bytes": 38088
+  },
+  {
+    "attempt": 2,
+    "status": 200,
+    "headersMs": 215,
+    "completeMs": 217,
+    "bytes": 38088
+  },
+  {
+    "attempt": 3,
+    "status": 200,
+    "headersMs": 265,
+    "completeMs": 267,
+    "bytes": 38088
+  }
+]

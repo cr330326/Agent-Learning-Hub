@@ -1,0 +1,134 @@
+{
+  "date": "2026-11-15",
+  "scope": "Catalog metadata only; third-party worktrees unchanged",
+  "upstreamEvidence": [
+    {
+      "repository": "langchain-ai/deepagents",
+      "migrationCommit": "de35cdda94a4034798c3dfe2c7d48b6d3de2bd89",
+      "reviewedHead": "a93aed4bca3a5e4d45bff393e16092222767e6c3"
+    },
+    {
+      "repository": "earendil-works/pi",
+      "removalCommit": "7472cda0d6e51dfbf53c03f46b47aa42ac64bf64",
+      "historicalParent": "2ee5c1e56d51694d113c3f1f1c9c2d7386cbfacd"
+    },
+    {
+      "repository": "openchamber/openchamber",
+      "replacementCommit": "f6902b2ec050c19818bcda62f475b85fcffaacc3",
+      "reviewedHead": "aa1031fcc3e742803beeaa96d568407b6f543554"
+    }
+  ],
+  "changes": [
+    {
+      "id": "legacy-reading-31-012",
+      "oldPath": "Agentic/Harness/deepagents/openwiki/workflows/deep-agents-code.md",
+      "newPath": "Agentic/Harness/deepagents/openwiki/workflows/run-dcode-session.md",
+      "sourceUrl": "https://github.com/langchain-ai/deepagents/blob/a93aed4bca3a5e4d45bff393e16092222767e6c3/openwiki/workflows/run-dcode-session.md"
+    },
+    {
+      "id": "legacy-reading-31-013",
+      "oldPath": "Agentic/Harness/deepagents/openwiki/workflows/evaluation-and-release.md",
+      "newPath": "Agentic/Harness/deepagents/openwiki/workflows/run-evals.md",
+      "sourceUrl": "https://github.com/langchain-ai/deepagents/blob/a93aed4bca3a5e4d45bff393e16092222767e6c3/openwiki/workflows/run-evals.md"
+    },
+    {
+      "id": "legacy-reading-31-014",
+      "oldPath": "Agentic/Harness/deepagents/openwiki/engineering/operations-and-testing.md",
+      "newPath": "Agentic/Harness/deepagents/openwiki/operations/development.md",
+      "sourceUrl": "https://github.com/langchain-ai/deepagents/blob/a93aed4bca3a5e4d45bff393e16092222767e6c3/openwiki/operations/development.md"
+    },
+    {
+      "id": "legacy-reading-35-005",
+      "oldPath": "Agentic/openchamber/packages/docs/content/docs/zh-cn/commands-snippets.mdx",
+      "newPath": "Agentic/openchamber/packages/docs/content/docs/zh-cn/chat-input.mdx",
+      "sourceUrl": "https://github.com/openchamber/openchamber/blob/aa1031fcc3e742803beeaa96d568407b6f543554/packages/docs/content/docs/zh-cn/chat-input.mdx"
+    },
+    {
+      "id": "legacy-reading-33-007",
+      "oldPath": "Agentic/Harness/PI/pi-mono/packages/protocol/README.md",
+      "newPath": null,
+      "sourceUrl": "https://github.com/earendil-works/pi/blob/2ee5c1e56d51694d113c3f1f1c9c2d7386cbfacd/packages/protocol/README.md",
+      "reason": "experimental package removed upstream"
+    },
+    {
+      "id": "legacy-reading-33-008",
+      "oldPath": "Agentic/Harness/PI/pi-mono/packages/server/README.md",
+      "newPath": null,
+      "sourceUrl": "https://github.com/earendil-works/pi/blob/2ee5c1e56d51694d113c3f1f1c9c2d7386cbfacd/packages/server/README.md",
+      "reason": "experimental package removed upstream"
+    },
+    {
+      "id": "legacy-reading-33-009",
+      "oldPath": "Agentic/Harness/PI/pi-mono/packages/client/README.md",
+      "newPath": null,
+      "sourceUrl": "https://github.com/earendil-works/pi/blob/2ee5c1e56d51694d113c3f1f1c9c2d7386cbfacd/packages/client/README.md",
+      "reason": "experimental package removed upstream"
+    },
+    {
+      "id": "legacy-reading-13-022",
+      "oldPath": "AICoding/openclaw/openclaw-code/docs.acp.md",
+      "newPath": "AICoding/openclaw/openclaw-code/docs/cli/acp.md",
+      "sourceUrl": "https://github.com/openclaw/openclaw/blob/d9a6928692948fdeeb28ed4914a9405d4eb8f0ed/docs/cli/acp.md",
+      "reason": "current ACP guide; local repository absent"
+    },
+    {
+      "id": "legacy-course-013",
+      "reason": "exact upstream fallback; missing local copy retained"
+    },
+    {
+      "id": "legacy-course-032",
+      "reason": "exact upstream fallback; missing local copy retained"
+    },
+    {
+      "id": "legacy-reading-12-005",
+      "reason": "exact upstream fallback; missing local copy retained"
+    },
+    {
+      "id": "legacy-reading-12-006",
+      "reason": "exact upstream fallback; missing local copy retained"
+    },
+    {
+      "id": "legacy-reading-12-007",
+      "reason": "exact upstream fallback; missing local copy retained"
+    },
+    {
+      "id": "legacy-reading-22-013",
+      "reason": "exact upstream fallback; missing local copy retained"
+    },
+    {
+      "id": "legacy-reading-32-014",
+      "reason": "exact upstream fallback; missing local copy retained"
+    },
+    {
+      "id": "legacy-reading-32-015",
+      "reason": "exact upstream fallback; missing local copy retained"
+    }
+  ],
+  "verifiedMissingRepositoryFallbacks": [
+    {
+      "id": "legacy-reading-13-019",
+      "localPath": "AICoding/openclaw/openclaw-lark/README.zh.md",
+      "sourceUrl": "https://github.com/larksuite/openclaw-lark/blob/dde0be3680d6fd5443cab426c8f4b3216266346a/README.zh.md"
+    },
+    {
+      "id": "legacy-reading-13-020",
+      "localPath": "AICoding/openclaw/openclaw-code/VISION.md",
+      "sourceUrl": "https://github.com/openclaw/openclaw/blob/d9a6928692948fdeeb28ed4914a9405d4eb8f0ed/VISION.md"
+    },
+    {
+      "id": "legacy-reading-13-021",
+      "localPath": "AICoding/openclaw/openclaw-code/AGENTS.md",
+      "sourceUrl": "https://github.com/openclaw/openclaw/blob/d9a6928692948fdeeb28ed4914a9405d4eb8f0ed/AGENTS.md"
+    },
+    {
+      "id": "legacy-reading-13-022",
+      "localPath": "AICoding/openclaw/openclaw-code/docs/cli/acp.md",
+      "sourceUrl": "https://github.com/openclaw/openclaw/blob/d9a6928692948fdeeb28ed4914a9405d4eb8f0ed/docs/cli/acp.md"
+    },
+    {
+      "id": "legacy-reading-13-023",
+      "localPath": "AICoding/openclaw/openclaw-code/SECURITY.md",
+      "sourceUrl": "https://github.com/openclaw/openclaw/blob/d9a6928692948fdeeb28ed4914a9405d4eb8f0ed/SECURITY.md"
+    }
+  ]
+}

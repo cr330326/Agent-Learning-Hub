@@ -12,7 +12,7 @@ export type MarkdownDocument = {
 export type MarkdownRenderOptions = {
   resolveImageSrc?: (source: string) => string | null;
   /**
-   * Rewrites a relative link found in the document (a sibling chapter, an
+   * Rewrites a relative or course-root link found in the document (a sibling chapter, an
    * asset) into a URL this site can serve. Returning null drops the link and
    * keeps only its text — relative hrefs are resolved by the browser against
    * the reader route, so emitting them unchanged produces guaranteed 404s.
@@ -178,9 +178,11 @@ function safeHref(value: string, options: MarkdownRenderOptions = {}) {
     return href;
   }
 
-  // Site-absolute links are already routable.
+  // Local courses resolve their own root links; owned pages retain app routes.
   if (/^\/(?!\/)/.test(href)) {
-    return href;
+    return options.resolveDocumentHref
+      ? options.resolveDocumentHref(href)
+      : href;
   }
 
   // Anything else is relative to the source document, not to the reader route.

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getDiscoveryRepository } from "../../lib/discovery";
 
 import { Pagination, paginate } from "../components/pagination";
 import { SectionIntro } from "../components/site-chrome";
@@ -39,6 +40,11 @@ export default async function SearchPage({
   const track = catalog.tracks.some(({ id }) => id === params.track)
     ? (params.track as "learning" | "aicoding" | "agentic" | "application")
     : undefined;
+  if (runtime.mode === "cloud")
+    index.push(...getDiscoveryRepository().searchMetadata());
+  const stage = catalog.stages.some(({ id }) => id === params.stage)
+    ? params.stage
+    : undefined;
   const accessPolicy = [
     "owned",
     "upstream-only",
@@ -50,7 +56,7 @@ export default async function SearchPage({
     : undefined;
   const results = searchDocuments(index, {
     query: params.q,
-    stageId: params.stage,
+    stageId: stage,
     track,
     accessPolicy,
   });
@@ -77,7 +83,7 @@ export default async function SearchPage({
         </label>
         <label>
           <span>阶段</span>
-          <select name="stage" defaultValue={params.stage ?? ""}>
+          <select name="stage" defaultValue={stage ?? ""}>
             <option value="">全部阶段</option>
             {catalog.stages.map((stage) => (
               <option value={stage.id} key={stage.id}>
@@ -171,9 +177,9 @@ export default async function SearchPage({
         basePath="/search"
         params={{
           q: params.q,
-          stage: params.stage,
-          track: params.track,
-          access: params.access,
+          stage,
+          track,
+          access: accessPolicy,
         }}
         page={pageWindow.page}
         pageCount={pageWindow.pageCount}
@@ -190,6 +196,7 @@ function searchKindLabel(kind: SearchDocumentKind) {
     item: "课程条目",
     project: "项目成果",
     "local-chapter": "本地章节",
+    news: "开发资讯",
   }[kind];
 }
 

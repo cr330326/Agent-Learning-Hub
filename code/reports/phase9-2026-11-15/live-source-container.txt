@@ -1,0 +1,4 @@
+{"sourceId":"anthropic-engineering","jobId":"c6e60ce7-03ef-461d-b990-7e260ca22b69"}
+{"sourceId":"langchain-blog","jobId":"8bf7dfbc-8b78-4e08-97e4-43b76ce9938c"}
+{"source":"Anthropic Engineering","rows":{"total":24},"status":{"lastSuccess":1794720145981,"error":null,"progress":"{\"runId\":\"efdcba97-2fd7-4eb3-b3b8-917724b7b2e4\",\"added\":0,\"updated\":0,\"records\":24,\"checkpoint\":{\"cursor\":null,\"runId\":\"efdcba97-2fd7-4eb3-b3b8-917724b7b2e4\",\"pages\":1,\"rejected\":0,\"seen\":[],\"finished\":true}}"}}
+{"source":"LangChain Blog","rows":{"total":16},"status":{"lastSuccess":1794720146994,"error":null,"progress":"{\"runId\":\"61040863-7970-4966-aca1-5e52a1a712e6\",\"added\":0,\"updated\":0,\"records\":20,\"checkpoint\":{\"cursor\":null,\"runId\":\"61040863-7970-4966-aca1-5e52a1a712e6\",\"pages\":1,\"rejected\":0,\"seen\":[],\"finished\":true}}"}}

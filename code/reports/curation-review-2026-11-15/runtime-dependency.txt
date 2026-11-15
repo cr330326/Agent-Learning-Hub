@@ -1,0 +1,3 @@
+npm warn idealTree Removing devDependencies.prettier in favor of dependencies.prettier
+
+up to date in 2s

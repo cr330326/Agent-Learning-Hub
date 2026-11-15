@@ -1,0 +1,6 @@
+{
+  "jobId": 132790978034,
+  "runId": 43707283649,
+  "url": "https://github.com/cr330326/Agent-Learning-Hub/actions/runs/43707283649/job/132790978034",
+  "excerpt": "2026-11-15T11:07:11.6150048Z 10 vulnerabilities (9 moderate, 1 high)\n2026-11-15T11:07:12.0051075Z found 0 vulnerabilities\n2026-11-15T11:07:13.1358733Z (node:2511) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities."
+}

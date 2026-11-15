@@ -1,0 +1,4 @@
+NAME                                 IMAGE                                         COMMAND                  SERVICE   CREATED              STATUS                        PORTS
+alh-verification-20261115-cloud-1    agent-learning-hub:verification-20261115-r7   "docker-entrypoint.s…"   cloud     About a minute ago   Up About a minute (healthy)   127.0.0.1:3322->3000/tcp
+alh-verification-20261115-local-1    agent-learning-hub:verification-20261115-r7   "docker-entrypoint.s…"   local     About a minute ago   Up About a minute (healthy)   127.0.0.1:3323->3000/tcp
+alh-verification-20261115-worker-1   agent-learning-hub:verification-20261115-r7   "docker-entrypoint.s…"   worker    About a minute ago   Up About a minute (healthy)   3000/tcp

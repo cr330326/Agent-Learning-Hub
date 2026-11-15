@@ -1,0 +1,540 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.54kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:24-bookworm
+#2 DONE 0.2s
+
+#3 [internal] load metadata for docker.io/library/node:24-bookworm-slim
+#3 DONE 0.3s
+
+#4 [dependencies 1/4] FROM docker.io/library/node:24-bookworm@sha256:9d266751ca3d7fdbe651c878ffd5ad0a42fed49a18c283509267c97f025b7496
+#4 resolve docker.io/library/node:24-bookworm@sha256:9d266751ca3d7fdbe651c878ffd5ad0a42fed49a18c283509267c97f025b7496 0.1s done
+#4 DONE 0.1s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 291B done
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 ...
+
+#7 [runner 1/8] FROM docker.io/library/node:24-bookworm-slim@sha256:dc26ae92c9fb15cf6b1d63e20f0944b2efe0f115b20e00be48fb23fceb061c54
+#7 resolve docker.io/library/node:24-bookworm-slim@sha256:dc26ae92c9fb15cf6b1d63e20f0944b2efe0f115b20e00be48fb23fceb061c54 0.0s done
+#7 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 17.72MB 0.5s done
+#6 DONE 0.5s
+
+#8 [dependencies 4/4] RUN npm ci --prefix code
+#8 CACHED
+
+#9 [dependencies 4/4] RUN npm ci --prefix code
+#9 CACHED
+
+#10 [dependencies 2/4] WORKDIR /workspace
+#10 CACHED
+
+#11 [dependencies 3/4] COPY code/package.json code/package-lock.json ./code/
+#11 CACHED
+
+#12 [builder 1/2] COPY . .
+#12 DONE 1.7s
+
+#13 [builder 2/2] RUN npm run build --prefix code
+#13 2.202 
+#13 2.202 > agent-learning-hub@0.1.0 build
+#13 2.202 > next build && npm run build:worker
+#13 2.202 
+#13 2.586 ▲ Next.js 16.4.3 (Turbopack)
+#13 2.627 ✓ Running next.config.ts took 40ms
+#13 2.643 
+#13 2.645 ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead.
+#13 2.645 
+#13 2.645   To migrate automatically, run:
+#13 2.645   npx @next/codemod@canary middleware-to-proxy .
+#13 2.645 
+#13 2.645   Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+#13 2.678   Creating an optimized production build ...
+#13 8.929 ✓ Compiled successfully in 6.2s
+#13 8.937   Running TypeScript ...
+#13 15.97   Finished TypeScript in 7.0s ...
+#13 15.98   Collecting page data using 9 workers ...
+#13 17.61   Generating static pages using 9 workers (0/2) ...
+#13 17.70 ✓ Generating static pages using 9 workers (2/2) in 87ms
+#13 17.70 Turbopack build encountered 10 warnings:
+#13 17.70 ./lib/catalog.ts:27:10
+#13 17.70 Warning: Dynamic filesystem access causes tracing of the whole project
+#13 17.70   [90m25 |[0m   environment: [33mReadonly[0m<[33mRecord[0m<string, string | [36mundefined[0m>> = process.env,
+#13 17.70   [90m26 |[0m ): string {
+#13 17.70 [33m[1m>[0m [90m27 |[0m   [36mreturn[0m resolve(
+#13 17.70   [90m   |[0m          [33m[1m^^^^^^^[0m
+#13 17.70 [33m[1m>[0m [90m28 |[0m     environment.[33mLOCAL_MATERIAL_ROOT[0m ??
+#13 17.70   [90m   |[0m [33m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+#13 17.70 [33m[1m>[0m [90m29 |[0m       resolve(process.cwd(), [32m".."[0m, [32m"local-courses"[0m),
+#13 17.70   [90m   |[0m [33m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+#13 17.70 [33m[1m>[0m [90m30 |[0m   );
+#13 17.70   [90m   |[0m [33m[1m^^^[0m
+#13 17.70   [90m31 |[0m }
+#13 17.70   [90m32 |[0m
+#13 17.70   [90m33 |[0m [36mexport[0m [36mfunction[0m getContentResolver() {
+#13 17.70 
+#13 17.70 Static analysis determined that this filesystem access causes the whole project to be traced and included in the output.
+#13 17.70 This is usually unintentional and leads to all source files (including the public folder) to be deployed as part of the server code.
+#13 17.70 This can slow down deployments or lead to failures when size limits are exceeded.
+#13 17.70 To resolve this, you can
+#13 17.70 - make sure the path is statically scoped to some subfolder, for example path.join(process.cwd(), 'data', bar), or
+#13 17.70 - only use them in development, or
+#13 17.70 - opt out by adding an ignore comment to the highlighted call: path.resolve(/*turbopackIgnore: true*/ ...), or
+#13 17.70 - remove them.
+#13 17.70 
+#13 17.70 Import traces:
+#13 17.70   #1 [App Route]:
+#13 17.70     ./lib/catalog.ts
+#13 17.70     ./app/api/state/route.ts
+#13 17.70 
+#13 17.70   #2 [Server Component]:
+#13 17.70     ./lib/catalog.ts
+#13 17.70     ./app/roadmap/[stageId]/page.tsx
+#13 17.70 
+#13 17.70   #3 [App Route]:
+#13 17.70     ./lib/catalog.ts
+#13 17.70     ./modules/catalog/catalog-api.ts
+#13 17.70     ./app/api/admin/health/route.ts
+#13 17.70 
+#13 17.70 
+#13 17.70 ./modules/catalog/catalog-api.ts:239:10
+#13 17.70 Warning: Dynamic filesystem access causes tracing of the whole project
+#13 17.70   [90m237 |[0m   environment: [33mReadonly[0m<[33mRecord[0m<string, string | [36mundefined[0m>> = process.env,
+#13 17.70   [90m238 |[0m ): string {
+#13 17.70 [33m[1m>[0m [90m239 |[0m   [36mreturn[0m resolve(environment.[33mCONTENT_ROOT[0m ?? resolve(process.cwd(), [32m"content"[0m));
+#13 17.70   [90m    |[0m          [33m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+#13 17.70   [90m240 |[0m }
+#13 17.70   [90m241 |[0m
+#13 17.70   [90m242 |[0m [36mexport[0m [36masync[0m [36mfunction[0m loadCatalogApi(): [33mPromise[0m<[33mCatalogApi[0m> {
+#13 17.70 
+#13 17.70 Static analysis determined that this filesystem access causes the whole project to be traced and included in the output.
+#13 17.70 This is usually unintentional and leads to all source files (including the public folder) to be deployed as part of the server code.
+#13 17.70 This can slow down deployments or lead to failures when size limits are exceeded.
+#13 17.70 To resolve this, you can
+#13 17.70 - make sure the path is statically scoped to some subfolder, for example path.join(process.cwd(), 'data', bar), or
+#13 17.70 - only use them in development, or
+#13 17.70 - opt out by adding an ignore comment to the highlighted call: path.resolve(/*turbopackIgnore: true*/ ...), or
+#13 17.70 - remove them.
+#13 17.70 
+#13 17.70 Import traces:
+#13 17.70   #1 [App Route]:
+#13 17.70     ./modules/catalog/catalog-api.ts
+#13 17.70     ./app/api/admin/health/route.ts
+#13 17.70 
+#13 17.70   #2 [App Route]:
+#13 17.70     ./modules/catalog/catalog-api.ts
+#13 17.70     ./lib/catalog.ts
+#13 17.70     ./app/api/admin/health/route.ts
+#13 17.70 
+#13 17.70   #3 [Server Component]:
+#13 17.70     ./modules/catalog/catalog-api.ts
+#13 17.70     ./lib/catalog.ts
+#13 17.70     ./app/page.tsx
+#13 17.70 
+#13 17.70 
+#13 17.70 ./modules/content-resolver/local-file-access.ts:102:35
+#13 17.70 Warning: Dynamic filesystem access causes tracing of the whole project
+#13 17.70   [90m100 |[0m
+#13 17.70   [90m101 |[0m       [36mtry[0m {
+#13 17.70 [33m[1m>[0m [90m102 |[0m         realCandidatePath = [36mawait[0m realpath(candidatePath);
+#13 17.70   [90m    |[0m                                   [33m[1m^^^^^^^^^^^^^^^^^^^^^^^[0m
+#13 17.70   [90m103 |[0m       } [36mcatch[0m (error) {
+#13 17.70   [90m104 |[0m         [36mif[0m (isMissingFileError(error)) {
+#13 17.70   [90m105 |[0m           [36mreturn[0m [36mnull[0m;
+#13 17.70 
+#13 17.70 Static analysis determined that this filesystem access causes the whole project to be traced and included in the output.
+#13 17.70 This is usually unintentional and leads to all source files (including the public folder) to be deployed as part of the server code.
+#13 17.70 This can slow down deployments or lead to failures when size limits are exceeded.
+#13 17.70 To resolve this, you can
+#13 17.70 - make sure the path is statically scoped to some subfolder, for example path.join(process.cwd(), 'data', bar), or
+#13 17.70 - only use them in development, or
+#13 17.70 - opt out by adding an ignore comment to the highlighted call: fs.realpath(/*turbopackIgnore: true*/ ...), or
+#13 17.70 - remove them.
+#13 17.70 
+#13 17.70 Import traces:
+#13 17.70   #1 [App Route]:
+#13 17.70     ./modules/content-resolver/local-file-access.ts
+#13 17.70     ./app/api/local-image/route.ts
+#13 17.70 
+#13 17.70   #2 [App Route]:
+#13 17.70     ./modules/content-resolver/local-file-access.ts
+#13 17.70     ./modules/catalog/catalog-api.ts
+#13 17.70     ./app/api/admin/health/route.ts
+#13 17.70 
+#13 17.70   #3 [Server Component]:
+#13 17.70     ./modules/content-resolver/local-file-access.ts
+#13 17.70     ./modules/content-resolver/content-resolver.ts
+#13 17.70     ./lib/catalog.ts
+#13 17.70     ./app/login/page.tsx
+#13 17.70 
+#13 17.70 
+#13 17.70 ./modules/content-resolver/local-file-access.ts:98:29
+#13 17.70 Warning: Dynamic filesystem access causes tracing of the whole project
+#13 17.70   [90m 96 |[0m       }
+#13 17.70   [90m 97 |[0m
+#13 17.70 [33m[1m>[0m [90m 98 |[0m       [36mconst[0m candidatePath = join(rootPath, safePath);
+#13 17.70   [90m    |[0m                             [33m[1m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+#13 17.70   [90m 99 |[0m       [36mlet[0m realCandidatePath: string;
+#13 17.70   [90m100 |[0m
+#13 17.70   [90m101 |[0m       [36mtry[0m {
+#13 17.70 
+#13 17.70 Static analysis determined that this filesystem access causes the whole project to be traced and included in the output.
+#13 17.70 This is usually unintentional and leads to all source files (including the public folder) to be deployed as part of the server code.
+#13 17.70 This can slow down deployments or lead to failures when size limits are exceeded.
+#13 17.70 To resolve this, you can
+#13 17.70 - make sure the path is statically scoped to some subfolder, for example path.join(process.cwd(), 'data', bar), or
+#13 17.70 - only use them in development, or
+#13 17.70 - opt out by adding an ignore comment to the highlighted call: path.join(/*turbopackIgnore: true*/ ...), or
+#13 17.70 - remove them.
+#13 17.70 
+#13 17.70 Import traces:
+#13 17.70   #1 [App Route]:
+#13 17.70     ./modules/content-resolver/local-file-access.ts
+#13 17.70     ./app/api/local-image/route.ts
+#13 17.70 
+#13 17.70   #2 [App Route]:
+#13 17.70     ./modules/content-resolver/local-file-access.ts
+#13 17.70     ./modules/catalog/catalog-api.ts
+#13 17.70     ./app/api/admin/health/route.ts
+#13 17.70 
+#13 17.70   #3 [Server Component]:
+#13 17.70     ./modules/content-resolver/local-file-access.ts
+#13 17.70     ./modules/content-resolver/content-resolver.ts
+#13 17.70     ./lib/catalog.ts
+#13 17.70     ./app/login/page.tsx
+#13 17.70 
+#13 17.70 
+#13 17.70 ./modules/discovery/database.ts:163:19
+#13 17.70 Warning: Dynamic filesystem access causes tracing of the whole project
+#13 17.70   [90m161 |[0m ): [33mDiscoveryDatabase[0m {
+#13 17.70   [90m162 |[0m   [36mconst[0m fileBacked = filename !== [32m":memory:"[0m;
+#13 17.70 [33m[1m>[0m [90m163 |[0m   [36mconst[0m existed = existsSync(filename);
+#13 17.70   [90m    |[0m                   [33m[1m^^^^^^^^^^^^^^^^^^^^[0m
+#13 17.70   [90m164 |[0m   [36mif[0m (fileBacked)
+#13 17.70   [90m165 |[0m     mkdirSync(dirname(resolve(filename)), { recursive: [36mtrue[0m, mode: [35m0o700[0m });
+#13 17.70   [90m166 |[0m   [36mconst[0m handle = [36mnew[0m [33mDatabase[0m(filename);
+#13 17.70 
+#13 17.70 Static analysis determined that this filesystem access causes the whole project to be traced and included in the output.
+#13 17.70 This is usually unintentional and leads to all source files (including the public folder) to be deployed as part of the server code.
+#13 17.70 This can slow down deployments or lead to failures when size limits are exceeded.
+#13 17.70 To resolve this, you can
+#13 17.70 - make sure the path is statically scoped to some subfolder, for example path.join(process.cwd(), 'data', bar), or
+#13 17.70 - only use them in development, or
+#13 17.70 - opt out by adding an ignore comment to the highlighted call: fs.existsSync(/*turbopackIgnore: true*/ ...), or
+#13 17.70 - remove them.
+#13 17.70 
+#13 17.70 Import traces:
+#13 17.70   #1 [App Route]:
+#13 17.70     ./modules/discovery/database.ts
+#13 17.70     ./modules/catalog/catalog-api.ts
+#13 17.70     ./app/api/admin/health/route.ts
+#13 17.70 
+#13 17.70   #2 [App Route]:
+#13 17.70     ./modules/discovery/database.ts
+#13 17.70     ./lib/discovery.ts
+#13 17.70     ./app/api/state/discovery/route.ts
+#13 17.70 
+#13 17.70   #3 [Server Component]:
+#13 17.70     ./modules/discovery/database.ts
+#13 17.70     ./lib/discovery.ts
+#13 17.70     ./app/search/page.tsx
+#13 17.70 
+#13 17.70 
+#13 17.70 ./modules/discovery/database.ts:165:23
+#13 17.70 Warning: Dynamic filesystem access causes tracing of the whole project
+#13 17.70   [90m163 |[0m   [36mconst[0m existed = existsSync(filename);
+#13 17.70   [90m164 |[0m   [36mif[0m (fileBacked)
+#13 17.70 [33m[1m>[0m [90m165 |[0m     mkdirSync(dirname(resolve(filename)), { recursive: [36mtrue[0m, mode: [35m0o700[0m });
+#13 17.70   [90m    |[0m                       [33m[1m^^^^^^^^^^^^^^^^^[0m
+#13 17.70   [90m166 |[0m   [36mconst[0m handle = [36mnew[0m [33mDatabase[0m(filename);
+#13 17.70   [90m167 |[0m   [36mtry[0m {
+#13 17.70   [90m168 |[0m     [36mconst[0m { version } = handle
+#13 17.70 
+#13 17.70 Static analysis determined that this filesystem access causes the whole project to be traced and included in the output.
+#13 17.70 This is usually unintentional and leads to all source files (including the public folder) to be deployed as part of the server code.
+#13 17.70 This can slow down deployments or lead to failures when size limits are exceeded.
+#13 17.70 To resolve this, you can
+#13 17.70 - make sure the path is statically scoped to some subfolder, for example path.join(process.cwd(), 'data', bar), or
+#13 17.70 - only use them in development, or
+#13 17.70 - opt out by adding an ignore comment to the highlighted call: path.resolve(/*turbopackIgnore: true*/ ...), or
+#13 17.70 - remove them.
+#13 17.70 
+#13 17.70 Import traces:
+#13 17.70   #1 [App Route]:
+#13 17.70     ./modules/discovery/database.ts
+#13 17.70     ./modules/catalog/catalog-api.ts
+#13 17.70     ./app/api/admin/health/route.ts
+#13 17.70 
+#13 17.70   #2 [App Route]:
+#13 17.70     ./modules/discovery/database.ts
+#13 17.70     ./lib/discovery.ts
+#13 17.70     ./app/api/state/discovery/route.ts
+#13 17.70 
+#13 17.70   #3 [Server Component]:
+#13 17.70     ./modules/discovery/database.ts
+#13 17.70     ./lib/discovery.ts
+#13 17.70     ./app/search/page.tsx
+#13 17.70 
+#13 17.70 
+#13 17.70 ./modules/learning-state/backup.ts:312:13
+#13 17.70 Warning: Dynamic filesystem access causes tracing of the whole project
+#13 17.70   [90m310 |[0m   [36mfor[0m ([36mconst[0m suffix [36mof[0m [[32m"-wal"[0m, [32m"-shm"[0m, [32m"-journal"[0m]) {
+#13 17.70   [90m311 |[0m     [36mtry[0m {
+#13 17.70 [33m[1m>[0m [90m312 |[0m       [36mawait[0m stat([32m`[0m${targetFilename[32m}[0m${suffix[32m}`[0m);
+#13 17.70   [90m    |[0m             [33m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+#13 17.70   [90m313 |[0m       [36mthrow[0m [36mnew[0m [33mError[0m(
+#13 17.70   [90m314 |[0m         [32m`Target database has a SQLite [0m${suffix[32m} sidecar; refusing to restore over it.`[0m,
+#13 17.70   [90m315 |[0m       );
+#13 17.70 
+#13 17.70 Static analysis determined that this filesystem access causes the whole project to be traced and included in the output.
+#13 17.70 This is usually unintentional and leads to all source files (including the public folder) to be deployed as part of the server code.
+#13 17.70 This can slow down deployments or lead to failures when size limits are exceeded.
+#13 17.70 To resolve this, you can
+#13 17.70 - make sure the path is statically scoped to some subfolder, for example path.join(process.cwd(), 'data', bar), or
+#13 17.70 - only use them in development, or
+#13 17.70 - opt out by adding an ignore comment to the highlighted call: fs.stat(/*turbopackIgnore: true*/ ...), or
+#13 17.70 - remove them.
+#13 17.70 
+#13 17.70 Import traces:
+#13 17.70   #1 [App Route]:
+#13 17.70     ./modules/learning-state/backup.ts
+#13 17.70     ./modules/catalog/catalog-api.ts
+#13 17.70     ./app/api/admin/health/route.ts
+#13 17.70 
+#13 17.70   #2 [App Route]:
+#13 17.70     ./modules/learning-state/backup.ts
+#13 17.70     ./modules/discovery/backup.ts
+#13 17.70     ./modules/admin/admin-health.ts
+#13 17.70     ./app/api/admin/health/route.ts
+#13 17.70 
+#13 17.70   #3 [Server Component]:
+#13 17.70     ./modules/learning-state/backup.ts
+#13 17.70     ./modules/discovery/backup.ts
+#13 17.70     ./modules/admin/admin-health.ts
+#13 17.70     ./app/admin/discovery/page.tsx
+#13 17.70 
+#13 17.70 
+#13 17.70 ./modules/learning-state/database.ts:247:9
+#13 17.70 Warning: Dynamic filesystem access causes tracing of the whole project
+#13 17.70   [90m245 |[0m   [36mfor[0m ([36mconst[0m suffix [36mof[0m [[32m"-wal"[0m, [32m"-shm"[0m]) {
+#13 17.70   [90m246 |[0m     [36mconst[0m sidecar = [32m`[0m${filename[32m}[0m${suffix[32m}`[0m;
+#13 17.70 [33m[1m>[0m [90m247 |[0m     [36mif[0m (existsSync(sidecar)) chmodSync(sidecar, [35m0o600[0m);
+#13 17.70   [90m    |[0m         [33m[1m^^^^^^^^^^^^^^^^^^^[0m
+#13 17.70   [90m248 |[0m   }
+#13 17.70   [90m249 |[0m }
+#13 17.70   [90m250 |[0m
+#13 17.70 
+#13 17.70 Static analysis determined that this filesystem access causes the whole project to be traced and included in the output.
+#13 17.70 This is usually unintentional and leads to all source files (including the public folder) to be deployed as part of the server code.
+#13 17.70 This can slow down deployments or lead to failures when size limits are exceeded.
+#13 17.70 To resolve this, you can
+#13 17.70 - make sure the path is statically scoped to some subfolder, for example path.join(process.cwd(), 'data', bar), or
+#13 17.70 - only use them in development, or
+#13 17.70 - opt out by adding an ignore comment to the highlighted call: fs.existsSync(/*turbopackIgnore: true*/ ...), or
+#13 17.70 - remove them.
+#13 17.70 
+#13 17.70 Import traces:
+#13 17.70   #1 [App Route]:
+#13 17.70     ./modules/learning-state/database.ts
+#13 17.70     ./modules/catalog/catalog-api.ts
+#13 17.70     ./app/api/admin/health/route.ts
+#13 17.70 
+#13 17.70   #2 [App Route]:
+#13 17.70     ./modules/learning-state/database.ts
+#13 17.70     ./modules/discovery/database.ts
+#13 17.70     ./lib/discovery.ts
+#13 17.70     ./app/api/state/discovery/route.ts
+#13 17.70 
+#13 17.70   #3 [Server Component]:
+#13 17.70     ./modules/learning-state/database.ts
+#13 17.70     ./modules/learning-state/state-store.ts
+#13 17.70     ./lib/learning-state.ts
+#13 17.70     ./app/admin/page.tsx
+#13 17.70 
+#13 17.70 
+#13 17.70 ./modules/learning-state/state-store.ts:25:10
+#13 17.70 Warning: Dynamic filesystem access causes tracing of the whole project
+#13 17.70   [90m23 |[0m   environment: [33mReadonly[0m<[33mRecord[0m<string, string | [36mundefined[0m>> = process.env,
+#13 17.70   [90m24 |[0m ): string {
+#13 17.70 [33m[1m>[0m [90m25 |[0m   [36mreturn[0m resolve(
+#13 17.70   [90m   |[0m          [33m[1m^^^^^^^[0m
+#13 17.70 [33m[1m>[0m [90m26 |[0m     environment.[33mSTATE_DATABASE_PATH[0m ??
+#13 17.70   [90m   |[0m [33m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+#13 17.70 [33m[1m>[0m [90m27 |[0m       resolve(process.cwd(), [32m".data"[0m, [32m"learning-state.sqlite"[0m),
+#13 17.70   [90m   |[0m [33m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+#13 17.70 [33m[1m>[0m [90m28 |[0m   );
+#13 17.70   [90m   |[0m [33m[1m^^^[0m
+#13 17.70   [90m29 |[0m }
+#13 17.70   [90m30 |[0m
+#13 17.70   [90m31 |[0m [36mexport[0m [36mfunction[0m createPersistentLearningStateStore(
+#13 17.70 
+#13 17.70 Static analysis determined that this filesystem access causes the whole project to be traced and included in the output.
+#13 17.70 This is usually unintentional and leads to all source files (including the public folder) to be deployed as part of the server code.
+#13 17.70 This can slow down deployments or lead to failures when size limits are exceeded.
+#13 17.70 To resolve this, you can
+#13 17.70 - make sure the path is statically scoped to some subfolder, for example path.join(process.cwd(), 'data', bar), or
+#13 17.70 - only use them in development, or
+#13 17.70 - opt out by adding an ignore comment to the highlighted call: path.resolve(/*turbopackIgnore: true*/ ...), or
+#13 17.70 - remove them.
+#13 17.70 
+#13 17.70 Import traces:
+#13 17.70   #1 [App Route]:
+#13 17.70     ./modules/learning-state/state-store.ts
+#13 17.70     ./modules/catalog/catalog-api.ts
+#13 17.70     ./app/api/admin/health/route.ts
+#13 17.70 
+#13 17.70   #2 [App Route]:
+#13 17.70     ./modules/learning-state/state-store.ts
+#13 17.70     ./lib/learning-state.ts
+#13 17.70     ./app/api/state/discovery/route.ts
+#13 17.70 
+#13 17.70   #3 [Server Component]:
+#13 17.70     ./modules/learning-state/state-store.ts
+#13 17.70     ./lib/learning-state.ts
+#13 17.70     ./app/admin/discovery/page.tsx
+#13 17.70 
+#13 17.70 
+#13 17.70 ./modules/learning-state/state-store.ts:34:20
+#13 17.70 Warning: Dynamic filesystem access causes tracing of the whole project
+#13 17.70   [90m32 |[0m   options: [33mPersistentLearningStateStoreOptions[0m = {},
+#13 17.70   [90m33 |[0m ): [33mPersistentLearningStateStore[0m {
+#13 17.70 [33m[1m>[0m [90m34 |[0m   [36mconst[0m filename = resolve(
+#13 17.70   [90m   |[0m                    [33m[1m^^^^^^^[0m
+#13 17.70 [33m[1m>[0m [90m35 |[0m     options.filename ?? getDefaultStateDatabaseFilename(options.environment),
+#13 17.70   [90m   |[0m [33m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+#13 17.70 [33m[1m>[0m [90m36 |[0m   );
+#13 17.70   [90m   |[0m [33m[1m^^^[0m
+#13 17.70   [90m37 |[0m   [90m// R09: the directory holding the private state database must not depend on[0m
+#13 17.70   [90m38 |[0m   [90m// the operator's umask; 0o700 keeps other OS users out on shared hosts.[0m
+#13 17.70   [90m39 |[0m   mkdirSync(dirname(filename), { recursive: [36mtrue[0m, mode: [35m0o700[0m });
+#13 17.70 
+#13 17.70 Static analysis determined that this filesystem access causes the whole project to be traced and included in the output.
+#13 17.70 This is usually unintentional and leads to all source files (including the public folder) to be deployed as part of the server code.
+#13 17.70 This can slow down deployments or lead to failures when size limits are exceeded.
+#13 17.70 To resolve this, you can
+#13 17.70 - make sure the path is statically scoped to some subfolder, for example path.join(process.cwd(), 'data', bar), or
+#13 17.70 - only use them in development, or
+#13 17.70 - opt out by adding an ignore comment to the highlighted call: path.resolve(/*turbopackIgnore: true*/ ...), or
+#13 17.70 - remove them.
+#13 17.70 
+#13 17.70 Import traces:
+#13 17.70   #1 [App Route]:
+#13 17.70     ./modules/learning-state/state-store.ts
+#13 17.70     ./modules/catalog/catalog-api.ts
+#13 17.70     ./app/api/admin/health/route.ts
+#13 17.70 
+#13 17.70   #2 [App Route]:
+#13 17.70     ./modules/learning-state/state-store.ts
+#13 17.70     ./lib/learning-state.ts
+#13 17.70     ./app/api/state/discovery/route.ts
+#13 17.70 
+#13 17.70   #3 [Server Component]:
+#13 17.70     ./modules/learning-state/state-store.ts
+#13 17.70     ./lib/learning-state.ts
+#13 17.70     ./app/admin/discovery/page.tsx
+#13 17.70 
+#13 17.70 
+#13 17.70   Finalizing page optimization ...
+#13 17.72 
+#13 17.72 Route (app)
+#13 17.72 ┌ ƒ /
+#13 17.72 ├ ƒ /_not-found
+#13 17.72 ├ ƒ /admin
+#13 17.72 ├ ƒ /admin/discovery
+#13 17.72 ├ ƒ /api/admin/discovery
+#13 17.72 ├ ƒ /api/admin/health
+#13 17.72 ├ ƒ /api/auth/[...all]
+#13 17.72 ├ ƒ /api/auth/github
+#13 17.72 ├ ƒ /api/auth/github/callback
+#13 17.72 ├ ƒ /api/data
+#13 17.72 ├ ƒ /api/health
+#13 17.72 ├ ƒ /api/local-image
+#13 17.72 ├ ƒ /api/session
+#13 17.72 ├ ƒ /api/state
+#13 17.72 ├ ƒ /api/state/discovery
+#13 17.72 ├ ƒ /api/telemetry/page-view
+#13 17.72 ├ ƒ /content-policy
+#13 17.72 ├ ƒ /contribute
+#13 17.72 ├ ƒ /courses
+#13 17.72 ├ ƒ /courses/[itemId]
+#13 17.72 ├ ƒ /discover
+#13 17.72 ├ ƒ /discover/[id]
+#13 17.72 ├ ƒ /editions
+#13 17.72 ├ ƒ /editions/[day]
+#13 17.72 ├ ○ /icon.svg
+#13 17.72 ├ ƒ /learning
+#13 17.72 ├ ƒ /login
+#13 17.72 ├ ƒ /projects
+#13 17.72 ├ ƒ /read/[itemId]
+#13 17.72 ├ ƒ /roadmap
+#13 17.72 ├ ƒ /roadmap/[stageId]
+#13 17.72 ├ ƒ /search
+#13 17.72 └ ƒ /topics/[topic]
+#13 17.72 
+#13 17.72 
+#13 17.72 ƒ Proxy (Middleware)
+#13 17.72 
+#13 17.72 ○  (Static)   prerendered as static content
+#13 17.72 ƒ  (Dynamic)  server-rendered on demand
+#13 17.72 
+#13 17.85 
+#13 17.85 > agent-learning-hub@0.1.0 build:worker
+#13 17.85 > esbuild scripts/discovery-worker.ts --bundle --platform=node --format=esm --packages=external --outfile=.next/discovery-worker.mjs && esbuild scripts/discovery-backup.ts --bundle --platform=node --format=esm --packages=external --outfile=.next/discovery-backup.mjs
+#13 17.85 
+#13 17.86 
+#13 17.86   .next/discovery-worker.mjs  102.0kb
+#13 17.86 
+#13 17.86 ⚡ Done in 7ms
+#13 17.87 
+#13 17.87   .next/discovery-backup.mjs  26.6kb
+#13 17.87 
+#13 17.87 ⚡ Done in 3ms
+#13 DONE 18.0s
+
+#14 [runner 2/8] WORKDIR /app
+#14 CACHED
+
+#15 [runner 3/8] COPY code/package.json code/package-lock.json ./code/
+#15 CACHED
+
+#16 [production-dependencies 1/1] RUN npm prune --omit=dev --legacy-peer-deps --offline --no-audit --no-fund --ignore-scripts --prefix code
+#16 CACHED
+
+#17 [runner 4/8] COPY --from=production-dependencies /workspace/code/node_modules ./code/node_modules
+#17 CACHED
+
+#18 [runner 5/8] COPY --from=builder /workspace/code/.next ./code/.next
+#18 DONE 0.5s
+
+#19 [runner 6/8] COPY --from=builder /workspace/code/content ./code/content
+#19 DONE 0.1s
+
+#20 [runner 7/8] RUN mkdir -p /data/state /data/discovery /data/discovery-temp
+#20 DONE 0.4s
+
+#21 [runner 8/8] WORKDIR /app/code
+#21 DONE 0.3s
+
+#22 exporting to image
+#22 exporting layers
+#22 exporting layers 5.3s done
+#22 exporting manifest sha256:b267ad13d0a16931ebf57bc0b0970587a043eb1eaeae8e304788f0554bddc756 0.0s done
+#22 exporting config sha256:e5f61a0775c6c727ccec00f738ab51fe37a41d4b5d4735b8760792714ad010a5 0.0s done
+#22 exporting attestation manifest sha256:d48d9493a2657d90431525e897479e3644c2e5e6e6930dea03f9e319f86c8bbd 0.1s done
+#22 exporting manifest list sha256:c48539c161b5f5a9f60923818456106fa653143ff57f80c39af93560520de223
+#22 exporting manifest list sha256:c48539c161b5f5a9f60923818456106fa653143ff57f80c39af93560520de223 0.0s done
+#22 naming to docker.io/library/agent-learning-hub:verification-20261115-r3 0.0s done
+#22 unpacking to docker.io/library/agent-learning-hub:verification-20261115-r3
+#22 unpacking to docker.io/library/agent-learning-hub:verification-20261115-r3 1.2s done
+#22 DONE 6.7s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/ga2ukfbcqgvdf0tljmyg16icb

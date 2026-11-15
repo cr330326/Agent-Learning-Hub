@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 
@@ -62,6 +63,9 @@ export default async function AdminPage() {
     <main className="page page-width admin-page">
       <p className="eyebrow">ADMIN / HEALTH</p>
       <h1>系统健康摘要</h1>
+      <p>
+        <Link href="/admin/discovery">管理资讯信源、采集与发布 →</Link>
+      </p>
       <p className="admin-intro">
         这里仅展示不关联个人身份的聚合状态；健康页不会读取私人笔记正文，也不会触发素材更新。
       </p>

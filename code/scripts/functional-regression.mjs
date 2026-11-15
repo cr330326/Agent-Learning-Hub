@@ -9,7 +9,7 @@
 // Requires a running server and Playwright:
 //   npx playwright install chromium
 
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import process from "node:process";
 
@@ -21,6 +21,9 @@ function usage() {
   --item-id <id>       Local-preferred course used for reader checks
                        (default: legacy-course-001)
   --skip-state         Do not exercise learning-state writes
+  --admin-storage-state <file>  Disposable Cloud administrator browser session
+  --feishu-source <file>        Disabled Feishu source JSON for field onboarding
+  --edition-fixture <file>      Disposable editorial-freeze fixture JSON
   --help               Show this message
 `);
 }
@@ -31,6 +34,9 @@ function parseArguments(argv) {
     outputDir: "reports/functional-regression",
     itemId: "legacy-course-001",
     skipState: false,
+    adminStorageState: undefined,
+    feishuSource: undefined,
+    editionFixture: undefined,
   };
 
   for (let index = 0; index < argv.length; index += 1) {
@@ -51,9 +57,17 @@ function parseArguments(argv) {
     if (flag === "--base-url") options.baseUrl = value;
     else if (flag === "--output-dir") options.outputDir = value;
     else if (flag === "--item-id") options.itemId = value;
+    else if (flag === "--admin-storage-state")
+      options.adminStorageState = value;
+    else if (flag === "--feishu-source") options.feishuSource = value;
+    else if (flag === "--edition-fixture") options.editionFixture = value;
     else throw new Error(`Unknown option: ${flag}`);
   }
 
+  if (Boolean(options.adminStorageState) !== Boolean(options.feishuSource))
+    throw new Error(
+      "--admin-storage-state and --feishu-source must be provided together",
+    );
   return options;
 }
 
@@ -212,8 +226,488 @@ async function main() {
       ? "local"
       : "cloud";
     recorder.check("runtime mode detected", true, mode);
+    if (options.adminStorageState) {
+      await recorder.run(
+        "Feishu fields can be mapped before the first preview",
+        async () => {
+          assert(
+            mode === "cloud",
+            "administrator onboarding requires Cloud Mode",
+          );
+          const source = JSON.parse(
+            await readFile(resolve(options.feishuSource), "utf8"),
+          );
+          assert(
+            source.kind === "feishu" &&
+              source.enabled === false &&
+              source.publicationMode === "manual",
+            "use a disabled, manually reviewed Feishu source on a disposable instance",
+          );
+          const admin = await browser.newContext({
+            storageState: resolve(options.adminStorageState),
+            locale: "zh-CN",
+          });
+          try {
+            const editor = await admin.newPage();
+            await editor.goto(base + "/admin/discovery", {
+              waitUntil: "domcontentloaded",
+            });
+            await editor.locator(".admin-source-form").first().waitFor();
+            await editor.getByText(/今日已用/).waitFor();
+            const form = editor.locator("form.admin-source-form");
+            await form
+              .getByRole("combobox", { name: "类型", exact: true })
+              .selectOption("feishu");
+            await form.getByLabel("标识", { exact: true }).fill(source.id);
+            await form.getByLabel("名称", { exact: true }).fill(source.name);
+            await form.getByLabel("地址", { exact: true }).fill(source.url);
+            await form
+              .getByLabel("Base 标识", { exact: true })
+              .fill(source.appToken);
+            await form
+              .getByLabel("子表标识", { exact: true })
+              .fill(source.tableId);
+            await form
+              .getByLabel("应用标识环境变量名", { exact: true })
+              .fill(source.appIdEnv ?? "FEISHU_APP_ID");
+            await form
+              .getByLabel("应用密钥环境变量名", { exact: true })
+              .fill(source.appSecretEnv ?? "FEISHU_APP_SECRET");
+            await form.getByLabel("字段映射", { exact: true }).fill("{}");
+            const responsePromise = editor.waitForResponse(
+              (response) =>
+                response.url().endsWith("/api/admin/discovery") &&
+                response.request().postDataJSON()?.action === "source-fields",
+            );
+            await form
+              .getByRole("button", { name: "读取字段", exact: true })
+              .click();
+            assert(
+              (await responsePromise).ok(),
+              "field discovery failed before a mapping existed",
+            );
+            await form
+              .getByRole("combobox", { name: "标题字段（必选）", exact: true })
+              .selectOption(source.mapping.title);
+            await form
+              .getByRole("combobox", {
+                name: "原文链接字段（必选）",
+                exact: true,
+              })
+              .selectOption(source.mapping.url);
+            const mapped = JSON.parse(
+              await form.getByLabel("字段映射", { exact: true }).inputValue(),
+            );
+            assert(
+              mapped.title === source.mapping.title &&
+                mapped.url === source.mapping.url,
+              "dropdown mapping did not persist stable field IDs",
+            );
+            const previewPromise = editor.waitForResponse(
+              (response) =>
+                response.url().endsWith("/api/admin/discovery") &&
+                response.request().postDataJSON()?.action === "preview",
+            );
+            await form
+              .getByRole("button", { name: "试抓与预览", exact: true })
+              .click();
+            const preview = await previewPromise;
+            assert(
+              preview.ok() && (await preview.json()).samples.length > 0,
+              "mapped source preview has no records",
+            );
+            const savePromise = editor.waitForResponse(
+              (response) =>
+                response.url().endsWith("/api/admin/discovery") &&
+                response.request().postDataJSON()?.action === "save-source",
+            );
+            await form
+              .getByRole("button", { name: "保存信源", exact: true })
+              .click();
+            assert((await savePromise).ok(), "mapped source did not save");
+            await mkdir(resolve(options.outputDir), { recursive: true });
+            await editor.evaluate(() => window.scrollTo(0, 0));
+            await editor.screenshot({
+              path: join(
+                resolve(options.outputDir),
+                "feishu-mapping-desktop.png",
+              ),
+              fullPage: true,
+            });
+            await editor.setViewportSize({ width: 390, height: 844 });
+            await editor.evaluate(() => window.scrollTo(0, 0));
+            await editor.screenshot({
+              path: join(
+                resolve(options.outputDir),
+                "feishu-mapping-mobile.png",
+              ),
+              fullPage: true,
+            });
+            await form
+              .getByLabel("子表标识", { exact: true })
+              .fill("tblDifferent");
+            assert(
+              (await form
+                .getByRole("group", { name: "飞书字段映射", exact: true })
+                .count()) === 0,
+              "fields from a different table remain selectable",
+            );
+            return "read fields → map stable IDs → preview → save disabled source; stale fields hidden after table change";
+          } finally {
+            await admin.close();
+          }
+        },
+      );
+      await recorder.run(
+        "discovery note clearing preserves reading completion",
+        async () => {
+          const personalContext = await browser.newContext({
+            storageState: resolve(options.adminStorageState),
+            viewport: { width: 390, height: 844 },
+            locale: "zh-CN",
+          });
+          let original;
+          let itemId;
+          let csrfToken;
+          try {
+            const detail = await personalContext.newPage();
+            await detail.goto(base + "/discover", {
+              waitUntil: "domcontentloaded",
+            });
+            const href = await detail
+              .locator(".discovery-card h2 a")
+              .first()
+              .getAttribute("href");
+            assert(
+              href,
+              "a published item is required on the disposable instance",
+            );
+            itemId = href.split("/").at(-1);
+            const session = await personalContext.request.get(
+              base + "/api/session",
+            );
+            csrfToken = (await session.json()).csrfToken;
+            const before = await personalContext.request.get(
+              base + "/api/state/discovery",
+            );
+            original = (await before.json()).state.find(
+              (value) => value.itemId === itemId,
+            );
+            await detail.goto(base + href, { waitUntil: "domcontentloaded" });
+            const personal = detail.locator(".discovery-personal");
+            await personal.locator("textarea").waitFor();
+            const complete = personal.getByRole("button", {
+              name: "确认已完成阅读",
+              exact: true,
+            });
+            if (await complete.count()) await complete.click();
+            await personal
+              .getByText("已主动确认阅读完成", { exact: true })
+              .waitFor();
+            assert(
+              (await personal
+                .getByRole("button", { name: "开始阅读", exact: true })
+                .count()) === 0,
+              "completed reading still offers a contradictory start button",
+            );
+            const bookmark = personal.getByRole("button", {
+              name: "收藏资讯",
+              exact: true,
+            });
+            if (await bookmark.count()) await bookmark.click();
+            await personal
+              .getByRole("button", { name: "取消收藏", exact: true })
+              .waitFor();
+            await personal
+              .locator("textarea")
+              .fill("一次性验收：清空笔记与收藏不重置阅读完成状态。");
+            await personal
+              .getByRole("button", { name: "保存笔记", exact: true })
+              .click();
+            await personal
+              .getByRole("status")
+              .filter({ hasText: "已保存" })
+              .waitFor();
+            assert(
+              (
+                await personal
+                  .getByRole("button", { name: "保存笔记", exact: true })
+                  .getAttribute("class")
+              )?.includes("button-primary"),
+              "personal actions do not use the site's button system",
+            );
+            await detail.goto(base + "/learning", {
+              waitUntil: "domcontentloaded",
+            });
+            const row = detail
+              .locator(".discovery-personal li")
+              .filter({ has: detail.locator(`a[href='${href}']`) });
+            await row
+              .getByRole("button", { name: "清空笔记与收藏", exact: true })
+              .click();
+            await waitFor(async () => {
+              const response = await personalContext.request.get(
+                base + "/api/state/discovery",
+              );
+              const saved = (await response.json()).state.find(
+                (value) => value.itemId === itemId,
+              );
+              return saved && saved.note === "" && saved.bookmarked === false;
+            });
+            const after = await personalContext.request.get(
+              base + "/api/state/discovery",
+            );
+            assert(
+              (await after.json()).state.find(
+                (value) => value.itemId === itemId,
+              )?.status === "completed",
+              "clearing notes and bookmarks reset reading progress",
+            );
+            await detail.goto(base + href, { waitUntil: "domcontentloaded" });
+            await personal
+              .getByText("已主动确认阅读完成", { exact: true })
+              .waitFor();
+            await detail.evaluate(() => window.scrollTo(0, 0));
+            await detail.screenshot({
+              path: join(resolve(options.outputDir), "personal-mobile.png"),
+              fullPage: true,
+            });
+            await personal
+              .getByRole("button", { name: "重新阅读", exact: true })
+              .click();
+            await personal.getByText("阅读中", { exact: true }).waitFor();
+            return "completion survives clear and reload; explicit re-read resumes; actions styled for mobile";
+          } finally {
+            if (itemId && csrfToken)
+              await personalContext.request.post(
+                base + "/api/state/discovery",
+                {
+                  headers: { "x-csrf-token": csrfToken },
+                  data: {
+                    targetType: "news",
+                    itemId,
+                    status: original?.status ?? "not_started",
+                    bookmarked: original?.bookmarked ?? false,
+                    note: original?.note ?? "",
+                  },
+                },
+              );
+            await personalContext.close();
+          }
+        },
+      );
+    }
+    await recorder.run("discovery follows runtime mode", async () => {
+      const response =
+        mode === "cloud"
+          ? await goto("/discover")
+          : await page.request.get(base + "/discover");
+      if (mode === "cloud") {
+        assert(
+          !(await page.locator("main").innerText()).includes("模型待配置"),
+          "public discovery exposes an administrator configuration message",
+        );
+        if (
+          response.status() !== 200 ||
+          !(await page.locator("h1").textContent()).includes("AI 开发")
+        )
+          throw new Error("云端发现入口不可用");
+        await page.getByRole("button", { name: "筛选", exact: true }).click();
+        await page.waitForLoadState("domcontentloaded");
+        if ((await page.locator(".discovery-card").count()) > 24)
+          throw new Error("资讯未按 24 条分页");
+        assert(
+          await page
+            .locator(".discovery-card h2")
+            .evaluateAll((headings) =>
+              headings.every(
+                (heading) =>
+                  heading.getBoundingClientRect().height <=
+                  parseFloat(getComputedStyle(heading).lineHeight) * 3 + 2,
+              ),
+            ),
+          "长标题撑高了聚合卡片",
+        );
+        for (const link of await page
+          .locator(".discovery-card > a[target='_blank']")
+          .all()) {
+          assert(
+            /^https?:\/\//.test(await link.getAttribute("href")),
+            "聚合卡片缺少有效原始链接",
+          );
+          assert(
+            (await link.getAttribute("rel")).includes("noopener"),
+            "原站链接缺少窗口隔离",
+          );
+        }
+        const currentUrl = page.url();
+        await page.waitForResponse(
+          (response) =>
+            response.url().includes("_rsc=") &&
+            new URL(response.url()).pathname === "/discover",
+          { timeout: 45_000 },
+        );
+        assert(page.url() === currentUrl, "自动刷新改变了当前筛选或分页");
+      } else if (response.status() !== 404)
+        throw new Error("本地模式资讯入口应受限");
+      await goto("/");
+    });
+
+    await recorder.run(
+      "daily editions follow mode and open frozen summary versions",
+      async () => {
+        if (mode === "local") {
+          const response = await page.request.get(base + "/editions");
+          assert(
+            response.status() === 404,
+            "Local Mode exposes Cloud daily editions",
+          );
+          return "Local Mode rejects daily editions";
+        }
+        await goto("/editions");
+        const link = page.locator("main a[href^='/editions/']").first();
+        if (!(await link.count()))
+          throw new SkipCheck("尚无已出刊日报，版本跳转需在有日报的实例验证");
+        await link.click();
+        await page.waitForURL(/\/editions\/\d{4}-\d{2}-\d{2}/);
+        const editionDay = new URL(page.url()).pathname.split("/").at(-1);
+        const desktopViewport = page.viewportSize();
+        await page.setViewportSize({ width: 375, height: 812 });
+        try {
+          assert(
+            (await page.locator(".section-intro h1").textContent()) ===
+              "精选日报",
+            "daily edition heading should leave the date in its own label",
+          );
+          assert(
+            await page
+              .locator(".section-intro .eyebrow")
+              .evaluate((element, day) => {
+                const range = document.createRange();
+                range.selectNodeContents(element);
+                return (
+                  element.textContent === day &&
+                  range.getClientRects().length === 1
+                );
+              }, editionDay),
+            "daily edition date breaks across lines on a narrow screen",
+          );
+        } finally {
+          await page.setViewportSize(desktopViewport);
+        }
+        const cards = page.locator(".discovery-card");
+        const count = await cards.count();
+        assert(
+          (await page.locator("main").innerText()).includes(
+            `本期收录 ${count} 条`,
+          ),
+          "daily edition count does not match its visible entries",
+        );
+        if (!count) {
+          assert(
+            (await page.locator("main").innerText()).includes("暂无符合条件"),
+            "empty edition has no explanation",
+          );
+          return "empty edition explains that no candidates qualified";
+        }
+        const first = cards.first().locator("h2 a");
+        const href = await first.getAttribute("href");
+        assert(
+          href?.includes("?version="),
+          "daily card does not identify its frozen version",
+        );
+        await first.click();
+        await page.waitForURL(/\/discover\/[^/]+\?version=/);
+        assert(
+          (await page.locator("main").innerText()).includes(
+            "日报收录时的摘要版本",
+          ),
+          "daily reader does not identify the frozen summary",
+        );
+        assert(
+          (await page.locator(".discovery-summary").innerText()).length > 0,
+          "frozen summary is missing",
+        );
+        return `${count} qualified entries; first opens its frozen summary`;
+      },
+    );
 
     // ---- Every internal link resolves -------------------------------------
+    if (options.editionFixture) {
+      await recorder.run(
+        "daily editorial snapshot survives later corrections",
+        async () => {
+          const fixture = JSON.parse(
+            await readFile(resolve(options.editionFixture), "utf8"),
+          );
+          const path = `/editions/${encodeURIComponent(fixture.day)}`;
+          if (mode === "local") {
+            assert(
+              (await page.request.get(base + path)).status() === 404,
+              "Local Mode exposes an editorial daily snapshot",
+            );
+            return "Local Mode rejects the editorial snapshot";
+          }
+          await goto(path);
+          const card = page.locator(".discovery-card").filter({
+            has: page.getByRole("link", {
+              name: fixture.frozen.title,
+              exact: true,
+            }),
+          });
+          assert(
+            (await card.count()) === 1,
+            "edition lost the title corrected before publication",
+          );
+          assert(
+            (await card.locator(":scope > p").first().textContent()) ===
+              fixture.frozen.summary,
+            "edition lost the summary corrected before publication",
+          );
+          assert(
+            (await card.locator(".discovery-reason").textContent()) ===
+              fixture.frozen.reason,
+            "edition did not freeze the editorial recommendation",
+          );
+          assert(
+            JSON.stringify(
+              await card.locator(".tag-list a").allTextContents(),
+            ) === JSON.stringify(fixture.frozen.topics),
+            "edition did not freeze the editorial topics",
+          );
+          await card
+            .getByRole("link", { name: fixture.frozen.title, exact: true })
+            .click();
+          await page.waitForURL(/\?version=/);
+          assert(
+            new URL(page.url()).pathname ===
+              `/discover/${encodeURIComponent(fixture.id)}` &&
+              new URL(page.url()).searchParams.get("version") ===
+                fixture.versionId,
+            "snapshot link changed its source version",
+          );
+          assert(
+            (await page.locator("h1").textContent()) === fixture.frozen.title &&
+              (await page.locator(".discovery-summary").textContent()) ===
+                fixture.frozen.summary,
+            "frozen detail does not match its edition card",
+          );
+          await page
+            .getByRole("link", { name: "查看当前版本", exact: true })
+            .click();
+          await page.waitForURL((url) => !url.searchParams.has("version"));
+          assert(
+            (await page.locator("h1").textContent()) ===
+              fixture.current.title &&
+              (await page.locator(".discovery-summary").textContent()) ===
+                fixture.current.summary,
+            "current detail does not show the subsequent correction",
+          );
+          return "prepublication corrections stay frozen; current detail shows subsequent corrections";
+        },
+      );
+    }
+
     await recorder.run("internal links resolve", async () => {
       const checked = new Map();
       const broken = [];
@@ -427,6 +921,15 @@ async function main() {
       await page.waitForURL(/q=agent/, { timeout: 10000 });
       const count = await page.$$eval(".search-result", (rows) => rows.length);
       assert(count > 0, "no search results for 'agent'");
+      const searchViewport = page.viewportSize();
+      await page.setViewportSize({ width: 375, height: 812 });
+      assert(
+        await page.evaluate(
+          () => document.documentElement.scrollWidth <= window.innerWidth + 1,
+        ),
+        "搜索结果在窄屏横向溢出",
+      );
+      await page.setViewportSize(searchViewport);
       const kinds = await page.$$eval(".search-result-kind", (spans) =>
         spans.map((span) => span.textContent.trim()),
       );
@@ -492,6 +995,79 @@ async function main() {
       );
     }
 
+    await recorder.run(
+      "explicit chapters never fall back to another project",
+      async () => {
+        const chapter = "AICoding/claude/plugins/claude-mem/README.md";
+        await goto(
+          `/read/legacy-course-013?chapter=${encodeURIComponent(chapter)}`,
+        );
+        if (mode === "cloud" || !(await page.$(".reader-body"))) {
+          const href = await page
+            .locator(".reader-fallback a[target='_blank']")
+            .getAttribute("href");
+          assert(
+            href?.startsWith("https://github.com/thedotmack/claude-mem/blob/"),
+            `wrong chapter source: ${href}`,
+          );
+        }
+        await goto(
+          "/read/legacy-course-013?chapter=undeclared-private-file.md",
+        );
+        assert(
+          !(await page.$(".reader-body")),
+          "undeclared chapter rendered a body",
+        );
+        assert(
+          (await page.locator(".reader-fallback").innerText()).includes(
+            "不在课程清单",
+          ),
+          "undeclared chapter has no safe explanation",
+        );
+        assert(
+          !(await page.locator("main").innerText()).includes(
+            "undeclared-private-file",
+          ),
+          "raw chapter input echoed to reader",
+        );
+        return `${mode}: exact chapter source and undeclared-path rejection`;
+      },
+    );
+
+    await recorder.runIf(
+      mode === "local",
+      "partial course opens its first readable declared chapter",
+      async () => {
+        await goto("/read/legacy-course-013");
+        await skipLocalReaderWithoutBody(page);
+        const current = page.locator(".reader-chapters a[aria-current='page']");
+        assert(
+          (await current.count()) === 1,
+          "default chapter has no unique navigation selection",
+        );
+        assert(
+          (await page.locator(".reader-body").innerText()).length > 200,
+          "partial course body is empty",
+        );
+        if ((await current.innerText()).includes("claudian")) {
+          const links = await page
+            .locator(".reader-attribution a")
+            .evaluateAll((anchors) => anchors.map((anchor) => anchor.href));
+          assert(
+            !links.some((href) => href.includes("thedotmack/claude-mem")),
+            "chapter attribution points to the missing main document's project",
+          );
+        }
+        await mkdir(resolve(options.outputDir), { recursive: true });
+        await page.evaluate(() => window.scrollTo(0, 0));
+        await page.screenshot({
+          path: resolve(options.outputDir, "partial-course-desktop.png"),
+          fullPage: true,
+        });
+        return await current.innerText();
+      },
+    );
+
     await recorder.run("reader opens the course document", async () => {
       if (mode === "cloud") {
         const response = await goto("/read/agent-loop-maintainer-guide");
@@ -515,6 +1091,121 @@ async function main() {
       );
       return `${(body ?? "").length} characters rendered`;
     });
+
+    await recorder.run(
+      "OpenCode lessons keep course context and adjacent navigation",
+      async () => {
+        const intro = "Learning/learn-opencode/docs/1-start/01-intro.md";
+        const install = "Learning/learn-opencode/docs/1-start/02-install.md";
+        await goto("/read/legacy-reading-14-003");
+        assert(
+          new URL(page.url()).pathname === "/read/legacy-course-017",
+          "legacy lesson did not redirect into its course",
+        );
+        assert(
+          new URL(page.url()).searchParams.get("chapter") === intro,
+          "legacy lesson redirected to the wrong chapter",
+        );
+        if (mode === "cloud") {
+          assert(
+            (await page.locator(".reader-body").count()) === 0,
+            "Cloud exposed local lesson content",
+          );
+          const upstream = await page
+            .locator("main a[target='_blank']")
+            .first()
+            .getAttribute("href");
+          assert(
+            upstream?.endsWith("/docs/1-start/01-intro.md"),
+            "Cloud fallback lost the selected chapter's source",
+          );
+          return "Cloud keeps chapter-specific upstream access without local body";
+        }
+        await page.locator(".reader-body").waitFor();
+        const outline = page.locator(".reader-course-outline");
+        assert(
+          (await outline.count()) === 1,
+          "long course has no compact outline",
+        );
+        assert(
+          (await outline.getAttribute("open")) === null,
+          "long outline pushes the lesson below the fold by default",
+        );
+        const originalViewport = page.viewportSize();
+        await page.setViewportSize({ width: 390, height: 844 });
+        try {
+          const outlinePosition = await outline.boundingBox();
+          const tocPosition = await page.locator(".reader-toc").boundingBox();
+          assert(
+            outlinePosition && tocPosition && outlinePosition.y < tocPosition.y,
+            "mobile course navigation is buried under the article outline",
+          );
+          const summary = outline.locator("summary");
+          await summary.focus();
+          await page.keyboard.press("Enter");
+          assert(
+            (await outline.getAttribute("open")) !== null,
+            "course outline cannot be opened with the keyboard",
+          );
+          await page.keyboard.press("Enter");
+          assert(
+            (await outline.getAttribute("open")) === null,
+            "course outline cannot be closed with the keyboard",
+          );
+        } finally {
+          await page.setViewportSize(originalViewport);
+        }
+        const count = await page.locator(".reader-chapters a").count();
+        assert(
+          count > 12,
+          "course outline is still limited to isolated legacy entries",
+        );
+        const next = page.locator(".reader-pager a[rel='next']");
+        const target = new URL(await next.getAttribute("href"), base);
+        assert(
+          target.searchParams.get("chapter") === install,
+          "intro's next lesson is not installation",
+        );
+        await next.click();
+        await page.waitForURL(
+          (url) => url.searchParams.get("chapter") === install,
+        );
+        await page
+          .locator(".reader-body")
+          .filter({ hasText: "安装" })
+          .waitFor();
+        await page.locator(".reader-pager a[rel='prev']").click();
+        await page.waitForURL(
+          (url) => url.searchParams.get("chapter") === intro,
+        );
+        await outline.locator("summary").click();
+        await page
+          .locator(".reader-chapters a[aria-current='page']")
+          .waitFor({ state: "visible" });
+        const chapterLinks = await page
+          .locator(".reader-chapters a")
+          .evaluateAll((anchors) => anchors.map((a) => a.getAttribute("href")));
+        assert(
+          chapterLinks.length === new Set(chapterLinks).size,
+          "course outline has duplicate chapters",
+        );
+        await goto(chapterLinks[0]);
+        assert(
+          (await page.locator(".reader-pager a[rel='prev']").count()) === 0,
+          "first chapter has an invalid previous link",
+        );
+        await goto(chapterLinks.at(-1));
+        assert(
+          (await page.locator(".reader-pager a[rel='next']").count()) === 0,
+          "last chapter has an invalid next link",
+        );
+        assert(
+          (await page.locator(".reader-pager a[rel='prev']").count()) === 1,
+          "last chapter lost its previous link",
+        );
+        return `${count} declared readable chapters; old ID, next/previous and first/last boundaries verified`;
+      },
+    );
 
     await recorder.runIf(
       mode === "local",
@@ -553,7 +1244,9 @@ async function main() {
         const firstBody = await page.textContent(".reader-body");
         await next.click();
         await page.waitForURL(/chapter=/, { timeout: 10000 });
-        await page.waitForTimeout(400);
+        await waitFor(
+          async () => (await page.textContent(".reader-body")) !== firstBody,
+        );
         const secondBody = await page.textContent(".reader-body");
         assert(
           firstBody !== secondBody,
@@ -566,7 +1259,9 @@ async function main() {
           "no previous-chapter link on a later chapter",
         );
         await previous.click();
-        await page.waitForTimeout(600);
+        await waitFor(
+          async () => (await page.textContent(".reader-body")) === firstBody,
+        );
         const backBody = await page.textContent(".reader-body");
         assert(
           backBody === firstBody,

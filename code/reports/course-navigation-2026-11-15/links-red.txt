@@ -1,0 +1,52 @@
+
+ RUN  v4.1.10 /Users/vsh9p8q/AI/Agent-Learning-Hub/code
+
+ ❯ modules/reader/markdown.test.ts (8 tests | 1 failed) 11ms
+   × routes course site-absolute links through the declared-document resolver 4ms
+ ❯ modules/reader/document-source.test.ts (6 tests | 2 failed) 33ms
+     × resolves extensionless and directory links only to a declared readable chapter 2ms
+     × requires an explicit route root and the same whitelist for site-relative course links 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  modules/reader/document-source.test.ts > declared course document links > resolves extensionless and directory links only to a declared readable chapter
+TypeError: resolveDeclaredDocumentPath is not a function
+ ❯ modules/reader/document-source.test.ts:79:12
+     77|   const paths=new Set([current,root+"/1-start/index.md",root+"/1-start…
+     78|   it("resolves extensionless and directory links only to a declared re…
+     79|     expect(resolveDeclaredDocumentPath(current,"./02-install#安装",paths…
+       |            ^
+     80|     expect(resolveDeclaredDocumentPath(current,"../1-start/",paths)).t…
+     81|     expect(resolveDeclaredDocumentPath(current,"./03-network",paths)).…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  modules/reader/document-source.test.ts > declared course document links > requires an explicit route root and the same whitelist for site-relative course links
+TypeError: resolveDeclaredDocumentPath is not a function
+ ❯ modules/reader/document-source.test.ts:84:12
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  modules/reader/markdown.test.ts > routes course site-absolute links through the declared-document resolver
+AssertionError: expected '<p><a href="/1-start/">课程</a> <a href…' to contain 'href="/read/course?chapter=intro"'
+
+Expected: "href="/read/course?chapter=intro""
+Received: "<p><a href="/1-start/">课程</a> <a href="/secret">未声明</a> <a href="https://example.com" target="_blank" rel="noreferrer">站内</a></p>"
+
+ ❯ modules/reader/markdown.test.ts:128:22
+    126| it("routes course site-absolute links through the declared-document re…
+    127|  const result=renderMarkdownDocument("[课程](/1-start/) [未声明](/secret) […
+    128|  expect(result.html).toContain('href="/read/course?chapter=intro"');
+       |                      ^
+    129|  expect(result.html).not.toContain('href="/secret"');
+    130|  expect(result.html).toContain('href="https://example.com"');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  3 failed | 11 passed (14)
+   Start at  19:35:50
+   Duration  330ms (transform 88ms, setup 0ms, import 171ms, tests 44ms, environment 0ms)
+

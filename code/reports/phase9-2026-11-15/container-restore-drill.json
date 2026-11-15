@@ -1,0 +1,25 @@
+{
+  "date": "2026-11-15T05:22:20.321Z",
+  "durationMs": 541,
+  "hostPlatform": "macOS arm64 Docker Desktop",
+  "containerHostname": "1d33c12bbf99",
+  "platform": "linux",
+  "arch": "arm64",
+  "node": "v24.22.3",
+  "appVersion": "phase9-20261115-r11",
+  "schemas": {
+    "state": 3,
+    "discovery": 3
+  },
+  "items": 70,
+  "checks": [
+    "common batch records both schema versions",
+    "wrong passphrase refused",
+    "modified ciphertext refused",
+    "both restored databases pass integrity",
+    "restored discovery contains collected items",
+    "worker leases reset",
+    "temporary extraction references removed",
+    "existing restore target refused"
+  ]
+}

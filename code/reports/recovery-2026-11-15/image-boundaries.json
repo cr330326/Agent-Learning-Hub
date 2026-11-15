@@ -1,0 +1,14 @@
+{
+  "platform": "linux",
+  "architecture": "arm64",
+  "node": "v24.22.3",
+  "excluded": {
+    "/workspace": true,
+    "/local-courses": true,
+    "/app/local-courses": true,
+    "/app/code/reports": true,
+    "/app/docs": true,
+    "/app/.env": true,
+    "/app/code/.env": true
+  }
+}

@@ -1,0 +1,50 @@
+PASS  runtime mode is cloud
+PASS  anonymous session is unauthenticated and carries no CSRF token
+PASS  anonymous state read is refused
+PASS  anonymous state refusal is uncacheable
+PASS  anonymous state write is refused
+PASS  anonymous export is refused
+PASS  anonymous account deletion is refused
+PASS  login redirects to GitHub with the configured client
+2026-11-15T05:22:05.789Z WARN [Better Auth]: Rate limiting could not determine a client IP and is falling back to a single shared per-path bucket. Ensure your runtime forwards a trusted client IP header, then set `advanced.ipAddress.ipAddressHeaders` or `advanced.ipAddress.trustedProxies` so the address can be resolved.
+PASS  GitHub callback issues a session cookie
+PASS  no provider access token is persisted
+PASS  session resolves to the GitHub identity
+PASS  session issues a CSRF token
+PASS  authenticated write without a CSRF token is refused
+PASS  authenticated write with a mismatched CSRF token is refused
+PASS  item progress write succeeds
+PASS  note write succeeds
+PASS  bookmark write succeeds
+PASS  stage outcome write succeeds
+PASS  stage confirmation write succeeds
+PASS  fabricated directory ID is refused
+PASS  state read is uncacheable
+PASS  fabricated refusal is uncacheable
+PASS  admin saves a source through HTTP
+PASS  unpublished discovery content is hidden
+PASS  admin publication requires CSRF
+PASS  admin publishes selected version
+PASS  published detail shows summary and original link
+PASS  discovery personal state saves via HTTP
+PASS  discovery state survives a subsequent request
+PASS  version two export contains typed discovery state
+PASS  Markdown export includes discovery notes
+PASS  unknown discovery targets are refused
+PASS  admin withdrawal succeeds
+PASS  withdrawn details expose a placeholder
+PASS  private notes remain exportable after withdrawal
+PASS  discovery page has filters and source state
+PASS  learning state round-trips through the HTTP API
+PASS  the database file agrees with the server about the note just written
+PASS  JSON export carries the note and no session secrets
+PASS  Markdown export carries the note
+PASS  account deletion refuses an unconfirmed request
+PASS  account deletion succeeds
+PASS  the deleted account's session no longer authenticates
+PASS  account deletion cascades every private table
+PASS  the user row itself is gone
+PASS  the public catalog is unaffected by account deletion
+PASS  the raw session token is never stored in the database file
+
+Cloud auth + learning-state HTTP E2E passed (47 checks).

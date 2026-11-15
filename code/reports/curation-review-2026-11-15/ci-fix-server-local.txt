@@ -1,0 +1,12 @@
+
+> agent-learning-hub@0.1.0 start
+> next start --hostname 127.0.0.1 --port 3353
+
+▲ Next.js 16.4.3
+- Local:         http://127.0.0.1:3353
+- Network:       http://127.0.0.1:3353
+✓ Ready in 111ms
+✓ Running next.config.ts took 24ms
+{"type":"agent-learning-hub.operational-metric","event":"health_check","scope":"readiness","outcome":"success","occurredAt":"2026-11-15T08:45:50.840Z"}
+{"type":"agent-learning-hub.operational-metric","event":"health_check","scope":"readiness","outcome":"success","occurredAt":"2026-11-15T08:45:51.936Z"}
+{"type":"agent-learning-hub.operational-metric","event":"request_error","scope":"learning-state","outcome":"client-error","occurredAt":"2026-11-15T08:45:52.184Z"}

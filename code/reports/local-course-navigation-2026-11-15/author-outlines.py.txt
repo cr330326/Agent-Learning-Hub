@@ -1,0 +1,26 @@
+from pathlib import Path
+import re,json,hashlib
+repo=Path('/Users/vsh9p8q/AI/Agent-Learning-Hub');report=repo/'code/reports/local-course-navigation-2026-11-15'
+manifest=json.loads((report/'manifest.json').read_text())['items'];by={i['id']:i for i in manifest};rows=[]
+def add(id,source,paths,note):
+ declared={c['relativePath'] for c in by[id]['chapters']};paths=list(dict.fromkeys(paths))
+ rows.append({'id':id,'title':by[id]['title'],'source':source,'sourceSha256':hashlib.sha256((repo/'local-courses'/source).read_bytes()).hexdigest(),'currentReadablePages':len(declared),'authorMainPages':len(paths),'mainPagesDeclared':len(declared.intersection(paths)),'mainPagesOutsideCourse':sorted(set(paths)-declared),'allMainFilesExist':all((repo/'local-courses'/p).is_file() for p in paths),'note':note})
+source='Learning/hello-agents/README.md';text=(repo/'local-courses'/source).read_text();links=re.findall(r'\]\(\./(docs/chapter\d+/[^)]+)\)',text)
+from urllib.parse import unquote
+add('legacy-course-001',source,['Learning/hello-agents/'+unquote(p) for p in links],'作者正文第 1 至 16 章；前言单列在现有课程目录中。')
+add('legacy-course-004','Learning/claw0/README.md',[str(p.relative_to(repo/'local-courses')) for p in sorted((repo/'local-courses/Learning/claw0/sessions/zh').glob('s[0-9][0-9]_*.md'))],'作者 s01 至 s10 教学顺序，工作区模板另列。')
+source='Learning/learn-claude-code/README-zh.md';text=(repo/'local-courses'/source).read_text().split('## 全部章节')[1].split('## 如何阅读')[0]
+folders=re.findall(r'\]\(\./(s\d\d_[^/]+)/\)',text)
+add('legacy-course-008',source,['Learning/learn-claude-code/'+p+'/README.zh.md' for p in folders],'当前作者目录为 s01 至 s17，现有阅读器仍为 docs/zh 的旧 12 节。')
+source='Agentic/Harness/learn-harness-engineering/README.md';text=(repo/'local-courses'/source).read_text();links=re.findall(r'\]\(\.?/?(docs/en/lectures/lecture-\d+-[^)]+/index.md)\)',text)
+add('legacy-course-022',source,['Agentic/Harness/learn-harness-engineering/'+p.replace('docs/en/','docs/zh/') for p in links],'作者现有 14 讲中文正文均在磁盘，课程入口仅 README。')
+source='Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/SUMMARY.md';text=(repo/'local-courses'/source).read_text();links=re.findall(r'\]\(\./([^)]+\.md)\)',text)
+add('legacy-course-024',source,['Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/'+p for p in links],'作者中文书目录包含前言、正文、增补章和附录。')
+owners={c['relativePath']:item['id'] for item in manifest for c in item['chapters']}
+for row in rows:
+ row['outsideCourseOwners']={path:owners.get(path) for path in row['mainPagesOutsideCourse']}
+ row['mainPagesNotDeclaredAnywhere']=sum(path not in owners for path in row['mainPagesOutsideCourse'])
+(report/'author-outline-findings.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2)+'\n')
+for row in rows:print(row['title'],row['currentReadablePages'],row['authorMainPages'],row['mainPagesDeclared'],row['allMainFilesExist'])
+
+raise SystemExit(1 if any(row['mainPagesOutsideCourse'] for row in rows) else 0)

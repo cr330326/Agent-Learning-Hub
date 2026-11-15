@@ -1,0 +1,6 @@
+{"id":"harness","state":"ready","modelCalls":1,"score":38,"job":"completed"}
+{"id":"patterns","state":"ready","modelCalls":1,"score":38,"job":"completed"}
+{"id":"context","state":"ready","modelCalls":1,"score":29,"job":"completed"}
+{"id":"marketing","state":"off-topic","modelCalls":1,"score":null,"job":"completed"}
+{"id":"off-topic","state":"off-topic","modelCalls":1,"score":null,"job":"completed"}
+{"id":"injection","state":"ready","modelCalls":1,"score":22,"job":"completed"}

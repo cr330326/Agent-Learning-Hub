@@ -1,0 +1,20 @@
+import {readFile,writeFile} from 'node:fs/promises';
+import {load} from '/Users/vsh9p8q/AI/Agent-Learning-Hub/code/node_modules/cheerio/dist/esm/index.js';
+const root='/Users/vsh9p8q/AI/Agent-Learning-Hub/code/reports/local-course-navigation-2026-11-15';
+const {items}=JSON.parse(await readFile(root+'/manifest.json','utf8'));
+const base='http://127.0.0.1:3003';const started=Date.now();
+async function inspect(path){try{const response=await fetch(base+path,{signal:AbortSignal.timeout(30000)});const $=load(await response.text());return {url:response.url,status:response.status,body:$('.reader-body').length>0,chapters:$('.reader-chapters a').map((_,a)=>$(a).attr('href')).get(),current:$('.reader-chapters a[aria-current=page]').attr('href')??null,previous:$('.reader-pager a[rel=prev]').attr('href')??null,next:$('.reader-pager a[rel=next]').attr('href')??null,fallback:$('.reader-body').length===0 ? $('main').text().replace(/\s+/g,' ').trim().slice(0,500):undefined};}catch(e){return {error:e.message};}}
+const results=[];let cursor=0;
+await Promise.all(Array.from({length:4},async()=>{while(cursor<items.length){const index=cursor++;const item=items[index];const expected=item.chapters.map(c=>`/read/${item.id}?chapter=${encodeURIComponent(c.relativePath)}`);const entry=await inspect('/read/'+item.id);const problems=[];
+if(entry.error||entry.status!==200)problems.push('entry unavailable');
+if(JSON.stringify(entry.chapters)!==JSON.stringify(expected))problems.push('chapter directory differs from safe readable manifest');
+if(item.chapters.length>0&&!entry.body)problems.push('readable entry has no body');
+const pages=[];
+for(let n=0;n<expected.length;n++){const view=await inspect(expected[n]);const failures=[];if(view.error||view.status!==200||!view.body)failures.push('chapter body unavailable');if(view.current!==expected[n])failures.push('current chapter mismatch');if(view.previous!==(expected[n-1]??null))failures.push('previous mismatch');if(view.next!==(expected[n+1]??null))failures.push('next mismatch');if(JSON.stringify(view.chapters)!==JSON.stringify(expected))failures.push('directory mismatch');pages.push({chapter:item.chapters[n].relativePath,status:view.status,previous:view.previous,next:view.next,current:view.current,failures,error:view.error});}
+if(pages.some(p=>p.failures.length))problems.push('chapter navigation failure');
+const result={id:item.id,title:item.title,isCourseCard:item.isCourseCard,accessPolicy:item.accessPolicy,readableChapters:expected.length,entry,problems,pages};results[index]=result;
+if((index+1)%20===0)console.log(`Checked ${index+1}/${items.length} entries`);
+}}));
+const summary={base,generatedAt:new Date().toISOString(),elapsedSeconds:Math.round((Date.now()-started)/1000),entries:results.length,courseCards:results.filter(i=>i.isCourseCard).length,localItems:results.filter(i=>i.accessPolicy==='local-preferred').length,readablePages:results.reduce((n,i)=>n+i.pages.length,0),multiChapterItems:results.filter(i=>i.readableChapters>1).length,singleChapterItems:results.filter(i=>i.readableChapters===1).length,noReadableChapterItems:results.filter(i=>!i.readableChapters).length,failures:results.filter(i=>i.problems.length).map(i=>({id:i.id,title:i.title,problems:i.problems}))};
+await writeFile(root+'/http-audit.json',JSON.stringify({summary,results},null,2)+'\n');console.log(JSON.stringify(summary,null,2));
+if(summary.failures.length)process.exitCode=1;

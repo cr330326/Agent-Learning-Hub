@@ -1,0 +1,690 @@
+[
+  {
+    "name": "agent-learning-hub-local_learning-state",
+    "mb": 4.1,
+    "files": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "users": 0,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-cloud-real_discovery",
+    "mb": 4.1,
+    "files": 3,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "items": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-cloud-real_discovery-temp",
+    "mb": 0,
+    "files": 0,
+    "databases": []
+  },
+  {
+    "name": "alh-cloud-real_learning-state",
+    "mb": 2.9,
+    "files": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "users": 1,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-curation-live-20261115",
+    "mb": 0.2,
+    "files": 1,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "items": 1,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-model-quality-20261115",
+    "mb": 0.2,
+    "files": 1,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "items": 6,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-model-quality-20261115-v2",
+    "mb": 0.2,
+    "files": 1,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "items": 6,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-phase9-cloud_discovery",
+    "mb": 4.3,
+    "files": 3,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "items": 71,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-phase9-cloud_discovery-temp",
+    "mb": 0.2,
+    "files": 16,
+    "databases": []
+  },
+  {
+    "name": "alh-phase9-cloud_learning-state",
+    "mb": 3.3,
+    "files": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "users": 0,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-phase9-local_learning-state",
+    "mb": 4.1,
+    "files": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "users": 1,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-phase9-recovery-1794721146-discovery",
+    "mb": 0,
+    "files": 0,
+    "databases": []
+  },
+  {
+    "name": "alh-phase9-recovery-1794721146-pair",
+    "mb": 0.5,
+    "files": 7,
+    "databases": [
+      {
+        "path": "pair/data/discovery.sqlite",
+        "items": 70,
+        "quickCheck": "ok"
+      },
+      {
+        "path": "pair/data/learning-state.sqlite",
+        "users": 1,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-phase9-recovery-1794721146-state",
+    "mb": 0,
+    "files": 0,
+    "databases": []
+  },
+  {
+    "name": "alh-phase9-recovery-1794721201-discovery",
+    "mb": 0.8,
+    "files": 3,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "items": 70,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-phase9-recovery-1794721201-pair",
+    "mb": 0.6,
+    "files": 11,
+    "databases": [
+      {
+        "path": "pair/data/discovery.sqlite",
+        "items": 70,
+        "quickCheck": "ok"
+      },
+      {
+        "path": "pair/data/learning-state.sqlite",
+        "users": 1,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-phase9-recovery-1794721201-state",
+    "mb": 0.2,
+    "files": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "users": 1,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-phase9-recovery-1794721322-discovery",
+    "mb": 4.3,
+    "files": 3,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "items": 70,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-phase9-recovery-1794721322-pair",
+    "mb": 0.6,
+    "files": 11,
+    "databases": [
+      {
+        "path": "pair/data/discovery.sqlite",
+        "items": 70,
+        "quickCheck": "ok"
+      },
+      {
+        "path": "pair/data/learning-state.sqlite",
+        "users": 1,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-phase9-recovery-1794721322-state",
+    "mb": 2.9,
+    "files": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "users": 1,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-phase9-recovery_discovery-temp",
+    "mb": 0.2,
+    "files": 16,
+    "databases": []
+  },
+  {
+    "name": "alh-verification-20261115_cloud-e2e-r6-state",
+    "mb": 0.5,
+    "files": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "users": 0,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_cloud-e2e-r7-state",
+    "mb": 0.6,
+    "files": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "users": 0,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_cloud-e2e-r8-state",
+    "mb": 0.5,
+    "files": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "users": 0,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_cloud-e2e-r9-state",
+    "mb": 0.5,
+    "files": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "users": 0,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_cloud-e2e-r10-state",
+    "mb": 0.7,
+    "files": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "users": 0,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_cloud-e2e-r12-state",
+    "mb": 0.7,
+    "files": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "users": 0,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_cloud-e2e-r13-state",
+    "mb": 0.5,
+    "files": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "users": 0,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_cloud-e2e-r14-state",
+    "mb": 0.5,
+    "files": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "users": 0,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_cloud-e2e-state",
+    "mb": 0.5,
+    "files": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "users": 0,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_cloud-state",
+    "mb": 4.1,
+    "files": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "users": 1,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_cloud-state-r10",
+    "mb": 4,
+    "files": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "users": 1,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_discovery",
+    "mb": 4.2,
+    "files": 3,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "items": 28,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_discovery-e2e",
+    "mb": 0.3,
+    "files": 3,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "items": 1,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_discovery-e2e-r6",
+    "mb": 0.3,
+    "files": 3,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "items": 1,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_discovery-e2e-r7",
+    "mb": 0.3,
+    "files": 3,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "items": 1,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_discovery-e2e-r8",
+    "mb": 0.3,
+    "files": 3,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "items": 1,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_discovery-e2e-r9",
+    "mb": 0.3,
+    "files": 3,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "items": 1,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_discovery-e2e-r10",
+    "mb": 0.3,
+    "files": 3,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "items": 1,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_discovery-e2e-r12",
+    "mb": 0.3,
+    "files": 3,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "items": 1,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_discovery-e2e-r13",
+    "mb": 0.3,
+    "files": 3,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "items": 1,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_discovery-e2e-r14",
+    "mb": 0.3,
+    "files": 3,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "items": 1,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_discovery-r10",
+    "mb": 4.2,
+    "files": 3,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "items": 35,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_feishu",
+    "mb": 20.2,
+    "files": 1,
+    "databases": [
+      {
+        "path": "discovery.sqlite",
+        "items": 10816,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_local-e2e-r6-state",
+    "mb": 0.4,
+    "files": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "users": 1,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_local-e2e-r7-state",
+    "mb": 0.4,
+    "files": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "users": 1,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_local-e2e-r8-state",
+    "mb": 0.4,
+    "files": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "users": 1,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_local-e2e-r9-state",
+    "mb": 0.4,
+    "files": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "users": 1,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_local-e2e-r10-state",
+    "mb": 0.5,
+    "files": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "users": 1,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_local-e2e-r12-state",
+    "mb": 0.6,
+    "files": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "users": 1,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_local-e2e-r13-state",
+    "mb": 0.4,
+    "files": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "users": 1,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_local-e2e-r14-state",
+    "mb": 0.4,
+    "files": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "users": 1,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_local-e2e-state",
+    "mb": 0.4,
+    "files": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "users": 1,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_local-state",
+    "mb": 4.1,
+    "files": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "users": 1,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_local-state-r10",
+    "mb": 4.1,
+    "files": 3,
+    "databases": [
+      {
+        "path": "learning-state.sqlite",
+        "users": 1,
+        "notes": 0,
+        "quickCheck": "ok"
+      }
+    ]
+  },
+  {
+    "name": "alh-verification-20261115_temp",
+    "mb": 0,
+    "files": 0,
+    "databases": []
+  },
+  {
+    "name": "alh-verification-20261115_temp-r10",
+    "mb": 0,
+    "files": 0,
+    "databases": []
+  }
+]

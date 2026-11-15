@@ -27,7 +27,7 @@ describe("learning-state database", () => {
     });
 
     expect(database.sqliteVersion).toMatch(/^3\./);
-    expect(database.schemaVersion).toBe(2);
+    expect(database.schemaVersion).toBe(3);
     expect(database.foreignKeysEnabled).toBe(true);
     expect(database.journalMode).toBe("wal");
     expect(
@@ -58,7 +58,7 @@ describe("learning-state database", () => {
       sqliteVersionProvider: () => "3.40.0",
     });
 
-    expect(database.schemaVersion).toBe(2);
+    expect(database.schemaVersion).toBe(3);
     expect(database.journalMode).toBe("memory");
     database.close();
   });
@@ -69,7 +69,7 @@ describe("learning-state database", () => {
     first.close();
 
     const second = openLearningDatabase({ filename, enableWal: false });
-    expect(second.schemaVersion).toBe(2);
+    expect(second.schemaVersion).toBe(3);
     second.close();
   });
 });

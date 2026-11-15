@@ -1,0 +1,33 @@
+
+ RUN  v4.1.10 /Users/vsh9p8q/AI/Agent-Learning-Hub/code
+
+ ❯ modules/discovery/curation.test.ts (1 test | 1 failed) 1072ms
+     × validates current catalog, makes one atomic tree, reuses a PR and derives live status from the runtime catalog 1070ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  modules/discovery/curation.test.ts > curated learning intake > validates current catalog, makes one atomic tree, reuses a PR and derives live status from the runtime catalog
+AssertionError: code/content/courses/courses.json: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ modules/discovery/curation.test.ts:131:114
+    129|     expect(tree.tree).toHaveLength(2);
+    130|     for (const file of tree.tree) {
+    131|       expect(await check(file.content, { parser: "json", singleQuote: …
+       |                                                                                                                  ^
+    132|     }
+    133|     const nextCourses = JSON.parse(tree.tree[0].content);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  16:11:54
+   Duration  3.31s (transform 948ms, setup 0ms, import 1.68s, tests 1.07s, environment 0ms)
+

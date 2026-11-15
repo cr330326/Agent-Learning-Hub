@@ -1,0 +1,47 @@
+
+> agent-learning-hub@0.1.0 test:e2e:cloud
+> EXPECTED_RUNTIME_MODE=cloud npm run test:e2e && tsx tests/e2e/cloud-auth-state-http.mts
+
+
+> agent-learning-hub@0.1.0 test:e2e
+> node tests/e2e/home-page-http-smoke.mjs && node tests/e2e/public-pages-http-smoke.mjs && node tests/e2e/health-http-smoke.mjs
+
+Home page smoke test passed for cloud mode.
+Public page smoke test passed for 9 routes.
+Health HTTP smoke test passed for cloud mode.
+Admin health access boundary passed for cloud mode.
+PASS  runtime mode is cloud
+PASS  anonymous session is unauthenticated and carries no CSRF token
+PASS  anonymous state read is refused
+PASS  anonymous state refusal is uncacheable
+PASS  anonymous state write is refused
+PASS  anonymous export is refused
+PASS  anonymous account deletion is refused
+PASS  login redirects to GitHub with the configured client
+PASS  GitHub callback issues a session cookie
+PASS  no provider access token is persisted
+PASS  session resolves to the GitHub identity
+PASS  session issues a CSRF token
+PASS  authenticated write without a CSRF token is refused
+PASS  authenticated write with a mismatched CSRF token is refused
+PASS  item progress write succeeds
+PASS  note write succeeds
+PASS  bookmark write succeeds
+PASS  stage outcome write succeeds
+PASS  stage confirmation write succeeds
+PASS  fabricated directory ID is refused
+PASS  state read is uncacheable
+PASS  fabricated refusal is uncacheable
+PASS  learning state round-trips through the HTTP API
+PASS  the database file agrees with the server about the note just written
+PASS  JSON export carries the note and no session secrets
+PASS  Markdown export carries the note
+PASS  account deletion refuses an unconfirmed request
+PASS  account deletion succeeds
+PASS  the deleted account's session no longer authenticates
+PASS  account deletion cascades every private table
+PASS  the user row itself is gone
+PASS  the public catalog is unaffected by account deletion
+PASS  the raw session token is never stored in the database file
+
+Cloud auth + learning-state HTTP E2E passed (33 checks).

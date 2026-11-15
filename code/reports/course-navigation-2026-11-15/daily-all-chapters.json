@@ -1,0 +1,887 @@
+{
+  "base": "http://127.0.0.1:3003",
+  "checked": 110,
+  "failed": 0,
+  "results": [
+    {
+      "index": 1,
+      "chapter": "Learning/learn-opencode/README.md",
+      "status": 200,
+      "previous": null,
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2Findex.md",
+      "ok": true
+    },
+    {
+      "index": 2,
+      "chapter": "Learning/learn-opencode/docs/index.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2FREADME.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2Findex.md",
+      "ok": true
+    },
+    {
+      "index": 3,
+      "chapter": "Learning/learn-opencode/docs/1-start/index.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2Findex.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F01-intro.md",
+      "ok": true
+    },
+    {
+      "index": 4,
+      "chapter": "Learning/learn-opencode/docs/1-start/01-intro.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2Findex.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F02-install.md",
+      "ok": true
+    },
+    {
+      "index": 5,
+      "chapter": "Learning/learn-opencode/docs/1-start/02-install.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F01-intro.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F02a-install-alternatives.md",
+      "ok": true
+    },
+    {
+      "index": 6,
+      "chapter": "Learning/learn-opencode/docs/1-start/02a-install-alternatives.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F02-install.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F02b-install-troubleshoot.md",
+      "ok": true
+    },
+    {
+      "index": 7,
+      "chapter": "Learning/learn-opencode/docs/1-start/02b-install-troubleshoot.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F02a-install-alternatives.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F03-network.md",
+      "ok": true
+    },
+    {
+      "index": 8,
+      "chapter": "Learning/learn-opencode/docs/1-start/03-network.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F02b-install-troubleshoot.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F04-connect.md",
+      "ok": true
+    },
+    {
+      "index": 9,
+      "chapter": "Learning/learn-opencode/docs/1-start/04-connect.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F03-network.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F04d-minimax.md",
+      "ok": true
+    },
+    {
+      "index": 10,
+      "chapter": "Learning/learn-opencode/docs/1-start/04d-minimax.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F04-connect.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F04a-free-models.md",
+      "ok": true
+    },
+    {
+      "index": 11,
+      "chapter": "Learning/learn-opencode/docs/1-start/04a-free-models.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F04d-minimax.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F04c-zhipu.md",
+      "ok": true
+    },
+    {
+      "index": 12,
+      "chapter": "Learning/learn-opencode/docs/1-start/04c-zhipu.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F04a-free-models.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F04b-deepseek.md",
+      "ok": true
+    },
+    {
+      "index": 13,
+      "chapter": "Learning/learn-opencode/docs/1-start/04b-deepseek.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F04c-zhipu.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F04e-claude.md",
+      "ok": true
+    },
+    {
+      "index": 14,
+      "chapter": "Learning/learn-opencode/docs/1-start/04e-claude.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F04b-deepseek.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F04f-claudecode-relay.md",
+      "ok": true
+    },
+    {
+      "index": 15,
+      "chapter": "Learning/learn-opencode/docs/1-start/04f-claudecode-relay.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F04e-claude.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F04g-ollama.md",
+      "ok": true
+    },
+    {
+      "index": 16,
+      "chapter": "Learning/learn-opencode/docs/1-start/04g-ollama.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F04f-claudecode-relay.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F04h-openai.md",
+      "ok": true
+    },
+    {
+      "index": 17,
+      "chapter": "Learning/learn-opencode/docs/1-start/04h-openai.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F04g-ollama.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F04i-alibaba.md",
+      "ok": true
+    },
+    {
+      "index": 18,
+      "chapter": "Learning/learn-opencode/docs/1-start/04i-alibaba.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F04h-openai.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F04j-github-copilot.md",
+      "ok": true
+    },
+    {
+      "index": 19,
+      "chapter": "Learning/learn-opencode/docs/1-start/04j-github-copilot.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F04i-alibaba.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F05-update.md",
+      "ok": true
+    },
+    {
+      "index": 20,
+      "chapter": "Learning/learn-opencode/docs/1-start/05-update.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F04j-github-copilot.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F2-daily%2Findex.md",
+      "ok": true
+    },
+    {
+      "index": 21,
+      "chapter": "Learning/learn-opencode/docs/2-daily/index.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F1-start%2F05-update.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F2-daily%2F01-interface.md",
+      "ok": true
+    },
+    {
+      "index": 22,
+      "chapter": "Learning/learn-opencode/docs/2-daily/01-interface.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F2-daily%2Findex.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F2-daily%2F01b-copy-paste.md",
+      "ok": true
+    },
+    {
+      "index": 23,
+      "chapter": "Learning/learn-opencode/docs/2-daily/01b-copy-paste.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F2-daily%2F01-interface.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F2-daily%2F01c-basic-tools.md",
+      "ok": true
+    },
+    {
+      "index": 24,
+      "chapter": "Learning/learn-opencode/docs/2-daily/01c-basic-tools.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F2-daily%2F01b-copy-paste.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F2-daily%2F01d-images.md",
+      "ok": true
+    },
+    {
+      "index": 25,
+      "chapter": "Learning/learn-opencode/docs/2-daily/01d-images.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F2-daily%2F01c-basic-tools.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F2-daily%2F02-sessions.md",
+      "ok": true
+    },
+    {
+      "index": 26,
+      "chapter": "Learning/learn-opencode/docs/2-daily/02-sessions.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F2-daily%2F01d-images.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F2-daily%2F03-shortcuts.md",
+      "ok": true
+    },
+    {
+      "index": 27,
+      "chapter": "Learning/learn-opencode/docs/2-daily/03-shortcuts.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F2-daily%2F02-sessions.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F2-daily%2F04-global-rules.md",
+      "ok": true
+    },
+    {
+      "index": 28,
+      "chapter": "Learning/learn-opencode/docs/2-daily/04-global-rules.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F2-daily%2F03-shortcuts.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F2-daily%2F05-env-management.md",
+      "ok": true
+    },
+    {
+      "index": 29,
+      "chapter": "Learning/learn-opencode/docs/2-daily/05-env-management.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F2-daily%2F04-global-rules.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F2-daily%2F06-git-basics.md",
+      "ok": true
+    },
+    {
+      "index": 30,
+      "chapter": "Learning/learn-opencode/docs/2-daily/06-git-basics.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F2-daily%2F05-env-management.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F3-workflow%2Findex.md",
+      "ok": true
+    },
+    {
+      "index": 31,
+      "chapter": "Learning/learn-opencode/docs/3-workflow/index.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F2-daily%2F06-git-basics.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F3-workflow%2F01-plan-build.md",
+      "ok": true
+    },
+    {
+      "index": 32,
+      "chapter": "Learning/learn-opencode/docs/3-workflow/01-plan-build.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F3-workflow%2Findex.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F3-workflow%2F02-agents.md",
+      "ok": true
+    },
+    {
+      "index": 33,
+      "chapter": "Learning/learn-opencode/docs/3-workflow/02-agents.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F3-workflow%2F01-plan-build.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F3-workflow%2F03-init.md",
+      "ok": true
+    },
+    {
+      "index": 34,
+      "chapter": "Learning/learn-opencode/docs/3-workflow/03-init.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F3-workflow%2F02-agents.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Findex.md",
+      "ok": true
+    },
+    {
+      "index": 35,
+      "chapter": "Learning/learn-opencode/docs/4-scenarios/index.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F3-workflow%2F03-init.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fwriter-workflow.md",
+      "ok": true
+    },
+    {
+      "index": 36,
+      "chapter": "Learning/learn-opencode/docs/4-scenarios/writer-workflow.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Findex.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fwriter-wechat.md",
+      "ok": true
+    },
+    {
+      "index": 37,
+      "chapter": "Learning/learn-opencode/docs/4-scenarios/writer-wechat.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fwriter-workflow.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fwriter-xiaohongshu.md",
+      "ok": true
+    },
+    {
+      "index": 38,
+      "chapter": "Learning/learn-opencode/docs/4-scenarios/writer-xiaohongshu.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fwriter-wechat.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fwriter-copywriting.md",
+      "ok": true
+    },
+    {
+      "index": 39,
+      "chapter": "Learning/learn-opencode/docs/4-scenarios/writer-copywriting.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fwriter-xiaohongshu.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fwriter-translate.md",
+      "ok": true
+    },
+    {
+      "index": 40,
+      "chapter": "Learning/learn-opencode/docs/4-scenarios/writer-translate.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fwriter-copywriting.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fwriter-novel.md",
+      "ok": true
+    },
+    {
+      "index": 41,
+      "chapter": "Learning/learn-opencode/docs/4-scenarios/writer-novel.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fwriter-translate.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fwriter-script.md",
+      "ok": true
+    },
+    {
+      "index": 42,
+      "chapter": "Learning/learn-opencode/docs/4-scenarios/writer-script.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fwriter-novel.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fwriter-webnovel.md",
+      "ok": true
+    },
+    {
+      "index": 43,
+      "chapter": "Learning/learn-opencode/docs/4-scenarios/writer-webnovel.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fwriter-script.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fwriter-workstation.md",
+      "ok": true
+    },
+    {
+      "index": 44,
+      "chapter": "Learning/learn-opencode/docs/4-scenarios/writer-workstation.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fwriter-webnovel.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fcoder-daily.md",
+      "ok": true
+    },
+    {
+      "index": 45,
+      "chapter": "Learning/learn-opencode/docs/4-scenarios/coder-daily.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fwriter-workstation.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fcoder-refactor.md",
+      "ok": true
+    },
+    {
+      "index": 46,
+      "chapter": "Learning/learn-opencode/docs/4-scenarios/coder-refactor.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fcoder-daily.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fcoder-docs-git.md",
+      "ok": true
+    },
+    {
+      "index": 47,
+      "chapter": "Learning/learn-opencode/docs/4-scenarios/coder-docs-git.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fcoder-refactor.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fcoder-cicd.md",
+      "ok": true
+    },
+    {
+      "index": 48,
+      "chapter": "Learning/learn-opencode/docs/4-scenarios/coder-cicd.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fcoder-docs-git.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fcoder-agents.md",
+      "ok": true
+    },
+    {
+      "index": 49,
+      "chapter": "Learning/learn-opencode/docs/4-scenarios/coder-agents.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fcoder-cicd.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fcoder-intranet.md",
+      "ok": true
+    },
+    {
+      "index": 50,
+      "chapter": "Learning/learn-opencode/docs/4-scenarios/coder-intranet.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fcoder-agents.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Foffice-files.md",
+      "ok": true
+    },
+    {
+      "index": 51,
+      "chapter": "Learning/learn-opencode/docs/4-scenarios/office-files.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fcoder-intranet.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Foffice-data.md",
+      "ok": true
+    },
+    {
+      "index": 52,
+      "chapter": "Learning/learn-opencode/docs/4-scenarios/office-data.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Foffice-files.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Foffice-learn.md",
+      "ok": true
+    },
+    {
+      "index": 53,
+      "chapter": "Learning/learn-opencode/docs/4-scenarios/office-learn.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Foffice-data.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Foffice-automation.md",
+      "ok": true
+    },
+    {
+      "index": 54,
+      "chapter": "Learning/learn-opencode/docs/4-scenarios/office-automation.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Foffice-learn.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fmcp-web-image-gen.md",
+      "ok": true
+    },
+    {
+      "index": 55,
+      "chapter": "Learning/learn-opencode/docs/4-scenarios/mcp-web-image-gen.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Foffice-automation.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2Findex.md",
+      "ok": true
+    },
+    {
+      "index": 56,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/index.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F4-scenarios%2Fmcp-web-image-gen.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F01a-config-basics.md",
+      "ok": true
+    },
+    {
+      "index": 57,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/01a-config-basics.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2Findex.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F01b-config-advanced.md",
+      "ok": true
+    },
+    {
+      "index": 58,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/01b-config-advanced.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F01a-config-basics.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F02a-agent-quickstart.md",
+      "ok": true
+    },
+    {
+      "index": 59,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/02a-agent-quickstart.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F01b-config-advanced.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F02b-agent-patterns.md",
+      "ok": true
+    },
+    {
+      "index": 60,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/02b-agent-patterns.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F02a-agent-quickstart.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F02c-agent-permissions.md",
+      "ok": true
+    },
+    {
+      "index": 61,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/02c-agent-permissions.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F02b-agent-patterns.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F02d-agent-advanced.md",
+      "ok": true
+    },
+    {
+      "index": 62,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/02d-agent-advanced.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F02c-agent-permissions.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F03a-skills-basics.md",
+      "ok": true
+    },
+    {
+      "index": 63,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/03a-skills-basics.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F02d-agent-advanced.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F03b-skills-advanced.md",
+      "ok": true
+    },
+    {
+      "index": 64,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/03b-skills-advanced.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F03a-skills-basics.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F03c-skills-patterns.md",
+      "ok": true
+    },
+    {
+      "index": 65,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/03c-skills-patterns.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F03b-skills-advanced.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F04-commands.md",
+      "ok": true
+    },
+    {
+      "index": 66,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/04-commands.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F03c-skills-patterns.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F05-permissions.md",
+      "ok": true
+    },
+    {
+      "index": 67,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/05-permissions.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F04-commands.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F06a-themes.md",
+      "ok": true
+    },
+    {
+      "index": 68,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/06a-themes.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F05-permissions.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F06b-keybinds.md",
+      "ok": true
+    },
+    {
+      "index": 69,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/06b-keybinds.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F06a-themes.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F07a-mcp-basics.md",
+      "ok": true
+    },
+    {
+      "index": 70,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/07a-mcp-basics.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F06b-keybinds.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F07b-mcp-advanced.md",
+      "ok": true
+    },
+    {
+      "index": 71,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/07b-mcp-advanced.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F07a-mcp-basics.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F07c-mcp-chrome-devtools.md",
+      "ok": true
+    },
+    {
+      "index": 72,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/07c-mcp-chrome-devtools.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F07b-mcp-advanced.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F08a-ide-vscode.md",
+      "ok": true
+    },
+    {
+      "index": 73,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/08a-ide-vscode.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F07c-mcp-chrome-devtools.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F08b-acp.md",
+      "ok": true
+    },
+    {
+      "index": 74,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/08b-acp.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F08a-ide-vscode.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F09a-remote-basics.md",
+      "ok": true
+    },
+    {
+      "index": 75,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/09a-remote-basics.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F08b-acp.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F09b-remote-api.md",
+      "ok": true
+    },
+    {
+      "index": 76,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/09b-remote-api.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F09a-remote-basics.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F10a-sdk-basics.md",
+      "ok": true
+    },
+    {
+      "index": 77,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/10a-sdk-basics.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F09b-remote-api.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F10b-sdk-reference.md",
+      "ok": true
+    },
+    {
+      "index": 78,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/10b-sdk-reference.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F10a-sdk-basics.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F10c-sdk-v2.md",
+      "ok": true
+    },
+    {
+      "index": 79,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/10c-sdk-v2.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F10b-sdk-reference.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F11-enterprise.md",
+      "ok": true
+    },
+    {
+      "index": 80,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/11-enterprise.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F10c-sdk-v2.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F11a-enterprise-auth.md",
+      "ok": true
+    },
+    {
+      "index": 81,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/11a-enterprise-auth.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F11-enterprise.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F12a-plugins-basics.md",
+      "ok": true
+    },
+    {
+      "index": 82,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/12a-plugins-basics.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F11a-enterprise-auth.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F12b-plugins-advanced.md",
+      "ok": true
+    },
+    {
+      "index": 83,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/12b-plugins-advanced.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F12a-plugins-basics.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F12c-hooks.md",
+      "ok": true
+    },
+    {
+      "index": 84,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/12c-hooks.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F12b-plugins-advanced.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F13-custom-tools.md",
+      "ok": true
+    },
+    {
+      "index": 85,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/13-custom-tools.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F12c-hooks.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F14-github.md",
+      "ok": true
+    },
+    {
+      "index": 86,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/14-github.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F13-custom-tools.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F15-gitlab.md",
+      "ok": true
+    },
+    {
+      "index": 87,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/15-gitlab.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F14-github.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F16-share.md",
+      "ok": true
+    },
+    {
+      "index": 88,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/16-share.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F15-gitlab.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F17-tools.md",
+      "ok": true
+    },
+    {
+      "index": 89,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/17-tools.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F16-share.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F18-formatters.md",
+      "ok": true
+    },
+    {
+      "index": 90,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/18-formatters.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F17-tools.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F19-lsp.md",
+      "ok": true
+    },
+    {
+      "index": 91,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/19-lsp.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F18-formatters.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F20-compaction.md",
+      "ok": true
+    },
+    {
+      "index": 92,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/20-compaction.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F19-lsp.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F21-thinking-depth.md",
+      "ok": true
+    },
+    {
+      "index": 93,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/21-thinking-depth.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F20-compaction.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F22-debugging.md",
+      "ok": true
+    },
+    {
+      "index": 94,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/22-debugging.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F21-thinking-depth.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F23-web-search.md",
+      "ok": true
+    },
+    {
+      "index": 95,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/23-web-search.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F22-debugging.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F24-cli-automation.md",
+      "ok": true
+    },
+    {
+      "index": 96,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/24-cli-automation.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F23-web-search.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F25-git-worktree.md",
+      "ok": true
+    },
+    {
+      "index": 97,
+      "chapter": "Learning/learn-opencode/docs/5-advanced/25-git-worktree.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F24-cli-automation.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2Fappendix%2Findex.md",
+      "ok": true
+    },
+    {
+      "index": 98,
+      "chapter": "Learning/learn-opencode/docs/appendix/index.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2F5-advanced%2F25-git-worktree.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2Fappendix%2Fkeybinds.md",
+      "ok": true
+    },
+    {
+      "index": 99,
+      "chapter": "Learning/learn-opencode/docs/appendix/keybinds.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2Fappendix%2Findex.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2Fappendix%2Fcommands.md",
+      "ok": true
+    },
+    {
+      "index": 100,
+      "chapter": "Learning/learn-opencode/docs/appendix/commands.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2Fappendix%2Fkeybinds.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2Fappendix%2Fcli.md",
+      "ok": true
+    },
+    {
+      "index": 101,
+      "chapter": "Learning/learn-opencode/docs/appendix/cli.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2Fappendix%2Fcommands.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2Fappendix%2Fconfig-ref.md",
+      "ok": true
+    },
+    {
+      "index": 102,
+      "chapter": "Learning/learn-opencode/docs/appendix/config-ref.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2Fappendix%2Fcli.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2Fappendix%2Fproviders.md",
+      "ok": true
+    },
+    {
+      "index": 103,
+      "chapter": "Learning/learn-opencode/docs/appendix/providers.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2Fappendix%2Fconfig-ref.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2Fappendix%2Fprompts.md",
+      "ok": true
+    },
+    {
+      "index": 104,
+      "chapter": "Learning/learn-opencode/docs/appendix/prompts.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2Fappendix%2Fproviders.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2Fappendix%2Ffaq.md",
+      "ok": true
+    },
+    {
+      "index": 105,
+      "chapter": "Learning/learn-opencode/docs/appendix/faq.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2Fappendix%2Fprompts.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2Fappendix%2Ftroubleshoot.md",
+      "ok": true
+    },
+    {
+      "index": 106,
+      "chapter": "Learning/learn-opencode/docs/appendix/troubleshoot.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2Fappendix%2Ffaq.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2Fappendix%2Fecosystem.md",
+      "ok": true
+    },
+    {
+      "index": 107,
+      "chapter": "Learning/learn-opencode/docs/appendix/ecosystem.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2Fappendix%2Ftroubleshoot.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2Fappendix%2Fmigration.md",
+      "ok": true
+    },
+    {
+      "index": 108,
+      "chapter": "Learning/learn-opencode/docs/appendix/migration.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2Fappendix%2Fecosystem.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2Fappendix%2Fzen.md",
+      "ok": true
+    },
+    {
+      "index": 109,
+      "chapter": "Learning/learn-opencode/docs/appendix/zen.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2Fappendix%2Fmigration.md",
+      "next": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2Fappendix%2Fexperimental-features.md",
+      "ok": true
+    },
+    {
+      "index": 110,
+      "chapter": "Learning/learn-opencode/docs/appendix/experimental-features.md",
+      "status": 200,
+      "previous": "/read/legacy-course-017?chapter=Learning%2Flearn-opencode%2Fdocs%2Fappendix%2Fzen.md",
+      "next": null,
+      "ok": true
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+Captured stable-ID field mapping in desktop/mobile layouts.

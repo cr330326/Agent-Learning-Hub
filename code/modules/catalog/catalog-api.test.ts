@@ -45,19 +45,33 @@ describe("Catalog API", () => {
 
   it("loads Git-managed structured content without a database and filters items deterministically", async () => {
     const catalog = await loadCatalogApiFromDirectory(sourceContentRoot);
+    const declared = await loadContentCatalogFromDirectory(sourceContentRoot);
     const allItems = catalog.listItems();
     const legacyReadingItems = catalog.listItems({ tags: ["legacy-reading"] });
     const localPreferredItems = catalog.listItems({
       accessPolicy: "local-preferred",
     });
 
-    expect(allItems).toHaveLength(384);
+    const publicItems = declared.items.filter((item) => !item.redirect);
+    expect(allItems).toHaveLength(publicItems.length);
+    expect(new Set(allItems.map(({ id }) => id))).toEqual(
+      new Set(publicItems.map(({ id }) => id)),
+    );
     expect(allItems.map(({ id }) => id)).toEqual(
       [...allItems.map(({ id }) => id)].sort((left, right) =>
         left.localeCompare(right, "en"),
       ),
     );
-    expect(legacyReadingItems).toHaveLength(334);
+    expect(legacyReadingItems).toHaveLength(
+      publicItems.filter((item) => item.tags.includes("legacy-reading")).length,
+    );
+    expect(new Set(legacyReadingItems.map(({ id }) => id))).toEqual(
+      new Set(
+        publicItems
+          .filter((item) => item.tags.includes("legacy-reading"))
+          .map(({ id }) => id),
+      ),
+    );
     // Retired entries stay resolvable by ID so their old URLs can forward.
     const retired = catalog.getItem("legacy-reading-02-001");
     expect(retired?.redirect).toEqual({

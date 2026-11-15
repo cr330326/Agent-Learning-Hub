@@ -1,0 +1,48 @@
+{
+  "directory": "/secure/output/e74c1fcf-c543-4e0a-a881-e09bb423c7e0",
+  "batch": {
+    "formatVersion": 1,
+    "batchId": "e74c1fcf-c543-4e0a-a881-e09bb423c7e0",
+    "createdAt": "2026-11-15T05:40:57.696Z",
+    "appVersion": "phase9-20261115-r14",
+    "state": "learning-state-2026-11-15T05-40-57-580Z-83806ce24f03.sqlite.enc",
+    "discovery": "learning-state-2026-11-15T05-40-57-643Z-3e873777badc.sqlite.enc",
+    "stateSchema": 3,
+    "discoverySchema": 3,
+    "stateCounts": {
+      "accounts": 1,
+      "bookmarks": 0,
+      "discovery_state": 1,
+      "item_progress": 0,
+      "notes": 0,
+      "operational_metrics": 30,
+      "schema_migrations": 3,
+      "sessions": 1,
+      "stage_outcomes": 0,
+      "stage_task_progress": 0,
+      "users": 1
+    },
+    "discoveryCounts": {
+      "admin_actions": 98,
+      "discovery_migrations": 3,
+      "editions": 1,
+      "item_merges": 0,
+      "item_versions": 71,
+      "items": 70,
+      "jobs": 57,
+      "metric_observations": 0,
+      "model_receipts": 0,
+      "proposals": 0,
+      "settings": 3,
+      "source_records": 70,
+      "sources": 9,
+      "temporary_content": 16,
+      "worker_health": 8
+    },
+    "restoreVerifiedAt": null
+  },
+  "retention": {
+    "removed": 0,
+    "retained": 2
+  }
+}

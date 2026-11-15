@@ -7,3 +7,60 @@ services:
       GITHUB_CLIENT_ID: ${GITHUB_CLIENT_ID:?GITHUB_CLIENT_ID is required}
       GITHUB_CLIENT_SECRET: ${GITHUB_CLIENT_SECRET:?GITHUB_CLIENT_SECRET is required}
       ADMIN_GITHUB_IDS: ${ADMIN_GITHUB_IDS:-}
+      GITHUB_APP_ID: ${GITHUB_APP_ID:-}
+      GITHUB_APP_INSTALLATION_ID: ${GITHUB_APP_INSTALLATION_ID:-}
+      GITHUB_REPOSITORY: ${GITHUB_REPOSITORY:-}
+      GITHUB_BASE_BRANCH: ${GITHUB_BASE_BRANCH:-main}
+      GITHUB_APP_PRIVATE_KEY_PATH: ${GITHUB_APP_PRIVATE_KEY_PATH:-/run/secrets/github-app.pem}
+      FEISHU_ACCESS_TOKEN: ${FEISHU_ACCESS_TOKEN:-}
+      FEISHU_APP_ID: ${FEISHU_APP_ID:-}
+      FEISHU_APP_SECRET: ${FEISHU_APP_SECRET:-}
+
+    volumes:
+      - discovery:/data/discovery
+      - discovery-temp:/data/discovery-temp
+  worker:
+    image: ${APP_IMAGE:-agent-learning-hub:local}
+    restart: unless-stopped
+    init: true
+    command: ["npm", "run", "worker"]
+    environment:
+      NODE_ENV: production
+      DEPLOYMENT_MODE: cloud
+      DISCOVERY_DATABASE_PATH: /data/discovery/discovery.sqlite
+      DISCOVERY_TEMP_DIR: /data/discovery-temp
+      GITHUB_APP_ID: ${GITHUB_APP_ID:-}
+      GITHUB_APP_INSTALLATION_ID: ${GITHUB_APP_INSTALLATION_ID:-}
+      GITHUB_REPOSITORY: ${GITHUB_REPOSITORY:-}
+      GITHUB_BASE_BRANCH: ${GITHUB_BASE_BRANCH:-main}
+      GITHUB_APP_PRIVATE_KEY_PATH: ${GITHUB_APP_PRIVATE_KEY_PATH:-/run/secrets/github-app.pem}
+      DISCOVERY_MODEL_URL: ${DISCOVERY_MODEL_URL:-}
+      DISCOVERY_MODEL_KEY: ${DISCOVERY_MODEL_KEY:-}
+      DISCOVERY_MODEL_NAME: ${DISCOVERY_MODEL_NAME:-}
+      DISCOVERY_MODEL_TOKEN_LIMIT_FIELD: ${DISCOVERY_MODEL_TOKEN_LIMIT_FIELD:-max_tokens}
+      DISCOVERY_INPUT_PRICE: ${DISCOVERY_INPUT_PRICE:-}
+      DISCOVERY_OUTPUT_PRICE: ${DISCOVERY_OUTPUT_PRICE:-}
+      DISCOVERY_PRICE_CURRENCY: ${DISCOVERY_PRICE_CURRENCY:-CNY}
+      DISCOVERY_EXCHANGE_RATE: ${DISCOVERY_EXCHANGE_RATE:-}
+      FEISHU_ACCESS_TOKEN: ${FEISHU_ACCESS_TOKEN:-}
+      FEISHU_APP_ID: ${FEISHU_APP_ID:-}
+      FEISHU_APP_SECRET: ${FEISHU_APP_SECRET:-}
+    volumes:
+      - discovery:/data/discovery
+      - discovery-temp:/data/discovery-temp
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "--input-type=module",
+          "-e",
+          "import Database from 'better-sqlite3'; const db=new Database(process.env.DISCOVERY_DATABASE_PATH,{readonly:true}); const row=db.prepare('SELECT MAX(heartbeat_at) AS t FROM worker_health').get(); db.close(); process.exit(row.t && Date.now()-row.t<90000 ? 0 : 1)",
+        ]
+      interval: 30s
+      timeout: 5s
+      start_period: 20s
+      retries: 3
+volumes:
+  discovery:
+  discovery-temp:

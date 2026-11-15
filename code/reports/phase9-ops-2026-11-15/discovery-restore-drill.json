@@ -1,0 +1,120 @@
+{
+  "generatedAt": "2026-11-15T05:40:57.060Z",
+  "elapsedMs": 418,
+  "environment": {
+    "hostIdentity": "CICNBJSMCCD0160",
+    "containerHostname": "891b4b35a2f4",
+    "platform": "linux/arm64",
+    "node": "v24.22.3",
+    "appVersion": "phase9-20261115-r14"
+  },
+  "batchId": "cdd147f8-7585-4667-abb6-d30546d9b9e9",
+  "expectedCounts": {
+    "state": {
+      "accounts": 1,
+      "bookmarks": 0,
+      "discovery_state": 1,
+      "item_progress": 0,
+      "notes": 0,
+      "operational_metrics": 30,
+      "schema_migrations": 3,
+      "sessions": 1,
+      "stage_outcomes": 0,
+      "stage_task_progress": 0,
+      "users": 1
+    },
+    "discovery": {
+      "admin_actions": 98,
+      "discovery_migrations": 3,
+      "editions": 1,
+      "item_merges": 0,
+      "item_versions": 71,
+      "items": 70,
+      "jobs": 57,
+      "metric_observations": 0,
+      "model_receipts": 0,
+      "proposals": 0,
+      "settings": 3,
+      "source_records": 70,
+      "sources": 9,
+      "temporary_content": 16,
+      "worker_health": 8
+    }
+  },
+  "restoredCounts": {
+    "state": {
+      "accounts": 1,
+      "bookmarks": 0,
+      "discovery_state": 1,
+      "item_progress": 0,
+      "notes": 0,
+      "operational_metrics": 30,
+      "schema_migrations": 3,
+      "sessions": 1,
+      "stage_outcomes": 0,
+      "stage_task_progress": 0,
+      "users": 1
+    },
+    "discovery": {
+      "admin_actions": 98,
+      "discovery_migrations": 3,
+      "editions": 1,
+      "item_merges": 0,
+      "item_versions": 71,
+      "items": 70,
+      "jobs": 57,
+      "metric_observations": 0,
+      "model_receipts": 0,
+      "proposals": 0,
+      "settings": 3,
+      "source_records": 70,
+      "sources": 9,
+      "temporary_content": 0,
+      "worker_health": 0
+    }
+  },
+  "checks": [
+    {
+      "name": "共同批次记录两个库的全部业务表行数",
+      "passed": true
+    },
+    {
+      "name": "两个恢复库均通过完整性检查",
+      "passed": true
+    },
+    {
+      "name": "全部个人表与业务表按批次恢复，临时引用与心跳按恢复规则清空",
+      "passed": true
+    },
+    {
+      "name": "运行中任务租约已复位",
+      "passed": true
+    },
+    {
+      "name": "付费在途回执转为待核对",
+      "passed": true
+    },
+    {
+      "name": "两库外键和个人资讯引用完整",
+      "passed": true
+    },
+    {
+      "name": "错误口令必须拒绝",
+      "passed": true
+    },
+    {
+      "name": "篡改密文必须拒绝",
+      "passed": true
+    },
+    {
+      "name": "覆盖已有目标必须拒绝",
+      "passed": true
+    },
+    {
+      "name": "完整恢复与反向对照通过后才记录共同批次验证时间",
+      "passed": true
+    }
+  ],
+  "passed": 10,
+  "failed": 0
+}

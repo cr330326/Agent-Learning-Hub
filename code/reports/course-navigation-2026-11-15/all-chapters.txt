@@ -1,0 +1,1 @@
+All 110 chapters render and match the course order, current chapter and both pager boundaries.

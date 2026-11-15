@@ -1,0 +1,49 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.54kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:24-bookworm
+#2 DONE 0.3s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 291B done
+#3 DONE 0.0s
+
+#4 [dependencies 1/4] FROM docker.io/library/node:24-bookworm@sha256:9d266751ca3d7fdbe651c878ffd5ad0a42fed49a18c283509267c97f025b7496
+#4 resolve docker.io/library/node:24-bookworm@sha256:9d266751ca3d7fdbe651c878ffd5ad0a42fed49a18c283509267c97f025b7496 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 107.95kB 0.1s done
+#5 DONE 0.1s
+
+#6 [dependencies 3/4] COPY code/package.json code/package-lock.json ./code/
+#6 CACHED
+
+#7 [dependencies 4/4] RUN npm ci --prefix code
+#7 CACHED
+
+#8 [dependencies 2/4] WORKDIR /workspace
+#8 CACHED
+
+#9 [builder 1/2] COPY . .
+#9 CACHED
+
+#10 [builder 2/2] RUN npm run build --prefix code
+#10 CACHED
+
+#11 exporting to image
+#11 exporting layers
+#11 exporting layers 2.9s done
+#11 exporting manifest sha256:58938247258f2bc637483bddab28826bc0cc71d2ebe17684ad5f072ec77b7d98 done
+#11 exporting config sha256:ccb0510db59ff78e4ed4ca38a8e8981e038e6379c8cbac011b4031fb2d8febab done
+#11 exporting attestation manifest sha256:566ecea8df8873b9c0b3daee4639fdd151ec55540f9031b85b46ee30d89f9e0b 0.0s done
+#11 exporting manifest list sha256:39eeca21cb1749115e8d1653c630752051fb3311aeef423ba1997c9a005bb951 done
+#11 naming to docker.io/library/agent-learning-hub:course-navigation-builder-20261115-r1 done
+#11 unpacking to docker.io/library/agent-learning-hub:course-navigation-builder-20261115-r1
+#11 unpacking to docker.io/library/agent-learning-hub:course-navigation-builder-20261115-r1 10.3s done
+#11 DONE 13.3s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/y928zd9rci32l56r06osae20w

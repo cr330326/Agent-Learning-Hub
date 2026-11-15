@@ -1,0 +1,110 @@
+2026-11-15T08:32:21.0347855Z  [32m✓[39m modules/freshness/materials-check.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 29[2mms[22m[39m
+2026-11-15T08:32:21.5447398Z  [32m✓[39m modules/auth/better-auth.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 86[2mms[22m[39m
+2026-11-15T08:32:21.8888460Z  [32m✓[39m modules/reader/local-document-source.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 115[2mms[22m[39m
+2026-11-15T08:32:22.1328973Z  [32m✓[39m modules/learning-state/backup.test.ts [2m([22m[2m5 tests[22m[2m)[22m[33m 1205[2mms[22m[39m
+2026-11-15T08:32:22.1336767Z      [33m[2m✓[22m[39m keeps seven daily slots plus three weekly slots [33m 591[2mms[22m[39m
+2026-11-15T08:32:22.4292498Z  [31m❯[39m modules/catalog/catalog-api.test.ts [2m([22m[2m5 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[33m 312[2mms[22m[39m
+2026-11-15T08:32:22.4294524Z      [32m✓[39m uses the repository content directory by default[32m 99[2mms[22m[39m
+2026-11-15T08:32:22.4296566Z [31m     [31m×[31m loads Git-managed structured content without a database and filters items deterministically[39m[32m 50[2mms[22m[39m
+2026-11-15T08:32:22.4298365Z      [32m✓[39m finds individual records and returns undefined for missing IDs[32m 26[2mms[22m[39m
+2026-11-15T08:32:22.4299842Z      [32m✓[39m rejects invalid content with the source file and field path[32m 43[2mms[22m[39m
+2026-11-15T08:32:22.4302841Z      [32m✓[39m flattens array-based legacy imports and keeps unassigned project outcomes[32m 91[2mms[22m[39m
+2026-11-15T08:32:22.5846140Z  [32m✓[39m modules/observability/operator-command.integration.test.ts [2m([22m[2m6 tests[22m[2m)[22m[33m 3030[2mms[22m[39m
+2026-11-15T08:32:22.5860267Z      [33m[2m✓[22m[39m records a successful encrypted backup through the database CLI [33m 446[2mms[22m[39m
+2026-11-15T08:32:22.5861891Z      [33m[2m✓[22m[39m records a failed backup so the public snapshot raises a critical alert [33m 336[2mms[22m[39m
+2026-11-15T08:32:22.5863258Z      [33m[2m✓[22m[39m records a successful restore without writing monitoring data to the restored target [33m 483[2mms[22m[39m
+2026-11-15T08:32:22.5864750Z      [33m[2m✓[22m[39m records a failed restore without logging its passphrase [33m 470[2mms[22m[39m
+2026-11-15T08:32:22.5866712Z      [33m[2m✓[22m[39m records a successful content audit through its public CLI [33m 593[2mms[22m[39m
+2026-11-15T08:32:22.5868557Z      [33m[2m✓[22m[39m records a rejected material update as an anonymous warning [33m 701[2mms[22m[39m
+2026-11-15T08:32:22.7287487Z [90mstdout[2m | modules/learning-state/state-route.test.ts[2m > [22m[2mstate route[2m > [22m[2mdoes not expose a cloud user's state without a session
+2026-11-15T08:32:22.7293038Z [22m[39m{"type":"agent-learning-hub.operational-metric","event":"request_error","scope":"learning-state","outcome":"client-error","occurredAt":"2026-11-15T08:32:22.725Z"}
+2026-11-15T08:32:22.7294263Z 
+2026-11-15T08:32:22.7327031Z [90mstdout[2m | modules/learning-state/state-route.test.ts[2m > [22m[2mstate route[2m > [22m[2mrejects fabricated directory IDs when the catalog gate is armed
+2026-11-15T08:32:22.7329602Z [22m[39m{"type":"agent-learning-hub.operational-metric","event":"request_error","scope":"learning-state","outcome":"client-error","occurredAt":"2026-11-15T08:32:22.731Z"}
+2026-11-15T08:32:22.7330915Z 
+2026-11-15T08:32:22.7404174Z [90mstdout[2m | modules/learning-state/state-route.test.ts[2m > [22m[2mstate route[2m > [22m[2mrefuses request bodies above the hard size cap before persisting
+2026-11-15T08:32:22.7407150Z [22m[39m{"type":"agent-learning-hub.operational-metric","event":"request_error","scope":"learning-state","outcome":"client-error","occurredAt":"2026-11-15T08:32:22.739Z"}
+2026-11-15T08:32:22.7408445Z 
+2026-11-15T08:32:22.7426400Z  [32m✓[39m modules/learning-state/state-route.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 78[2mms[22m[39m
+2026-11-15T08:32:22.7927217Z  [32m✓[39m modules/reader/markdown.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 16[2mms[22m[39m
+2026-11-15T08:32:22.9605983Z  [32m✓[39m modules/auth/request-auth.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 44[2mms[22m[39m
+2026-11-15T08:32:23.0182697Z  [32m✓[39m modules/observability/privacy-monitor.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 24[2mms[22m[39m
+2026-11-15T08:32:23.0778901Z  [32m✓[39m modules/content-resolver/local-content-resolver.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 93[2mms[22m[39m
+2026-11-15T08:32:23.2438317Z  [32m✓[39m modules/learning-state/state-store.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 51[2mms[22m[39m
+2026-11-15T08:32:23.3067116Z  [32m✓[39m modules/observability/operator-monitor.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 45[2mms[22m[39m
+2026-11-15T08:32:23.4848297Z  [32m✓[39m modules/auth/github-oauth-route.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 53[2mms[22m[39m
+2026-11-15T08:32:23.7147971Z  [32m✓[39m modules/observability/page-view-route.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 31[2mms[22m[39m
+2026-11-15T08:32:23.7347352Z  [32m✓[39m modules/content-resolver/content-resolver.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 178[2mms[22m[39m
+2026-11-15T08:32:23.8071081Z  [32m✓[39m modules/learning-state/data-route.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 66[2mms[22m[39m
+2026-11-15T08:32:23.9292837Z  [32m✓[39m modules/content-resolver/local-file-access.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 32[2mms[22m[39m
+2026-11-15T08:32:24.0073307Z  [32m✓[39m modules/learning-state/database.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 37[2mms[22m[39m
+2026-11-15T08:32:24.0807211Z  [32m✓[39m modules/reader/document-source.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 91[2mms[22m[39m
+2026-11-15T08:32:24.2218563Z  [32m✓[39m modules/auth/github-oauth.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 47[2mms[22m[39m
+2026-11-15T08:32:24.2546584Z  [32m✓[39m modules/reader/local-image.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 49[2mms[22m[39m
+2026-11-15T08:32:24.2837378Z  [32m✓[39m modules/learning-state/data-export.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 19[2mms[22m[39m
+2026-11-15T08:32:24.4533814Z  [32m✓[39m modules/auth/rate-limit.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 34[2mms[22m[39m
+2026-11-15T08:32:24.4628988Z  [32m✓[39m modules/catalog/item-redirect.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 4[2mms[22m[39m
+2026-11-15T08:32:24.5753039Z  [32m✓[39m modules/catalog/catalog-summary.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 90[2mms[22m[39m
+2026-11-15T08:32:24.6408737Z  [32m✓[39m modules/runtime/request-host.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 4[2mms[22m[39m
+2026-11-15T08:32:24.7797088Z  [32m✓[39m modules/health-route.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 38[2mms[22m[39m
+2026-11-15T08:32:24.7993286Z  [32m✓[39m modules/auth/local-auth.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 24[2mms[22m[39m
+2026-11-15T08:32:24.8126888Z  [32m✓[39m modules/runtime/runtime-config.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 5[2mms[22m[39m
+2026-11-15T08:32:24.9284420Z  [32m✓[39m modules/auth/better-auth-route.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 26[2mms[22m[39m
+2026-11-15T08:32:24.9311553Z 
+2026-11-15T08:32:24.9312733Z [31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 1 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+2026-11-15T08:32:24.9313184Z 
+2026-11-15T08:32:24.9315271Z [41m[1m FAIL [22m[49m modules/catalog/catalog-api.test.ts[2m > [22mCatalog API[2m > [22mloads Git-managed structured content without a database and filters items deterministically
+2026-11-15T08:32:24.9321019Z [31m[1mAssertionError[22m: expected [ { …(17) }, …(384) ] to have a length of 384 but got 385[39m
+2026-11-15T08:32:24.9321599Z 
+2026-11-15T08:32:24.9321817Z [32m- Expected[39m
+2026-11-15T08:32:24.9322338Z [31m+ Received[39m
+2026-11-15T08:32:24.9322669Z 
+2026-11-15T08:32:24.9322898Z [32m- 384[39m
+2026-11-15T08:32:24.9323307Z [31m+ 385[39m
+2026-11-15T08:32:24.9323601Z 
+2026-11-15T08:32:24.9324149Z [36m [2m❯[22m modules/catalog/catalog-api.test.ts:[2m54:22[22m[39m
+2026-11-15T08:32:24.9366127Z     [90m 52|[39m     })[33m;[39m
+2026-11-15T08:32:24.9367207Z     [90m 53|[39m
+2026-11-15T08:32:24.9368224Z     [90m 54|[39m     [34mexpect[39m(allItems)[33m.[39m[34mtoHaveLength[39m([34m384[39m)[33m;[39m
+2026-11-15T08:32:24.9369173Z     [90m   |[39m                      [31m^[39m
+2026-11-15T08:32:24.9370234Z     [90m 55|[39m     [34mexpect[39m(allItems[33m.[39m[34mmap[39m(({ id }) [33m=>[39m id))[33m.[39m[34mtoEqual[39m(
+2026-11-15T08:32:24.9371840Z     [90m 56|[39m       [[33m...[39mallItems[33m.[39m[34mmap[39m(({ id }) [33m=>[39m id)][33m.[39m[34msort[39m((left[33m,[39m right) [33m=>[39m
+2026-11-15T08:32:24.9372670Z 
+2026-11-15T08:32:24.9373087Z [31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯[22m[39m
+2026-11-15T08:32:24.9373488Z 
+2026-11-15T08:32:24.9373531Z 
+2026-11-15T08:32:24.9374416Z [2m Test Files [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m37 passed[39m[22m[90m (38)[39m
+2026-11-15T08:32:24.9375755Z [2m      Tests [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m176 passed[39m[22m[90m (177)[39m
+2026-11-15T08:32:24.9376918Z [2m   Start at [22m 08:32:18
+2026-11-15T08:32:24.9377930Z [2m   Duration [22m 5.94s[2m (transform 762ms, setup 0ms, import 4.30s, tests 7.53s, environment 6ms)[22m
+2026-11-15T08:32:24.9380040Z 
+2026-11-15T08:32:24.9392772Z 
+2026-11-15T08:32:24.9414871Z ##[error]AssertionError: expected [ { …(17) }, …(384) ] to have a length of 384 but got 385
+
+- Expected
++ Received
+
+- 384
++ 385
+
+ ❯ modules/catalog/catalog-api.test.ts:54:22
+
+
+2026-11-15T08:32:24.9879673Z ##[error]Process completed with exit code 1.
+2026-11-15T08:32:25.0059769Z Post job cleanup.
+2026-11-15T08:32:25.0891269Z [command]/usr/bin/git version
+2026-11-15T08:32:25.0927521Z git version 2.56.1
+2026-11-15T08:32:25.0958238Z Temporarily overriding HOME='/home/runner/work/_temp/cc1ca594-9de3-4cf2-826e-124963bfb1ee' before making global git config changes
+2026-11-15T08:32:25.0959174Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-15T08:32:25.0962885Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Agent-Learning-Hub/Agent-Learning-Hub
+2026-11-15T08:32:25.0996474Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-15T08:32:25.1026075Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-15T08:32:25.1262594Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-15T08:32:25.1283862Z http.https://github.com/.extraheader
+2026-11-15T08:32:25.1292202Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-15T08:32:25.1321913Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-15T08:32:25.1543629Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-15T08:32:25.1569710Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-15T08:32:25.1918345Z Cleaning up orphan processes
+2026-11-15T08:32:25.2257842Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+

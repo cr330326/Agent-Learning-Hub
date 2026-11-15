@@ -219,11 +219,15 @@ export async function GET(request: Request): Promise<Response> {
     );
   }
   try {
+    const publicBaseUrl =
+      process.env.BETTER_AUTH_URL?.trim() ||
+      process.env.APP_URL?.trim() ||
+      request.url;
     const response = await getBetterAuth().api.signInSocial({
       body: {
         provider: "github",
-        callbackURL: new URL("/learning", request.url).toString(),
-        errorCallbackURL: new URL("/login", request.url).toString(),
+        callbackURL: new URL("/learning", publicBaseUrl).toString(),
+        errorCallbackURL: new URL("/login", publicBaseUrl).toString(),
       },
       headers: request.headers,
       asResponse: true,

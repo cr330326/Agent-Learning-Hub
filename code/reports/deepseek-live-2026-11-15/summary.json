@@ -1,0 +1,43 @@
+{
+  "test": "real-production-summary-pipeline",
+  "date": "2026-11-15",
+  "elapsedMs": 4963,
+  "network": {
+    "http": 200,
+    "model": "deepseek-flash",
+    "usage": {
+      "prompt_tokens": 509,
+      "completion_tokens": 871,
+      "total_tokens": 1380,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 524
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 509
+    },
+    "finishReason": "stop"
+  },
+  "jobState": "completed",
+  "errorCode": null,
+  "processingState": "ready",
+  "summarySchemaValid": true,
+  "generatedTitle": "Agent 工具调用回归测试的合成实践：固定测试集与幂等重试约束",
+  "topics": ["评测与生产实践", "工具与 Skills", "Agent 架构"],
+  "budgetMicros": {
+    "day": "2026-11-15",
+    "limit": 5000000,
+    "spent": 3993,
+    "reserved": 0,
+    "remaining": 4996007
+  },
+  "configuredPrice": {
+    "input": 1,
+    "output": 4,
+    "currency": "CNY",
+    "exchangeRate": 1
+  },
+  "isolated": true
+}

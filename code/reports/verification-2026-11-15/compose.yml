@@ -1,0 +1,55 @@
+services:
+  cloud:
+    image: agent-learning-hub:verification-20261115-r14
+    environment:
+      DEPLOYMENT_MODE: cloud
+      STATE_DATABASE_PATH: /data/state/learning-state.sqlite
+      DISCOVERY_DATABASE_PATH: /data/discovery/discovery.sqlite
+      DISCOVERY_TEMP_DIR: /data/discovery-temp
+      BETTER_AUTH_SECRET: verification-only-20261115-do-not-deploy-secret
+      BETTER_AUTH_URL: http://127.0.0.1:3322
+      GITHUB_CLIENT_ID: verification-client
+      GITHUB_CLIENT_SECRET: verification-secret
+      ADMIN_GITHUB_IDS: '4242'
+      FEISHU_APP_ID: ${FEISHU_APP_ID:-}
+      FEISHU_APP_SECRET: ${FEISHU_APP_SECRET:-}
+    ports: ['127.0.0.1:3322:3000']
+    volumes:
+      - cloud-state:/data/state
+      - discovery:/data/discovery
+      - temp:/data/discovery-temp
+  local:
+    image: agent-learning-hub:verification-20261115-r14
+    environment:
+      DEPLOYMENT_MODE: local
+      LOCAL_BIND_HOST: 127.0.0.1
+      LOCAL_MATERIAL_ROOT: /data/local-courses
+    ports: ['127.0.0.1:3323:3000']
+    volumes:
+      - local-state:/data/state
+      - /Users/vsh9p8q/AI/Agent-Learning-Hub/local-courses:/data/local-courses:ro
+  worker:
+    image: agent-learning-hub:verification-20261115-r14
+    command: ['npm','run','worker']
+    healthcheck:
+      test: ['CMD', 'node', '--input-type=module', '-e', "import Database from 'better-sqlite3'; const db=new Database(process.env.DISCOVERY_DATABASE_PATH,{readonly:true}); const row=db.prepare('SELECT MAX(heartbeat_at) AS t FROM worker_health').get(); db.close(); process.exit(row.t && Date.now()-row.t<90000 ? 0 : 1)"]
+      interval: 10s
+      start_period: 10s
+      timeout: 5s
+      retries: 3
+    environment:
+      DEPLOYMENT_MODE: cloud
+      DISCOVERY_DATABASE_PATH: /data/discovery/discovery.sqlite
+      DISCOVERY_TEMP_DIR: /data/discovery-temp
+    volumes:
+      - discovery:/data/discovery
+      - temp:/data/discovery-temp
+volumes:
+  cloud-state:
+    name: alh-verification-20261115_cloud-state-r10
+  local-state:
+    name: alh-verification-20261115_local-state-r10
+  discovery:
+    name: alh-verification-20261115_discovery-r10
+  temp:
+    name: alh-verification-20261115_temp-r10

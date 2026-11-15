@@ -1,0 +1,43 @@
+{
+  "generatedAt": "2026-11-15T09:07:55.875104+00:00",
+  "image": "agent-learning-hub:verification-20261115-r13",
+  "imageId": "sha256:a0c982c0c1f539c0f5c0d2f7d070743d47142294c909053a604b816698c68074",
+  "change": "日报日期独立显示，375px 不拆行；增加点击回归断言",
+  "cloudCheck": {
+    "unitTests": 222,
+    "toolTests": 11,
+    "passed": true
+  },
+  "localCheck": {
+    "unitTests": 222,
+    "toolTests": 11,
+    "passed": true
+  },
+  "containerE2E": {
+    "cloudChecks": 47,
+    "localLifecyclePassed": true,
+    "disposableVolumes": "r13",
+    "serverContainersRemoved": true,
+    "volumesPreserved": true
+  },
+  "uiCloud": {
+    "screenshots": 63,
+    "findings": 0,
+    "contactSheetsViewed": 3
+  },
+  "focusedScreenshots": {
+    "count": 5,
+    "allViewed": true
+  },
+  "functionalCloud": {
+    "passed": 26,
+    "modeNotApplicable": 3,
+    "failed": 0
+  },
+  "functionalLocal": {
+    "passed": 28,
+    "failed": 0
+  },
+  "dailyAccountTouched": false,
+  "remotePullRequestChanged": false
+}

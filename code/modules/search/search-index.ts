@@ -10,7 +10,8 @@ import {
   createLocalContentResolver,
 } from "../content-resolver/content-resolver";
 
-export type SearchDocumentKind = "stage" | "item" | "project" | "local-chapter";
+export type SearchDocumentKind =
+  "stage" | "item" | "project" | "local-chapter" | "news";
 
 export type SearchDocument = {
   id: string;

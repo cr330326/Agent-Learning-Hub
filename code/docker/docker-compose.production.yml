@@ -8,3 +8,7 @@ services:
 volumes:
   learning-state:
     name: ${STATE_VOLUME_NAME:?STATE_VOLUME_NAME is required}
+  discovery:
+    name: ${DISCOVERY_VOLUME_NAME:-${COMPOSE_PROJECT_NAME:-agent-learning-hub-production}_discovery}
+  discovery-temp:
+    name: ${DISCOVERY_TEMP_VOLUME_NAME:-${COMPOSE_PROJECT_NAME:-agent-learning-hub-production}_discovery-temp}

@@ -1,0 +1,63 @@
+
+ RUN  v4.1.10 /Users/vsh9p8q/AI/Agent-Learning-Hub/code
+
+ ❯ modules/content-resolver/local-content-resolver.test.ts (7 tests | 2 failed) 139ms
+   × keeps a multi-chapter course readable when only its main file is missing 12ms
+   × resolves an explicit missing chapter to that chapter's source, not another project 16ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  modules/content-resolver/local-content-resolver.test.ts > keeps a multi-chapter course readable when only its main file is missing
+AssertionError: expected { kind: 'unavailable', …(2) } to match object { kind: 'local-document', …(2) }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "chapter": "chapters/second.md",
+-   "href": "/read/legacy-course-001",
+-   "kind": "local-document",
++   "kind": "unavailable",
+  }
+
+ ❯ modules/content-resolver/local-content-resolver.test.ts:144:71
+    142|   await writeFile(join(localRoot,"chapters/second.md"),"# 第二章");
+    143|   await writeFile(join(localRoot,"chapters/third.md"),"# 第三章");
+    144|   expect(await createLocalContentResolver({localRoot}).resolve(item)).…
+       |                                                                       ^
+    145| });
+    146|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  modules/content-resolver/local-content-resolver.test.ts > resolves an explicit missing chapter to that chapter's source, not another project
+AssertionError: expected { kind: 'local-document', …(2) } to match object { kind: 'external-link', …(1) }
+(1 matching property omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "href": "https://example.org/correct-chapter",
+-   "kind": "external-link",
++   "href": "/read/legacy-course-001",
++   "kind": "local-document",
+  }
+
+ ❯ modules/content-resolver/local-content-resolver.test.ts:152:102
+    150|     references:[{label:"外部章节",localPath:"missing/chapter.md",sourceUrl…
+    151|   await addLocalFixture(item);
+    152|   expect(await createLocalContentResolver({localRoot}).resolve(item,{c…
+       |                                                                                                      ^
+    153|   expect((await createLocalContentResolver({localRoot}).resolve(item,{…
+    154| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 5 passed (7)
+   Start at  15:35:14
+   Duration  702ms (transform 101ms, setup 0ms, import 271ms, tests 139ms, environment 0ms)
+

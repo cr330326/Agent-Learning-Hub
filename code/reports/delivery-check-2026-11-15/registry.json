@@ -1,0 +1,10 @@
+{
+  "checkedAt": "2026-11-15T09:25:00.305015+00:00",
+  "image": "ghcr.io/cr330326/agent-learning-hub:v0.1.0",
+  "credentials": "anonymous-only",
+  "imagePulled": false,
+  "published": false,
+  "manifestInitialStatus": 401,
+  "anonymousTokenStatus": 403,
+  "interpretation": "anonymous access not verified; status alone does not prove image absence"
+}

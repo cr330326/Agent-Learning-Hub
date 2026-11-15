@@ -1,0 +1,43 @@
+{
+  "containers": [
+    {
+      "name": "agent-learning-hub-trial-worker-1",
+      "image": "agent-learning-hub:verification-20261115-r14",
+      "state": "running",
+      "ports": "3000/tcp"
+    },
+    {
+      "name": "agent-learning-hub-trial-cloud-1",
+      "image": "agent-learning-hub:verification-20261115-r14",
+      "state": "running",
+      "ports": "127.0.0.1:3002->3000/tcp"
+    },
+    {
+      "name": "agent-learning-hub-trial-local-1",
+      "image": "agent-learning-hub:verification-20261115-r14",
+      "state": "running",
+      "ports": "127.0.0.1:3003->3000/tcp"
+    }
+  ],
+  "images": [
+    {
+      "Containers": "3",
+      "CreatedAt": "2026-11-15 17:17:14 +0800 CST",
+      "CreatedSince": "2 hours ago",
+      "Digest": "<none>",
+      "ID": "4b1f03a36a44",
+      "Repository": "agent-learning-hub",
+      "SharedSize": "N/A",
+      "Size": "1.21GB",
+      "Tag": "verification-20261115-r14",
+      "UniqueSize": "N/A"
+    }
+  ],
+  "volumes": [
+    "agent-learning-hub-local_learning-state",
+    "alh-cloud-real_discovery",
+    "alh-cloud-real_discovery-temp",
+    "alh-cloud-real_learning-state"
+  ],
+  "unrelatedOriginalContainersPreserved": true
+}

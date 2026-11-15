@@ -1,0 +1,122 @@
+{
+  "local": {
+    "integrity": "ok",
+    "tables": [
+      {
+        "table": "accounts",
+        "rows": 0,
+        "digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      {
+        "table": "bookmarks",
+        "rows": 0,
+        "digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      {
+        "table": "discovery_state",
+        "rows": 0,
+        "digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      {
+        "table": "item_progress",
+        "rows": 2,
+        "digest": "8b85453d34bcd7be9a2413f704aba9273a61e5dc7eb7f354ef4de2d912c98dad"
+      },
+      {
+        "table": "notes",
+        "rows": 0,
+        "digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      {
+        "table": "operational_metrics",
+        "rows": 4,
+        "digest": "46f0b8ff36563cefa74f88a884d4f3e18bf4a5d225ce6d910fc0825d28076958"
+      },
+      {
+        "table": "schema_migrations",
+        "rows": 3,
+        "digest": "2ccfe4c5920d325027b58b3d518e9247916532d838c25de16d897ab2ebcd9f73"
+      },
+      {
+        "table": "sessions",
+        "rows": 0,
+        "digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      {
+        "table": "stage_outcomes",
+        "rows": 0,
+        "digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      {
+        "table": "stage_task_progress",
+        "rows": 0,
+        "digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      {
+        "table": "users",
+        "rows": 1,
+        "digest": "62d95a7001cf1793956de0b51554d7bba3f2932ad15f539d6ed615bb18eb38c0"
+      }
+    ]
+  },
+  "cloud": {
+    "integrity": "ok",
+    "tables": [
+      {
+        "table": "accounts",
+        "rows": 1,
+        "digest": "1072ad931f3c2f0d7aa880f6a2cd0580e4ccab31d9c94a897a89449d29e5bf7d"
+      },
+      {
+        "table": "bookmarks",
+        "rows": 0,
+        "digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      {
+        "table": "discovery_state",
+        "rows": 0,
+        "digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      {
+        "table": "item_progress",
+        "rows": 1,
+        "digest": "aa2cdd740a201538260504ee8e6dcc0f235e202de2b2ae134b4981ef392010a6"
+      },
+      {
+        "table": "notes",
+        "rows": 0,
+        "digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      {
+        "table": "operational_metrics",
+        "rows": 25,
+        "digest": "105f052ad6fbe6aa75f1e59ebc5e884756bea0df3af9c5248c5b57290f666e03"
+      },
+      {
+        "table": "schema_migrations",
+        "rows": 3,
+        "digest": "2e25feb26218ba41d5782b694f7715251b861c29e40eaa1fe465197034f32699"
+      },
+      {
+        "table": "sessions",
+        "rows": 3,
+        "digest": "a5c76c7d3748c1914e8e834e3faf271958f6e9815b68906df0b8d40701fa0daf"
+      },
+      {
+        "table": "stage_outcomes",
+        "rows": 0,
+        "digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      {
+        "table": "stage_task_progress",
+        "rows": 0,
+        "digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      {
+        "table": "users",
+        "rows": 1,
+        "digest": "25ab87f01282562e4d0dd5639a00b37f4ec9d09006ed799bd5570556fe16a179"
+      }
+    ]
+  }
+}

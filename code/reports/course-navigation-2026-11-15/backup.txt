@@ -1,0 +1,2 @@
+Verified paired backup: daily-cloud
+Verified single backup: daily-local

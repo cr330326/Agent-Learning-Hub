@@ -1,3 +1,4 @@
+import { verifyDiscoveryFlow } from "./discovery-flow.mts";
 // GATE-04 for Cloud Mode: log in, then drive notes, bookmarks, outcomes,
 // export and account deletion across the real HTTP boundary.
 //
@@ -370,6 +371,15 @@ for (const [label, response] of [
   );
 }
 
+if (process.env.DISCOVERY_DATABASE_PATH) {
+  await verifyDiscoveryFlow({
+    request,
+    csrf: csrfToken!,
+    check,
+    databaseFilename: process.env.DISCOVERY_DATABASE_PATH,
+  });
+}
+
 const snapshot = await request("/api/state");
 const snapshotPayload = (await snapshot.json()) as {
   state?: {
@@ -474,6 +484,7 @@ try {
     "stage_outcomes",
     "item_progress",
     "sessions",
+    "discovery_state",
   ].map((table) => {
     const row = verifier.handle
       .prepare(`SELECT COUNT(*) AS total FROM ${table} WHERE user_id = ?`)

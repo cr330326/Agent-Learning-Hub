@@ -8,14 +8,23 @@
 | ------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------- |
 | 查看 Phase 7 任务拆解、本地优先顺序和交付证据     | [Phase 7 交付、部署与运维](./phase-7-delivery-deployment-operations.md) | 只读核对，不执行外部写入            |
 | 在自己电脑上跑起来读素材、学习、改代码            | [本机手动运行本地服务](./local-manual.md)                               | `npm run dev:local` 或本机 Docker   |
+| 当前 Mac 使用已有镜像同时试运行 Local / Cloud | [已有镜像试运行](./local-manual.md#当前-mac直接运行已有镜像) | `code/docker/docker-compose.mac-trial.yml` |
 | 从空白 Ubuntu 主机逐条安装、配置、上线和恢复      | [完全手工生产部署与运维](./production-manual.md)                        | 人工执行每一条命令并保存演练证据    |
 | 腾讯云 Lighthouse 专用主机，通过本机 SSH 自动部署 | [Lighthouse 自动化部署](./lighthouse-automation.md)                     | `code/scripts/lighthouse-deploy.sh` |
 
 Phase 7 文档是计划、任务和证据的统一入口，不是第四条部署路径。后两份文档做的是**同一件事**，只是一份逐条手工、一份脚本化。第一次上线建议先通读手工文档理解每一步在做什么，再用自动化脚本执行——脚本失败时你需要知道它卡在手工流程的哪一步。两者的步骤对应关系见 [production-manual 第 16 节](./production-manual.md#16-与自动化脚本的对应关系)。
 
+## 本机环境文件
+
+本机部署配置使用 `/Users/vsh9p8q/.agent-learnning/environments/local/.env`。当前工作区根目录 `.env` 是指向该文件的符号链接，既有 Docker 脚本继续读取根目录入口，实际配置只保存一份。环境文件保持 `0600`，修改时直接编辑真实路径。云主机继续遵循两份生产 Runbook 的环境文件布局。
+
+2026-11-15 已验证 `deepseek-flash` 与完整接口 `https://api.deepseek.com/chat/completions`。建议按[官方价格](https://api-docs.deepseek.com/zh-cn/quick_start/pricing/)中的高峰、输入缓存未命中单价估算预算：输入 `2`、输出 `8`，单位为人民币／百万 tokens，币种 `CNY`、汇率 `1`。本机当日实际配置仍为 `1`/`4`，在高峰会低估费用，未自动改价或重载日常 worker，见[调用验收](../acceptance/deepseek-live-2026-11-15.md)。预算只支持一组固定单价，调整时应考虑时段与缓存优惠。Key 由维护者填写；修改文件后，需要重建 worker 容器的环境配置才会生效。
+
 ## 脚本按运行位置分类
 
-`code/scripts/` 下 14 个脚本，按**在哪台机器上执行**和**作用于什么**分三类。区分这两件事很重要：`image-release.sh` 和 `lighthouse-deploy.sh` 都在你自己电脑上跑，但作用对象是云端。
+模型输出限额字段默认 `DISCOVERY_MODEL_TOKEN_LIMIT_FIELD=max_tokens`；Lighthouse 的 `configure` 传递该允许的配置字段，供应商要求另一种参数时按两份 Runbook 显式覆盖。
+
+`code/scripts/` 下的脚本，按**在哪台机器上执行**和**作用于什么**分三类。区分这两件事很重要：`image-release.sh` 和 `lighthouse-deploy.sh` 都在你自己电脑上跑，但作用对象是云端。
 
 ### 甲、本机运行、作用于本机（学习与开发）
 
@@ -26,11 +35,11 @@ Phase 7 文档是计划、任务和证据的统一入口，不是第四条部署
 | —                              | `npm run dev:local`                     | **学习和读素材的默认方式**，热更新                                                 | Node 22+、`local-courses`    |
 | —                              | `npm run dev:cloud`                     | 公开视角预览，第三方素材只给出处                                                   | Node 22+                     |
 | `audit-content.ts`             | `npm run audit:content`                 | 内容 schema、来源、许可证、本地路径校验                                            | 进 `npm run check`           |
-| `materials.ts`                 | `npm run materials` / `audit:materials` | 素材新鲜度、目录漂移对账、安全更新、重索引                                         | `local-courses`、git         |
+| `materials.ts`                 | `npm run materials` / `audit:materials` | 素材新鲜度、漂移对账、安全更新、重索引；搬迁同步章节转发并在写入前校验目录           | `local-courses`、git         |
 | `audit-content-boundaries.mjs` | `npm run audit:boundaries`              | Git/Docker/CI 的内容边界审计                                                       | 也在 CI 跑                   |
 | `baseline-report.mjs`          | `npm run audit:baseline`                | 旧站能力基线（迁移期历史工具）                                                     | `learning-site/`             |
 | `ui-review.mjs`                | `npm run audit:ui`                      | 三档视口版式走查                                                                   | **运行中的服务**、Playwright |
-| `functional-regression.mjs`    | `npm run audit:functional`              | 真实点击的功能回归                                                                 | **运行中的服务**、Playwright |
+| `functional-regression.mjs`    | `npm run audit:functional`              | 点击回归含整课旧链接、上下节、长目录键盘操作、日报冻结版本跳转与模式隔离，可选 `--edition-fixture` 验证冻结前后人工更正；可选一次性管理员会话与停用飞书来源，验证字段读取、映射、预览及保存 | **运行中的服务**、Playwright |
 | `restore-drill.ts`             | `npm run drill:restore`                 | 备份→干净环境恢复演练，附错误口令/篡改/覆盖三组反向对照                            | `BACKUP_PASSPHRASE`          |
 | `convert-legacy-content.mjs`   | ~~`npm run convert:legacy`~~            | **已废弃**，见 [ADR 0006](../adr/0006-catalog-is-hand-maintained.md)，仅作溯源保留 | —                            |
 
@@ -50,13 +59,16 @@ Phase 7 文档是计划、任务和证据的统一入口，不是第四条部署
 
 ### 丙、作用于云端
 
-| 脚本                   | 在哪执行   | 作用于        | 用途                                                                     |
-| ---------------------- | ---------- | ------------- | ------------------------------------------------------------------------ |
-| `image-release.sh`     | **本机**   | 镜像仓库      | 交叉构建 `linux/amd64` 并推送固定版本，拒绝 `latest`                     |
-| `lighthouse-deploy.sh` | **本机**   | 云主机（SSH） | 预检、装机、传秘密、部署、备份、恢复演练、回滚、验证、状态、日志         |
-| `docker-deploy.sh`     | **云主机** | 云主机        | `release` 模式跑固定镜像；由 `lighthouse-deploy.sh` 打包上传             |
-| `database.ts`          | **云主机** | 生产 SQLite   | 加密备份与恢复；在维护容器里执行，不用 `cp` 复制运行中的库               |
-| `restore-drill.ts`     | **云主机** | 生产 SQLite   | 由 `lighthouse-deploy.sh restore-drill` 在维护容器里执行；只读挂载状态卷 |
+| 脚本                   | 在哪执行                     | 作用于                 | 用途                                                                                   |
+| ---------------------- | ---------------------------- | ---------------------- | -------------------------------------------------------------------------------------- |
+| `image-release.sh`     | **本机**                     | 镜像仓库               | 交叉构建 `linux/amd64` 并推送固定版本，拒绝 `latest`                                   |
+| `lighthouse-deploy.sh` | **本机**                     | 云主机（SSH）          | 预检、装机、按允许清单传配置与秘密（含模型输出限额字段）、部署、备份、恢复演练、回滚、验证、状态、日志 |
+| `docker-deploy.sh`     | **云主机**                   | 云主机                 | `release` 模式跑固定镜像；由 `lighthouse-deploy.sh` 打包上传                           |
+| `cloud-maintenance.sh` | **云主机或本机 Docker 主机** | 已部署命名卷           | 使用实际部署镜像执行双库备份或恢复演练，自动识别两个源卷                               |
+| `discovery-backup.ts`  | **云主机或本机维护容器**     | 两个 SQLite 库         | `db:backup:all` / `db:restore:all` / `db:drill:all`，共同批次备份、保留、恢复与演练    |
+| `discovery-worker.ts`  | **云主机或本机 Cloud 容器**  | 资讯 SQLite 与公开信源 | `npm run worker`，运行采集、摘要与出刊持久队列；`DISCOVERY_AGGREGATION_PRESETS=1` 首次初始化已确认的飞书及 openspace 聚合来源；构建时由 `build:worker` 生成同版本产物 |
+| `database.ts`          | **云主机**                   | 生产 SQLite            | 加密备份与恢复；在维护容器里执行，不用 `cp` 复制运行中的库                             |
+| `restore-drill.ts`     | **云主机**                   | 生产 SQLite            | 兼容旧单库发布；资讯发布使用 `cloud-maintenance.sh drill` 的双库演练                   |
 
 `restore-drill.ts` 同时出现在甲、丙两类：本机跑的是合成 fixture（不需要任何生产数据，任何人都能复现），云主机跑的是**当前生产数据**的真实演练。两者跑的是同一段代码和同一组反向对照。
 
@@ -71,7 +83,7 @@ Phase 7 文档是计划、任务和证据的统一入口，不是第四条部署
 - 只部署固定版本标签或 `sha256` digest，禁止 `latest`。
 - Cloud 镜像不包含、不挂载、不代理 `local-courses/`。
 - 应用端口仅监听 `127.0.0.1`；公网只开放反向代理的 `80/443`。
-- SQLite、WAL 和共享内存文件位于同一个持久化卷；运行中不得只复制主数据库文件。漏掉 `-shm` 的后果已实测：`-wal` 非空而 `-shm` 缺失时，只读挂载下打开数据库会直接 `SQLITE_CANTOPEN`，备份和演练一起失败。始终走 `db:backup`（内部用 SQLite 在线备份 API）。
+- SQLite、WAL 和共享内存文件位于同一个持久化卷；运行中不得只复制主数据库文件。漏掉 `-shm` 的后果已实测：`-wal` 非空而 `-shm` 缺失时，只读挂载下打开数据库会直接 `SQLITE_CANTOPEN`，备份和演练一起失败。单库兼容入口为 `db:backup`；资讯发布使用 `cloud-maintenance.sh backup` 或 `db:backup:all`，均调用 SQLite 在线备份 API。双库工具需要短暂取得两个写锁，挂载两库可写但不修改业务记录；临时原文卷不进入备份。
 - 升级前执行项目原生的一致性加密备份；每日备份还必须复制到服务器之外。
 - 应用回滚与数据库恢复是两个不同动作。旧镜像能否读取新 schema 必须先确认；不能确认时恢复升级前备份到新卷。
 - Lighthouse 系统盘快照是额外的主机级保护，不替代应用一致性备份、异地副本或恢复演练。

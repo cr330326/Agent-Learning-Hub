@@ -1,0 +1,20 @@
+time="2026-11-15T17:04:00+08:00" level=warning msg="volume \"alh-verification-20261115_cloud-state-r10\" already exists but was not created by Docker Compose. Use `external: true` to use an existing volume"
+time="2026-11-15T17:04:00+08:00" level=warning msg="volume \"alh-verification-20261115_discovery-r10\" already exists but was not created by Docker Compose. Use `external: true` to use an existing volume"
+ Container alh-verification-20261115-cloud-1 Recreate 
+ Container alh-verification-20261115-worker-1 Recreate 
+ Container alh-verification-20261115-local-1 Recreate 
+ Container alh-verification-20261115-worker-1 Recreated 
+ Container alh-verification-20261115-local-1 Recreated 
+ Container alh-verification-20261115-cloud-1 Recreated 
+ Container alh-verification-20261115-cloud-1 Starting 
+ Container alh-verification-20261115-local-1 Starting 
+ Container alh-verification-20261115-worker-1 Starting 
+ Container alh-verification-20261115-cloud-1 Started 
+ Container alh-verification-20261115-worker-1 Started 
+ Container alh-verification-20261115-local-1 Started 
+ Container alh-verification-20261115-local-1 Waiting 
+ Container alh-verification-20261115-worker-1 Waiting 
+ Container alh-verification-20261115-cloud-1 Waiting 
+ Container alh-verification-20261115-local-1 Healthy 
+ Container alh-verification-20261115-worker-1 Healthy 
+ Container alh-verification-20261115-cloud-1 Healthy 

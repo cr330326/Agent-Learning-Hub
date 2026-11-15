@@ -1,0 +1,563 @@
+{
+  "date": "2026-11-15",
+  "ownerId": "legacy-course-017",
+  "documentRoot": "Learning/learn-opencode/docs",
+  "authoritativeOutline": "local-courses/Learning/learn-opencode/docs/.vitepress/config.mts",
+  "outlineSha256": "e3ddcbe61ccfd98140ec446d25bcc13b4029bfeae274b535031c389dade3418d",
+  "selection": "Chinese teaching sidebar in author order, excluding release changelog",
+  "chapters": [
+    {
+      "label": "快速起步 · 阶段导读",
+      "localPath": "Learning/learn-opencode/docs/1-start/index.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/index.md"
+    },
+    {
+      "label": "快速起步 · 1.1 这是什么",
+      "localPath": "Learning/learn-opencode/docs/1-start/01-intro.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/01-intro.md"
+    },
+    {
+      "label": "快速起步 · 安装：5 分钟搞定",
+      "localPath": "Learning/learn-opencode/docs/1-start/02-install.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/02-install.md"
+    },
+    {
+      "label": "快速起步 · 备用安装方式",
+      "localPath": "Learning/learn-opencode/docs/1-start/02a-install-alternatives.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/02a-install-alternatives.md"
+    },
+    {
+      "label": "快速起步 · 装不上怎么办？",
+      "localPath": "Learning/learn-opencode/docs/1-start/02b-install-troubleshoot.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/02b-install-troubleshoot.md"
+    },
+    {
+      "label": "快速起步 · 1.3 网络配置",
+      "localPath": "Learning/learn-opencode/docs/1-start/03-network.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/03-network.md"
+    },
+    {
+      "label": "快速起步 · 总览：第一次对话",
+      "localPath": "Learning/learn-opencode/docs/1-start/04-connect.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/04-connect.md"
+    },
+    {
+      "label": "快速起步 · [推荐] MiniMax（M2.7）",
+      "localPath": "Learning/learn-opencode/docs/1-start/04d-minimax.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/04d-minimax.md"
+    },
+    {
+      "label": "快速起步 · 免费模型（OpenCode Zen）",
+      "localPath": "Learning/learn-opencode/docs/1-start/04a-free-models.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/04a-free-models.md"
+    },
+    {
+      "label": "快速起步 · 智谱 GLM-5",
+      "localPath": "Learning/learn-opencode/docs/1-start/04c-zhipu.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/04c-zhipu.md"
+    },
+    {
+      "label": "快速起步 · DeepSeek",
+      "localPath": "Learning/learn-opencode/docs/1-start/04b-deepseek.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/04b-deepseek.md"
+    },
+    {
+      "label": "快速起步 · Claude（Anthropic）",
+      "localPath": "Learning/learn-opencode/docs/1-start/04e-claude.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/04e-claude.md"
+    },
+    {
+      "label": "快速起步 · Claude Code 中转",
+      "localPath": "Learning/learn-opencode/docs/1-start/04f-claudecode-relay.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/04f-claudecode-relay.md"
+    },
+    {
+      "label": "快速起步 · Ollama（本地）",
+      "localPath": "Learning/learn-opencode/docs/1-start/04g-ollama.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/04g-ollama.md"
+    },
+    {
+      "label": "快速起步 · OpenAI（GPT / Codex）",
+      "localPath": "Learning/learn-opencode/docs/1-start/04h-openai.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/04h-openai.md"
+    },
+    {
+      "label": "快速起步 · 通义千问",
+      "localPath": "Learning/learn-opencode/docs/1-start/04i-alibaba.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/04i-alibaba.md"
+    },
+    {
+      "label": "快速起步 · GitHub Copilot",
+      "localPath": "Learning/learn-opencode/docs/1-start/04j-github-copilot.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/04j-github-copilot.md"
+    },
+    {
+      "label": "快速起步 · 1.5 自动更新",
+      "localPath": "Learning/learn-opencode/docs/1-start/05-update.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/1-start/05-update.md"
+    },
+    {
+      "label": "日常使用 · 阶段导读",
+      "localPath": "Learning/learn-opencode/docs/2-daily/index.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/2-daily/index.md"
+    },
+    {
+      "label": "日常使用 · 2.1 界面与操作",
+      "localPath": "Learning/learn-opencode/docs/2-daily/01-interface.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/2-daily/01-interface.md"
+    },
+    {
+      "label": "日常使用 · 2.1b 如何复制内容",
+      "localPath": "Learning/learn-opencode/docs/2-daily/01b-copy-paste.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/2-daily/01b-copy-paste.md"
+    },
+    {
+      "label": "日常使用 · 2.1c AI 的基础工具",
+      "localPath": "Learning/learn-opencode/docs/2-daily/01c-basic-tools.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/2-daily/01c-basic-tools.md"
+    },
+    {
+      "label": "日常使用 · 2.1d 使用图片与 AI 对话",
+      "localPath": "Learning/learn-opencode/docs/2-daily/01d-images.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/2-daily/01d-images.md"
+    },
+    {
+      "label": "日常使用 · 2.2 管理对话",
+      "localPath": "Learning/learn-opencode/docs/2-daily/02-sessions.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/2-daily/02-sessions.md"
+    },
+    {
+      "label": "日常使用 · 2.3 常用快捷键",
+      "localPath": "Learning/learn-opencode/docs/2-daily/03-shortcuts.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/2-daily/03-shortcuts.md"
+    },
+    {
+      "label": "日常使用 · 2.4 全局提示词",
+      "localPath": "Learning/learn-opencode/docs/2-daily/04-global-rules.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/2-daily/04-global-rules.md"
+    },
+    {
+      "label": "日常使用 · 2.5 环境管理",
+      "localPath": "Learning/learn-opencode/docs/2-daily/05-env-management.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/2-daily/05-env-management.md"
+    },
+    {
+      "label": "日常使用 · 2.6 Git 入门",
+      "localPath": "Learning/learn-opencode/docs/2-daily/06-git-basics.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/2-daily/06-git-basics.md"
+    },
+    {
+      "label": "高效工作流 · 阶段导读",
+      "localPath": "Learning/learn-opencode/docs/3-workflow/index.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/3-workflow/index.md"
+    },
+    {
+      "label": "高效工作流 · 3.1 Plan vs Build",
+      "localPath": "Learning/learn-opencode/docs/3-workflow/01-plan-build.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/3-workflow/01-plan-build.md"
+    },
+    {
+      "label": "高效工作流 · 3.2 认识 Agent",
+      "localPath": "Learning/learn-opencode/docs/3-workflow/02-agents.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/3-workflow/02-agents.md"
+    },
+    {
+      "label": "高效工作流 · 3.3 项目初始化",
+      "localPath": "Learning/learn-opencode/docs/3-workflow/03-init.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/3-workflow/03-init.md"
+    },
+    {
+      "label": "场景实战 · 选择你的路线",
+      "localPath": "Learning/learn-opencode/docs/4-scenarios/index.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/index.md"
+    },
+    {
+      "label": "场景实战 · A1 创作工作流",
+      "localPath": "Learning/learn-opencode/docs/4-scenarios/writer-workflow.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/writer-workflow.md"
+    },
+    {
+      "label": "场景实战 · A2 公众号创作",
+      "localPath": "Learning/learn-opencode/docs/4-scenarios/writer-wechat.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/writer-wechat.md"
+    },
+    {
+      "label": "场景实战 · A3 小红书运营",
+      "localPath": "Learning/learn-opencode/docs/4-scenarios/writer-xiaohongshu.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/writer-xiaohongshu.md"
+    },
+    {
+      "label": "场景实战 · A4 营销文案",
+      "localPath": "Learning/learn-opencode/docs/4-scenarios/writer-copywriting.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/writer-copywriting.md"
+    },
+    {
+      "label": "场景实战 · A5 翻译润色",
+      "localPath": "Learning/learn-opencode/docs/4-scenarios/writer-translate.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/writer-translate.md"
+    },
+    {
+      "label": "场景实战 · A6 小说创作",
+      "localPath": "Learning/learn-opencode/docs/4-scenarios/writer-novel.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/writer-novel.md"
+    },
+    {
+      "label": "场景实战 · A7 剧本写作",
+      "localPath": "Learning/learn-opencode/docs/4-scenarios/writer-script.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/writer-script.md"
+    },
+    {
+      "label": "场景实战 · A8 网文创作",
+      "localPath": "Learning/learn-opencode/docs/4-scenarios/writer-webnovel.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/writer-webnovel.md"
+    },
+    {
+      "label": "场景实战 · A9 创作工作站",
+      "localPath": "Learning/learn-opencode/docs/4-scenarios/writer-workstation.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/writer-workstation.md"
+    },
+    {
+      "label": "场景实战 · B1 开发日常",
+      "localPath": "Learning/learn-opencode/docs/4-scenarios/coder-daily.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/coder-daily.md"
+    },
+    {
+      "label": "场景实战 · B2 重构与测试",
+      "localPath": "Learning/learn-opencode/docs/4-scenarios/coder-refactor.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/coder-refactor.md"
+    },
+    {
+      "label": "场景实战 · B3 文档与 Git",
+      "localPath": "Learning/learn-opencode/docs/4-scenarios/coder-docs-git.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/coder-docs-git.md"
+    },
+    {
+      "label": "场景实战 · B4 CI/CD 集成",
+      "localPath": "Learning/learn-opencode/docs/4-scenarios/coder-cicd.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/coder-cicd.md"
+    },
+    {
+      "label": "场景实战 · B5 专属 Agent",
+      "localPath": "Learning/learn-opencode/docs/4-scenarios/coder-agents.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/coder-agents.md"
+    },
+    {
+      "label": "场景实战 · B6 内网/离线部署",
+      "localPath": "Learning/learn-opencode/docs/4-scenarios/coder-intranet.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/coder-intranet.md"
+    },
+    {
+      "label": "场景实战 · C1 文件整理",
+      "localPath": "Learning/learn-opencode/docs/4-scenarios/office-files.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/office-files.md"
+    },
+    {
+      "label": "场景实战 · C2 数据处理",
+      "localPath": "Learning/learn-opencode/docs/4-scenarios/office-data.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/office-data.md"
+    },
+    {
+      "label": "场景实战 · C3 AI 学编程",
+      "localPath": "Learning/learn-opencode/docs/4-scenarios/office-learn.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/office-learn.md"
+    },
+    {
+      "label": "场景实战 · C4 自动化脚本",
+      "localPath": "Learning/learn-opencode/docs/4-scenarios/office-automation.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/office-automation.md"
+    },
+    {
+      "label": "场景实战 · C5 网页画图自动化",
+      "localPath": "Learning/learn-opencode/docs/4-scenarios/mcp-web-image-gen.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/4-scenarios/mcp-web-image-gen.md"
+    },
+    {
+      "label": "进阶手册 · 阶段导读",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/index.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/index.md"
+    },
+    {
+      "label": "进阶手册 · 5.1a 配置基础",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/01a-config-basics.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/01a-config-basics.md"
+    },
+    {
+      "label": "进阶手册 · 5.1b 配置进阶",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/01b-config-advanced.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/01b-config-advanced.md"
+    },
+    {
+      "label": "进阶手册 · 5.2a 快速入门",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/02a-agent-quickstart.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/02a-agent-quickstart.md"
+    },
+    {
+      "label": "进阶手册 · 5.2b 设计模式",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/02b-agent-patterns.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/02b-agent-patterns.md"
+    },
+    {
+      "label": "进阶手册 · 5.2c 权限与安全",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/02c-agent-permissions.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/02c-agent-permissions.md"
+    },
+    {
+      "label": "进阶手册 · 5.2d 高级技巧",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/02d-agent-advanced.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/02d-agent-advanced.md"
+    },
+    {
+      "label": "进阶手册 · 5.3a Skill 基础",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/03a-skills-basics.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/03a-skills-basics.md"
+    },
+    {
+      "label": "进阶手册 · 5.3b Skill 进阶",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/03b-skills-advanced.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/03b-skills-advanced.md"
+    },
+    {
+      "label": "进阶手册 · 5.3c 高级模式",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/03c-skills-patterns.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/03c-skills-patterns.md"
+    },
+    {
+      "label": "进阶手册 · 5.4 快捷命令",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/04-commands.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/04-commands.md"
+    },
+    {
+      "label": "进阶手册 · 5.5 权限管控",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/05-permissions.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/05-permissions.md"
+    },
+    {
+      "label": "进阶手册 · 5.6a 主题系统",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/06a-themes.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/06a-themes.md"
+    },
+    {
+      "label": "进阶手册 · 5.6b 快捷键",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/06b-keybinds.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/06b-keybinds.md"
+    },
+    {
+      "label": "进阶手册 · 5.7a MCP 基础",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/07a-mcp-basics.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/07a-mcp-basics.md"
+    },
+    {
+      "label": "进阶手册 · 5.7b MCP 进阶",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/07b-mcp-advanced.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/07b-mcp-advanced.md"
+    },
+    {
+      "label": "进阶手册 · 5.7c AI 控制浏览器",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/07c-mcp-chrome-devtools.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/07c-mcp-chrome-devtools.md"
+    },
+    {
+      "label": "进阶手册 · 5.8a VS Code 扩展",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/08a-ide-vscode.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/08a-ide-vscode.md"
+    },
+    {
+      "label": "进阶手册 · 5.8b ACP 协议",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/08b-acp.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/08b-acp.md"
+    },
+    {
+      "label": "进阶手册 · 5.9a 远程基础",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/09a-remote-basics.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/09a-remote-basics.md"
+    },
+    {
+      "label": "进阶手册 · 5.9b API 参考",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/09b-remote-api.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/09b-remote-api.md"
+    },
+    {
+      "label": "进阶手册 · 5.10a SDK 基础",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/10a-sdk-basics.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/10a-sdk-basics.md"
+    },
+    {
+      "label": "进阶手册 · 5.10b API 参考",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/10b-sdk-reference.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/10b-sdk-reference.md"
+    },
+    {
+      "label": "进阶手册 · 5.10c SDK V2 下一代 API",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/10c-sdk-v2.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/10c-sdk-v2.md"
+    },
+    {
+      "label": "进阶手册 · 5.11 企业版",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/11-enterprise.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/11-enterprise.md"
+    },
+    {
+      "label": "进阶手册 · 5.11a 企业认证集成",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/11a-enterprise-auth.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/11a-enterprise-auth.md"
+    },
+    {
+      "label": "进阶手册 · 5.12a 插件基础",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/12a-plugins-basics.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/12a-plugins-basics.md"
+    },
+    {
+      "label": "进阶手册 · 5.12b 插件进阶",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/12b-plugins-advanced.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/12b-plugins-advanced.md"
+    },
+    {
+      "label": "进阶手册 · 5.12c Hook 教程",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/12c-hooks.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/12c-hooks.md"
+    },
+    {
+      "label": "进阶手册 · 5.13 自定义工具",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/13-custom-tools.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/13-custom-tools.md"
+    },
+    {
+      "label": "进阶手册 · 5.14 GitHub 集成",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/14-github.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/14-github.md"
+    },
+    {
+      "label": "进阶手册 · 5.15 GitLab 集成",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/15-gitlab.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/15-gitlab.md"
+    },
+    {
+      "label": "进阶手册 · 5.16 会话分享",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/16-share.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/16-share.md"
+    },
+    {
+      "label": "进阶手册 · 5.17 内置工具",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/17-tools.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/17-tools.md"
+    },
+    {
+      "label": "进阶手册 · 5.18 代码格式化器",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/18-formatters.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/18-formatters.md"
+    },
+    {
+      "label": "进阶手册 · 5.19 LSP 代码智能",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/19-lsp.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/19-lsp.md"
+    },
+    {
+      "label": "进阶手册 · 5.20 上下文压缩",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/20-compaction.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/20-compaction.md"
+    },
+    {
+      "label": "进阶手册 · 5.21 思考深度配置",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/21-thinking-depth.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/21-thinking-depth.md"
+    },
+    {
+      "label": "进阶手册 · 5.22 调试与诊断",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/22-debugging.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/22-debugging.md"
+    },
+    {
+      "label": "进阶手册 · 5.23 网络搜索与获取",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/23-web-search.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/23-web-search.md"
+    },
+    {
+      "label": "进阶手册 · 5.24 CLI 自动化",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/24-cli-automation.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/24-cli-automation.md"
+    },
+    {
+      "label": "进阶手册 · 5.25 Git Worktree",
+      "localPath": "Learning/learn-opencode/docs/5-advanced/25-git-worktree.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/5-advanced/25-git-worktree.md"
+    },
+    {
+      "label": "速查手册 · 速查总览",
+      "localPath": "Learning/learn-opencode/docs/appendix/index.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/appendix/index.md"
+    },
+    {
+      "label": "速查手册 · A. 快捷键速查",
+      "localPath": "Learning/learn-opencode/docs/appendix/keybinds.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/appendix/keybinds.md"
+    },
+    {
+      "label": "速查手册 · B. 斜杠命令",
+      "localPath": "Learning/learn-opencode/docs/appendix/commands.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/appendix/commands.md"
+    },
+    {
+      "label": "速查手册 · C. CLI 参考",
+      "localPath": "Learning/learn-opencode/docs/appendix/cli.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/appendix/cli.md"
+    },
+    {
+      "label": "速查手册 · D. 配置选项",
+      "localPath": "Learning/learn-opencode/docs/appendix/config-ref.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/appendix/config-ref.md"
+    },
+    {
+      "label": "速查手册 · E. 模型提供商",
+      "localPath": "Learning/learn-opencode/docs/appendix/providers.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/appendix/providers.md"
+    },
+    {
+      "label": "速查手册 · F. Prompt 模板库",
+      "localPath": "Learning/learn-opencode/docs/appendix/prompts.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/appendix/prompts.md"
+    },
+    {
+      "label": "速查手册 · G. 常见问题",
+      "localPath": "Learning/learn-opencode/docs/appendix/faq.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/appendix/faq.md"
+    },
+    {
+      "label": "速查手册 · H. 故障排除",
+      "localPath": "Learning/learn-opencode/docs/appendix/troubleshoot.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/appendix/troubleshoot.md"
+    },
+    {
+      "label": "速查手册 · I. 生态系统",
+      "localPath": "Learning/learn-opencode/docs/appendix/ecosystem.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/appendix/ecosystem.md"
+    },
+    {
+      "label": "速查手册 · J. 迁移指南",
+      "localPath": "Learning/learn-opencode/docs/appendix/migration.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/appendix/migration.md"
+    },
+    {
+      "label": "速查手册 · K. OpenCode Zen",
+      "localPath": "Learning/learn-opencode/docs/appendix/zen.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/appendix/zen.md"
+    },
+    {
+      "label": "速查手册 · L. 实验性功能",
+      "localPath": "Learning/learn-opencode/docs/appendix/experimental-features.md",
+      "sourceUrl": "https://github.com/vbgate/learn-opencode/blob/main/docs/appendix/experimental-features.md"
+    }
+  ],
+  "retiredIds": [
+    "legacy-reading-14-003",
+    "legacy-reading-14-004",
+    "legacy-reading-14-005",
+    "legacy-reading-14-006",
+    "legacy-reading-14-007",
+    "legacy-reading-14-008",
+    "legacy-reading-14-009",
+    "legacy-reading-14-010",
+    "legacy-reading-14-011"
+  ],
+  "originalReferenceCount": 3,
+  "referenceCount": 111
+}

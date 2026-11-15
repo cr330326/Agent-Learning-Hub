@@ -1,3 +1,4 @@
+import { saveDiscoveryState, listDiscoveryState } from "./discovery-state";
 import { describe, expect, it } from "vitest";
 
 import { openLearningDatabase } from "./database";
@@ -44,6 +45,16 @@ describe("learning state export", () => {
       expiresAt: "2099-01-01T00:00:00.000Z",
     });
 
+    saveDiscoveryState(database, first.id, {
+      itemId: "news-a",
+      status: "completed",
+      bookmarked: true,
+      note: "资讯私人笔记",
+    });
+    saveDiscoveryState(database, second.id, {
+      itemId: "news-b",
+      note: "other-private-news",
+    });
     const snapshot = repository.getStateSnapshot(first.id)!;
     const exported = exportLearningState(snapshot, "2030-01-01T00:00:00.000Z");
     expect(exported.user.id).toBe(first.id);
@@ -52,6 +63,18 @@ describe("learning state export", () => {
     expect(JSON.stringify(exported)).not.toContain("other-item");
     expect(renderNotesMarkdown(snapshot)).toContain("private note");
     expect(renderNotesMarkdown(snapshot)).not.toContain("secret-token-hash");
+    expect(exported.schemaVersion).toBe(2);
+    expect(exported.discoveryState).toHaveLength(1);
+    expect(exported.discoveryState[0]).toMatchObject({
+      targetType: "news",
+      itemId: "news-a",
+      note: "资讯私人笔记",
+    });
+    expect(JSON.stringify(exported)).not.toContain("other-private-news");
+    expect(renderNotesMarkdown(snapshot)).toContain("资讯私人笔记");
+    repository.deleteUser(first.id);
+    expect(listDiscoveryState(database, first.id)).toEqual([]);
+    expect(listDiscoveryState(database, second.id)).toHaveLength(1);
     database.close();
   });
 });

@@ -1,0 +1,158 @@
+{
+  "date": "2026-11-15T11:06:02.362Z",
+  "repository": "cr330326/Agent-Learning-Hub",
+  "pullNumber": 1,
+  "branch": "codex/learning-news-7f7a70a6764975801eea23bab1b78e6c",
+  "approvedOriginalHead": "8e007d71c1a0bb458839252cbc62f73149f43cd0",
+  "approvedAdditionalPaths": [
+    "code/modules/auth/better-auth.ts",
+    "code/modules/catalog/catalog-api.test.ts",
+    "code/package.json",
+    "code/package-lock.json"
+  ],
+  "approvedTotalPaths": [
+    "code/modules/auth/better-auth.ts",
+    "code/modules/catalog/catalog-api.test.ts",
+    "code/package.json",
+    "code/package-lock.json",
+    "code/content/courses/courses.json",
+    "code/content/stages/stages.json"
+  ],
+  "scopeConfirmed": true,
+  "authenticatedWithGitHubApp": true,
+  "events": [
+    {
+      "method": "POST",
+      "path": "/app/installations/182134115/access_tokens",
+      "status": 201
+    },
+    {
+      "method": "GET",
+      "path": "/repos/cr330326/Agent-Learning-Hub/pulls/1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/repos/cr330326/Agent-Learning-Hub/pulls/1/files",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/repos/cr330326/Agent-Learning-Hub/git/commits/8e007d71c1a0bb458839252cbc62f73149f43cd0",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/repos/cr330326/Agent-Learning-Hub/git/trees",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/repos/cr330326/Agent-Learning-Hub/git/commits",
+      "status": 201
+    },
+    {
+      "method": "GET",
+      "path": "/repos/cr330326/Agent-Learning-Hub/git/ref/heads/codex%2Flearning-news-7f7a70a6764975801eea23bab1b78e6c",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/repos/cr330326/Agent-Learning-Hub/git/refs/heads/codex%2Flearning-news-7f7a70a6764975801eea23bab1b78e6c",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/repos/cr330326/Agent-Learning-Hub/pulls/1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/repos/cr330326/Agent-Learning-Hub/pulls/1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/repos/cr330326/Agent-Learning-Hub/pulls/1/files",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/repos/cr330326/Agent-Learning-Hub/contents/code/modules/auth/better-auth.ts",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/repos/cr330326/Agent-Learning-Hub/contents/code/modules/catalog/catalog-api.test.ts",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/repos/cr330326/Agent-Learning-Hub/contents/code/package.json",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/repos/cr330326/Agent-Learning-Hub/contents/code/package-lock.json",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/repos/cr330326/Agent-Learning-Hub/contents/code/content/courses/courses.json",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/repos/cr330326/Agent-Learning-Hub/contents/code/content/stages/stages.json",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/repos/cr330326/Agent-Learning-Hub/commits/a803bb717454a2c344665ff036cf62759d3154b2",
+      "status": 200
+    }
+  ],
+  "merged": false,
+  "released": false,
+  "createdCommit": "a803bb717454a2c344665ff036cf62759d3154b2",
+  "branchUpdated": true,
+  "descriptionUpdated": true,
+  "actor": "agent-learning-hub-cr330326[bot]",
+  "commitAuthor": "agent-learning-hub-cr330326[bot]",
+  "headSha": "a803bb717454a2c344665ff036cf62759d3154b2",
+  "url": "https://github.com/cr330326/Agent-Learning-Hub/pull/1",
+  "files": [
+    {
+      "path": "code/content/courses/courses.json",
+      "additions": 27,
+      "deletions": 0
+    },
+    {
+      "path": "code/content/stages/stages.json",
+      "additions": 10,
+      "deletions": 2
+    },
+    {
+      "path": "code/modules/auth/better-auth.ts",
+      "additions": 5,
+      "deletions": 2
+    },
+    {
+      "path": "code/modules/catalog/catalog-api.test.ts",
+      "additions": 16,
+      "deletions": 2
+    },
+    {
+      "path": "code/package-lock.json",
+      "additions": 86,
+      "deletions": 116
+    },
+    {
+      "path": "code/package.json",
+      "additions": 1,
+      "deletions": 1
+    }
+  ],
+  "verifiedContents": true,
+  "installationTokenRevoked": true
+}

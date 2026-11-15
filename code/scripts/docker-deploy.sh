@@ -167,6 +167,11 @@ verify_health() {
   printf '\n'
 }
 
+runtime_services=(app)
+if [[ $mode != "local" ]]; then
+  runtime_services+=(worker)
+fi
+
 case "$action" in
   build)
     if [[ $mode == "release" ]]; then
@@ -177,10 +182,10 @@ case "$action" in
     ;;
   up)
     if [[ $mode == "release" ]]; then
-      run_compose pull --quiet app
-      run_compose up -d --wait --wait-timeout "$wait_timeout" app
+      run_compose pull --quiet "${runtime_services[@]}"
+      run_compose up -d --wait --wait-timeout "$wait_timeout" "${runtime_services[@]}"
     else
-      run_compose up --build --quiet-build -d --wait --wait-timeout "$wait_timeout" app
+      run_compose up --build --quiet-build -d --wait --wait-timeout "$wait_timeout" "${runtime_services[@]}"
     fi
     verify_health
     ;;
@@ -188,7 +193,7 @@ case "$action" in
     run_compose down --remove-orphans
     ;;
   logs)
-    run_compose logs --follow app
+    run_compose logs --follow "${runtime_services[@]}"
     ;;
   status)
     run_compose ps

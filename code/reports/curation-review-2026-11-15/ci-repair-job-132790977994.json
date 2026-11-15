@@ -1,0 +1,6 @@
+{
+  "jobId": 132790977994,
+  "runId": 43707283649,
+  "url": "https://github.com/cr330326/Agent-Learning-Hub/actions/runs/43707283649/job/132790977994",
+  "excerpt": "2026-11-15T11:07:20.1741543Z 10 vulnerabilities (9 moderate, 1 high)\n2026-11-15T11:07:23.8247844Z All matched files use Prettier code style!\n2026-11-15T11:07:34.6627346Z Content audit passed: 0 errors, 1823 warnings.\n2026-11-15T11:07:35.9966702Z ℹ tests 11\n2026-11-15T11:07:43.1398739Z \u001b[2m Test Files \u001b[22m \u001b[1m\u001b[32m38 passed\u001b[39m\u001b[22m\u001b[90m (38)\u001b[39m\n2026-11-15T11:07:43.1399830Z \u001b[2m      Tests \u001b[22m \u001b[1m\u001b[32m177 passed\u001b[39m\u001b[22m\u001b[90m (177)\u001b[39m\n2026-11-15T11:07:43.1402382Z \u001b[2m   Duration \u001b[22m 6.73s\u001b[2m (transform 771ms, setup 0ms, import 4.82s, tests 8.47s, environment 6ms)\u001b[22m\n2026-11-15T11:07:55.9250693Z   APP_VERSION: ci-f9476045433a5954790412d4adb3ff70ed27dcfd\n2026-11-15T11:07:57.5637691Z Home page smoke test passed for local mode.\n2026-11-15T11:07:58.0513564Z Public page smoke test passed for 9 routes.\n2026-11-15T11:07:58.1488872Z Health HTTP smoke test passed for local mode.\n2026-11-15T11:07:58.5454107Z Local learning-state HTTP E2E passed."
+}

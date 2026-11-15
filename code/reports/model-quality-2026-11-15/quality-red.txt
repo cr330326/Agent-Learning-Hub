@@ -1,0 +1,60 @@
+
+ RUN  v4.1.10 /Users/vsh9p8q/AI/Agent-Learning-Hub/code
+
+ ❯ modules/discovery/repository.test.ts (9 tests | 1 failed) 98ms
+   × keeps low-evidence material out of daily selections even when the edition is not full 10ms
+ ❯ modules/discovery/processing.test.ts (8 tests | 1 failed) 40ms
+   × classifies a valid irrelevant output with empty topics as off-topic instead of a schema failure 7ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  modules/discovery/processing.test.ts > classifies a valid irrelevant output with empty topics as off-topic instead of a schema failure
+AssertionError: expected 'model-output-invalid' to be 'off-topic' // Object.is equality
+
+Expected: "off-topic"
+Received: "model-output-invalid"
+
+ ❯ modules/discovery/processing.test.ts:257:53
+    255|   const unrelated = { ...output, topics: [], scores: { actionability: …
+    256|   await processDiscoveryVersion(repo, job, { config, temporary, now, f…
+    257|   expect(repo.version(versionId)?.processing_state).toBe("off-topic");
+       |                                                     ^
+    258|   expect(repo.jobs.get(job.id)?.state).toBe("completed");
+    259|   expect(repo.item(repo.version(versionId)!.item_id)?.publication_stat…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  modules/discovery/repository.test.ts > keeps low-evidence material out of daily selections even when the edition is not full
+AssertionError: expected Set{ …(9) } to deeply equal Set{ …(5) }
+
+- Expected
++ Received
+
+  Set {
+    "news-035932525bdbe6c69c95c7c0cc4418ae",
++   "news-3a4ff26482829c927cd6de28fd1ec2ab",
++   "news-5052fa3cfef3fea78c82d866637ba53a",
+    "news-810a9aecf14d1ec19c47e547284ff38a",
+    "news-8e1b84d40ef66bb586343dc66e075e44",
++   "news-944db771fb2d11bd63811f375f001db4",
+    "news-bb5be811a6b30ee35f24c17e5b1db371",
+    "news-c655753adccaa1f0019a38183bc1c6dd",
++   "news-c8a3db846e142168572301609c6e3190",
+  }
+
+ ❯ modules/discovery/repository.test.ts:294:40
+    292|   }
+    293|   const preview = repo.previewEdition("2026-11-15");
+    294|   expect(new Set(preview.selectedIds)).toEqual(new Set(ids.filter(x =>…
+       |                                        ^
+    295|   expect(repo.listPublic().count).toBe(profiles.length);
+    296|   expect(() => repo.saveEditionDraft(preview.day, [ids.find(x => !x.el…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  2 failed | 15 passed (17)
+   Start at  15:54:52
+   Duration  647ms (transform 260ms, setup 0ms, import 678ms, tests 138ms, environment 0ms)
+

@@ -1,0 +1,45 @@
+{
+  "day": "2026-11-14",
+  "id": "news-c3713aa5217e8d0c07e25ffbcde1278d",
+  "versionId": "version-39473e9ef53f0b911604339c4a0292e0",
+  "frozen": {
+    "title": "验收示例：冻结前已更正的摘要",
+    "summary": "冻结前由维护者核对的方法说明，仅用于独立容器验收。",
+    "reason": "冻结时已确认有可复现方法，仅为测试样本。",
+    "topics": [
+      "评测与生产实践"
+    ]
+  },
+  "current": {
+    "title": "验收示例：出刊后的更正",
+    "summary": "出刊后当前摘要已经更新，历史日报保持出刊时的更正。",
+    "reason": "新的修订理由只展示在当前版本。",
+    "topics": [
+      "Agent 架构"
+    ]
+  },
+  "edition": {
+    "day": "2026-11-14",
+    "cutoff": 1794618000000,
+    "entries": [
+      {
+        "id": "news-c3713aa5217e8d0c07e25ffbcde1278d",
+        "versionId": "version-39473e9ef53f0b911604339c4a0292e0",
+        "snapshot": {
+          "title": "验收示例：冻结前已更正的摘要",
+          "summary": "冻结前由维护者核对的方法说明，仅用于独立容器验收。",
+          "reason": "冻结时已确认有可复现方法，仅为测试样本。",
+          "topics": [
+            "评测与生产实践"
+          ],
+          "score": 43,
+          "processingState": "ready"
+        }
+      }
+    ],
+    "created_at": 1794618060000
+  },
+  "syntheticClock": true,
+  "syntheticContent": true,
+  "externalRequests": 0
+}

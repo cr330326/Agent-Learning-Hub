@@ -1,0 +1,5 @@
+
+> agent-learning-hub@0.1.0 audit:ui
+> node scripts/ui-review.mjs --output-dir reports/ui-review --base-url http://127.0.0.1:3322 --output-dir reports/verification-2026-11-15/ui-cloud-initial
+
+UI review: 57 captures, 0 findings -> /Users/vsh9p8q/AI/Agent-Learning-Hub/code/reports/verification-2026-11-15/ui-cloud-initial

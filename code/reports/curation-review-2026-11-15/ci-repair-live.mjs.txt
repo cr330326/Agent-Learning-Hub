@@ -1,0 +1,39 @@
+import {readFileSync,writeFileSync,existsSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {CurationGitHub,githubAppConfig} from '/workspace/code/modules/discovery/curation';
+import {fetchPublic} from '/workspace/code/modules/discovery/public-fetch';
+const dir='/review',output='/outputs/ci-repair-live.json';
+const m=JSON.parse(readFileSync(dir+'/ci-repair-manifest.json','utf8'));
+const approvedPaths=['code/modules/auth/better-auth.ts','code/modules/catalog/catalog-api.test.ts','code/package.json','code/package-lock.json'];
+if(m.repository!=='cr330326/Agent-Learning-Hub'||m.pullNumber!==1||!m.branch.startsWith('codex/')||m.files.length!==4||m.files.some(f=>!approvedPaths.includes(f.path)))throw new Error('unapproved repair scope');
+const sha256=s=>createHash('sha256').update(s).digest('hex');
+const files=m.files.map(f=>{const content=readFileSync(dir+'/'+f.snapshot,'utf8');if(sha256(content)!==f.sha256)throw new Error('snapshot hash differs from approved preview');return {path:f.path,content};});
+const expected=new Map(files.map(f=>[f.path,f.content]));expected.set('code/content/courses/courses.json',readFileSync(dir+'/proposed-courses.json','utf8'));expected.set('code/content/stages/stages.json',readFileSync(dir+'/proposed-stages.json','utf8'));
+const configured=githubAppConfig();if((configured.owner+'/'+configured.repo).toLowerCase()!=='cr330326/agent-learning-hub'||configured.base!=='main')throw new Error('unapproved configured repository');
+const config={...configured,owner:'cr330326',repo:'Agent-Learning-Hub'};
+const prefix='/repos/'+m.repository+'/';const branchPath='git/refs/heads/'+encodeURIComponent(m.branch);const title='feat(content): 收录长时 Agent Harness 文章并修复 CI 基线';const body=readFileSync(dir+'/ci-repaired-pr-body.md','utf8');
+const prior=existsSync(output)?JSON.parse(readFileSync(output,'utf8')):{};
+let token=null;const events=[];const report={date:new Date().toISOString(),repository:m.repository,pullNumber:1,branch:m.branch,approvedOriginalHead:m.expectedHead,approvedAdditionalPaths:approvedPaths,approvedTotalPaths:[...expected.keys()],scopeConfirmed:true,authenticatedWithGitHubApp:true,events,merged:false,released:false,...(prior.createdCommit?{createdCommit:prior.createdCommit}:{})};
+const save=()=>writeFileSync(output,JSON.stringify(report,null,2)+'\n');
+const client=new CurationGitHub(config,async(url,options)=>{const p=new URL(url);if(p.origin!=='https://api.github.com'||((options?.method??'GET')!=='GET'&&p.pathname!==`/app/installations/${config.installationId}/access_tokens`))throw new Error('unapproved client mutation');const result=await fetchPublic(url,options);if(p.pathname.endsWith('/access_tokens'))token=JSON.parse(result.text).token;events.push({method:options?.method??'GET',path:p.pathname,status:result.status});return result;});
+async function mutate(method,path,value){if(!token)throw new Error('missing installation token');if(!((method==='POST'&&['git/trees','git/commits'].includes(path))||(method==='PATCH'&&[branchPath,'pulls/1'].includes(path))))throw new Error('unapproved mutation');const response=await fetchPublic('https://api.github.com'+prefix+path,{method,headers:{authorization:'Bearer '+token,accept:'application/vnd.github+json','content-type':'application/json'},body:JSON.stringify(value),maxBytes:8000000,acceptedTypes:['application/json']});events.push({method,path:prefix+path,status:response.status});return JSON.parse(response.text);}
+try {
+ const pr=await client.request('pulls/1');if(pr.state!=='open'||pr.merged||pr.base.ref!=='main'||pr.head.ref!==m.branch)throw new Error('PR is no longer the approved open branch');
+ const head=pr.head.sha;if(head!==m.expectedHead&&head!==prior.createdCommit)throw new Error('branch moved outside this repair; refusing to overwrite');
+ if(head===m.expectedHead){
+  const currentFiles=await client.request('pulls/1/files?per_page=100');if(currentFiles.length!==2||currentFiles.some(f=>!['code/content/courses/courses.json','code/content/stages/stages.json'].includes(f.filename)))throw new Error('original PR scope changed');
+  const commit=await client.request('git/commits/'+head);
+  const tree=await mutate('POST','git/trees',{base_tree:commit.tree.sha,tree:files.map(f=>({...f,mode:'100644',type:'blob'}))});
+  const created=await mutate('POST','git/commits',{message:'fix(ci): support catalog additions and update auth dependencies',tree:tree.sha,parents:[head]});report.createdCommit=created.sha;save();
+  const check=await client.request('git/ref/heads/'+encodeURIComponent(m.branch));if(check.object.sha!==m.expectedHead)throw new Error('branch moved before update');
+  await mutate('PATCH',branchPath,{sha:created.sha,force:false});report.branchUpdated=true;save();
+ }else report.reusedExistingRepairCommit=true;
+ await mutate('PATCH','pulls/1',{title,body});report.descriptionUpdated=true;save();
+ const final=await client.request('pulls/1');const changed=await client.request('pulls/1/files?per_page=100');
+ if(final.merged||final.head.sha!==report.createdCommit||changed.length!==6||changed.some(f=>!expected.has(f.filename)))throw new Error('unexpected final PR scope');
+ for(const [path,content]of expected){const file=await client.request('contents/'+path+'?ref='+encodeURIComponent(final.head.sha));if(file.encoding!=='base64'||Buffer.from(file.content,'base64').toString('utf8')!==content)throw new Error('remote file differs from approved snapshots: '+path);}
+ const actualCommit=await client.request('commits/'+final.head.sha);report.actor=actualCommit.author?.login??actualCommit.committer?.login??null;report.commitAuthor=actualCommit.commit.author.name;
+ report.headSha=final.head.sha;report.url=final.html_url;report.files=changed.map(f=>({path:f.filename,additions:f.additions??f.changes?.additions,deletions:f.deletions??f.changes?.deletions}));report.verifiedContents=true;report.merged=false;save();
+ console.log(JSON.stringify({url:report.url,head:report.headSha,files:report.files,actor:report.actor,verifiedContents:true,merged:false,released:false}));
+}catch(error){report.error=error.code??error.message;save();throw new Error(String(report.error));}
+finally {if(token){try{const result=await fetchPublic('https://api.github.com/installation/token',{method:'DELETE',headers:{authorization:'Bearer '+token,accept:'application/vnd.github+json'},timeoutMs:20000});report.installationTokenRevoked=result.status===204;}catch{report.installationTokenRevoked=false;}}save();console.log(JSON.stringify({installationTokenRevoked:report.installationTokenRevoked??false}));}

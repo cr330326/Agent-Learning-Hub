@@ -1,0 +1,110 @@
+2026-11-15T08:31:47.3688556Z do so (now or later) by using -c with the switch command. Example:
+2026-11-15T08:31:47.3689375Z 
+2026-11-15T08:31:47.3689608Z   git switch -c <new-branch-name>
+2026-11-15T08:31:47.3689938Z 
+2026-11-15T08:31:47.3690187Z Or undo this operation with:
+2026-11-15T08:31:47.3690534Z 
+2026-11-15T08:31:47.3690683Z   git switch -
+2026-11-15T08:31:47.3690902Z 
+2026-11-15T08:31:47.3691523Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-11-15T08:31:47.3691987Z 
+2026-11-15T08:31:47.3692493Z HEAD is now at fa5de06 Merge 8e007d71c1a0bb458839252cbc62f73149f43cd0 into 9bfeb9798b4a141c71ed173de502f7ad657f7742
+2026-11-15T08:31:47.3705508Z ##[endgroup]
+2026-11-15T08:31:47.3754288Z [command]/usr/bin/git log -1 --format=%H
+2026-11-15T08:31:47.3780839Z fa5de06866b34a1b63ee1ae14391bd4694c5dfa5
+2026-11-15T08:31:47.4164818Z ##[group]Run actions/setup-node@v4
+2026-11-15T08:31:47.4165397Z with:
+2026-11-15T08:31:47.4165819Z   node-version: 24
+2026-11-15T08:31:47.4166192Z   cache: npm
+2026-11-15T08:31:47.4166619Z   cache-dependency-path: code/package-lock.json
+2026-11-15T08:31:47.4167189Z   always-auth: false
+2026-11-15T08:31:47.4167596Z   check-latest: false
+2026-11-15T08:31:47.4171995Z   token: ***
+2026-11-15T08:31:47.4172286Z ##[endgroup]
+2026-11-15T08:31:47.5666558Z (node:2894) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-15T08:31:47.5667566Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-15T08:31:47.5672540Z Found in cache @ /opt/hostedtoolcache/node/24.22.2/x64
+2026-11-15T08:31:47.5673365Z ##[group]Environment details
+2026-11-15T08:31:47.9477217Z node: v24.22.2
+2026-11-15T08:31:47.9477915Z npm: 11.19.1
+2026-11-15T08:31:47.9478385Z yarn: 1.22.22
+2026-11-15T08:31:47.9480213Z ##[endgroup]
+2026-11-15T08:31:47.9504516Z [command]/opt/hostedtoolcache/node/24.22.2/x64/bin/npm config get cache
+2026-11-15T08:31:48.1095014Z /home/runner/.npm
+2026-11-15T08:31:48.3697670Z Cache hit for: node-cache-Linux-x64-npm-fa246ad7b85afe48790c776a3236c6295e0be617166db3e14ac57c2a2692729e
+2026-11-15T08:31:48.3808895Z (node:2894) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-15T08:31:49.6436597Z Received 29360128 of 179597821 (16.3%), 28.0 MBs/sec
+2026-11-15T08:31:50.6476851Z Received 159383552 of 179597821 (88.7%), 75.9 MBs/sec
+2026-11-15T08:31:50.7766947Z Received 179597821 of 179597821 (100.0%), 80.3 MBs/sec
+2026-11-15T08:31:50.7768006Z Cache Size: ~171 MB (179597821 B)
+2026-11-15T08:31:50.7802791Z [command]/usr/bin/tar -xf /home/runner/work/_temp/d5bd227f-07f8-4b1c-baf1-4c8e2bf244f5/cache.tzst -P -C /home/runner/work/Agent-Learning-Hub/Agent-Learning-Hub --use-compress-program unzstd
+2026-11-15T08:31:51.2086586Z Cache restored successfully
+2026-11-15T08:31:51.2170090Z Cache restored from key: node-cache-Linux-x64-npm-fa246ad7b85afe48790c776a3236c6295e0be617166db3e14ac57c2a2692729e
+2026-11-15T08:31:51.2523830Z ##[group]Run npm ci --prefix code
+2026-11-15T08:31:51.2524219Z [36;1mnpm ci --prefix code[0m
+2026-11-15T08:31:51.2582530Z shell: /usr/bin/bash -e {0}
+2026-11-15T08:31:51.2582845Z ##[endgroup]
+2026-11-15T08:32:10.4300354Z 
+2026-11-15T08:32:10.4307554Z added 414 packages, and audited 415 packages in 19s
+2026-11-15T08:32:10.4307963Z 
+2026-11-15T08:32:10.4308200Z 164 packages are looking for funding
+2026-11-15T08:32:10.4308780Z   run `npm fund` for details
+2026-11-15T08:32:10.6566768Z 
+2026-11-15T08:32:10.6567838Z 13 vulnerabilities (2 low, 9 moderate, 1 high, 1 critical)
+2026-11-15T08:32:10.6568357Z 
+2026-11-15T08:32:10.6568761Z To address issues that do not require attention, run:
+2026-11-15T08:32:10.6569365Z   npm audit fix
+2026-11-15T08:32:10.6569607Z 
+2026-11-15T08:32:10.6569823Z To address all issues, run:
+2026-11-15T08:32:10.6570298Z   npm audit fix --force
+2026-11-15T08:32:10.6570582Z 
+2026-11-15T08:32:10.6570810Z Run `npm audit` for details.
+2026-11-15T08:32:10.6579315Z npm warn install-scripts 3 packages have install scripts not yet covered by allowScripts:
+2026-11-15T08:32:10.6581548Z npm warn install-scripts   better-sqlite3@13.0.3 (install: node-gyp rebuild)
+2026-11-15T08:32:10.6582997Z npm warn install-scripts   esbuild@0.25.12 (postinstall: node install.js)
+2026-11-15T08:32:10.6584430Z npm warn install-scripts   unrs-resolver@1.12.2 (postinstall: node postinstall.js)
+2026-11-15T08:32:10.6585506Z npm warn install-scripts
+2026-11-15T08:32:10.6586909Z npm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.
+2026-11-15T08:32:10.7889772Z ##[group]Run npm audit --prefix code --omit=dev --audit-level=high
+2026-11-15T08:32:10.7890316Z [36;1mnpm audit --prefix code --omit=dev --audit-level=high[0m
+2026-11-15T08:32:10.7941606Z shell: /usr/bin/bash -e {0}
+2026-11-15T08:32:10.7941884Z ##[endgroup]
+2026-11-15T08:32:11.3107396Z # npm audit report
+2026-11-15T08:32:11.3107719Z 
+2026-11-15T08:32:11.3108070Z @better-auth/drizzle-adapter  1.6.17 - 1.7.6
+2026-11-15T08:32:11.3109608Z @better-auth/drizzle-adapter: Concurrent requests can exceed rate limits on PostgreSQL - https://github.com/advisories/GHSA-44jh-23m7-hpcf
+2026-11-15T08:32:11.3110869Z fix available via `npm audit fix`
+2026-11-15T08:32:11.3111775Z node_modules/@better-auth/drizzle-adapter
+2026-11-15T08:32:11.3112383Z   better-auth  1.3.8-beta.3 - 1.7.6
+2026-11-15T08:32:11.3113106Z   Depends on vulnerable versions of @better-auth/drizzle-adapter
+2026-11-15T08:32:11.3114057Z   Depends on vulnerable versions of @better-auth/kysely-adapter
+2026-11-15T08:32:11.3114692Z   node_modules/better-auth
+2026-11-15T08:32:11.3114899Z 
+2026-11-15T08:32:11.3115127Z @better-auth/kysely-adapter  >=1.6.17 <1.7.0
+2026-11-15T08:32:11.3116437Z @better-auth/drizzle-adapter: Concurrent requests can exceed rate limits on PostgreSQL - https://github.com/advisories/GHSA-44jh-23m7-hpcf
+2026-11-15T08:32:11.3117959Z fix available via `npm audit fix`
+2026-11-15T08:32:11.3118460Z node_modules/@better-auth/kysely-adapter
+2026-11-15T08:32:11.3118748Z 
+2026-11-15T08:32:11.3118755Z 
+2026-11-15T08:32:11.3118962Z 3 vulnerabilities (2 low, 1 critical)
+2026-11-15T08:32:11.3119210Z 
+2026-11-15T08:32:11.3119368Z To address all issues, run:
+2026-11-15T08:32:11.3119689Z   npm audit fix
+2026-11-15T08:32:11.3243343Z ##[error]Process completed with exit code 1.
+2026-11-15T08:32:11.3400161Z Post job cleanup.
+2026-11-15T08:32:11.4251788Z [command]/usr/bin/git version
+2026-11-15T08:32:11.4290861Z git version 2.56.1
+2026-11-15T08:32:11.4330156Z Temporarily overriding HOME='/home/runner/work/_temp/ddfe131b-a9e2-4e69-ae96-0d7e6e8d8969' before making global git config changes
+2026-11-15T08:32:11.4331859Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-15T08:32:11.4336069Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Agent-Learning-Hub/Agent-Learning-Hub
+2026-11-15T08:32:11.4375831Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-15T08:32:11.4411914Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-15T08:32:11.4699457Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-15T08:32:11.4726803Z http.https://github.com/.extraheader
+2026-11-15T08:32:11.4738521Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-15T08:32:11.4776987Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-15T08:32:11.5055457Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-15T08:32:11.5091474Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-15T08:32:11.5512842Z Cleaning up orphan processes
+2026-11-15T08:32:11.5967187Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+

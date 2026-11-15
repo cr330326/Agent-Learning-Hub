@@ -1,0 +1,16 @@
+{
+  "local": {
+    "integrity": "ok",
+    "accountAndLearningTableCountsAndDigestsUnchanged": true,
+    "changedOperationalTables": [
+      "operational_metrics"
+    ]
+  },
+  "cloud": {
+    "integrity": "ok",
+    "accountAndLearningTableCountsAndDigestsUnchanged": true,
+    "changedOperationalTables": [
+      "operational_metrics"
+    ]
+  }
+}

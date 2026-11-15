@@ -162,6 +162,39 @@ export function resolveDocumentRelativePath(
   return base.length === 0 ? null : base.join("/");
 }
 
+/** Map static-site chapter routes without granting access beyond declared paths. */
+export function resolveDeclaredDocumentPath(
+  documentPath: string,
+  href: string,
+  readablePaths: ReadonlySet<string>,
+  documentRoot?: string,
+): string | null {
+  const source = href.trim();
+  if (
+    /^[a-z][a-z0-9+.-]*:/i.test(source) ||
+    source.startsWith("//") ||
+    source.includes("\\")
+  )
+    return null;
+  const rooted = source.startsWith("/");
+  if (rooted && !documentRoot) return null;
+  const target = rooted
+    ? resolveDocumentRelativePath(`${documentRoot}/index.md`, `.${source}`)
+    : resolveDocumentRelativePath(documentPath, source);
+  if (!target || (rooted && !target.startsWith(`${documentRoot}/`)))
+    return null;
+  if (readablePaths.has(target)) return target;
+  const stem = target.endsWith(".html") ? target.slice(0, -5) : target;
+  if (/\.[^/]+$/.test(stem)) return null;
+  const candidates = [
+    `${stem}.md`,
+    `${stem}.mdx`,
+    `${stem}/index.md`,
+    `${stem}/index.mdx`,
+  ].filter((path) => readablePaths.has(path));
+  return candidates.length === 1 ? candidates[0] : null;
+}
+
 export async function listLocalChapters(
   item: LearningItem,
   options: { localRoot: string },

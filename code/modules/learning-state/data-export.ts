@@ -1,7 +1,7 @@
 import type { LearningStateSnapshot, NoteRecord } from "./repository";
 
 export type ExportedLearningState = {
-  schemaVersion: 1;
+  schemaVersion: 2;
   exportedAt: string;
   user: {
     id: string;
@@ -13,6 +13,7 @@ export type ExportedLearningState = {
   bookmarks: LearningStateSnapshot["bookmarks"];
   stageOutcomes: LearningStateSnapshot["stageOutcomes"];
   notes: LearningStateSnapshot["notes"];
+  discoveryState: NonNullable<LearningStateSnapshot["discoveryState"]>;
 };
 
 export function exportLearningState(
@@ -20,7 +21,7 @@ export function exportLearningState(
   exportedAt = new Date().toISOString(),
 ): ExportedLearningState {
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     exportedAt,
     user: {
       id: snapshot.user.id,
@@ -32,6 +33,7 @@ export function exportLearningState(
     bookmarks: snapshot.bookmarks,
     stageOutcomes: snapshot.stageOutcomes,
     notes: snapshot.notes,
+    discoveryState: snapshot.discoveryState ?? [],
   };
 }
 
@@ -48,6 +50,9 @@ export function renderNotesMarkdown(snapshot: LearningStateSnapshot): string {
     "",
     `- Exported for: ${snapshot.user.displayName}`,
     "",
-    sections.length > 0 ? sections.join("\n") : "No notes yet.",
+    sections.length > 0 ? sections.join("\n") : "No course notes yet.",
+    ...(snapshot.discoveryState ?? [])
+      .filter((item) => item.note)
+      .map((item) => `## 资讯 ${item.itemId}\n\n${item.note}\n`),
   ].join("\n");
 }

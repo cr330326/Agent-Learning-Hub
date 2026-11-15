@@ -1,0 +1,39 @@
+
+ RUN  v4.1.10 /Users/vsh9p8q/AI/Agent-Learning-Hub/code
+
+ ❯ modules/freshness/catalog-drift.test.ts (11 tests | 1 failed) 110ms
+   × keeps retired chapter redirects valid when their owner's material moves 6ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  modules/freshness/catalog-drift.test.ts > keeps retired chapter redirects valid when their owner's material moves
+AssertionError: expected { id: 'retired', …(2) } to match object { redirect: { itemId: 'owner', …(1) } }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+    "redirect": {
+-     "chapter": "new/guide.md",
++     "chapter": "old/guide.md",
+      "itemId": "owner",
+    },
+  }
+
+ ❯ modules/freshness/catalog-drift.test.ts:293:28
+    291|     localPath:'old/guide.md', itemIds:['owner','retired'], kind:'moved…
+    292|   }]});
+    293|   expect(applied.items[1]).toMatchObject({redirect:{itemId:'owner',cha…
+       |                            ^
+    294|   expect(applied.items[2]).toBe(items[2]);
+    295|   expect(items[1].redirect?.chapter).toBe('old/guide.md');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 10 passed (11)
+   Start at  15:08:05
+   Duration  761ms (transform 225ms, setup 0ms, import 454ms, tests 110ms, environment 0ms)
+

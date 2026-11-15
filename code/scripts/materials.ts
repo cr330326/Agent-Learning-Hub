@@ -4,6 +4,7 @@ import { join, relative, resolve } from "node:path";
 import process from "node:process";
 
 import { loadContentCatalogFromDirectory } from "../modules/catalog/catalog-api";
+import { parseContentCatalog } from "../modules/catalog/content-schema";
 import {
   auditContentDirectory,
   renderContentAuditMarkdown,
@@ -726,6 +727,8 @@ async function runDrift(options: MaterialsArguments): Promise<void> {
     if (applied.rewrittenPaths === 0) {
       process.stdout.write("No corroborated moves to apply.\n");
     } else {
+      // Reject invalid ownership or redirects before replacing the authoritative file.
+      parseContentCatalog({ ...catalog, items: applied.items });
       // The catalog is hand-maintained and Prettier-checked, so the rewrite has
       // to come back out in Prettier's shape. Writing raw JSON.stringify would
       // expand every inline array and bury 113 real edits in a whole-file diff.

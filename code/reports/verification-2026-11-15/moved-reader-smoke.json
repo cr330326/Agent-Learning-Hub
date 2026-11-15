@@ -1,0 +1,20 @@
+[
+  {
+    "itemId": "legacy-reading-13-001",
+    "status": 200,
+    "finalUrl": "http://127.0.0.1:3323/read/legacy-course-016?chapter=AICoding%2Fopenclaw_guide%2FREADME.md",
+    "readerBody": true
+  },
+  {
+    "itemId": "openhanako",
+    "status": 200,
+    "finalUrl": "http://127.0.0.1:3323/read/openhanako",
+    "readerBody": true
+  },
+  {
+    "itemId": "legacy-reading-29-013",
+    "status": 200,
+    "finalUrl": "http://127.0.0.1:3323/read/legacy-reading-29-013",
+    "readerBody": true
+  }
+]

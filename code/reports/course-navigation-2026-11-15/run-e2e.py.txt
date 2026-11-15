@@ -1,0 +1,9 @@
+import subprocess,sys
+mode=sys.argv[1]
+args=['docker','run','--rm','--network','container:alh-course-navigation-20261115-'+mode+'-1','-w','/workspace/code','-v','alh-course-navigation-20261115-r2_'+mode+'-state:/data/state','-e','STATE_DATABASE_PATH=/data/state/learning-state.sqlite','-e','APP_URL=http://127.0.0.1:3000','-e','DEPLOYMENT_MODE='+mode]
+if mode=='cloud':
+ for k,v in dict(BETTER_AUTH_SECRET='isolated-course-navigation-20261115-not-for-deployment',BETTER_AUTH_URL='http://127.0.0.1:3342',GITHUB_CLIENT_ID='course-navigation-fixture',GITHUB_CLIENT_SECRET='course-navigation-fixture',ADMIN_GITHUB_IDS='4242',DISCOVERY_DATABASE_PATH='/data/discovery/discovery.sqlite').items():args+=['-e',k+'='+v]
+ args+=['-v','alh-course-navigation-20261115-r2_discovery:/data/discovery']
+else:args+=['-e','LOCAL_BIND_HOST=127.0.0.1']
+args+=['agent-learning-hub:course-navigation-builder-20261115-r2','npm','run','test:e2e:'+mode]
+raise SystemExit(subprocess.run(args).returncode)

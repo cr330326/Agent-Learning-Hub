@@ -1,62 +1,19 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-14T09:23:33.237Z",
+  "generatedAt": "2026-11-15T07:39:31.871Z",
   "localMaterialRoot": "/Users/vsh9p8q/AI/Agent-Learning-Hub/local-courses",
   "mounted": true,
   "summary": {
-    "declaredPaths": 434,
-    "missing": 36,
-    "moved": 18,
-    "uncertain": 12,
-    "gone": 6,
-    "uncatalogued": 10,
-    "itemsMissingSourceUrl": 432,
-    "upstreamGapRepositories": 47
+    "declaredPaths": 432,
+    "missing": 10,
+    "moved": 0,
+    "uncertain": 9,
+    "gone": 1,
+    "uncatalogued": 8,
+    "itemsMissingSourceUrl": 412,
+    "upstreamGapRepositories": 48
   },
   "missingPaths": [
-    {
-      "localPath": "Agentic/Harness/deepagents/openwiki/engineering/operations-and-testing.md",
-      "itemIds": [
-        "legacy-reading-31-014"
-      ],
-      "kind": "gone",
-      "proposedPath": null,
-      "candidateCount": 0,
-      "candidateSample": []
-    },
-    {
-      "localPath": "Agentic/Harness/deepagents/openwiki/workflows/deep-agents-code.md",
-      "itemIds": [
-        "legacy-reading-31-012"
-      ],
-      "kind": "gone",
-      "proposedPath": null,
-      "candidateCount": 0,
-      "candidateSample": []
-    },
-    {
-      "localPath": "Agentic/Harness/deepagents/openwiki/workflows/evaluation-and-release.md",
-      "itemIds": [
-        "legacy-reading-31-013"
-      ],
-      "kind": "gone",
-      "proposedPath": null,
-      "candidateCount": 0,
-      "candidateSample": []
-    },
-    {
-      "localPath": "Agentic/Harness/openhanako/README.md",
-      "itemIds": [
-        "openhanako"
-      ],
-      "kind": "uncertain",
-      "proposedPath": null,
-      "candidateCount": 2,
-      "candidateSample": [
-        "Agentic/Harness/PI/openhanako/README.md",
-        "Agentic/Harness/PI/openhanako/tools/npm-ea/openhanako/README.md"
-      ]
-    },
     {
       "localPath": "Agentic/Harness/openworker/README.md",
       "itemIds": [
@@ -66,7 +23,7 @@
       ],
       "kind": "uncertain",
       "proposedPath": null,
-      "candidateCount": 1766,
+      "candidateCount": 1780,
       "candidateSample": [
         "AICoding/Mini-Agent/README.md",
         "AICoding/Mini-Agent/examples/README.md",
@@ -82,7 +39,7 @@
       ],
       "kind": "uncertain",
       "proposedPath": null,
-      "candidateCount": 1766,
+      "candidateCount": 1780,
       "candidateSample": [
         "AICoding/Mini-Agent/README.md",
         "AICoding/Mini-Agent/examples/README.md",
@@ -90,55 +47,6 @@
         "AICoding/ZCode/.agents/skills/react-best-practices/README.md",
         "AICoding/ZCode/README.md"
       ]
-    },
-    {
-      "localPath": "Agentic/Harness/PI/pi-mono/packages/client/README.md",
-      "itemIds": [
-        "legacy-reading-33-009"
-      ],
-      "kind": "uncertain",
-      "proposedPath": null,
-      "candidateCount": 2,
-      "candidateSample": [
-        "AICoding/opencode/code/opencode/packages/client/README.md",
-        "Agentic/Harness/deepseek/deepseek-harness/packages/client/README.md"
-      ]
-    },
-    {
-      "localPath": "Agentic/Harness/PI/pi-mono/packages/protocol/README.md",
-      "itemIds": [
-        "legacy-reading-33-007"
-      ],
-      "kind": "uncertain",
-      "proposedPath": null,
-      "candidateCount": 3,
-      "candidateSample": [
-        "AICoding/codex/codex-code/codex-rs/protocol/README.md",
-        "Agentic/Harness/deepseek/deepseek-harness/packages/sdk/protocol/README.md",
-        "Agentic/Harness/deepseek/deepseek-harness/packages/typert/protocol/README.md"
-      ]
-    },
-    {
-      "localPath": "Agentic/Harness/PI/pi-mono/packages/server/README.md",
-      "itemIds": [
-        "legacy-reading-33-008"
-      ],
-      "kind": "uncertain",
-      "proposedPath": null,
-      "candidateCount": 1,
-      "candidateSample": [
-        "Application/openwork/packages/server/README.md"
-      ]
-    },
-    {
-      "localPath": "Agentic/openchamber/packages/docs/content/docs/zh-cn/commands-snippets.mdx",
-      "itemIds": [
-        "legacy-reading-35-005"
-      ],
-      "kind": "gone",
-      "proposedPath": null,
-      "candidateCount": 0,
-      "candidateSample": []
     },
     {
       "localPath": "AICoding/claude/plugins/claude-mem/cursor-hooks/CONTEXT-INJECTION.md",
@@ -157,7 +65,7 @@
       ],
       "kind": "uncertain",
       "proposedPath": null,
-      "candidateCount": 1766,
+      "candidateCount": 1780,
       "candidateSample": [
         "AICoding/Mini-Agent/README.md",
         "AICoding/Mini-Agent/examples/README.md",
@@ -174,230 +82,13 @@
       ],
       "kind": "uncertain",
       "proposedPath": null,
-      "candidateCount": 1766,
+      "candidateCount": 1780,
       "candidateSample": [
         "AICoding/Mini-Agent/README.md",
         "AICoding/Mini-Agent/examples/README.md",
         "AICoding/Mini-Agent/mini_agent/skills/README.md",
         "AICoding/ZCode/.agents/skills/react-best-practices/README.md",
         "AICoding/ZCode/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/openclaw/openclaw_guide/01_overview/README.md",
-      "itemIds": [
-        "legacy-reading-13-002"
-      ],
-      "kind": "moved",
-      "proposedPath": "AICoding/openclaw_guide/01_overview/README.md",
-      "candidateCount": 1,
-      "candidateSample": [
-        "AICoding/openclaw_guide/01_overview/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/openclaw/openclaw_guide/02_setup/README.md",
-      "itemIds": [
-        "legacy-reading-13-003"
-      ],
-      "kind": "moved",
-      "proposedPath": "AICoding/openclaw_guide/02_setup/README.md",
-      "candidateCount": 1,
-      "candidateSample": [
-        "AICoding/openclaw_guide/02_setup/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/openclaw/openclaw_guide/03_minimal_loop/README.md",
-      "itemIds": [
-        "legacy-reading-13-004"
-      ],
-      "kind": "moved",
-      "proposedPath": "AICoding/openclaw_guide/03_minimal_loop/README.md",
-      "candidateCount": 1,
-      "candidateSample": [
-        "AICoding/openclaw_guide/03_minimal_loop/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/openclaw/openclaw_guide/04_config_models/README.md",
-      "itemIds": [
-        "legacy-reading-13-005"
-      ],
-      "kind": "moved",
-      "proposedPath": "AICoding/openclaw_guide/04_config_models/README.md",
-      "candidateCount": 1,
-      "candidateSample": [
-        "AICoding/openclaw_guide/04_config_models/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/openclaw/openclaw_guide/05_tools_skills/README.md",
-      "itemIds": [
-        "legacy-reading-13-006"
-      ],
-      "kind": "moved",
-      "proposedPath": "AICoding/openclaw_guide/05_tools_skills/README.md",
-      "candidateCount": 1,
-      "candidateSample": [
-        "AICoding/openclaw_guide/05_tools_skills/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/openclaw/openclaw_guide/06_context_memory/README.md",
-      "itemIds": [
-        "legacy-reading-13-007"
-      ],
-      "kind": "moved",
-      "proposedPath": "AICoding/openclaw_guide/06_context_memory/README.md",
-      "candidateCount": 1,
-      "candidateSample": [
-        "AICoding/openclaw_guide/06_context_memory/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/openclaw/openclaw_guide/07_multi_agent/README.md",
-      "itemIds": [
-        "legacy-reading-13-008"
-      ],
-      "kind": "moved",
-      "proposedPath": "AICoding/openclaw_guide/07_multi_agent/README.md",
-      "candidateCount": 1,
-      "candidateSample": [
-        "AICoding/openclaw_guide/07_multi_agent/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/openclaw/openclaw_guide/08_automation_ops/README.md",
-      "itemIds": [
-        "legacy-reading-13-009"
-      ],
-      "kind": "moved",
-      "proposedPath": "AICoding/openclaw_guide/08_automation_ops/README.md",
-      "candidateCount": 1,
-      "candidateSample": [
-        "AICoding/openclaw_guide/08_automation_ops/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/openclaw/openclaw_guide/09_gateway_protocol/README.md",
-      "itemIds": [
-        "legacy-reading-13-010"
-      ],
-      "kind": "moved",
-      "proposedPath": "AICoding/openclaw_guide/09_gateway_protocol/README.md",
-      "candidateCount": 1,
-      "candidateSample": [
-        "AICoding/openclaw_guide/09_gateway_protocol/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/openclaw/openclaw_guide/10_agent_loop/README.md",
-      "itemIds": [
-        "legacy-reading-13-011"
-      ],
-      "kind": "moved",
-      "proposedPath": "AICoding/openclaw_guide/10_agent_loop/README.md",
-      "candidateCount": 1,
-      "candidateSample": [
-        "AICoding/openclaw_guide/10_agent_loop/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/openclaw/openclaw_guide/11_reliability_security/README.md",
-      "itemIds": [
-        "legacy-reading-13-012"
-      ],
-      "kind": "moved",
-      "proposedPath": "AICoding/openclaw_guide/11_reliability_security/README.md",
-      "candidateCount": 1,
-      "candidateSample": [
-        "AICoding/openclaw_guide/11_reliability_security/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/openclaw/openclaw_guide/12_extension_engineering/README.md",
-      "itemIds": [
-        "legacy-reading-13-013"
-      ],
-      "kind": "moved",
-      "proposedPath": "AICoding/openclaw_guide/12_extension_engineering/README.md",
-      "candidateCount": 1,
-      "candidateSample": [
-        "AICoding/openclaw_guide/12_extension_engineering/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/openclaw/openclaw_guide/13_practical_cases/README.md",
-      "itemIds": [
-        "legacy-reading-13-014"
-      ],
-      "kind": "moved",
-      "proposedPath": "AICoding/openclaw_guide/13_practical_cases/README.md",
-      "candidateCount": 1,
-      "candidateSample": [
-        "AICoding/openclaw_guide/13_practical_cases/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/openclaw/openclaw_guide/14_performance_cost/README.md",
-      "itemIds": [
-        "legacy-reading-13-015"
-      ],
-      "kind": "moved",
-      "proposedPath": "AICoding/openclaw_guide/14_performance_cost/README.md",
-      "candidateCount": 1,
-      "candidateSample": [
-        "AICoding/openclaw_guide/14_performance_cost/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/openclaw/openclaw_guide/15_troubleshooting_trees/README.md",
-      "itemIds": [
-        "legacy-reading-13-016"
-      ],
-      "kind": "moved",
-      "proposedPath": "AICoding/openclaw_guide/15_troubleshooting_trees/README.md",
-      "candidateCount": 1,
-      "candidateSample": [
-        "AICoding/openclaw_guide/15_troubleshooting_trees/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/openclaw/openclaw_guide/16_claude_ecosystem/README.md",
-      "itemIds": [
-        "legacy-reading-13-017"
-      ],
-      "kind": "moved",
-      "proposedPath": "AICoding/openclaw_guide/16_claude_ecosystem/README.md",
-      "candidateCount": 1,
-      "candidateSample": [
-        "AICoding/openclaw_guide/16_claude_ecosystem/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/openclaw/openclaw_guide/appendix/README.md",
-      "itemIds": [
-        "legacy-reading-13-018"
-      ],
-      "kind": "moved",
-      "proposedPath": "AICoding/openclaw_guide/appendix/README.md",
-      "candidateCount": 1,
-      "candidateSample": [
-        "AICoding/openclaw_guide/appendix/README.md"
-      ]
-    },
-    {
-      "localPath": "AICoding/openclaw/openclaw_guide/README.md",
-      "itemIds": [
-        "legacy-course-016",
-        "legacy-reading-13-001"
-      ],
-      "kind": "moved",
-      "proposedPath": "AICoding/openclaw_guide/README.md",
-      "candidateCount": 1,
-      "candidateSample": [
-        "AICoding/openclaw_guide/README.md"
       ]
     },
     {
@@ -417,14 +108,19 @@
       ]
     },
     {
-      "localPath": "AICoding/openclaw/openclaw-code/docs.acp.md",
+      "localPath": "AICoding/openclaw/openclaw-code/docs/cli/acp.md",
       "itemIds": [
         "legacy-reading-13-022"
       ],
-      "kind": "gone",
+      "kind": "uncertain",
       "proposedPath": null,
-      "candidateCount": 0,
-      "candidateSample": []
+      "candidateCount": 4,
+      "candidateSample": [
+        "AICoding/easy-agent/docs/acp.md",
+        "AICoding/hermes/hermes-agent/website/docs/user-guide/features/acp.md",
+        "AICoding/hermes/hermes-agent/website/i18n/zh-Hans/docusaurus-plugin-content-docs/current/user-guide/features/acp.md",
+        "Agentic/Harness/deepagents/openwiki/integrations/acp.md"
+      ]
     },
     {
       "localPath": "AICoding/openclaw/openclaw-code/SECURITY.md",
@@ -488,12 +184,6 @@
       "markdownCount": 59
     },
     {
-      "repositoryPath": "Agentic/Harness/PI/openhanako",
-      "remote": "https://github.com/liliMozi/openhanako.git",
-      "branch": "main",
-      "markdownCount": 58
-    },
-    {
       "repositoryPath": "Agentic/Harness/PI/pi-web",
       "remote": "git@github.com:agegr/pi-web.git",
       "branch": "main",
@@ -509,13 +199,7 @@
       "repositoryPath": "AICoding/magpie",
       "remote": "git@github.com:yetone/magpie.git",
       "branch": "main",
-      "markdownCount": 49
-    },
-    {
-      "repositoryPath": "AICoding/openclaw_guide",
-      "remote": "git@github.com:yeasy/openclaw_guide.git",
-      "branch": "main",
-      "markdownCount": 112
+      "markdownCount": 50
     },
     {
       "repositoryPath": "Application/Buildr",
@@ -527,7 +211,7 @@
       "repositoryPath": "Application/OpenMausBot",
       "remote": "git@github.com:milind-soni/OpenMausBot.git",
       "branch": "main",
-      "markdownCount": 358
+      "markdownCount": 359
     },
     {
       "repositoryPath": "Application/rea",
@@ -568,7 +252,6 @@
         "legacy-reading-35-002",
         "legacy-reading-35-003",
         "legacy-reading-35-004",
-        "legacy-reading-35-005",
         "legacy-reading-35-006",
         "legacy-reading-35-007",
         "legacy-reading-35-008",
@@ -643,54 +326,6 @@
       ],
       "sampleLocalPath": "Agentic/Harness/harness-engineering-from-cc-to-ai-coding/book/src/preface.md",
       "sampleSourceUrl": "https://github.com/ZhangHanDong/harness-engineering-from-cc-to-ai-coding/blob/HEAD/book/src/preface.md"
-    },
-    {
-      "repositoryPath": "",
-      "remote": null,
-      "branch": null,
-      "webBaseUrl": null,
-      "itemIds": [
-        "legacy-course-006",
-        "legacy-course-007",
-        "legacy-course-013",
-        "legacy-course-032",
-        "legacy-reading-01-002",
-        "legacy-reading-12-002",
-        "legacy-reading-12-003",
-        "legacy-reading-12-005",
-        "legacy-reading-12-006",
-        "legacy-reading-12-007",
-        "legacy-reading-13-001",
-        "legacy-reading-13-002",
-        "legacy-reading-13-003",
-        "legacy-reading-13-004",
-        "legacy-reading-13-005",
-        "legacy-reading-13-006",
-        "legacy-reading-13-007",
-        "legacy-reading-13-008",
-        "legacy-reading-13-009",
-        "legacy-reading-13-010",
-        "legacy-reading-13-011",
-        "legacy-reading-13-012",
-        "legacy-reading-13-013",
-        "legacy-reading-13-014",
-        "legacy-reading-13-015",
-        "legacy-reading-13-016",
-        "legacy-reading-13-017",
-        "legacy-reading-13-018",
-        "legacy-reading-13-019",
-        "legacy-reading-13-020",
-        "legacy-reading-13-021",
-        "legacy-reading-13-022",
-        "legacy-reading-13-023",
-        "legacy-reading-15-003",
-        "legacy-reading-15-004",
-        "legacy-reading-22-013",
-        "legacy-reading-32-014",
-        "legacy-reading-32-015"
-      ],
-      "sampleLocalPath": "Learning/Book/LLMBook.pdf",
-      "sampleSourceUrl": null
     },
     {
       "repositoryPath": "Agentic/crewAI",
@@ -877,6 +512,34 @@
       "sampleSourceUrl": "https://github.com/shareAI-lab/claw0/blob/HEAD/README.md"
     },
     {
+      "repositoryPath": "AICoding/openclaw_guide",
+      "remote": "git@github.com:yeasy/openclaw_guide.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/yeasy/openclaw_guide",
+      "itemIds": [
+        "legacy-reading-13-001",
+        "legacy-reading-13-002",
+        "legacy-reading-13-003",
+        "legacy-reading-13-004",
+        "legacy-reading-13-005",
+        "legacy-reading-13-006",
+        "legacy-reading-13-007",
+        "legacy-reading-13-008",
+        "legacy-reading-13-009",
+        "legacy-reading-13-010",
+        "legacy-reading-13-011",
+        "legacy-reading-13-012",
+        "legacy-reading-13-013",
+        "legacy-reading-13-014",
+        "legacy-reading-13-015",
+        "legacy-reading-13-016",
+        "legacy-reading-13-017",
+        "legacy-reading-13-018"
+      ],
+      "sampleLocalPath": "AICoding/openclaw_guide/README.md",
+      "sampleSourceUrl": "https://github.com/yeasy/openclaw_guide/blob/HEAD/README.md"
+    },
+    {
       "repositoryPath": "Application/cc-switch",
       "remote": "git@github.com:farion1231/cc-switch.git",
       "branch": "main",
@@ -931,30 +594,6 @@
       "sampleSourceUrl": "https://github.com/walkinglabs/learn-harness-engineering/blob/HEAD/docs/zh/index.md"
     },
     {
-      "repositoryPath": "Agentic/Harness/PI/pi-mono",
-      "remote": "git@github.com:earendil-works/pi.git",
-      "branch": "main",
-      "webBaseUrl": "https://github.com/earendil-works/pi",
-      "itemIds": [
-        "legacy-course-031",
-        "legacy-reading-22-011",
-        "legacy-reading-22-012",
-        "legacy-reading-33-001",
-        "legacy-reading-33-002",
-        "legacy-reading-33-003",
-        "legacy-reading-33-005",
-        "legacy-reading-33-006",
-        "legacy-reading-33-007",
-        "legacy-reading-33-008",
-        "legacy-reading-33-009",
-        "legacy-reading-33-010",
-        "legacy-reading-33-011",
-        "legacy-reading-33-012"
-      ],
-      "sampleLocalPath": "Agentic/Harness/PI/pi-mono/README.md",
-      "sampleSourceUrl": "https://github.com/earendil-works/pi/blob/HEAD/README.md"
-    },
-    {
       "repositoryPath": "AICoding/claude/code/claude-code-analysis",
       "remote": "https://github.com/liuup/claude-code-analysis",
       "branch": "main",
@@ -979,6 +618,27 @@
       "sampleSourceUrl": "https://github.com/liuup/claude-code-analysis/blob/HEAD/README.md"
     },
     {
+      "repositoryPath": "Agentic/Harness/PI/pi-mono",
+      "remote": "git@github.com:earendil-works/pi.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/earendil-works/pi",
+      "itemIds": [
+        "legacy-course-031",
+        "legacy-reading-22-011",
+        "legacy-reading-22-012",
+        "legacy-reading-33-001",
+        "legacy-reading-33-002",
+        "legacy-reading-33-003",
+        "legacy-reading-33-005",
+        "legacy-reading-33-006",
+        "legacy-reading-33-010",
+        "legacy-reading-33-011",
+        "legacy-reading-33-012"
+      ],
+      "sampleLocalPath": "Agentic/Harness/PI/pi-mono/README.md",
+      "sampleSourceUrl": "https://github.com/earendil-works/pi/blob/HEAD/README.md"
+    },
+    {
       "repositoryPath": "Learning/learn-opencode",
       "remote": "git@github.com:vbgate/learn-opencode.git",
       "branch": "main",
@@ -998,26 +658,6 @@
       ],
       "sampleLocalPath": "Learning/learn-opencode/README.md",
       "sampleSourceUrl": "https://github.com/vbgate/learn-opencode/blob/HEAD/README.md"
-    },
-    {
-      "repositoryPath": "Agentic/Harness/deepagents",
-      "remote": "git@github.com:langchain-ai/deepagents.git",
-      "branch": "main",
-      "webBaseUrl": "https://github.com/langchain-ai/deepagents",
-      "itemIds": [
-        "legacy-reading-22-005",
-        "legacy-reading-22-006",
-        "legacy-reading-31-007",
-        "legacy-reading-31-008",
-        "legacy-reading-31-009",
-        "legacy-reading-31-010",
-        "legacy-reading-31-011",
-        "legacy-reading-31-012",
-        "legacy-reading-31-013",
-        "legacy-reading-31-014"
-      ],
-      "sampleLocalPath": "Agentic/Harness/deepagents/README.md",
-      "sampleSourceUrl": "https://github.com/langchain-ai/deepagents/blob/HEAD/README.md"
     },
     {
       "repositoryPath": "Agentic/Harness/smolagents",
@@ -1077,6 +717,40 @@
       ],
       "sampleLocalPath": "Agentic/MetaGPT/README.md",
       "sampleSourceUrl": "https://github.com/FoundationAgents/MetaGPT/blob/HEAD/README.md"
+    },
+    {
+      "repositoryPath": "",
+      "remote": null,
+      "branch": null,
+      "webBaseUrl": null,
+      "itemIds": [
+        "legacy-course-006",
+        "legacy-course-007",
+        "legacy-reading-01-002",
+        "legacy-reading-12-002",
+        "legacy-reading-12-003",
+        "legacy-reading-15-003",
+        "legacy-reading-15-004"
+      ],
+      "sampleLocalPath": "Learning/Book/LLMBook.pdf",
+      "sampleSourceUrl": null
+    },
+    {
+      "repositoryPath": "Agentic/Harness/deepagents",
+      "remote": "git@github.com:langchain-ai/deepagents.git",
+      "branch": "main",
+      "webBaseUrl": "https://github.com/langchain-ai/deepagents",
+      "itemIds": [
+        "legacy-reading-22-005",
+        "legacy-reading-22-006",
+        "legacy-reading-31-007",
+        "legacy-reading-31-008",
+        "legacy-reading-31-009",
+        "legacy-reading-31-010",
+        "legacy-reading-31-011"
+      ],
+      "sampleLocalPath": "Agentic/Harness/deepagents/README.md",
+      "sampleSourceUrl": "https://github.com/langchain-ai/deepagents/blob/HEAD/README.md"
     },
     {
       "repositoryPath": "Application/CodexSwitch",

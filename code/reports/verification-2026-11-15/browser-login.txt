@@ -1,0 +1,1 @@
+Disposable administrator session issued; provider endpoints stubbed.

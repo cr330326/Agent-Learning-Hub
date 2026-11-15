@@ -1,0 +1,2 @@
+{"url":"http://127.0.0.1:3003/read/legacy-reading-14-003","status":200,"next":null,"passed":false}
+FAIL: intro lesson has no next-install lesson navigation

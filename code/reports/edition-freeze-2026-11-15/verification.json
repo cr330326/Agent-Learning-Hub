@@ -1,0 +1,41 @@
+{
+  "generatedAt": "2026-11-15T09:22:28.556456+00:00",
+  "image": "agent-learning-hub:verification-20261115-r14",
+  "imageId": "sha256:4b1f03a36a44c20d66c302faa30a21eddffeb5c25093ddb433a97086ab4637c7",
+  "cloudUnitTests": 225,
+  "localUnitTests": 225,
+  "toolTestsPerMode": 11,
+  "checksPassed": true,
+  "cloudContainerE2E": 47,
+  "localContainerE2E": true,
+  "freshE2EVolumes": "r14",
+  "e2eServerContainersRemoved": true,
+  "e2eVolumesPreserved": true,
+  "mobileAudit": {
+    "captures": 21,
+    "findings": 0
+  },
+  "focusedScreenshots": {
+    "count": 6,
+    "allViewed": true
+  },
+  "functional": {
+    "cloud": {
+      "passed": 27,
+      "modeNotApplicable": 3,
+      "failed": 0
+    },
+    "local": {
+      "passed": 29,
+      "failed": 0
+    }
+  },
+  "fixture": {
+    "syntheticClock": true,
+    "syntheticContent": true,
+    "publicRequests": 0,
+    "paidRequests": 0
+  },
+  "dailyInstanceUpgraded": false,
+  "remotePRChanged": false
+}

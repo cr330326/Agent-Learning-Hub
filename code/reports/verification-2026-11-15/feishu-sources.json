@@ -1,0 +1,241 @@
+[
+  {
+    "id": "feishu-tblnlcl4lpll04t6",
+    "name": "AI 专家动态",
+    "kind": "feishu",
+    "contentType": "article",
+    "url": "https://my.feishu.cn/base/F2Llb2ZLgaqCQ3skHvWcz2ANnCe?table=tblnlCl4LPlL04t6",
+    "enabled": false,
+    "publicationMode": "manual",
+    "intervalMinutes": 30,
+    "topics": [
+      "AI 编程"
+    ],
+    "mapping": {
+      "title": "fldpZ24nYa",
+      "url": "fld9i74Gvb",
+      "author": "fldBU9t5CP",
+      "summary": "fldvwtAcv8",
+      "publishedAt": "fldRmDZugJ",
+      "sourceStatus": "flddA5pst0"
+    },
+    "appToken": "F2Llb2ZLgaqCQ3skHvWcz2ANnCe",
+    "tableId": "tblnlCl4LPlL04t6",
+    "appIdEnv": "FEISHU_APP_ID",
+    "appSecretEnv": "FEISHU_APP_SECRET",
+    "listPath": "",
+    "linkPattern": ""
+  },
+  {
+    "id": "feishu-tblt8cewdo5fz6gu",
+    "name": "AI 开发动态",
+    "kind": "feishu",
+    "contentType": "article",
+    "url": "https://my.feishu.cn/base/F2Llb2ZLgaqCQ3skHvWcz2ANnCe?table=tblt8cewdO5FZ6gU",
+    "enabled": false,
+    "publicationMode": "manual",
+    "intervalMinutes": 30,
+    "topics": [
+      "AI 编程"
+    ],
+    "mapping": {
+      "title": "fld567rR0b",
+      "url": "fldtwgeIDD",
+      "summary": "fldLli7l9U",
+      "publishedAt": "flduNDwFnQ"
+    },
+    "appToken": "F2Llb2ZLgaqCQ3skHvWcz2ANnCe",
+    "tableId": "tblt8cewdO5FZ6gU",
+    "appIdEnv": "FEISHU_APP_ID",
+    "appSecretEnv": "FEISHU_APP_SECRET",
+    "listPath": "",
+    "linkPattern": ""
+  },
+  {
+    "id": "feishu-tblktugzhkcxiat9",
+    "name": "AI 专家文章",
+    "kind": "feishu",
+    "contentType": "article",
+    "url": "https://my.feishu.cn/base/F2Llb2ZLgaqCQ3skHvWcz2ANnCe?table=tblktugZhkcXIAT9",
+    "enabled": false,
+    "publicationMode": "manual",
+    "intervalMinutes": 30,
+    "topics": [
+      "AI 编程"
+    ],
+    "mapping": {
+      "title": "fldxuGMr67",
+      "url": "fldz02LnrS",
+      "author": "fld6sQHXv8",
+      "summary": "fldH3bbkIL",
+      "publishedAt": "fld9a41tW9",
+      "metric.views": "fldF7WKma0",
+      "metric.likes": "fldtb8DIBy"
+    },
+    "appToken": "F2Llb2ZLgaqCQ3skHvWcz2ANnCe",
+    "tableId": "tblktugZhkcXIAT9",
+    "appIdEnv": "FEISHU_APP_ID",
+    "appSecretEnv": "FEISHU_APP_SECRET",
+    "listPath": "",
+    "linkPattern": ""
+  },
+  {
+    "id": "feishu-tbli6ojy7yimzknl",
+    "name": "Harness YouTube",
+    "kind": "feishu",
+    "contentType": "video",
+    "url": "https://my.feishu.cn/base/YoRgbWDUNaSGnYsfeBgcSIYxnKh?table=tblI6oJy7yIMZkNl",
+    "enabled": false,
+    "publicationMode": "manual",
+    "intervalMinutes": 30,
+    "topics": [
+      "Harness Engineering"
+    ],
+    "mapping": {
+      "title": "fld7CmBoGZ",
+      "url": "fldIna0Phl",
+      "author": "fldiAgfPN6",
+      "publishedAt": "fld9QVMEM6",
+      "metric.views": "fldbdD3slh"
+    },
+    "appToken": "YoRgbWDUNaSGnYsfeBgcSIYxnKh",
+    "tableId": "tblI6oJy7yIMZkNl",
+    "appIdEnv": "FEISHU_APP_ID",
+    "appSecretEnv": "FEISHU_APP_SECRET",
+    "listPath": "",
+    "linkPattern": ""
+  },
+  {
+    "id": "feishu-tble8qe561mk4cbh",
+    "name": "Harness B站",
+    "kind": "feishu",
+    "contentType": "video",
+    "url": "https://my.feishu.cn/base/YoRgbWDUNaSGnYsfeBgcSIYxnKh?table=tble8qE561mK4cBH",
+    "enabled": false,
+    "publicationMode": "manual",
+    "intervalMinutes": 30,
+    "topics": [
+      "Harness Engineering"
+    ],
+    "mapping": {
+      "title": "fldEd9yq31",
+      "url": "fldI4fVjJR",
+      "author": "fldRkOqjSI",
+      "publishedAt": "fldE1UVA3u",
+      "metric.views": "fldnPSBBLV"
+    },
+    "appToken": "YoRgbWDUNaSGnYsfeBgcSIYxnKh",
+    "tableId": "tble8qE561mK4cBH",
+    "appIdEnv": "FEISHU_APP_ID",
+    "appSecretEnv": "FEISHU_APP_SECRET",
+    "listPath": "",
+    "linkPattern": ""
+  },
+  {
+    "id": "feishu-tblel80vmxfbzylk",
+    "name": "ClawHub Skills",
+    "kind": "feishu",
+    "contentType": "tool",
+    "url": "https://my.feishu.cn/base/W5TBbp65Iac5tuschwpc1cZPngd?table=tblel80VmXfBzyLK",
+    "enabled": false,
+    "publicationMode": "manual",
+    "intervalMinutes": 30,
+    "topics": [
+      "工具与 Skills"
+    ],
+    "mapping": {
+      "title": "fld5YbkQJs",
+      "url": "fldaSkay2G",
+      "summary": "fldQUJ09Fq",
+      "metric.downloads": "fldg2bxAiD",
+      "metric.stars": "fldxi2pqRd"
+    },
+    "appToken": "W5TBbp65Iac5tuschwpc1cZPngd",
+    "tableId": "tblel80VmXfBzyLK",
+    "appIdEnv": "FEISHU_APP_ID",
+    "appSecretEnv": "FEISHU_APP_SECRET",
+    "listPath": "",
+    "linkPattern": ""
+  },
+  {
+    "id": "feishu-tblgt0yltusmvy4m",
+    "name": "Skills B站",
+    "kind": "feishu",
+    "contentType": "video",
+    "url": "https://my.feishu.cn/base/W5TBbp65Iac5tuschwpc1cZPngd?table=tblgt0yLtuSmVY4m",
+    "enabled": false,
+    "publicationMode": "manual",
+    "intervalMinutes": 30,
+    "topics": [
+      "工具与 Skills"
+    ],
+    "mapping": {
+      "title": "fldcjIQ7Sy",
+      "url": "fldfjIpTxM",
+      "author": "fldrauZemG",
+      "publishedAt": "fldP4Qt0k1",
+      "sourceStatus": "fldcS2IaKL",
+      "metric.views": "fld4qJp56X"
+    },
+    "appToken": "W5TBbp65Iac5tuschwpc1cZPngd",
+    "tableId": "tblgt0yLtuSmVY4m",
+    "appIdEnv": "FEISHU_APP_ID",
+    "appSecretEnv": "FEISHU_APP_SECRET",
+    "listPath": "",
+    "linkPattern": ""
+  },
+  {
+    "id": "feishu-tbl4iw14iu5laztf",
+    "name": "Skills GitHub",
+    "kind": "feishu",
+    "contentType": "tool",
+    "url": "https://my.feishu.cn/base/W5TBbp65Iac5tuschwpc1cZPngd?table=tbl4Iw14iu5lAZTF",
+    "enabled": false,
+    "publicationMode": "manual",
+    "intervalMinutes": 30,
+    "topics": [
+      "工具与 Skills"
+    ],
+    "mapping": {
+      "title": "fldWUudzAV",
+      "url": "fldl5rGMvG",
+      "author": "fldeq4lqif",
+      "summary": "fldH5tSdmI",
+      "sourceStatus": "fldLiyO3X1",
+      "metric.stars": "fldxszZM7x"
+    },
+    "appToken": "W5TBbp65Iac5tuschwpc1cZPngd",
+    "tableId": "tbl4Iw14iu5lAZTF",
+    "appIdEnv": "FEISHU_APP_ID",
+    "appSecretEnv": "FEISHU_APP_SECRET",
+    "listPath": "",
+    "linkPattern": ""
+  },
+  {
+    "id": "feishu-tbl97xgwrsxeuhom",
+    "name": "Skills YouTube",
+    "kind": "feishu",
+    "contentType": "video",
+    "url": "https://my.feishu.cn/base/W5TBbp65Iac5tuschwpc1cZPngd?table=tbl97XGWRSxeUHOM",
+    "enabled": false,
+    "publicationMode": "manual",
+    "intervalMinutes": 30,
+    "topics": [
+      "工具与 Skills"
+    ],
+    "mapping": {
+      "title": "flddNGvYd5",
+      "url": "fldBY92bIt",
+      "author": "fld6VZcmof",
+      "publishedAt": "fldmCLEk5w",
+      "sourceStatus": "fld1mItKfD",
+      "metric.views": "fldAIXmFNi"
+    },
+    "appToken": "W5TBbp65Iac5tuschwpc1cZPngd",
+    "tableId": "tbl97XGWRSxeUHOM",
+    "appIdEnv": "FEISHU_APP_ID",
+    "appSecretEnv": "FEISHU_APP_SECRET",
+    "listPath": "",
+    "linkPattern": ""
+  }
+]

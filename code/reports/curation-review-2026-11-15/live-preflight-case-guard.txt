@@ -1,0 +1,11 @@
+/probes/curation-live.container.mts:7
+const config=githubAppConfig();if(`${config.owner}/${config.repo}`!=='cr330326/Agent-Learning-Hub'||config.base!=='main')throw new Error('unapproved repository or base');
+                                                                                                                               ^
+
+Error: unapproved repository or base
+    at <anonymous> (/probes/curation-live.container.mts:7:128)
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.22.3

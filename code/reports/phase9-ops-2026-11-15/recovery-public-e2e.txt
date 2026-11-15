@@ -1,0 +1,8 @@
+
+> agent-learning-hub@0.1.0 test:e2e
+> node tests/e2e/home-page-http-smoke.mjs && node tests/e2e/public-pages-http-smoke.mjs && node tests/e2e/health-http-smoke.mjs
+
+Home page smoke test passed for cloud mode.
+Public page smoke test passed for 9 routes.
+Health HTTP smoke test passed for cloud mode.
+Admin health access boundary passed for cloud mode.

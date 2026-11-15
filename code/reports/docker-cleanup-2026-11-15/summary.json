@@ -1,0 +1,42 @@
+{
+  "date": "2026-11-15T11:27:24.552084+00:00",
+  "image": "agent-learning-hub:verification-20261115-r14",
+  "imageId": "sha256:4b1f03a36a44c20d66c302faa30a21eddffeb5c25093ddb433a97086ab4637c7",
+  "compose": "code/docker/docker-compose.mac-trial.yml",
+  "project": "agent-learning-hub-trial",
+  "urls": {
+    "local": "http://127.0.0.1:3003",
+    "cloud": "http://127.0.0.1:3002"
+  },
+  "before": {
+    "containers": 10,
+    "imageTags": 35,
+    "volumes": 57
+  },
+  "after": {
+    "containers": 3,
+    "imageTags": 1,
+    "volumes": 4
+  },
+  "removed": {
+    "containers": 10,
+    "volumes": 53,
+    "imageTags": 34,
+    "networks": 5
+  },
+  "backups": {
+    "encrypted": true,
+    "onlineSQLite": true,
+    "databases": 53,
+    "pairBatches": 18,
+    "singleDatabases": 17,
+    "allRestoredAndVerified": true,
+    "directory": "/Users/vsh9p8q/.agent-learnning/backups/docker-cleanup-20261115"
+  },
+  "originalCloudAccountRetained": true,
+  "unrelatedContainersPreserved": true,
+  "externalModelEnabled": false,
+  "screenshotsViewed": 6,
+  "destructiveE2ERunAgainstTrial": false,
+  "localBrowserOpenRequested": true
+}

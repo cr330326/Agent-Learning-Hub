@@ -19,7 +19,7 @@ const ROUTES = [
   { name: "courses-filtered", path: "/courses?track=agentic" },
   {
     name: "courses-empty",
-    path: "/courses?track=learning&access=owned&tag=none",
+    path: "/courses?track=application&access=unavailable",
   },
   { name: "search", path: "/search" },
   { name: "search-query", path: "/search?q=agent" },
@@ -166,7 +166,19 @@ async function main() {
   await rm(shotDir, { recursive: true, force: true });
   await mkdir(shotDir, { recursive: true });
 
-  const routes = [...ROUTES];
+  const mode = await fetch(`${options.baseUrl}/api/health`).then((response) =>
+    response.json(),
+  );
+  const routes = [
+    ...ROUTES,
+    ...(mode.mode === "cloud"
+      ? [
+          { name: "discover", path: "/discover" },
+          { name: "editions", path: "/editions" },
+          { name: "topic", path: "/topics/Harness%20Engineering" },
+        ]
+      : []),
+  ];
   if (options.itemId) {
     routes.push(
       { name: "course-detail", path: `/courses/${options.itemId}` },
@@ -201,7 +213,7 @@ async function main() {
         let response;
         try {
           response = await page.goto(url, {
-            waitUntil: "networkidle",
+            waitUntil: "domcontentloaded",
             timeout: 30000,
           });
         } catch (error) {
@@ -219,6 +231,9 @@ async function main() {
             "html{scroll-behavior:auto!important}*,*::before,*::after{transition:none!important;animation:none!important}",
         });
         await page.waitForTimeout(250);
+        // Reader resume can scroll after hydration. Full-page captures must
+        // anchor sticky navigation at the top rather than mid-document.
+        await page.evaluate(() => window.scrollTo(0, 0));
         await page.screenshot({
           path: join(shotDir, `${route.name}--${viewport.name}.png`),
           fullPage: true,
